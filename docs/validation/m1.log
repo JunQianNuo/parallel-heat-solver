@@ -1,0 +1,113 @@
+M1 validation, 2026-11-10 Asia/Shanghai
+Branch: feature/m1-Serial; parent commit: 6889fb0
+CMake 3.28.3; GNU C++ 13.3.0; Python 3.12.3; C++17 Debug
+Compiler warnings: -Wall -Wextra -Wpedantic (solver/CLI).
+These are correctness checks, not performance measurements.
+Captured output below; trailing whitespace/extra terminal blank lines removed.
+
+$ cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter
+-- Configuring done (1.7s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/nuo/courses/projects/parallel-heat-solver/build
+
+$ cmake --build build --parallel 2
+-- Configuring done (0.7s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/nuo/courses/projects/parallel-heat-solver/build
+[ 16%] Building CXX object CMakeFiles/heat_solver.dir/src/heat.cpp.o
+[ 33%] Linking CXX static library libheat_solver.a
+[ 33%] Built target heat_solver
+[ 50%] Building CXX object CMakeFiles/heat_tests.dir/tests/test_heat.cpp.o
+[ 66%] Building CXX object CMakeFiles/heat_serial.dir/src/main.cpp.o
+[ 83%] Linking CXX executable heat_serial
+[100%] Linking CXX executable heat_tests
+[100%] Built target heat_serial
+[100%] Built target heat_tests
+
+$ ctest --test-dir build --output-on-failure
+Internal ctest changing into directory: /home/nuo/courses/projects/parallel-heat-solver/build
+Test project /home/nuo/courses/projects/parallel-heat-solver/build
+    Start 1: heat_initial
+1/6 Test #1: heat_initial .....................   Passed    0.00 sec
+    Start 2: heat_hand
+2/6 Test #2: heat_hand ........................   Passed    0.00 sec
+    Start 3: heat_parity
+3/6 Test #3: heat_parity ......................   Passed    0.00 sec
+    Start 4: heat_validation
+4/6 Test #4: heat_validation ..................   Passed    0.00 sec
+    Start 5: heat_analytic
+5/6 Test #5: heat_analytic ....................   Passed    0.26 sec
+    Start 6: heat_cli
+6/6 Test #6: heat_cli .........................   Passed    0.06 sec
+
+100% tests passed, 0 tests failed out of 6
+
+Total Test time (real) =   0.32 sec
+
+$ build/heat_tests analytic
+N=20 M=400 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=0.0001126210917414272
+N=40 M=1600 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=2.8181351120953879e-05
+N=80 M=6400 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=7.0469626000380092e-06
+analytic PASS
+
+$ python3 tests/check_cli.py build/heat_serial
+CLI N=20 M=400 E_inf=0.0001126210917414272
+CLI N=2 M=1 E_inf=0.039641485816297228
+CLI N=2 M=2 E_inf=0.041212933214020864
+CLI N=2 M=3 E_inf=0.032150579968536347
+CLI N=2 M=1 E_inf=0.29121293321402086
+CLI N=7 M=7 E_inf=0.00066654289214562734
+CLI PASS; 30 invalid cases rejected
+
+$ cmake -S . -B build/sanitize -DCMAKE_BUILD_TYPE=Debug '-DCMAKE_CXX_FLAGS=-fsanitize=address,undefined -fno-omit-frame-pointer' '-DCMAKE_EXE_LINKER_FLAGS=-fsanitize=address,undefined'
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter
+-- Configuring done (2.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/nuo/courses/projects/parallel-heat-solver/build/sanitize
+
+$ cmake --build build/sanitize --parallel 2
+[ 16%] Building CXX object CMakeFiles/heat_solver.dir/src/heat.cpp.o
+[ 33%] Linking CXX static library libheat_solver.a
+[ 33%] Built target heat_solver
+[ 50%] Building CXX object CMakeFiles/heat_serial.dir/src/main.cpp.o
+[ 66%] Building CXX object CMakeFiles/heat_tests.dir/tests/test_heat.cpp.o
+[ 83%] Linking CXX executable heat_serial
+[ 83%] Built target heat_serial
+[100%] Linking CXX executable heat_tests
+[100%] Built target heat_tests
+
+$ ctest --test-dir build/sanitize --output-on-failure
+Internal ctest changing into directory: /home/nuo/courses/projects/parallel-heat-solver/build/sanitize
+Test project /home/nuo/courses/projects/parallel-heat-solver/build/sanitize
+    Start 1: heat_initial
+1/6 Test #1: heat_initial .....................   Passed    0.01 sec
+    Start 2: heat_hand
+2/6 Test #2: heat_hand ........................   Passed    0.00 sec
+    Start 3: heat_parity
+3/6 Test #3: heat_parity ......................   Passed    0.01 sec
+    Start 4: heat_validation
+4/6 Test #4: heat_validation ..................   Passed    0.01 sec
+    Start 5: heat_analytic
+5/6 Test #5: heat_analytic ....................   Passed    0.86 sec
+    Start 6: heat_cli
+6/6 Test #6: heat_cli .........................   Passed    0.21 sec
+
+100% tests passed, 0 tests failed out of 6
+
+Total Test time (real) =   1.10 sec
+
+$ Python path/SHA-256 manifest comparison and git check-ignore -z --stdin
+docs/sources/: 2564 file paths and SHA-256 hashes unchanged; all 2564 ignored by Git.
