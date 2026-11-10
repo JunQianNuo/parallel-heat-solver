@@ -1,0 +1,28 @@
+# 课程资料仅在本地只读使用，不进入版本控制。
+/docs/sources/
+
+# 本地编辑器临时文件。
+/README.md.local-empty
+/.vscode/
+/.idea/
+*~
+*.swp
+
+# 独立构建目录、编译产物及 Python 缓存。
+build/
+cmake-build-*/
+/CMakeFiles/
+/CMakeCache.txt
+/Testing/
+*.o
+*.obj
+*.a
+*.so
+*.dll
+*.exe
+__pycache__/
+*.py[cod]
+
+# Windows 下载/同步元数据。
+*:Zone.Identifier
+*:WPSSyncID
