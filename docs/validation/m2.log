@@ -1,0 +1,690 @@
+M2 validation; user-facing date 2026-11-10 Asia/Shanghai; starting HEAD edeff61; working tree M2 changes (not yet committed).
+$ git branch --show-current
+feature/m2-mpi
+exit=0
+$ git log -1 --oneline
+edeff61 docs: record final acceptance of M1 branch
+exit=0
+$ uname -sr
+Linux 6.18.33.2-microsoft-standard-WSL2
+exit=0
+$ lscpu
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           39 bits physical, 48 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  28
+On-line CPU(s) list:                     0-27
+Vendor ID:                               GenuineIntel
+Model name:                              Intel(R) Core(TM) i7-14700HX
+CPU family:                              6
+Model:                                   183
+Thread(s) per core:                      2
+Core(s) per socket:                      14
+Socket(s):                               1
+Stepping:                                1
+BogoMIPS:                                4608.00
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves avx_vnni vnmi umip waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize ibt flush_l1d arch_capabilities
+Virtualization:                          VT-x
+Hypervisor vendor:                       Microsoft
+Virtualization type:                     full
+L1d cache:                               672 KiB (14 instances)
+L1i cache:                               448 KiB (14 instances)
+L2 cache:                                28 MiB (14 instances)
+L3 cache:                                33 MiB (1 instance)
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0-27
+Vulnerability Gather data sampling:      Not affected
+Vulnerability Ghostwrite:                Not affected
+Vulnerability Indirect target selection: Not affected
+Vulnerability Itlb multihit:             Not affected
+Vulnerability L1tf:                      Not affected
+Vulnerability Mds:                       Not affected
+Vulnerability Meltdown:                  Not affected
+Vulnerability Mmio stale data:           Not affected
+Vulnerability Old microcode:             Not affected
+Vulnerability Reg file data sampling:    Mitigation; Clear Register File
+Vulnerability Retbleed:                  Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow:      Not affected
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S
+Vulnerability Srbds:                     Not affected
+Vulnerability Tsa:                       Not affected
+Vulnerability Tsx async abort:           Not affected
+Vulnerability Vmscape:                   Not affected
+exit=0
+$ nproc
+28
+exit=0
+$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:           7.6Gi       2.4Gi       3.6Gi       3.7Mi       1.8Gi       5.3Gi
+Swap:          2.0Gi          0B       2.0Gi
+exit=0
+$ mpicxx --showme
+g++ -I/usr/lib/x86_64-linux-gnu/openmpi/include -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -L/usr/lib/x86_64-linux-gnu/openmpi/lib -lmpi_cxx -lmpi
+exit=0
+$ mpiexec --version
+mpiexec (OpenRTE) 4.1.6
+
+Report bugs to http://www.open-mpi.org/community/help/
+exit=0
+$ cmake --version
+cmake version 3.28.3
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+exit=0
+$ g++ --version
+g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+exit=0
+$ python3 --version
+Python 3.12.3
+exit=0
+$ mpiexec --display-allocation -n 4 hostname
+
+======================   ALLOCATED NODES   ======================
+	Nuo-Computer: flags=0x11 slots=14 max_slots=0 slots_inuse=0 state=UP
+=================================================================
+Nuo-Computer
+Nuo-Computer
+Nuo-Computer
+Nuo-Computer
+exit=0
+CPU affinity 0-27 from /proc/self/status; cgroup v2 root cpu.max/memory.max absent: quota not inferred. Default Open MPI slots=14; no oversubscribe requested. Actual MPI regression P=1,2,3,4 only. Shared WSL2 host, no exclusive cores; no solver performance measurements.
+$ cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DHEAT_MPI_TEST_MAX_PROCS=4 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-- Configuring done (1.8s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/nuo/courses/projects/parallel-heat-solver/build
+exit=0
+$ cmake --build build --parallel 2
+[  7%] Building CXX object CMakeFiles/heat_solver.dir/src/cli.cpp.o
+[ 15%] Linking CXX static library libheat_solver.a
+[ 23%] Built target heat_solver
+[ 30%] Linking CXX executable heat_serial
+[ 38%] Building CXX object CMakeFiles/heat_parallel.dir/src/heat_mpi.cpp.o
+[ 46%] Built target heat_serial
+[ 53%] Linking CXX executable heat_tests
+[ 61%] Built target heat_tests
+[ 69%] Linking CXX static library libheat_parallel.a
+[ 69%] Built target heat_parallel
+[ 76%] Building CXX object CMakeFiles/heat_mpi_failures.dir/tests/test_mpi_failures.cpp.o
+[ 84%] Building CXX object CMakeFiles/heat_mpi.dir/src/main_mpi.cpp.o
+[ 92%] Linking CXX executable heat_mpi
+[100%] Linking CXX executable heat_mpi_failures
+[100%] Built target heat_mpi_failures
+[100%] Built target heat_mpi
+exit=0
+$ ctest --test-dir build -N -V
+Internal ctest changing into directory: /home/nuo/courses/projects/parallel-heat-solver/build
+UpdateCTestConfiguration  from :/home/nuo/courses/projects/parallel-heat-solver/build/DartConfiguration.tcl
+Parse Config file:/home/nuo/courses/projects/parallel-heat-solver/build/DartConfiguration.tcl
+UpdateCTestConfiguration  from :/home/nuo/courses/projects/parallel-heat-solver/build/DartConfiguration.tcl
+Parse Config file:/home/nuo/courses/projects/parallel-heat-solver/build/DartConfiguration.tcl
+Test project /home/nuo/courses/projects/parallel-heat-solver/build
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+
+1: Test command: /home/nuo/courses/projects/parallel-heat-solver/build/heat_tests "initial"
+1: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build
+  Test  #1: heat_initial
+
+2: Test command: /home/nuo/courses/projects/parallel-heat-solver/build/heat_tests "hand"
+2: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build
+  Test  #2: heat_hand
+
+3: Test command: /home/nuo/courses/projects/parallel-heat-solver/build/heat_tests "parity"
+3: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build
+  Test  #3: heat_parity
+
+4: Test command: /home/nuo/courses/projects/parallel-heat-solver/build/heat_tests "validation"
+4: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build
+  Test  #4: heat_validation
+
+5: Test command: /home/nuo/courses/projects/parallel-heat-solver/build/heat_tests "analytic"
+5: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build
+  Test  #5: heat_analytic
+
+6: Test command: /usr/bin/python3 "/home/nuo/courses/projects/parallel-heat-solver/tests/check_cli.py" "/home/nuo/courses/projects/parallel-heat-solver/build/heat_serial"
+6: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build
+  Test  #6: heat_cli
+
+7: Test command: /usr/bin/python3 "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/heat_mpi" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--processes=1" "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/heat_mpi_failures"
+7: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build
+  Test  #7: heat_mpi_p1
+
+8: Test command: /usr/bin/python3 "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/heat_mpi" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--processes=2" "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/heat_mpi_failures"
+8: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build
+  Test  #8: heat_mpi_p2
+
+9: Test command: /usr/bin/python3 "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/heat_mpi" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--processes=3" "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/heat_mpi_failures"
+9: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build
+  Test  #9: heat_mpi_p3
+
+10: Test command: /usr/bin/python3 "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/heat_mpi" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--processes=4" "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/heat_mpi_failures"
+10: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build
+  Test #10: heat_mpi_p4
+
+Total Tests: 10
+exit=0
+$ cmake --build build --target check --parallel 2
+[ 21%] Built target heat_solver
+[ 35%] Built target heat_serial
+[ 50%] Built target heat_parallel
+[ 64%] Built target heat_tests
+[ 78%] Built target heat_mpi_failures
+[ 92%] Built target heat_mpi
+[100%] Run CTest with four-decimal test durations
+CTest results (seconds, 4 decimal places):
+1/10 heat_initial             passed   0.0011 sec
+2/10 heat_hand                passed   0.0010 sec
+3/10 heat_parity              passed   0.0010 sec
+4/10 heat_validation          passed   0.0011 sec
+5/10 heat_analytic            passed   0.2543 sec
+6/10 heat_cli                 passed   0.0546 sec
+7/10 heat_mpi_p1              passed   42.1901 sec
+8/10 heat_mpi_p2              passed   42.5714 sec
+9/10 heat_mpi_p3              passed   39.3991 sec
+10/10 heat_mpi_p4              passed   40.7636 sec
+CTest invocation wall time: 165.2497 sec
+Raw CTest output: /home/nuo/courses/projects/parallel-heat-solver/build/ctest-raw.log
+Unrounded test measurements: /home/nuo/courses/projects/parallel-heat-solver/build/Testing/20261110-1044/Test.xml
+[100%] Built target check
+exit=0
+Compile commands (real generated configuration):
+[
+{
+  "directory": "/home/nuo/courses/projects/parallel-heat-solver/build",
+  "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -g -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_solver.dir/src/heat.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/heat.cpp",
+  "file": "/home/nuo/courses/projects/parallel-heat-solver/src/heat.cpp",
+  "output": "CMakeFiles/heat_solver.dir/src/heat.cpp.o"
+},
+{
+  "directory": "/home/nuo/courses/projects/parallel-heat-solver/build",
+  "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -g -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_solver.dir/src/cli.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/cli.cpp",
+  "file": "/home/nuo/courses/projects/parallel-heat-solver/src/cli.cpp",
+  "output": "CMakeFiles/heat_solver.dir/src/cli.cpp.o"
+},
+{
+  "directory": "/home/nuo/courses/projects/parallel-heat-solver/build",
+  "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -g -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_serial.dir/src/main.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/main.cpp",
+  "file": "/home/nuo/courses/projects/parallel-heat-solver/src/main.cpp",
+  "output": "CMakeFiles/heat_serial.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/nuo/courses/projects/parallel-heat-solver/build",
+  "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_parallel.dir/src/heat_mpi.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/heat_mpi.cpp",
+  "file": "/home/nuo/courses/projects/parallel-heat-solver/src/heat_mpi.cpp",
+  "output": "CMakeFiles/heat_parallel.dir/src/heat_mpi.cpp.o"
+},
+{
+  "directory": "/home/nuo/courses/projects/parallel-heat-solver/build",
+  "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_mpi.dir/src/main_mpi.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/main_mpi.cpp",
+  "file": "/home/nuo/courses/projects/parallel-heat-solver/src/main_mpi.cpp",
+  "output": "CMakeFiles/heat_mpi.dir/src/main_mpi.cpp.o"
+},
+{
+  "directory": "/home/nuo/courses/projects/parallel-heat-solver/build",
+  "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -g -std=c++17 -o CMakeFiles/heat_tests.dir/tests/test_heat.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/tests/test_heat.cpp",
+  "file": "/home/nuo/courses/projects/parallel-heat-solver/tests/test_heat.cpp",
+  "output": "CMakeFiles/heat_tests.dir/tests/test_heat.cpp.o"
+},
+{
+  "directory": "/home/nuo/courses/projects/parallel-heat-solver/build",
+  "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_mpi_failures.dir/tests/test_mpi_failures.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/tests/test_mpi_failures.cpp",
+  "file": "/home/nuo/courses/projects/parallel-heat-solver/tests/test_mpi_failures.cpp",
+  "output": "CMakeFiles/heat_mpi_failures.dir/tests/test_mpi_failures.cpp.o"
+}
+]
+Raw CTest output from this check invocation:
+   Site: Nuo-Computer
+   Build name: Linux-c++
+Test project /home/nuo/courses/projects/parallel-heat-solver/build
+      Start  1: heat_initial
+ 1/10 Test  #1: heat_initial .....................   Passed    0.00 sec
+      Start  2: heat_hand
+ 2/10 Test  #2: heat_hand ........................   Passed    0.00 sec
+      Start  3: heat_parity
+ 3/10 Test  #3: heat_parity ......................   Passed    0.00 sec
+      Start  4: heat_validation
+ 4/10 Test  #4: heat_validation ..................   Passed    0.00 sec
+      Start  5: heat_analytic
+ 5/10 Test  #5: heat_analytic ....................   Passed    0.25 sec
+      Start  6: heat_cli
+ 6/10 Test  #6: heat_cli .........................   Passed    0.05 sec
+      Start  7: heat_mpi_p1
+ 7/10 Test  #7: heat_mpi_p1 ......................   Passed   42.19 sec
+      Start  8: heat_mpi_p2
+ 8/10 Test  #8: heat_mpi_p2 ......................   Passed   42.57 sec
+      Start  9: heat_mpi_p3
+ 9/10 Test  #9: heat_mpi_p3 ......................   Passed   39.40 sec
+      Start 10: heat_mpi_p4
+10/10 Test #10: heat_mpi_p4 ......................   Passed   40.76 sec
+
+100% tests passed, 0 tests failed out of 10
+
+Total Test time (real) = 165.24 sec
+
+Per-test captured output from the same CTest XML run: build/Testing/20261110-1044/Test.xml
+heat_initial status=passed
+initial PASS
+
+heat_hand status=passed
+hand PASS
+
+heat_parity status=passed
+parity PASS
+
+heat_validation status=passed
+validation PASS
+
+heat_analytic status=passed
+eJylzrEKAjEQBNA+X5EfMMxuks2mSGFh6SGcvQRRPDgOERv/3r1SsLvphoHHDI3hjy0B/twQCL8h3+fnozfyr7/r4TItd1vWQixMqFQSJS7sBlONJtlkc1BSitl41By11NsO2XBdcdl2vAQkqcJ2EVGByoaL60ufP+/p6k/7cXRfZOJBbw==
+heat_cli status=passed
+eJxtz0EKwjAUBNB9T5ETyP+T5Ccf6UKKC0FF6AGktBEq0oUVz2+gQoO4nscM0xwP5lyDzKl2RGZ/HadbTRsiYoaASTk4dgiomoVmyauzKjmOPrJAAxALhpU5BkOtBTsCRXEFs0Ub2JMPqhK9FevC31HoT9tXhaxCeUFEvEPU7Lwg2GX1smvbrbFkxundPcbB9N2cZvNM99S/0lB9APWzQa4=
+heat_mpi_p1 status=passed
+eJyVkc9OAjEQxu88xbwAZGa2fyV7INGDB8wmeCfrUkJl3W5KQR/fCqgkYlwPTZPO9/u+zkxVEjyUjDAvBSI8ljghqNt+U+fC7dJ36xLh7nRPEJGIFRNa0oIEax5VJ4PM05HGTxwnxRUDK6wplBKomUkZogsDHmBAiFp8GWi8/IAexAstpNEkJCMbIy94M4y3OR+VLfIx6oyLgfHIKs/QCuJCSSu/BygG5mcD1iRRaSysLkianxtQLH9dIVtiYlsUTAIZzw1Us8ViCiQgumfXJLcC3/X7tJvCxrU91N0Kwj7lF1jXvt1HB83GNVu3OtK+O0Hj5HYJ+jomn3zooAltmwv+4JZHeUlX5HXbhqb+0I9jCOnf0GuIWxf/wmDhulV0zQFcjCHewLy6X86eQkzg3nwqaQpdgORfXO5z9A7VGt73====
+heat_mpi_p2 status=passed
+eJyVkMtuwjAQRfd8xfwAaGb8CkVeILWLLqgi0T1KEyNc0jgyhvbz64YiZYHUdGFZsu85c+3SMrxYRthYiQivFhcEVdsfKkvwuPPd3iI8XfcFIhKxZsIlGUmSDc/KQSAyTwONNxwX4o4g08IYWaCSpAWxHAl4ikCQQcW/As5rJDCTBEouCTnX0IINGTUSFNME2hhTGGFQCoXi9gd6agNCYfJoo+VSFUvUYiSY1IBQq0IySyQhUXMxCMr1drsCUhDdu6uTa8B3/TmdVnBwbQ9V10A4p3wC+8q35+igPrj66JqB9t0Vmid3StBXMfnkQwd1aNt84S9uN8Qt3YlXbRvq6ic/jyGkf0OfIR5d/AuDreua6OoLuBhDfIBN+bxbv4WYwH35ZGkFXYDkP1x+5+wb0KvQZg==
+heat_mpi_p3 status=passed
+eJyVj81Kw0AUhfc+xX2Blnvv/MYyi4IuXFQCdV9iMqVjYyZMp9XHN00VKhSMq4E75/s4p3QCnh0jrJxEhBeHc4Kq7XeVI3jYhG7rEB4v7xwRiVgzYUFGkmTDd+UokANPI40/OM7FDcEZt9qKQqGwVgu6EvAUAaMS0mhGyWiFuebNJF4PJQpJLLQq1O8FdpqADSnUBkVhBCn7LbBTG6C0LNgWYlgxlLHmSjCpASoiiYaRldXIbIrRUC7X6wWQguTffJ19A6Hrj/mwgJ1ve6i6BuIxDxfYVqE9Jg/1ztd734x06C7QLPtDhr5KOeQQO6hj2w4f4eQ3Y9zRjXjVtrGuzvlZijH/G/qIae/TXxisfdckX5/ApxTTPazKp83yNaYM/jNkRwvoIuTw7oedd18F8dB7====
+heat_mpi_p4 status=passed
+eJyVkMtqwzAQRff5ivmBhhlp9HCDFoF20UWKId0H11aIGtcyipL28+s6BLwI1F0JpHsO96p0DK9OIGwcI8KbwyVB1faHyhE87UK3dwjP13OJiERCC8KCDBMLIxblKFADTyONNxyX8q7AMkqltLGKCmULPTGIWYZCaMksLZGUZnDxxGDmGIhlIVkXGhVJy5ImAjtPoHnooMhqoZjxtoFwbgUUglEUrIfPNKztVDCrAgo1rBeIWnNhtDJXRbnebldACpL/8HX2DYSuP+fTCg6+7aHqGojnPNzAvgrtOXmoD74++makQ3eFHrI/ZeirlEMOsYM6tu3wEC5+N8Yd3YlXbRvr6jf/kGLM/4a+Yjr69BcGW981ydcX8CnF9Aib8mW3fo8pg/8O2dEKugg5fPph5+IHn9vRXg==
+$ cmake -S . -B build/m2-release -DCMAKE_BUILD_TYPE=Release -DHEAT_MPI_TEST_MAX_PROCS=4 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found MPI_CXX: /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so (found version "3.1") 
+-- Found MPI: TRUE (found version "3.1") found components: CXX 
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Configuring done (2.7s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release
+exit=0
+$ cmake --build build/m2-release --parallel 2
+[ 15%] Building CXX object CMakeFiles/heat_solver.dir/src/cli.cpp.o
+[ 15%] Building CXX object CMakeFiles/heat_solver.dir/src/heat.cpp.o
+[ 23%] Linking CXX static library libheat_solver.a
+[ 23%] Built target heat_solver
+[ 30%] Building CXX object CMakeFiles/heat_parallel.dir/src/heat_mpi.cpp.o
+[ 38%] Building CXX object CMakeFiles/heat_serial.dir/src/main.cpp.o
+[ 46%] Linking CXX executable heat_serial
+[ 46%] Built target heat_serial
+[ 53%] Building CXX object CMakeFiles/heat_tests.dir/tests/test_heat.cpp.o
+[ 61%] Linking CXX static library libheat_parallel.a
+[ 61%] Built target heat_parallel
+[ 69%] Building CXX object CMakeFiles/heat_mpi.dir/src/main_mpi.cpp.o
+[ 76%] Linking CXX executable heat_tests
+[ 76%] Built target heat_tests
+[ 84%] Building CXX object CMakeFiles/heat_mpi_failures.dir/tests/test_mpi_failures.cpp.o
+[ 92%] Linking CXX executable heat_mpi
+[ 92%] Built target heat_mpi
+[100%] Linking CXX executable heat_mpi_failures
+[100%] Built target heat_mpi_failures
+exit=0
+$ ctest --test-dir build/m2-release -N -V
+Internal ctest changing into directory: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release
+UpdateCTestConfiguration  from :/home/nuo/courses/projects/parallel-heat-solver/build/m2-release/DartConfiguration.tcl
+Parse Config file:/home/nuo/courses/projects/parallel-heat-solver/build/m2-release/DartConfiguration.tcl
+UpdateCTestConfiguration  from :/home/nuo/courses/projects/parallel-heat-solver/build/m2-release/DartConfiguration.tcl
+Parse Config file:/home/nuo/courses/projects/parallel-heat-solver/build/m2-release/DartConfiguration.tcl
+Test project /home/nuo/courses/projects/parallel-heat-solver/build/m2-release
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+
+1: Test command: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release/heat_tests "initial"
+1: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release
+  Test  #1: heat_initial
+
+2: Test command: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release/heat_tests "hand"
+2: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release
+  Test  #2: heat_hand
+
+3: Test command: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release/heat_tests "parity"
+3: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release
+  Test  #3: heat_parity
+
+4: Test command: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release/heat_tests "validation"
+4: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release
+  Test  #4: heat_validation
+
+5: Test command: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release/heat_tests "analytic"
+5: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release
+  Test  #5: heat_analytic
+
+6: Test command: /usr/bin/python3 "/home/nuo/courses/projects/parallel-heat-solver/tests/check_cli.py" "/home/nuo/courses/projects/parallel-heat-solver/build/m2-release/heat_serial"
+6: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release
+  Test  #6: heat_cli
+
+7: Test command: /usr/bin/python3 "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m2-release/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m2-release/heat_mpi" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--processes=1" "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/m2-release/heat_mpi_failures"
+7: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release
+  Test  #7: heat_mpi_p1
+
+8: Test command: /usr/bin/python3 "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m2-release/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m2-release/heat_mpi" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--processes=2" "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/m2-release/heat_mpi_failures"
+8: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release
+  Test  #8: heat_mpi_p2
+
+9: Test command: /usr/bin/python3 "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m2-release/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m2-release/heat_mpi" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--processes=3" "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/m2-release/heat_mpi_failures"
+9: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release
+  Test  #9: heat_mpi_p3
+
+10: Test command: /usr/bin/python3 "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m2-release/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m2-release/heat_mpi" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--processes=4" "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/m2-release/heat_mpi_failures"
+10: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release
+  Test #10: heat_mpi_p4
+
+Total Tests: 10
+exit=0
+$ cmake --build build/m2-release --target check --parallel 2
+[ 21%] Built target heat_solver
+[ 35%] Built target heat_serial
+[ 50%] Built target heat_tests
+[ 64%] Built target heat_parallel
+[ 78%] Built target heat_mpi_failures
+[ 92%] Built target heat_mpi
+[100%] Run CTest with four-decimal test durations
+CTest results (seconds, 4 decimal places):
+1/10 heat_initial             passed   0.0030 sec
+2/10 heat_hand                passed   0.0010 sec
+3/10 heat_parity              passed   0.0010 sec
+4/10 heat_validation          passed   0.0010 sec
+5/10 heat_analytic            passed   0.0162 sec
+6/10 heat_cli                 passed   0.0535 sec
+7/10 heat_mpi_p1              passed   42.2678 sec
+8/10 heat_mpi_p2              passed   42.7852 sec
+9/10 heat_mpi_p3              passed   39.9677 sec
+10/10 heat_mpi_p4              passed   43.4899 sec
+CTest invocation wall time: 168.6110 sec
+Raw CTest output: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release/ctest-raw.log
+Unrounded test measurements: /home/nuo/courses/projects/parallel-heat-solver/build/m2-release/Testing/20261110-1107/Test.xml
+[100%] Built target check
+exit=0
+Compile commands (real generated configuration):
+[
+{
+  "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m2-release",
+  "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_solver.dir/src/heat.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/heat.cpp",
+  "file": "/home/nuo/courses/projects/parallel-heat-solver/src/heat.cpp",
+  "output": "CMakeFiles/heat_solver.dir/src/heat.cpp.o"
+},
+{
+  "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m2-release",
+  "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_solver.dir/src/cli.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/cli.cpp",
+  "file": "/home/nuo/courses/projects/parallel-heat-solver/src/cli.cpp",
+  "output": "CMakeFiles/heat_solver.dir/src/cli.cpp.o"
+},
+{
+  "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m2-release",
+  "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_serial.dir/src/main.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/main.cpp",
+  "file": "/home/nuo/courses/projects/parallel-heat-solver/src/main.cpp",
+  "output": "CMakeFiles/heat_serial.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m2-release",
+  "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_parallel.dir/src/heat_mpi.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/heat_mpi.cpp",
+  "file": "/home/nuo/courses/projects/parallel-heat-solver/src/heat_mpi.cpp",
+  "output": "CMakeFiles/heat_parallel.dir/src/heat_mpi.cpp.o"
+},
+{
+  "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m2-release",
+  "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_mpi.dir/src/main_mpi.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/main_mpi.cpp",
+  "file": "/home/nuo/courses/projects/parallel-heat-solver/src/main_mpi.cpp",
+  "output": "CMakeFiles/heat_mpi.dir/src/main_mpi.cpp.o"
+},
+{
+  "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m2-release",
+  "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -o CMakeFiles/heat_tests.dir/tests/test_heat.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/tests/test_heat.cpp",
+  "file": "/home/nuo/courses/projects/parallel-heat-solver/tests/test_heat.cpp",
+  "output": "CMakeFiles/heat_tests.dir/tests/test_heat.cpp.o"
+},
+{
+  "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m2-release",
+  "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_mpi_failures.dir/tests/test_mpi_failures.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/tests/test_mpi_failures.cpp",
+  "file": "/home/nuo/courses/projects/parallel-heat-solver/tests/test_mpi_failures.cpp",
+  "output": "CMakeFiles/heat_mpi_failures.dir/tests/test_mpi_failures.cpp.o"
+}
+]
+Raw CTest output from this check invocation:
+   Site: Nuo-Computer
+   Build name: Linux-c++
+Create new tag: 20261110-1107 - Experimental
+Test project /home/nuo/courses/projects/parallel-heat-solver/build/m2-release
+      Start  1: heat_initial
+ 1/10 Test  #1: heat_initial .....................   Passed    0.00 sec
+      Start  2: heat_hand
+ 2/10 Test  #2: heat_hand ........................   Passed    0.00 sec
+      Start  3: heat_parity
+ 3/10 Test  #3: heat_parity ......................   Passed    0.00 sec
+      Start  4: heat_validation
+ 4/10 Test  #4: heat_validation ..................   Passed    0.00 sec
+      Start  5: heat_analytic
+ 5/10 Test  #5: heat_analytic ....................   Passed    0.02 sec
+      Start  6: heat_cli
+ 6/10 Test  #6: heat_cli .........................   Passed    0.05 sec
+      Start  7: heat_mpi_p1
+ 7/10 Test  #7: heat_mpi_p1 ......................   Passed   42.27 sec
+      Start  8: heat_mpi_p2
+ 8/10 Test  #8: heat_mpi_p2 ......................   Passed   42.79 sec
+      Start  9: heat_mpi_p3
+ 9/10 Test  #9: heat_mpi_p3 ......................   Passed   39.97 sec
+      Start 10: heat_mpi_p4
+10/10 Test #10: heat_mpi_p4 ......................   Passed   43.49 sec
+
+100% tests passed, 0 tests failed out of 10
+
+Total Test time (real) = 168.59 sec
+
+Per-test captured output from the same CTest XML run: build/m2-release/Testing/20261110-1107/Test.xml
+heat_initial status=passed
+initial PASS
+
+heat_hand status=passed
+hand PASS
+
+heat_parity status=passed
+parity PASS
+
+heat_validation status=passed
+validation PASS
+
+heat_analytic status=passed
+eJylzrEKAjEQBNA+X5EfMMxuks2mSGFh6SGcvQRRPDgOERv/3r1SsLvphoHHDI3hjy0B/twQCL8h3+fnozfyr7/r4TItd1vWQixMqFQSJS7sBlONJtlkc1BSitl41By11NsO2XBdcdl2vAQkqcJ2EVGByoaL60ufP+/p6k/7cXRfZOJBbw==
+heat_cli status=passed
+eJxtz0EKwjAUBNB9T5ETyP+T5Ccf6UKKC0FF6AGktBEq0oUVz2+gQoO4nscM0xwP5lyDzKl2RGZ/HadbTRsiYoaASTk4dgiomoVmyauzKjmOPrJAAxALhpU5BkOtBTsCRXEFs0Ub2JMPqhK9FevC31HoT9tXhaxCeUFEvEPU7Lwg2GX1smvbrbFkxundPcbB9N2cZvNM99S/0lB9APWzQa4=
+heat_mpi_p1 status=passed
+eJyVkc9OAjEQxu88xbwAZGa2fyV7INGDB8wmeCfrUkJl3W5KQR/fCqgkYlwPTZPO9/u+zkxVEjyUjDAvBSI8ljghqNt+U+fC7dJ36xLh7nRPEJGIFRNa0oIEax5VJ4PM05HGTxwnxRUDK6wplBKomUkZogsDHmBAiFp8GWi8/IAexAstpNEkJCMbIy94M4y3OR+VLfIx6oyLgfHIKs/QCuJCSSu/BygG5mcD1iRRaSysLkianxtQLH9dIVtiYlsUTAIZzw1Us8ViCiQgumfXJLcC3/X7tJvCxrU91N0Kwj7lF1jXvt1HB83GNVu3OtK+O0Hj5HYJ+jomn3zooAltmwv+4JZHeUlX5HXbhqb+0I9jCOnf0GuIWxf/wmDhulV0zQFcjCHewLy6X86eQkzg3nwqaQpdgORfXO5z9A7VGt73====
+heat_mpi_p2 status=passed
+eJyVkMtuwjAQRfd8xfwAaGb8CkVeILWLLqgi0T1KEyNc0jgyhvbz64YiZYHUdGFZsu85c+3SMrxYRthYiQivFhcEVdsfKkvwuPPd3iI8XfcFIhKxZsIlGUmSDc/KQSAyTwONNxwX4o4g08IYWaCSpAWxHAl4ikCQQcW/As5rJDCTBEouCTnX0IINGTUSFNME2hhTGGFQCoXi9gd6agNCYfJoo+VSFUvUYiSY1IBQq0IySyQhUXMxCMr1drsCUhDdu6uTa8B3/TmdVnBwbQ9V10A4p3wC+8q35+igPrj66JqB9t0Vmid3StBXMfnkQwd1aNt84S9uN8Qt3YlXbRvq6ic/jyGkf0OfIR5d/AuDreua6OoLuBhDfIBN+bxbv4WYwH35ZGkFXYDkP1x+5+wb0KvQZg==
+heat_mpi_p3 status=passed
+eJyVj81Kw0AUhfc+xX2Blnvv/MYyi4IuXFQCdV9iMqVjYyZMp9XHN00VKhSMq4E75/s4p3QCnh0jrJxEhBeHc4Kq7XeVI3jYhG7rEB4v7xwRiVgzYUFGkmTDd+UokANPI40/OM7FDcEZt9qKQqGwVgu6EvAUAaMS0mhGyWiFuebNJF4PJQpJLLQq1O8FdpqADSnUBkVhBCn7LbBTG6C0LNgWYlgxlLHmSjCpASoiiYaRldXIbIrRUC7X6wWQguTffJ19A6Hrj/mwgJ1ve6i6BuIxDxfYVqE9Jg/1ztd734x06C7QLPtDhr5KOeQQO6hj2w4f4eQ3Y9zRjXjVtrGuzvlZijH/G/qIae/TXxisfdckX5/ApxTTPazKp83yNaYM/jNkRwvoIuTw7oedd18F8dB7====
+heat_mpi_p4 status=passed
+eJyVkMtqwzAQRff5ivmBhhlp9HCDFoF20UWKId0H11aIGtcyipL28+s6BLwI1F0JpHsO96p0DK9OIGwcI8KbwyVB1faHyhE87UK3dwjP13OJiERCC8KCDBMLIxblKFADTyONNxyX8q7AMkqltLGKCmULPTGIWYZCaMksLZGUZnDxxGDmGIhlIVkXGhVJy5ImAjtPoHnooMhqoZjxtoFwbgUUglEUrIfPNKztVDCrAgo1rBeIWnNhtDJXRbnebldACpL/8HX2DYSuP+fTCg6+7aHqGojnPNzAvgrtOXmoD74++makQ3eFHrI/ZeirlEMOsYM6tu3wEC5+N8Yd3YlXbRvr6jf/kGLM/4a+Yjr69BcGW981ydcX8CnF9Aib8mW3fo8pg/8O2dEKugg5fPph5+IHn9vRXg==
+
+Supplementary checks after both completed runs; XML output decoded with base64.b64decode + zlib.decompress (CTest compression=gzip).
+build heat_initial decoded output:
+initial PASS
+
+build heat_hand decoded output:
+hand PASS
+
+build heat_parity decoded output:
+parity PASS
+
+build heat_validation decoded output:
+validation PASS
+
+build heat_analytic decoded output:
+N=20 M=400 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=0.0001126210917414272
+N=40 M=1600 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=2.8181351120953879e-05
+N=80 M=6400 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=7.0469626000380092e-06
+analytic PASS
+
+build heat_cli decoded output:
+CLI N=20 M=400 E_inf=0.0001126210917414272
+CLI N=2 M=1 E_inf=0.039641485816297228
+CLI N=2 M=2 E_inf=0.041212933214020864
+CLI N=2 M=3 E_inf=0.032150579968536347
+CLI N=2 M=1 E_inf=0.29121293321402086
+CLI N=7 M=7 E_inf=0.00066654289214562734
+CLI PASS; 30 invalid cases rejected
+
+build heat_mpi_p1 decoded output:
+P=1 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=1 N=2 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0094983664072216811
+P=1 N=2 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.010074366407221702
+P=1 N=2 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.010474587145202885
+P=1 N=2 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.01049436069306986
+P=1 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+P=1 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+P=1 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+P=1 PASS; 14 rejected inputs; help and output failure checked
+P=1 injected-test partition collective_check=1
+P=1 injected-test allocation-root collective_check=1
+P=1 injected-test allocation-worker collective_check=1
+P=1 injected Sendrecv error: MPI_Abort exit=1; no timeout
+
+build heat_mpi_p2 decoded output:
+P=2 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=2 N=3 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026237748054163124
+P=2 N=3 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0031705248054162416
+P=2 N=3 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035491022376327175
+P=2 N=3 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035677787370435032
+P=2 N=6 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010373277649589063
+P=2 N=6 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010658422401340628
+P=2 PASS; 15 rejected inputs; help and output failure checked
+P=2 injected-test partition collective_check=1
+P=2 injected-test allocation-root collective_check=1
+P=2 injected-test allocation-worker collective_check=1
+P=2 injected Sendrecv error: MPI_Abort exit=1; no timeout
+
+build heat_mpi_p3 decoded output:
+P=3 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=3 N=4 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0012628683950388631
+P=3 N=4 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.002053476204208371
+P=3 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+P=3 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+P=3 N=8 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0004823289376260087
+P=3 N=8 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00051140720258602279
+P=3 PASS; 15 rejected inputs; help and output failure checked
+P=3 injected-test partition collective_check=1
+P=3 injected-test allocation-root collective_check=1
+P=3 injected-test allocation-worker collective_check=1
+P=3 injected Sendrecv error: MPI_Abort exit=1; no timeout
+
+build heat_mpi_p4 decoded output:
+P=4 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=4 N=5 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00018403556785195896
+P=4 N=5 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00092634438113370354
+P=4 N=5 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014393469605138431
+P=4 N=5 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014646345186254406
+P=4 N=10 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.000224029466217468
+P=4 N=10 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00025337200664976578
+P=4 PASS; 15 rejected inputs; help and output failure checked
+P=4 injected-test partition collective_check=1
+P=4 injected-test allocation-root collective_check=1
+P=4 injected-test allocation-worker collective_check=1
+P=4 injected Sendrecv error: MPI_Abort exit=1; no timeout
+
+build: 10/10 passed; displayed four-decimal times match same-run XML: heat_initial 0.0011 sec, heat_hand 0.0010 sec, heat_parity 0.0010 sec, heat_validation 0.0011 sec, heat_analytic 0.2543 sec, heat_cli 0.0546 sec, heat_mpi_p1 42.1901 sec, heat_mpi_p2 42.5714 sec, heat_mpi_p3 39.3991 sec, heat_mpi_p4 40.7636 sec
+build/m2-release heat_initial decoded output:
+initial PASS
+
+build/m2-release heat_hand decoded output:
+hand PASS
+
+build/m2-release heat_parity decoded output:
+parity PASS
+
+build/m2-release heat_validation decoded output:
+validation PASS
+
+build/m2-release heat_analytic decoded output:
+N=20 M=400 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=0.0001126210917414272
+N=40 M=1600 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=2.8181351120953879e-05
+N=80 M=6400 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=7.0469626000380092e-06
+analytic PASS
+
+build/m2-release heat_cli decoded output:
+CLI N=20 M=400 E_inf=0.0001126210917414272
+CLI N=2 M=1 E_inf=0.039641485816297228
+CLI N=2 M=2 E_inf=0.041212933214020864
+CLI N=2 M=3 E_inf=0.032150579968536347
+CLI N=2 M=1 E_inf=0.29121293321402086
+CLI N=7 M=7 E_inf=0.00066654289214562734
+CLI PASS; 30 invalid cases rejected
+
+build/m2-release heat_mpi_p1 decoded output:
+P=1 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=1 N=2 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0094983664072216811
+P=1 N=2 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.010074366407221702
+P=1 N=2 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.010474587145202885
+P=1 N=2 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.01049436069306986
+P=1 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+P=1 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+P=1 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+P=1 PASS; 14 rejected inputs; help and output failure checked
+P=1 injected-test partition collective_check=1
+P=1 injected-test allocation-root collective_check=1
+P=1 injected-test allocation-worker collective_check=1
+P=1 injected Sendrecv error: MPI_Abort exit=1; no timeout
+
+build/m2-release heat_mpi_p2 decoded output:
+P=2 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=2 N=3 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026237748054163124
+P=2 N=3 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0031705248054162416
+P=2 N=3 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035491022376327175
+P=2 N=3 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035677787370435032
+P=2 N=6 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010373277649589063
+P=2 N=6 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010658422401340628
+P=2 PASS; 15 rejected inputs; help and output failure checked
+P=2 injected-test partition collective_check=1
+P=2 injected-test allocation-root collective_check=1
+P=2 injected-test allocation-worker collective_check=1
+P=2 injected Sendrecv error: MPI_Abort exit=1; no timeout
+
+build/m2-release heat_mpi_p3 decoded output:
+P=3 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=3 N=4 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0012628683950388631
+P=3 N=4 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.002053476204208371
+P=3 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+P=3 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+P=3 N=8 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0004823289376260087
+P=3 N=8 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00051140720258602279
+P=3 PASS; 15 rejected inputs; help and output failure checked
+P=3 injected-test partition collective_check=1
+P=3 injected-test allocation-root collective_check=1
+P=3 injected-test allocation-worker collective_check=1
+P=3 injected Sendrecv error: MPI_Abort exit=1; no timeout
+
+build/m2-release heat_mpi_p4 decoded output:
+P=4 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=4 N=5 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00018403556785195896
+P=4 N=5 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00092634438113370354
+P=4 N=5 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014393469605138431
+P=4 N=5 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014646345186254406
+P=4 N=10 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.000224029466217468
+P=4 N=10 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00025337200664976578
+P=4 PASS; 15 rejected inputs; help and output failure checked
+P=4 injected-test partition collective_check=1
+P=4 injected-test allocation-root collective_check=1
+P=4 injected-test allocation-worker collective_check=1
+P=4 injected Sendrecv error: MPI_Abort exit=1; no timeout
+
+build/m2-release: 10/10 passed; displayed four-decimal times match same-run XML: heat_initial 0.0030 sec, heat_hand 0.0010 sec, heat_parity 0.0010 sec, heat_validation 0.0010 sec, heat_analytic 0.0162 sec, heat_cli 0.0535 sec, heat_mpi_p1 42.2678 sec, heat_mpi_p2 42.7852 sec, heat_mpi_p3 39.9677 sec, heat_mpi_p4 43.4899 sec
+Course sources: 2564 paths/SHA-256 unchanged from starting manifest; all ignored; no tracked sources.
+Original serial numerical implementation/tests, check display script and both M1 historical logs unchanged.
+/sys/fs/cgroup/init.scope/cpu.max: max 100000
+/sys/fs/cgroup/init.scope/memory.max: max
+
+Final review note: changed only the final Python test summary wording from “help and output failure checked” to “help checked”, so platforms lacking /dev/full keep the preceding explicit not-run message without a conflicting summary. Test logic and all compiled numerical code unchanged; not rerun for this reporting-only edit.
+Raw CMake output contains three original trailing-space lines. Preserved verbatim; code/docs whitespace checked separately, logs checked with blank-at-eol disabled for that command only.

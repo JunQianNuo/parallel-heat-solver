@@ -1,0 +1,91 @@
+Initial exploratory Debug check before failure-injection tests and analytic-error reduction were compiled.
+Command: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug && cmake --build build --parallel 2 && cmake --build build --target check --parallel 2
+The /dev/full test redirected the launcher, not rank stdout; corrected in tests/check_mpi.py.
+
+   Site: Nuo-Computer
+   Build name: Linux-c++
+Test project /home/nuo/courses/projects/parallel-heat-solver/build
+      Start  1: heat_initial
+ 1/10 Test  #1: heat_initial .....................   Passed    0.00 sec
+      Start  2: heat_hand
+ 2/10 Test  #2: heat_hand ........................   Passed    0.00 sec
+      Start  3: heat_parity
+ 3/10 Test  #3: heat_parity ......................   Passed    0.00 sec
+      Start  4: heat_validation
+ 4/10 Test  #4: heat_validation ..................   Passed    0.00 sec
+      Start  5: heat_analytic
+ 5/10 Test  #5: heat_analytic ....................   Passed    0.25 sec
+      Start  6: heat_cli
+ 6/10 Test  #6: heat_cli .........................   Passed    0.06 sec
+      Start  7: heat_mpi_p1
+ 7/10 Test  #7: heat_mpi_p1 ......................***Failed   37.63 sec
+P=1 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=1 N=2 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0094983664072216811
+P=1 N=2 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.010074366407221702
+P=1 N=2 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.010474587145202885
+P=1 N=2 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.01049436069306986
+P=1 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+P=1 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+P=1 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Traceback (most recent call last):
+  File "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py", line 106, in <module>
+    assert code == 1 and 'output failed' in err, (code, err)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (0, 'N=2 M=2 T=0.001 alpha=1 h=0.5 dt=0.00050000000000000001 r=0.002 E_inf=0.0036096661715723233\n')
+
+      Start  8: heat_mpi_p2
+ 8/10 Test  #8: heat_mpi_p2 ......................***Failed   39.41 sec
+P=2 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=2 N=3 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026237748054163124
+P=2 N=3 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0031705248054162416
+P=2 N=3 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035491022376327175
+P=2 N=3 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035677787370435032
+P=2 N=6 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010373277649589063
+P=2 N=6 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010658422401340628
+Traceback (most recent call last):
+  File "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py", line 106, in <module>
+    assert code == 1 and 'output failed' in err, (code, err)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (0, 'N=3 M=2 T=0.001 alpha=1 h=0.33333333333333331 dt=0.00050000000000000001 r=0.0045000000000000005 E_inf=0.001219999628679358\n')
+
+      Start  9: heat_mpi_p3
+ 9/10 Test  #9: heat_mpi_p3 ......................***Failed   41.48 sec
+P=3 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=3 N=4 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0012628683950388631
+P=3 N=4 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.002053476204208371
+P=3 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+P=3 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+P=3 N=8 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0004823289376260087
+P=3 N=8 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00051140720258602279
+Traceback (most recent call last):
+  File "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py", line 106, in <module>
+    code, _, err = run([*launch, '--N', str(p+1), '--M', '2', '--T', '.001'], sink)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (0, 'N=4 M=2 T=0.001 alpha=1 h=0.25 dt=0.00050000000000000001 r=0.0080000000000000002 E_inf=0.00088834547964133925\n')
+
+      Start 10: heat_mpi_p4
+10/10 Test #10: heat_mpi_p4 ......................***Failed   40.36 sec
+P=4 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=4 N=5 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00018403556785195896
+P=4 N=5 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00092634438113370354
+P=4 N=5 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014393469605138431
+P=4 N=5 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014646345186254406
+P=4 N=10 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.000224029466217468
+P=4 N=10 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00025337200664976578
+Traceback (most recent call last):
+  File "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py", line 107, in <module>
+    assert code == 1 and 'output failed' in err, (code, err)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (0, 'N=5 M=2 T=0.001 alpha=1 h=0.20000000000000001 dt=0.00050000000000000001 r=0.012500000000000001 E_inf=0.00048712475178191994\n')
+
+
+60% tests passed, 4 tests failed out of 10
+
+Total Test time (real) = 159.18 sec
+
+The following tests FAILED:
+	  7 - heat_mpi_p1 (Failed)
+	  8 - heat_mpi_p2 (Failed)
+	  9 - heat_mpi_p3 (Failed)
+	 10 - heat_mpi_p4 (Failed)
+Errors while running CTest
