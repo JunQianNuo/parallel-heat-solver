@@ -1,6 +1,6 @@
 # 数学模型与求解设计
 
-状态：M1 串行基准和 M2 MPI 提交 `34cdd73` 已获用户验收（2026-11-10）；独立 M2b OpenMP 已确认纳入范围，实现与基本回归约定见第 8 节，待用户验收。需求见 [SPEC.md](../SPEC.md)。本地权威资料为 `sources/final.pdf` 第 1、3 页；本目录中的 `sources/` 仅供本地只读参考，不纳入 Git。
+状态：M1 串行基准和 M2 MPI 提交 `34cdd73` 已获用户验收（2026-11-10）；独立 M2b OpenMP 已确认纳入范围，实现与基本回归约定见第 8 节，提交 `17925a9` 已于 2026-11-10 获用户验收。需求见 [SPEC.md](../SPEC.md)。本地权威资料为 `sources/final.pdf` 第 1、3 页；本目录中的 `sources/` 仅供本地只读参考，不纳入 Git。
 
 ## 1. 二维显式离散
 
@@ -156,4 +156,4 @@ Q=1 复用既有 CLI 的全部 30 项非法/不稳定输入和 6 组合法场检
 
 课程依据：本轮重新核对 `sources/final.pdf` 第 1/3 页原页、`sources/lectures/openmp/05-OpenMP编程基础.md`（线程函数、数据属性、for/single/屏障）及 `06-OpenMP并行应用实践.md`（Jacobi 双缓冲轮次依赖），阅读 `sources/examples/openmp/01_hello_world`、`04_pi_parallel_for`、`06_data_race/data_race_fixed.c`、`07_barrier`、`09_shared` 和编译配置。只参考方法，未采用积分、线性方程组的模型、参数或停止条件，未发现影响 M2b 的资料冲突。
 
-本轮 Debug/Release 的真实结果、请求/实际线程数、逐点差值、解析误差和环境保存在 [m2b.log](validation/m2b.log)。仅 M2b 基本回归；M3 系统加密、M4 正式性能、Q>4、真实主机内存耗尽及运行时线程创建失败未运行；不将测试耗时作为性能数据。M2b 仍待用户验收。
+本轮 Debug/Release 的真实结果、请求/实际线程数、逐点差值、解析误差和环境保存在 [m2b.log](validation/m2b.log)。仅 M2b 基本回归；M3 系统加密、M4 正式性能、Q>4、真实主机内存耗尽及运行时线程创建失败未运行；不将测试耗时作为性能数据。M2b 提交 `17925a9` 已于 2026-11-10 获用户验收；M3/M4 尚未开始。
