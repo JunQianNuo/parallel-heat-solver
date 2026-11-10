@@ -1,0 +1,48 @@
+M1 test duration display follow-up, 2026-11-10 Asia/Shanghai
+Parent commit: df9e409; branch: feature/m1-Serial
+Correctness checks only; not solver performance measurements.
+Trailing whitespace removed from captured output.
+
+$ cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
+-- Configuring done (0.7s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/nuo/courses/projects/parallel-heat-solver/build
+
+$ cmake --build build --target check --parallel 2
+[ 28%] Built target heat_solver
+[ 57%] Built target heat_serial
+[ 85%] Built target heat_tests
+[100%] Run CTest with four-decimal test durations
+CTest results (seconds, 4 decimal places):
+1/6 heat_initial             passed   0.0011 sec
+2/6 heat_hand                passed   0.0020 sec
+3/6 heat_parity              passed   0.0010 sec
+4/6 heat_validation          passed   0.0013 sec
+5/6 heat_analytic            passed   0.2630 sec
+6/6 heat_cli                 passed   0.0533 sec
+CTest invocation wall time: 0.3340 sec
+Raw CTest output: /home/nuo/courses/projects/parallel-heat-solver/build/ctest-raw.log
+Unrounded test measurements: /home/nuo/courses/projects/parallel-heat-solver/build/Testing/20261110-1044/Test.xml
+[100%] Built target check
+
+$ Captured raw CTest output: build/ctest-raw.log
+   Site: Nuo-Computer
+   Build name: Linux-c++
+Create new tag: 20261110-1044 - Experimental
+Test project /home/nuo/courses/projects/parallel-heat-solver/build
+    Start 1: heat_initial
+1/6 Test #1: heat_initial .....................   Passed    0.00 sec
+    Start 2: heat_hand
+2/6 Test #2: heat_hand ........................   Passed    0.00 sec
+    Start 3: heat_parity
+3/6 Test #3: heat_parity ......................   Passed    0.00 sec
+    Start 4: heat_validation
+4/6 Test #4: heat_validation ..................   Passed    0.00 sec
+    Start 5: heat_analytic
+5/6 Test #5: heat_analytic ....................   Passed    0.26 sec
+    Start 6: heat_cli
+6/6 Test #6: heat_cli .........................   Passed    0.05 sec
+
+100% tests passed, 0 tests failed out of 6
+
+Total Test time (real) =   0.32 sec

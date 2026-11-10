@@ -26,4 +26,10 @@ if(BUILD_TESTING)
     add_test(NAME heat_cli COMMAND ${Python3_EXECUTABLE}
         "${CMAKE_CURRENT_SOURCE_DIR}/tests/check_cli.py" $<TARGET_FILE:heat_serial>)
     set_tests_properties(heat_cli PROPERTIES TIMEOUT 30)
+    add_custom_target(check
+        COMMAND ${Python3_EXECUTABLE} "${CMAKE_CURRENT_SOURCE_DIR}/scripts/check.py"
+            --test-dir "${CMAKE_CURRENT_BINARY_DIR}" --ctest "${CMAKE_CTEST_COMMAND}"
+        DEPENDS heat_tests heat_serial
+        USES_TERMINAL
+        COMMENT "Run CTest with four-decimal test durations")
 endif()

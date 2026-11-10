@@ -6,7 +6,7 @@
 
 ## 当前进度
 
-M0 已获用户验收；M1 串行基准已实现并通过本轮构建与测试，等待用户验收。MPI 与正式性能实验尚未开始。真实检查输出见 [M1 验证记录](docs/validation/m1.log)。
+M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小数显示已补齐并验证。MPI 与正式性能实验尚未开始。真实检查输出见 [M1 验证记录](docs/validation/m1.log)。
 
 ## 文档导航
 
@@ -35,7 +35,7 @@ M0 已获用户验收；M1 串行基准已实现并通过本轮构建与测试�
 ```bash
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
 cmake --build build --parallel 2
-ctest --test-dir build --output-on-failure
+cmake --build build --target check --parallel 2
 ./build/heat_serial --help
 ./build/heat_serial > build/solution.csv
 ./build/heat_serial --N 40 --M 1600 --T 0.1 --alpha 1 > build/solution-N40.csv
@@ -46,3 +46,7 @@ ctest --test-dir build --output-on-failure
 stdout 为最终时刻 T 的 CSV，首行为 `i,j,x,y,u_numeric,u_exact,abs_error`，按 `i*(N+1)+j` 顺序包含全部边界及内点；`x=i/N,y=j/N`，数值使用 17 位有效数字。stderr 单行记录 `N M T alpha h dt r E_inf`（`key=value`）。解析值仅用于验证；所有数值温度来自五点差分推进。退出码：0 成功，2 参数错误，1 分配/运行/输出失败；未知、重复、缺值选项均拒绝。仅单独的 `--help` 返回帮助。
 
 基本测试阈值、手算及加密参数见 [DESIGN](docs/DESIGN.md)。这些是 M1 回归标准，不是任意输入的精度保证；本轮未做性能实验。
+
+`check` 目标先确保测试程序已构建，再执行同一组 CTest 测试，逐项耗时按秒保留 **4 位小数**。也可直接运行 `python3 scripts/check.py --test-dir build`。耗时读取 CTest 的较高精度 XML 测量值；原始控制台输出保留在 `build/ctest-raw.log`，XML 位于 `build/Testing/<TAG>/Test.xml`。若测试失败，显示原始失败诊断并返回非零退出码。直接运行 `ctest --test-dir build --output-on-failure` 仍使用 CTest 默认的两位小数显示。
+
+四位小数表示显示分辨率为 0.1 ms，不代表计时具有相同准确度。测试耗时包含测试进程开销，不作为求解器性能数据。原 M1 日志保持原样，补充验证见 [四位小数显示记录](docs/validation/m1-precision.log)。
