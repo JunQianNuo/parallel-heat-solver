@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <iostream>
 #include <locale>
+#include <limits>
 #include <stdexcept>
 #include <string>
 #include <system_error>
@@ -28,20 +29,26 @@ namespace heat {
 bool help_requested(int argc, char** argv) {
     return argc == 2 && std::string(argv[1]) == "--help";
 }
-int print_help(const char* program) {
+int print_help(const char* program, bool openmp) {
     std::cout << "Usage: " << program << " [--N intervals] [--M steps] [--T time] [--alpha diffusivity]\n"
               << "Defaults: N=20 M=400 T=0.1 alpha=1; require r<=1/4.\n"
               << "stdout: final field CSV; stderr: parameters and E_inf.\n";
+    if (openmp)
+        std::cout << "OpenMP: [--threads Q], default 1; positive decimal int.\n"
+                  << "Explicit team request; OMP_NUM_THREADS is overridden, dynamic adjustment disabled.\n"
+                  << "OMP_THREAD_LIMIT may reduce Q; stderr records Q_requested and Q_actual.\n";
     std::cout.flush();
     return std::cout ? 0 : 1;
 }
-Parameters parse_arguments(int argc, char** argv) {
+Parameters parse_arguments(int argc, char** argv, int* threads) {
     Parameters p;
+    if (threads) *threads = 1;
     unsigned seen = 0;
     for (int k = 1; k < argc; ++k) {
         const std::string key = argv[k];
         const unsigned bit = key == "--N" ? 1 : key == "--M" ? 2 :
-                             key == "--T" ? 4 : key == "--alpha" ? 8 : 0;
+                             key == "--T" ? 4 : key == "--alpha" ? 8 :
+                             threads && key == "--threads" ? 16 : 0;
         if (!bit || (seen & bit) || k + 1 == argc)
             throw std::invalid_argument("unknown, duplicate or missing option: " + key);
         seen |= bit;
@@ -50,6 +57,12 @@ Parameters parse_arguments(int argc, char** argv) {
         if (bit == 2) p.M = integer(value);
         if (bit == 4) p.T = real(value);
         if (bit == 8) p.alpha = real(value);
+        if (bit == 16) {
+            const auto q = integer(value);
+            if (q == 0 || q > static_cast<std::size_t>(std::numeric_limits<int>::max()))
+                throw std::invalid_argument("require 1 <= threads <= INT_MAX");
+            *threads = static_cast<int>(q);
+        }
     }
     heat::validate(p);
     return p;

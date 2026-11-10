@@ -1,0 +1,725 @@
+M2b independent OpenMP validation — 2026-11-10 Asia/Shanghai
+Starting HEAD: 3fcd7c8; branch feature/m2b-openmp; initial worktree clean.
+No M3 systematic validation or M4 performance experiments. Test durations are not solver performance data.
+Course sources read-only; before manifest /tmp/heat-m2b-sources-before.json (2564 files).
+Read final.pdf pages 1/3 text and original page images; OpenMP lectures 05/06; examples 01/04/06b/07/09 and Makefile. No requirement conflicts found.
+Initial Debug configure/build succeeded before this captured rerun: same commands/flags below, no warnings.
+
+$ bash -c 'uname -a; c++ --version; cmake --version; python3 --version; mpiexec --version; lscpu; free -h; cat /proc/self/cgroup /sys/fs/cgroup/init.scope/cpu.max /sys/fs/cgroup/init.scope/memory.max; dpkg-query -W libgomp1; env | sort | rg "^(OMP_|GOMP_)" || true; /tmp/heat-m2b-probe; ldd build/heat_openmp'
+Linux Nuo-Computer 6.18.33.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun 18 21:54:43 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+cmake version 3.28.3
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+Python 3.12.3
+mpiexec (OpenRTE) 4.1.6
+
+Report bugs to http://www.open-mpi.org/community/help/
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           39 bits physical, 48 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  28
+On-line CPU(s) list:                     0-27
+Vendor ID:                               GenuineIntel
+Model name:                              Intel(R) Core(TM) i7-14700HX
+CPU family:                              6
+Model:                                   183
+Thread(s) per core:                      2
+Core(s) per socket:                      14
+Socket(s):                               1
+Stepping:                                1
+BogoMIPS:                                4608.00
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves avx_vnni vnmi umip waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize ibt flush_l1d arch_capabilities
+Virtualization:                          VT-x
+Hypervisor vendor:                       Microsoft
+Virtualization type:                     full
+L1d cache:                               672 KiB (14 instances)
+L1i cache:                               448 KiB (14 instances)
+L2 cache:                                28 MiB (14 instances)
+L3 cache:                                33 MiB (1 instance)
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0-27
+Vulnerability Gather data sampling:      Not affected
+Vulnerability Ghostwrite:                Not affected
+Vulnerability Indirect target selection: Not affected
+Vulnerability Itlb multihit:             Not affected
+Vulnerability L1tf:                      Not affected
+Vulnerability Mds:                       Not affected
+Vulnerability Meltdown:                  Not affected
+Vulnerability Mmio stale data:           Not affected
+Vulnerability Old microcode:             Not affected
+Vulnerability Reg file data sampling:    Mitigation; Clear Register File
+Vulnerability Retbleed:                  Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow:      Not affected
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S
+Vulnerability Srbds:                     Not affected
+Vulnerability Tsa:                       Not affected
+Vulnerability Tsx async abort:           Not affected
+Vulnerability Vmscape:                   Not affected
+               total        used        free      shared  buff/cache   available
+Mem:           7.6Gi       2.4Gi       4.0Gi       3.7Mi       1.4Gi       5.2Gi
+Swap:          2.0Gi          0B       2.0Gi
+0::/init.scope
+max 100000
+max
+libgomp1:amd64	14.2.0-4ubuntu2~24.04.1
+_OPENMP=201511 procs=28 max=28 limit=2147483647 dynamic=0
+requested=1 actual=1
+requested=2 actual=2
+requested=3 actual=3
+requested=4 actual=4
+	linux-vdso.so.1 (0x00007bd5e31aa000)
+	libgomp.so.1 => /lib/x86_64-linux-gnu/libgomp.so.1 (0x00007bd5e3139000)
+	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007bd5e2e00000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007bd5e2d17000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007bd5e310b000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007bd5e2a00000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007bd5e31ac000)
+[exit=0]
+
+$ cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DHEAT_MPI_TEST_MAX_PROCS=4 -DHEAT_OPENMP_TEST_MAX_THREADS=4 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-- Configuring done (2.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/nuo/courses/projects/parallel-heat-solver/build
+[exit=0]
+
+$ cmake --build build --parallel 2
+[ 17%] Built target heat_solver
+[ 41%] Built target heat_parallel
+[ 41%] Built target heat_serial
+[ 64%] Built target heat_shared
+[ 64%] Built target heat_tests
+[ 76%] Built target heat_mpi_failures
+[100%] Built target heat_mpi
+[100%] Built target heat_openmp
+[exit=0]
+
+$ cmake --build build --target check --parallel 2
+[ 16%] Built target heat_solver
+[ 27%] Built target heat_parallel
+[ 38%] Built target heat_serial
+[ 50%] Built target heat_tests
+[ 61%] Built target heat_shared
+[ 72%] Built target heat_mpi
+[ 83%] Built target heat_mpi_failures
+[ 94%] Built target heat_openmp
+[100%] Run CTest with four-decimal test durations
+
+$ cmake -S . -B build/m2b-release -DCMAKE_BUILD_TYPE=Release -DHEAT_MPI_TEST_MAX_PROCS=4 -DHEAT_OPENMP_TEST_MAX_THREADS=4 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found MPI_CXX: /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so (found version "3.1") 
+-- Found MPI: TRUE (found version "3.1") found components: CXX 
+-- Found OpenMP_CXX: -fopenmp (found version "4.5") 
+-- Found OpenMP: TRUE (found version "4.5") found components: CXX 
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Configuring done (5.0s)
+-- Generating done (0.1s)
+-- Build files have been written to: /home/nuo/courses/projects/parallel-heat-solver/build/m2b-release
+[exit=0]
+
+$ cmake --build build/m2b-release --parallel 2
+[ 11%] Building CXX object CMakeFiles/heat_solver.dir/src/heat.cpp.o
+[ 11%] Building CXX object CMakeFiles/heat_solver.dir/src/cli.cpp.o
+[ 17%] Linking CXX static library libheat_solver.a
+[ 17%] Built target heat_solver
+[ 23%] Building CXX object CMakeFiles/heat_serial.dir/src/main.cpp.o
+[ 29%] Building CXX object CMakeFiles/heat_parallel.dir/src/heat_mpi.cpp.o
+[ 35%] Linking CXX executable heat_serial
+[ 35%] Built target heat_serial
+[ 41%] Building CXX object CMakeFiles/heat_shared.dir/src/heat_openmp.cpp.o
+[ 47%] Linking CXX static library libheat_shared.a
+[ 47%] Built target heat_shared
+[ 52%] Building CXX object CMakeFiles/heat_tests.dir/tests/test_heat.cpp.o
+[ 58%] Linking CXX static library libheat_parallel.a
+[ 58%] Built target heat_parallel
+[ 64%] Building CXX object CMakeFiles/heat_mpi.dir/src/main_mpi.cpp.o
+[ 70%] Linking CXX executable heat_tests
+[ 70%] Built target heat_tests
+[ 76%] Linking CXX executable heat_mpi
+[ 82%] Building CXX object CMakeFiles/heat_openmp.dir/src/main_openmp.cpp.o
+[ 82%] Built target heat_mpi
+[ 88%] Building CXX object CMakeFiles/heat_mpi_failures.dir/tests/test_mpi_failures.cpp.o
+[ 94%] Linking CXX executable heat_openmp
+[ 94%] Built target heat_openmp
+[100%] Linking CXX executable heat_mpi_failures
+[100%] Built target heat_mpi_failures
+[exit=0]
+
+$ cmake --build build/m2b-release --target check --parallel 2
+[ 16%] Built target heat_solver
+[ 27%] Built target heat_serial
+[ 38%] Built target heat_parallel
+[ 61%] Built target heat_shared
+[ 61%] Built target heat_tests
+[ 83%] Built target heat_mpi
+[ 83%] Built target heat_mpi_failures
+[ 94%] Built target heat_openmp
+[100%] Run CTest with four-decimal test durations
+CTest results (seconds, 4 decimal places):
+1/15 heat_initial             passed   0.0023 sec
+2/15 heat_hand                passed   0.0013 sec
+3/15 heat_parity              passed   0.0012 sec
+4/15 heat_validation          passed   0.0013 sec
+5/15 heat_analytic            passed   0.3110 sec
+6/15 heat_cli                 passed   0.0691 sec
+7/15 heat_mpi_p1              passed   42.9019 sec
+8/15 heat_mpi_p2              passed   42.3292 sec
+9/15 heat_mpi_p3              passed   43.0560 sec
+10/15 heat_mpi_p4              passed   46.6136 sec
+11/15 heat_openmp_q1           passed   0.1772 sec
+12/15 heat_openmp_q2           passed   0.1035 sec
+13/15 heat_openmp_q3           passed   0.1142 sec
+14/15 heat_openmp_q4           passed   0.1201 sec
+15/15 heat_openmp_limited      passed   0.1123 sec
+CTest invocation wall time: 175.9795 sec
+Raw CTest output: /home/nuo/courses/projects/parallel-heat-solver/build/ctest-raw.log
+Unrounded test measurements: /home/nuo/courses/projects/parallel-heat-solver/build/Testing/20261110-1044/Test.xml
+[100%] Built target check
+[exit=0]
+CTest results (seconds, 4 decimal places):
+1/15 heat_initial             passed   0.0040 sec
+2/15 heat_hand                passed   0.0021 sec
+3/15 heat_parity              passed   0.0018 sec
+4/15 heat_validation          passed   0.0020 sec
+5/15 heat_analytic            passed   0.0319 sec
+6/15 heat_cli                 passed   0.1111 sec
+7/15 heat_mpi_p1              passed   43.7081 sec
+8/15 heat_mpi_p2              passed   41.4057 sec
+9/15 heat_mpi_p3              passed   47.2500 sec
+10/15 heat_mpi_p4              passed   48.3237 sec
+11/15 heat_openmp_q1           passed   0.1723 sec
+12/15 heat_openmp_q2           passed   0.1056 sec
+13/15 heat_openmp_q3           passed   0.1108 sec
+14/15 heat_openmp_q4           passed   0.1119 sec
+15/15 heat_openmp_limited      passed   0.1113 sec
+CTest invocation wall time: 181.4793 sec
+Raw CTest output: /home/nuo/courses/projects/parallel-heat-solver/build/m2b-release/ctest-raw.log
+Unrounded test measurements: /home/nuo/courses/projects/parallel-heat-solver/build/m2b-release/Testing/20261110-1411/Test.xml
+[100%] Built target check
+[exit=0]
+
+CTest XML measurements use base64 compression and truncate successful output at 1024 bytes.
+Durations/status below are from each same-run XML; full per-test output is copied from matching LastTest_<TAG>.log (no rerun).
+
+=== Same-run CTest evidence: build/Testing/20261110-1044/Test.xml; full output: build/Testing/Temporary/LastTest_20261110-1044.log ===
+
+heat_initial passed 0.0023 sec
+initial PASS
+
+heat_hand passed 0.0013 sec
+hand PASS
+
+heat_parity passed 0.0012 sec
+parity PASS
+
+heat_validation passed 0.0013 sec
+validation PASS
+
+heat_analytic passed 0.3110 sec
+N=20 M=400 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=0.0001126210917414272
+N=40 M=1600 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=2.8181351120953879e-05
+N=80 M=6400 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=7.0469626000380092e-06
+analytic PASS
+
+heat_cli passed 0.0691 sec
+CLI N=20 M=400 E_inf=0.0001126210917414272
+CLI N=2 M=1 E_inf=0.039641485816297228
+CLI N=2 M=2 E_inf=0.041212933214020864
+CLI N=2 M=3 E_inf=0.032150579968536347
+CLI N=2 M=1 E_inf=0.29121293321402086
+CLI N=7 M=7 E_inf=0.00066654289214562734
+CLI PASS; 30 invalid cases rejected
+
+heat_mpi_p1 passed 42.9019 sec
+P=1 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=1 N=2 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0094983664072216811
+P=1 N=2 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.010074366407221702
+P=1 N=2 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.010474587145202885
+P=1 N=2 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.01049436069306986
+P=1 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+P=1 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+P=1 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+P=1 PASS; 14 rejected inputs; help checked
+P=1 injected-test partition collective_check=1
+P=1 injected-test allocation-root collective_check=1
+P=1 injected-test allocation-worker collective_check=1
+P=1 injected Sendrecv error: MPI_Abort exit=1; no timeout
+
+heat_mpi_p2 passed 42.3292 sec
+P=2 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=2 N=3 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026237748054163124
+P=2 N=3 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0031705248054162416
+P=2 N=3 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035491022376327175
+P=2 N=3 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035677787370435032
+P=2 N=6 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010373277649589063
+P=2 N=6 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010658422401340628
+P=2 PASS; 15 rejected inputs; help checked
+P=2 injected-test partition collective_check=1
+P=2 injected-test allocation-root collective_check=1
+P=2 injected-test allocation-worker collective_check=1
+P=2 injected Sendrecv error: MPI_Abort exit=1; no timeout
+
+heat_mpi_p3 passed 43.0560 sec
+P=3 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=3 N=4 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0012628683950388631
+P=3 N=4 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.002053476204208371
+P=3 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+P=3 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+P=3 N=8 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0004823289376260087
+P=3 N=8 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00051140720258602279
+P=3 PASS; 15 rejected inputs; help checked
+P=3 injected-test partition collective_check=1
+P=3 injected-test allocation-root collective_check=1
+P=3 injected-test allocation-worker collective_check=1
+P=3 injected Sendrecv error: MPI_Abort exit=1; no timeout
+
+heat_mpi_p4 passed 46.6136 sec
+P=4 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=4 N=5 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00018403556785195896
+P=4 N=5 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00092634438113370354
+P=4 N=5 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014393469605138431
+P=4 N=5 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014646345186254406
+P=4 N=10 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.000224029466217468
+P=4 N=10 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00025337200664976578
+P=4 PASS; 15 rejected inputs; help checked
+P=4 injected-test partition collective_check=1
+P=4 injected-test allocation-root collective_check=1
+P=4 injected-test allocation-worker collective_check=1
+P=4 injected Sendrecv error: MPI_Abort exit=1; no timeout
+
+heat_openmp_q1 passed 0.1772 sec
+Q_requested=1 Q_actual=1 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=1 Q_actual=1 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=1 Q_actual=1 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=1 Q_actual=1 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=1 Q_actual=1 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=1 Q_actual=1 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=1 Q_actual=1 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=1 Q_actual=1 N=3 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035491022376327175
+Q_requested=1 Q_actual=1 N=3 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035677787370435032
+Q_requested=1 Q_actual=1 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=1 Q_actual=1 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+CLI N=20 M=400 E_inf=0.0001126210917414272
+CLI N=2 M=1 E_inf=0.039641485816297228
+CLI N=2 M=2 E_inf=0.041212933214020864
+CLI N=2 M=3 E_inf=0.032150579968536347
+CLI N=2 M=1 E_inf=0.29121293321402086
+CLI N=7 M=7 E_inf=0.00066654289214562734
+CLI PASS; 30 invalid cases rejected
+default Q_requested=1 Q_actual=1 with OMP_NUM_THREADS=3
+RLIMIT_AS=256MiB allocation failure before parallel region: exit=1; runtime error: std::bad_alloc
+OpenMP PASS Q_requested=1 Q_actual=1; 14 invalid thread inputs rejected
+
+heat_openmp_q2 passed 0.1035 sec
+Q_requested=2 Q_actual=2 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=2 Q_actual=2 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=2 Q_actual=2 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=2 Q_actual=2 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=2 Q_actual=2 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=2 Q_actual=2 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=2 Q_actual=2 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=2 Q_actual=2 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+Q_requested=2 Q_actual=2 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+Q_requested=2 Q_actual=2 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=2 Q_actual=2 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+OpenMP PASS Q_requested=2 Q_actual=2; 14 invalid thread inputs rejected
+
+heat_openmp_q3 passed 0.1142 sec
+Q_requested=3 Q_actual=3 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=3 Q_actual=3 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=3 Q_actual=3 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=3 Q_actual=3 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=3 Q_actual=3 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=3 Q_actual=3 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=3 Q_actual=3 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=3 Q_actual=3 N=5 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014393469605138431
+Q_requested=3 Q_actual=3 N=5 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014646345186254406
+Q_requested=3 Q_actual=3 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=3 Q_actual=3 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+OpenMP PASS Q_requested=3 Q_actual=3; 14 invalid thread inputs rejected
+
+heat_openmp_q4 passed 0.1201 sec
+Q_requested=4 Q_actual=4 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=4 Q_actual=4 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=4 Q_actual=4 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=4 Q_actual=4 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=4 Q_actual=4 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=4 Q_actual=4 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=4 Q_actual=4 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=4 Q_actual=4 N=6 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010373277649589063
+Q_requested=4 Q_actual=4 N=6 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010658422401340628
+Q_requested=4 Q_actual=4 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=4 Q_actual=4 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+OpenMP PASS Q_requested=4 Q_actual=4; 14 invalid thread inputs rejected
+
+heat_openmp_limited passed 0.1123 sec
+Q_requested=4 Q_actual=2 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=4 Q_actual=2 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=4 Q_actual=2 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=4 Q_actual=2 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=4 Q_actual=2 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=4 Q_actual=2 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=4 Q_actual=2 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=4 Q_actual=2 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+Q_requested=4 Q_actual=2 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+Q_requested=4 Q_actual=2 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=4 Q_actual=2 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+OpenMP PASS Q_requested=4 Q_actual=2; 14 invalid thread inputs rejected
+
+=== Same-run CTest evidence: build/m2b-release/Testing/20261110-1411/Test.xml; full output: build/m2b-release/Testing/Temporary/LastTest_20261110-1411.log ===
+
+heat_initial passed 0.0040 sec
+initial PASS
+
+heat_hand passed 0.0021 sec
+hand PASS
+
+heat_parity passed 0.0018 sec
+parity PASS
+
+heat_validation passed 0.0020 sec
+validation PASS
+
+heat_analytic passed 0.0319 sec
+N=20 M=400 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=0.0001126210917414272
+N=40 M=1600 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=2.8181351120953879e-05
+N=80 M=6400 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=7.0469626000380092e-06
+analytic PASS
+
+heat_cli passed 0.1111 sec
+CLI N=20 M=400 E_inf=0.0001126210917414272
+CLI N=2 M=1 E_inf=0.039641485816297228
+CLI N=2 M=2 E_inf=0.041212933214020864
+CLI N=2 M=3 E_inf=0.032150579968536347
+CLI N=2 M=1 E_inf=0.29121293321402086
+CLI N=7 M=7 E_inf=0.00066654289214562734
+CLI PASS; 30 invalid cases rejected
+
+heat_mpi_p1 passed 43.7081 sec
+P=1 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=1 N=2 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0094983664072216811
+P=1 N=2 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.010074366407221702
+P=1 N=2 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.010474587145202885
+P=1 N=2 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.01049436069306986
+P=1 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+P=1 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+P=1 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+P=1 PASS; 14 rejected inputs; help checked
+P=1 injected-test partition collective_check=1
+P=1 injected-test allocation-root collective_check=1
+P=1 injected-test allocation-worker collective_check=1
+P=1 injected Sendrecv error: MPI_Abort exit=1; no timeout
+
+heat_mpi_p2 passed 41.4057 sec
+P=2 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=2 N=3 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026237748054163124
+P=2 N=3 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0031705248054162416
+P=2 N=3 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035491022376327175
+P=2 N=3 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035677787370435032
+P=2 N=6 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010373277649589063
+P=2 N=6 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010658422401340628
+P=2 PASS; 15 rejected inputs; help checked
+P=2 injected-test partition collective_check=1
+P=2 injected-test allocation-root collective_check=1
+P=2 injected-test allocation-worker collective_check=1
+P=2 injected Sendrecv error: MPI_Abort exit=1; no timeout
+
+heat_mpi_p3 passed 47.2500 sec
+P=3 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=3 N=4 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0012628683950388631
+P=3 N=4 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.002053476204208371
+P=3 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+P=3 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+P=3 N=8 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0004823289376260087
+P=3 N=8 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00051140720258602279
+P=3 PASS; 15 rejected inputs; help checked
+P=3 injected-test partition collective_check=1
+P=3 injected-test allocation-root collective_check=1
+P=3 injected-test allocation-worker collective_check=1
+P=3 injected Sendrecv error: MPI_Abort exit=1; no timeout
+
+heat_mpi_p4 passed 48.3237 sec
+P=4 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=4 N=5 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00018403556785195896
+P=4 N=5 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00092634438113370354
+P=4 N=5 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014393469605138431
+P=4 N=5 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014646345186254406
+P=4 N=10 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.000224029466217468
+P=4 N=10 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00025337200664976578
+P=4 PASS; 15 rejected inputs; help checked
+P=4 injected-test partition collective_check=1
+P=4 injected-test allocation-root collective_check=1
+P=4 injected-test allocation-worker collective_check=1
+P=4 injected Sendrecv error: MPI_Abort exit=1; no timeout
+
+heat_openmp_q1 passed 0.1723 sec
+Q_requested=1 Q_actual=1 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=1 Q_actual=1 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=1 Q_actual=1 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=1 Q_actual=1 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=1 Q_actual=1 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=1 Q_actual=1 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=1 Q_actual=1 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=1 Q_actual=1 N=3 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035491022376327175
+Q_requested=1 Q_actual=1 N=3 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035677787370435032
+Q_requested=1 Q_actual=1 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=1 Q_actual=1 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+CLI N=20 M=400 E_inf=0.0001126210917414272
+CLI N=2 M=1 E_inf=0.039641485816297228
+CLI N=2 M=2 E_inf=0.041212933214020864
+CLI N=2 M=3 E_inf=0.032150579968536347
+CLI N=2 M=1 E_inf=0.29121293321402086
+CLI N=7 M=7 E_inf=0.00066654289214562734
+CLI PASS; 30 invalid cases rejected
+default Q_requested=1 Q_actual=1 with OMP_NUM_THREADS=3
+RLIMIT_AS=256MiB allocation failure before parallel region: exit=1; runtime error: std::bad_alloc
+OpenMP PASS Q_requested=1 Q_actual=1; 14 invalid thread inputs rejected
+
+heat_openmp_q2 passed 0.1056 sec
+Q_requested=2 Q_actual=2 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=2 Q_actual=2 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=2 Q_actual=2 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=2 Q_actual=2 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=2 Q_actual=2 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=2 Q_actual=2 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=2 Q_actual=2 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=2 Q_actual=2 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+Q_requested=2 Q_actual=2 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+Q_requested=2 Q_actual=2 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=2 Q_actual=2 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+OpenMP PASS Q_requested=2 Q_actual=2; 14 invalid thread inputs rejected
+
+heat_openmp_q3 passed 0.1108 sec
+Q_requested=3 Q_actual=3 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=3 Q_actual=3 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=3 Q_actual=3 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=3 Q_actual=3 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=3 Q_actual=3 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=3 Q_actual=3 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=3 Q_actual=3 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=3 Q_actual=3 N=5 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014393469605138431
+Q_requested=3 Q_actual=3 N=5 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014646345186254406
+Q_requested=3 Q_actual=3 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=3 Q_actual=3 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+OpenMP PASS Q_requested=3 Q_actual=3; 14 invalid thread inputs rejected
+
+heat_openmp_q4 passed 0.1119 sec
+Q_requested=4 Q_actual=4 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=4 Q_actual=4 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=4 Q_actual=4 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=4 Q_actual=4 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=4 Q_actual=4 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=4 Q_actual=4 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=4 Q_actual=4 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=4 Q_actual=4 N=6 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010373277649589063
+Q_requested=4 Q_actual=4 N=6 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010658422401340628
+Q_requested=4 Q_actual=4 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=4 Q_actual=4 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+OpenMP PASS Q_requested=4 Q_actual=4; 14 invalid thread inputs rejected
+
+heat_openmp_limited passed 0.1113 sec
+Q_requested=4 Q_actual=2 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=4 Q_actual=2 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=4 Q_actual=2 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=4 Q_actual=2 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=4 Q_actual=2 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=4 Q_actual=2 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=4 Q_actual=2 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=4 Q_actual=2 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+Q_requested=4 Q_actual=2 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+Q_requested=4 Q_actual=2 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=4 Q_actual=2 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+OpenMP PASS Q_requested=4 Q_actual=2; 14 invalid thread inputs rejected
+
+$ python3 -c 'from pathlib import Path; import json,os; print("affinity:",sorted(os.sched_getaffinity(0))); print("Probe sources:"); print(Path("/tmp/heat-m2b-probe.cpp").read_text()); print(Path("/tmp/heat-m2b-rows.cpp").read_text()); print("Compile commands:"); [(print(directory), [print(x["command"]) for x in json.loads((Path(directory)/"compile_commands.json").read_text())]) for directory in ["build","build/m2b-release"]]'
+affinity: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+Probe sources:
+#include <omp.h>
+#include <cstdio>
+int main() {
+ printf("_OPENMP=%d procs=%d max=%d limit=%d dynamic=%d\n",_OPENMP,omp_get_num_procs(),omp_get_max_threads(),omp_get_thread_limit(),omp_get_dynamic());
+ omp_set_dynamic(0);
+ for(int q=1;q<=4;++q) {
+  #pragma omp parallel num_threads(q)
+  {
+   #pragma omp single
+   printf("requested=%d actual=%d\n",q,omp_get_num_threads());
+  }
+ }
+}
+
+#include <omp.h>
+#include <cstdio>
+#include <initializer_list>
+int main() {
+ omp_set_dynamic(0);
+ for(int q=1;q<=4;++q) for(int n: {2,7}) {
+  int owners[7]={}; int actual=0;
+  #pragma omp parallel num_threads(q) shared(owners,actual)
+  {
+   #pragma omp single
+   actual=omp_get_num_threads();
+   #pragma omp for schedule(static,1)
+   for(int i=1;i<n;++i) owners[i]=omp_get_thread_num();
+  }
+  printf("N=%d requested=%d actual=%d row:thread",n,q,actual);
+  for(int i=1;i<n;++i) printf(" %d:%d",i,owners[i]);
+  puts("");
+ }
+}
+
+Compile commands:
+build
+/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -g -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_solver.dir/src/heat.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/heat.cpp
+/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -g -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_solver.dir/src/cli.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/cli.cpp
+/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -g -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_serial.dir/src/main.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/main.cpp
+/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_parallel.dir/src/heat_mpi.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/heat_mpi.cpp
+/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_mpi.dir/src/main_mpi.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/main_mpi.cpp
+/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -g -std=c++17 -Wall -Wextra -Wpedantic -fopenmp -o CMakeFiles/heat_shared.dir/src/heat_openmp.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/heat_openmp.cpp
+/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -g -std=c++17 -Wall -Wextra -Wpedantic -fopenmp -o CMakeFiles/heat_openmp.dir/src/main_openmp.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/main_openmp.cpp
+/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -g -std=c++17 -o CMakeFiles/heat_tests.dir/tests/test_heat.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/tests/test_heat.cpp
+/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_mpi_failures.dir/tests/test_mpi_failures.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/tests/test_mpi_failures.cpp
+build/m2b-release
+/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_solver.dir/src/heat.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/heat.cpp
+/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_solver.dir/src/cli.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/cli.cpp
+/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_serial.dir/src/main.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/main.cpp
+/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_parallel.dir/src/heat_mpi.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/heat_mpi.cpp
+/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_mpi.dir/src/main_mpi.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/main_mpi.cpp
+/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -fopenmp -o CMakeFiles/heat_shared.dir/src/heat_openmp.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/heat_openmp.cpp
+/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -fopenmp -o CMakeFiles/heat_openmp.dir/src/main_openmp.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/main_openmp.cpp
+/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -o CMakeFiles/heat_tests.dir/tests/test_heat.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/tests/test_heat.cpp
+/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_mpi_failures.dir/tests/test_mpi_failures.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/tests/test_mpi_failures.cpp
+[exit=0]
+
+$ /tmp/heat-m2b-rows
+N=2 requested=1 actual=1 row:thread 1:0
+N=7 requested=1 actual=1 row:thread 1:0 2:0 3:0 4:0 5:0 6:0
+N=2 requested=2 actual=2 row:thread 1:0
+N=7 requested=2 actual=2 row:thread 1:0 2:1 3:0 4:1 5:0 6:1
+N=2 requested=3 actual=3 row:thread 1:0
+N=7 requested=3 actual=3 row:thread 1:0 2:1 3:2 4:0 5:1 6:2
+N=2 requested=4 actual=4 row:thread 1:0
+N=7 requested=4 actual=4 row:thread 1:0 2:1 3:2 4:3 5:0 6:1
+[exit=0]
+
+=== Original CTest console: build/ctest-raw.log ===
+   Site: Nuo-Computer
+   Build name: Linux-c++
+Test project /home/nuo/courses/projects/parallel-heat-solver/build
+      Start  1: heat_initial
+ 1/15 Test  #1: heat_initial .....................   Passed    0.00 sec
+      Start  2: heat_hand
+ 2/15 Test  #2: heat_hand ........................   Passed    0.00 sec
+      Start  3: heat_parity
+ 3/15 Test  #3: heat_parity ......................   Passed    0.00 sec
+      Start  4: heat_validation
+ 4/15 Test  #4: heat_validation ..................   Passed    0.00 sec
+      Start  5: heat_analytic
+ 5/15 Test  #5: heat_analytic ....................   Passed    0.31 sec
+      Start  6: heat_cli
+ 6/15 Test  #6: heat_cli .........................   Passed    0.07 sec
+      Start  7: heat_mpi_p1
+ 7/15 Test  #7: heat_mpi_p1 ......................   Passed   42.90 sec
+      Start  8: heat_mpi_p2
+ 8/15 Test  #8: heat_mpi_p2 ......................   Passed   42.33 sec
+      Start  9: heat_mpi_p3
+ 9/15 Test  #9: heat_mpi_p3 ......................   Passed   43.06 sec
+      Start 10: heat_mpi_p4
+10/15 Test #10: heat_mpi_p4 ......................   Passed   46.61 sec
+      Start 11: heat_openmp_q1
+11/15 Test #11: heat_openmp_q1 ...................   Passed    0.18 sec
+      Start 12: heat_openmp_q2
+12/15 Test #12: heat_openmp_q2 ...................   Passed    0.10 sec
+      Start 13: heat_openmp_q3
+13/15 Test #13: heat_openmp_q3 ...................   Passed    0.11 sec
+      Start 14: heat_openmp_q4
+14/15 Test #14: heat_openmp_q4 ...................   Passed    0.12 sec
+      Start 15: heat_openmp_limited
+15/15 Test #15: heat_openmp_limited ..............   Passed    0.11 sec
+
+100% tests passed, 0 tests failed out of 15
+
+Total Test time (real) = 175.93 sec
+Four-decimal summary matched against same-run XML: 15/15
+
+=== Original CTest console: build/m2b-release/ctest-raw.log ===
+   Site: Nuo-Computer
+   Build name: Linux-c++
+Create new tag: 20261110-1411 - Experimental
+Test project /home/nuo/courses/projects/parallel-heat-solver/build/m2b-release
+      Start  1: heat_initial
+ 1/15 Test  #1: heat_initial .....................   Passed    0.00 sec
+      Start  2: heat_hand
+ 2/15 Test  #2: heat_hand ........................   Passed    0.00 sec
+      Start  3: heat_parity
+ 3/15 Test  #3: heat_parity ......................   Passed    0.00 sec
+      Start  4: heat_validation
+ 4/15 Test  #4: heat_validation ..................   Passed    0.00 sec
+      Start  5: heat_analytic
+ 5/15 Test  #5: heat_analytic ....................   Passed    0.03 sec
+      Start  6: heat_cli
+ 6/15 Test  #6: heat_cli .........................   Passed    0.11 sec
+      Start  7: heat_mpi_p1
+ 7/15 Test  #7: heat_mpi_p1 ......................   Passed   43.71 sec
+      Start  8: heat_mpi_p2
+ 8/15 Test  #8: heat_mpi_p2 ......................   Passed   41.41 sec
+      Start  9: heat_mpi_p3
+ 9/15 Test  #9: heat_mpi_p3 ......................   Passed   47.25 sec
+      Start 10: heat_mpi_p4
+10/15 Test #10: heat_mpi_p4 ......................   Passed   48.32 sec
+      Start 11: heat_openmp_q1
+11/15 Test #11: heat_openmp_q1 ...................   Passed    0.17 sec
+      Start 12: heat_openmp_q2
+12/15 Test #12: heat_openmp_q2 ...................   Passed    0.11 sec
+      Start 13: heat_openmp_q3
+13/15 Test #13: heat_openmp_q3 ...................   Passed    0.11 sec
+      Start 14: heat_openmp_q4
+14/15 Test #14: heat_openmp_q4 ...................   Passed    0.11 sec
+      Start 15: heat_openmp_limited
+15/15 Test #15: heat_openmp_limited ..............   Passed    0.11 sec
+
+100% tests passed, 0 tests failed out of 15
+
+Total Test time (real) = 181.46 sec
+Four-decimal summary matched against same-run XML: 15/15
+
+No M3/M4, Q>4, physical-host memory exhaustion, thread creation failure, or ASan/UBSan run in M2b. Address-space limit tests first grid allocation only.
+Both build checks overlapped in wall time; each result/measurement is attributed to its own build directory. No timings are performance evidence.
+
+$ python3 /tmp/heat-m2b-boundaries.py
+Course files: 2564 paths/SHA-256 unchanged; all ignored; none tracked
+Serial/MPI numerical code, existing tests/check script and all four historical logs unchanged
+8 Markdown documents: code fences balanced; 25 relative links valid
+git diff --check: passed
+[exit=0]
+
+Earlier executed probe compilation (exit 0):
+$ c++ -std=c++17 -Wall -Wextra -fopenmp /tmp/heat-m2b-probe.cpp -o /tmp/heat-m2b-probe
+$ c++ -std=c++17 -Wall -Wextra -fopenmp /tmp/heat-m2b-rows.cpp -o /tmp/heat-m2b-rows
+Probe source and real output are preserved above. No course example binaries were used as evidence.
+
+Staging review: 15 explicit task files only. Initial git diff --check above preceded staging the then-untracked log.
+Default cached whitespace check reports exactly 5 trailing spaces in original CMake output (lines 122..126); preserved verbatim.
+Source/docs are checked normally; only this log is checked with per-command core.whitespace=-blank-at-eol. No repository setting changed.

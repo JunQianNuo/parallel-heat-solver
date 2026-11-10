@@ -1,12 +1,12 @@
 # 二维热传导方程的串行、MPI 与 OpenMP 求解
 
-《并行与分布式计算》期末大作业，对应教师任务书第 4 题。采用显式五点有限差分，以独立串行程序为基线，采用 MPI 行分块与邻居通信，并计划在 M2b 增加独立 OpenMP 求解进行比较。
+《并行与分布式计算》期末大作业，对应教师任务书第 4 题。采用显式五点有限差分，以独立串行程序为基线，采用 MPI 行分块与邻居通信，并提供独立 OpenMP 求解器进行比较。
 
-技术选择：C++17、CMake/CTest。必做范围为独立串行、MPI、OpenMP；暂不引入混合并行。OpenMP 尚未实现。
+技术选择：C++17、CMake/CTest。必做范围为独立串行、MPI、OpenMP；暂不引入混合并行。
 
 ## 当前进度
 
-M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小数显示已补齐并验证。M2 MPI 提交 `34cdd73` 已获用户验收，既有 Debug/Release 回归各 10/10 通过。M2b OpenMP 范围已确认，尚未实现；未进入 M3/M4。真实检查输出见 [M1 验证记录](docs/validation/m1.log)。
+M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小数显示已补齐并验证。M2 MPI 提交 `34cdd73` 已获用户验收，既有 Debug/Release 回归各 10/10 通过。M2b OpenMP 已实现，Debug/Release 各 15/15 通过，待用户验收；未进入 M3/M4。最新检查输出见 [M2b 验证记录](docs/validation/m2b.log)，历史证据保留在各阶段日志中。
 
 ## 文档导航
 
@@ -26,11 +26,11 @@ M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小�
 
 这些资料仅在本地只读使用，不随 Git 仓库分发。新克隆需要使用者从课程提供的原始资料中补齐上述路径；不要将资料加入提交。资料缺失时，应明确记录缺项，并暂停依赖原文核对的工作。课程示例的运行输出不能作为本项目的验证结果。
 
-`src/` 当前包含独立串行与 MPI 实现，`tests/` 为基本回归。计划中的 `heat_openmp` 尚不存在可运行程序；M2b 实现由用户准备独立功能分支后开展，随后 M3 系统验证三种实现，M4 正式比较性能。
+`src/` 包含独立串行、MPI 和 OpenMP 实现，`tests/` 为基本回归。M2b 待验收；后续 M3 系统验证、M4 正式性能实验由用户另行选择。
 
 ## 构建与运行
 
-需要支持 C++17 的编译器、CMake ≥ 3.20 和 MPI 开发环境/启动器（本轮 Open MPI 4.1.6）；启用测试时需要 Python 3 标准库，无 GoogleTest 或联网下载依赖。
+需要支持 C++17 的编译器、CMake ≥ 3.20、MPI 开发环境/启动器（本轮 Open MPI 4.1.6）和 OpenMP C++ 支持（本轮 GNU OpenMP 4.5/libgomp）；启用测试时需要 Python 3 标准库，无 GoogleTest 或联网下载依赖。
 
 ```bash
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
@@ -70,10 +70,28 @@ MPI 与串行采用相同命名参数、默认值、全场 CSV 和参数/E_inf �
 
 正式记录见 [M2 验证日志](docs/validation/m2.log)，其中包含环境、真实命令、编译选项、原始 CTest 和同一次 XML 捕获的逐项数值/错误测试结果。首轮错误测试方法的失败输出另存 [首轮记录](docs/validation/m2-initial.log)，M1 历史日志未改写。M2 的测试耗时仍由 `check` 从 XML 按四位小数显示，不作为 M4 性能数据。
 
-## M2b OpenMP 计划（尚未实现）
+## OpenMP 构建、运行与检查
 
-独立 `heat_openmp` 将沿用相同数学模型、命名参数、默认 `N=20 M=400 T=0.1 alpha=1`、全场 CSV 及解析误差摘要；具体线程控制接口、构建依赖和运行命令在 M2b 实施前确定。本节不提供尚未验证的运行命令，现有构建流程仍仅生成串行/MPI 程序及其测试。
+```bash
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DHEAT_OPENMP_TEST_MAX_THREADS=4
+cmake --build build --target check --parallel 2
+./build/heat_openmp --help
+./build/heat_openmp --threads 4 --N 20 --M 400 --T 0.1 --alpha 1 > build/openmp-q4.csv
+# 实际团队可能受限，摘要会同时记录请求 4、实际 2：
+OMP_THREAD_LIMIT=2 ./build/heat_openmp --threads 4 > build/openmp-limited.csv
 
-设计采用共享全场双缓冲、内部行静态分配，各线程更新不同内点；整层完成后统一交换缓冲并同步进入下一步。MPI 并行度记为进程数 P，OpenMP 记为线程数 Q，记录请求值与实际使用值。OpenMP 允许线程多于内部行，MPI 的 P≤N-1 限制不套用到 OpenMP。
+cmake -S . -B build/m2b-release -DCMAKE_BUILD_TYPE=Release
+cmake --build build/m2b-release --target check --parallel 2
+```
 
-M2b 将加入单/多线程、行不能均分、线程多于内部行、奇偶步、零边界、逐点串行对照、解析误差及非法输入的基本回归，并保留既有串行/MPI 检查与四位小数显示。M4 将以同一独立串行基线、相同问题和可比计时范围比较 MPI/OpenMP，实验规模、绑定和重复次数届时冻结；当前没有 OpenMP 运行或性能结果。
+用户已确认 OpenMP 专用选项 `--threads Q`，默认 1，接受 1..INT_MAX 的十进制整数；零、负数、溢出、重复、缺值和残余文本均报输入错误（退出 2）。数值参数、默认值、CSV 与 E_inf 摘要沿用前述合同；成功输出前另在 stderr 一行记录 `Q_requested`、`Q_actual`。MPI 继续用 P 表示进程数。
+
+程序显式请求 Q 并关闭动态调整，覆盖 `OMP_NUM_THREADS`/`OMP_DYNAMIC`；`OMP_THREAD_LIMIT` 等运行时限制仍可能使实际团队变小。实际 Q 来自推进团队内的查询，不能用请求值或 CPU 数代替。Q>N-1 合法，部分线程无行可更新但仍参与同步。`schedule(static,1)` 按整行循环分配：线程 t 得到 `1+t,1+t+Q_actual,...<N`；每步更新完成后统一交换共享双缓冲，再同步进入下一步，详见 [DESIGN 第 8 节](docs/DESIGN.md)。
+
+独立 `--help` 成功退出 0，帮助输出失败退出 1。可捕获的分配/运行/输出错误退出 1，输入错误退出 2；输出失败可能留下部分 CSV，须检查退出码。网格在进入并行区前分配；不保证任意正 Q 都可创建，OpenMP 运行时创建失败可能自行非零终止。无效 OpenMP 环境变量的诊断由运行时负责。构建缺少 OpenMP 时明确失败，不生成伪并行替代程序；串行/MPI 不链接 OpenMP。
+
+默认新增 `heat_openmp_q1..q4` 和 `heat_openmp_limited`，与原 10 项合计 15 项；每项新增测试 TIMEOUT=60 秒，子进程 10 秒。`HEAT_OPENMP_TEST_MAX_THREADS=1..4` 可缩减请求矩阵（≥2 时保留请求 4/实际限制 2 的检查），但缩减后不能声称被省略的 Q 已验证。测试隔离继承的 OpenMP 调优环境，逐项核对实际团队数；资源不足导致团队不符会失败，不静默按多线程通过。check 依赖全部所需程序，仍按同次 XML 的真实耗时显示四位小数。
+
+基本回归逐点对照独立串行并核对离散模态最终层、连续解析误差、CSV 和严格零边界，涵盖奇偶步、小网格、不能均分、线程多于行、稳定性端点、全部既有数值非法输入及线程接口错误。逐点绝对容差 1e-13，沿用 M1/M2 的小规模双精度标准；默认解析误差上限 2e-4。另实测 stdout/stderr/帮助输出失败及 Linux 子进程受限地址空间的分配失败；这不等于真实主机内存耗尽。
+
+环境、构建选项、Debug/Release 结果及逐项请求/实际 Q、D_inf/E_inf 见 [M2b 日志](docs/validation/m2b.log)。本轮只完成 M2b 基本验证，待用户验收；未运行 Q>4、线程创建失败、M3 系统实验或 M4 正式性能比较，测试耗时不作为求解器性能数据。

@@ -23,6 +23,15 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     target_compile_options(heat_parallel PRIVATE -Wall -Wextra -Wpedantic)
     target_compile_options(heat_mpi PRIVATE -Wall -Wextra -Wpedantic)
 endif()
+find_package(OpenMP REQUIRED COMPONENTS CXX)
+add_library(heat_shared src/heat_openmp.cpp)
+target_link_libraries(heat_shared PUBLIC heat_solver OpenMP::OpenMP_CXX)
+add_executable(heat_openmp src/main_openmp.cpp)
+target_link_libraries(heat_openmp PRIVATE heat_shared)
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    target_compile_options(heat_shared PRIVATE -Wall -Wextra -Wpedantic)
+    target_compile_options(heat_openmp PRIVATE -Wall -Wextra -Wpedantic)
+endif()
 include(CTest)
 if(BUILD_TESTING)
     add_executable(heat_tests tests/test_heat.cpp)
@@ -64,10 +73,28 @@ if(BUILD_TESTING)
             --processes=${np} ${mpi_test_flags} ${mpi_fault_args})
         set_tests_properties(heat_mpi_p${np} PROPERTIES TIMEOUT 120 PROCESSORS ${np})
     endforeach()
+    set(HEAT_OPENMP_TEST_MAX_THREADS 4 CACHE STRING "OpenMP regression requests (1..4); actual teams checked")
+    if(NOT HEAT_OPENMP_TEST_MAX_THREADS MATCHES "^[1-4]$")
+        message(FATAL_ERROR "HEAT_OPENMP_TEST_MAX_THREADS must be 1..4")
+    endif()
+    foreach(nq RANGE 1 ${HEAT_OPENMP_TEST_MAX_THREADS})
+        add_test(NAME heat_openmp_q${nq} COMMAND ${Python3_EXECUTABLE}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/check_openmp.py"
+            --serial=$<TARGET_FILE:heat_serial> --solver=$<TARGET_FILE:heat_openmp>
+            --threads=${nq})
+        set_tests_properties(heat_openmp_q${nq} PROPERTIES TIMEOUT 60 PROCESSORS ${nq})
+    endforeach()
+    if(HEAT_OPENMP_TEST_MAX_THREADS GREATER_EQUAL 2)
+        add_test(NAME heat_openmp_limited COMMAND ${Python3_EXECUTABLE}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/check_openmp.py"
+            --serial=$<TARGET_FILE:heat_serial> --solver=$<TARGET_FILE:heat_openmp>
+            --threads=4 --limit=2)
+        set_tests_properties(heat_openmp_limited PROPERTIES TIMEOUT 60 PROCESSORS 2)
+    endif()
     add_custom_target(check
         COMMAND ${Python3_EXECUTABLE} "${CMAKE_CURRENT_SOURCE_DIR}/scripts/check.py"
             --test-dir "${CMAKE_CURRENT_BINARY_DIR}" --ctest "${CMAKE_CTEST_COMMAND}"
-        DEPENDS ${mpi_check_dependencies}
+        DEPENDS ${mpi_check_dependencies} heat_openmp
         USES_TERMINAL
         COMMENT "Run CTest with four-decimal test durations")
 endif()
