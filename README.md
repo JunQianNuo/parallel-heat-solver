@@ -6,7 +6,7 @@
 
 ## 当前进度
 
-M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小数显示已补齐并验证。M2 MPI 提交 `34cdd73` 已获用户验收，既有 Debug/Release 回归各 10/10 通过。M2b OpenMP 提交 `17925a9` 已于 2026-11-10 获用户验收，既有 Debug/Release 各 15/15 通过；未进入 M3/M4。最新检查输出见 [M2b 验证记录](docs/validation/m2b.log)，历史证据保留在各阶段日志中。
+M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小数显示已补齐并验证。M2 MPI 提交 `34cdd73` 已获用户验收，既有 Debug/Release 回归各 10/10 通过。M2b OpenMP 提交 `17925a9` 已于 2026-11-10 获用户验收，既有 Debug/Release 各 15/15 通过；本轮 M3 系统验证见下节，待用户验收；M4 未开始。M2b 检查输出见 [M2b 验证记录](docs/validation/m2b.log)，历史证据保留在各阶段日志中。
 
 ## 文档导航
 
@@ -26,7 +26,7 @@ M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小�
 
 这些资料仅在本地只读使用，不随 Git 仓库分发。新克隆需要使用者从课程提供的原始资料中补齐上述路径；不要将资料加入提交。资料缺失时，应明确记录缺项，并暂停依赖原文核对的工作。课程示例的运行输出不能作为本项目的验证结果。
 
-`src/` 包含独立串行、MPI 和 OpenMP 实现，`tests/` 为基本回归。M2b 已获用户验收；后续 M3 系统验证、M4 正式性能实验由用户另行选择。
+`src/` 包含独立串行、MPI 和 OpenMP 实现，`tests/` 为基本回归。M2b 已获用户验收；本轮在 `judge/m3` 已完成系统验证，待用户验收，M4 正式性能实验仍须用户另行选择。
 
 ## 构建与运行
 
@@ -43,7 +43,7 @@ cmake --build build --target check --parallel 2
 
 命名参数可独立覆盖，默认 `N=20 M=400 T=0.1 alpha=1`，此时 `r=0.1`。N 为每方向区间数（共 `(N+1)^2` 节点），M 为实际推进步数；程序计算 `dt=T/M`，不自动修改 M。要求 `N≥2,M≥1`、有限正 T 和 alpha、可表示的正 dt/r、`r≤1/4` 及可表示的双数组规模。内存须由实际机器提供，分配失败报错；大规模输入可能耗费大量内存和时间。
 
-stdout 为最终时刻 T 的 CSV，首行为 `i,j,x,y,u_numeric,u_exact,abs_error`，按 `i*(N+1)+j` 顺序包含全部边界及内点；`x=i/N,y=j/N`，数值使用 17 位有效数字。stderr 单行记录 `N M T alpha h dt r E_inf`（`key=value`）。解析值仅用于验证；所有数值温度来自五点差分推进。退出码：0 成功，2 参数错误，1 分配/运行/输出失败；未知、重复、缺值选项均拒绝。仅单独的 `--help` 返回帮助。
+stdout 为最终时刻 T 的 CSV，首行为 `i,j,x,y,u_numeric,u_exact,abs_error`，按 `i*(N+1)+j` 顺序包含全部边界及内点；`x=i/N,y=j/N`，数值使用 17 位有效数字。stderr 参数行记录 `N M T alpha h dt r E_inf`（`key=value`）。解析值仅用于验证；所有数值温度来自五点差分推进。退出码：0 成功，2 参数错误，1 分配/运行/输出失败；未知、重复、缺值选项均拒绝。仅单独的 `--help` 返回帮助。
 
 基本测试阈值、手算及加密参数见 [DESIGN](docs/DESIGN.md)。这些是 M1 回归标准，不是任意输入的精度保证；本轮未做性能实验。
 
@@ -60,11 +60,11 @@ mpiexec -n 3 ./build/heat_mpi --N 20 --M 400 --T 0.1 --alpha 1 > build/mpi-p3.cs
 mpiexec -n 3 ./build/heat_mpi --help
 ```
 
-MPI 与串行采用相同命名参数、默认值、全场 CSV 和参数/E_inf 摘要；仅 rank 0 输出。要求 `1≤P≤N-1`，以及 `(N-1)(N+1)≤INT_MAX`，当前 int 范围对应 N≤46340；这是经典 MPI count/displacement 的保守输入限制，并非内存容量保证。分块、halo 通信表和错误路径见 [DESIGN 第 7 节](docs/DESIGN.md)。独立 `heat_serial` 继续作为正确性及后续性能基线，MPI 程序不内嵌串行复算。
+MPI 与串行采用相同命名参数、默认值、全场 CSV 和参数/E_inf 摘要；仅 rank 0 输出，成功求解后 stderr 另记录 `P_actual`（来自 MPI_Comm_size）；请求 P 来自启动命令，M3 核对请求/实际一致。要求 `1≤P≤N-1`，以及 `(N-1)(N+1)≤INT_MAX`，当前 int 范围对应 N≤46340；这是经典 MPI count/displacement 的保守输入限制，并非内存容量保证。分块、halo 通信表和错误路径见 [DESIGN 第 7 节](docs/DESIGN.md)。独立 `heat_serial` 继续作为正确性及后续性能基线，MPI 程序不内嵌串行复算。
 
 帮助成功返回 0；非法输入、不稳定参数、超限 P/计数统一返回 2；可检测的分配失败或 root 输出失败统一返回 1，所有 rank 正常 Finalize。通信错误报告操作名并 MPI_Abort，以非零状态结束整个作业；具体启动器诊断可能不同。调用者必须检查退出码，输出失败可能留下部分 CSV。真实进程丢失、外部强制终止或 OOM killer 不属于此错误协调保证。
 
-默认 CTest 包含原 6 项串行检查和 P=1/2/3/4 四项 MPI 检查，每项 MPI 超时 120 秒，内部每个启动器子进程超时 15 秒。资源较少的机器可配置 `-DHEAT_MPI_TEST_MAX_PROCS=1`（允许 1..4），减少实际运行矩阵；减少后不能宣称未运行的 P 已通过。测试尊重 CMake FindMPI 的 MPIEXEC 参数，可按集群配置 `MPIEXEC_PREFLAGS`/`MPIEXEC_POSTFLAGS`；默认不添加超额订阅或 root 运行绕过选项。
+MPI 基本回归包含原 6 项串行检查和 P=1/2/3/4 四项 MPI 检查（另有 OpenMP/M3 测试），每项 MPI 超时 120 秒，内部每个启动器子进程超时 15 秒。资源较少的机器可配置 `-DHEAT_MPI_TEST_MAX_PROCS=1`（允许 1..4），减少实际运行矩阵；减少后不能宣称未运行的 P 已通过。测试尊重 CMake FindMPI 的 MPIEXEC 参数，可按集群配置 `MPIEXEC_PREFLAGS`/`MPIEXEC_POSTFLAGS`；默认不添加超额订阅或 root 运行绕过选项。
 
 每项 MPI 检查逐点对照独立串行场，并核查连续解析误差及离散模态、全场/边界/最终层；覆盖每 rank 一行、P>1 不均匀分块、奇偶步、超限 P 和非法/不稳定输入。小规模逐点容差为 1e-13，不要求逐位相同。Linux/GNU 兼容链接器另运行测试专用分配和通信错误注入；其他平台明确记录注入未运行。`/dev/full` 在 rank 内重定向以验证输出失败。
 
@@ -90,8 +90,25 @@ cmake --build build/m2b-release --target check --parallel 2
 
 独立 `--help` 成功退出 0，帮助输出失败退出 1。可捕获的分配/运行/输出错误退出 1，输入错误退出 2；输出失败可能留下部分 CSV，须检查退出码。网格在进入并行区前分配；不保证任意正 Q 都可创建，OpenMP 运行时创建失败可能自行非零终止。无效 OpenMP 环境变量的诊断由运行时负责。构建缺少 OpenMP 时明确失败，不生成伪并行替代程序；串行/MPI 不链接 OpenMP。
 
-默认新增 `heat_openmp_q1..q4` 和 `heat_openmp_limited`，与原 10 项合计 15 项；每项新增测试 TIMEOUT=60 秒，子进程 10 秒。`HEAT_OPENMP_TEST_MAX_THREADS=1..4` 可缩减请求矩阵（≥2 时保留请求 4/实际限制 2 的检查），但缩减后不能声称被省略的 Q 已验证。测试隔离继承的 OpenMP 调优环境，逐项核对实际团队数；资源不足导致团队不符会失败，不静默按多线程通过。check 依赖全部所需程序，仍按同次 XML 的真实耗时显示四位小数。
+M2b 新增 `heat_openmp_q1..q4` 和 `heat_openmp_limited`，与原 10 项合计 15 项基本回归（M3 另加 4 项系统测试）；每项新增测试 TIMEOUT=60 秒，子进程 10 秒。`HEAT_OPENMP_TEST_MAX_THREADS=1..4` 可缩减请求矩阵（≥2 时保留请求 4/实际限制 2 的检查），但缩减后不能声称被省略的 Q 已验证。测试隔离继承的 OpenMP 调优环境，逐项核对实际团队数；资源不足导致团队不符会失败，不静默按多线程通过。check 依赖全部所需程序，仍按同次 XML 的真实耗时显示四位小数。
 
 基本回归逐点对照独立串行并核对离散模态最终层、连续解析误差、CSV 和严格零边界，涵盖奇偶步、小网格、不能均分、线程多于行、稳定性端点、全部既有数值非法输入及线程接口错误。逐点绝对容差 1e-13，沿用 M1/M2 的小规模双精度标准；默认解析误差上限 2e-4。另实测 stdout/stderr/帮助输出失败及 Linux 子进程受限地址空间的分配失败；这不等于真实主机内存耗尽。
 
-环境、构建选项、Debug/Release 结果及逐项请求/实际 Q、D_inf/E_inf 见 [M2b 日志](docs/validation/m2b.log)。M2b 基本实现与验证已获用户验收；未运行 Q>4、线程创建失败、M3 系统实验或 M4 正式性能比较，测试耗时不作为求解器性能数据。
+环境、构建选项、Debug/Release 结果及逐项请求/实际 Q、D_inf/E_inf 见 [M2b 日志](docs/validation/m2b.log)。M2b 基本实现与验证已获用户验收；M2b 实施时未运行 Q>4、线程创建失败、M3 系统实验或 M4 正式性能比较。本轮 M3 见下节，测试耗时不作为求解器性能数据。
+
+## M3 系统正确性验证
+
+本轮只做正确性验证，Debug/Release 各 19/19 通过，待用户验收；未进入 M4。复现全部基本回归及四项 M3 系统测试：
+
+```bash
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DHEAT_MPI_TEST_MAX_PROCS=4 -DHEAT_OPENMP_TEST_MAX_THREADS=4
+cmake --build build --target check --parallel 2
+cmake -S . -B build/m3-release -DCMAKE_BUILD_TYPE=Release -DHEAT_MPI_TEST_MAX_PROCS=4 -DHEAT_OPENMP_TEST_MAX_THREADS=4
+cmake --build build/m3-release --target check --parallel 2
+# 已构建后，仅重现 M3（CTest 默认耗时格式）：
+ctest --test-dir build -L M3 --output-on-failure
+```
+
+`tests/check_system.py` 以 Python 标准库逐点解析三种独立程序的真实 CSV，分别检查连续解析误差、离散模态与串并行一致性。三组联合加密覆盖 r=0.05/0.1/0.25，输出每组 E_inf、阈值、D_inf、误差比和观测阶；稳定性端点及相邻浮点输入单独核查。默认每组实际 P/Q=1..4，另含请求 Q=4/实际 2；每 rank 一行、超限 P、Q>内部行及奇偶步纳入边界组。不均匀 MPI 分块由加密组和原回归覆盖。完整参数、阈值推导及覆盖表见 [DESIGN 第 9 节](docs/DESIGN.md)。
+
+可降低既有两个资源配置值（1..4），脚本仅核验所选矩阵，不将缺失资源标为通过。每个系统测试 TIMEOUT=240 秒，子进程 25 秒，超时杀死启动器进程组。没有大于 4 的资源或多机验证结论。原始环境/命令/构建/检查及完整逐项输出见 [m3.log](docs/validation/m3.log)，加密数据见 [m3-errors.csv](docs/validation/m3-errors.csv)；CSV 来自该次 CTest 实际输出，不是解析预测值。测试用时不作为性能数据。

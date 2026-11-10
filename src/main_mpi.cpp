@@ -43,7 +43,10 @@ int main(int argc, char** argv) {
              values[0], values[1]};
         try {
             const auto field = heat::solve_mpi(p, comm);
-            if (rank == 0) heat::print_field(p, field);
+            if (rank == 0) {
+                std::cerr << "P_actual=" << size << '\n';
+                heat::print_field(p, field);
+            }
         } catch (const std::exception& e) {
             if (rank == 0) std::cerr << "runtime error: " << e.what() << '\n';
             status = 1;

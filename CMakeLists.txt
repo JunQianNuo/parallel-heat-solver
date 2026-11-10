@@ -91,6 +91,23 @@ if(BUILD_TESTING)
             --threads=4 --limit=2)
         set_tests_properties(heat_openmp_limited PROPERTIES TIMEOUT 60 PROCESSORS 2)
     endif()
+    foreach(suite IN ITEMS default low endpoint boundaries)
+        add_test(NAME heat_system_${suite} COMMAND ${Python3_EXECUTABLE}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/check_system.py"
+            --serial=$<TARGET_FILE:heat_serial> --mpi=$<TARGET_FILE:heat_mpi>
+            --openmp=$<TARGET_FILE:heat_openmp>
+            --mpiexec=${MPIEXEC_EXECUTABLE} --npflag=${MPIEXEC_NUMPROC_FLAG}
+            --max-procs=${HEAT_MPI_TEST_MAX_PROCS}
+            --max-threads=${HEAT_OPENMP_TEST_MAX_THREADS}
+            --suite=${suite} ${mpi_test_flags})
+        set_tests_properties(heat_system_${suite} PROPERTIES
+            TIMEOUT 240 PROCESSORS ${HEAT_MPI_TEST_MAX_PROCS} LABELS "M3"
+            ENVIRONMENT "PYTHONUNBUFFERED=1")
+        if(HEAT_OPENMP_TEST_MAX_THREADS GREATER HEAT_MPI_TEST_MAX_PROCS)
+            set_tests_properties(heat_system_${suite} PROPERTIES
+                PROCESSORS ${HEAT_OPENMP_TEST_MAX_THREADS})
+        endif()
+    endforeach()
     add_custom_target(check
         COMMAND ${Python3_EXECUTABLE} "${CMAKE_CURRENT_SOURCE_DIR}/scripts/check.py"
             --test-dir "${CMAKE_CURRENT_BINARY_DIR}" --ctest "${CMAKE_CTEST_COMMAND}"
