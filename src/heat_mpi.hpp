@@ -10,5 +10,5 @@ RowBlock mpi_block(const Parameters& p, int size, int rank);
 void mpi_check(int code, const char* operation, MPI_Comm comm);
 // Collective: identical validated p on all ranks; full field only on rank 0.
 // A caught allocation failure becomes a runtime_error on every rank.
-std::vector<double> solve_mpi(const Parameters& p, MPI_Comm comm);
+std::vector<double> solve_mpi(const Parameters& p, MPI_Comm comm, double* loop_seconds = nullptr);
 } // namespace heat

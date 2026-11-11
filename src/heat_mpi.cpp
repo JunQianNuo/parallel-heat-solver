@@ -30,7 +30,7 @@ RowBlock mpi_block(const Parameters& p, int size, int rank) {
     const auto r = static_cast<std::size_t>(rank);
     return {q + (r < rem), r * q + std::min(r, rem)};
 }
-std::vector<double> solve_mpi(const Parameters& p, MPI_Comm comm) {
+std::vector<double> solve_mpi(const Parameters& p, MPI_Comm comm, double* loop_seconds) {
     int rank = 0, size = 0;
     mpi_check(MPI_Comm_rank(comm, &rank), "Comm_rank", comm);
     mpi_check(MPI_Comm_size(comm, &size), "Comm_size", comm);
@@ -67,6 +67,8 @@ std::vector<double> solve_mpi(const Parameters& p, MPI_Comm comm) {
     const int up = rank == 0 ? MPI_PROC_NULL : rank - 1;
     const int down = rank == size - 1 ? MPI_PROC_NULL : rank + 1;
     const int width = static_cast<int>(w);
+    mpi_check(MPI_Barrier(comm), "Barrier before timing", comm);
+    const double start = MPI_Wtime();
     for (std::size_t n = 0; n < p.M; ++n) {
         if (up == MPI_PROC_NULL) std::fill_n(old.data(), w, 0.0);
         if (down == MPI_PROC_NULL) std::fill_n(old.data()+(b.rows+1)*w, w, 0.0);
@@ -86,6 +88,11 @@ std::vector<double> solve_mpi(const Parameters& p, MPI_Comm comm) {
         }
         old.swap(next);
     }
+    const double elapsed = MPI_Wtime() - start;
+    double slowest = 0;
+    mpi_check(MPI_Reduce(&elapsed, &slowest, 1, MPI_DOUBLE, MPI_MAX, 0, comm),
+              "Reduce loop seconds", comm);
+    if (loop_seconds) *loop_seconds = slowest; // Defined on root only.
     double local_error = 0, reduced_error = 0;
     for (std::size_t k = 1; k <= b.rows; ++k)
         for (std::size_t j = 1; j < p.N; ++j)

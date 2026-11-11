@@ -108,6 +108,17 @@ if(BUILD_TESTING)
                 PROCESSORS ${HEAT_OPENMP_TEST_MAX_THREADS})
         endif()
     endforeach()
+    add_test(NAME heat_timing COMMAND ${Python3_EXECUTABLE}
+        "${CMAKE_CURRENT_SOURCE_DIR}/tests/check_timing.py"
+        --serial=$<TARGET_FILE:heat_serial> --mpi=$<TARGET_FILE:heat_mpi>
+        --openmp=$<TARGET_FILE:heat_openmp> --mpiexec=${MPIEXEC_EXECUTABLE}
+        --npflag=${MPIEXEC_NUMPROC_FLAG} --max-procs=${HEAT_MPI_TEST_MAX_PROCS}
+        --max-threads=${HEAT_OPENMP_TEST_MAX_THREADS} ${mpi_test_flags})
+    set_tests_properties(heat_timing PROPERTIES TIMEOUT 180 LABELS "M4"
+        PROCESSORS ${HEAT_MPI_TEST_MAX_PROCS})
+    if(HEAT_OPENMP_TEST_MAX_THREADS GREATER HEAT_MPI_TEST_MAX_PROCS)
+        set_tests_properties(heat_timing PROPERTIES PROCESSORS ${HEAT_OPENMP_TEST_MAX_THREADS})
+    endif()
     add_custom_target(check
         COMMAND ${Python3_EXECUTABLE} "${CMAKE_CURRENT_SOURCE_DIR}/scripts/check.py"
             --test-dir "${CMAKE_CURRENT_BINARY_DIR}" --ctest "${CMAKE_CTEST_COMMAND}"

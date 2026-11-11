@@ -14,6 +14,7 @@ OpenmpResult solve_openmp(const Parameters& p, int requested_threads) {
     const double r = d.r;
     int actual_threads = 0;
     omp_set_dynamic(0);
+    const double start = omp_get_wtime();
     // Both physical boundaries start at zero and are never written again.
     // Shared vectors change roles only in single, between two implicit barriers.
 #pragma omp parallel default(none) shared(old, next, actual_threads) firstprivate(N, M, w, r) num_threads(requested_threads)
@@ -36,6 +37,7 @@ OpenmpResult solve_openmp(const Parameters& p, int requested_threads) {
             old.swap(next);
         }
     }
-    return {std::move(old), actual_threads};
+    const double elapsed = omp_get_wtime() - start;
+    return {std::move(old), actual_threads, elapsed};
 }
 } // namespace heat

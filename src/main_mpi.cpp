@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <cstdio>
 #include <iostream>
+#include <iomanip>
 #include <locale>
 #include <stdexcept>
 
@@ -17,13 +18,14 @@ int main(int argc, char** argv) {
     std::cout.imbue(std::locale::classic());
     std::cerr.imbue(std::locale::classic());
     heat::Parameters p;
+    bool summary_only = false;
     int status = 0, help = 0;
     if (rank == 0) {
         try {
             help = heat::help_requested(argc, argv);
             if (help) status = heat::print_help("heat_mpi");
             else {
-                p = heat::parse_arguments(argc, argv);
+                p = heat::parse_arguments(argc, argv, nullptr, &summary_only);
                 heat::mpi_block(p, size, 0);
             }
         } catch (const std::exception& e) {
@@ -42,10 +44,12 @@ int main(int argc, char** argv) {
         p = {static_cast<std::size_t>(integers[0]), static_cast<std::size_t>(integers[1]),
              values[0], values[1]};
         try {
-            const auto field = heat::solve_mpi(p, comm);
+            double seconds = 0;
+            const auto field = heat::solve_mpi(p, comm, &seconds);
             if (rank == 0) {
                 std::cerr << "P_actual=" << size << '\n';
-                heat::print_field(p, field);
+                std::cerr << std::setprecision(17) << "loop_seconds=" << seconds << '\n';
+                heat::print_field(p, field, summary_only);
             }
         } catch (const std::exception& e) {
             if (rank == 0) std::cerr << "runtime error: " << e.what() << '\n';

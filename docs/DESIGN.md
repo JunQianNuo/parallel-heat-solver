@@ -201,3 +201,14 @@ Q=1 复用既有 CLI 的全部 30 项非法/不稳定输入和 6 组合法场检
 沿用 `HEAT_MPI_TEST_MAX_PROCS`/`HEAT_OPENMP_TEST_MAX_THREADS` 的 1..4 配置；减小时只声明实际矩阵。MPI 上限不套用 OpenMP。系统测试 LABELS=M3，TIMEOUT=240 秒，PROCESSORS 取两种配置最大值；每子进程 25 秒，超时杀死整个进程组。测试使用显式 require，不受 Python -O 或 C++ NDEBUG 禁用。check 保留真实 XML 四位小数入口。
 
 完整环境、构建命令、编译选项、原始 CTest 与同次 LastTest 输出见 `validation/m3.log`，由这些 RESULT 行提取的逐配置数据见 `validation/m3-errors.csv`。没有以图形或退出码代替逐点检验。未运行 P/Q>4、多机、真实硬件/进程丢失、OpenMP 线程创建失败、任意参数全域精度保证；本轮未重跑 ASan/UBSan，M4 性能实验未开展。测试耗时包含组织/启动/输出等开销，不作求解器性能数据。
+
+
+## 10. M4 计时与性能实验（2026-11-10）
+
+用户选择 M4；当前 `Evaluation` 基于已合并 M3 的 `69fb1d0`。完整计时边界、资源探测、绑定、矩阵、工作量、预热/重复与统计定义见 [性能实验协议](performance/README.md) 及 [机器可读协议](performance/protocol.json)。第 4 节为早期性能设计，具体选择以本节及协议为准。
+
+串行 `solve(p, &seconds)` 使用 steady_clock，仅包住已验收的 M 次 step/swap；MPI `solve_mpi(p, comm, &seconds)` 在初始化后 Barrier，MPI_Wtime 差包含 M 次通信/更新/交换，循环后 MPI_MAX 归约到 root（非 root 的 seconds 无测量意义）；OpenMP 在同一主线程用 omp_get_wtime 包住整个持续团队，包含团队进入/退出及必要同步/交换。计时前的初值、分配，以及后的误差验证/收集/输出不计入；MPI 生命周期也不计入。保留原数值循环和边界策略，没有新增性能专用数值算法。
+
+CLI 默认仍输出全场 CSV，所有实现均额外报告 stderr loop_seconds。新增无值 --summary-only 仅省略 CSV，仍验证解析误差；MPI 仅 root 使用该输出标志，不需要广播给其他 rank。重复标志拒绝。stderr 失败仍返回 1 并按 MPI 原路径协调退出。
+
+性能强扩展固定 N/M/T/alpha，以独立串行为主基线；扩大工作量在固定 T/alpha 下以 N∝p^(1/4)、M∝N² 达到 W=M(N−1)² 近似随 p 增长。明确 W/p 的实际偏差，区分同规模加速比、吞吐增长、归一化扩展指标；Amdahl 有效串行比例不等于源码串行占比，Gustafson 不使用虚构的 sigma。新增计时接口回归保留全部 M1–M3 验证，正式矩阵先逐点全场验证再采样，证据完成后单独记录结果。

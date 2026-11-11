@@ -5,6 +5,7 @@ namespace heat {
 struct OpenmpResult {
     std::vector<double> field;
     int actual_threads;
+    double loop_seconds;
 };
 // Standalone, non-nested solve; requests Q threads with dynamic adjustment off.
 // Validation and all grid allocations happen before entering the parallel region.

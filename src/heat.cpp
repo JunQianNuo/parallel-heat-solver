@@ -1,6 +1,7 @@
 #include "heat.hpp"
 #include <algorithm>
 #include <cmath>
+#include <chrono>
 #include <limits>
 #include <stdexcept>
 
@@ -59,14 +60,18 @@ void step(const std::vector<double>& old, std::vector<double>& next,
                 r * (old[k - w] + old[k + w] + old[k - 1] + old[k + 1]);
         }
 }
-std::vector<double> solve(const Parameters& p) {
+std::vector<double> solve(const Parameters& p, double* loop_seconds) {
     const auto d = validate(p);
     auto old = initial_field(p.N);
     std::vector<double> next(d.nodes, 0.0);
+    const auto start = std::chrono::steady_clock::now();
     for (std::size_t n = 0; n < p.M; ++n) {
         step(old, next, p.N, d.r);
         old.swap(next);
     }
+    const double elapsed = std::chrono::duration<double>(
+        std::chrono::steady_clock::now() - start).count();
+    if (loop_seconds) *loop_seconds = elapsed;
     return old;
 }
 double exact(std::size_t i, std::size_t j, const Parameters& p) {

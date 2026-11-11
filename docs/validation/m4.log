@@ -1,0 +1,1575 @@
+M4 timing and correctness regression — 2026-11-10 Asia/Shanghai
+Starting branch Evaluation, HEAD/main/origin/main 69fb1d0; clean worktree.
+Course sources read-only; manifest /tmp/heat-m4-sources-before.json (2564 files).
+Timing runs are not CTest durations. Debug/Release checks run sequentially, before performance sampling.
+
+$ cmake -S . -B build/m4-debug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DHEAT_MPI_TEST_MAX_PROCS=4 -DHEAT_OPENMP_TEST_MAX_THREADS=4
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found MPI_CXX: /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so (found version "3.1") 
+-- Found MPI: TRUE (found version "3.1") found components: CXX 
+-- Found OpenMP_CXX: -fopenmp (found version "4.5") 
+-- Found OpenMP: TRUE (found version "4.5") found components: CXX 
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Configuring done (3.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+
+exit=0
+
+$ cmake --build build/m4-debug --parallel 2
+[  5%] Building CXX object CMakeFiles/heat_solver.dir/src/heat.cpp.o
+[ 11%] Building CXX object CMakeFiles/heat_solver.dir/src/cli.cpp.o
+[ 17%] Linking CXX static library libheat_solver.a
+[ 17%] Built target heat_solver
+[ 23%] Building CXX object CMakeFiles/heat_serial.dir/src/main.cpp.o
+[ 29%] Building CXX object CMakeFiles/heat_parallel.dir/src/heat_mpi.cpp.o
+[ 35%] Linking CXX executable heat_serial
+[ 35%] Built target heat_serial
+[ 41%] Building CXX object CMakeFiles/heat_shared.dir/src/heat_openmp.cpp.o
+[ 47%] Linking CXX static library libheat_parallel.a
+[ 47%] Built target heat_parallel
+[ 52%] Building CXX object CMakeFiles/heat_tests.dir/tests/test_heat.cpp.o
+[ 58%] Linking CXX static library libheat_shared.a
+[ 58%] Built target heat_shared
+[ 64%] Building CXX object CMakeFiles/heat_mpi_failures.dir/tests/test_mpi_failures.cpp.o
+[ 70%] Linking CXX executable heat_mpi_failures
+[ 76%] Linking CXX executable heat_tests
+[ 76%] Built target heat_mpi_failures
+[ 82%] Building CXX object CMakeFiles/heat_mpi.dir/src/main_mpi.cpp.o
+[ 82%] Built target heat_tests
+[ 88%] Building CXX object CMakeFiles/heat_openmp.dir/src/main_openmp.cpp.o
+[ 94%] Linking CXX executable heat_openmp
+[100%] Linking CXX executable heat_mpi
+[100%] Built target heat_openmp
+[100%] Built target heat_mpi
+
+exit=0
+
+$ cmake --build build/m4-debug --target check --parallel 2
+[ 16%] Built target heat_solver
+[ 27%] Built target heat_serial
+[ 38%] Built target heat_parallel
+[ 50%] Built target heat_shared
+[ 61%] Built target heat_tests
+[ 72%] Built target heat_mpi_failures
+[ 83%] Built target heat_mpi
+[ 94%] Built target heat_openmp
+[100%] Run CTest with four-decimal test durations
+CTest results (seconds, 4 decimal places):
+1/20 heat_initial             passed   0.0010 sec
+2/20 heat_hand                passed   0.0009 sec
+3/20 heat_parity              passed   0.0009 sec
+4/20 heat_validation          passed   0.0010 sec
+5/20 heat_analytic            passed   0.3923 sec
+6/20 heat_cli                 passed   0.0622 sec
+7/20 heat_mpi_p1              passed   42.5254 sec
+8/20 heat_mpi_p2              passed   42.6244 sec
+9/20 heat_mpi_p3              passed   40.8103 sec
+10/20 heat_mpi_p4              passed   37.1080 sec
+11/20 heat_openmp_q1           passed   0.1397 sec
+12/20 heat_openmp_q2           passed   0.0693 sec
+13/20 heat_openmp_q3           passed   0.0688 sec
+14/20 heat_openmp_q4           passed   0.0693 sec
+15/20 heat_openmp_limited      passed   0.0734 sec
+16/20 heat_system_default      passed   9.0833 sec
+17/20 heat_system_low          passed   6.7589 sec
+18/20 heat_system_endpoint     passed   6.5635 sec
+19/20 heat_system_boundaries   passed   36.4994 sec
+20/20 heat_timing              passed   23.5933 sec
+CTest invocation wall time: 246.4774 sec
+Raw CTest output: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/ctest-raw.log
+Unrounded test measurements: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/Testing/20261110-1539/Test.xml
+[100%] Built target check
+
+exit=0
+XML heat_initial seconds=0.00100361 display=0.0010
+XML heat_hand seconds=0.000864434 display=0.0009
+XML heat_parity seconds=0.000892688 display=0.0009
+XML heat_validation seconds=0.000972734 display=0.0010
+XML heat_analytic seconds=0.392261 display=0.3923
+XML heat_cli seconds=0.062219 display=0.0622
+XML heat_mpi_p1 seconds=42.5254 display=42.5254
+XML heat_mpi_p2 seconds=42.6244 display=42.6244
+XML heat_mpi_p3 seconds=40.8103 display=40.8103
+XML heat_mpi_p4 seconds=37.108 display=37.1080
+XML heat_openmp_q1 seconds=0.139656 display=0.1397
+XML heat_openmp_q2 seconds=0.0692692 display=0.0693
+XML heat_openmp_q3 seconds=0.0688 display=0.0688
+XML heat_openmp_q4 seconds=0.06928 display=0.0693
+XML heat_openmp_limited seconds=0.0734441 display=0.0734
+XML heat_system_default seconds=9.08335 display=9.0833
+XML heat_system_low seconds=6.75891 display=6.7589
+XML heat_system_endpoint seconds=6.56353 display=6.5635
+XML heat_system_boundaries seconds=36.4994 display=36.4994
+XML heat_timing seconds=23.5933 display=23.5933
+
+--- Same-run full LastTest output ---
+Archiving note: initial collector used LastTest.log; Dashboard uses LastTest_<TAG>.log. The original log below belongs to the same Debug run.
+Start testing: Nov 10 23:39 CST
+----------------------------------------------------------
+1/20 Testing: heat_initial
+1/20 Test: heat_initial
+Command: "/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_tests" "initial"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_initial" start time: Nov 10 23:39 CST
+Output:
+----------------------------------------------------------
+initial PASS
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"heat_initial" end time: Nov 10 23:39 CST
+"heat_initial" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/20 Testing: heat_hand
+2/20 Test: heat_hand
+Command: "/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_tests" "hand"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_hand" start time: Nov 10 23:39 CST
+Output:
+----------------------------------------------------------
+hand PASS
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"heat_hand" end time: Nov 10 23:39 CST
+"heat_hand" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/20 Testing: heat_parity
+3/20 Test: heat_parity
+Command: "/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_tests" "parity"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_parity" start time: Nov 10 23:39 CST
+Output:
+----------------------------------------------------------
+parity PASS
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"heat_parity" end time: Nov 10 23:39 CST
+"heat_parity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/20 Testing: heat_validation
+4/20 Test: heat_validation
+Command: "/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_tests" "validation"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_validation" start time: Nov 10 23:39 CST
+Output:
+----------------------------------------------------------
+validation PASS
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"heat_validation" end time: Nov 10 23:39 CST
+"heat_validation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/20 Testing: heat_analytic
+5/20 Test: heat_analytic
+Command: "/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_tests" "analytic"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_analytic" start time: Nov 10 23:39 CST
+Output:
+----------------------------------------------------------
+N=20 M=400 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=0.0001126210917414272
+N=40 M=1600 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=2.8181351120953879e-05
+N=80 M=6400 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=7.0469626000380092e-06
+analytic PASS
+<end of output>
+Test time =   0.39 sec
+----------------------------------------------------------
+Test Passed.
+"heat_analytic" end time: Nov 10 23:39 CST
+"heat_analytic" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/20 Testing: heat_cli
+6/20 Test: heat_cli
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_cli.py" "/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_serial"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_cli" start time: Nov 10 23:39 CST
+Output:
+----------------------------------------------------------
+CLI N=20 M=400 E_inf=0.0001126210917414272
+CLI N=2 M=1 E_inf=0.039641485816297228
+CLI N=2 M=2 E_inf=0.041212933214020864
+CLI N=2 M=3 E_inf=0.032150579968536347
+CLI N=2 M=1 E_inf=0.29121293321402086
+CLI N=7 M=7 E_inf=0.00066654289214562734
+CLI PASS; 30 invalid cases rejected
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"heat_cli" end time: Nov 10 23:39 CST
+"heat_cli" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/20 Testing: heat_mpi_p1
+7/20 Test: heat_mpi_p1
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_mpi" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--processes=1" "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_mpi_failures"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_mpi_p1" start time: Nov 10 23:39 CST
+Output:
+----------------------------------------------------------
+P=1 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=1 N=2 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0094983664072216811
+P=1 N=2 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.010074366407221702
+P=1 N=2 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.010474587145202885
+P=1 N=2 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.01049436069306986
+P=1 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+P=1 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+P=1 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+P=1 PASS; 14 rejected inputs; help checked
+P=1 injected-test partition collective_check=1
+P=1 injected-test allocation-root collective_check=1
+P=1 injected-test allocation-worker collective_check=1
+P=1 injected Sendrecv error: MPI_Abort exit=1; no timeout
+<end of output>
+Test time =  42.53 sec
+----------------------------------------------------------
+Test Passed.
+"heat_mpi_p1" end time: Nov 10 23:40 CST
+"heat_mpi_p1" time elapsed: 00:00:42
+----------------------------------------------------------
+
+8/20 Testing: heat_mpi_p2
+8/20 Test: heat_mpi_p2
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_mpi" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--processes=2" "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_mpi_failures"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_mpi_p2" start time: Nov 10 23:40 CST
+Output:
+----------------------------------------------------------
+P=2 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=2 N=3 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026237748054163124
+P=2 N=3 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0031705248054162416
+P=2 N=3 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035491022376327175
+P=2 N=3 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035677787370435032
+P=2 N=6 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010373277649589063
+P=2 N=6 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010658422401340628
+P=2 PASS; 15 rejected inputs; help checked
+P=2 injected-test partition collective_check=1
+P=2 injected-test allocation-root collective_check=1
+P=2 injected-test allocation-worker collective_check=1
+P=2 injected Sendrecv error: MPI_Abort exit=1; no timeout
+<end of output>
+Test time =  42.62 sec
+----------------------------------------------------------
+Test Passed.
+"heat_mpi_p2" end time: Nov 10 23:40 CST
+"heat_mpi_p2" time elapsed: 00:00:42
+----------------------------------------------------------
+
+9/20 Testing: heat_mpi_p3
+9/20 Test: heat_mpi_p3
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_mpi" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--processes=3" "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_mpi_failures"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_mpi_p3" start time: Nov 10 23:40 CST
+Output:
+----------------------------------------------------------
+P=3 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=3 N=4 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0012628683950388631
+P=3 N=4 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.002053476204208371
+P=3 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+P=3 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+P=3 N=8 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0004823289376260087
+P=3 N=8 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00051140720258602279
+P=3 PASS; 15 rejected inputs; help checked
+P=3 injected-test partition collective_check=1
+P=3 injected-test allocation-root collective_check=1
+P=3 injected-test allocation-worker collective_check=1
+P=3 injected Sendrecv error: MPI_Abort exit=1; no timeout
+<end of output>
+Test time =  40.81 sec
+----------------------------------------------------------
+Test Passed.
+"heat_mpi_p3" end time: Nov 10 23:41 CST
+"heat_mpi_p3" time elapsed: 00:00:40
+----------------------------------------------------------
+
+10/20 Testing: heat_mpi_p4
+10/20 Test: heat_mpi_p4
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_mpi" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--processes=4" "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_mpi_failures"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_mpi_p4" start time: Nov 10 23:41 CST
+Output:
+----------------------------------------------------------
+P=4 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=4 N=5 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00018403556785195896
+P=4 N=5 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00092634438113370354
+P=4 N=5 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014393469605138431
+P=4 N=5 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014646345186254406
+P=4 N=10 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.000224029466217468
+P=4 N=10 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00025337200664976578
+P=4 PASS; 15 rejected inputs; help checked
+P=4 injected-test partition collective_check=1
+P=4 injected-test allocation-root collective_check=1
+P=4 injected-test allocation-worker collective_check=1
+P=4 injected Sendrecv error: MPI_Abort exit=1; no timeout
+<end of output>
+Test time =  37.11 sec
+----------------------------------------------------------
+Test Passed.
+"heat_mpi_p4" end time: Nov 10 23:41 CST
+"heat_mpi_p4" time elapsed: 00:00:37
+----------------------------------------------------------
+
+11/20 Testing: heat_openmp_q1
+11/20 Test: heat_openmp_q1
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_openmp.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_openmp" "--threads=1"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_openmp_q1" start time: Nov 10 23:41 CST
+Output:
+----------------------------------------------------------
+Q_requested=1 Q_actual=1 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=1 Q_actual=1 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=1 Q_actual=1 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=1 Q_actual=1 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=1 Q_actual=1 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=1 Q_actual=1 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=1 Q_actual=1 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=1 Q_actual=1 N=3 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035491022376327175
+Q_requested=1 Q_actual=1 N=3 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035677787370435032
+Q_requested=1 Q_actual=1 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=1 Q_actual=1 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+CLI N=20 M=400 E_inf=0.0001126210917414272
+CLI N=2 M=1 E_inf=0.039641485816297228
+CLI N=2 M=2 E_inf=0.041212933214020864
+CLI N=2 M=3 E_inf=0.032150579968536347
+CLI N=2 M=1 E_inf=0.29121293321402086
+CLI N=7 M=7 E_inf=0.00066654289214562734
+CLI PASS; 30 invalid cases rejected
+default Q_requested=1 Q_actual=1 with OMP_NUM_THREADS=3
+RLIMIT_AS=256MiB allocation failure before parallel region: exit=1; runtime error: std::bad_alloc
+OpenMP PASS Q_requested=1 Q_actual=1; 14 invalid thread inputs rejected
+<end of output>
+Test time =   0.14 sec
+----------------------------------------------------------
+Test Passed.
+"heat_openmp_q1" end time: Nov 10 23:41 CST
+"heat_openmp_q1" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/20 Testing: heat_openmp_q2
+12/20 Test: heat_openmp_q2
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_openmp.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_openmp" "--threads=2"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_openmp_q2" start time: Nov 10 23:41 CST
+Output:
+----------------------------------------------------------
+Q_requested=2 Q_actual=2 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=2 Q_actual=2 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=2 Q_actual=2 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=2 Q_actual=2 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=2 Q_actual=2 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=2 Q_actual=2 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=2 Q_actual=2 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=2 Q_actual=2 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+Q_requested=2 Q_actual=2 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+Q_requested=2 Q_actual=2 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=2 Q_actual=2 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+OpenMP PASS Q_requested=2 Q_actual=2; 14 invalid thread inputs rejected
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"heat_openmp_q2" end time: Nov 10 23:41 CST
+"heat_openmp_q2" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/20 Testing: heat_openmp_q3
+13/20 Test: heat_openmp_q3
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_openmp.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_openmp" "--threads=3"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_openmp_q3" start time: Nov 10 23:41 CST
+Output:
+----------------------------------------------------------
+Q_requested=3 Q_actual=3 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=3 Q_actual=3 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=3 Q_actual=3 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=3 Q_actual=3 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=3 Q_actual=3 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=3 Q_actual=3 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=3 Q_actual=3 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=3 Q_actual=3 N=5 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014393469605138431
+Q_requested=3 Q_actual=3 N=5 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014646345186254406
+Q_requested=3 Q_actual=3 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=3 Q_actual=3 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+OpenMP PASS Q_requested=3 Q_actual=3; 14 invalid thread inputs rejected
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"heat_openmp_q3" end time: Nov 10 23:41 CST
+"heat_openmp_q3" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/20 Testing: heat_openmp_q4
+14/20 Test: heat_openmp_q4
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_openmp.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_openmp" "--threads=4"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_openmp_q4" start time: Nov 10 23:41 CST
+Output:
+----------------------------------------------------------
+Q_requested=4 Q_actual=4 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=4 Q_actual=4 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=4 Q_actual=4 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=4 Q_actual=4 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=4 Q_actual=4 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=4 Q_actual=4 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=4 Q_actual=4 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=4 Q_actual=4 N=6 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010373277649589063
+Q_requested=4 Q_actual=4 N=6 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010658422401340628
+Q_requested=4 Q_actual=4 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=4 Q_actual=4 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+OpenMP PASS Q_requested=4 Q_actual=4; 14 invalid thread inputs rejected
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"heat_openmp_q4" end time: Nov 10 23:41 CST
+"heat_openmp_q4" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/20 Testing: heat_openmp_limited
+15/20 Test: heat_openmp_limited
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_openmp.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_openmp" "--threads=4" "--limit=2"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_openmp_limited" start time: Nov 10 23:41 CST
+Output:
+----------------------------------------------------------
+Q_requested=4 Q_actual=2 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=4 Q_actual=2 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=4 Q_actual=2 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=4 Q_actual=2 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=4 Q_actual=2 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=4 Q_actual=2 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=4 Q_actual=2 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=4 Q_actual=2 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+Q_requested=4 Q_actual=2 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+Q_requested=4 Q_actual=2 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=4 Q_actual=2 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+OpenMP PASS Q_requested=4 Q_actual=2; 14 invalid thread inputs rejected
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"heat_openmp_limited" end time: Nov 10 23:41 CST
+"heat_openmp_limited" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/20 Testing: heat_system_default
+16/20 Test: heat_system_default
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_system.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_serial" "--mpi=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_mpi" "--openmp=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_openmp" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--max-procs=4" "--max-threads=4" "--suite=default"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_system_default" start time: Nov 10 23:41 CST
+Output:
+----------------------------------------------------------
+RESULT {"suite": "default", "solver": "serial", "requested": 1, "actual": 1, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "mpi", "requested": 1, "actual": 1, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "mpi", "requested": 2, "actual": 2, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "mpi", "requested": 3, "actual": 3, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "mpi", "requested": 4, "actual": 4, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "openmp", "requested": 1, "actual": 1, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "openmp", "requested": 2, "actual": 2, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "openmp", "requested": 3, "actual": 3, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "openmp", "requested": 4, "actual": 4, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "openmp", "requested": 4, "actual": 2, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "serial", "requested": 1, "actual": 1, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "mpi", "requested": 1, "actual": 1, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "mpi", "requested": 2, "actual": 2, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "mpi", "requested": 3, "actual": 3, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "mpi", "requested": 4, "actual": 4, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "openmp", "requested": 1, "actual": 1, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "openmp", "requested": 2, "actual": 2, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "openmp", "requested": 3, "actual": 3, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "openmp", "requested": 4, "actual": 4, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "openmp", "requested": 4, "actual": 2, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "serial", "requested": 1, "actual": 1, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+RESULT {"suite": "default", "solver": "mpi", "requested": 1, "actual": 1, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+RESULT {"suite": "default", "solver": "mpi", "requested": 2, "actual": 2, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+RESULT {"suite": "default", "solver": "mpi", "requested": 3, "actual": 3, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+RESULT {"suite": "default", "solver": "mpi", "requested": 4, "actual": 4, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+RESULT {"suite": "default", "solver": "openmp", "requested": 1, "actual": 1, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+RESULT {"suite": "default", "solver": "openmp", "requested": 2, "actual": 2, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+RESULT {"suite": "default", "solver": "openmp", "requested": 3, "actual": 3, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+RESULT {"suite": "default", "solver": "openmp", "requested": 4, "actual": 4, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+RESULT {"suite": "default", "solver": "openmp", "requested": 4, "actual": 2, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+M3 default PASS; requested MPI P=1..4, OpenMP Q=1..4; higher P/Q and multi-node not run; test durations are not performance data
+<end of output>
+Test time =   9.08 sec
+----------------------------------------------------------
+Test Passed.
+"heat_system_default" end time: Nov 10 23:42 CST
+"heat_system_default" time elapsed: 00:00:09
+----------------------------------------------------------
+
+17/20 Testing: heat_system_low
+17/20 Test: heat_system_low
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_system.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_serial" "--mpi=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_mpi" "--openmp=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_openmp" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--max-procs=4" "--max-threads=4" "--suite=low"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_system_low" start time: Nov 10 23:42 CST
+Output:
+----------------------------------------------------------
+RESULT {"suite": "low", "solver": "serial", "requested": 1, "actual": 1, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "mpi", "requested": 1, "actual": 1, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "mpi", "requested": 2, "actual": 2, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "mpi", "requested": 3, "actual": 3, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "mpi", "requested": 4, "actual": 4, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "openmp", "requested": 1, "actual": 1, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "openmp", "requested": 2, "actual": 2, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "openmp", "requested": 3, "actual": 3, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "openmp", "requested": 4, "actual": 4, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "openmp", "requested": 4, "actual": 2, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "serial", "requested": 1, "actual": 1, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "mpi", "requested": 1, "actual": 1, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "mpi", "requested": 2, "actual": 2, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "mpi", "requested": 3, "actual": 3, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "mpi", "requested": 4, "actual": 4, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "openmp", "requested": 1, "actual": 1, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "openmp", "requested": 2, "actual": 2, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "openmp", "requested": 3, "actual": 3, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "openmp", "requested": 4, "actual": 4, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "openmp", "requested": 4, "actual": 2, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "serial", "requested": 1, "actual": 1, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+RESULT {"suite": "low", "solver": "mpi", "requested": 1, "actual": 1, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+RESULT {"suite": "low", "solver": "mpi", "requested": 2, "actual": 2, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+RESULT {"suite": "low", "solver": "mpi", "requested": 3, "actual": 3, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+RESULT {"suite": "low", "solver": "mpi", "requested": 4, "actual": 4, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+RESULT {"suite": "low", "solver": "openmp", "requested": 1, "actual": 1, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+RESULT {"suite": "low", "solver": "openmp", "requested": 2, "actual": 2, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+RESULT {"suite": "low", "solver": "openmp", "requested": 3, "actual": 3, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+RESULT {"suite": "low", "solver": "openmp", "requested": 4, "actual": 4, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+RESULT {"suite": "low", "solver": "openmp", "requested": 4, "actual": 2, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+M3 low PASS; requested MPI P=1..4, OpenMP Q=1..4; higher P/Q and multi-node not run; test durations are not performance data
+<end of output>
+Test time =   6.76 sec
+----------------------------------------------------------
+Test Passed.
+"heat_system_low" end time: Nov 10 23:42 CST
+"heat_system_low" time elapsed: 00:00:06
+----------------------------------------------------------
+
+18/20 Testing: heat_system_endpoint
+18/20 Test: heat_system_endpoint
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_system.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_serial" "--mpi=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_mpi" "--openmp=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_openmp" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--max-procs=4" "--max-threads=4" "--suite=endpoint"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_system_endpoint" start time: Nov 10 23:42 CST
+Output:
+----------------------------------------------------------
+RESULT {"suite": "endpoint", "solver": "serial", "requested": 1, "actual": 1, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 1, "actual": 1, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 2, "actual": 2, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 3, "actual": 3, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 4, "actual": 4, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 1, "actual": 1, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 2, "actual": 2, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 3, "actual": 3, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 4, "actual": 4, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 4, "actual": 2, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "serial", "requested": 1, "actual": 1, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 1, "actual": 1, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 2, "actual": 2, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 3, "actual": 3, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 4, "actual": 4, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 1, "actual": 1, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 2, "actual": 2, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 3, "actual": 3, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 4, "actual": 4, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 4, "actual": 2, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "serial", "requested": 1, "actual": 1, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 1, "actual": 1, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 2, "actual": 2, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 3, "actual": 3, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 4, "actual": 4, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 1, "actual": 1, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 2, "actual": 2, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 3, "actual": 3, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 4, "actual": 4, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 4, "actual": 2, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+M3 endpoint PASS; requested MPI P=1..4, OpenMP Q=1..4; higher P/Q and multi-node not run; test durations are not performance data
+<end of output>
+Test time =   6.56 sec
+----------------------------------------------------------
+Test Passed.
+"heat_system_endpoint" end time: Nov 10 23:42 CST
+"heat_system_endpoint" time elapsed: 00:00:06
+----------------------------------------------------------
+
+19/20 Testing: heat_system_boundaries
+19/20 Test: heat_system_boundaries
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_system.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_serial" "--mpi=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_mpi" "--openmp=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_openmp" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--max-procs=4" "--max-threads=4" "--suite=boundaries"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_system_boundaries" start time: Nov 10 23:42 CST
+Output:
+----------------------------------------------------------
+BOUNDARY solver=serial requested=1 actual=1 N=2 M=1 T=0.0625 r=0.25 E_inf=0.29121293321402086 D_inf=0
+BOUNDARY solver=serial requested=1 actual=1 N=2 M=2 T=0.125 r=0.25 E_inf=0.084804972471113793 D_inf=0
+BOUNDARY solver=serial requested=1 actual=1 N=2 M=7 T=0.4375 r=0.25 E_inf=0.00017761294332968201 D_inf=0
+BOUNDARY solver=serial requested=1 actual=1 N=2 M=8 T=0.5 r=0.25 E_inf=5.1723186203812337e-05 D_inf=0
+STABILITY solver=serial requested=1 actual=1 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+BOUNDARY solver=mpi requested=1 actual=1 N=2 M=1 T=0.0625 r=0.25 E_inf=0.29121293321402086 D_inf=0
+BOUNDARY solver=mpi requested=1 actual=1 N=2 M=2 T=0.125 r=0.25 E_inf=0.084804972471113793 D_inf=0
+BOUNDARY solver=mpi requested=1 actual=1 N=2 M=7 T=0.4375 r=0.25 E_inf=0.00017761294332968201 D_inf=0
+BOUNDARY solver=mpi requested=1 actual=1 N=2 M=8 T=0.5 r=0.25 E_inf=5.1723186203812337e-05 D_inf=0
+STABILITY solver=mpi requested=1 actual=1 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+BOUNDARY solver=mpi requested=2 actual=2 N=3 M=1 T=0.027777777777777773 r=0.24999999999999994 E_inf=0.058443672369546951 D_inf=0
+BOUNDARY solver=mpi requested=2 actual=2 N=3 M=2 T=0.055555555555555546 r=0.24999999999999994 E_inf=0.062997889489598891 D_inf=0
+BOUNDARY solver=mpi requested=2 actual=2 N=3 M=7 T=0.19444444444444442 r=0.24999999999999997 E_inf=0.010290199736518124 D_inf=0
+BOUNDARY solver=mpi requested=2 actual=2 N=3 M=8 T=0.22222222222222218 r=0.24999999999999994 E_inf=0.0064035538080038298 D_inf=0
+STABILITY solver=mpi requested=2 actual=2 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+BOUNDARY solver=mpi requested=3 actual=3 N=4 M=1 T=0.015625 r=0.25 E_inf=0.027496163142085916 D_inf=0
+BOUNDARY solver=mpi requested=3 actual=3 N=4 M=2 T=0.03125 r=0.25 E_inf=0.039641485816297228 D_inf=0
+BOUNDARY solver=mpi requested=3 actual=3 N=4 M=7 T=0.109375 r=0.25 E_inf=0.027054931099520743 D_inf=0
+BOUNDARY solver=mpi requested=3 actual=3 N=4 M=8 T=0.125 r=0.25 E_inf=0.022304972471113793 D_inf=0
+STABILITY solver=mpi requested=3 actual=3 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+BOUNDARY solver=mpi requested=4 actual=4 N=5 M=1 T=0.009999999999999998 r=0.24999999999999994 E_inf=0.010719984196528642 D_inf=0
+BOUNDARY solver=mpi requested=4 actual=4 N=5 M=2 T=0.019999999999999997 r=0.24999999999999994 E_inf=0.017472349072541804 D_inf=0
+BOUNDARY solver=mpi requested=4 actual=4 N=5 M=7 T=0.06999999999999999 r=0.25 E_inf=0.02198720022110931 D_inf=0
+BOUNDARY solver=mpi requested=4 actual=4 N=5 M=8 T=0.07999999999999999 r=0.24999999999999994 E_inf=0.02048023576558583 D_inf=0
+STABILITY solver=mpi requested=4 actual=4 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+BOUNDARY solver=openmp requested=1 actual=1 N=2 M=1 T=0.0625 r=0.25 E_inf=0.29121293321402086 D_inf=0
+BOUNDARY solver=openmp requested=1 actual=1 N=2 M=2 T=0.125 r=0.25 E_inf=0.084804972471113793 D_inf=0
+BOUNDARY solver=openmp requested=1 actual=1 N=2 M=7 T=0.4375 r=0.25 E_inf=0.00017761294332968201 D_inf=0
+BOUNDARY solver=openmp requested=1 actual=1 N=2 M=8 T=0.5 r=0.25 E_inf=5.1723186203812337e-05 D_inf=0
+STABILITY solver=openmp requested=1 actual=1 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+BOUNDARY solver=openmp requested=2 actual=2 N=2 M=1 T=0.0625 r=0.25 E_inf=0.29121293321402086 D_inf=0
+BOUNDARY solver=openmp requested=2 actual=2 N=2 M=2 T=0.125 r=0.25 E_inf=0.084804972471113793 D_inf=0
+BOUNDARY solver=openmp requested=2 actual=2 N=2 M=7 T=0.4375 r=0.25 E_inf=0.00017761294332968201 D_inf=0
+BOUNDARY solver=openmp requested=2 actual=2 N=2 M=8 T=0.5 r=0.25 E_inf=5.1723186203812337e-05 D_inf=0
+STABILITY solver=openmp requested=2 actual=2 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+BOUNDARY solver=openmp requested=3 actual=3 N=2 M=1 T=0.0625 r=0.25 E_inf=0.29121293321402086 D_inf=0
+BOUNDARY solver=openmp requested=3 actual=3 N=2 M=2 T=0.125 r=0.25 E_inf=0.084804972471113793 D_inf=0
+BOUNDARY solver=openmp requested=3 actual=3 N=2 M=7 T=0.4375 r=0.25 E_inf=0.00017761294332968201 D_inf=0
+BOUNDARY solver=openmp requested=3 actual=3 N=2 M=8 T=0.5 r=0.25 E_inf=5.1723186203812337e-05 D_inf=0
+STABILITY solver=openmp requested=3 actual=3 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+BOUNDARY solver=openmp requested=4 actual=4 N=2 M=1 T=0.0625 r=0.25 E_inf=0.29121293321402086 D_inf=0
+BOUNDARY solver=openmp requested=4 actual=4 N=2 M=2 T=0.125 r=0.25 E_inf=0.084804972471113793 D_inf=0
+BOUNDARY solver=openmp requested=4 actual=4 N=2 M=7 T=0.4375 r=0.25 E_inf=0.00017761294332968201 D_inf=0
+BOUNDARY solver=openmp requested=4 actual=4 N=2 M=8 T=0.5 r=0.25 E_inf=5.1723186203812337e-05 D_inf=0
+STABILITY solver=openmp requested=4 actual=4 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+BOUNDARY solver=openmp requested=4 actual=2 N=2 M=1 T=0.0625 r=0.25 E_inf=0.29121293321402086 D_inf=0
+BOUNDARY solver=openmp requested=4 actual=2 N=2 M=2 T=0.125 r=0.25 E_inf=0.084804972471113793 D_inf=0
+BOUNDARY solver=openmp requested=4 actual=2 N=2 M=7 T=0.4375 r=0.25 E_inf=0.00017761294332968201 D_inf=0
+BOUNDARY solver=openmp requested=4 actual=2 N=2 M=8 T=0.5 r=0.25 E_inf=5.1723186203812337e-05 D_inf=0
+STABILITY solver=openmp requested=4 actual=2 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+M3 boundaries PASS; requested MPI P=1..4, OpenMP Q=1..4; higher P/Q and multi-node not run; test durations are not performance data
+<end of output>
+Test time =  36.50 sec
+----------------------------------------------------------
+Test Passed.
+"heat_system_boundaries" end time: Nov 10 23:42 CST
+"heat_system_boundaries" time elapsed: 00:00:36
+----------------------------------------------------------
+
+20/20 Testing: heat_timing
+20/20 Test: heat_timing
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_timing.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_serial" "--mpi=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_mpi" "--openmp=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_openmp" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--max-procs=4" "--max-threads=4"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+"heat_timing" start time: Nov 10 23:42 CST
+Output:
+----------------------------------------------------------
+TIMING kind=serial requested=1 actual=1 odd/even summary matches full E_inf
+TIMING kind=mpi requested=1 actual=1 odd/even summary matches full E_inf
+TIMING kind=mpi requested=2 actual=2 odd/even summary matches full E_inf
+TIMING kind=mpi requested=3 actual=3 odd/even summary matches full E_inf
+TIMING kind=mpi requested=4 actual=4 odd/even summary matches full E_inf
+TIMING kind=openmp requested=1 actual=1 odd/even summary matches full E_inf
+TIMING kind=openmp requested=2 actual=2 odd/even summary matches full E_inf
+TIMING kind=openmp requested=3 actual=3 odd/even summary matches full E_inf
+TIMING kind=openmp requested=4 actual=4 odd/even summary matches full E_inf
+TIMING summary stderr output failures checked
+<end of output>
+Test time =  23.59 sec
+----------------------------------------------------------
+Test Passed.
+"heat_timing" end time: Nov 10 23:43 CST
+"heat_timing" time elapsed: 00:00:23
+----------------------------------------------------------
+
+End testing: Nov 10 23:43 CST
+
+M3 = 235.62 sec*proc
+
+M4 =  23.59 sec*proc
+
+
+--- Same-run raw CTest console ---
+   Site: Nuo-Computer
+   Build name: Linux-c++
+Create new tag: 20261110-1539 - Experimental
+Test project /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+      Start  1: heat_initial
+ 1/20 Test  #1: heat_initial .....................   Passed    0.00 sec
+      Start  2: heat_hand
+ 2/20 Test  #2: heat_hand ........................   Passed    0.00 sec
+      Start  3: heat_parity
+ 3/20 Test  #3: heat_parity ......................   Passed    0.00 sec
+      Start  4: heat_validation
+ 4/20 Test  #4: heat_validation ..................   Passed    0.00 sec
+      Start  5: heat_analytic
+ 5/20 Test  #5: heat_analytic ....................   Passed    0.39 sec
+      Start  6: heat_cli
+ 6/20 Test  #6: heat_cli .........................   Passed    0.06 sec
+      Start  7: heat_mpi_p1
+ 7/20 Test  #7: heat_mpi_p1 ......................   Passed   42.53 sec
+      Start  8: heat_mpi_p2
+ 8/20 Test  #8: heat_mpi_p2 ......................   Passed   42.62 sec
+      Start  9: heat_mpi_p3
+ 9/20 Test  #9: heat_mpi_p3 ......................   Passed   40.81 sec
+      Start 10: heat_mpi_p4
+10/20 Test #10: heat_mpi_p4 ......................   Passed   37.11 sec
+      Start 11: heat_openmp_q1
+11/20 Test #11: heat_openmp_q1 ...................   Passed    0.14 sec
+      Start 12: heat_openmp_q2
+12/20 Test #12: heat_openmp_q2 ...................   Passed    0.07 sec
+      Start 13: heat_openmp_q3
+13/20 Test #13: heat_openmp_q3 ...................   Passed    0.07 sec
+      Start 14: heat_openmp_q4
+14/20 Test #14: heat_openmp_q4 ...................   Passed    0.07 sec
+      Start 15: heat_openmp_limited
+15/20 Test #15: heat_openmp_limited ..............   Passed    0.07 sec
+      Start 16: heat_system_default
+16/20 Test #16: heat_system_default ..............   Passed    9.08 sec
+      Start 17: heat_system_low
+17/20 Test #17: heat_system_low ..................   Passed    6.76 sec
+      Start 18: heat_system_endpoint
+18/20 Test #18: heat_system_endpoint .............   Passed    6.56 sec
+      Start 19: heat_system_boundaries
+19/20 Test #19: heat_system_boundaries ...........   Passed   36.50 sec
+      Start 20: heat_timing
+20/20 Test #20: heat_timing ......................   Passed   23.59 sec
+
+100% tests passed, 0 tests failed out of 20
+
+Label Time Summary:
+M3    = 235.62 sec*proc (4 tests)
+M4    =  23.59 sec*proc (1 test)
+
+Total Test time (real) = 246.45 sec
+
+2026-11-11 continuation: /tmp helpers and initial course hash manifest no longer available after environment restart. Original Debug build and XML/LastTest preserved. New course manifest stored in ignored build/m4-sources-resume.json; comparison only covers work after this resume. No claim of complete original-to-final hash comparison.
+
+Release continuation — 2026-11-11 Asia/Shanghai
+
+$ cmake -S . -B build/m4-release -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DHEAT_MPI_TEST_MAX_PROCS=4 -DHEAT_OPENMP_TEST_MAX_THREADS=4
+-- Configuring done (2.4s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+
+exit=0
+
+$ cmake --build build/m4-release --parallel 2
+[  5%] Building CXX object CMakeFiles/heat_solver.dir/src/cli.cpp.o
+[ 11%] Linking CXX static library libheat_solver.a
+[ 17%] Built target heat_solver
+[ 23%] Linking CXX executable heat_serial
+[ 35%] Built target heat_parallel
+[ 47%] Built target heat_shared
+[ 52%] Linking CXX executable heat_tests
+[ 58%] Built target heat_serial
+[ 64%] Linking CXX executable heat_mpi_failures
+[ 70%] Built target heat_tests
+[ 76%] Linking CXX executable heat_mpi
+[ 82%] Built target heat_mpi_failures
+[ 88%] Linking CXX executable heat_openmp
+[ 94%] Built target heat_mpi
+[100%] Built target heat_openmp
+
+exit=0
+
+$ cmake --build build/m4-release --target check --parallel 2
+[ 16%] Built target heat_solver
+[ 27%] Built target heat_serial
+[ 38%] Built target heat_parallel
+[ 61%] Built target heat_shared
+[ 61%] Built target heat_tests
+[ 72%] Built target heat_mpi_failures
+[ 83%] Built target heat_mpi
+[ 94%] Built target heat_openmp
+[100%] Run CTest with four-decimal test durations
+CTest results (seconds, 4 decimal places):
+1/20 heat_initial             passed   0.0021 sec
+2/20 heat_hand                passed   0.0012 sec
+3/20 heat_parity              passed   0.0011 sec
+4/20 heat_validation          passed   0.0023 sec
+5/20 heat_analytic            passed   0.0169 sec
+6/20 heat_cli                 passed   0.0543 sec
+7/20 heat_mpi_p1              passed   41.4207 sec
+8/20 heat_mpi_p2              passed   43.0932 sec
+9/20 heat_mpi_p3              passed   42.5300 sec
+10/20 heat_mpi_p4              passed   45.8698 sec
+11/20 heat_openmp_q1           passed   0.1174 sec
+12/20 heat_openmp_q2           passed   0.0703 sec
+13/20 heat_openmp_q3           passed   0.0718 sec
+14/20 heat_openmp_q4           passed   0.0726 sec
+15/20 heat_openmp_limited      passed   0.0748 sec
+16/20 heat_system_default      passed   6.7104 sec
+17/20 heat_system_low          passed   6.1581 sec
+18/20 heat_system_endpoint     passed   5.9531 sec
+19/20 heat_system_boundaries   passed   38.1430 sec
+20/20 heat_timing              passed   27.8400 sec
+CTest invocation wall time: 258.2250 sec
+Raw CTest output: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release/ctest-raw.log
+Unrounded test measurements: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release/Testing/20261111-0119/Test.xml
+[100%] Built target check
+
+exit=0
+XML heat_initial seconds=0.00208465 display=0.0021
+XML heat_hand seconds=0.00122524 display=0.0012
+XML heat_parity seconds=0.00107812 display=0.0011
+XML heat_validation seconds=0.00225688 display=0.0023
+XML heat_analytic seconds=0.0168655 display=0.0169
+XML heat_cli seconds=0.0543189 display=0.0543
+XML heat_mpi_p1 seconds=41.4207 display=41.4207
+XML heat_mpi_p2 seconds=43.0932 display=43.0932
+XML heat_mpi_p3 seconds=42.53 display=42.5300
+XML heat_mpi_p4 seconds=45.8698 display=45.8698
+XML heat_openmp_q1 seconds=0.117393 display=0.1174
+XML heat_openmp_q2 seconds=0.070285 display=0.0703
+XML heat_openmp_q3 seconds=0.0717833 display=0.0718
+XML heat_openmp_q4 seconds=0.0726065 display=0.0726
+XML heat_openmp_limited seconds=0.0748152 display=0.0748
+XML heat_system_default seconds=6.71041 display=6.7104
+XML heat_system_low seconds=6.1581 display=6.1581
+XML heat_system_endpoint seconds=5.95308 display=5.9531
+XML heat_system_boundaries seconds=38.143 display=38.1430
+XML heat_timing seconds=27.84 display=27.8400
+
+--- Same-run full LastTest output ---
+Start testing: Nov 11 09:19 CST
+----------------------------------------------------------
+1/20 Testing: heat_initial
+1/20 Test: heat_initial
+Command: "/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_tests" "initial"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_initial" start time: Nov 11 09:19 CST
+Output:
+----------------------------------------------------------
+initial PASS
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"heat_initial" end time: Nov 11 09:19 CST
+"heat_initial" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/20 Testing: heat_hand
+2/20 Test: heat_hand
+Command: "/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_tests" "hand"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_hand" start time: Nov 11 09:19 CST
+Output:
+----------------------------------------------------------
+hand PASS
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"heat_hand" end time: Nov 11 09:19 CST
+"heat_hand" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/20 Testing: heat_parity
+3/20 Test: heat_parity
+Command: "/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_tests" "parity"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_parity" start time: Nov 11 09:19 CST
+Output:
+----------------------------------------------------------
+parity PASS
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"heat_parity" end time: Nov 11 09:19 CST
+"heat_parity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/20 Testing: heat_validation
+4/20 Test: heat_validation
+Command: "/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_tests" "validation"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_validation" start time: Nov 11 09:19 CST
+Output:
+----------------------------------------------------------
+validation PASS
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"heat_validation" end time: Nov 11 09:19 CST
+"heat_validation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/20 Testing: heat_analytic
+5/20 Test: heat_analytic
+Command: "/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_tests" "analytic"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_analytic" start time: Nov 11 09:19 CST
+Output:
+----------------------------------------------------------
+N=20 M=400 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=0.0001126210917414272
+N=40 M=1600 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=2.8181351120953879e-05
+N=80 M=6400 T=0.10000000000000001 alpha=1 r=0.10000000000000001 E_inf=7.0469626000380092e-06
+analytic PASS
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"heat_analytic" end time: Nov 11 09:19 CST
+"heat_analytic" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/20 Testing: heat_cli
+6/20 Test: heat_cli
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_cli.py" "/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_serial"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_cli" start time: Nov 11 09:19 CST
+Output:
+----------------------------------------------------------
+CLI N=20 M=400 E_inf=0.0001126210917414272
+CLI N=2 M=1 E_inf=0.039641485816297228
+CLI N=2 M=2 E_inf=0.041212933214020864
+CLI N=2 M=3 E_inf=0.032150579968536347
+CLI N=2 M=1 E_inf=0.29121293321402086
+CLI N=7 M=7 E_inf=0.00066654289214562734
+CLI PASS; 30 invalid cases rejected
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"heat_cli" end time: Nov 11 09:19 CST
+"heat_cli" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/20 Testing: heat_mpi_p1
+7/20 Test: heat_mpi_p1
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_mpi" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--processes=1" "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_mpi_failures"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_mpi_p1" start time: Nov 11 09:19 CST
+Output:
+----------------------------------------------------------
+P=1 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=1 N=2 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0094983664072216811
+P=1 N=2 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.010074366407221702
+P=1 N=2 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.010474587145202885
+P=1 N=2 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.01049436069306986
+P=1 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+P=1 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+P=1 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+P=1 PASS; 14 rejected inputs; help checked
+P=1 injected-test partition collective_check=1
+P=1 injected-test allocation-root collective_check=1
+P=1 injected-test allocation-worker collective_check=1
+P=1 injected Sendrecv error: MPI_Abort exit=1; no timeout
+<end of output>
+Test time =  41.42 sec
+----------------------------------------------------------
+Test Passed.
+"heat_mpi_p1" end time: Nov 11 09:20 CST
+"heat_mpi_p1" time elapsed: 00:00:41
+----------------------------------------------------------
+
+8/20 Testing: heat_mpi_p2
+8/20 Test: heat_mpi_p2
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_mpi" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--processes=2" "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_mpi_failures"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_mpi_p2" start time: Nov 11 09:20 CST
+Output:
+----------------------------------------------------------
+P=2 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=2 N=3 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026237748054163124
+P=2 N=3 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0031705248054162416
+P=2 N=3 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035491022376327175
+P=2 N=3 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035677787370435032
+P=2 N=6 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010373277649589063
+P=2 N=6 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010658422401340628
+P=2 PASS; 15 rejected inputs; help checked
+P=2 injected-test partition collective_check=1
+P=2 injected-test allocation-root collective_check=1
+P=2 injected-test allocation-worker collective_check=1
+P=2 injected Sendrecv error: MPI_Abort exit=1; no timeout
+<end of output>
+Test time =  43.09 sec
+----------------------------------------------------------
+Test Passed.
+"heat_mpi_p2" end time: Nov 11 09:21 CST
+"heat_mpi_p2" time elapsed: 00:00:43
+----------------------------------------------------------
+
+9/20 Testing: heat_mpi_p3
+9/20 Test: heat_mpi_p3
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_mpi" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--processes=3" "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_mpi_failures"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_mpi_p3" start time: Nov 11 09:21 CST
+Output:
+----------------------------------------------------------
+P=3 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=3 N=4 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0012628683950388631
+P=3 N=4 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.002053476204208371
+P=3 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+P=3 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+P=3 N=8 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0004823289376260087
+P=3 N=8 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00051140720258602279
+P=3 PASS; 15 rejected inputs; help checked
+P=3 injected-test partition collective_check=1
+P=3 injected-test allocation-root collective_check=1
+P=3 injected-test allocation-worker collective_check=1
+P=3 injected Sendrecv error: MPI_Abort exit=1; no timeout
+<end of output>
+Test time =  42.53 sec
+----------------------------------------------------------
+Test Passed.
+"heat_mpi_p3" end time: Nov 11 09:21 CST
+"heat_mpi_p3" time elapsed: 00:00:42
+----------------------------------------------------------
+
+10/20 Testing: heat_mpi_p4
+10/20 Test: heat_mpi_p4
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_mpi" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--processes=4" "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_mpi_failures"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_mpi_p4" start time: Nov 11 09:21 CST
+Output:
+----------------------------------------------------------
+P=4 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+P=4 N=5 M=1 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00018403556785195896
+P=4 N=5 M=2 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00092634438113370354
+P=4 N=5 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014393469605138431
+P=4 N=5 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014646345186254406
+P=4 N=10 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.000224029466217468
+P=4 N=10 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00025337200664976578
+P=4 PASS; 15 rejected inputs; help checked
+P=4 injected-test partition collective_check=1
+P=4 injected-test allocation-root collective_check=1
+P=4 injected-test allocation-worker collective_check=1
+P=4 injected Sendrecv error: MPI_Abort exit=1; no timeout
+<end of output>
+Test time =  45.87 sec
+----------------------------------------------------------
+Test Passed.
+"heat_mpi_p4" end time: Nov 11 09:22 CST
+"heat_mpi_p4" time elapsed: 00:00:45
+----------------------------------------------------------
+
+11/20 Testing: heat_openmp_q1
+11/20 Test: heat_openmp_q1
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_openmp.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_openmp" "--threads=1"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_openmp_q1" start time: Nov 11 09:22 CST
+Output:
+----------------------------------------------------------
+Q_requested=1 Q_actual=1 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=1 Q_actual=1 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=1 Q_actual=1 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=1 Q_actual=1 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=1 Q_actual=1 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=1 Q_actual=1 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=1 Q_actual=1 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=1 Q_actual=1 N=3 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035491022376327175
+Q_requested=1 Q_actual=1 N=3 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0035677787370435032
+Q_requested=1 Q_actual=1 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=1 Q_actual=1 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+CLI N=20 M=400 E_inf=0.0001126210917414272
+CLI N=2 M=1 E_inf=0.039641485816297228
+CLI N=2 M=2 E_inf=0.041212933214020864
+CLI N=2 M=3 E_inf=0.032150579968536347
+CLI N=2 M=1 E_inf=0.29121293321402086
+CLI N=7 M=7 E_inf=0.00066654289214562734
+CLI PASS; 30 invalid cases rejected
+default Q_requested=1 Q_actual=1 with OMP_NUM_THREADS=3
+RLIMIT_AS=256MiB allocation failure before parallel region: exit=1; runtime error: std::bad_alloc
+OpenMP PASS Q_requested=1 Q_actual=1; 14 invalid thread inputs rejected
+<end of output>
+Test time =   0.12 sec
+----------------------------------------------------------
+Test Passed.
+"heat_openmp_q1" end time: Nov 11 09:22 CST
+"heat_openmp_q1" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/20 Testing: heat_openmp_q2
+12/20 Test: heat_openmp_q2
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_openmp.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_openmp" "--threads=2"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_openmp_q2" start time: Nov 11 09:22 CST
+Output:
+----------------------------------------------------------
+Q_requested=2 Q_actual=2 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=2 Q_actual=2 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=2 Q_actual=2 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=2 Q_actual=2 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=2 Q_actual=2 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=2 Q_actual=2 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=2 Q_actual=2 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=2 Q_actual=2 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+Q_requested=2 Q_actual=2 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+Q_requested=2 Q_actual=2 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=2 Q_actual=2 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+OpenMP PASS Q_requested=2 Q_actual=2; 14 invalid thread inputs rejected
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"heat_openmp_q2" end time: Nov 11 09:22 CST
+"heat_openmp_q2" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/20 Testing: heat_openmp_q3
+13/20 Test: heat_openmp_q3
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_openmp.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_openmp" "--threads=3"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_openmp_q3" start time: Nov 11 09:22 CST
+Output:
+----------------------------------------------------------
+Q_requested=3 Q_actual=3 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=3 Q_actual=3 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=3 Q_actual=3 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=3 Q_actual=3 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=3 Q_actual=3 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=3 Q_actual=3 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=3 Q_actual=3 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=3 Q_actual=3 N=5 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014393469605138431
+Q_requested=3 Q_actual=3 N=5 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0014646345186254406
+Q_requested=3 Q_actual=3 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=3 Q_actual=3 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+OpenMP PASS Q_requested=3 Q_actual=3; 14 invalid thread inputs rejected
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"heat_openmp_q3" end time: Nov 11 09:22 CST
+"heat_openmp_q3" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/20 Testing: heat_openmp_q4
+14/20 Test: heat_openmp_q4
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_openmp.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_openmp" "--threads=4"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_openmp_q4" start time: Nov 11 09:22 CST
+Output:
+----------------------------------------------------------
+Q_requested=4 Q_actual=4 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=4 Q_actual=4 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=4 Q_actual=4 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=4 Q_actual=4 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=4 Q_actual=4 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=4 Q_actual=4 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=4 Q_actual=4 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=4 Q_actual=4 N=6 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010373277649589063
+Q_requested=4 Q_actual=4 N=6 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0010658422401340628
+Q_requested=4 Q_actual=4 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=4 Q_actual=4 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+OpenMP PASS Q_requested=4 Q_actual=4; 14 invalid thread inputs rejected
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"heat_openmp_q4" end time: Nov 11 09:22 CST
+"heat_openmp_q4" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/20 Testing: heat_openmp_limited
+15/20 Test: heat_openmp_limited
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_openmp.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_serial" "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_openmp" "--threads=4" "--limit=2"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_openmp_limited" start time: Nov 11 09:22 CST
+Output:
+----------------------------------------------------------
+Q_requested=4 Q_actual=2 N=20 M=400 T=0.1 alpha=1 D_inf=0 E_inf=0.0001126210917414272
+Q_requested=4 Q_actual=2 N=2 M=1 T=0.03125 alpha=1 D_inf=0 E_inf=0.039641485816297228
+Q_requested=4 Q_actual=2 N=2 M=2 T=0.0625 alpha=1 D_inf=0 E_inf=0.041212933214020864
+Q_requested=4 Q_actual=2 N=2 M=3 T=0.09375 alpha=1 D_inf=0 E_inf=0.032150579968536347
+Q_requested=4 Q_actual=2 N=2 M=9 T=0.28125 alpha=1 D_inf=0 E_inf=0.0019279136199556379
+Q_requested=4 Q_actual=2 N=2 M=10 T=0.3125 alpha=1 D_inf=0 E_inf=0.0011178069473832914
+Q_requested=4 Q_actual=2 N=2 M=1 T=0.0625 alpha=1 D_inf=0 E_inf=0.29121293321402086
+Q_requested=4 Q_actual=2 N=4 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026001941236595272
+Q_requested=4 Q_actual=2 N=4 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.0026271506703973158
+Q_requested=4 Q_actual=2 N=7 M=7 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00066654289214562734
+Q_requested=4 Q_actual=2 N=7 M=8 T=0.01 alpha=0.3 D_inf=0 E_inf=0.00069396931005616391
+stdout/stderr and help output failures: exit=1
+OpenMP PASS Q_requested=4 Q_actual=2; 14 invalid thread inputs rejected
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"heat_openmp_limited" end time: Nov 11 09:22 CST
+"heat_openmp_limited" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/20 Testing: heat_system_default
+16/20 Test: heat_system_default
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_system.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_serial" "--mpi=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_mpi" "--openmp=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_openmp" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--max-procs=4" "--max-threads=4" "--suite=default"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_system_default" start time: Nov 11 09:22 CST
+Output:
+----------------------------------------------------------
+RESULT {"suite": "default", "solver": "serial", "requested": 1, "actual": 1, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "mpi", "requested": 1, "actual": 1, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "mpi", "requested": 2, "actual": 2, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "mpi", "requested": 3, "actual": 3, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "mpi", "requested": 4, "actual": 4, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "openmp", "requested": 1, "actual": 1, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "openmp", "requested": 2, "actual": 2, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "openmp", "requested": 3, "actual": 3, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "openmp", "requested": 4, "actual": 4, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "openmp", "requested": 4, "actual": 2, "N": 20, "M": 400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 0.0001126210917414272, "E_bound": 0.00022552012023239115, "D_inf": 0.0, "modal_error": 9.71445146547012e-16, "ratio": null, "order": null}
+RESULT {"suite": "default", "solver": "serial", "requested": 1, "actual": 1, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "mpi", "requested": 1, "actual": 1, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "mpi", "requested": 2, "actual": 2, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "mpi", "requested": 3, "actual": 3, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "mpi", "requested": 4, "actual": 4, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "openmp", "requested": 1, "actual": 1, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "openmp", "requested": 2, "actual": 2, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "openmp", "requested": 3, "actual": 3, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "openmp", "requested": 4, "actual": 4, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "openmp", "requested": 4, "actual": 2, "N": 40, "M": 1600, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 2.818135112095388e-05, "E_bound": 5.638003005809779e-05, "D_inf": 0.0, "modal_error": 1.1657341758564144e-15, "ratio": 3.9962985187636817, "order": 1.9986643547655285}
+RESULT {"suite": "default", "solver": "serial", "requested": 1, "actual": 1, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+RESULT {"suite": "default", "solver": "mpi", "requested": 1, "actual": 1, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+RESULT {"suite": "default", "solver": "mpi", "requested": 2, "actual": 2, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+RESULT {"suite": "default", "solver": "mpi", "requested": 3, "actual": 3, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+RESULT {"suite": "default", "solver": "mpi", "requested": 4, "actual": 4, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+RESULT {"suite": "default", "solver": "openmp", "requested": 1, "actual": 1, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+RESULT {"suite": "default", "solver": "openmp", "requested": 2, "actual": 2, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+RESULT {"suite": "default", "solver": "openmp", "requested": 3, "actual": 3, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+RESULT {"suite": "default", "solver": "openmp", "requested": 4, "actual": 4, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+RESULT {"suite": "default", "solver": "openmp", "requested": 4, "actual": 2, "N": 80, "M": 6400, "T": 0.1, "alpha": 1.0, "r": 0.1, "E_inf": 7.046962600038009e-06, "E_bound": 1.4095007514524447e-05, "D_inf": 0.0, "modal_error": 7.716050021144838e-15, "ratio": 3.9990777190731617, "order": 1.9996673191155077}
+M3 default PASS; requested MPI P=1..4, OpenMP Q=1..4; higher P/Q and multi-node not run; test durations are not performance data
+<end of output>
+Test time =   6.71 sec
+----------------------------------------------------------
+Test Passed.
+"heat_system_default" end time: Nov 11 09:22 CST
+"heat_system_default" time elapsed: 00:00:06
+----------------------------------------------------------
+
+17/20 Testing: heat_system_low
+17/20 Test: heat_system_low
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_system.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_serial" "--mpi=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_mpi" "--openmp=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_openmp" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--max-procs=4" "--max-threads=4" "--suite=low"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_system_low" start time: Nov 11 09:22 CST
+Output:
+----------------------------------------------------------
+RESULT {"suite": "low", "solver": "serial", "requested": 1, "actual": 1, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "mpi", "requested": 1, "actual": 1, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "mpi", "requested": 2, "actual": 2, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "mpi", "requested": 3, "actual": 3, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "mpi", "requested": 4, "actual": 4, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "openmp", "requested": 1, "actual": 1, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "openmp", "requested": 2, "actual": 2, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "openmp", "requested": 3, "actual": 3, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "openmp", "requested": 4, "actual": 4, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "openmp", "requested": 4, "actual": 2, "N": 12, "M": 144, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.0008451943320902933, "E_bound": 0.0016807931390722603, "D_inf": 0.0, "modal_error": 4.163336342344337e-15, "ratio": null, "order": null}
+RESULT {"suite": "low", "solver": "serial", "requested": 1, "actual": 1, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "mpi", "requested": 1, "actual": 1, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "mpi", "requested": 2, "actual": 2, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "mpi", "requested": 3, "actual": 3, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "mpi", "requested": 4, "actual": 4, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "openmp", "requested": 1, "actual": 1, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "openmp", "requested": 2, "actual": 2, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "openmp", "requested": 3, "actual": 3, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "openmp", "requested": 4, "actual": 4, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "openmp", "requested": 4, "actual": 2, "N": 24, "M": 576, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 0.00021039852039012041, "E_bound": 0.0004201982847680651, "D_inf": 0.0, "modal_error": 8.604228440844963e-15, "ratio": 4.017111577225619, "order": 2.0061585334955327}
+RESULT {"suite": "low", "solver": "serial", "requested": 1, "actual": 1, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+RESULT {"suite": "low", "solver": "mpi", "requested": 1, "actual": 1, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+RESULT {"suite": "low", "solver": "mpi", "requested": 2, "actual": 2, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+RESULT {"suite": "low", "solver": "mpi", "requested": 3, "actual": 3, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+RESULT {"suite": "low", "solver": "mpi", "requested": 4, "actual": 4, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+RESULT {"suite": "low", "solver": "openmp", "requested": 1, "actual": 1, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+RESULT {"suite": "low", "solver": "openmp", "requested": 2, "actual": 2, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+RESULT {"suite": "low", "solver": "openmp", "requested": 3, "actual": 3, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+RESULT {"suite": "low", "solver": "openmp", "requested": 4, "actual": 4, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+RESULT {"suite": "low", "solver": "openmp", "requested": 4, "actual": 2, "N": 48, "M": 2304, "T": 0.2, "alpha": 0.25, "r": 0.05000000000000001, "E_inf": 5.254348922212326e-05, "E_bound": 0.00010504957119201627, "D_inf": 0.0, "modal_error": 7.26640969617165e-14, "ratio": 4.004273859710345, "order": 2.001540646135702}
+M3 low PASS; requested MPI P=1..4, OpenMP Q=1..4; higher P/Q and multi-node not run; test durations are not performance data
+<end of output>
+Test time =   6.16 sec
+----------------------------------------------------------
+Test Passed.
+"heat_system_low" end time: Nov 11 09:22 CST
+"heat_system_low" time elapsed: 00:00:06
+----------------------------------------------------------
+
+18/20 Testing: heat_system_endpoint
+18/20 Test: heat_system_endpoint
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_system.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_serial" "--mpi=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_mpi" "--openmp=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_openmp" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--max-procs=4" "--max-threads=4" "--suite=endpoint"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_system_endpoint" start time: Nov 11 09:22 CST
+Output:
+----------------------------------------------------------
+RESULT {"suite": "endpoint", "solver": "serial", "requested": 1, "actual": 1, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 1, "actual": 1, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 2, "actual": 2, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 3, "actual": 3, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 4, "actual": 4, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 1, "actual": 1, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 2, "actual": 2, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 3, "actual": 3, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 4, "actual": 4, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 4, "actual": 2, "N": 12, "M": 72, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0024002647386064807, "E_bound": 0.004780541252068746, "D_inf": 0.0, "modal_error": 1.6653345369377348e-16, "ratio": null, "order": null}
+RESULT {"suite": "endpoint", "solver": "serial", "requested": 1, "actual": 1, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 1, "actual": 1, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 2, "actual": 2, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 3, "actual": 3, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 4, "actual": 4, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 1, "actual": 1, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 2, "actual": 2, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 3, "actual": 3, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 4, "actual": 4, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 4, "actual": 2, "N": 24, "M": 288, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.0005981926582010466, "E_bound": 0.0011951353130171866, "D_inf": 0.0, "modal_error": 7.355227538141662e-16, "ratio": 4.0125279133729785, "order": 2.0045114284579184}
+RESULT {"suite": "endpoint", "solver": "serial", "requested": 1, "actual": 1, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 1, "actual": 1, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 2, "actual": 2, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 3, "actual": 3, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+RESULT {"suite": "endpoint", "solver": "mpi", "requested": 4, "actual": 4, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 1, "actual": 1, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 2, "actual": 2, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 3, "actual": 3, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 4, "actual": 4, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+RESULT {"suite": "endpoint", "solver": "openmp", "requested": 4, "actual": 2, "N": 48, "M": 1152, "T": 0.125, "alpha": 1.0, "r": 0.25, "E_inf": 0.00014943098140353384, "E_bound": 0.00029878382825429664, "D_inf": 0.0, "modal_error": 2.7200464103316335e-15, "ratio": 4.003136783165771, "order": 2.0011309120091143}
+M3 endpoint PASS; requested MPI P=1..4, OpenMP Q=1..4; higher P/Q and multi-node not run; test durations are not performance data
+<end of output>
+Test time =   5.95 sec
+----------------------------------------------------------
+Test Passed.
+"heat_system_endpoint" end time: Nov 11 09:22 CST
+"heat_system_endpoint" time elapsed: 00:00:05
+----------------------------------------------------------
+
+19/20 Testing: heat_system_boundaries
+19/20 Test: heat_system_boundaries
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_system.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_serial" "--mpi=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_mpi" "--openmp=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_openmp" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--max-procs=4" "--max-threads=4" "--suite=boundaries"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_system_boundaries" start time: Nov 11 09:22 CST
+Output:
+----------------------------------------------------------
+BOUNDARY solver=serial requested=1 actual=1 N=2 M=1 T=0.0625 r=0.25 E_inf=0.29121293321402086 D_inf=0
+BOUNDARY solver=serial requested=1 actual=1 N=2 M=2 T=0.125 r=0.25 E_inf=0.084804972471113793 D_inf=0
+BOUNDARY solver=serial requested=1 actual=1 N=2 M=7 T=0.4375 r=0.25 E_inf=0.00017761294332968201 D_inf=0
+BOUNDARY solver=serial requested=1 actual=1 N=2 M=8 T=0.5 r=0.25 E_inf=5.1723186203812337e-05 D_inf=0
+STABILITY solver=serial requested=1 actual=1 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+BOUNDARY solver=mpi requested=1 actual=1 N=2 M=1 T=0.0625 r=0.25 E_inf=0.29121293321402086 D_inf=0
+BOUNDARY solver=mpi requested=1 actual=1 N=2 M=2 T=0.125 r=0.25 E_inf=0.084804972471113793 D_inf=0
+BOUNDARY solver=mpi requested=1 actual=1 N=2 M=7 T=0.4375 r=0.25 E_inf=0.00017761294332968201 D_inf=0
+BOUNDARY solver=mpi requested=1 actual=1 N=2 M=8 T=0.5 r=0.25 E_inf=5.1723186203812337e-05 D_inf=0
+STABILITY solver=mpi requested=1 actual=1 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+BOUNDARY solver=mpi requested=2 actual=2 N=3 M=1 T=0.027777777777777773 r=0.24999999999999994 E_inf=0.058443672369546951 D_inf=0
+BOUNDARY solver=mpi requested=2 actual=2 N=3 M=2 T=0.055555555555555546 r=0.24999999999999994 E_inf=0.062997889489598891 D_inf=0
+BOUNDARY solver=mpi requested=2 actual=2 N=3 M=7 T=0.19444444444444442 r=0.24999999999999997 E_inf=0.010290199736518124 D_inf=0
+BOUNDARY solver=mpi requested=2 actual=2 N=3 M=8 T=0.22222222222222218 r=0.24999999999999994 E_inf=0.0064035538080038298 D_inf=0
+STABILITY solver=mpi requested=2 actual=2 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+BOUNDARY solver=mpi requested=3 actual=3 N=4 M=1 T=0.015625 r=0.25 E_inf=0.027496163142085916 D_inf=0
+BOUNDARY solver=mpi requested=3 actual=3 N=4 M=2 T=0.03125 r=0.25 E_inf=0.039641485816297228 D_inf=0
+BOUNDARY solver=mpi requested=3 actual=3 N=4 M=7 T=0.109375 r=0.25 E_inf=0.027054931099520743 D_inf=0
+BOUNDARY solver=mpi requested=3 actual=3 N=4 M=8 T=0.125 r=0.25 E_inf=0.022304972471113793 D_inf=0
+STABILITY solver=mpi requested=3 actual=3 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+BOUNDARY solver=mpi requested=4 actual=4 N=5 M=1 T=0.009999999999999998 r=0.24999999999999994 E_inf=0.010719984196528642 D_inf=0
+BOUNDARY solver=mpi requested=4 actual=4 N=5 M=2 T=0.019999999999999997 r=0.24999999999999994 E_inf=0.017472349072541804 D_inf=0
+BOUNDARY solver=mpi requested=4 actual=4 N=5 M=7 T=0.06999999999999999 r=0.25 E_inf=0.02198720022110931 D_inf=0
+BOUNDARY solver=mpi requested=4 actual=4 N=5 M=8 T=0.07999999999999999 r=0.24999999999999994 E_inf=0.02048023576558583 D_inf=0
+STABILITY solver=mpi requested=4 actual=4 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+BOUNDARY solver=openmp requested=1 actual=1 N=2 M=1 T=0.0625 r=0.25 E_inf=0.29121293321402086 D_inf=0
+BOUNDARY solver=openmp requested=1 actual=1 N=2 M=2 T=0.125 r=0.25 E_inf=0.084804972471113793 D_inf=0
+BOUNDARY solver=openmp requested=1 actual=1 N=2 M=7 T=0.4375 r=0.25 E_inf=0.00017761294332968201 D_inf=0
+BOUNDARY solver=openmp requested=1 actual=1 N=2 M=8 T=0.5 r=0.25 E_inf=5.1723186203812337e-05 D_inf=0
+STABILITY solver=openmp requested=1 actual=1 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+BOUNDARY solver=openmp requested=2 actual=2 N=2 M=1 T=0.0625 r=0.25 E_inf=0.29121293321402086 D_inf=0
+BOUNDARY solver=openmp requested=2 actual=2 N=2 M=2 T=0.125 r=0.25 E_inf=0.084804972471113793 D_inf=0
+BOUNDARY solver=openmp requested=2 actual=2 N=2 M=7 T=0.4375 r=0.25 E_inf=0.00017761294332968201 D_inf=0
+BOUNDARY solver=openmp requested=2 actual=2 N=2 M=8 T=0.5 r=0.25 E_inf=5.1723186203812337e-05 D_inf=0
+STABILITY solver=openmp requested=2 actual=2 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+BOUNDARY solver=openmp requested=3 actual=3 N=2 M=1 T=0.0625 r=0.25 E_inf=0.29121293321402086 D_inf=0
+BOUNDARY solver=openmp requested=3 actual=3 N=2 M=2 T=0.125 r=0.25 E_inf=0.084804972471113793 D_inf=0
+BOUNDARY solver=openmp requested=3 actual=3 N=2 M=7 T=0.4375 r=0.25 E_inf=0.00017761294332968201 D_inf=0
+BOUNDARY solver=openmp requested=3 actual=3 N=2 M=8 T=0.5 r=0.25 E_inf=5.1723186203812337e-05 D_inf=0
+STABILITY solver=openmp requested=3 actual=3 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+BOUNDARY solver=openmp requested=4 actual=4 N=2 M=1 T=0.0625 r=0.25 E_inf=0.29121293321402086 D_inf=0
+BOUNDARY solver=openmp requested=4 actual=4 N=2 M=2 T=0.125 r=0.25 E_inf=0.084804972471113793 D_inf=0
+BOUNDARY solver=openmp requested=4 actual=4 N=2 M=7 T=0.4375 r=0.25 E_inf=0.00017761294332968201 D_inf=0
+BOUNDARY solver=openmp requested=4 actual=4 N=2 M=8 T=0.5 r=0.25 E_inf=5.1723186203812337e-05 D_inf=0
+STABILITY solver=openmp requested=4 actual=4 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+BOUNDARY solver=openmp requested=4 actual=2 N=2 M=1 T=0.0625 r=0.25 E_inf=0.29121293321402086 D_inf=0
+BOUNDARY solver=openmp requested=4 actual=2 N=2 M=2 T=0.125 r=0.25 E_inf=0.084804972471113793 D_inf=0
+BOUNDARY solver=openmp requested=4 actual=2 N=2 M=7 T=0.4375 r=0.25 E_inf=0.00017761294332968201 D_inf=0
+BOUNDARY solver=openmp requested=4 actual=2 N=2 M=8 T=0.5 r=0.25 E_inf=5.1723186203812337e-05 D_inf=0
+STABILITY solver=openmp requested=4 actual=2 below=accepted above=rejected twice=rejected; MPI excess P checked when P>1
+M3 boundaries PASS; requested MPI P=1..4, OpenMP Q=1..4; higher P/Q and multi-node not run; test durations are not performance data
+<end of output>
+Test time =  38.14 sec
+----------------------------------------------------------
+Test Passed.
+"heat_system_boundaries" end time: Nov 11 09:23 CST
+"heat_system_boundaries" time elapsed: 00:00:38
+----------------------------------------------------------
+
+20/20 Testing: heat_timing
+20/20 Test: heat_timing
+Command: "/usr/bin/python3" "/home/nuo/courses/projects/parallel-heat-solver/tests/check_timing.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_serial" "--mpi=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_mpi" "--openmp=/home/nuo/courses/projects/parallel-heat-solver/build/m4-release/heat_openmp" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--max-procs=4" "--max-threads=4"
+Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+"heat_timing" start time: Nov 11 09:23 CST
+Output:
+----------------------------------------------------------
+TIMING kind=serial requested=1 actual=1 odd/even summary matches full E_inf
+TIMING kind=mpi requested=1 actual=1 odd/even summary matches full E_inf
+TIMING kind=mpi requested=2 actual=2 odd/even summary matches full E_inf
+TIMING kind=mpi requested=3 actual=3 odd/even summary matches full E_inf
+TIMING kind=mpi requested=4 actual=4 odd/even summary matches full E_inf
+TIMING kind=openmp requested=1 actual=1 odd/even summary matches full E_inf
+TIMING kind=openmp requested=2 actual=2 odd/even summary matches full E_inf
+TIMING kind=openmp requested=3 actual=3 odd/even summary matches full E_inf
+TIMING kind=openmp requested=4 actual=4 odd/even summary matches full E_inf
+TIMING summary stderr output failures checked
+<end of output>
+Test time =  27.84 sec
+----------------------------------------------------------
+Test Passed.
+"heat_timing" end time: Nov 11 09:23 CST
+"heat_timing" time elapsed: 00:00:27
+----------------------------------------------------------
+
+End testing: Nov 11 09:23 CST
+
+M3 = 227.86 sec*proc
+
+M4 =  27.84 sec*proc
+
+
+--- Same-run raw CTest console ---
+   Site: Nuo-Computer
+   Build name: Linux-c++
+Create new tag: 20261111-0119 - Experimental
+Test project /home/nuo/courses/projects/parallel-heat-solver/build/m4-release
+      Start  1: heat_initial
+ 1/20 Test  #1: heat_initial .....................   Passed    0.00 sec
+      Start  2: heat_hand
+ 2/20 Test  #2: heat_hand ........................   Passed    0.00 sec
+      Start  3: heat_parity
+ 3/20 Test  #3: heat_parity ......................   Passed    0.00 sec
+      Start  4: heat_validation
+ 4/20 Test  #4: heat_validation ..................   Passed    0.00 sec
+      Start  5: heat_analytic
+ 5/20 Test  #5: heat_analytic ....................   Passed    0.02 sec
+      Start  6: heat_cli
+ 6/20 Test  #6: heat_cli .........................   Passed    0.05 sec
+      Start  7: heat_mpi_p1
+ 7/20 Test  #7: heat_mpi_p1 ......................   Passed   41.42 sec
+      Start  8: heat_mpi_p2
+ 8/20 Test  #8: heat_mpi_p2 ......................   Passed   43.09 sec
+      Start  9: heat_mpi_p3
+ 9/20 Test  #9: heat_mpi_p3 ......................   Passed   42.53 sec
+      Start 10: heat_mpi_p4
+10/20 Test #10: heat_mpi_p4 ......................   Passed   45.87 sec
+      Start 11: heat_openmp_q1
+11/20 Test #11: heat_openmp_q1 ...................   Passed    0.12 sec
+      Start 12: heat_openmp_q2
+12/20 Test #12: heat_openmp_q2 ...................   Passed    0.07 sec
+      Start 13: heat_openmp_q3
+13/20 Test #13: heat_openmp_q3 ...................   Passed    0.07 sec
+      Start 14: heat_openmp_q4
+14/20 Test #14: heat_openmp_q4 ...................   Passed    0.07 sec
+      Start 15: heat_openmp_limited
+15/20 Test #15: heat_openmp_limited ..............   Passed    0.07 sec
+      Start 16: heat_system_default
+16/20 Test #16: heat_system_default ..............   Passed    6.71 sec
+      Start 17: heat_system_low
+17/20 Test #17: heat_system_low ..................   Passed    6.16 sec
+      Start 18: heat_system_endpoint
+18/20 Test #18: heat_system_endpoint .............   Passed    5.95 sec
+      Start 19: heat_system_boundaries
+19/20 Test #19: heat_system_boundaries ...........   Passed   38.14 sec
+      Start 20: heat_timing
+20/20 Test #20: heat_timing ......................   Passed   27.84 sec
+
+100% tests passed, 0 tests failed out of 20
+
+Label Time Summary:
+M3    = 227.86 sec*proc (4 tests)
+M4    =  27.84 sec*proc (1 test)
+
+Total Test time (real) = 258.21 sec
+
+2026-11-11 final supplemental checks: timing process-group cleanup and CTest PROCESSORS metadata updated after original Debug suite. Numerical solver sources unchanged.
+
+$ cmake -S . -B build/m4-debug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-- Configuring done (2.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+
+exit=0
+
+$ ctest --test-dir build/m4-debug -V -R ^heat_timing$
+Internal ctest changing into directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+UpdateCTestConfiguration  from :/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/DartConfiguration.tcl
+Parse Config file:/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/DartConfiguration.tcl
+UpdateCTestConfiguration  from :/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/DartConfiguration.tcl
+Parse Config file:/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/DartConfiguration.tcl
+Test project /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 20
+    Start 20: heat_timing
+
+20: Test command: /usr/bin/python3 "/home/nuo/courses/projects/parallel-heat-solver/tests/check_timing.py" "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_serial" "--mpi=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_mpi" "--openmp=/home/nuo/courses/projects/parallel-heat-solver/build/m4-debug/heat_openmp" "--mpiexec=/usr/bin/mpiexec" "--npflag=-n" "--max-procs=4" "--max-threads=4"
+20: Working Directory: /home/nuo/courses/projects/parallel-heat-solver/build/m4-debug
+20: Test timeout computed to be: 180
+20: TIMING kind=serial requested=1 actual=1 odd/even summary matches full E_inf
+20: TIMING kind=mpi requested=1 actual=1 odd/even summary matches full E_inf
+20: TIMING kind=mpi requested=2 actual=2 odd/even summary matches full E_inf
+20: TIMING kind=mpi requested=3 actual=3 odd/even summary matches full E_inf
+20: TIMING kind=mpi requested=4 actual=4 odd/even summary matches full E_inf
+20: TIMING kind=openmp requested=1 actual=1 odd/even summary matches full E_inf
+20: TIMING kind=openmp requested=2 actual=2 odd/even summary matches full E_inf
+20: TIMING kind=openmp requested=3 actual=3 odd/even summary matches full E_inf
+20: TIMING kind=openmp requested=4 actual=4 odd/even summary matches full E_inf
+20: TIMING summary stderr output failures checked
+1/1 Test #20: heat_timing ......................   Passed   27.60 sec
+
+The following tests passed:
+	heat_timing
+
+100% tests passed, 0 tests failed out of 1
+
+Label Time Summary:
+M4    = 110.39 sec*proc (1 test)
+
+Total Test time (real) =  27.60 sec
+
+exit=0
+
+$ python3 tests/check_statistics.py
+STATISTICS correctly rejected missing
+STATISTICS correctly rejected duplicate
+STATISTICS correctly rejected version
+STATISTICS correctly rejected team
+STATISTICS correctly rejected parameters
+STATISTICS correctly rejected nan
+STATISTICS correctly rejected error
+STATISTICS correctly rejected missing-validation
+STATISTICS median/range/baseline/work normalization and eight corruption cases passed (synthetic only)
+
+exit=0

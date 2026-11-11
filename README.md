@@ -6,7 +6,7 @@
 
 ## 当前进度
 
-M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小数显示已补齐并验证。M2 MPI 提交 `34cdd73` 已获用户验收，既有 Debug/Release 回归各 10/10 通过。M2b OpenMP 提交 `17925a9` 已于 2026-11-10 获用户验收，既有 Debug/Release 各 15/15 通过；M3 系统验证提交 `cfffe71` 已获用户验收，证据见下节；M4 未开始。M2b 检查输出见 [M2b 验证记录](docs/validation/m2b.log)，历史证据保留在各阶段日志中。
+M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小数显示已补齐并验证。M2 MPI 提交 `34cdd73` 已获用户验收，既有 Debug/Release 回归各 10/10 通过。M2b OpenMP 提交 `17925a9` 已于 2026-11-10 获用户验收，既有 Debug/Release 各 15/15 通过；M3 系统验证提交 `cfffe71` 已获用户验收，证据见下节；M4 已在用户准备的 `Evaluation` 分支开展，计时与实验协议见末节；M5 未开始。M2b 检查输出见 [M2b 验证记录](docs/validation/m2b.log)，历史证据保留在各阶段日志中。
 
 ## 文档导航
 
@@ -26,7 +26,7 @@ M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小�
 
 这些资料仅在本地只读使用，不随 Git 仓库分发。新克隆需要使用者从课程提供的原始资料中补齐上述路径；不要将资料加入提交。资料缺失时，应明确记录缺项，并暂停依赖原文核对的工作。课程示例的运行输出不能作为本项目的验证结果。
 
-`src/` 包含独立串行、MPI 和 OpenMP 实现，`tests/` 为基本回归。M2b 已获用户验收；`judge/m3` 的 M3 系统验证提交 `cfffe71` 已获用户验收，M4 正式性能实验仍须用户另行选择。
+`src/` 包含独立串行、MPI 和 OpenMP 实现，`tests/` 为基本回归。M2b 已获用户验收；`judge/m3` 的 M3 系统验证提交 `cfffe71` 已获用户验收，M4 正式性能实验已由用户选择，按末节冻结协议开展。
 
 ## 构建与运行
 
@@ -112,3 +112,16 @@ ctest --test-dir build -L M3 --output-on-failure
 `tests/check_system.py` 以 Python 标准库逐点解析三种独立程序的真实 CSV，分别检查连续解析误差、离散模态与串并行一致性。三组联合加密覆盖 r=0.05/0.1/0.25，输出每组 E_inf、阈值、D_inf、误差比和观测阶；稳定性端点及相邻浮点输入单独核查。默认每组实际 P/Q=1..4，另含请求 Q=4/实际 2；每 rank 一行、超限 P、Q>内部行及奇偶步纳入边界组。不均匀 MPI 分块由加密组和原回归覆盖。完整参数、阈值推导及覆盖表见 [DESIGN 第 9 节](docs/DESIGN.md)。
 
 可降低既有两个资源配置值（1..4），脚本仅核验所选矩阵，不将缺失资源标为通过。每个系统测试 TIMEOUT=240 秒，子进程 25 秒，超时杀死启动器进程组。没有大于 4 的资源或多机验证结论。原始环境/命令/构建/检查及完整逐项输出见 [m3.log](docs/validation/m3.log)，加密数据见 [m3-errors.csv](docs/validation/m3-errors.csv)；CSV 来自该次 CTest 实际输出，不是解析预测值。测试用时不作为性能数据。
+
+
+## M4 性能计时与实验
+
+详细资源、计时边界、矩阵、统计和复现方法见 [性能实验协议](docs/performance/README.md)。三种程序 stderr 均增加 `loop_seconds`，仅测时间推进；MPI 含 halo 通信并取 rank 最大值，OpenMP 包括团队进入/退出、逐层同步与交换。初始化、收集、验证和输出在计时外。默认 CSV 合同保持，新增无值 `--summary-only` 省略 CSV，仍真实验证 E_inf。
+
+```bash
+./build/m4-release/heat_serial --N 128 --M 1024 --T .01 --summary-only
+mpiexec --map-by core --bind-to hwthread -n 4 ./build/m4-release/heat_mpi --N 128 --M 1024 --T .01 --summary-only
+OMP_PLACES='{0},{2},{4},{6}' OMP_PROC_BIND=close ./build/m4-release/heat_openmp --threads 4 --N 128 --M 1024 --T .01 --summary-only
+```
+
+本机实验使用 CPU 0/2/4/6；迁移机器先核查可用 CPU 与绑定。正式数据采样、统计与图表命令见协议，不将上述单次示范或 CTest 时间作为性能结论。新增 `heat_timing` 检查计时字段、摘要/全场一致及错误路径；`python3 tests/check_statistics.py` 使用合成数据独立核查统计方法。M4 实施结果完成后交用户验收，不进入 M5。

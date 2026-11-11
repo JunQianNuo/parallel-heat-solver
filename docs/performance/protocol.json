@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "parallelism": [1, 2, 4],
+  "cpus": [0, 2, 4, 6],
+  "T": 0.01,
+  "alpha": 1.0,
+  "repetitions": 5,
+  "warmups": 1,
+  "seed": 20261110,
+  "timeout_seconds": 120,
+  "strong": [{"N": 128, "M": 1024}, {"N": 384, "M": 9216}],
+  "scaled": [{"p": 1, "N": 256, "M": 4096}, {"p": 2, "N": 304, "M": 5776}, {"p": 4, "N": 362, "M": 8191}],
+  "env": {"OMP_DYNAMIC": "FALSE", "OMP_PROC_BIND": "close", "OMP_WAIT_POLICY": "ACTIVE", "OMP_THREAD_LIMIT": "4"},
+  "mpi_flags": ["--map-by", "core", "--bind-to", "hwthread", "--report-bindings"]
+}

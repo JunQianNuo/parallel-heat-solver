@@ -33,6 +33,8 @@ int print_help(const char* program, bool openmp) {
     std::cout << "Usage: " << program << " [--N intervals] [--M steps] [--T time] [--alpha diffusivity]\n"
               << "Defaults: N=20 M=400 T=0.1 alpha=1; require r<=1/4.\n"
               << "stdout: final field CSV; stderr: parameters and E_inf.\n";
+    std::cout << "[--summary-only] suppresses field CSV, retaining validation and stderr summary.\n"
+              << "loop_seconds: time stepping only; OpenMP includes team entry/exit, MPI takes rank max.\n";
     if (openmp)
         std::cout << "OpenMP: [--threads Q], default 1; positive decimal int.\n"
                   << "Explicit team request; OMP_NUM_THREADS is overridden, dynamic adjustment disabled.\n"
@@ -40,12 +42,18 @@ int print_help(const char* program, bool openmp) {
     std::cout.flush();
     return std::cout ? 0 : 1;
 }
-Parameters parse_arguments(int argc, char** argv, int* threads) {
+Parameters parse_arguments(int argc, char** argv, int* threads, bool* summary_only) {
     Parameters p;
     if (threads) *threads = 1;
+    if (summary_only) *summary_only = false;
     unsigned seen = 0;
     for (int k = 1; k < argc; ++k) {
         const std::string key = argv[k];
+        if (key == "--summary-only" && summary_only) {
+            if (*summary_only) throw std::invalid_argument("duplicate --summary-only");
+            *summary_only = true;
+            continue;
+        }
         const unsigned bit = key == "--N" ? 1 : key == "--M" ? 2 :
                              key == "--T" ? 4 : key == "--alpha" ? 8 :
                              threads && key == "--threads" ? 16 : 0;
@@ -67,12 +75,17 @@ Parameters parse_arguments(int argc, char** argv, int* threads) {
     heat::validate(p);
     return p;
 }
-void print_field(const Parameters& p, const std::vector<double>& field) {
+void print_field(const Parameters& p, const std::vector<double>& field, bool summary_only) {
     const auto d = heat::validate(p);
     const double error = heat::max_error(field, p);
     std::cerr << std::setprecision(17) << "N=" << p.N << " M=" << p.M
               << " T=" << p.T << " alpha=" << p.alpha << " h=" << d.h
               << " dt=" << d.dt << " r=" << d.r << " E_inf=" << error << '\n';
+    if (summary_only) {
+        std::cerr.flush();
+        if (!std::cerr) throw std::runtime_error("output failed");
+        return;
+    }
     std::cout << std::setprecision(17) << "i,j,x,y,u_numeric,u_exact,abs_error\n";
     for (std::size_t i = 0; i <= p.N; ++i)
         for (std::size_t j = 0; j <= p.N; ++j) {
