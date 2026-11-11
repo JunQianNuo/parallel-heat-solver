@@ -1,0 +1,5 @@
+Run02 stopped during warmups: one validated serial warmup, one MPI P=1 attempt rejected by binding-report parser; zero measured samples.
+Version e715560; no retries or overwrites. Original attempt paths retained and failed stdout/stderr copied alongside this log.
+Independent probe: with --cpu-list 0, Open MPI 4.1.6 reports "not bound (or bound to all available processors)" while sched_getaffinity returns [0]. Actual CPU requirement was satisfied; the report is ambiguous.
+Correction: P=1 candidate list 0,2 with one rank gives explicit rank0->CPU0; actual CPU allocation remains [0]. All other resources unchanged.
+Next run uses a fresh 02-r1 ID after new checks and commit. No samples from Run02 enter its statistics.

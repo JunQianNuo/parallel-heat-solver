@@ -154,8 +154,10 @@ M4进一步扩大网格数量与P/Q的实验已获用户授权，已完成实现
 cmake -S . -B build/m4-large-release -DCMAKE_BUILD_TYPE=Release -DHEAT_BUILD_DIAGNOSTICS=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 cmake --build build/m4-large-release --target check --parallel 2
 python3 tests/check_large.py --build build/m4-large-release
-python3 scripts/benchmark_large.py --build build/m4-large-release --run-id 02
-python3 scripts/analyze_large.py docs/validation/m4-diagnostic-02
+python3 scripts/benchmark_large.py --build build/m4-large-release --run-id 02-r1
+python3 scripts/analyze_large.py docs/validation/m4-diagnostic-02-r1
 ```
 
 此处开启诊断构建仅为保留21项回归；本轮采样只调用原三个程序。采样须在正确性检查及提交冻结后进行；run-id不得重复，原始证据位于既有docs/validation，尚未完成的实验不标通过。
+
+运行02在单rank绑定报告核查时停止，未产生正式样本，失败证据原样保留；修正报告兼容后使用新编号02-r1。P=1虽向启动器提供0,2两个候选CPU，实际仅1个rank绑定CPU0；其余配置不变。

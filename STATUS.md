@@ -301,3 +301,12 @@ python3 scripts/analyze_diagnostics.py docs/validation/m4-diagnostic-01 --output
 
 
 扩大规模实现的最终检查完成：Debug/Release原21项均通过，另执行check_large.py通过8/16资源、奇偶/并行边界、请求16实际8、流式字段损坏拒绝、同轮中位数之比及bootstrap/缺记录检查。普通子进程与独立MPI rank超时清理均通过；初次开发失败和后续原始输出单独归档，不混入性能样本。两套配置/构建/check、XML/四位小数和完整LastTest在m4-diagnostic-large-{debug,release}-checks.log，无编译警告。两套正确性作业曾重叠，正式采样等待全部结束。旧源码/CMake/脚本及全部历史证据与9983e4f逐字节相同，2,564课程文件前后路径/内容哈希一致。接下来先提交冻结，再运行02；当前尚无扩大矩阵的正式性能结论。
+
+
+### 单rank绑定报告修正与失败留证（2026-11-11）
+
+冻结e715560后，运行02在MPI P=1预热的绑定报告核查处停止：只有1条通过的串行预热、1条被拒绝的MPI attempt，正式样本为0。原始清单/环境/JSONL/控制台及失败调用完整CSV和stderr原样保留，不覆盖、不纳入后续统计。独立探针表明实际affinity=[0]，但本机Open MPI 4.1.6在--cpu-list 0时报告not bound (or bound to all available processors)。先前8/16检查未覆盖这一单rank报告行为。
+
+修正仅为P=1使用候选列表0,2，仍只启动1个rank，明确报告rank0绑定CPU0；实际CPU集合、矩阵、计时和其余绑定不变。新增检查扩到全部P/Q=1/2/4/8/16；检查后另提交冻结，再以新运行编号02-r1从头采样，不重用02的预热或数据。本轮新增脚本的该报告兼容修正不改变正式程序，原Debug/Release21项证据保持，新增检查在两构建重跑。
+
+绑定报告兼容修正后，Debug/Release新增检查均再次通过，包含全部P/Q=1/2/4/8/16与两类超时清理；新日志为m4-diagnostic-large-{debug,release}-binding-checks.log，原21项检查日志原样保留。失败02的完整CSV与原attempt哈希一致，正式样本确为0。接下来提交修正与失败留证，再从新编号02-r1开始。

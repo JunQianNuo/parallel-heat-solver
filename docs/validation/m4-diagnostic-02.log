@@ -1,0 +1,695 @@
+$ ['uname', '-a']
+Linux Nuo-Computer 6.18.33.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun 18 21:54:43 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+
+exit=0
+$ ['lscpu']
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           39 bits physical, 48 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  28
+On-line CPU(s) list:                     0-27
+Vendor ID:                               GenuineIntel
+Model name:                              Intel(R) Core(TM) i7-14700HX
+CPU family:                              6
+Model:                                   183
+Thread(s) per core:                      2
+Core(s) per socket:                      14
+Socket(s):                               1
+Stepping:                                1
+BogoMIPS:                                4607.99
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves avx_vnni vnmi umip waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize ibt flush_l1d arch_capabilities
+Virtualization:                          VT-x
+Hypervisor vendor:                       Microsoft
+Virtualization type:                     full
+L1d cache:                               672 KiB (14 instances)
+L1i cache:                               448 KiB (14 instances)
+L2 cache:                                28 MiB (14 instances)
+L3 cache:                                33 MiB (1 instance)
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0-27
+Vulnerability Gather data sampling:      Not affected
+Vulnerability Ghostwrite:                Not affected
+Vulnerability Indirect target selection: Not affected
+Vulnerability Itlb multihit:             Not affected
+Vulnerability L1tf:                      Not affected
+Vulnerability Mds:                       Not affected
+Vulnerability Meltdown:                  Not affected
+Vulnerability Mmio stale data:           Not affected
+Vulnerability Old microcode:             Not affected
+Vulnerability Reg file data sampling:    Mitigation; Clear Register File
+Vulnerability Retbleed:                  Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow:      Not affected
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S
+Vulnerability Srbds:                     Not affected
+Vulnerability Tsa:                       Not affected
+Vulnerability Tsx async abort:           Not affected
+Vulnerability Vmscape:                   Not affected
+
+exit=0
+$ ['lscpu', '-e=CPU,CORE,SOCKET,NODE']
+CPU CORE SOCKET NODE
+  0    0      0    0
+  1    0      0    0
+  2    1      0    0
+  3    1      0    0
+  4    2      0    0
+  5    2      0    0
+  6    3      0    0
+  7    3      0    0
+  8    4      0    0
+  9    4      0    0
+ 10    5      0    0
+ 11    5      0    0
+ 12    6      0    0
+ 13    6      0    0
+ 14    7      0    0
+ 15    7      0    0
+ 16    8      0    0
+ 17    8      0    0
+ 18    9      0    0
+ 19    9      0    0
+ 20   10      0    0
+ 21   10      0    0
+ 22   11      0    0
+ 23   11      0    0
+ 24   12      0    0
+ 25   12      0    0
+ 26   13      0    0
+ 27   13      0    0
+
+exit=0
+$ ['free', '-h']
+               total        used        free      shared  buff/cache   available
+Mem:           7.6Gi       2.0Gi       5.0Gi       3.7Mi       835Mi       5.6Gi
+Swap:          2.0Gi          0B       2.0Gi
+
+exit=0
+$ ['c++', '--version']
+c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+exit=0
+$ ['cmake', '--version']
+cmake version 3.28.3
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+
+exit=0
+$ ['mpiexec', '--version']
+mpiexec (OpenRTE) 4.1.6
+
+Report bugs to http://www.open-mpi.org/community/help/
+
+exit=0
+$ ['ompi_info', '--parsable']
+package:Debian OpenMPI
+ompi:version:full:4.1.6
+ompi:version:repo:v4.1.6
+ompi:version:release_date:Sep 30, 2023
+orte:version:full:4.1.6
+orte:version:repo:v4.1.6
+orte:version:release_date:Sep 30, 2023
+opal:version:full:4.1.6
+opal:version:repo:v4.1.6
+opal:version:release_date:Sep 30, 2023
+mpi-api:version:full:3.1.0
+ident:4.1.6
+path:prefix:/usr
+config:arch:x86_64-pc-linux-gnu
+config:host:hostname
+config:user:username
+config:timestamp:"Sun Mar 31 20:25:08 UTC 2024"
+config:host:hostname
+config:cli: '--build=x86_64-linux-gnu' '--prefix=/usr' '--includedir=${prefix}/include' '--mandir=${prefix}/share/man' '--infodir=${prefix}/share/info' '--sysconfdir=/etc' '--localstatedir=/var' '--disable-option-checking' '--disable-silent-rules' '--libdir=${prefix}/lib/x86_64-linux-gnu' '--runstatedir=/run' '--disable-maintainer-mode' '--disable-dependency-tracking' '--disable-silent-rules' '--disable-wrapper-runpath' '--with-package-string=Debian OpenMPI' '--with-verbs' '--with-libfabric' '--with-psm' '--with-psm2' '--with-ucx' '--with-pmix=/usr/lib/x86_64-linux-gnu/pmix2' '--with-jdk-dir=/usr/lib/jvm/default-java' '--enable-mpi-java' '--enable-opal-btl-usnic-unit-tests' '--with-libevent=external' '--with-hwloc=external' '--disable-silent-rules' '--enable-mpi-cxx' '--enable-ipv6' '--with-devel-headers' '--with-slurm' '--with-sge' '--without-tm' '--sysconfdir=/etc/openmpi' '--libdir=${prefix}/lib/x86_64-linux-gnu/openmpi/lib' '--includedir=${prefix}/lib/x86_64-linux-gnu/openmpi/include' 'FC=gfortran'
+build:user:username
+build:timestamp:"Sun Mar 31 20:25:08 UTC 2024"
+build:host:hostname
+bindings:c:yes
+bindings:cxx:yes
+bindings:mpif.h:yes (all)
+bindings:use_mpi:"yes (full: ignore TKR)"
+bindings:use_mpi:size:deprecated-ompi-info-value
+bindings:use_mpi_f08:yes
+bindings:use_mpi_f08:compliance:"The mpi_f08 module is available, but due to limitations in the gfortran compiler and/or Open MPI, does not support the following: array subsections, direct passthru (where possible) to underlying Open MPI's C functionality"
+bindings:use_mpi_f08:subarrays-supported:no
+bindings:java:yes
+compiler:all:rpath:rpath
+compiler:c:command:gcc
+compiler:c:absolute:/usr/bin/gcc
+compiler:c:familyname:GNU
+compiler:c:version:13.2.0
+compiler:cxx:command:g++
+compiler:cxx:absolute:/usr/bin/g++
+compiler:fortran:command:gfortran
+compiler:fortran:absolute:/usr/bin/gfortran
+compiler:fortran:ignore_tkr:"yes (!GCC$ ATTRIBUTES NO_ARG_CHECK ::)"
+compiler:fortran:f08_assumed_rank:yes
+compiler:fortran:optional_arguments:yes
+compiler:fortran:interface:yes
+compiler:fortran:iso_fortran_env:yes
+compiler:fortran:storage_size:yes
+compiler:fortran:bind_c:yes
+compiler:fortran:iso_c_binding:yes
+compiler:fortran:subroutine_bind_c:yes
+compiler:fortran:type_bind_c:yes
+compiler:fortran:type_name_bind_c:yes
+compiler:fortran:private:yes
+compiler:fortran:protected:yes
+compiler:fortran:abstract:yes
+compiler:fortran:asynchronous:yes
+compiler:fortran:procedure:yes
+compiler:fortran:use_only:yes
+compiler:fortran:c_funloc:yes
+compiler:fortran:08_wrappers:yes
+compiler:fortran:mpi_sizeof:yes
+option:profiling:c:yes
+option:profiling:cxx:yes
+option:profiling:mpif.h:yes
+option:profiling:use_mpi:yes
+option:profiling:use_mpi_f08:yes
+option:cxx_exceptions:no
+option:threads:"posix (MPI_THREAD_MULTIPLE: yes, OPAL support: yes, OMPI progress: no, ORTE progress: yes, Event lib: yes)"
+option:sparse:groups:no
+option:debug:no
+option:mpi-interface-warning:yes
+option:mpi-param-check:runtime
+option:mem-profile:no
+option:mem-debug:no
+option:dlopen:yes
+options:heterogeneous:no
+mpirun:prefix_by_default:no
+options:mpi-wtime:native
+options:visibility:yes
+options:host-topology:yes
+options:ipv6:yes
+options:mpi1-compatibility:no
+options:mpi_ext:affinity, cuda, pcollreq
+options:ft_support:"no (checkpoint thread: no)"
+options:crdebug_support:no
+options:mpi-max-processor-name:256
+options:mpi-max-error-string:256
+options:mpi-max-object-name:64
+options:mpi-max-info-key:36
+options:mpi-max-info-val:256
+options:mpi-max-port-name:1024
+options:mpi-max-datarep-string:128
+mca:allocator:basic:version:"mca:2.1.0"
+mca:allocator:basic:version:"api:2.0.0"
+mca:allocator:basic:version:"component:4.1.6"
+mca:allocator:bucket:version:"mca:2.1.0"
+mca:allocator:bucket:version:"api:2.0.0"
+mca:allocator:bucket:version:"component:4.1.6"
+mca:backtrace:execinfo:version:"mca:2.1.0"
+mca:backtrace:execinfo:version:"api:2.0.0"
+mca:backtrace:execinfo:version:"component:4.1.6"
+mca:btl:vader:version:"mca:2.1.0"
+mca:btl:vader:version:"api:3.1.0"
+mca:btl:vader:version:"component:4.1.6"
+mca:btl:self:version:"mca:2.1.0"
+mca:btl:self:version:"api:3.1.0"
+mca:btl:self:version:"component:4.1.6"
+mca:btl:ofi:version:"mca:2.1.0"
+mca:btl:ofi:version:"api:3.1.0"
+mca:btl:ofi:version:"component:4.1.6"
+mca:btl:openib:version:"mca:2.1.0"
+mca:btl:openib:version:"api:3.1.0"
+mca:btl:openib:version:"component:4.1.6"
+mca:btl:tcp:version:"mca:2.1.0"
+mca:btl:tcp:version:"api:3.1.0"
+mca:btl:tcp:version:"component:4.1.6"
+mca:compress:bzip:version:"mca:2.1.0"
+mca:compress:bzip:version:"api:2.0.0"
+mca:compress:bzip:version:"component:4.1.6"
+mca:compress:gzip:version:"mca:2.1.0"
+mca:compress:gzip:version:"api:2.0.0"
+mca:compress:gzip:version:"component:4.1.6"
+mca:crs:none:version:"mca:2.1.0"
+mca:crs:none:version:"api:2.0.0"
+mca:crs:none:version:"component:4.1.6"
+mca:dl:dlopen:version:"mca:2.1.0"
+mca:dl:dlopen:version:"api:1.0.0"
+mca:dl:dlopen:version:"component:4.1.6"
+mca:event:external:version:"mca:2.1.0"
+mca:event:external:version:"api:2.0.0"
+mca:event:external:version:"component:4.1.6"
+mca:hwloc:external:version:"mca:2.1.0"
+mca:hwloc:external:version:"api:2.0.0"
+mca:hwloc:external:version:"component:4.1.6"
+mca:if:linux_ipv6:version:"mca:2.1.0"
+mca:if:linux_ipv6:version:"api:2.0.0"
+mca:if:linux_ipv6:version:"component:4.1.6"
+mca:if:posix_ipv4:version:"mca:2.1.0"
+mca:if:posix_ipv4:version:"api:2.0.0"
+mca:if:posix_ipv4:version:"component:4.1.6"
+mca:installdirs:env:version:"mca:2.1.0"
+mca:installdirs:env:version:"api:2.0.0"
+mca:installdirs:env:version:"component:4.1.6"
+mca:installdirs:config:version:"mca:2.1.0"
+mca:installdirs:config:version:"api:2.0.0"
+mca:installdirs:config:version:"component:4.1.6"
+mca:memory:patcher:version:"mca:2.1.0"
+mca:memory:patcher:version:"api:2.0.0"
+mca:memory:patcher:version:"component:4.1.6"
+mca:mpool:hugepage:version:"mca:2.1.0"
+mca:mpool:hugepage:version:"api:3.0.0"
+mca:mpool:hugepage:version:"component:4.1.6"
+mca:patcher:overwrite:version:"mca:2.1.0"
+mca:patcher:overwrite:version:"api:1.0.0"
+mca:patcher:overwrite:version:"component:4.1.6"
+mca:pmix:flux:version:"mca:2.1.0"
+mca:pmix:flux:version:"api:2.0.0"
+mca:pmix:flux:version:"component:4.1.6"
+mca:pmix:ext3x:version:"mca:2.1.0"
+mca:pmix:ext3x:version:"api:2.0.0"
+mca:pmix:ext3x:version:"component:4.1.6"
+mca:pmix:isolated:version:"mca:2.1.0"
+mca:pmix:isolated:version:"api:2.0.0"
+mca:pmix:isolated:version:"component:4.1.6"
+mca:pstat:linux:version:"mca:2.1.0"
+mca:pstat:linux:version:"api:2.0.0"
+mca:pstat:linux:version:"component:4.1.6"
+mca:rcache:grdma:version:"mca:2.1.0"
+mca:rcache:grdma:version:"api:3.3.0"
+mca:rcache:grdma:version:"component:4.1.6"
+mca:reachable:weighted:version:"mca:2.1.0"
+mca:reachable:weighted:version:"api:2.0.0"
+mca:reachable:weighted:version:"component:4.1.6"
+mca:reachable:netlink:version:"mca:2.1.0"
+mca:reachable:netlink:version:"api:2.0.0"
+mca:reachable:netlink:version:"component:4.1.6"
+mca:shmem:mmap:version:"mca:2.1.0"
+mca:shmem:mmap:version:"api:2.0.0"
+mca:shmem:mmap:version:"component:4.1.6"
+mca:shmem:posix:version:"mca:2.1.0"
+mca:shmem:posix:version:"api:2.0.0"
+mca:shmem:posix:version:"component:4.1.6"
+mca:shmem:sysv:version:"mca:2.1.0"
+mca:shmem:sysv:version:"api:2.0.0"
+mca:shmem:sysv:version:"component:4.1.6"
+mca:timer:linux:version:"mca:2.1.0"
+mca:timer:linux:version:"api:2.0.0"
+mca:timer:linux:version:"component:4.1.6"
+mca:errmgr:default_orted:version:"mca:2.1.0"
+mca:errmgr:default_orted:version:"api:3.0.0"
+mca:errmgr:default_orted:version:"component:4.1.6"
+mca:errmgr:default_tool:version:"mca:2.1.0"
+mca:errmgr:default_tool:version:"api:3.0.0"
+mca:errmgr:default_tool:version:"component:4.1.6"
+mca:errmgr:default_app:version:"mca:2.1.0"
+mca:errmgr:default_app:version:"api:3.0.0"
+mca:errmgr:default_app:version:"component:4.1.6"
+mca:errmgr:default_hnp:version:"mca:2.1.0"
+mca:errmgr:default_hnp:version:"api:3.0.0"
+mca:errmgr:default_hnp:version:"component:4.1.6"
+mca:ess:tool:version:"mca:2.1.0"
+mca:ess:tool:version:"api:3.0.0"
+mca:ess:tool:version:"component:4.1.6"
+mca:ess:hnp:version:"mca:2.1.0"
+mca:ess:hnp:version:"api:3.0.0"
+mca:ess:hnp:version:"component:4.1.6"
+mca:ess:singleton:version:"mca:2.1.0"
+mca:ess:singleton:version:"api:3.0.0"
+mca:ess:singleton:version:"component:4.1.6"
+mca:ess:slurm:version:"mca:2.1.0"
+mca:ess:slurm:version:"api:3.0.0"
+mca:ess:slurm:version:"component:4.1.6"
+mca:ess:pmi:version:"mca:2.1.0"
+mca:ess:pmi:version:"api:3.0.0"
+mca:ess:pmi:version:"component:4.1.6"
+mca:ess:env:version:"mca:2.1.0"
+mca:ess:env:version:"api:3.0.0"
+mca:ess:env:version:"component:4.1.6"
+mca:filem:raw:version:"mca:2.1.0"
+mca:filem:raw:version:"api:2.0.0"
+mca:filem:raw:version:"component:4.1.6"
+mca:grpcomm:direct:version:"mca:2.1.0"
+mca:grpcomm:direct:version:"api:3.0.0"
+mca:grpcomm:direct:version:"component:4.1.6"
+mca:iof:hnp:version:"mca:2.1.0"
+mca:iof:hnp:version:"api:2.0.0"
+mca:iof:hnp:version:"component:4.1.6"
+mca:iof:orted:version:"mca:2.1.0"
+mca:iof:orted:version:"api:2.0.0"
+mca:iof:orted:version:"component:4.1.6"
+mca:iof:tool:version:"mca:2.1.0"
+mca:iof:tool:version:"api:2.0.0"
+mca:iof:tool:version:"component:4.1.6"
+mca:odls:default:version:"mca:2.1.0"
+mca:odls:default:version:"api:2.0.0"
+mca:odls:default:version:"component:4.1.6"
+mca:odls:pspawn:version:"mca:2.1.0"
+mca:odls:pspawn:version:"api:2.0.0"
+mca:odls:pspawn:version:"component:4.1.6"
+mca:oob:tcp:version:"mca:2.1.0"
+mca:oob:tcp:version:"api:2.0.0"
+mca:oob:tcp:version:"component:4.1.6"
+mca:plm:slurm:version:"mca:2.1.0"
+mca:plm:slurm:version:"api:2.0.0"
+mca:plm:slurm:version:"component:4.1.6"
+mca:plm:rsh:version:"mca:2.1.0"
+mca:plm:rsh:version:"api:2.0.0"
+mca:plm:rsh:version:"component:4.1.6"
+mca:plm:isolated:version:"mca:2.1.0"
+mca:plm:isolated:version:"api:2.0.0"
+mca:plm:isolated:version:"component:4.1.6"
+mca:ras:gridengine:version:"mca:2.1.0"
+mca:ras:gridengine:version:"api:2.0.0"
+mca:ras:gridengine:version:"component:4.1.6"
+mca:ras:slurm:version:"mca:2.1.0"
+mca:ras:slurm:version:"api:2.0.0"
+mca:ras:slurm:version:"component:4.1.6"
+mca:ras:simulator:version:"mca:2.1.0"
+mca:ras:simulator:version:"api:2.0.0"
+mca:ras:simulator:version:"component:4.1.6"
+mca:regx:naive:version:"mca:2.1.0"
+mca:regx:naive:version:"api:1.0.0"
+mca:regx:naive:version:"component:4.1.6"
+mca:regx:reverse:version:"mca:2.1.0"
+mca:regx:reverse:version:"api:1.0.0"
+mca:regx:reverse:version:"component:4.1.6"
+mca:regx:fwd:version:"mca:2.1.0"
+mca:regx:fwd:version:"api:1.0.0"
+mca:regx:fwd:version:"component:4.1.6"
+mca:rmaps:seq:version:"mca:2.1.0"
+mca:rmaps:seq:version:"api:2.0.0"
+mca:rmaps:seq:version:"component:4.1.6"
+mca:rmaps:round_robin:version:"mca:2.1.0"
+mca:rmaps:round_robin:version:"api:2.0.0"
+mca:rmaps:round_robin:version:"component:4.1.6"
+mca:rmaps:mindist:version:"mca:2.1.0"
+mca:rmaps:mindist:version:"api:2.0.0"
+mca:rmaps:mindist:version:"component:4.1.6"
+mca:rmaps:ppr:version:"mca:2.1.0"
+mca:rmaps:ppr:version:"api:2.0.0"
+mca:rmaps:ppr:version:"component:4.1.6"
+mca:rmaps:resilient:version:"mca:2.1.0"
+mca:rmaps:resilient:version:"api:2.0.0"
+mca:rmaps:resilient:version:"component:4.1.6"
+mca:rmaps:rank_file:version:"mca:2.1.0"
+mca:rmaps:rank_file:version:"api:2.0.0"
+mca:rmaps:rank_file:version:"component:4.1.6"
+mca:rml:oob:version:"mca:2.1.0"
+mca:rml:oob:version:"api:3.0.0"
+mca:rml:oob:version:"component:4.1.6"
+mca:routed:radix:version:"mca:2.1.0"
+mca:routed:radix:version:"api:3.0.0"
+mca:routed:radix:version:"component:4.1.6"
+mca:routed:direct:version:"mca:2.1.0"
+mca:routed:direct:version:"api:3.0.0"
+mca:routed:direct:version:"component:4.1.6"
+mca:routed:binomial:version:"mca:2.1.0"
+mca:routed:binomial:version:"api:3.0.0"
+mca:routed:binomial:version:"component:4.1.6"
+mca:rtc:hwloc:version:"mca:2.1.0"
+mca:rtc:hwloc:version:"api:1.0.0"
+mca:rtc:hwloc:version:"component:4.1.6"
+mca:schizo:ompi:version:"mca:2.1.0"
+mca:schizo:ompi:version:"api:1.0.0"
+mca:schizo:ompi:version:"component:4.1.6"
+mca:schizo:orte:version:"mca:2.1.0"
+mca:schizo:orte:version:"api:1.0.0"
+mca:schizo:orte:version:"component:4.1.6"
+mca:schizo:flux:version:"mca:2.1.0"
+mca:schizo:flux:version:"api:1.0.0"
+mca:schizo:flux:version:"component:4.1.6"
+mca:schizo:slurm:version:"mca:2.1.0"
+mca:schizo:slurm:version:"api:1.0.0"
+mca:schizo:slurm:version:"component:4.1.6"
+mca:schizo:jsm:version:"mca:2.1.0"
+mca:schizo:jsm:version:"api:1.0.0"
+mca:schizo:jsm:version:"component:4.1.6"
+mca:state:app:version:"mca:2.1.0"
+mca:state:app:version:"api:1.0.0"
+mca:state:app:version:"component:4.1.6"
+mca:state:orted:version:"mca:2.1.0"
+mca:state:orted:version:"api:1.0.0"
+mca:state:orted:version:"component:4.1.6"
+mca:state:tool:version:"mca:2.1.0"
+mca:state:tool:version:"api:1.0.0"
+mca:state:tool:version:"component:4.1.6"
+mca:state:novm:version:"mca:2.1.0"
+mca:state:novm:version:"api:1.0.0"
+mca:state:novm:version:"component:4.1.6"
+mca:state:hnp:version:"mca:2.1.0"
+mca:state:hnp:version:"api:1.0.0"
+mca:state:hnp:version:"component:4.1.6"
+mca:bml:r2:version:"mca:2.1.0"
+mca:bml:r2:version:"api:2.0.0"
+mca:bml:r2:version:"component:4.1.6"
+mca:coll:libnbc:version:"mca:2.1.0"
+mca:coll:libnbc:version:"api:2.0.0"
+mca:coll:libnbc:version:"component:4.1.6"
+mca:coll:basic:version:"mca:2.1.0"
+mca:coll:basic:version:"api:2.0.0"
+mca:coll:basic:version:"component:4.1.6"
+mca:coll:han:version:"mca:2.1.0"
+mca:coll:han:version:"api:2.0.0"
+mca:coll:han:version:"component:4.1.6"
+mca:coll:self:version:"mca:2.1.0"
+mca:coll:self:version:"api:2.0.0"
+mca:coll:self:version:"component:4.1.6"
+mca:coll:sync:version:"mca:2.1.0"
+mca:coll:sync:version:"api:2.0.0"
+mca:coll:sync:version:"component:4.1.6"
+mca:coll:inter:version:"mca:2.1.0"
+mca:coll:inter:version:"api:2.0.0"
+mca:coll:inter:version:"component:4.1.6"
+mca:coll:adapt:version:"mca:2.1.0"
+mca:coll:adapt:version:"api:2.0.0"
+mca:coll:adapt:version:"component:4.1.6"
+mca:coll:tuned:version:"mca:2.1.0"
+mca:coll:tuned:version:"api:2.0.0"
+mca:coll:tuned:version:"component:4.1.6"
+mca:coll:monitoring:version:"mca:2.1.0"
+mca:coll:monitoring:version:"api:2.0.0"
+mca:coll:monitoring:version:"component:4.1.6"
+mca:coll:sm:version:"mca:2.1.0"
+mca:coll:sm:version:"api:2.0.0"
+mca:coll:sm:version:"component:4.1.6"
+mca:fbtl:posix:version:"mca:2.1.0"
+mca:fbtl:posix:version:"api:2.0.0"
+mca:fbtl:posix:version:"component:4.1.6"
+mca:fcoll:individual:version:"mca:2.1.0"
+mca:fcoll:individual:version:"api:2.0.0"
+mca:fcoll:individual:version:"component:4.1.6"
+mca:fcoll:vulcan:version:"mca:2.1.0"
+mca:fcoll:vulcan:version:"api:2.0.0"
+mca:fcoll:vulcan:version:"component:4.1.6"
+mca:fcoll:dynamic_gen2:version:"mca:2.1.0"
+mca:fcoll:dynamic_gen2:version:"api:2.0.0"
+mca:fcoll:dynamic_gen2:version:"component:4.1.6"
+mca:fcoll:two_phase:version:"mca:2.1.0"
+mca:fcoll:two_phase:version:"api:2.0.0"
+mca:fcoll:two_phase:version:"component:4.1.6"
+mca:fcoll:dynamic:version:"mca:2.1.0"
+mca:fcoll:dynamic:version:"api:2.0.0"
+mca:fcoll:dynamic:version:"component:4.1.6"
+mca:fs:ufs:version:"mca:2.1.0"
+mca:fs:ufs:version:"api:2.0.0"
+mca:fs:ufs:version:"component:4.1.6"
+mca:io:romio321:version:"mca:2.1.0"
+mca:io:romio321:version:"api:2.0.0"
+mca:io:romio321:version:"component:4.1.6"
+mca:io:ompio:version:"mca:2.1.0"
+mca:io:ompio:version:"api:2.0.0"
+mca:io:ompio:version:"component:4.1.6"
+mca:mtl:psm:version:"mca:2.1.0"
+mca:mtl:psm:version:"api:2.0.0"
+mca:mtl:psm:version:"component:4.1.6"
+mca:mtl:ofi:version:"mca:2.1.0"
+mca:mtl:ofi:version:"api:2.0.0"
+mca:mtl:ofi:version:"component:4.1.6"
+mca:mtl:psm2:version:"mca:2.1.0"
+mca:mtl:psm2:version:"api:2.0.0"
+mca:mtl:psm2:version:"component:4.1.6"
+mca:op:avx:version:"mca:2.1.0"
+mca:op:avx:version:"api:1.0.0"
+mca:op:avx:version:"component:4.1.6"
+mca:osc:sm:version:"mca:2.1.0"
+mca:osc:sm:version:"api:3.0.0"
+mca:osc:sm:version:"component:4.1.6"
+mca:osc:pt2pt:version:"mca:2.1.0"
+mca:osc:pt2pt:version:"api:3.0.0"
+mca:osc:pt2pt:version:"component:4.1.6"
+mca:osc:ucx:version:"mca:2.1.0"
+mca:osc:ucx:version:"api:3.0.0"
+mca:osc:ucx:version:"component:4.1.6"
+mca:osc:monitoring:version:"mca:2.1.0"
+mca:osc:monitoring:version:"api:3.0.0"
+mca:osc:monitoring:version:"component:4.1.6"
+mca:osc:rdma:version:"mca:2.1.0"
+mca:osc:rdma:version:"api:3.0.0"
+mca:osc:rdma:version:"component:4.1.6"
+mca:pml:v:version:"mca:2.1.0"
+mca:pml:v:version:"api:2.0.0"
+mca:pml:v:version:"component:4.1.6"
+mca:pml:ob1:version:"mca:2.1.0"
+mca:pml:ob1:version:"api:2.0.0"
+mca:pml:ob1:version:"component:4.1.6"
+mca:pml:cm:version:"mca:2.1.0"
+mca:pml:cm:version:"api:2.0.0"
+mca:pml:cm:version:"component:4.1.6"
+mca:pml:ucx:version:"mca:2.1.0"
+mca:pml:ucx:version:"api:2.0.0"
+mca:pml:ucx:version:"component:4.1.6"
+mca:pml:monitoring:version:"mca:2.1.0"
+mca:pml:monitoring:version:"api:2.0.0"
+mca:pml:monitoring:version:"component:4.1.6"
+mca:rte:orte:version:"mca:2.1.0"
+mca:rte:orte:version:"api:2.0.0"
+mca:rte:orte:version:"component:4.1.6"
+mca:sharedfp:individual:version:"mca:2.1.0"
+mca:sharedfp:individual:version:"api:2.0.0"
+mca:sharedfp:individual:version:"component:4.1.6"
+mca:sharedfp:sm:version:"mca:2.1.0"
+mca:sharedfp:sm:version:"api:2.0.0"
+mca:sharedfp:sm:version:"component:4.1.6"
+mca:sharedfp:lockedfile:version:"mca:2.1.0"
+mca:sharedfp:lockedfile:version:"api:2.0.0"
+mca:sharedfp:lockedfile:version:"component:4.1.6"
+mca:topo:basic:version:"mca:2.1.0"
+mca:topo:basic:version:"api:2.2.0"
+mca:topo:basic:version:"component:4.1.6"
+mca:topo:treematch:version:"mca:2.1.0"
+mca:topo:treematch:version:"api:2.2.0"
+mca:topo:treematch:version:"component:4.1.6"
+mca:vprotocol:pessimist:version:"mca:2.1.0"
+mca:vprotocol:pessimist:version:"api:2.0.0"
+mca:vprotocol:pessimist:version:"component:4.1.6"
+
+exit=0
+$ ['dpkg-query', '-W', 'libgomp1']
+libgomp1:amd64	14.2.0-4ubuntu2~24.04.1
+
+exit=0
+$ ['ldd', '/home/nuo/courses/projects/parallel-heat-solver/build/m4-large-release/heat_serial']
+	linux-vdso.so.1 (0x000070dd9762c000)
+	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x000070dd97200000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x000070dd9752c000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x000070dd974fe000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x000070dd96e00000)
+	/lib64/ld-linux-x86-64.so.2 (0x000070dd9762e000)
+
+exit=0
+$ ['ldd', '/home/nuo/courses/projects/parallel-heat-solver/build/m4-large-release/heat_mpi']
+	linux-vdso.so.1 (0x0000772471a8c000)
+	libmpi_cxx.so.40 => /lib/x86_64-linux-gnu/libmpi_cxx.so.40 (0x0000772471a49000)
+	libmpi.so.40 => /lib/x86_64-linux-gnu/libmpi.so.40 (0x0000772471917000)
+	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x0000772471600000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x0000772471517000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007724718e9000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x0000772471200000)
+	libopen-pal.so.40 => /lib/x86_64-linux-gnu/libopen-pal.so.40 (0x0000772471463000)
+	libopen-rte.so.40 => /lib/x86_64-linux-gnu/libopen-rte.so.40 (0x0000772471144000)
+	libhwloc.so.15 => /lib/x86_64-linux-gnu/libhwloc.so.15 (0x0000772471886000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000772471a8e000)
+	libevent_core-2.1.so.7 => /lib/x86_64-linux-gnu/libevent_core-2.1.so.7 (0x000077247142e000)
+	libevent_pthreads-2.1.so.7 => /lib/x86_64-linux-gnu/libevent_pthreads-2.1.so.7 (0x000077247187f000)
+	libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x0000772471128000)
+	libudev.so.1 => /lib/x86_64-linux-gnu/libudev.so.1 (0x00007724710f5000)
+	libcap.so.2 => /lib/x86_64-linux-gnu/libcap.so.2 (0x0000772471421000)
+
+exit=0
+$ ['ldd', '/home/nuo/courses/projects/parallel-heat-solver/build/m4-large-release/heat_openmp']
+	linux-vdso.so.1 (0x0000762d02e38000)
+	libgomp.so.1 => /lib/x86_64-linux-gnu/libgomp.so.1 (0x0000762d02dca000)
+	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x0000762d02a00000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x0000762d02ce1000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x0000762d02cb3000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x0000762d02600000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000762d02e3a000)
+
+exit=0
+
+/proc/self/cgroup
+0::/init.scope
+
+/proc/self/limits
+Limit                     Soft Limit           Hard Limit           Units     
+Max cpu time              unlimited            unlimited            seconds   
+Max file size             unlimited            unlimited            bytes     
+Max data size             unlimited            unlimited            bytes     
+Max stack size            8388608              unlimited            bytes     
+Max core file size        0                    unlimited            bytes     
+Max resident set          unlimited            unlimited            bytes     
+Max processes             31248                31248                processes 
+Max open files            1048576              1048576              files     
+Max locked memory         67108864             67108864             bytes     
+Max address space         unlimited            unlimited            bytes     
+Max file locks            unlimited            unlimited            locks     
+Max pending signals       31248                31248                signals   
+Max msgqueue size         819200               819200               bytes     
+Max nice priority         0                    0                    
+Max realtime priority     0                    0                    
+Max realtime timeout      unlimited            unlimited            us        
+
+/proc/meminfo
+MemTotal:        8010448 kB
+MemFree:         5227324 kB
+MemAvailable:    5910060 kB
+Buffers:           11020 kB
+Cached:           777972 kB
+SwapCached:            0 kB
+Active:           147408 kB
+Inactive:        1803368 kB
+Active(anon):       2800 kB
+Inactive(anon):  1162872 kB
+Active(file):     144608 kB
+Inactive(file):   640496 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:       2097152 kB
+SwapFree:        2097152 kB
+Dirty:               864 kB
+Writeback:             0 kB
+AnonPages:       1162200 kB
+Mapped:           551608 kB
+Shmem:              3780 kB
+KReclaimable:      74984 kB
+Slab:             253504 kB
+SReclaimable:      74984 kB
+SUnreclaim:       178520 kB
+KernelStack:       10912 kB
+PageTables:        28332 kB
+SecPageTables:         0 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     6102376 kB
+Committed_AS:    3630900 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:      138852 kB
+VmallocChunk:          0 kB
+Percpu:            14720 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+FileHugePages:         0 kB
+FilePmdMapped:         0 kB
+Unaccepted:            0 kB
+Balloon:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:       84992 kB
+DirectMap2M:     6088704 kB
+DirectMap1G:    11534336 kB
+
+/proc/loadavg
+0.13 0.39 0.29 1/652 123442
+
+/sys/fs/cgroup/init.scope/cpu.max
+max 100000
+
+/sys/fs/cgroup/init.scope/memory.max
+max

@@ -1,0 +1,76 @@
+$ python3 -u tests/check_large.py --build build/m4-large-release
+PASS synthetic-only: medians, paired-round bootstrap, 44/440 CSV, damaged journals/fields/bindings rejected
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 2, "M": 65, "nodes": 9, "D_inf": 0.0, "E_inf": 0.0036710479368782245, "mode_diff": 2.220446049250313e-16, "truncation_bound": 0.0036710479568784465}
+RESULT {"kind": "mpi", "requested": 1, "actual": 1.0, "N": 2, "M": 65, "nodes": 9, "D_inf": 0.0, "E_inf": 0.0036710479368782245, "mode_diff": 2.220446049250313e-16, "truncation_bound": 0.0036710479568784465}
+RESULT {"kind": "openmp", "requested": 1, "actual": 1.0, "N": 2, "M": 65, "nodes": 9, "D_inf": 0.0, "E_inf": 0.0036710479368782245, "mode_diff": 2.220446049250313e-16, "truncation_bound": 0.0036710479568784465}
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 2, "M": 66, "nodes": 9, "D_inf": 0.0, "E_inf": 0.0036710773096289007, "mode_diff": 1.1102230246251565e-16, "truncation_bound": 0.0036710773296287896}
+RESULT {"kind": "mpi", "requested": 1, "actual": 1.0, "N": 2, "M": 66, "nodes": 9, "D_inf": 0.0, "E_inf": 0.0036710773096289007, "mode_diff": 1.1102230246251565e-16, "truncation_bound": 0.0036710773296287896}
+RESULT {"kind": "openmp", "requested": 1, "actual": 1.0, "N": 2, "M": 66, "nodes": 9, "D_inf": 0.0, "E_inf": 0.0036710773096289007, "mode_diff": 1.1102230246251565e-16, "truncation_bound": 0.0036710773296287896}
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 3, "M": 65, "nodes": 16, "D_inf": 0.0, "E_inf": 0.0012781876750691534, "mode_diff": 2.220446049250313e-16, "truncation_bound": 0.0017042502534252418}
+RESULT {"kind": "mpi", "requested": 1, "actual": 1.0, "N": 3, "M": 65, "nodes": 16, "D_inf": 0.0, "E_inf": 0.0012781876750691534, "mode_diff": 2.220446049250313e-16, "truncation_bound": 0.0017042502534252418}
+RESULT {"kind": "openmp", "requested": 1, "actual": 1.0, "N": 3, "M": 65, "nodes": 16, "D_inf": 0.0, "E_inf": 0.0012781876750691534, "mode_diff": 2.220446049250313e-16, "truncation_bound": 0.0017042502534252418}
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 3, "M": 66, "nodes": 16, "D_inf": 0.0, "E_inf": 0.001278215501645752, "mode_diff": 3.4416913763379853e-15, "truncation_bound": 0.0017042873555230802}
+RESULT {"kind": "mpi", "requested": 1, "actual": 1.0, "N": 3, "M": 66, "nodes": 16, "D_inf": 0.0, "E_inf": 0.001278215501645752, "mode_diff": 3.4416913763379853e-15, "truncation_bound": 0.0017042873555230802}
+RESULT {"kind": "openmp", "requested": 1, "actual": 1.0, "N": 3, "M": 66, "nodes": 16, "D_inf": 0.0, "E_inf": 0.001278215501645752, "mode_diff": 3.4416913763379853e-15, "truncation_bound": 0.0017042873555230802}
+RESULT {"kind": "openmp", "requested": 1, "actual": 1.0, "N": 2, "M": 65, "nodes": 9, "D_inf": 0.0, "E_inf": 0.0036710479368782245, "mode_diff": 2.220446049250313e-16, "truncation_bound": 0.0036710479568784465}
+RESULT {"kind": "mpi", "requested": 2, "actual": 2.0, "N": 3, "M": 65, "nodes": 16, "D_inf": 0.0, "E_inf": 0.0012781876750691534, "mode_diff": 2.220446049250313e-16, "truncation_bound": 0.0017042502534252418}
+RESULT {"kind": "openmp", "requested": 2, "actual": 2.0, "N": 3, "M": 65, "nodes": 16, "D_inf": 0.0, "E_inf": 0.0012781876750691534, "mode_diff": 2.220446049250313e-16, "truncation_bound": 0.0017042502534252418}
+RESULT {"kind": "mpi", "requested": 2, "actual": 2.0, "N": 3, "M": 66, "nodes": 16, "D_inf": 0.0, "E_inf": 0.001278215501645752, "mode_diff": 3.4416913763379853e-15, "truncation_bound": 0.0017042873555230802}
+RESULT {"kind": "openmp", "requested": 2, "actual": 2.0, "N": 3, "M": 66, "nodes": 16, "D_inf": 0.0, "E_inf": 0.001278215501645752, "mode_diff": 3.4416913763379853e-15, "truncation_bound": 0.0017042873555230802}
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 4, "M": 65, "nodes": 25, "D_inf": 0.0, "E_inf": 0.000972444889552504, "mode_diff": 1.2212453270876722e-15, "truncation_bound": 0.0009724449095512827}
+RESULT {"kind": "mpi", "requested": 2, "actual": 2.0, "N": 4, "M": 65, "nodes": 25, "D_inf": 0.0, "E_inf": 0.000972444889552504, "mode_diff": 1.2212453270876722e-15, "truncation_bound": 0.0009724449095512827}
+RESULT {"kind": "openmp", "requested": 2, "actual": 2.0, "N": 4, "M": 65, "nodes": 25, "D_inf": 0.0, "E_inf": 0.000972444889552504, "mode_diff": 1.2212453270876722e-15, "truncation_bound": 0.0009724449095512827}
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 4, "M": 66, "nodes": 25, "D_inf": 0.0, "E_inf": 0.0009724850977829158, "mode_diff": 2.1094237467877974e-15, "truncation_bound": 0.0009724851177849142}
+RESULT {"kind": "mpi", "requested": 2, "actual": 2.0, "N": 4, "M": 66, "nodes": 25, "D_inf": 0.0, "E_inf": 0.0009724850977829158, "mode_diff": 2.1094237467877974e-15, "truncation_bound": 0.0009724851177849142}
+RESULT {"kind": "openmp", "requested": 2, "actual": 2.0, "N": 4, "M": 66, "nodes": 25, "D_inf": 0.0, "E_inf": 0.0009724850977829158, "mode_diff": 2.1094237467877974e-15, "truncation_bound": 0.0009724851177849142}
+RESULT {"kind": "openmp", "requested": 2, "actual": 2.0, "N": 2, "M": 65, "nodes": 9, "D_inf": 0.0, "E_inf": 0.0036710479368782245, "mode_diff": 2.220446049250313e-16, "truncation_bound": 0.0036710479568784465}
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 5, "M": 65, "nodes": 36, "D_inf": 0.0, "E_inf": 0.0005660680833174947, "mode_diff": 4.884981308350689e-15, "truncation_bound": 0.0006258295009532439}
+RESULT {"kind": "mpi", "requested": 4, "actual": 4.0, "N": 5, "M": 65, "nodes": 36, "D_inf": 0.0, "E_inf": 0.0005660680833174947, "mode_diff": 4.884981308350689e-15, "truncation_bound": 0.0006258295009532439}
+RESULT {"kind": "openmp", "requested": 4, "actual": 4.0, "N": 5, "M": 65, "nodes": 36, "D_inf": 0.0, "E_inf": 0.0005660680833174947, "mode_diff": 4.884981308350689e-15, "truncation_bound": 0.0006258295009532439}
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 5, "M": 66, "nodes": 36, "D_inf": 0.0, "E_inf": 0.0005661058221269055, "mode_diff": 2.4424906541753444e-15, "truncation_bound": 0.0006258712239574066}
+RESULT {"kind": "mpi", "requested": 4, "actual": 4.0, "N": 5, "M": 66, "nodes": 36, "D_inf": 0.0, "E_inf": 0.0005661058221269055, "mode_diff": 2.4424906541753444e-15, "truncation_bound": 0.0006258712239574066}
+RESULT {"kind": "openmp", "requested": 4, "actual": 4.0, "N": 5, "M": 66, "nodes": 36, "D_inf": 0.0, "E_inf": 0.0005661058221269055, "mode_diff": 2.4424906541753444e-15, "truncation_bound": 0.0006258712239574066}
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 6, "M": 65, "nodes": 49, "D_inf": 0.0, "E_inf": 0.0004354216622386442, "mode_diff": 1.2212453270876722e-15, "truncation_bound": 0.0004354216822396434}
+RESULT {"kind": "mpi", "requested": 4, "actual": 4.0, "N": 6, "M": 65, "nodes": 49, "D_inf": 0.0, "E_inf": 0.0004354216622386442, "mode_diff": 1.2212453270876722e-15, "truncation_bound": 0.0004354216822396434}
+RESULT {"kind": "openmp", "requested": 4, "actual": 4.0, "N": 6, "M": 65, "nodes": 49, "D_inf": 0.0, "E_inf": 0.0004354216622386442, "mode_diff": 1.2212453270876722e-15, "truncation_bound": 0.0004354216822396434}
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 6, "M": 66, "nodes": 49, "D_inf": 0.0, "E_inf": 0.00043546422927531747, "mode_diff": 1.6653345369377348e-15, "truncation_bound": 0.0004354642492736521}
+RESULT {"kind": "mpi", "requested": 4, "actual": 4.0, "N": 6, "M": 66, "nodes": 49, "D_inf": 0.0, "E_inf": 0.00043546422927531747, "mode_diff": 1.6653345369377348e-15, "truncation_bound": 0.0004354642492736521}
+RESULT {"kind": "openmp", "requested": 4, "actual": 4.0, "N": 6, "M": 66, "nodes": 49, "D_inf": 0.0, "E_inf": 0.00043546422927531747, "mode_diff": 1.6653345369377348e-15, "truncation_bound": 0.0004354642492736521}
+RESULT {"kind": "openmp", "requested": 4, "actual": 4.0, "N": 2, "M": 65, "nodes": 9, "D_inf": 0.0, "E_inf": 0.0036710479368782245, "mode_diff": 2.220446049250313e-16, "truncation_bound": 0.0036710479568784465}
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 9, "M": 65, "nodes": 100, "D_inf": 0.0, "E_inf": 0.00018703987797830113, "mode_diff": 3.6637359812630166e-15, "truncation_bound": 0.00019285519300071664}
+RESULT {"kind": "mpi", "requested": 8, "actual": 8.0, "N": 9, "M": 65, "nodes": 100, "D_inf": 0.0, "E_inf": 0.00018703987797830113, "mode_diff": 3.6637359812630166e-15, "truncation_bound": 0.00019285519300071664}
+RESULT {"kind": "openmp", "requested": 8, "actual": 8.0, "N": 9, "M": 65, "nodes": 100, "D_inf": 0.0, "E_inf": 0.00018703987797830113, "mode_diff": 3.6637359812630166e-15, "truncation_bound": 0.00019285519300071664}
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 9, "M": 66, "nodes": 100, "D_inf": 0.0, "E_inf": 0.0001870822161555985, "mode_diff": 6.439293542825908e-15, "truncation_bound": 0.00019289884751971632}
+RESULT {"kind": "mpi", "requested": 8, "actual": 8.0, "N": 9, "M": 66, "nodes": 100, "D_inf": 0.0, "E_inf": 0.0001870822161555985, "mode_diff": 6.439293542825908e-15, "truncation_bound": 0.00019289884751971632}
+RESULT {"kind": "openmp", "requested": 8, "actual": 8.0, "N": 9, "M": 66, "nodes": 100, "D_inf": 0.0, "E_inf": 0.0001870822161555985, "mode_diff": 6.439293542825908e-15, "truncation_bound": 0.00019289884751971632}
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 10, "M": 65, "nodes": 121, "D_inf": 0.0, "E_inf": 0.00015577368640073974, "mode_diff": 1.887379141862766e-15, "truncation_bound": 0.00015577370639896339}
+RESULT {"kind": "mpi", "requested": 8, "actual": 8.0, "N": 10, "M": 65, "nodes": 121, "D_inf": 0.0, "E_inf": 0.00015577368640073974, "mode_diff": 1.887379141862766e-15, "truncation_bound": 0.00015577370639896339}
+RESULT {"kind": "openmp", "requested": 8, "actual": 8.0, "N": 10, "M": 65, "nodes": 121, "D_inf": 0.0, "E_inf": 0.00015577368640073974, "mode_diff": 1.887379141862766e-15, "truncation_bound": 0.00015577370639896339}
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 10, "M": 66, "nodes": 121, "D_inf": 0.0, "E_inf": 0.00015581750837334596, "mode_diff": 5.88418203051333e-15, "truncation_bound": 0.00015581752837923014}
+RESULT {"kind": "mpi", "requested": 8, "actual": 8.0, "N": 10, "M": 66, "nodes": 121, "D_inf": 0.0, "E_inf": 0.00015581750837334596, "mode_diff": 5.88418203051333e-15, "truncation_bound": 0.00015581752837923014}
+RESULT {"kind": "openmp", "requested": 8, "actual": 8.0, "N": 10, "M": 66, "nodes": 121, "D_inf": 0.0, "E_inf": 0.00015581750837334596, "mode_diff": 5.88418203051333e-15, "truncation_bound": 0.00015581752837923014}
+RESULT {"kind": "openmp", "requested": 8, "actual": 8.0, "N": 2, "M": 65, "nodes": 9, "D_inf": 0.0, "E_inf": 0.0036710479368782245, "mode_diff": 2.220446049250313e-16, "truncation_bound": 0.0036710479568784465}
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 17, "M": 65, "nodes": 324, "D_inf": 0.0, "E_inf": 5.1650645431777775e-05, "mode_diff": 7.771561172376096e-16, "truncation_bound": 5.209416635021226e-05}
+RESULT {"kind": "mpi", "requested": 16, "actual": 16.0, "N": 17, "M": 65, "nodes": 324, "D_inf": 0.0, "E_inf": 5.1650645431777775e-05, "mode_diff": 7.771561172376096e-16, "truncation_bound": 5.209416635021226e-05}
+RESULT {"kind": "openmp", "requested": 16, "actual": 16.0, "N": 17, "M": 65, "nodes": 324, "D_inf": 0.0, "E_inf": 5.1650645431777775e-05, "mode_diff": 7.771561172376096e-16, "truncation_bound": 5.209416635021226e-05}
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 17, "M": 66, "nodes": 324, "D_inf": 0.0, "E_inf": 5.169456023379482e-05, "mode_diff": 3.774758283725532e-15, "truncation_bound": 5.2138458225157736e-05}
+RESULT {"kind": "mpi", "requested": 16, "actual": 16.0, "N": 17, "M": 66, "nodes": 324, "D_inf": 0.0, "E_inf": 5.169456023379482e-05, "mode_diff": 3.774758283725532e-15, "truncation_bound": 5.2138458225157736e-05}
+RESULT {"kind": "openmp", "requested": 16, "actual": 16.0, "N": 17, "M": 66, "nodes": 324, "D_inf": 0.0, "E_inf": 5.169456023379482e-05, "mode_diff": 3.774758283725532e-15, "truncation_bound": 5.2138458225157736e-05}
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 18, "M": 65, "nodes": 361, "D_inf": 0.0, "E_inf": 4.615507486127601e-05, "mode_diff": 1.3322676295501878e-15, "truncation_bound": 4.615509486205317e-05}
+RESULT {"kind": "mpi", "requested": 16, "actual": 16.0, "N": 18, "M": 65, "nodes": 361, "D_inf": 0.0, "E_inf": 4.615507486127601e-05, "mode_diff": 1.3322676295501878e-15, "truncation_bound": 4.615509486205317e-05}
+RESULT {"kind": "openmp", "requested": 16, "actual": 16.0, "N": 18, "M": 65, "nodes": 361, "D_inf": 0.0, "E_inf": 4.615507486127601e-05, "mode_diff": 1.3322676295501878e-15, "truncation_bound": 4.615509486205317e-05}
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 18, "M": 66, "nodes": 361, "D_inf": 0.0, "E_inf": 4.619939372896287e-05, "mode_diff": 2.220446049250313e-15, "truncation_bound": 4.6199413731183315e-05}
+RESULT {"kind": "mpi", "requested": 16, "actual": 16.0, "N": 18, "M": 66, "nodes": 361, "D_inf": 0.0, "E_inf": 4.619939372896287e-05, "mode_diff": 2.220446049250313e-15, "truncation_bound": 4.6199413731183315e-05}
+RESULT {"kind": "openmp", "requested": 16, "actual": 16.0, "N": 18, "M": 66, "nodes": 361, "D_inf": 0.0, "E_inf": 4.619939372896287e-05, "mode_diff": 2.220446049250313e-15, "truncation_bound": 4.6199413731183315e-05}
+RESULT {"kind": "openmp", "requested": 16, "actual": 16.0, "N": 2, "M": 65, "nodes": 9, "D_inf": 0.0, "E_inf": 0.0036710479368782245, "mode_diff": 2.220446049250313e-16, "truncation_bound": 0.0036710479568784465}
+RESULT {"kind": "openmp", "requested": 16, "actual": 8.0, "N": 18, "M": 65, "nodes": 361, "D_inf": 0.0, "E_inf": 4.615507486127601e-05, "mode_diff": 1.3322676295501878e-15, "truncation_bound": 4.615509486205317e-05}
+RESULT {"kind": "serial", "requested": 1, "actual": 1, "N": 128, "M": 8192, "nodes": 16641, "D_inf": 0.0, "E_inf": 9.481952891743362e-07, "mode_diff": 1.8385293287792592e-13, "truncation_bound": 9.482151054324256e-07}
+RESULT {"kind": "openmp", "requested": 1, "actual": 1.0, "N": 128, "M": 8192, "nodes": 16641, "D_inf": 0.0, "E_inf": 9.481952891743362e-07, "mode_diff": 1.8385293287792592e-13, "truncation_bound": 9.482151054324256e-07}
+RESULT {"kind": "openmp", "requested": 8, "actual": 8.0, "N": 128, "M": 8192, "nodes": 16641, "D_inf": 0.0, "E_inf": 9.481952891743362e-07, "mode_diff": 1.8385293287792592e-13, "truncation_bound": 9.482151054324256e-07}
+RESULT {"kind": "openmp", "requested": 16, "actual": 16.0, "N": 128, "M": 8192, "nodes": 16641, "D_inf": 0.0, "E_inf": 9.481952891743362e-07, "mode_diff": 1.8385293287792592e-13, "truncation_bound": 9.482151054324256e-07}
+PASS timeout cleanup: 1 child/rank processes; raw files retained in temporary test directory
+PASS timeout cleanup: 2 child/rank processes; raw files retained in temporary test directory
+PASS original-solver extended resources, parity, MPI ownership boundaries, idle OpenMP workers, limited team and invalid inputs
+
+exit=0
+Original solver/CMake unchanged; original21 checks remain in separate immutable logs.

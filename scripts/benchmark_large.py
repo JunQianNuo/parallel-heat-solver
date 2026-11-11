@@ -58,8 +58,12 @@ def environment():
 def command_for(build, c, warm):
     executable = str((Path(build)/('heat_'+c['kind'])).resolve())
     if c['kind'] == 'mpi':
+        # A singleton cpu-list makes Open MPI 4.1.6 report "not bound" even
+        # when actual affinity is CPU 0. Two candidates give an explicit rank-0
+        # binding report; there is still only one rank and it only uses CPU 0.
+        candidates = c['cpus'] if c['p'] > 1 else [0, 2]
         cmd = ['mpiexec', '--use-hwthread-cpus', '--map-by', 'slot', '--bind-to',
-               'cpu-list:ordered', '--cpu-list', ','.join(map(str, c['cpus'])),
+               'cpu-list:ordered', '--cpu-list', ','.join(map(str, candidates)),
                '--report-bindings', '-n', str(c['p']), executable]
     elif c['kind'] == 'openmp':
         cmd = [executable, '--threads', str(c['p'])]

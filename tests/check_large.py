@@ -179,7 +179,9 @@ def runtime_checks(build, directory):
                 reject(lambda: validate_field(bad, c, d))
             assert isinstance(values, array)
         return c, r
-    for p in (8, 16):
+    # Include all launch configurations: Open MPI singleton reporting differs
+    # from its multi-rank behavior, even though actual affinity can be correct.
+    for p in (1, 2, 4, 8, 16):
         for n in (p+1, p+2):
             for steps in (65, 66):
                 for kind in ('mpi', 'openmp'):

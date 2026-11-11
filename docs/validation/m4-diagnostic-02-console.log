@@ -1,0 +1,17 @@
+$ python3 -u scripts/benchmark_large.py --build build/m4-large-release --run-id 02
+rep= 0 serial p= 1 N= 384 M= 9216 t=0.682019070
+Traceback (most recent call last):
+  File "/home/nuo/courses/projects/parallel-heat-solver/scripts/benchmark_large.py", line 344, in <module>
+    main()
+  File "/home/nuo/courses/projects/parallel-heat-solver/scripts/benchmark_large.py", line 328, in main
+    invoke(c, 0)
+  File "/home/nuo/courses/projects/parallel-heat-solver/scripts/benchmark_large.py", line 305, in invoke
+    row['mpi_bindings'] = mpi_bindings(row['stderr'], c['cpus'])
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nuo/courses/projects/parallel-heat-solver/scripts/benchmark_large.py", line 184, in mpi_bindings
+    require(ranks == {i: [cpu] for i, cpu in enumerate(cpus)}, 'MPI binding differs from frozen CPUs')
+  File "/home/nuo/courses/projects/parallel-heat-solver/scripts/benchmark.py", line 23, in require
+    raise RuntimeError(message)
+RuntimeError: MPI binding differs from frozen CPUs
+
+exit=1

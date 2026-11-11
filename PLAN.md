@@ -83,3 +83,6 @@
 仅新增scripts中的benchmark_large.py/analyze_large.py及tests中的check_large.py；不改正式源码、CMake、既有测试/脚本或docs/performance。不新增Markdown文档或受版本控制目录，证据用既有docs/validation/m4-diagnostic-02前缀。CPU顺序0,2,...,26,1,3，取前p个再升序；16组含同core硬件线程。完整绑定、验证与统计方法见DESIGN第12节。
 
 先保留Debug/Release原21项并另测8/16资源、统计与流式读取，通过后提交冻结参数/脚本，再采样；结束复核源码/二进制哈希、独立重算CSV及资料保护，更新现有文档并提交推送origin/Evaluation。验收依据为真实完整数据和解释，不要求更大网格或16人必然加速，不进入M5、不合并main。
+
+
+本轮执行补充：首次02因单rank报告歧义在预热阶段停止，0正式样本，全部证据保留。实际绑定CPU0未改变；P=1候选列表改为0,2以取得明确报告，新增检查覆盖全部P值后另提交冻结，使用02-r1从头运行。结果区分失败启动与完成实验，不覆盖02。
