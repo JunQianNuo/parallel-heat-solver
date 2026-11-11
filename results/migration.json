@@ -14,7 +14,7 @@
       "new": "results/RESULTS.md",
       "sha256": "b1cb90c1c77a357f6c98f58ae7b4fa7f4b64e3921f9dd113e30602c5bfa6cede",
       "snapshot": "results/performance/baseline/RESULTS.original.txt",
-      "current_sha256": "a13e8d76f4af67e36609c37ebed6eb399c22dfa25d25f01699e29c330f2ab07b"
+      "current_sha256": "31a7882cfbdeb7559bdaacaa0a6b9e68dde12f18cbc78f69fa546dc7234312b4"
     },
     {
       "old": "docs/performance/SHA256SUMS",

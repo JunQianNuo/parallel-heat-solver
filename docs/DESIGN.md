@@ -2,6 +2,8 @@
 
 状态：M1 串行基准和 M2 MPI 提交 `34cdd73` 已获用户验收（2026-11-10）；独立 M2b OpenMP 已确认纳入范围，实现与基本回归约定见第 8 节，提交 `17925a9` 已于 2026-11-10 获用户验收。M3 系统验证提交 `cfffe71` 已获用户验收，约定见第 9 节。需求见 [SPEC.md](../SPEC.md)。本地权威资料为 `sources/final.pdf` 第 1、3 页；本目录中的 `sources/` 仅供本地只读参考，不纳入 Git。
 
+M4详细实测与图表统一见 [RESULTS](../results/RESULTS.md)，本文件保留模型、实现、计时和统计方法。
+
 ## 1. 二维显式离散
 
 单位正方形内求解 $u_t=\alpha(u_{xx}+u_{yy})$，四边零温，初值 $\sin(\pi x)\sin(\pi y)$，解析解为 $e^{-2\alpha\pi^2t}\sin(\pi x)\sin(\pi y)$。每个方向有 $N$ 个区间和 $N+1$ 个节点，时间分为 $M$ 步，$h=1/N$、$\Delta t=T/M$。
@@ -302,3 +304,7 @@ MPI每次保存并解析实际rank绑定报告。串行/OpenMP在原程序运行
 
 
 实测表格、轮次及时钟审计已迁至[统一结果](../results/RESULTS.md#扩大网格与并行度运行02-r1)。本节保留冻结方法与失败处理设计。
+
+### 派生可视化口径（本轮整理）
+
+新版9组图及详细实测统一见 [RESULTS](../results/RESULTS.md)。绘图入口scripts/plot_results.py调用原analyze_large.summarize，逐字节核对归档CSV后再绘图，不重算另一套统计。保留44配置/440正式样本，时间范围为min/max，S/E区间沿用同轮bootstrap。跨N时M改变，16组含硬件线程共享；逐轮图只看归一化趋势。SVG保存中文字体路径字形，生成清单记录输入/脚本/字体哈希；字体不入Git，输出目录拒绝覆盖。

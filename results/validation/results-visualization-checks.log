@@ -1,0 +1,35 @@
+Commands run from repository root:
+python3 scripts/plot_results.py --output results/figures/large-02-r1-viz-01
+Generated 9 SVG/PNG pairs, 44 configurations, 440 raw samples in results/figures/large-02-r1-viz-01
+
+python3 scripts/check_results.py --course-baseline build/results-reorganization/course-before.json
+Validated 23 configurations; summary written to /tmp/heat-result-audit-rgug3nhb/baseline
+Validated 256 measured configurations and 95 complete paired comparisons
+Validated 44 configurations, 44 warmups, 440 measured samples
+STATISTICS correctly rejected missing
+STATISTICS correctly rejected duplicate
+STATISTICS correctly rejected version
+STATISTICS correctly rejected team
+STATISTICS correctly rejected parameters
+STATISTICS correctly rejected nan
+STATISTICS correctly rejected error
+STATISTICS correctly rejected missing-validation
+STATISTICS median/range/baseline/work normalization and eight corruption cases passed (synthetic only)
+PASS 67 artifacts, two snapshots, four historical ledgers; no legacy duplicates
+PASS 123 historical source hashes at four recorded commits; stopped02 excluded
+PASS synthetic-only: medians, paired-round bootstrap, 44/440 CSV, damaged journals/fields/bindings rejected
+DIAG statistics synthetic effect/no-effect/regression/invalid/missing-sample checks passed
+PASS all three completed datasets: five CSV files byte-identical; synthetic checks
+PASS current Markdown file links and code fences
+PASS nine SVG/PNG groups, exact 44-config coverage, 440 SVG raw markers, statistics/input/script hashes
+PASS diagnostic/large/plot reused directories refused before build or generation
+PASS 2564 course material paths/hashes unchanged and untracked
+
+python3 -m py_compile scripts/plot_results.py scripts/check_results.py: exit 0
+git -c core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol diff --cached --check: exit 0 (CSV preserves original CRLF)
+git diff 320437c -- src CMakeLists.txt: empty
+Visual review by AI: all nine PNG groups inspected via image tool; Chinese labels, axis scales, min/max vs exploratory intervals, serial-only-one-CPU references and footer limitations checked. Not human acceptance.
+Development render failure (StopIteration in panel iterator) fixed; partial output retained under ignored build/results-reorganization/partial-render-01, then full output rendered. No measured records changed.
+No solver, numerical regression, build or new performance sampling run during this task.
+
+Staging initially detected Matplotlib SVG trailing spaces and byte-identical CSV CRLF. New SVG generator now strips trailing spaces; original CSV bytes retained. Regenerated all nine groups. Final nine PNGs byte-identical to visually reviewed PNGs, SVG parsed/glyph/sample/hash checks rerun.

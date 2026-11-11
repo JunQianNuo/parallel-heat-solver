@@ -6,7 +6,7 @@
 
 ## 当前进度
 
-M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小数显示已补齐并验证。M2 MPI 提交 `34cdd73` 已获用户验收，既有 Debug/Release 回归各 10/10 通过。M2b OpenMP 提交 `17925a9` 已于 2026-11-10 获用户验收，既有 Debug/Release 各 15/15 通过；M3 系统验证提交 `cfffe71` 已获用户验收，证据见下节；M4 已在 `Evaluation` 完成计时、23 配置/115 样本的真实实验与分析，待用户验收；Debug/Release 各 20/20 通过。结果见 [M4 实验分析](results/RESULTS.md)。用户已选择补充诊断，用户要求实施计划后，隔离诊断及真实对照已完成，Debug/Release各21/21，分析与证据见[DESIGN第11节](docs/DESIGN.md)，待用户验收，M5未开始。M2b 检查输出见 [M2b 验证记录](results/validation/m2b.log)，历史证据保留在各阶段日志中。
+M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小数显示已补齐并验证。M2 MPI 提交 `34cdd73` 已获用户验收，既有 Debug/Release 回归各 10/10 通过。M2b OpenMP 提交 `17925a9` 已于 2026-11-10 获用户验收，既有 Debug/Release 各 15/15 通过；M3 系统验证提交 `cfffe71` 已获用户验收，证据见下节；M4 已在 `Evaluation` 完成计时、23 配置/115 样本的真实实验与分析，待用户验收；Debug/Release 各 20/20 通过。结果见 [M4 实验分析](results/RESULTS.md)。用户已选择补充诊断，用户要求实施计划后，隔离诊断及真实对照已完成，Debug/Release各21/21，分析与证据见[统一结果](results/RESULTS.md#补充诊断运行01)，待用户验收，M5未开始。M2b 检查输出见 [M2b 验证记录](results/validation/m2b.log)，历史证据保留在各阶段日志中。
 
 ## 文档导航
 
@@ -19,6 +19,15 @@ M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小�
 | [DESIGN.md](docs/DESIGN.md) | 数学模型、数值算法、MPI 实现与 OpenMP 设计基线 |
 | [DECISIONS.md](docs/DECISIONS.md) | 已确认选择及理由 |
 | [AI_USAGE.md](docs/AI_USAGE.md) | AI 使用与人工核查记录 |
+| [RESULTS.md](results/RESULTS.md) | 三批实验结果、最新9组中文对比图与证据入口 |
+
+## 结果与目录分工（本轮整理）
+
+统一入口为 [实验结果与图表](results/RESULTS.md)。`docs/` 保存设计、决策、AI记录；本地 `docs/sources/` 只读且不纳入Git。`results/validation/` 保存构建、正确性与回归证据；`results/performance/` 分开保存 baseline、diagnostic-01、停止的 large-02 与完成的 large-02-r1；`results/figures/` 用于派生展示。`report/` 为 M5 最终报告和答辩预留，目前为空。
+
+用户本轮授权迁移结果，替代此前阶段“原性能目录不改、工件存于docs/validation、不新增目录”的布局限制；数学模型、求解器和测量数值不变。历史日志/清单中的路径保持原文，通过 [迁移映射](results/migration.json) 查找；旧哈希统一用 `python3 scripts/check_results.py` 验证。
+
+未来运行01类诊断使用 `--run-id <新编号>` 写入 `results/performance/diagnostic-<新编号>/m4-diagnostic-<新编号>.*`；扩大实验写入 `results/performance/large-<新编号>/m4-diagnostic-<新编号>.*`。目标运行目录已存在即拒绝；02-r1是既有归档身份，不能再次采样覆盖。
 
 ## 本地课程资料
 
@@ -114,61 +123,26 @@ ctest --test-dir build -L M3 --output-on-failure
 可降低既有两个资源配置值（1..4），脚本仅核验所选矩阵，不将缺失资源标为通过。每个系统测试 TIMEOUT=240 秒，子进程 25 秒，超时杀死启动器进程组。没有大于 4 的资源或多机验证结论。原始环境/命令/构建/检查及完整逐项输出见 [m3.log](results/validation/m3.log)，加密数据见 [m3-errors.csv](results/validation/m3-errors.csv)；CSV 来自该次 CTest 实际输出，不是解析预测值。测试用时不作为性能数据。
 
 
-## M4 性能计时与实验
+## M4 性能计时、证据与图表
 
-详细资源、计时边界、矩阵、统计和复现方法见 [性能实验协议](results/performance/baseline/README.md)。三种程序 stderr 均增加 `loop_seconds`，仅测时间推进；MPI 含 halo 通信并取 rank 最大值，OpenMP 包括团队进入/退出、逐层同步与交换。初始化、收集、验证和输出在计时外。默认 CSV 合同保持，新增无值 `--summary-only` 省略 CSV，仍真实验证 E_inf。
+M4原实验、诊断01和扩大02-r1均已交付，仍待用户验收，未进入M5。统一入口为 [实验结果与九组新版图](results/RESULTS.md)，方法见 [DESIGN第10–12节](docs/DESIGN.md) 和 [原M4协议](results/performance/baseline/README.md)。详细实测表格、归因边界与时钟审计集中在结果入口。
 
-```bash
-./build/m4-release/heat_serial --N 128 --M 1024 --T .01 --summary-only
-mpiexec --map-by core --bind-to hwthread -n 4 ./build/m4-release/heat_mpi --N 128 --M 1024 --T .01 --summary-only
-OMP_PLACES='{0},{2},{4},{6}' OMP_PROC_BIND=close ./build/m4-release/heat_openmp --threads 4 --N 128 --M 1024 --T .01 --summary-only
-```
+三个正式程序的 `loop_seconds` 仅测推进：MPI包含halo并取rank最大值，OpenMP包含团队进入/退出、同步及交换；初始化、收集、验证和输出在外。`--summary-only` 只省略全场CSV，仍推进并检查解析误差。CTest耗时不是性能数据。
 
-本机实验使用 CPU 0/2/4/6；迁移机器先核查可用 CPU 与绑定。正式数据采样、统计与图表命令见协议，不将上述单次示范或 CTest 时间作为性能结论。新增 `heat_timing` 检查计时字段、摘要/全场一致及错误路径；`python3 tests/check_statistics.py` 使用合成数据独立核查统计方法。M4 实施完成，待用户验收，不进入 M5。
-
-
-实测证据与 Amdahl/Gustafson 分析见 [RESULTS.md](results/RESULTS.md)，完整统计见 [summary.csv](results/performance/baseline/derived/summary.csv)。两组强扩展固定 T=0.01、alpha=1；N=384/M=9216 下 MPI P=4 主基线加速比为 1.521、效率 38.04%，OpenMP Q=4 加速比为 0.976。扩大累计工作量组 p=4 的自身基础网格吞吐增长分别为 MPI 2.205、OpenMP 0.804；不将不同基线的指标混用。原始 23 次完整场验证观测 D_inf 全为 0。源码版本为 `75cdaad`，测量期间源码和二进制哈希未变；原始样本、环境、绑定、编译命令、图表与复现方法均已保留。
-
-
-M4 补充诊断的范围与步骤见现有 [PLAN](PLAN.md)，冻结的隔离测量方法及本轮结果见 [DESIGN](docs/DESIGN.md) 第 11 节。用户选择仅当前 WSL2、分阶段深入；前次 7c9ea09 仅更新文档，本轮按用户明确授权在既有目录实现隔离诊断代码并保留真实对照证据；不新增 Markdown 文档或目录。后续诊断允许隔离变体，正式求解器/CLI/API 与原性能证据保持现状；采用优化需另行确认，不进入 M5。原 M4 的 20/20 回归和 115 正式样本属于既有交付，不是本次新运行结果。
-
-
-诊断构建开关为 `-DHEAT_BUILD_DIAGNOSTICS=ON`（默认 OFF），生成 heat_serial_diag、heat_mpi_diag、heat_openmp_diag；仅这些入口接受 --variant/--profile。baseline 调用原路径且不允许 --profile，replica 与插桩/对照需分别校准。原求解器、CLI 和 docs/performance 保持不变；新证据使用既有 docs/validation/m4-diagnostic-<run-id> 前缀，运行01代码身份为1e2fb5f，完整清单与原始记录已归档；原23配置复测230样本，完整计数和解释见DESIGN第11节。
-
-
-诊断构建与复现（新实验须采用未使用的运行编号）：
+原M4为23配置/115正式样本；诊断01为2775调用（215预热、2560正式）；扩大02-r1为44配置/44完整场预热/440正式样本。停止02有0正式样本，失败证据单独保留。扩大矩阵为N=384/512/768/1024，M=N²/16，T=0.01，alpha=1，P/Q=1/2/4/8/16，均以同网格独立串行作基线。16组含14个WSL可见core上的硬件线程共享；跨N/M比较不是弱扩展。
 
 ```bash
-cmake -S . -B build/m4-diagnostic-release -DCMAKE_BUILD_TYPE=Release -DHEAT_BUILD_DIAGNOSTICS=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-cmake --build build/m4-diagnostic-release --target check --parallel 2
-python3 scripts/diagnose.py --build build/m4-diagnostic-release --run-id diagnostic-example
-python3 scripts/analyze_diagnostics.py results/performance/diagnostic-01/m4-diagnostic-01 --output build/m4-diagnostic-recomputed --no-plots
+# 校验旧清单、采样源码身份、重算统计、合成检查及新版图覆盖；不调用求解器：
+python3 scripts/check_results.py
+# 只重画已完成数据，必须使用未占用的输出目录：
+python3 scripts/plot_results.py --output build/results-viz-review
+# 可选：--font /path/to/existing-chinese-font.ttf
+# 独立复算最新统计到忽略的build目录：
+python3 scripts/analyze_large.py results/performance/large-02-r1/m4-diagnostic-02-r1 --output build/m4-large-recomputed --no-plots
 ```
 
-采样前须提交干净诊断源码并完成正确性检查。运行01的[原始样本](results/performance/diagnostic-01/m4-diagnostic-01.jsonl)、[清单](results/performance/diagnostic-01/m4-diagnostic-01.json)、[对照图](results/performance/diagnostic-01/m4-diagnostic-01.svg)、[统计表](results/performance/diagnostic-01/m4-diagnostic-01.csv)及[审计](results/performance/diagnostic-01/m4-diagnostic-01-audit.log)均在既有目录；图中点为配对耗时比，横线为探索性bootstrap95%区间，蓝点表示满足预设影响判据，与原M4图的min/max范围条含义不同。
+生成目录包含9组SVG/PNG、原统计CSV副本、生成清单和SHA256SUMS。中文SVG字形转为路径；字体只读使用，不入Git。耗时条为min/max，S/E条为探索性95%区间，逐轮图不能用于比较绝对速度；所有慢样本与WSL时钟/趋势限制保留。
 
+隔离诊断开关 `HEAT_BUILD_DIAGNOSTICS` 默认OFF，启用生成 `heat_serial_diag`、`heat_mpi_diag`、`heat_openmp_diag`；只有这些程序接受 `--variant`、`--profile`。诊断变体没有进入正式求解器，采用优化需另行确认。诊断ON原回归为21项，OFF为20项；历史检查日志已归档，本轮整理没有重新执行数值回归或采样。
 
-M4进一步扩大网格数量与P/Q的实验已获用户授权，已完成44次全场预热及440次正式样本，待用户验收。矩阵N=384/512/768/1024、M=N²/16、T=0.01、alpha=1，原MPI/OpenMP各测1/2/4/8/16，以各网格独立串行为基线；16含同WSL可见core上的硬件线程共享。方法与状态分别见现有DESIGN第12节和STATUS，不修改原性能目录或正式求解器。新脚本入口：
-
-```bash
-cmake -S . -B build/m4-large-release -DCMAKE_BUILD_TYPE=Release -DHEAT_BUILD_DIAGNOSTICS=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-cmake --build build/m4-large-release --target check --parallel 2
-python3 tests/check_large.py --build build/m4-large-release
-python3 scripts/benchmark_large.py --build build/m4-large-release --run-id 02-r1
-python3 scripts/analyze_large.py results/performance/large-02-r1/m4-diagnostic-02-r1
-```
-
-此处开启诊断构建仅为保留21项回归；本轮采样只调用原三个程序。采样须在正确性检查及提交冻结后进行；run-id不得重复，原始证据位于既有docs/validation，尚未完成的实验不标通过。
-
-运行02在单rank绑定报告核查时停止，未产生正式样本，失败证据原样保留；修正报告兼容后使用新编号02-r1。P=1虽向启动器提供0,2两个候选CPU，实际仅1个rank绑定CPU0；其余配置不变。
-
-
-扩大实验已由646f7c4冻结，在02-r1完成；[新增分析](docs/DESIGN.md)、[统计](results/performance/large-02-r1/m4-diagnostic-02-r1.csv)、[强扩展图](results/performance/large-02-r1/m4-diagnostic-02-r1-strong.svg)和[逐轮图](results/performance/large-02-r1/m4-diagnostic-02-r1-rounds.svg)保留在既有文件/目录。新复现实验须使用未占用编号，不覆盖上述归档；本轮只测原程序，正式优化仍需用户另行确认。
-
-## 结果与目录分工（本轮整理）
-
-统一入口为 [实验结果与图表](results/RESULTS.md)。`docs/` 保存设计、决策、AI记录；本地 `docs/sources/` 只读且不纳入Git。`results/validation/` 保存构建、正确性与回归证据；`results/performance/` 分开保存 baseline、diagnostic-01、停止的 large-02 与完成的 large-02-r1；`results/figures/` 用于派生展示。`report/` 为 M5 最终报告和答辩预留，目前为空。
-
-用户本轮授权迁移结果，替代上文历史阶段“原性能目录不改、工件存于docs/validation、不新增目录”的布局限制；数学模型、求解器和测量数值不变。历史日志/清单中的路径保持原文，通过 [迁移映射](results/migration.json) 查找；旧哈希统一用 `python3 scripts/check_results.py` 验证。
-
-未来运行01类诊断使用 `--run-id <新编号>` 写入 `results/performance/diagnostic-<新编号>/m4-diagnostic-<新编号>.*`；扩大实验写入 `results/performance/large-<新编号>/m4-diagnostic-<新编号>.*`。目标运行目录已存在即拒绝；上文02-r1是归档身份，不能再次采样覆盖。
+未来实验仍需先检查、提交冻结再采样：`scripts/diagnose.py --build <Release诊断构建> --run-id <新编号>` 写diagnostic运行目录；`scripts/benchmark_large.py --build <Release构建> --run-id <新编号>` 写large运行目录。目录存在即拒绝，不覆盖01、02或02-r1。新机器须重新核对资源、绑定与协议，不直接沿用本机参数。

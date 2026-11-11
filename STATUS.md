@@ -1,6 +1,6 @@
 # 项目状态
 
-本轮当前任务：用户已授权扩大网格数量与P/Q，已完成运行02-r1的44次验证预热及440次正式采样与分析，待用户验收；此前交付的原M4及运行01诊断均保留、待用户验收。
+本轮当前任务：统一结果目录与新版可视化已完成，67个旧工件及证据哈希保留，新增9组中文SVG/PNG覆盖44配置/440样本；M4仍待用户验收，M5未开始。
 
 更新日期：2026-11-11（Asia/Shanghai）。
 
@@ -343,3 +343,11 @@ Debug/Release原21项通过，无编译警告；绑定报告兼容修正后，�
 本轮未重新采样、未运行数值构建/回归，也不声称新增性能结果；正在核查迁移、统计复算与路径适配，之后更新新版图。M4仍待用户验收，M5未进入。
 
 迁移验证已完成：`python3 scripts/check_results.py --course-baseline build/results-reorganization/course-before.json`通过。67个工件及两份快照、4份旧清单、4个历史提交的123项源码哈希均一致；三个完成批次5份CSV逐字节一致；原统计及诊断/扩大合成检查通过。文件链接及围栏通过，2,564份课程资料路径/内容未变且未跟踪。测试过程中校验入口曾误引用未独立提取的诊断合成函数，已提取原检查块并重跑通过；未执行其真实求解器检查。原求解器/CMake未修改。审计见results/validation/results-migration-checks.log。
+
+## 新版全套对比图交付（2026-11-11）
+
+目录迁移提交为7ff6adf。新增scripts/plot_results.py，在results/figures/large-02-r1-viz-01生成9组SVG/PNG、统计CSV副本、生成清单及SHA256SUMS；输入仅为646f7c4冻结的02-r1，44配置/440正式样本，无新测量。RESULTS统一入口整合三批完成实验与停止02，直接展示主要新图并解释全部9组；DESIGN保留方法，README明确docs/results/report分工。report仍为空，M5未开始。
+
+实际执行 `python3 scripts/plot_results.py --output results/figures/large-02-r1-viz-01`；`python3 scripts/check_results.py --course-baseline build/results-reorganization/course-before.json` 全部通过。逐字节核对原67工件与起点Git库存、2快照、4旧清单、4版本123项采样源码哈希；从三批完成原始数据重算5份CSV完全一致，原统计及诊断/扩大合成检查通过。9组SVG/PNG及其脚本/输入/统计哈希、全44配置覆盖、原始样本SVG实际440个点、三个入口拒绝复用目录均通过。Python语法编译通过；暂存差异按允许CRLF规则检查通过（CSV副本保留原始CRLF字节，新SVG已去除生成器尾空格）。AI逐组目视检查中文、标签、坐标、范围与串行参考；不代表用户已验收。
+
+课程资料2,564文件的路径/内容前后不变且未跟踪。正式src与CMake相对320437c无改动；未重新构建、未运行数值回归、未重新采样，不补写新的21/21通过结论。图表继续标明16逻辑CPU/14WSL可见core、M随N增加、UTC/轮次趋势及未校准外部物理时间；不称弱扩展、不剔除慢样本、不预设16优于8。完整本轮审计见results/validation/results-visualization-checks.log。仅提交推送同名origin/Evaluation，M4交用户验收，不操作main。

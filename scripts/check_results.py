@@ -11,6 +11,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -31,7 +32,12 @@ def check_migration():
     require(len({e['old'] for e in entries}) == len({e['new'] for e in entries}) == 67,
             'duplicate migration paths')
     mapping = {e['old']: e for e in entries}
+    original_paths = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only',
+        manifest['source_revision'], '--', 'docs/performance', 'docs/validation'], cwd=ROOT, text=True).splitlines()
+    require(set(mapping) == set(original_paths), 'migration must cover the original Git inventory exactly')
     for e in entries:
+        original = subprocess.check_output(['git', 'show', manifest['source_revision']+':'+e['old']], cwd=ROOT)
+        require(hashlib.sha256(original).hexdigest() == e['sha256'], 'migration original hash mismatch')
         require(not (ROOT/e['old']).exists(), 'legacy path still exists: '+e['old'])
         require((ROOT/e['new']).is_file(), 'missing destination: '+e['new'])
         require(digest(ROOT/e.get('snapshot', e['new'])) == e['sha256'], 'changed evidence: '+e['old'])
@@ -122,6 +128,62 @@ def check_course(baseline):
     print(f'PASS {len(after)} course material paths/hashes unchanged and untracked')
 
 
+def check_figures():
+    directory = ROOT/'results/figures/large-02-r1-viz-01'
+    if not directory.exists():
+        print('NOT RUN new figure checks: figure directory absent')
+        return
+    m = json.loads((directory/'generation.json').read_text())
+    require((m['configuration_count'], m['measured_samples']) == (44, 440), 'figure counts')
+    base = ROOT/'results/performance/large-02-r1/m4-diagnostic-02-r1'
+    manifest = json.loads(Path(str(base)+'.json').read_text())
+    require(m['sampling_revision'] == manifest['revision'], 'figure sampling version')
+    ids = {c['id'] for c in manifest['matrix']}
+    require(len(m['charts']) == 9, 'expected nine chart groups')
+    for chart in m['charts']:
+        expected = ids
+        if 'rounds-' in chart['name']:
+            kind = 'mpi' if chart['name'].endswith('mpi') else 'openmp'
+            expected = {c['id'] for c in manifest['matrix'] if c['kind'] in ('serial', kind)}
+            require(chart['raw_sample_points'] == len(expected)*10 == 240, 'round plot coverage')
+        require(set(chart['configurations']) == expected and len(chart['configurations']) == len(expected),
+                'chart configuration coverage: '+chart['name'])
+        svg = ET.parse(directory/(chart['name']+'.svg')).getroot()
+        require(not list(svg.iter('{http://www.w3.org/2000/svg}text')), 'SVG must embed glyph paths')
+        require((directory/(chart['name']+'.png')).read_bytes().startswith(b'\x89PNG\r\n\x1a\n'), 'invalid PNG')
+        if chart['name'] == '07-samples':
+            points = sum(len(list(g.iter('{http://www.w3.org/2000/svg}use')))
+                         for g in svg.iter('{http://www.w3.org/2000/svg}g')
+                         if g.get('id', '').startswith('PathCollection_'))
+            require(points == chart['raw_sample_points'] == 440, 'SVG must contain all 440 sample markers')
+    require((directory/'statistics.csv').read_bytes() == Path(str(base)+'.csv').read_bytes(), 'figure CSV changed')
+    for name, expected in {**m['inputs'], **m['script_sha256']}.items():
+        require(digest(ROOT/name) == expected, 'figure input/script changed: '+name)
+    font = Path(m['font']['path'])
+    if font.exists():
+        require(digest(font) == m['font']['sha256'], 'font changed')
+    else:
+        print('NOT RUN local font hash: recorded external font unavailable; SVG has embedded glyph paths')
+    ledger_files = set()
+    for line in (directory/'SHA256SUMS').read_text().splitlines():
+        expected, name = line.split(maxsplit=1)
+        require(digest(directory/name) == expected, 'figure checksum: '+name)
+        ledger_files.add(name)
+    require(ledger_files == {p.name for p in directory.iterdir() if p.name != 'SHA256SUMS'}, 'figure ledger coverage')
+    print('PASS nine SVG/PNG groups, exact 44-config coverage, 440 SVG raw markers, statistics/input/script hashes')
+
+
+def check_refusal():
+    for script, args in [
+        ('diagnose.py', ['--build', '/nonexistent', '--run-id', '01']),
+        ('benchmark_large.py', ['--build', '/nonexistent', '--run-id', '02-r1']),
+        ('plot_results.py', ['--output', 'results/figures/large-02-r1-viz-01'])]:
+        result = subprocess.run([sys.executable, 'scripts/'+script, *args], cwd=ROOT, capture_output=True, text=True)
+        require(result.returncode != 0 and 'directory already exists' in result.stderr,
+                'existing result directory was not rejected before work: '+script)
+    print('PASS diagnostic/large/plot reused directories refused before build or generation')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--course-baseline', type=Path)
@@ -130,6 +192,8 @@ def main():
     check_sources()
     check_statistics()
     check_links()
+    check_figures()
+    check_refusal()
     if args.course_baseline:
         check_course(args.course_baseline)
 
