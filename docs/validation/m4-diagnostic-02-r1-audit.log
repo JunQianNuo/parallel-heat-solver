@@ -1,0 +1,127 @@
+M4 expanded-grid final evidence audit — 2026-11-11 Asia/Shanghai
+$ python3 build/m4-large-audit.py
+PASS: 44 configurations, 44 warmups, 440 measured samples, exact shuffled order, raw/parsed summaries, bindings, timing scopes, unchanged source/binaries
+PASS: independent CSV and rounds.csv regeneration byte-identical
+Sampling source revision: 646f7c460d5a2b409c1063face7e7ed7655db5fc
+Monotonic first-start/last-end elapsed (includes invocation gaps): 5193.684179848 s
+Max warmup D_inf: 0.0
+Max warmup mode difference: 6.638023464233811e-13
+PASS: 70 original source/config/test/script/evidence files byte-identical to 9983e4f
+$ cd docs/performance && sha256sum -c SHA256SUMS
+README.md: OK
+RESULTS.md: OK
+derived/scaled.png: OK
+derived/scaled.svg: OK
+derived/strong.png: OK
+derived/strong.svg: OK
+derived/summary.csv: OK
+protocol.json: OK
+run-01/binding-probe.json: OK
+run-01/clock-audit.log: OK
+run-01/complete.json: OK
+run-01/console.log: OK
+run-01/environment.log: OK
+run-01/matrix.json: OK
+run-01/metadata.json: OK
+run-01/samples.jsonl: OK
+$ cd docs/validation && sha256sum -c m4-diagnostic-01.sha256
+m4-diagnostic-01-audit.log: OK
+m4-diagnostic-01-console.log: OK
+m4-diagnostic-01-workers.csv: OK
+m4-diagnostic-01.csv: OK
+m4-diagnostic-01.json: OK
+m4-diagnostic-01.jsonl: OK
+m4-diagnostic-01.log: OK
+m4-diagnostic-01.png: OK
+m4-diagnostic-01.svg: OK
+m4-diagnostic-debug-checks.log: OK
+m4-diagnostic-default-checks.log: OK
+m4-diagnostic-release-checks.log: OK
+$ cd docs/validation && sha256sum -c m4-diagnostic-02.sha256
+m4-diagnostic-02-console.log: OK
+m4-diagnostic-02-failed-1.csv: OK
+m4-diagnostic-02-failed-1.stderr: OK
+m4-diagnostic-02-failure.log: OK
+m4-diagnostic-02.json: OK
+m4-diagnostic-02.jsonl: OK
+m4-diagnostic-02.log: OK
+PASS: course materials unchanged, ignored, untracked: {'count': 2564, 'digest': 'b040e2224e333b454c3ebfed42f91bb41a26f020636a0bf20d3c4445bf109754'}
+PASS: repeated run-ID refusal before writing; existing files unchanged. This is an expected acceptance check, not a failed performance invocation.
+Traceback (most recent call last):
+  File "/home/nuo/courses/projects/parallel-heat-solver/scripts/benchmark_large.py", line 348, in <module>
+    main()
+  File "/home/nuo/courses/projects/parallel-heat-solver/scripts/benchmark_large.py", line 257, in main
+    prefix = available_prefix(args.run_id)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nuo/courses/projects/parallel-heat-solver/scripts/benchmark_large.py", line 248, in available_prefix
+    require(not list(prefix.parent.glob(prefix.name+'*')), 'run ID already exists; do not overwrite evidence')
+  File "/home/nuo/courses/projects/parallel-heat-solver/scripts/benchmark.py", line 23, in require
+    raise RuntimeError(message)
+RuntimeError: run ID already exists; do not overwrite evidence
+No extra numerical test reruns: documented 21/21 and extended checks remain the correctness evidence.
+
+exit=0
+
+$ python3 scripts/analyze_large.py docs/validation/m4-diagnostic-02-r1
+Validated 44 configurations, 44 warmups, 440 measured samples
+$ python3 scripts/analyze_large.py docs/validation/m4-diagnostic-02-r1 --output build/m4-large-recomputed --no-plots
+Validated 44 configurations, 44 warmups, 440 measured samples
+Both CSV files compared byte-identical. All three SVG/PNG pairs visually checked for axes, labels, intervals and 16-worker resource caveats.
+
+Important clock limitation: see m4-diagnostic-02-r1-clock-audit.log and DESIGN. UTC is tracing only; monotonic intervals/solver clocks define durations. No external physical-clock calibration is established.
+
+Auxiliary audit source preserved for review (build remains ignored):
+from pathlib import Path
+import hashlib,json,re,subprocess,sys
+sys.path.insert(0,'scripts')
+from analyze_large import analyze
+from benchmark_large import sha,command_for
+prefix=Path('docs/validation/m4-diagnostic-02-r1')
+m=json.loads(Path(str(prefix)+'.json').read_text())
+assert m['complete'] and m['source_and_binary_unchanged'] and m['git_status']==''
+rows=analyze(prefix,Path('build/m4-large-recomputed'),False)
+for suffix in ('.csv','-rounds.csv'):
+ assert Path(str(prefix)+suffix).read_bytes()==Path('build/m4-large-recomputed'+suffix).read_bytes()
+records=[json.loads(x) for x in Path(str(prefix)+'.jsonl').read_text().splitlines()]
+samples=[r for r in records if r['type']=='sample']
+assert len(samples)==484 and sum(not r['warmup'] for r in samples)==440
+for r in samples:
+ c=r['config'];cmd,env,exe=command_for(Path('build/m4-large-release'),c,r['warmup'])
+ assert r['command']==cmd
+ assert r['tuning']=={k:v for k,v in env.items() if k.startswith('OMP_') or k=='LC_ALL'}
+ assert re.fullmatch('[0-9a-f]{64}',r['stdout_sha256'])
+ assert not Path(r['stdout_path']).exists() and not Path(r['stderr_path']).exists()
+ assert r['summary']['loop_seconds'] <= (r['mono_end_ns']-r['mono_start_ns'])/1e9+.001
+assert all(sha(p)==value for p,value in m['source_sha256'].items())
+assert all(sha(Path('build/m4-large-release')/('heat_'+kind))==value for kind,value in m['binary_sha256'].items())
+assert not subprocess.check_output(['git','status','--porcelain','--','CMakeLists.txt','src','tests','scripts'])
+print('PASS: 44 configurations, 44 warmups, 440 measured samples, exact shuffled order, raw/parsed summaries, bindings, timing scopes, unchanged source/binaries')
+print('PASS: independent CSV and rounds.csv regeneration byte-identical')
+print('Sampling source revision:',m['revision'])
+print('Monotonic first-start/last-end elapsed (includes invocation gaps):',(samples[-1]['mono_end_ns']-samples[0]['mono_start_ns'])/1e9,'s')
+print('Max warmup D_inf:',max(r['validation']['D_inf'] for r in samples if r['warmup']))
+print('Max warmup mode difference:',max(r['validation']['mode_diff'] for r in samples if r['warmup']))
+old=subprocess.check_output(['git','ls-tree','-r','--name-only','9983e4f','--','src','scripts','tests','docs/performance','docs/validation','CMakeLists.txt'],text=True).splitlines()
+for p in old:assert Path(p).read_bytes()==subprocess.check_output(['git','show','9983e4f:'+p]),p
+print('PASS:',len(old),'original source/config/test/script/evidence files byte-identical to 9983e4f')
+for cwd,name in [('docs/performance','SHA256SUMS'),('docs/validation','m4-diagnostic-01.sha256'),('docs/validation','m4-diagnostic-02.sha256')]:
+ r=subprocess.run(['sha256sum','-c',name],cwd=cwd,capture_output=True,text=True,check=True)
+ print('$ cd',cwd,'&& sha256sum -c',name)
+ print(r.stdout.strip())
+paths=sorted(p for p in Path('docs/sources').rglob('*') if p.is_file());h=hashlib.sha256()
+for p in paths:h.update(str(p).encode()+b'\0'+hashlib.sha256(p.read_bytes()).digest())
+actual=dict(count=len(paths),digest=h.hexdigest())
+assert actual==json.loads(Path('build/m4-large-sources-before.json').read_text())
+assert not subprocess.check_output(['git','ls-files','docs/sources'])
+ignored=subprocess.run(['git','check-ignore','-z','--stdin'],input=b''.join(str(p).encode()+b'\0' for p in paths),capture_output=True,check=True)
+assert len(ignored.stdout.rstrip(b'\0').split(b'\0'))==len(paths)
+print('PASS: course materials unchanged, ignored, untracked:',actual)
+before={p:sha(p) for p in prefix.parent.glob(prefix.name+'*') if p.is_file()}
+r=subprocess.run([sys.executable,'scripts/benchmark_large.py','--build','build/m4-large-release','--run-id','02-r1'],capture_output=True,text=True)
+assert r.returncode!=0 and 'run ID already exists' in r.stderr
+assert all(sha(p)==v for p,v in before.items())
+print('PASS: repeated run-ID refusal before writing; existing files unchanged. This is an expected acceptance check, not a failed performance invocation.')
+print(r.stderr.strip())
+print('No extra numerical test reruns: documented 21/21 and extended checks remain the correctness evidence.')
+
+PASS: 8 existing documents, 94 valid relative links, closed fences and strict document whitespace. Generated result tables match validated analysis. Exactly three new scripts, no new Markdown files or tracked parent directories; all 31 additions stay within authorized locations. Frozen source/CMake unchanged.

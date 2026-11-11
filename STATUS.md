@@ -1,6 +1,6 @@
 # 项目状态
 
-本轮当前任务：用户已授权扩大网格数量与P/Q，已完成实现与正确性验证，待冻结后正式采样；此前交付的原M4及运行01诊断均保留、待用户验收。
+本轮当前任务：用户已授权扩大网格数量与P/Q，已完成运行02-r1的44次验证预热及440次正式采样与分析，待用户验收；此前交付的原M4及运行01诊断均保留、待用户验收。
 
 更新日期：2026-11-11（Asia/Shanghai）。
 
@@ -310,3 +310,28 @@ python3 scripts/analyze_diagnostics.py docs/validation/m4-diagnostic-01 --output
 修正仅为P=1使用候选列表0,2，仍只启动1个rank，明确报告rank0绑定CPU0；实际CPU集合、矩阵、计时和其余绑定不变。新增检查扩到全部P/Q=1/2/4/8/16；检查后另提交冻结，再以新运行编号02-r1从头采样，不重用02的预热或数据。本轮新增脚本的该报告兼容修正不改变正式程序，原Debug/Release21项证据保持，新增检查在两构建重跑。
 
 绑定报告兼容修正后，Debug/Release新增检查均再次通过，包含全部P/Q=1/2/4/8/16与两类超时清理；新日志为m4-diagnostic-large-{debug,release}-binding-checks.log，原21项检查日志原样保留。失败02的完整CSV与原attempt哈希一致，正式样本确为0。接下来提交修正与失败留证，再从新编号02-r1开始。
+
+
+## M4 扩大网格数量与P/Q完成（2026-11-11，待用户验收）
+
+最终冻结版本 `646f7c460d5a2b409c1063face7e7ed7655db5fc`。真实完成命令：
+
+```bash
+python3 -u scripts/benchmark_large.py --build build/m4-large-release --run-id 02-r1
+python3 scripts/analyze_large.py docs/validation/m4-diagnostic-02-r1
+python3 scripts/analyze_large.py docs/validation/m4-diagnostic-02-r1 --output build/m4-large-recomputed --no-plots
+```
+
+完成44配置、44次完整场验证预热、440次正式样本，没有失败、重试或删样本；初次02的绑定报告检查拒绝另存，不纳入完成运行。源码/二进制前后哈希一致，UTC只追溯，单调调用区间无重叠；实际P/Q、每次绑定、稳定性、完整场离散/连续参考及独立串行一致性通过。16组的实际集合包含14个WSL可见core上的16逻辑CPU，原样标注，不推断宿主物理映射。
+
+全部数值、区间及结论见[DESIGN第12节](docs/DESIGN.md)，证据见[原始记录](docs/validation/m4-diagnostic-02-r1.jsonl)、[清单](docs/validation/m4-diagnostic-02-r1.json)、[统计](docs/validation/m4-diagnostic-02-r1.csv)、[审计](docs/validation/m4-diagnostic-02-r1-audit.log)与[哈希清单](docs/validation/m4-diagnostic-02-r1.sha256)。CSV及逐轮CSV独立重算逐字节一致，三组SVG/PNG已核对；全部慢样本保留，没有把单点或区间当唯一根因证据。
+
+Debug/Release原21项通过，无编译警告；绑定报告兼容修正后，两构建的新增全部资源/字段/统计/超时检查再次通过，原21日志保持，不声称重跑。最初开发超时清理失败和初次02的原始证据均留存。正式源码、CMake、既有脚本/测试、原性能目录及运行01全部证据与9983e4f逐字节相同，课程资料本轮前后2,564文件路径/内容一致且全部忽略未跟踪。没有新增Markdown文档或受版本控制目录，没有安装工具或调整系统权限。
+
+本轮仅M4，待用户验收。结果与现有文档提交推送同名origin/Evaluation；不切换分支、不合并或推送main，main仍69fb1d0。实际结果提交/远程引用以Git输出及最终汇报为准。
+
+
+扩大实验时钟/趋势审计补充：34/44配置的前3/末3中位数>1.1，所有样本保留。另有11处相邻UTC起点回退、146次UTC/单调区间差绝对值>1s；UTC结束含输出哈希后处理，因此后者不是精确校时次数。统计和顺序核查仅使用单调时钟；当前运行时哈希与原CLOCK_MONOTONIC正常路径反汇编一致。完整原始记录与新时钟审计保留，未独立校准外部物理时间、未确定宿主/虚拟机机制，不把结果作为已排除该影响的裸机结论。详见DESIGN第12节及m4-diagnostic-02-r1-clock-audit.log。
+
+
+扩大实验收尾检查：八份既有协议/项目文档的94个相对链接及代码块通过，手写差异严格空白检查通过；19个完成运行/检查工件的SHA-256逐项通过。统计表来自已验证原始记录，三组图已目视核对；新增文件仅三份脚本与既有validation目录中的前缀化证据，没有新Markdown文档或受版本控制目录。提交前逐项暂存并核对本任务范围，实际提交及同名分支推送结果以Git输出为准。

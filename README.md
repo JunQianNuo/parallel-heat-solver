@@ -148,7 +148,7 @@ python3 scripts/analyze_diagnostics.py docs/validation/m4-diagnostic-01 --output
 采样前须提交干净诊断源码并完成正确性检查。运行01的[原始样本](docs/validation/m4-diagnostic-01.jsonl)、[清单](docs/validation/m4-diagnostic-01.json)、[对照图](docs/validation/m4-diagnostic-01.svg)、[统计表](docs/validation/m4-diagnostic-01.csv)及[审计](docs/validation/m4-diagnostic-01-audit.log)均在既有目录；图中点为配对耗时比，横线为探索性bootstrap95%区间，蓝点表示满足预设影响判据，与原M4图的min/max范围条含义不同。
 
 
-M4进一步扩大网格数量与P/Q的实验已获用户授权，已完成实现与正确性验证，待冻结后正式采样。矩阵N=384/512/768/1024、M=N²/16、T=0.01、alpha=1，原MPI/OpenMP各测1/2/4/8/16，以各网格独立串行为基线；16含同WSL可见core上的硬件线程共享。方法与状态分别见现有DESIGN第12节和STATUS，不修改原性能目录或正式求解器。新脚本入口：
+M4进一步扩大网格数量与P/Q的实验已获用户授权，已完成44次全场预热及440次正式样本，待用户验收。矩阵N=384/512/768/1024、M=N²/16、T=0.01、alpha=1，原MPI/OpenMP各测1/2/4/8/16，以各网格独立串行为基线；16含同WSL可见core上的硬件线程共享。方法与状态分别见现有DESIGN第12节和STATUS，不修改原性能目录或正式求解器。新脚本入口：
 
 ```bash
 cmake -S . -B build/m4-large-release -DCMAKE_BUILD_TYPE=Release -DHEAT_BUILD_DIAGNOSTICS=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
@@ -161,3 +161,6 @@ python3 scripts/analyze_large.py docs/validation/m4-diagnostic-02-r1
 此处开启诊断构建仅为保留21项回归；本轮采样只调用原三个程序。采样须在正确性检查及提交冻结后进行；run-id不得重复，原始证据位于既有docs/validation，尚未完成的实验不标通过。
 
 运行02在单rank绑定报告核查时停止，未产生正式样本，失败证据原样保留；修正报告兼容后使用新编号02-r1。P=1虽向启动器提供0,2两个候选CPU，实际仅1个rank绑定CPU0；其余配置不变。
+
+
+扩大实验已由646f7c4冻结，在02-r1完成；[新增分析](docs/DESIGN.md)、[统计](docs/validation/m4-diagnostic-02-r1.csv)、[强扩展图](docs/validation/m4-diagnostic-02-r1-strong.svg)和[逐轮图](docs/validation/m4-diagnostic-02-r1-rounds.svg)保留在既有文件/目录。新复现实验须使用未占用编号，不覆盖上述归档；本轮只测原程序，正式优化仍需用户另行确认。

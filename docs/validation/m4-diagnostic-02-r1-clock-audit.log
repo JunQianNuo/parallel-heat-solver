@@ -1,0 +1,1541 @@
+Post-sampling clock audit; all original timestamps and samples retained. UTC never used for loop timing, sample ordering or speedup.
+Definitions: mono_end is immediately after child wait; utc_end is after reading stderr and hashing stdout. Thus small positive differences include post-processing, and counts below do not equal clock adjustment counts.
+Parent monotonic clock: namespace(implementation='clock_gettime(CLOCK_MONOTONIC)', monotonic=True, adjustable=False, resolution=1e-09)
+/usr/lib/x86_64-linux-gnu/libmpi.so.40.30.6 SHA256=9055018b12757e830591aa0283e485e471f1f2a06d3bc0dd5fb35ab00386c172 identical to immutable prior clock audit
+/usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0 SHA256=135f3c8f006d2fe5e68e51281c7974cb991a03de3bfb3593d68d174dfcf854d1 identical to immutable prior clock audit
+/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33 SHA256=1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11 identical to immutable prior clock audit
+The unchanged runtime binaries have normal MPI_Wtime/omp_get_wtime/steady_clock::now paths calling clock_gettime(1), CLOCK_MONOTONIC; disassembly and fallback limits remain in docs/performance/run-01/clock-audit.log.
+Recorded monotonic intervals are sequential and contain solver loop_seconds (checked independently). No external physical-time calibration or specific host/NTP/VM clock mechanism is established.
+{
+  "monotonic_span_seconds": 5193.684179848,
+  "utc_span_seconds": 4761.374674,
+  "invocation_differences_over_one_second": [
+    {
+      "id": 4,
+      "kind": "mpi",
+      "N": 384,
+      "p": 8,
+      "round": 0,
+      "monotonic_seconds": 2.843129962,
+      "utc_seconds": 0.186159,
+      "difference": -2.656970962
+    },
+    {
+      "id": 23,
+      "kind": "mpi",
+      "N": 768,
+      "p": 1,
+      "round": 0,
+      "monotonic_seconds": 22.034769834,
+      "utc_seconds": 19.401801,
+      "difference": -2.6329688339999997
+    },
+    {
+      "id": 25,
+      "kind": "mpi",
+      "N": 768,
+      "p": 4,
+      "round": 0,
+      "monotonic_seconds": 13.95750885,
+      "utc_seconds": 11.35944,
+      "difference": -2.5980688500000007
+    },
+    {
+      "id": 26,
+      "kind": "mpi",
+      "N": 768,
+      "p": 8,
+      "round": 0,
+      "monotonic_seconds": 18.315044779,
+      "utc_seconds": 15.753359,
+      "difference": -2.561685779000001
+    },
+    {
+      "id": 29,
+      "kind": "openmp",
+      "N": 768,
+      "p": 2,
+      "round": 0,
+      "monotonic_seconds": 14.822265318,
+      "utc_seconds": 12.229565,
+      "difference": -2.5927003180000003
+    },
+    {
+      "id": 31,
+      "kind": "openmp",
+      "N": 768,
+      "p": 8,
+      "round": 0,
+      "monotonic_seconds": 6.954722916,
+      "utc_seconds": 4.348646,
+      "difference": -2.606076916
+    },
+    {
+      "id": 33,
+      "kind": "serial",
+      "N": 1024,
+      "p": 1,
+      "round": 0,
+      "monotonic_seconds": 51.152312296,
+      "utc_seconds": 45.983404,
+      "difference": -5.168908295999998
+    },
+    {
+      "id": 34,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 1,
+      "round": 0,
+      "monotonic_seconds": 70.669858911,
+      "utc_seconds": 65.442726,
+      "difference": -5.227132911000012
+    },
+    {
+      "id": 35,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 2,
+      "round": 0,
+      "monotonic_seconds": 50.897765704,
+      "utc_seconds": 45.710055,
+      "difference": -5.187710704000004
+    },
+    {
+      "id": 36,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 4,
+      "round": 0,
+      "monotonic_seconds": 36.829453001,
+      "utc_seconds": 34.245235,
+      "difference": -2.5842180009999964
+    },
+    {
+      "id": 37,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 8,
+      "round": 0,
+      "monotonic_seconds": 42.567324958,
+      "utc_seconds": 40.067158,
+      "difference": -2.500166958000001
+    },
+    {
+      "id": 38,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 16,
+      "round": 0,
+      "monotonic_seconds": 44.89366418,
+      "utc_seconds": 39.72365,
+      "difference": -5.170014180000003
+    },
+    {
+      "id": 39,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 1,
+      "round": 0,
+      "monotonic_seconds": 44.512077104,
+      "utc_seconds": 41.925117,
+      "difference": -2.586960103999999
+    },
+    {
+      "id": 40,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 2,
+      "round": 0,
+      "monotonic_seconds": 39.512872296,
+      "utc_seconds": 34.324175,
+      "difference": -5.188697296000001
+    },
+    {
+      "id": 41,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 4,
+      "round": 0,
+      "monotonic_seconds": 37.589288046,
+      "utc_seconds": 35.0019,
+      "difference": -2.587388046000001
+    },
+    {
+      "id": 42,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 8,
+      "round": 0,
+      "monotonic_seconds": 28.638555862,
+      "utc_seconds": 26.040726,
+      "difference": -2.597829862000001
+    },
+    {
+      "id": 43,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 16,
+      "round": 0,
+      "monotonic_seconds": 24.728372291,
+      "utc_seconds": 22.158187,
+      "difference": -2.570185290999998
+    },
+    {
+      "id": 47,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 16,
+      "round": 1,
+      "monotonic_seconds": 21.759641443,
+      "utc_seconds": 19.040606,
+      "difference": -2.719035442999999
+    },
+    {
+      "id": 53,
+      "kind": "mpi",
+      "N": 512,
+      "p": 2,
+      "round": 1,
+      "monotonic_seconds": 2.007666806,
+      "utc_seconds": -0.574418,
+      "difference": -2.582084806
+    },
+    {
+      "id": 59,
+      "kind": "openmp",
+      "N": 512,
+      "p": 16,
+      "round": 1,
+      "monotonic_seconds": 2.504643789,
+      "utc_seconds": -0.174473,
+      "difference": -2.679116789
+    },
+    {
+      "id": 62,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 1,
+      "round": 1,
+      "monotonic_seconds": 44.569999906,
+      "utc_seconds": 41.877276,
+      "difference": -2.6927239059999977
+    },
+    {
+      "id": 64,
+      "kind": "mpi",
+      "N": 768,
+      "p": 8,
+      "round": 1,
+      "monotonic_seconds": 4.312803439,
+      "utc_seconds": 1.653173,
+      "difference": -2.659630439
+    },
+    {
+      "id": 69,
+      "kind": "serial",
+      "N": 1024,
+      "p": 1,
+      "round": 1,
+      "monotonic_seconds": 38.049355071,
+      "utc_seconds": 32.653269,
+      "difference": -5.396086070999999
+    },
+    {
+      "id": 72,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 2,
+      "round": 1,
+      "monotonic_seconds": 31.902307947,
+      "utc_seconds": 29.209133,
+      "difference": -2.6931749469999993
+    },
+    {
+      "id": 76,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 1,
+      "round": 1,
+      "monotonic_seconds": 57.924893,
+      "utc_seconds": 52.608565,
+      "difference": -5.316327999999999
+    },
+    {
+      "id": 78,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 8,
+      "round": 1,
+      "monotonic_seconds": 12.689372861,
+      "utc_seconds": 10.057067,
+      "difference": -2.6323058610000007
+    },
+    {
+      "id": 79,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 2,
+      "round": 1,
+      "monotonic_seconds": 40.045737951,
+      "utc_seconds": 37.352571,
+      "difference": -2.693166951000002
+    },
+    {
+      "id": 82,
+      "kind": "mpi",
+      "N": 768,
+      "p": 1,
+      "round": 1,
+      "monotonic_seconds": 15.608544125,
+      "utc_seconds": 12.927927,
+      "difference": -2.6806171249999995
+    },
+    {
+      "id": 84,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 4,
+      "round": 1,
+      "monotonic_seconds": 19.419177165,
+      "utc_seconds": 16.753821,
+      "difference": -2.665356165000002
+    },
+    {
+      "id": 86,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 4,
+      "round": 1,
+      "monotonic_seconds": 26.417970949,
+      "utc_seconds": 23.721679,
+      "difference": -2.696291948999999
+    },
+    {
+      "id": 88,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 2,
+      "round": 2,
+      "monotonic_seconds": 31.253583122,
+      "utc_seconds": 28.602769,
+      "difference": -2.650814122
+    },
+    {
+      "id": 92,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 4,
+      "round": 2,
+      "monotonic_seconds": 26.001418755,
+      "utc_seconds": 23.307416,
+      "difference": -2.6940027549999996
+    },
+    {
+      "id": 94,
+      "kind": "openmp",
+      "N": 768,
+      "p": 4,
+      "round": 2,
+      "monotonic_seconds": 8.542693609,
+      "utc_seconds": 5.780575,
+      "difference": -2.7621186090000007
+    },
+    {
+      "id": 96,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 2,
+      "round": 2,
+      "monotonic_seconds": 31.641125573,
+      "utc_seconds": 28.949169,
+      "difference": -2.691956572999999
+    },
+    {
+      "id": 103,
+      "kind": "mpi",
+      "N": 768,
+      "p": 2,
+      "round": 2,
+      "monotonic_seconds": 13.053169573,
+      "utc_seconds": 10.356703,
+      "difference": -2.6964665730000004
+    },
+    {
+      "id": 108,
+      "kind": "serial",
+      "N": 1024,
+      "p": 1,
+      "round": 2,
+      "monotonic_seconds": 43.549499444,
+      "utc_seconds": 40.90379,
+      "difference": -2.6457094439999977
+    },
+    {
+      "id": 109,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 1,
+      "round": 2,
+      "monotonic_seconds": 40.09570781,
+      "utc_seconds": 34.760474,
+      "difference": -5.335233809999998
+    },
+    {
+      "id": 115,
+      "kind": "openmp",
+      "N": 768,
+      "p": 16,
+      "round": 2,
+      "monotonic_seconds": 11.741176404,
+      "utc_seconds": 9.076665,
+      "difference": -2.6645114040000006
+    },
+    {
+      "id": 118,
+      "kind": "mpi",
+      "N": 768,
+      "p": 1,
+      "round": 2,
+      "monotonic_seconds": 19.218248126,
+      "utc_seconds": 16.523158,
+      "difference": -2.695090126
+    },
+    {
+      "id": 119,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 8,
+      "round": 2,
+      "monotonic_seconds": 24.149156236,
+      "utc_seconds": 21.427281,
+      "difference": -2.721875235999999
+    },
+    {
+      "id": 123,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 16,
+      "round": 2,
+      "monotonic_seconds": 22.74960788,
+      "utc_seconds": 20.062817,
+      "difference": -2.68679088
+    },
+    {
+      "id": 127,
+      "kind": "mpi",
+      "N": 768,
+      "p": 16,
+      "round": 2,
+      "monotonic_seconds": 9.260850228,
+      "utc_seconds": 6.5134,
+      "difference": -2.747450228000001
+    },
+    {
+      "id": 129,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 1,
+      "round": 2,
+      "monotonic_seconds": 62.262464857,
+      "utc_seconds": 56.94002,
+      "difference": -5.322444857000001
+    },
+    {
+      "id": 133,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 16,
+      "round": 3,
+      "monotonic_seconds": 21.853140078,
+      "utc_seconds": 19.201548,
+      "difference": -2.651592078
+    },
+    {
+      "id": 135,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 2,
+      "round": 3,
+      "monotonic_seconds": 39.870389561,
+      "utc_seconds": 34.470422,
+      "difference": -5.399967561000004
+    },
+    {
+      "id": 137,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 1,
+      "round": 3,
+      "monotonic_seconds": 35.73077706,
+      "utc_seconds": 33.068205,
+      "difference": -2.6625720600000022
+    },
+    {
+      "id": 139,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 2,
+      "round": 3,
+      "monotonic_seconds": 31.503065805,
+      "utc_seconds": 28.765067,
+      "difference": -2.737998805
+    },
+    {
+      "id": 144,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 4,
+      "round": 3,
+      "monotonic_seconds": 25.442175713,
+      "utc_seconds": 22.729243,
+      "difference": -2.7129327130000007
+    },
+    {
+      "id": 146,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 1,
+      "round": 3,
+      "monotonic_seconds": 64.488601922,
+      "utc_seconds": 59.007624,
+      "difference": -5.480977922000001
+    },
+    {
+      "id": 149,
+      "kind": "openmp",
+      "N": 512,
+      "p": 1,
+      "round": 3,
+      "monotonic_seconds": 1.987472764,
+      "utc_seconds": -0.715725,
+      "difference": -2.703197764
+    },
+    {
+      "id": 155,
+      "kind": "openmp",
+      "N": 512,
+      "p": 2,
+      "round": 3,
+      "monotonic_seconds": 1.80282242,
+      "utc_seconds": -0.895244,
+      "difference": -2.69806642
+    },
+    {
+      "id": 160,
+      "kind": "openmp",
+      "N": 768,
+      "p": 8,
+      "round": 3,
+      "monotonic_seconds": 7.553141876,
+      "utc_seconds": 4.814194,
+      "difference": -2.738947876
+    },
+    {
+      "id": 163,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 8,
+      "round": 3,
+      "monotonic_seconds": 22.479171369,
+      "utc_seconds": 19.734472,
+      "difference": -2.7446993689999992
+    },
+    {
+      "id": 166,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 16,
+      "round": 3,
+      "monotonic_seconds": 15.01259623,
+      "utc_seconds": 12.324088,
+      "difference": -2.68850823
+    },
+    {
+      "id": 172,
+      "kind": "serial",
+      "N": 1024,
+      "p": 1,
+      "round": 3,
+      "monotonic_seconds": 38.04969689,
+      "utc_seconds": 35.308521,
+      "difference": -2.741175890000001
+    },
+    {
+      "id": 173,
+      "kind": "serial",
+      "N": 512,
+      "p": 1,
+      "round": 3,
+      "monotonic_seconds": 2.044631029,
+      "utc_seconds": -0.668131,
+      "difference": -2.7127620290000003
+    },
+    {
+      "id": 183,
+      "kind": "mpi",
+      "N": 768,
+      "p": 1,
+      "round": 4,
+      "monotonic_seconds": 16.705953352,
+      "utc_seconds": 13.923869,
+      "difference": -2.782084352000002
+    },
+    {
+      "id": 186,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 4,
+      "round": 4,
+      "monotonic_seconds": 25.585785913,
+      "utc_seconds": 22.895373,
+      "difference": -2.6904129129999994
+    },
+    {
+      "id": 189,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 8,
+      "round": 4,
+      "monotonic_seconds": 20.518317242,
+      "utc_seconds": 17.760154,
+      "difference": -2.7581632419999984
+    },
+    {
+      "id": 190,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 1,
+      "round": 4,
+      "monotonic_seconds": 35.440290905,
+      "utc_seconds": 32.745108,
+      "difference": -2.695182904999996
+    },
+    {
+      "id": 193,
+      "kind": "serial",
+      "N": 1024,
+      "p": 1,
+      "round": 4,
+      "monotonic_seconds": 36.890206225,
+      "utc_seconds": 34.136485,
+      "difference": -2.7537212249999996
+    },
+    {
+      "id": 195,
+      "kind": "mpi",
+      "N": 768,
+      "p": 4,
+      "round": 4,
+      "monotonic_seconds": 6.502597575,
+      "utc_seconds": 3.778063,
+      "difference": -2.7245345750000003
+    },
+    {
+      "id": 200,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 4,
+      "round": 4,
+      "monotonic_seconds": 20.71156798,
+      "utc_seconds": 17.985152,
+      "difference": -2.7264159800000023
+    },
+    {
+      "id": 202,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 1,
+      "round": 4,
+      "monotonic_seconds": 50.159224019,
+      "utc_seconds": 44.68388,
+      "difference": -5.475344018999998
+    },
+    {
+      "id": 204,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 2,
+      "round": 4,
+      "monotonic_seconds": 29.623744224,
+      "utc_seconds": 26.846549,
+      "difference": -2.7771952239999997
+    },
+    {
+      "id": 205,
+      "kind": "openmp",
+      "N": 768,
+      "p": 1,
+      "round": 4,
+      "monotonic_seconds": 9.048515894,
+      "utc_seconds": 6.292062,
+      "difference": -2.756453894
+    },
+    {
+      "id": 212,
+      "kind": "mpi",
+      "N": 768,
+      "p": 16,
+      "round": 4,
+      "monotonic_seconds": 9.786265126,
+      "utc_seconds": 7.147909,
+      "difference": -2.6383561259999997
+    },
+    {
+      "id": 215,
+      "kind": "mpi",
+      "N": 768,
+      "p": 2,
+      "round": 4,
+      "monotonic_seconds": 10.30937591,
+      "utc_seconds": 7.578042,
+      "difference": -2.73133391
+    },
+    {
+      "id": 219,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 2,
+      "round": 4,
+      "monotonic_seconds": 32.187238896,
+      "utc_seconds": 29.511194,
+      "difference": -2.676044895999997
+    },
+    {
+      "id": 222,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 2,
+      "round": 5,
+      "monotonic_seconds": 30.620307929,
+      "utc_seconds": 27.919612,
+      "difference": -2.7006959289999983
+    },
+    {
+      "id": 223,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 8,
+      "round": 5,
+      "monotonic_seconds": 22.099303531,
+      "utc_seconds": 19.38976,
+      "difference": -2.7095435310000013
+    },
+    {
+      "id": 228,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 1,
+      "round": 5,
+      "monotonic_seconds": 50.180333276,
+      "utc_seconds": 47.458483,
+      "difference": -2.721850275999998
+    },
+    {
+      "id": 229,
+      "kind": "openmp",
+      "N": 768,
+      "p": 8,
+      "round": 5,
+      "monotonic_seconds": 7.80496503,
+      "utc_seconds": 5.086963,
+      "difference": -2.71800203
+    },
+    {
+      "id": 235,
+      "kind": "mpi",
+      "N": 768,
+      "p": 16,
+      "round": 5,
+      "monotonic_seconds": 8.810933072,
+      "utc_seconds": 6.108511,
+      "difference": -2.702422071999999
+    },
+    {
+      "id": 239,
+      "kind": "openmp",
+      "N": 768,
+      "p": 1,
+      "round": 5,
+      "monotonic_seconds": 9.480456004,
+      "utc_seconds": 6.76596,
+      "difference": -2.714496004000001
+    },
+    {
+      "id": 243,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 4,
+      "round": 5,
+      "monotonic_seconds": 19.724481674,
+      "utc_seconds": 17.058707,
+      "difference": -2.6657746740000015
+    },
+    {
+      "id": 245,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 2,
+      "round": 5,
+      "monotonic_seconds": 27.786931251,
+      "utc_seconds": 25.034265,
+      "difference": -2.7526662509999973
+    },
+    {
+      "id": 248,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 16,
+      "round": 5,
+      "monotonic_seconds": 23.102600258,
+      "utc_seconds": 20.415115,
+      "difference": -2.687485257999999
+    },
+    {
+      "id": 249,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 8,
+      "round": 5,
+      "monotonic_seconds": 23.363178253,
+      "utc_seconds": 20.580664,
+      "difference": -2.782514253000002
+    },
+    {
+      "id": 253,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 1,
+      "round": 5,
+      "monotonic_seconds": 37.798173652,
+      "utc_seconds": 35.065179,
+      "difference": -2.732994652000002
+    },
+    {
+      "id": 254,
+      "kind": "serial",
+      "N": 768,
+      "p": 1,
+      "round": 5,
+      "monotonic_seconds": 9.128532019,
+      "utc_seconds": 6.313078,
+      "difference": -2.8154540189999997
+    },
+    {
+      "id": 258,
+      "kind": "serial",
+      "N": 1024,
+      "p": 1,
+      "round": 5,
+      "monotonic_seconds": 37.373921489,
+      "utc_seconds": 34.763433,
+      "difference": -2.610488488999998
+    },
+    {
+      "id": 260,
+      "kind": "mpi",
+      "N": 384,
+      "p": 4,
+      "round": 5,
+      "monotonic_seconds": 1.078867039,
+      "utc_seconds": -1.796575,
+      "difference": -2.875442039
+    },
+    {
+      "id": 269,
+      "kind": "mpi",
+      "N": 384,
+      "p": 1,
+      "round": 6,
+      "monotonic_seconds": 1.369137911,
+      "utc_seconds": -1.386101,
+      "difference": -2.755238911
+    },
+    {
+      "id": 273,
+      "kind": "mpi",
+      "N": 512,
+      "p": 8,
+      "round": 6,
+      "monotonic_seconds": 2.449515345,
+      "utc_seconds": -0.289535,
+      "difference": -2.739050345
+    },
+    {
+      "id": 279,
+      "kind": "openmp",
+      "N": 768,
+      "p": 2,
+      "round": 6,
+      "monotonic_seconds": 9.54302684,
+      "utc_seconds": 6.815423,
+      "difference": -2.7276038399999996
+    },
+    {
+      "id": 281,
+      "kind": "serial",
+      "N": 1024,
+      "p": 1,
+      "round": 6,
+      "monotonic_seconds": 33.455766009,
+      "utc_seconds": 30.711876,
+      "difference": -2.743890009000001
+    },
+    {
+      "id": 283,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 2,
+      "round": 6,
+      "monotonic_seconds": 28.739584942,
+      "utc_seconds": 25.99556,
+      "difference": -2.7440249419999994
+    },
+    {
+      "id": 287,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 2,
+      "round": 6,
+      "monotonic_seconds": 28.405398941,
+      "utc_seconds": 25.739315,
+      "difference": -2.666083941
+    },
+    {
+      "id": 288,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 4,
+      "round": 6,
+      "monotonic_seconds": 24.135945175,
+      "utc_seconds": 21.313626,
+      "difference": -2.8223191750000005
+    },
+    {
+      "id": 291,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 4,
+      "round": 6,
+      "monotonic_seconds": 22.74501074,
+      "utc_seconds": 20.121061,
+      "difference": -2.6239497400000005
+    },
+    {
+      "id": 294,
+      "kind": "openmp",
+      "N": 768,
+      "p": 4,
+      "round": 6,
+      "monotonic_seconds": 8.746604532,
+      "utc_seconds": 5.970717,
+      "difference": -2.7758875319999996
+    },
+    {
+      "id": 296,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 1,
+      "round": 6,
+      "monotonic_seconds": 37.280147701,
+      "utc_seconds": 34.592152,
+      "difference": -2.6879957009999984
+    },
+    {
+      "id": 298,
+      "kind": "mpi",
+      "N": 768,
+      "p": 16,
+      "round": 6,
+      "monotonic_seconds": 7.364153057,
+      "utc_seconds": 4.615826,
+      "difference": -2.748327057
+    },
+    {
+      "id": 302,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 1,
+      "round": 6,
+      "monotonic_seconds": 47.015103678,
+      "utc_seconds": 44.297646,
+      "difference": -2.7174576780000024
+    },
+    {
+      "id": 305,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 8,
+      "round": 6,
+      "monotonic_seconds": 18.897255154,
+      "utc_seconds": 16.157141,
+      "difference": -2.7401141540000005
+    },
+    {
+      "id": 310,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 16,
+      "round": 7,
+      "monotonic_seconds": 15.389992951,
+      "utc_seconds": 12.666218,
+      "difference": -2.7237749509999993
+    },
+    {
+      "id": 315,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 4,
+      "round": 7,
+      "monotonic_seconds": 19.423114859,
+      "utc_seconds": 16.665669,
+      "difference": -2.757445858999997
+    },
+    {
+      "id": 318,
+      "kind": "mpi",
+      "N": 768,
+      "p": 1,
+      "round": 7,
+      "monotonic_seconds": 14.908363444,
+      "utc_seconds": 12.235691,
+      "difference": -2.6726724440000016
+    },
+    {
+      "id": 321,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 8,
+      "round": 7,
+      "monotonic_seconds": 14.808614541,
+      "utc_seconds": 12.068378,
+      "difference": -2.7402365410000016
+    },
+    {
+      "id": 325,
+      "kind": "openmp",
+      "N": 512,
+      "p": 1,
+      "round": 7,
+      "monotonic_seconds": 1.757245081,
+      "utc_seconds": -0.985588,
+      "difference": -2.742833081
+    },
+    {
+      "id": 333,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 1,
+      "round": 7,
+      "monotonic_seconds": 32.073198704,
+      "utc_seconds": 29.326206,
+      "difference": -2.746992704
+    },
+    {
+      "id": 335,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 2,
+      "round": 7,
+      "monotonic_seconds": 29.109098535,
+      "utc_seconds": 26.412605,
+      "difference": -2.696493535000002
+    },
+    {
+      "id": 337,
+      "kind": "mpi",
+      "N": 768,
+      "p": 2,
+      "round": 7,
+      "monotonic_seconds": 9.19748568,
+      "utc_seconds": 6.491096,
+      "difference": -2.70638968
+    },
+    {
+      "id": 341,
+      "kind": "serial",
+      "N": 1024,
+      "p": 1,
+      "round": 7,
+      "monotonic_seconds": 34.145625029,
+      "utc_seconds": 31.426076,
+      "difference": -2.719549029000003
+    },
+    {
+      "id": 345,
+      "kind": "openmp",
+      "N": 768,
+      "p": 1,
+      "round": 7,
+      "monotonic_seconds": 8.968244613,
+      "utc_seconds": 6.299565,
+      "difference": -2.6686796129999992
+    },
+    {
+      "id": 346,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 1,
+      "round": 7,
+      "monotonic_seconds": 47.052556626,
+      "utc_seconds": 44.294571,
+      "difference": -2.757985626
+    },
+    {
+      "id": 350,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 2,
+      "round": 7,
+      "monotonic_seconds": 28.202815625,
+      "utc_seconds": 25.486077,
+      "difference": -2.716738624999998
+    },
+    {
+      "id": 351,
+      "kind": "openmp",
+      "N": 768,
+      "p": 2,
+      "round": 7,
+      "monotonic_seconds": 9.017860472,
+      "utc_seconds": 6.269475,
+      "difference": -2.7483854720000007
+    },
+    {
+      "id": 354,
+      "kind": "serial",
+      "N": 1024,
+      "p": 1,
+      "round": 8,
+      "monotonic_seconds": 32.537176397,
+      "utc_seconds": 29.8372,
+      "difference": -2.699976397000004
+    },
+    {
+      "id": 357,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 1,
+      "round": 8,
+      "monotonic_seconds": 47.351652688,
+      "utc_seconds": 44.645409,
+      "difference": -2.7062436880000007
+    },
+    {
+      "id": 358,
+      "kind": "mpi",
+      "N": 512,
+      "p": 16,
+      "round": 8,
+      "monotonic_seconds": 4.855600508,
+      "utc_seconds": 2.124919,
+      "difference": -2.7306815080000004
+    },
+    {
+      "id": 361,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 16,
+      "round": 8,
+      "monotonic_seconds": 18.802329429,
+      "utc_seconds": 16.081416,
+      "difference": -2.7209134289999994
+    },
+    {
+      "id": 364,
+      "kind": "mpi",
+      "N": 768,
+      "p": 8,
+      "round": 8,
+      "monotonic_seconds": 5.306441244,
+      "utc_seconds": 2.503263,
+      "difference": -2.803178244
+    },
+    {
+      "id": 368,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 8,
+      "round": 8,
+      "monotonic_seconds": 18.947329927,
+      "utc_seconds": 16.270583,
+      "difference": -2.676746927
+    },
+    {
+      "id": 369,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 4,
+      "round": 8,
+      "monotonic_seconds": 23.775222382,
+      "utc_seconds": 21.073836,
+      "difference": -2.701386381999999
+    },
+    {
+      "id": 372,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 2,
+      "round": 8,
+      "monotonic_seconds": 28.350236286,
+      "utc_seconds": 25.626745,
+      "difference": -2.7234912860000016
+    },
+    {
+      "id": 374,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 1,
+      "round": 8,
+      "monotonic_seconds": 32.996253956,
+      "utc_seconds": 30.301496,
+      "difference": -2.6947579559999966
+    },
+    {
+      "id": 378,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 16,
+      "round": 8,
+      "monotonic_seconds": 14.256118551,
+      "utc_seconds": 11.507259,
+      "difference": -2.7488595510000007
+    },
+    {
+      "id": 387,
+      "kind": "openmp",
+      "N": 768,
+      "p": 16,
+      "round": 8,
+      "monotonic_seconds": 6.190152697,
+      "utc_seconds": 3.526002,
+      "difference": -2.664150697
+    },
+    {
+      "id": 393,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 2,
+      "round": 8,
+      "monotonic_seconds": 30.484377439,
+      "utc_seconds": 27.744951,
+      "difference": -2.739426438999999
+    },
+    {
+      "id": 396,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 4,
+      "round": 9,
+      "monotonic_seconds": 23.826746895,
+      "utc_seconds": 21.125859,
+      "difference": -2.700887895000001
+    },
+    {
+      "id": 401,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 2,
+      "round": 9,
+      "monotonic_seconds": 28.21455764,
+      "utc_seconds": 25.492573,
+      "difference": -2.7219846399999987
+    },
+    {
+      "id": 405,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 4,
+      "round": 9,
+      "monotonic_seconds": 19.037703578,
+      "utc_seconds": 16.293459,
+      "difference": -2.744244578
+    },
+    {
+      "id": 409,
+      "kind": "openmp",
+      "N": 768,
+      "p": 2,
+      "round": 9,
+      "monotonic_seconds": 8.86263813,
+      "utc_seconds": 6.185006,
+      "difference": -2.677632130000001
+    },
+    {
+      "id": 411,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 8,
+      "round": 9,
+      "monotonic_seconds": 19.055388284,
+      "utc_seconds": 16.20661,
+      "difference": -2.848778283999998
+    },
+    {
+      "id": 418,
+      "kind": "openmp",
+      "N": 768,
+      "p": 1,
+      "round": 9,
+      "monotonic_seconds": 8.915325865,
+      "utc_seconds": 6.221875,
+      "difference": -2.693450865
+    },
+    {
+      "id": 420,
+      "kind": "serial",
+      "N": 1024,
+      "p": 1,
+      "round": 9,
+      "monotonic_seconds": 32.138240009,
+      "utc_seconds": 29.380595,
+      "difference": -2.757645009000001
+    },
+    {
+      "id": 422,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 1,
+      "round": 9,
+      "monotonic_seconds": 46.649036893,
+      "utc_seconds": 43.972601,
+      "difference": -2.6764358930000043
+    },
+    {
+      "id": 423,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 2,
+      "round": 9,
+      "monotonic_seconds": 28.791872284,
+      "utc_seconds": 26.108759,
+      "difference": -2.683113284000001
+    },
+    {
+      "id": 424,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 1,
+      "round": 9,
+      "monotonic_seconds": 32.885432272,
+      "utc_seconds": 30.138769,
+      "difference": -2.746663272000003
+    },
+    {
+      "id": 426,
+      "kind": "openmp",
+      "N": 768,
+      "p": 4,
+      "round": 9,
+      "monotonic_seconds": 7.909880911,
+      "utc_seconds": 5.185991,
+      "difference": -2.7238899110000006
+    },
+    {
+      "id": 431,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 16,
+      "round": 9,
+      "monotonic_seconds": 18.972112944,
+      "utc_seconds": 16.251562,
+      "difference": -2.7205509439999993
+    },
+    {
+      "id": 439,
+      "kind": "openmp",
+      "N": 768,
+      "p": 8,
+      "round": 9,
+      "monotonic_seconds": 6.216661751,
+      "utc_seconds": 3.502477,
+      "difference": -2.7141847510000003
+    },
+    {
+      "id": 441,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 1,
+      "round": 10,
+      "monotonic_seconds": 32.02681154,
+      "utc_seconds": 29.293597,
+      "difference": -2.7332145399999987
+    },
+    {
+      "id": 444,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 4,
+      "round": 10,
+      "monotonic_seconds": 19.292302035,
+      "utc_seconds": 16.587722,
+      "difference": -2.7045800349999993
+    },
+    {
+      "id": 451,
+      "kind": "serial",
+      "N": 1024,
+      "p": 1,
+      "round": 10,
+      "monotonic_seconds": 32.257821897,
+      "utc_seconds": 29.619759,
+      "difference": -2.638062897000001
+    },
+    {
+      "id": 452,
+      "kind": "mpi",
+      "N": 512,
+      "p": 8,
+      "round": 10,
+      "monotonic_seconds": 2.185248672,
+      "utc_seconds": -0.544716,
+      "difference": -2.7299646720000004
+    },
+    {
+      "id": 457,
+      "kind": "openmp",
+      "N": 768,
+      "p": 4,
+      "round": 10,
+      "monotonic_seconds": 7.351465176,
+      "utc_seconds": 4.671104,
+      "difference": -2.680361176
+    },
+    {
+      "id": 461,
+      "kind": "openmp",
+      "N": 1024,
+      "p": 4,
+      "round": 10,
+      "monotonic_seconds": 23.61737282,
+      "utc_seconds": 20.879256,
+      "difference": -2.7381168199999983
+    },
+    {
+      "id": 463,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 1,
+      "round": 10,
+      "monotonic_seconds": 47.723937621,
+      "utc_seconds": 45.018772,
+      "difference": -2.705165620999999
+    },
+    {
+      "id": 465,
+      "kind": "mpi",
+      "N": 768,
+      "p": 1,
+      "round": 10,
+      "monotonic_seconds": 14.412062194,
+      "utc_seconds": 11.707507,
+      "difference": -2.704555194000001
+    },
+    {
+      "id": 468,
+      "kind": "mpi",
+      "N": 768,
+      "p": 4,
+      "round": 10,
+      "monotonic_seconds": 6.386742137,
+      "utc_seconds": 3.686715,
+      "difference": -2.7000271369999997
+    },
+    {
+      "id": 472,
+      "kind": "mpi",
+      "N": 512,
+      "p": 2,
+      "round": 10,
+      "monotonic_seconds": 2.172935376,
+      "utc_seconds": -0.513288,
+      "difference": -2.686223376
+    },
+    {
+      "id": 474,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 2,
+      "round": 10,
+      "monotonic_seconds": 28.054461889,
+      "utc_seconds": 25.326305,
+      "difference": -2.7281568889999974
+    },
+    {
+      "id": 480,
+      "kind": "mpi",
+      "N": 1024,
+      "p": 16,
+      "round": 10,
+      "monotonic_seconds": 13.799423388,
+      "utc_seconds": 11.084518,
+      "difference": -2.714905388
+    }
+  ],
+  "adjacent_utc_start_backsteps": [
+    {
+      "previous": 53,
+      "following": 54,
+      "utc_start_delta": -0.57395
+    },
+    {
+      "previous": 59,
+      "following": 60,
+      "utc_start_delta": -0.173458
+    },
+    {
+      "previous": 149,
+      "following": 150,
+      "utc_start_delta": -0.715232
+    },
+    {
+      "previous": 155,
+      "following": 156,
+      "utc_start_delta": -0.894841
+    },
+    {
+      "previous": 173,
+      "following": 174,
+      "utc_start_delta": -0.667716
+    },
+    {
+      "previous": 260,
+      "following": 261,
+      "utc_start_delta": -1.796115
+    },
+    {
+      "previous": 269,
+      "following": 270,
+      "utc_start_delta": -1.385592
+    },
+    {
+      "previous": 273,
+      "following": 274,
+      "utc_start_delta": -0.289007
+    },
+    {
+      "previous": 325,
+      "following": 326,
+      "utc_start_delta": -0.985178
+    },
+    {
+      "previous": 452,
+      "following": 453,
+      "utc_start_delta": -0.544282
+    },
+    {
+      "previous": 472,
+      "following": 473,
+      "utc_start_delta": -0.512906
+    }
+  ]
+}
+
+Recomputation of anomaly counts (strict absolute threshold 1 second, not a count of clock adjustments):
+from datetime import datetime
+import json
+from pathlib import Path
+samples=[json.loads(x) for x in Path('docs/validation/m4-diagnostic-02-r1.jsonl').read_text().splitlines() if json.loads(x)['type']=='sample']
+delta=lambda a,b:(datetime.fromisoformat(b)-datetime.fromisoformat(a)).total_seconds()
+within=[r['id'] for r in samples if abs(delta(r['utc_start'],r['utc_end'])-(r['mono_end_ns']-r['mono_start_ns'])/1e9)>1]
+backsteps=[(a['id'],b['id']) for a,b in zip(samples,samples[1:]) if b['utc_start']<a['utc_start']]
+print(len(within),len(backsteps))  # actual archived result: 146,11
