@@ -6,7 +6,7 @@
 
 ## 当前进度
 
-M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小数显示已补齐并验证。M2 MPI 提交 `34cdd73` 已获用户验收，既有 Debug/Release 回归各 10/10 通过。M2b OpenMP 提交 `17925a9` 已于 2026-11-10 获用户验收，既有 Debug/Release 各 15/15 通过；M3 系统验证提交 `cfffe71` 已获用户验收，证据见下节；M4 已在 `Evaluation` 完成计时、23 配置/115 样本的真实实验与分析，待用户验收；Debug/Release 各 20/20 通过。结果见 [M4 实验分析](docs/performance/RESULTS.md)，M5 未开始。M2b 检查输出见 [M2b 验证记录](docs/validation/m2b.log)，历史证据保留在各阶段日志中。
+M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小数显示已补齐并验证。M2 MPI 提交 `34cdd73` 已获用户验收，既有 Debug/Release 回归各 10/10 通过。M2b OpenMP 提交 `17925a9` 已于 2026-11-10 获用户验收，既有 Debug/Release 各 15/15 通过；M3 系统验证提交 `cfffe71` 已获用户验收，证据见下节；M4 已在 `Evaluation` 完成计时、23 配置/115 样本的真实实验与分析，待用户验收；Debug/Release 各 20/20 通过。结果见 [M4 实验分析](docs/performance/RESULTS.md)。用户已选择补充诊断，本轮仅更新现有计划/范围文档，诊断未实现或运行，M5 未开始。M2b 检查输出见 [M2b 验证记录](docs/validation/m2b.log)，历史证据保留在各阶段日志中。
 
 ## 文档导航
 
@@ -128,3 +128,6 @@ OMP_PLACES='{0},{2},{4},{6}' OMP_PROC_BIND=close ./build/m4-release/heat_openmp 
 
 
 实测证据与 Amdahl/Gustafson 分析见 [RESULTS.md](docs/performance/RESULTS.md)，完整统计见 [summary.csv](docs/performance/derived/summary.csv)。两组强扩展固定 T=0.01、alpha=1；N=384/M=9216 下 MPI P=4 主基线加速比为 1.521、效率 38.04%，OpenMP Q=4 加速比为 0.976。扩大累计工作量组 p=4 的自身基础网格吞吐增长分别为 MPI 2.205、OpenMP 0.804；不将不同基线的指标混用。原始 23 次完整场验证观测 D_inf 全为 0。源码版本为 `75cdaad`，测量期间源码和二进制哈希未变；原始样本、环境、绑定、编译命令、图表与复现方法均已保留。
+
+
+M4 补充诊断的范围与步骤见现有 [PLAN](PLAN.md)，拟采用的隔离测量与对照方法见 [DESIGN](docs/DESIGN.md) 第 11 节。用户选择仅当前 WSL2、分阶段深入；本次只更新既有文档，不新增文件，不开始诊断代码或新实验。后续诊断允许隔离变体，正式求解器/CLI/API 与原性能证据保持现状；采用优化需另行确认，不进入 M5。原 M4 的 20/20 回归和 115 正式样本属于既有交付，不是本次新运行结果。
