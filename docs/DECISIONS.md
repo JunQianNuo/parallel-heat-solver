@@ -104,3 +104,6 @@ OpenMP 可执行程序命名为 `heat_openmp`，沿用既有命名参数、默�
 | D035 | 原始 JSONL + 标准库统计 + Matplotlib SVG/PNG | 原始样本永不覆盖，严格校验矩阵/次数/参数/资源/版本；合成单元数据只验证统计方法，绝不作为性能证据；仅讨论实测，不设必须加速门槛 |
 
 正式参数、统计公式、课程依据与复现命令见 [性能实验协议](performance/README.md)。M5 报告/PPT 不在本轮范围；当前选择是授权 M4 内的实施方案，不冒充用户已验收结果。
+
+
+M4 决策执行结果（2026-11-11）：按 `75cdaad` 冻结方案完成 23 配置、115 正式样本，未调整规模或采样以追求加速。原始结果在 performance/run-01，统计与图在 performance/derived，分析见 [RESULTS](performance/RESULTS.md)。保留 OpenMP 多线程无主基线加速、MPI 收益有限和真实波动。Q=1 libgomp 未输出 affinity，增加排除于性能统计的 /proc 绑定探针，并归档源码与观察；未改变采样协议、计时范围或程序。M4 实施待用户验收，M5 未进入。

@@ -1,0 +1,241 @@
+[
+  {
+    "suite": "strong",
+    "kind": "serial",
+    "p": 1,
+    "N": 128,
+    "M": 1024,
+    "id": 0,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "strong",
+    "kind": "mpi",
+    "p": 1,
+    "N": 128,
+    "M": 1024,
+    "id": 1,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "strong",
+    "kind": "mpi",
+    "p": 2,
+    "N": 128,
+    "M": 1024,
+    "id": 2,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "strong",
+    "kind": "mpi",
+    "p": 4,
+    "N": 128,
+    "M": 1024,
+    "id": 3,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "strong",
+    "kind": "openmp",
+    "p": 1,
+    "N": 128,
+    "M": 1024,
+    "id": 4,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "strong",
+    "kind": "openmp",
+    "p": 2,
+    "N": 128,
+    "M": 1024,
+    "id": 5,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "strong",
+    "kind": "openmp",
+    "p": 4,
+    "N": 128,
+    "M": 1024,
+    "id": 6,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "strong",
+    "kind": "serial",
+    "p": 1,
+    "N": 384,
+    "M": 9216,
+    "id": 7,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "strong",
+    "kind": "mpi",
+    "p": 1,
+    "N": 384,
+    "M": 9216,
+    "id": 8,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "strong",
+    "kind": "mpi",
+    "p": 2,
+    "N": 384,
+    "M": 9216,
+    "id": 9,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "strong",
+    "kind": "mpi",
+    "p": 4,
+    "N": 384,
+    "M": 9216,
+    "id": 10,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "strong",
+    "kind": "openmp",
+    "p": 1,
+    "N": 384,
+    "M": 9216,
+    "id": 11,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "strong",
+    "kind": "openmp",
+    "p": 2,
+    "N": 384,
+    "M": 9216,
+    "id": 12,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "strong",
+    "kind": "openmp",
+    "p": 4,
+    "N": 384,
+    "M": 9216,
+    "id": 13,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "scaled",
+    "kind": "serial",
+    "p": 1,
+    "target_p": 1,
+    "N": 256,
+    "M": 4096,
+    "id": 14,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "scaled",
+    "kind": "mpi",
+    "p": 1,
+    "target_p": 1,
+    "N": 256,
+    "M": 4096,
+    "id": 15,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "scaled",
+    "kind": "openmp",
+    "p": 1,
+    "target_p": 1,
+    "N": 256,
+    "M": 4096,
+    "id": 16,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "scaled",
+    "kind": "serial",
+    "p": 1,
+    "target_p": 2,
+    "N": 304,
+    "M": 5776,
+    "id": 17,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "scaled",
+    "kind": "mpi",
+    "p": 2,
+    "target_p": 2,
+    "N": 304,
+    "M": 5776,
+    "id": 18,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "scaled",
+    "kind": "openmp",
+    "p": 2,
+    "target_p": 2,
+    "N": 304,
+    "M": 5776,
+    "id": 19,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "scaled",
+    "kind": "serial",
+    "p": 1,
+    "target_p": 4,
+    "N": 362,
+    "M": 8191,
+    "id": 20,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "scaled",
+    "kind": "mpi",
+    "p": 4,
+    "target_p": 4,
+    "N": 362,
+    "M": 8191,
+    "id": 21,
+    "T": 0.01,
+    "alpha": 1.0
+  },
+  {
+    "suite": "scaled",
+    "kind": "openmp",
+    "p": 4,
+    "target_p": 4,
+    "N": 362,
+    "M": 8191,
+    "id": 22,
+    "T": 0.01,
+    "alpha": 1.0
+  }
+]

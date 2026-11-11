@@ -4,7 +4,7 @@
 
 ## 当前阶段
 
-- M0：用户已验收通过（2026-11-10）。M1：串行基准已获用户审查通过（2026-11-10），含测试耗时四位小数显示补充的整个分支已获用户再次确认审查通过；M2 MPI 提交 `34cdd73` 已获用户验收通过；独立 M2b OpenMP 提交 `17925a9` 已于 2026-11-10 获用户验收通过；M3 系统验证提交 `cfffe71` 已获用户验收通过；M4 已由用户选择，正在 `Evaluation` 开展性能实验；M5 未开始。
+- M0：用户已验收通过（2026-11-10）。M1：串行基准已获用户审查通过（2026-11-10），含测试耗时四位小数显示补充的整个分支已获用户再次确认审查通过；M2 MPI 提交 `34cdd73` 已获用户验收通过；独立 M2b OpenMP 提交 `17925a9` 已于 2026-11-10 获用户验收通过；M3 系统验证提交 `cfffe71` 已获用户验收通过；M4 已在 `Evaluation` 完成实现、验证、真实性能采样和分析，待用户验收；M5 未开始。
 - 当前功能分支：`Evaluation`（用户准备）；本轮开始 HEAD、本地 main、origin/main、judge/m3 均为 `69fb1d0`，工作区干净，远程 main 已核实包含 M3 实现和验收记录。仅在当前分支提交推送同名远程，不创建/切换分支、不合并 main。下文旧分支状态均为历史事实。
 - 已确认：任务书第 4 题，C++17 + CMake/CTest，独立串行 + MPI + OpenMP；串行、MPI 与 M2b OpenMP 均已验收，暂不引入混合并行。
 - 课程资料位于 `docs/sources/`，仅本地只读，不纳入 Git；目录与现有文件均保留。
@@ -44,11 +44,11 @@
 
 ## 阻塞与待定事项
 
-当前无已知 M4 实施阻塞。M3 已验收并合并，三种求解器数值合同保持原约定。M4 实验协议见 docs/performance/README.md；报告/PPT 留待用户选择 M5；课程资料仅本地存在，新克隆须由使用者补齐。M3 证据、覆盖和未验证项见末节。
+当前无已知 M4 实施阻塞；结果已完成，待用户验收。M3 已验收并合并，三种求解器数值合同保持原约定。M4 实验协议见 docs/performance/README.md；报告/PPT 留待用户选择 M5；课程资料仅本地存在，新克隆须由使用者补齐。历史 M3 证据见 M3 章节，M4 结果与局限见末节。
 
 ## 下一步
 
-完成 M4 计时回归、正式采样、统计绘图及分析，提交推送 `Evaluation` 交用户验收；不进入 M5。下文保留历史事实，本轮状态见末节。
+提交推送 M4 原始样本与分析到 `Evaluation`，交用户验收；由用户决定合并。未获选择不进入 M5。下文保留历史事实，本轮状态见末节。
 
 ## M1 接口确认记录同步
 
@@ -198,3 +198,36 @@ Release 完整回归继续顺序运行。新增计时脚本已加强超时后杀
 - 恢复后 2,564 课程文件哈希一致；全部资料被忽略、未跟踪；历史验证日志无差异。源码/文档格式及相对链接检查通过。m4.log 原始 CMake 输出保留行末空格，只对日志在检查时忽略该类空白，不改写原始证据。
 
 接下来在当前分支提交冻结计时实现、脚本、协议及上述证据；正式性能样本尚未运行，后续另提交原始测量与分析。M4 尚待完成和用户验收，M5 未进入。
+
+
+## M4 实验完成（2026-11-11，待用户验收）
+
+冻结计时/脚本/协议提交 `75cdaad`，提交后干净工作区开始采样；正式样本全部引用该确切代码版本，源码/协议/二进制哈希前后不变。未修改求解数值算法或更改冻结矩阵以追求加速。真实命令：
+
+```bash
+python3 scripts/benchmark.py --build build/m4-release --output docs/performance/run-01
+python3 scripts/analyze_performance.py docs/performance/run-01 --output docs/performance/derived
+python3 scripts/analyze_performance.py docs/performance/run-01 --output build/m4-recomputed --no-plots
+cmp docs/performance/derived/summary.csv build/m4-recomputed/summary.csv
+```
+
+- 23 配置、23 次全场验证预热、115 正式样本全部完成，无失败/重试/剔除。T=0.01、alpha=1；CPU 0/2/4/6，P/Q 请求与实际均为协议指定 1/2/4；MPI 逐样本绑定信息和 OpenMP Q=2/4 预热 affinity 诊断已保存。Q=1 运行时不打印 affinity，采样后独立 /proc 探针确认 CPU 0/单 task，记录 binding-probe.json，探针不纳入统计。
+- 完整场验证观测 D_inf 全为 0，E_inf 在 8.314784308849354e-7 至 7.4838110496466825e-6，离散模态最大差 2.3381296898605797e-13；所有样本参数/稳定性/实际并行度和预热误差一致性检查通过。
+- N=128/M=1024：MPI P=4 主基线 S=1.282、E=32.05%；OpenMP Q=4 S=0.681、E=17.03%。N=384/M=9216：MPI P=4 S=1.521、E=38.04%；OpenMP Q=4 S=0.976、E=24.39%。OpenMP 未在这些多线程配置取得主基线加速，不筛选掉慢样本。
+- 扩大累计工作量 W/W1=1/1.991004/4.007846，W/p 取整偏差 −0.4498% 至 +0.1961%。p=4 时 MPI 自身基础网格吞吐增长 2.2053 倍（归一化 55.13%），OpenMP 0.8037 倍（20.09%），与同规模独立串行加速比明确区分。每 worker 最小/最大更新量保存在 CSV。
+- 重新从原始 JSONL 计算的 summary.csv 逐字节一致；SVG/PNG 已目视检查。图中范围条为真实 min/max，不是置信区间；Amdahl 有效比例和 Gustafson 适用前提/未测 sigma 如实说明。统计合成单元检查仅验证方法，不充当性能数据。
+
+完整证据与分析：[性能协议](docs/performance/README.md)、[结果分析](docs/performance/RESULTS.md)、[原始样本](docs/performance/run-01/samples.jsonl)、[环境](docs/performance/run-01/environment.log)、[代码与编译配置](docs/performance/run-01/metadata.json)、[统计表](docs/performance/derived/summary.csv)。Debug/Release 各 20/20、最终 Debug heat_timing 1/1、统计单元检查原始证据为 docs/validation/m4.log。
+
+局限：非独占 WSL/虚拟拓扑，无宿主 P/E 核映射或频率控制证据；只测 P/Q≤4、单机、当前绑定与已验收调度，未运行多机、更大并行度、其他调度、端到端计时或分项瓶颈剖析，本轮未额外运行 Sanitizer。不能从样本范围给出未计算的统计显著性。最初 /tmp 课程哈希基线丢失，无法声称全程前后哈希比较；仅恢复后 2,564 文件一致，资料未跟踪，历史证据未修改。
+
+后续只做提交边界/文档/资料保护核查和同名功能分支推送；M4 验收由用户决定。M5 未进入，不自行合并或推送 main。
+
+
+M4 最终时钟审计补充（2026-11-11）：原始 UTC 时戳与 perf_counter 耗时存在两处不一致，其中一次 UTC 起点回退，全部样本/时戳原样保留。已核对本机 libmpi/libgomp/libstdc++ 实际二进制，三种求解器时钟正常路径均为 CLOCK_MONOTONIC；未用 UTC 计算推进耗时。原始反汇编/库哈希与异常记录在 docs/performance/run-01/clock-audit.log，完整解释见 RESULTS 的时钟审计。顺序执行来自冻结脚本的阻塞等待结构，未保存单调起点时间线，不声称用 UTC 独立证明了无重叠；未推断具体校时原因或删除样本。最终核查以这些实际限制为准。
+
+
+M4 收尾检查结果：源代码/协议/脚本及 Release 三个二进制与正式采样元数据 SHA-256 均一致；五轮种子顺序、23 个验证记录/138 次调用（115 正式样本）及 RESULTS 表格逐行与 CSV 核对通过。67 个本地文档链接和代码块闭合检查通过；16 个性能文件哈希清单复核通过。恢复后 2,564 个课程文件路径/内容未变，全部忽略且未跟踪，七份历史证据与起始 69fb1d0 逐字节相同。检查源码/实验提交范围后按授权推送同名 Evaluation；实际提交哈希及推送结果以 Git 输出和最终汇报为准。
+
+
+提交格式检查补充：Matplotlib SVG、Python csv.writer 的 CRLF 以及原始系统/反汇编日志带有生成器空白；保留原始内容。手写文档/JSON/JSONL 单独严格空白检查通过，全暂存内容以本次命令级 core.whitespace=-blank-at-eol,cr-at-eol 检查通过，不修改仓库配置或原始数据。

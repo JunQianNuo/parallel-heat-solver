@@ -1,0 +1,37 @@
+{
+  "purpose": "binding verification only; excluded from performance samples",
+  "revision": "75cdaad9a71ef3373bd8d7ea441ae2ad3d3a9732",
+  "command": [
+    "build/m4-release/heat_openmp",
+    "--threads",
+    "1",
+    "--N",
+    "384",
+    "--M",
+    "9216",
+    "--T",
+    ".01",
+    "--summary-only"
+  ],
+  "tuning_env": {
+    "OMP_DYNAMIC": "FALSE",
+    "OMP_PROC_BIND": "close",
+    "OMP_WAIT_POLICY": "ACTIVE",
+    "OMP_THREAD_LIMIT": "4",
+    "OMP_PLACES": "{0},{2},{4},{6}"
+  },
+  "observed_states": [
+    {
+      "cpus_allowed_list": "0-27",
+      "tasks": 1
+    },
+    {
+      "cpus_allowed_list": "0",
+      "tasks": 1
+    }
+  ],
+  "returncode": 0,
+  "stderr": "Q_requested=1 Q_actual=1\nloop_seconds=0.45675943700007338\nN=384 M=9216 T=0.01 alpha=1 h=0.0026041666666666665 dt=1.0850694444444444e-06 r=0.16 E_inf=8.3147843088493545e-07\n",
+  "stdout": "",
+  "probe_source": "import json,os,subprocess,time\nfrom pathlib import Path\nmetadata=json.loads(Path('docs/performance/run-01/metadata.json').read_text())\nenv={k:v for k,v in os.environ.items() if not k.startswith(('OMP_','GOMP_','KMP_','OMPI_','PMI_','PMIX_'))}\nenv.update(metadata['tuning_env'],OMP_DISPLAY_AFFINITY='TRUE',LC_ALL='C')\ncommand=['build/m4-release/heat_openmp','--threads','1','--N','384','--M','9216','--T','.01','--summary-only']\np=subprocess.Popen(command,env=env,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)\nstates=[]\nwhile p.poll() is None:\n try:\n  text=Path(f'/proc/{p.pid}/status').read_text()\n  mask=next(x.split(':',1)[1].strip() for x in text.splitlines() if x.startswith('Cpus_allowed_list:'))\n  threads=len(list(Path(f'/proc/{p.pid}/task').iterdir()))\n  if not states or (mask,threads)!=(states[-1]['cpus_allowed_list'],states[-1]['tasks']):\n   states.append(dict(cpus_allowed_list=mask,tasks=threads))\n except (FileNotFoundError,ProcessLookupError):\n  pass\n time.sleep(.01)\nout,err=p.communicate()\nassert p.returncode==0 and 'Q_requested=1 Q_actual=1' in err and states[-1]['cpus_allowed_list']=='0' and states[-1]['tasks']==1\nrecord=dict(purpose='binding verification only; excluded from performance samples',revision=metadata['revision'],command=command,tuning_env=metadata['tuning_env'],observed_states=states,returncode=p.returncode,stderr=err,stdout=out,probe_source=Path(__file__).read_text())\nPath('docs/performance/run-01/binding-probe.json').write_text(json.dumps(record,indent=2)+'\\n')\nprint('Q=1 final process affinity CPU 0, one task; excluded probe archived')\n"
+}

@@ -2,6 +2,8 @@
 
 本轮仅开展 M4。协议在正式采样前写入 [protocol.json](protocol.json)，不以获得加速为规模选择条件。权威依据是本地只读 `docs/sources/final.pdf` 第 1、3 页；方法参考 OpenMP《03-性能评测标准》、MPI 第十一讲第 12–14 节和 `11_heat_mpi/程序详解.md` 第 9、11 节。任务书文本和原页均已重新核对；一维示例的边界、稳定性和数据不用于本项目。
 
+正式结果已完成：23 配置/115 正式样本，冻结代码 `75cdaad`，详见 [RESULTS.md](RESULTS.md)；M4 待用户验收。
+
 ## 机器与构建
 
 单机 WSL2、Intel i7-14700HX，来宾暴露 28 逻辑 CPU/14 核、约 7.6 GiB 内存；仅使用暴露核心 0–3 的首个硬件线程，即 Linux CPU 0/2/4/6，不使用其 SMT 同胞。虚拟拓扑不能证明宿主物理核独占或 P/E 核映射。cgroup `/init.scope` 的 cpu.max=`max 100000`、memory.max=`max`，主机非独占。GNU C++ 13.3.0、Open MPI 4.1.6、GNU OpenMP 4.5/libgomp；精确版本、限制、链接及编译命令在每次运行环境中归档。
@@ -71,3 +73,9 @@ Gustafson `S_G=p−sigma(p−1)` 针对扩大并行工作且串行时间占比 s
 
 
 资料保护核查的限制：本轮跨环境恢复，最初 `/tmp` 哈希清单丢失，不能完成最初开工至收尾的全程哈希对照；恢复后新建忽略的 `build/m4-sources-resume.json`，核查 2,564 个资料文件的后续路径与内容一致。资料始终仅用只读命令访问，未跟踪、暂存或上传。
+
+
+已从原始数据重算统计并逐字节核对 CSV，图表已目视核查。libgomp 对 Q=1 团队未打印 affinity，因此另存 [Q=1 /proc 绑定探针](run-01/binding-probe.json)（完整源码、命令、摘要和观察），仅核查绑定、不纳入正式样本。采样 [控制台](run-01/console.log) 和 [完成记录](run-01/complete.json) 均已归档；原始/派生文件内容哈希见 [SHA256SUMS](SHA256SUMS)。
+
+
+原始 UTC 时间戳存在两处与 perf_counter 不一致（包括一次回退），仅用于追溯，不用于计算耗时或独立证明作业无重叠。本机求解器时钟正常路径使用 CLOCK_MONOTONIC，核查见 [clock-audit.log](run-01/clock-audit.log) 与 RESULTS；采样源代码逐个阻塞等待，不存在主动并发启动。未保存每次单调起点时间线，明确保留这一复核限制。

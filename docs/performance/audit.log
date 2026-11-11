@@ -1,0 +1,154 @@
+M4 final evidence audit — 2026-11-11 Asia/Shanghai
+$ python3 build/m4-final-audit.py
+unchanged source CMakeLists.txt
+unchanged source docs/performance/protocol.json
+unchanged source src/cli.cpp
+unchanged source src/cli.hpp
+unchanged source src/heat.cpp
+unchanged source src/heat.hpp
+unchanged source src/heat_mpi.cpp
+unchanged source src/heat_mpi.hpp
+unchanged source src/heat_openmp.cpp
+unchanged source src/heat_openmp.hpp
+unchanged source src/main.cpp
+unchanged source src/main_mpi.cpp
+unchanged source src/main_openmp.cpp
+unchanged source scripts/analyze_performance.py
+unchanged source scripts/benchmark.py
+unchanged source scripts/check.py
+unchanged source tests/check_cli.py
+unchanged source tests/check_mpi.py
+unchanged source tests/check_openmp.py
+unchanged source tests/check_statistics.py
+unchanged source tests/check_system.py
+unchanged source tests/check_timing.py
+unchanged source tests/test_heat.cpp
+unchanged source tests/test_mpi_failures.cpp
+unchanged binary serial
+unchanged binary mpi
+unchanged binary openmp
+23 full-field warmups + 115 samples + 23 validation records
+all solver invocations successful
+clean starting worktree recorded
+all invocation versions match frozen source revision
+all full-field observed D_inf zero
+seeded order round 1
+seeded order round 2
+seeded order round 3
+seeded order round 4
+seeded order round 5
+UTC stamps show two inconsistencies with perf_counter elapsed values, including one backward timestamp. They are retained and not used to prove no overlap. Frozen sampling code is sequential/blocking; no independent monotonic start timeline was recorded. See run-01/clock-audit.log.
+2564 course files unchanged since resume (initial /tmp baseline unavailable)
+no course sources tracked
+all 2564 course source files ignored
+unchanged historical evidence m1.log
+unchanged historical evidence m1-precision.log
+unchanged historical evidence m2.log
+unchanged historical evidence m2-initial.log
+unchanged historical evidence m2b.log
+unchanged historical evidence m3.log
+unchanged historical evidence m3-errors.csv
+result table matches CSV config 0
+result table matches CSV config 1
+result table matches CSV config 2
+result table matches CSV config 3
+result table matches CSV config 4
+result table matches CSV config 5
+result table matches CSV config 6
+result table matches CSV config 7
+result table matches CSV config 8
+result table matches CSV config 9
+result table matches CSV config 10
+result table matches CSV config 11
+result table matches CSV config 12
+result table matches CSV config 13
+result table matches CSV config 14
+result table matches CSV config 15
+result table matches CSV config 16
+result table matches CSV config 17
+result table matches CSV config 18
+result table matches CSV config 19
+result table matches CSV config 20
+result table matches CSV config 21
+result table matches CSV config 22
+closed fences AGENTS.md
+closed fences SPEC.md
+valid local link SPEC.md -> docs/performance/README.md
+closed fences PLAN.md
+valid local link PLAN.md -> SPEC.md
+valid local link PLAN.md -> STATUS.md
+valid local link PLAN.md -> docs/AI_USAGE.md
+closed fences STATUS.md
+valid local link STATUS.md -> docs/validation/m1.log
+valid local link STATUS.md -> docs/validation/m1-precision.log
+valid local link STATUS.md -> docs/validation/m2.log
+valid local link STATUS.md -> docs/validation/m2-initial.log
+valid local link STATUS.md -> docs/validation/m2b.log
+valid local link STATUS.md -> docs/validation/m3.log
+valid local link STATUS.md -> docs/validation/m3-errors.csv
+valid local link STATUS.md -> docs/performance/README.md
+valid local link STATUS.md -> docs/performance/README.md
+valid local link STATUS.md -> docs/performance/RESULTS.md
+valid local link STATUS.md -> docs/performance/run-01/samples.jsonl
+valid local link STATUS.md -> docs/performance/run-01/environment.log
+valid local link STATUS.md -> docs/performance/run-01/metadata.json
+valid local link STATUS.md -> docs/performance/derived/summary.csv
+closed fences README.md
+valid local link README.md -> docs/performance/RESULTS.md
+valid local link README.md -> docs/validation/m2b.log
+valid local link README.md -> AGENTS.md
+valid local link README.md -> SPEC.md
+valid local link README.md -> PLAN.md
+valid local link README.md -> STATUS.md
+valid local link README.md -> docs/DESIGN.md
+valid local link README.md -> docs/DECISIONS.md
+valid local link README.md -> docs/AI_USAGE.md
+valid local link README.md -> docs/DESIGN.md
+valid local link README.md -> docs/validation/m1-precision.log
+valid local link README.md -> docs/DESIGN.md
+valid local link README.md -> docs/validation/m2.log
+valid local link README.md -> docs/validation/m2-initial.log
+valid local link README.md -> docs/DESIGN.md
+valid local link README.md -> docs/validation/m2b.log
+valid local link README.md -> docs/DESIGN.md
+valid local link README.md -> docs/validation/m3.log
+valid local link README.md -> docs/validation/m3-errors.csv
+valid local link README.md -> docs/performance/README.md
+valid local link README.md -> docs/performance/RESULTS.md
+valid local link README.md -> docs/performance/derived/summary.csv
+closed fences docs/DESIGN.md
+valid local link docs/DESIGN.md -> ../SPEC.md
+valid local link docs/DESIGN.md -> validation/m2b.log
+valid local link docs/DESIGN.md -> performance/README.md
+valid local link docs/DESIGN.md -> performance/protocol.json
+valid local link docs/DESIGN.md -> performance/RESULTS.md
+closed fences docs/DECISIONS.md
+valid local link docs/DECISIONS.md -> performance/README.md
+valid local link docs/DECISIONS.md -> performance/RESULTS.md
+closed fences docs/AI_USAGE.md
+closed fences docs/performance/README.md
+valid local link docs/performance/README.md -> protocol.json
+valid local link docs/performance/README.md -> RESULTS.md
+valid local link docs/performance/README.md -> ../validation/m4.log
+valid local link docs/performance/README.md -> run-01/binding-probe.json
+valid local link docs/performance/README.md -> run-01/console.log
+valid local link docs/performance/README.md -> run-01/complete.json
+valid local link docs/performance/README.md -> SHA256SUMS
+valid local link docs/performance/README.md -> run-01/clock-audit.log
+closed fences docs/performance/RESULTS.md
+valid local link docs/performance/RESULTS.md -> README.md
+valid local link docs/performance/RESULTS.md -> protocol.json
+valid local link docs/performance/RESULTS.md -> run-01/samples.jsonl
+valid local link docs/performance/RESULTS.md -> run-01/metadata.json
+valid local link docs/performance/RESULTS.md -> run-01/environment.log
+valid local link docs/performance/RESULTS.md -> run-01/complete.json
+valid local link docs/performance/RESULTS.md -> derived/summary.csv
+valid local link docs/performance/RESULTS.md -> ../validation/m4.log
+valid local link docs/performance/RESULTS.md -> run-01/binding-probe.json
+valid local link docs/performance/RESULTS.md -> derived/strong.svg
+valid local link docs/performance/RESULTS.md -> derived/scaled.svg
+valid local link docs/performance/RESULTS.md -> run-01/clock-audit.log
+67 local documentation links verified; tables, source/binary identity, sample counts/order and course protection checked.
+Statistics CSV separately regenerated byte-for-byte equal; SVG/PNG visually inspected.
+Debug/Release 20/20 plus final Debug timing 1/1 and synthetic statistics checks: docs/validation/m4.log.
+exit=0

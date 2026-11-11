@@ -6,7 +6,7 @@
 
 ## 当前进度
 
-M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小数显示已补齐并验证。M2 MPI 提交 `34cdd73` 已获用户验收，既有 Debug/Release 回归各 10/10 通过。M2b OpenMP 提交 `17925a9` 已于 2026-11-10 获用户验收，既有 Debug/Release 各 15/15 通过；M3 系统验证提交 `cfffe71` 已获用户验收，证据见下节；M4 已在用户准备的 `Evaluation` 分支开展，计时与实验协议见末节；M5 未开始。M2b 检查输出见 [M2b 验证记录](docs/validation/m2b.log)，历史证据保留在各阶段日志中。
+M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小数显示已补齐并验证。M2 MPI 提交 `34cdd73` 已获用户验收，既有 Debug/Release 回归各 10/10 通过。M2b OpenMP 提交 `17925a9` 已于 2026-11-10 获用户验收，既有 Debug/Release 各 15/15 通过；M3 系统验证提交 `cfffe71` 已获用户验收，证据见下节；M4 已在 `Evaluation` 完成计时、23 配置/115 样本的真实实验与分析，待用户验收；Debug/Release 各 20/20 通过。结果见 [M4 实验分析](docs/performance/RESULTS.md)，M5 未开始。M2b 检查输出见 [M2b 验证记录](docs/validation/m2b.log)，历史证据保留在各阶段日志中。
 
 ## 文档导航
 
@@ -26,7 +26,7 @@ M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小�
 
 这些资料仅在本地只读使用，不随 Git 仓库分发。新克隆需要使用者从课程提供的原始资料中补齐上述路径；不要将资料加入提交。资料缺失时，应明确记录缺项，并暂停依赖原文核对的工作。课程示例的运行输出不能作为本项目的验证结果。
 
-`src/` 包含独立串行、MPI 和 OpenMP 实现，`tests/` 为基本回归。M2b 已获用户验收；`judge/m3` 的 M3 系统验证提交 `cfffe71` 已获用户验收，M4 正式性能实验已由用户选择，按末节冻结协议开展。
+`src/` 包含独立串行、MPI 和 OpenMP 实现，`tests/` 为基本回归。M2b 已获用户验收；`judge/m3` 的 M3 系统验证提交 `cfffe71` 已获用户验收，M4 正式性能实验已按冻结协议完成，结果见末节。
 
 ## 构建与运行
 
@@ -45,7 +45,7 @@ cmake --build build --target check --parallel 2
 
 stdout 为最终时刻 T 的 CSV，首行为 `i,j,x,y,u_numeric,u_exact,abs_error`，按 `i*(N+1)+j` 顺序包含全部边界及内点；`x=i/N,y=j/N`，数值使用 17 位有效数字。stderr 参数行记录 `N M T alpha h dt r E_inf`（`key=value`）。解析值仅用于验证；所有数值温度来自五点差分推进。退出码：0 成功，2 参数错误，1 分配/运行/输出失败；未知、重复、缺值选项均拒绝。仅单独的 `--help` 返回帮助。
 
-基本测试阈值、手算及加密参数见 [DESIGN](docs/DESIGN.md)。这些是 M1 回归标准，不是任意输入的精度保证；本轮未做性能实验。
+基本测试阈值、手算及加密参数见 [DESIGN](docs/DESIGN.md)。这些是 M1 回归标准，不是任意输入的精度保证；M1 当时未做性能实验。
 
 `check` 目标先确保测试程序已构建，再执行同一组 CTest 测试，逐项耗时按秒保留 **4 位小数**。也可直接运行 `python3 scripts/check.py --test-dir build`。耗时读取 CTest 的较高精度 XML 测量值；原始控制台输出保留在 `build/ctest-raw.log`，XML 位于 `build/Testing/<TAG>/Test.xml`。若测试失败，显示原始失败诊断并返回非零退出码。直接运行 `ctest --test-dir build --output-on-failure` 仍使用 CTest 默认的两位小数显示。
 
@@ -98,7 +98,7 @@ M2b 新增 `heat_openmp_q1..q4` 和 `heat_openmp_limited`，与原 10 项合计 
 
 ## M3 系统正确性验证
 
-M3 提交 `cfffe71` 已获用户验收；既有 Debug/Release 各 19/19 通过，原始证据保持不变；未进入 M4。复现全部基本回归及四项 M3 系统测试：
+M3 提交 `cfffe71` 已获用户验收；既有 Debug/Release 各 19/19 通过，原始证据保持不变；M3 当时未开展 M4，本轮性能结果见末节。复现全部基本回归及四项 M3 系统测试：
 
 ```bash
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DHEAT_MPI_TEST_MAX_PROCS=4 -DHEAT_OPENMP_TEST_MAX_THREADS=4
@@ -124,4 +124,7 @@ mpiexec --map-by core --bind-to hwthread -n 4 ./build/m4-release/heat_mpi --N 12
 OMP_PLACES='{0},{2},{4},{6}' OMP_PROC_BIND=close ./build/m4-release/heat_openmp --threads 4 --N 128 --M 1024 --T .01 --summary-only
 ```
 
-本机实验使用 CPU 0/2/4/6；迁移机器先核查可用 CPU 与绑定。正式数据采样、统计与图表命令见协议，不将上述单次示范或 CTest 时间作为性能结论。新增 `heat_timing` 检查计时字段、摘要/全场一致及错误路径；`python3 tests/check_statistics.py` 使用合成数据独立核查统计方法。M4 实施结果完成后交用户验收，不进入 M5。
+本机实验使用 CPU 0/2/4/6；迁移机器先核查可用 CPU 与绑定。正式数据采样、统计与图表命令见协议，不将上述单次示范或 CTest 时间作为性能结论。新增 `heat_timing` 检查计时字段、摘要/全场一致及错误路径；`python3 tests/check_statistics.py` 使用合成数据独立核查统计方法。M4 实施完成，待用户验收，不进入 M5。
+
+
+实测证据与 Amdahl/Gustafson 分析见 [RESULTS.md](docs/performance/RESULTS.md)，完整统计见 [summary.csv](docs/performance/derived/summary.csv)。两组强扩展固定 T=0.01、alpha=1；N=384/M=9216 下 MPI P=4 主基线加速比为 1.521、效率 38.04%，OpenMP Q=4 加速比为 0.976。扩大累计工作量组 p=4 的自身基础网格吞吐增长分别为 MPI 2.205、OpenMP 0.804；不将不同基线的指标混用。原始 23 次完整场验证观测 D_inf 全为 0。源码版本为 `75cdaad`，测量期间源码和二进制哈希未变；原始样本、环境、绑定、编译命令、图表与复现方法均已保留。

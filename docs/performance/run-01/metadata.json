@@ -1,0 +1,161 @@
+{
+  "protocol": {
+    "schema": 1,
+    "parallelism": [
+      1,
+      2,
+      4
+    ],
+    "cpus": [
+      0,
+      2,
+      4,
+      6
+    ],
+    "T": 0.01,
+    "alpha": 1.0,
+    "repetitions": 5,
+    "warmups": 1,
+    "seed": 20261110,
+    "timeout_seconds": 120,
+    "strong": [
+      {
+        "N": 128,
+        "M": 1024
+      },
+      {
+        "N": 384,
+        "M": 9216
+      }
+    ],
+    "scaled": [
+      {
+        "p": 1,
+        "N": 256,
+        "M": 4096
+      },
+      {
+        "p": 2,
+        "N": 304,
+        "M": 5776
+      },
+      {
+        "p": 4,
+        "N": 362,
+        "M": 8191
+      }
+    ],
+    "env": {
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_WAIT_POLICY": "ACTIVE",
+      "OMP_THREAD_LIMIT": "4"
+    },
+    "mpi_flags": [
+      "--map-by",
+      "core",
+      "--bind-to",
+      "hwthread",
+      "--report-bindings"
+    ]
+  },
+  "protocol_sha256": "9729d326139c6fbea456e00a4ea6469ad05e698f78ada948b9363dac31274db2",
+  "revision": "75cdaad9a71ef3373bd8d7ea441ae2ad3d3a9732",
+  "started_utc": "2026-11-11T01:25:29.782921+00:00",
+  "git_status": "",
+  "source_sha256": {
+    "CMakeLists.txt": "10b969feb76d437bf9d656707fa430cc1f6ce741c7c5692b363c023f736809ab",
+    "docs/performance/protocol.json": "9729d326139c6fbea456e00a4ea6469ad05e698f78ada948b9363dac31274db2",
+    "src/cli.cpp": "ff246d26988ab6eebdf66c753fdffe836a9d9501079a238c2bc42575d33b5547",
+    "src/cli.hpp": "634870dd10ac960c3da5d90708bc6696aaea74be98fda4a3ce9be1a703cd6101",
+    "src/heat.cpp": "a32c4a4a619ac96cace88185f4432e0e7a79de05802cafc86fcf3a5302ad0244",
+    "src/heat.hpp": "f52f9e51d0c1d2a64407fee0cb6324755586379e7aa7dcd2da41823bd85ad62a",
+    "src/heat_mpi.cpp": "ed8ae0f3f2e1830f11be41c4994d1ce724045b187730c6c3a270a2dfe0f9c3fc",
+    "src/heat_mpi.hpp": "919651ec47970b83140bf2c8c9bde39519e1476f68332ef592b8aee84acbfc12",
+    "src/heat_openmp.cpp": "b910d751e5aa912fa0f7362ddea6c62f6bd4e0f878668ef2df0e2dc6ccd10932",
+    "src/heat_openmp.hpp": "4d52f1bd6da4f03358eabc7f49788e9c8488b65a4d5e753740009734efde8016",
+    "src/main.cpp": "5485b426d51a64215438c9b7feed82611c75ef9f41e674476441dd817617ed20",
+    "src/main_mpi.cpp": "bb2875aa1a11a576da844ded5c7c6b06098877c4bc1873349b48b48eeaef19e1",
+    "src/main_openmp.cpp": "5f302ed97599717d7ecfc288de9a34d35430f62f2e359db1611845d4542c90fa",
+    "scripts/analyze_performance.py": "bad2eff6725d062943aa4107c7c78d10dac9251cee0e1e4b2234adaf7ff4a724",
+    "scripts/benchmark.py": "ffb66bf3b2c7677f9d940cd7a718ad15228d4765cc02fab1c84077aef9ea6991",
+    "scripts/check.py": "0b4292d23902c758b6aedada6ed11399c62a03d2755936f3f09f0353c7d9e563",
+    "tests/check_cli.py": "357f5e20c425c22407b82ebfa72dc808ccb5a035bf95d328ec19f5d479bf4ac0",
+    "tests/check_mpi.py": "205ec65d790b3af78b5ee587e8653d1c19f590b97b89dd951f4f31c7fb6e3dfd",
+    "tests/check_openmp.py": "6a9fa061d1730532cd9793e1aa9e55ab25fe6354cf042537e20b32952bec4cb9",
+    "tests/check_statistics.py": "4d0c538a7f1aef4997c4d71051dacd2525f64d31b081665eefb9be15d0a86a03",
+    "tests/check_system.py": "66f2111e19a854c99fb03188bb171d19eb459e2416aab89b45e955f89078fa55",
+    "tests/check_timing.py": "c71e634362e14cbedf30d484e1a2eee23a64e9af7047bd83846940058a9fe160",
+    "tests/test_heat.cpp": "3a48388842cf9600f3434c407fbb94aee466ecaef335e4e08689b33894b5bae0",
+    "tests/test_mpi_failures.cpp": "80e8898ce3d789db675e710772f4e13b756c84bb00960c7d4a2fbe8bb889dfe0"
+  },
+  "binary_sha256": {
+    "serial": "5db4452014e31133e58c73454193b321fcb7bd0360ae898f47f2b8a1624cdcfb",
+    "mpi": "e53d0c20b4f561b20042c4e8f4ab1d6a67635424bc1eb8cc3f3a71b5f74013ce",
+    "openmp": "ee724568fe86eb6159816224ac181467f14689584b0fb48c66b006ded73f971a"
+  },
+  "tuning_env": {
+    "OMP_DYNAMIC": "FALSE",
+    "OMP_PROC_BIND": "close",
+    "OMP_WAIT_POLICY": "ACTIVE",
+    "OMP_THREAD_LIMIT": "4",
+    "OMP_PLACES": "{0},{2},{4},{6}"
+  },
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "compile_commands": [
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_solver.dir/src/heat.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/heat.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/src/heat.cpp",
+      "output": "CMakeFiles/heat_solver.dir/src/heat.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_solver.dir/src/cli.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/cli.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/src/cli.cpp",
+      "output": "CMakeFiles/heat_solver.dir/src/cli.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_serial.dir/src/main.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/main.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/src/main.cpp",
+      "output": "CMakeFiles/heat_serial.dir/src/main.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_parallel.dir/src/heat_mpi.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/heat_mpi.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/src/heat_mpi.cpp",
+      "output": "CMakeFiles/heat_parallel.dir/src/heat_mpi.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_mpi.dir/src/main_mpi.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/main_mpi.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/src/main_mpi.cpp",
+      "output": "CMakeFiles/heat_mpi.dir/src/main_mpi.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -fopenmp -o CMakeFiles/heat_shared.dir/src/heat_openmp.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/heat_openmp.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/src/heat_openmp.cpp",
+      "output": "CMakeFiles/heat_shared.dir/src/heat_openmp.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -fopenmp -o CMakeFiles/heat_openmp.dir/src/main_openmp.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/main_openmp.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/src/main_openmp.cpp",
+      "output": "CMakeFiles/heat_openmp.dir/src/main_openmp.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -o CMakeFiles/heat_tests.dir/tests/test_heat.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/tests/test_heat.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/tests/test_heat.cpp",
+      "output": "CMakeFiles/heat_tests.dir/tests/test_heat.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_mpi_failures.dir/tests/test_mpi_failures.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/tests/test_mpi_failures.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/tests/test_mpi_failures.cpp",
+      "output": "CMakeFiles/heat_mpi_failures.dir/tests/test_mpi_failures.cpp.o"
+    }
+  ]
+}

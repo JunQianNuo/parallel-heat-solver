@@ -1,0 +1,151 @@
+Post-sampling clock implementation audit; 2026-11-11 Asia/Shanghai
+No performance samples changed or excluded.
+
+$ objdump -d --start-address=0x8faa0 --stop-address=0x8fb40 /lib/x86_64-linux-gnu/libmpi.so.40
+
+/lib/x86_64-linux-gnu/libmpi.so.40:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+000000000008faa0 <MPI_Wtime@@Base>:
+   8faa0:	f3 0f 1e fa          	endbr64
+   8faa4:	55                   	push   %rbp
+   8faa5:	bf 01 00 00 00       	mov    $0x1,%edi
+   8faaa:	48 89 e5             	mov    %rsp,%rbp
+   8faad:	48 83 ec 20          	sub    $0x20,%rsp
+   8fab1:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+   8fab8:	00 00 
+   8faba:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+   8fabe:	31 c0                	xor    %eax,%eax
+   8fac0:	48 8d 75 e0          	lea    -0x20(%rbp),%rsi
+   8fac4:	e8 57 87 f9 ff       	call   28220 <clock_gettime@plt>
+   8fac9:	48 8b 15 c0 fa 07 00 	mov    0x7fac0(%rip),%rdx        # 10f590 <ompi_wtime_time_origin@@Base-0x217f0>
+   8fad0:	48 8b 0a             	mov    (%rdx),%rcx
+   8fad3:	48 85 c9             	test   %rcx,%rcx
+   8fad6:	74 48                	je     8fb20 <MPI_Wtime@@Base+0x80>
+   8fad8:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+   8fadc:	66 0f ef c9          	pxor   %xmm1,%xmm1
+   8fae0:	48 2b 42 08          	sub    0x8(%rdx),%rax
+   8fae4:	66 0f ef c0          	pxor   %xmm0,%xmm0
+   8fae8:	f2 48 0f 2a c8       	cvtsi2sd %rax,%xmm1
+   8faed:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+   8faf1:	f2 0f 5e 0d 07 5e 06 	divsd  0x65e07(%rip),%xmm1        # f5900 <ompi_mpi_init@@Base+0x9c60>
+   8faf8:	00 
+   8faf9:	48 29 c8             	sub    %rcx,%rax
+   8fafc:	f2 48 0f 2a c0       	cvtsi2sd %rax,%xmm0
+   8fb01:	f2 0f 58 c1          	addsd  %xmm1,%xmm0
+   8fb05:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+   8fb09:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+   8fb10:	00 00 
+   8fb12:	75 19                	jne    8fb2d <MPI_Wtime@@Base+0x8d>
+   8fb14:	c9                   	leave
+   8fb15:	c3                   	ret
+   8fb16:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+   8fb1d:	00 00 00 
+   8fb20:	66 0f 6f 55 e0       	movdqa -0x20(%rbp),%xmm2
+   8fb25:	0f 11 12             	movups %xmm2,(%rdx)
+   8fb28:	48 8b 0a             	mov    (%rdx),%rcx
+   8fb2b:	eb ab                	jmp    8fad8 <MPI_Wtime@@Base+0x38>
+   8fb2d:	e8 ee 8f f9 ff       	call   28b20 <__stack_chk_fail@plt>
+   8fb32:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+   8fb39:	00 00 00 00 
+   8fb3d:	0f 1f 00             	nopl   (%rax)
+
+exit=0
+
+$ objdump -d --disassemble=omp_get_wtime /lib/x86_64-linux-gnu/libgomp.so.1
+
+/lib/x86_64-linux-gnu/libgomp.so.1:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+Disassembly of section .plt:
+
+Disassembly of section .plt.got:
+
+Disassembly of section .plt.sec:
+
+Disassembly of section .text:
+
+0000000000025df0 <omp_get_wtime@@OMP_2.0>:
+   25df0:	f3 0f 1e fa          	endbr64
+   25df4:	55                   	push   %rbp
+   25df5:	bf 01 00 00 00       	mov    $0x1,%edi
+   25dfa:	48 89 e5             	mov    %rsp,%rbp
+   25dfd:	53                   	push   %rbx
+   25dfe:	48 83 ec 28          	sub    $0x28,%rsp
+   25e02:	64 48 8b 1c 25 28 00 	mov    %fs:0x28,%rbx
+   25e09:	00 00 
+   25e0b:	48 89 5d e8          	mov    %rbx,-0x18(%rbp)
+   25e0f:	48 8d 5d d0          	lea    -0x30(%rbp),%rbx
+   25e13:	48 89 de             	mov    %rbx,%rsi
+   25e16:	e8 d5 5a fe ff       	call   b8f0 <clock_gettime@plt>
+   25e1b:	85 c0                	test   %eax,%eax
+   25e1d:	78 39                	js     25e58 <omp_get_wtime@@OMP_2.0+0x68>
+   25e1f:	66 0f ef c9          	pxor   %xmm1,%xmm1
+   25e23:	66 0f ef c0          	pxor   %xmm0,%xmm0
+   25e27:	f2 48 0f 2a 4d d0    	cvtsi2sdq -0x30(%rbp),%xmm1
+   25e2d:	f2 48 0f 2a 45 d8    	cvtsi2sdq -0x28(%rbp),%xmm0
+   25e33:	f2 0f 5e 05 dd 50 02 	divsd  0x250dd(%rip),%xmm0        # 4af18 <acc_update_self_async_array_h_@@OACC_2.5+0x42f0>
+   25e3a:	00 
+   25e3b:	f2 0f 58 c1          	addsd  %xmm1,%xmm0
+   25e3f:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+   25e43:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+   25e4a:	00 00 
+   25e4c:	75 16                	jne    25e64 <omp_get_wtime@@OMP_2.0+0x74>
+   25e4e:	48 8b 5d f8          	mov    -0x8(%rbp),%rbx
+   25e52:	c9                   	leave
+   25e53:	c3                   	ret
+   25e54:	0f 1f 40 00          	nopl   0x0(%rax)
+   25e58:	48 89 de             	mov    %rbx,%rsi
+   25e5b:	31 ff                	xor    %edi,%edi
+   25e5d:	e8 8e 5a fe ff       	call   b8f0 <clock_gettime@plt>
+   25e62:	eb bb                	jmp    25e1f <omp_get_wtime@@OMP_2.0+0x2f>
+   25e64:	e8 37 5b fe ff       	call   b9a0 <__stack_chk_fail@plt>
+
+Disassembly of section .fini:
+
+exit=0
+
+$ objdump -d --start-address=0xdf960 --stop-address=0xdf9b0 /lib/x86_64-linux-gnu/libstdc++.so.6
+
+/lib/x86_64-linux-gnu/libstdc++.so.6:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+00000000000df960 <_ZNSt6chrono3_V212steady_clock3nowEv@@GLIBCXX_3.4.19>:
+   df960:	f3 0f 1e fa          	endbr64
+   df964:	55                   	push   %rbp
+   df965:	bf 01 00 00 00       	mov    $0x1,%edi
+   df96a:	48 89 e5             	mov    %rsp,%rbp
+   df96d:	48 83 ec 20          	sub    $0x20,%rsp
+   df971:	64 48 8b 34 25 28 00 	mov    %fs:0x28,%rsi
+   df978:	00 00 
+   df97a:	48 89 75 f8          	mov    %rsi,-0x8(%rbp)
+   df97e:	48 8d 75 e0          	lea    -0x20(%rbp),%rsi
+   df982:	e8 a9 22 fc ff       	call   a1c30 <clock_gettime@plt>
+   df987:	48 69 45 e0 00 ca 9a 	imul   $0x3b9aca00,-0x20(%rbp),%rax
+   df98e:	3b 
+   df98f:	48 03 45 e8          	add    -0x18(%rbp),%rax
+   df993:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+   df997:	64 48 2b 14 25 28 00 	sub    %fs:0x28,%rdx
+   df99e:	00 00 
+   df9a0:	75 02                	jne    df9a4 <_ZNSt6chrono3_V212steady_clock3nowEv@@GLIBCXX_3.4.19+0x44>
+   df9a2:	c9                   	leave
+   df9a3:	c3                   	ret
+   df9a4:	e8 87 46 fc ff       	call   a4030 <__stack_chk_fail@plt>
+   df9a9:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+
+exit=0
+current runtime SHA256 libmpi.so.40 9055018b12757e830591aa0283e485e471f1f2a06d3bc0dd5fb35ab00386c172
+current runtime SHA256 libgomp.so.1 135f3c8f006d2fe5e68e51281c7974cb991a03de3bfb3593d68d174dfcf854d1
+current runtime SHA256 libstdc++.so.6 1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11
+# define CLOCK_REALTIME			0
+# define CLOCK_MONOTONIC		1
+Normal paths of MPI_Wtime, omp_get_wtime and steady_clock::now pass clock ID 1 to clock_gettime. On this Linux header CLOCK_MONOTONIC=1. libgomp contains fallback ID 0 only on failed clock_gettime(1); no such failure is observed.
+{"config": 18, "repetition": 0, "started_utc": "2026-11-11T01:25:46.992041+00:00", "next_started_utc": "2026-11-11T01:25:47.078177+00:00", "utc_delta_seconds": 0.086136, "monotonic_invocation_seconds": 1.7492686990000266, "utc_delta_minus_monotonic_wall": -1.6631326990000266}
+{"config": 15, "repetition": 3, "started_utc": "2026-11-11T01:26:18.925030+00:00", "next_started_utc": "2026-11-11T01:26:17.440587+00:00", "utc_delta_seconds": -1.484443, "monotonic_invocation_seconds": 0.5307178980000344, "utc_delta_minus_monotonic_wall": -2.015160898000034}
+UTC timestamps cannot establish no-overlap or elapsed durations. Sequential execution is established by the frozen script: each blocking process.communicate() and validation completes before the next invoke(); no async/background solver calls. No monotonic start timestamps were stored, so no independent overlap reconstruction from timestamps is claimed.
