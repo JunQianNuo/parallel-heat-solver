@@ -412,3 +412,34 @@ MPI common在全部21个资源/粒度组合上满足正向影响判据；OpenMP 
 构建/正确性证据见 [Debug](validation/m4-diagnostic-debug-checks.log)、[Release](validation/m4-diagnostic-release-checks.log)（各21/21）、[默认OFF配置发现及合成联调](validation/m4-diagnostic-default-checks.log)。原20项保留；诊断OFF仍20项，发现检查不等于该目录实际测试执行。统计图的蓝点仅表示探索性判据满足，灰点表示未满足；横线是配对bootstrap区间，含义不同于旧M4图的原始min/max范围。所有数据来自真实调用，合成测试数据未混入。
 
 复现命令：`python3 scripts/diagnose.py --build build/m4-diagnostic-release --run-id <新编号>`；重算命令：`python3 scripts/analyze_diagnostics.py docs/validation/m4-diagnostic-01 --output build/m4-diagnostic-recomputed --no-plots`。新运行编号拒绝覆盖；CSV可与归档逐字节比较，图表由同一脚本生成。正式程序源码与原性能目录保持不变；是否采用任何诊断变体仍由用户决定，未进入M5。
+
+
+## 12. M4 扩大网格数量与并行度（2026-11-11，实施中）
+
+用户确认仅增加网格划分数N和原程序的P/Q；单位物理区域、初边值、数学模型与CLI/API不变。课程依据沿用SPEC及第5/10节既有核对；本轮不声称重新完整阅读任务书PDF，无新的教师要求或数学合同变更。这里只测原heat_serial、heat_mpi、heat_openmp，不调用诊断baseline/replica或改进内核。
+
+### 冻结矩阵与绑定
+
+N=384/512/768/1024，M=N²/16=9216/16384/36864/65536，T=0.01、alpha=1、r=0.16。每网格串行1组，MPI P=1/2/4/8/16，OpenMP Q=1/2/4/8/16。共44配置，各一次完整场验证预热及10次新进程正式样本；种子20261110逐轮打乱全部44配置。预热不进入统计，不与构建、回归或其他性能作业重叠。
+
+CPU优先顺序为0,2,4,...,26,1,3；各p取前p个后升序，MPI/OpenMP使用相同集合，串行CPU0。MPI用--use-hwthread-cpus、--map-by slot、--bind-to cpu-list:ordered、--cpu-list及--report-bindings；本机Open MPI按CPU编号升序绑定，不能假设保留输入列表顺序。OpenMP显式OMP_PLACES、close、ACTIVE、OMP_DYNAMIC=FALSE、OMP_THREAD_LIMIT=16，仍以推进团队摘要核查实际Q。16组为16逻辑CPU覆盖14个WSL可见core，其中core0/1各有两个硬件线程；虚拟拓扑不保证宿主P/E核或独占物理资源，不把16写成16个独立物理核心，不启用超额订阅。
+
+计时与第10节一致：MPI包含halo，按rank最大推进时间；OpenMP计入一次团队进入/退出及逐层同步/交换；初始化、MPI生命周期/收集/最终归约、验证与输出不计入。Release -O3 -DNDEBUG、C++17，不使用fast-math/native/LTO。
+
+### 流式验证、实际绑定与失败留证
+
+全场stdout先写入忽略构建目录的临时CSV，逐行验证7字段、坐标、顺序、有限数、最大值原理、严格零边界、连续解析误差、离散模态及同网格独立串行差。串行参考只用array('d')保留数值，避免百万行字典常驻内存。D_inf≤1e-12、模态差<2e-11、摘要E差<1e-14；解析误差上界为abs(g^M−exp(−2*alpha*pi²*T))+2e-11，g=1−8r*sin²(pi/(2N))，不以旧小网格阈值替代。
+
+MPI每次保存并解析实际rank绑定报告。串行/OpenMP在原程序运行期间取一次满足目标团队大小及逐task单CPU绑定的/proc快照，记录TID/亲和性及单调时刻；快照不等于连续监控或宿主物理核证明。OpenMP预热另保留运行时affinity诊断，正式样本关闭该打印，避免把诊断输出计入团队进入时间；Q=1由/proc快照核查。父进程仅在快照成功前短轮询，记录这一观测方法。
+
+每次调用先写attempt，再验证并写sample，统计不重复计算两类记录。原始stderr、stdout哈希/字节数、命令、环境、参数、UTC追溯及单调起止时间均保留；成功临时CSV可删除，失败原始文件保留且路径入记录。单次600秒超时；新检查实际发现本机MPI rank可处于独立进程组，单独kill启动器进程组不足。新增采样器在启动器仍存活时识别子进程树，以PID及/proc启动时间身份核对后终止该作业进程，再结束启动器；保留清理PID记录。旧正式求解器及历史脚本不改，不追改旧日志。
+
+### 统计、工件与检查
+
+新入口为scripts/benchmark_large.py --build <目录> --run-id 02；scripts/analyze_large.py接受证据前缀、--output输出前缀及--no-plots；tests/check_large.py --build <目录>执行独立新增检查。只新增这三份脚本，CMake和原CTest资源上限1..4保持。证据前缀为既有docs/validation/m4-diagnostic-02，重复运行编号拒绝覆盖。
+
+记录每配置10次中位数、min/max、W=M(N−1)²、平均和最小/最大worker更新量及吞吐。S=同网格独立串行中位数/并行中位数，E=S/实际p；不是各轮比率的中位数。以同轮串行/并行样本共同重采样索引10000次，种子20261110，各次仍取中位数之比，排序后索引249/9749给探索性95%区间。轮次配对不是相邻A/B实验，也未作多重比较校正。串行S/E恒为1；16的效率分母仍为16个执行单元，不解释为物理核心利用率。
+
+图表为四组强扩展（时间min/max，S/E探索性区间）、固定人数下S随N变化及所有逐轮耗时/配置中位数；16组均注明硬件线程共享。两维矩阵不构成W≈p的弱扩展，也不新增Gustafson实证结论。更大N还增加M，不能把所有变化单独归为每步粒度；不预设必须加速。
+
+检查保留Debug/Release原21项，另测P/Q=8、16、MPI每rank一行/不均匀、OpenMP空工作线程、奇偶步、请求16实际8、非法输入、缺样本、统计口径和真实MPI超时退出。先通过并提交冻结，再真实测量；收尾核对源码/二进制及旧证据/课程资料保护，在现有文档追加结果，交用户验收。
