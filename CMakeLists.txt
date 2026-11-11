@@ -32,6 +32,20 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     target_compile_options(heat_shared PRIVATE -Wall -Wextra -Wpedantic)
     target_compile_options(heat_openmp PRIVATE -Wall -Wextra -Wpedantic)
 endif()
+option(HEAT_BUILD_DIAGNOSTICS "Build isolated M4 diagnostic programs" OFF)
+if(HEAT_BUILD_DIAGNOSTICS)
+    add_library(heat_diagnostic_kernel src/diagnostic_kernel.cpp)
+    target_link_libraries(heat_diagnostic_kernel PUBLIC heat_solver)
+    foreach(kind IN ITEMS serial mpi openmp)
+        add_executable(heat_${kind}_diag src/diagnostic_${kind}.cpp)
+        target_link_libraries(heat_${kind}_diag PRIVATE heat_diagnostic_kernel)
+        if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+            target_compile_options(heat_${kind}_diag PRIVATE -Wall -Wextra -Wpedantic)
+        endif()
+    endforeach()
+    target_link_libraries(heat_mpi_diag PRIVATE heat_parallel)
+    target_link_libraries(heat_openmp_diag PRIVATE heat_shared)
+endif()
 include(CTest)
 if(BUILD_TESTING)
     add_executable(heat_tests tests/test_heat.cpp)
@@ -119,10 +133,20 @@ if(BUILD_TESTING)
     if(HEAT_OPENMP_TEST_MAX_THREADS GREATER HEAT_MPI_TEST_MAX_PROCS)
         set_tests_properties(heat_timing PROPERTIES PROCESSORS ${HEAT_OPENMP_TEST_MAX_THREADS})
     endif()
+    set(diagnostic_dependencies)
+    if(HEAT_BUILD_DIAGNOSTICS)
+        add_test(NAME heat_diagnostics COMMAND ${Python3_EXECUTABLE}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/check_diagnostics.py"
+            --build=${CMAKE_CURRENT_BINARY_DIR} --mpiexec=${MPIEXEC_EXECUTABLE}
+            --max-procs=${HEAT_MPI_TEST_MAX_PROCS} --max-threads=${HEAT_OPENMP_TEST_MAX_THREADS})
+        set_tests_properties(heat_diagnostics PROPERTIES TIMEOUT 240 LABELS "M4-diagnostic"
+            PROCESSORS 4 ENVIRONMENT "PYTHONUNBUFFERED=1")
+        set(diagnostic_dependencies heat_serial_diag heat_mpi_diag heat_openmp_diag)
+    endif()
     add_custom_target(check
         COMMAND ${Python3_EXECUTABLE} "${CMAKE_CURRENT_SOURCE_DIR}/scripts/check.py"
             --test-dir "${CMAKE_CURRENT_BINARY_DIR}" --ctest "${CMAKE_CTEST_COMMAND}"
-        DEPENDS ${mpi_check_dependencies} heat_openmp
+        DEPENDS ${mpi_check_dependencies} heat_openmp ${diagnostic_dependencies}
         USES_TERMINAL
         COMMENT "Run CTest with four-decimal test durations")
 endif()

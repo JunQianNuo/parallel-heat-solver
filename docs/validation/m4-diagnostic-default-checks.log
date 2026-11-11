@@ -1,0 +1,867 @@
+$ cmake -S . -B build/m4-diagnostic-default -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found MPI_CXX: /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so (found version "3.1") 
+-- Found MPI: TRUE (found version "3.1") found components: CXX 
+-- Found OpenMP_CXX: -fopenmp (found version "4.5") 
+-- Found OpenMP: TRUE (found version "4.5") found components: CXX 
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Configuring done (3.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default
+
+exit=0
+$ ctest --test-dir build/m4-diagnostic-default --show-only=json-v1
+{
+  "backtraceGraph" : 
+  {
+    "commands" : 
+    [
+      "add_test"
+    ],
+    "files" : 
+    [
+      "/home/nuo/courses/projects/parallel-heat-solver/CMakeLists.txt"
+    ],
+    "nodes" : 
+    [
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 54,
+        "parent" : 0
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 54,
+        "parent" : 2
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 54,
+        "parent" : 4
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 54,
+        "parent" : 6
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 54,
+        "parent" : 8
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 58,
+        "parent" : 10
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 83,
+        "parent" : 12
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 83,
+        "parent" : 14
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 83,
+        "parent" : 16
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 83,
+        "parent" : 18
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 95,
+        "parent" : 20
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 95,
+        "parent" : 22
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 95,
+        "parent" : 24
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 95,
+        "parent" : 26
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 102,
+        "parent" : 28
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 109,
+        "parent" : 30
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 109,
+        "parent" : 32
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 109,
+        "parent" : 34
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 109,
+        "parent" : 36
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 125,
+        "parent" : 38
+      }
+    ]
+  },
+  "kind" : "ctestInfo",
+  "tests" : 
+  [
+    {
+      "backtrace" : 1,
+      "name" : "heat_initial",
+      "properties" : 
+      [
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 3,
+      "name" : "heat_hand",
+      "properties" : 
+      [
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 5,
+      "name" : "heat_parity",
+      "properties" : 
+      [
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 7,
+      "name" : "heat_validation",
+      "properties" : 
+      [
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 9,
+      "name" : "heat_analytic",
+      "properties" : 
+      [
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 11,
+      "command" : 
+      [
+        "/usr/bin/python3",
+        "/home/nuo/courses/projects/parallel-heat-solver/tests/check_cli.py",
+        "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_serial"
+      ],
+      "name" : "heat_cli",
+      "properties" : 
+      [
+        {
+          "name" : "TIMEOUT",
+          "value" : 30.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 13,
+      "command" : 
+      [
+        "/usr/bin/python3",
+        "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py",
+        "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_serial",
+        "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_mpi",
+        "--mpiexec=/usr/bin/mpiexec",
+        "--npflag=-n",
+        "--processes=1",
+        "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_mpi_failures"
+      ],
+      "name" : "heat_mpi_p1",
+      "properties" : 
+      [
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 15,
+      "command" : 
+      [
+        "/usr/bin/python3",
+        "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py",
+        "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_serial",
+        "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_mpi",
+        "--mpiexec=/usr/bin/mpiexec",
+        "--npflag=-n",
+        "--processes=2",
+        "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_mpi_failures"
+      ],
+      "name" : "heat_mpi_p2",
+      "properties" : 
+      [
+        {
+          "name" : "PROCESSORS",
+          "value" : 2
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 17,
+      "command" : 
+      [
+        "/usr/bin/python3",
+        "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py",
+        "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_serial",
+        "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_mpi",
+        "--mpiexec=/usr/bin/mpiexec",
+        "--npflag=-n",
+        "--processes=3",
+        "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_mpi_failures"
+      ],
+      "name" : "heat_mpi_p3",
+      "properties" : 
+      [
+        {
+          "name" : "PROCESSORS",
+          "value" : 3
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 19,
+      "command" : 
+      [
+        "/usr/bin/python3",
+        "/home/nuo/courses/projects/parallel-heat-solver/tests/check_mpi.py",
+        "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_serial",
+        "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_mpi",
+        "--mpiexec=/usr/bin/mpiexec",
+        "--npflag=-n",
+        "--processes=4",
+        "--fault-solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_mpi_failures"
+      ],
+      "name" : "heat_mpi_p4",
+      "properties" : 
+      [
+        {
+          "name" : "PROCESSORS",
+          "value" : 4
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 120.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 21,
+      "command" : 
+      [
+        "/usr/bin/python3",
+        "/home/nuo/courses/projects/parallel-heat-solver/tests/check_openmp.py",
+        "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_serial",
+        "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_openmp",
+        "--threads=1"
+      ],
+      "name" : "heat_openmp_q1",
+      "properties" : 
+      [
+        {
+          "name" : "TIMEOUT",
+          "value" : 60.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 23,
+      "command" : 
+      [
+        "/usr/bin/python3",
+        "/home/nuo/courses/projects/parallel-heat-solver/tests/check_openmp.py",
+        "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_serial",
+        "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_openmp",
+        "--threads=2"
+      ],
+      "name" : "heat_openmp_q2",
+      "properties" : 
+      [
+        {
+          "name" : "PROCESSORS",
+          "value" : 2
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 60.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 25,
+      "command" : 
+      [
+        "/usr/bin/python3",
+        "/home/nuo/courses/projects/parallel-heat-solver/tests/check_openmp.py",
+        "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_serial",
+        "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_openmp",
+        "--threads=3"
+      ],
+      "name" : "heat_openmp_q3",
+      "properties" : 
+      [
+        {
+          "name" : "PROCESSORS",
+          "value" : 3
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 60.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 27,
+      "command" : 
+      [
+        "/usr/bin/python3",
+        "/home/nuo/courses/projects/parallel-heat-solver/tests/check_openmp.py",
+        "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_serial",
+        "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_openmp",
+        "--threads=4"
+      ],
+      "name" : "heat_openmp_q4",
+      "properties" : 
+      [
+        {
+          "name" : "PROCESSORS",
+          "value" : 4
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 60.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 29,
+      "command" : 
+      [
+        "/usr/bin/python3",
+        "/home/nuo/courses/projects/parallel-heat-solver/tests/check_openmp.py",
+        "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_serial",
+        "--solver=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_openmp",
+        "--threads=4",
+        "--limit=2"
+      ],
+      "name" : "heat_openmp_limited",
+      "properties" : 
+      [
+        {
+          "name" : "PROCESSORS",
+          "value" : 2
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 60.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 31,
+      "command" : 
+      [
+        "/usr/bin/python3",
+        "/home/nuo/courses/projects/parallel-heat-solver/tests/check_system.py",
+        "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_serial",
+        "--mpi=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_mpi",
+        "--openmp=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_openmp",
+        "--mpiexec=/usr/bin/mpiexec",
+        "--npflag=-n",
+        "--max-procs=4",
+        "--max-threads=4",
+        "--suite=default"
+      ],
+      "name" : "heat_system_default",
+      "properties" : 
+      [
+        {
+          "name" : "ENVIRONMENT",
+          "value" : 
+          [
+            "PYTHONUNBUFFERED=1"
+          ]
+        },
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "M3"
+          ]
+        },
+        {
+          "name" : "PROCESSORS",
+          "value" : 4
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 240.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 33,
+      "command" : 
+      [
+        "/usr/bin/python3",
+        "/home/nuo/courses/projects/parallel-heat-solver/tests/check_system.py",
+        "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_serial",
+        "--mpi=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_mpi",
+        "--openmp=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_openmp",
+        "--mpiexec=/usr/bin/mpiexec",
+        "--npflag=-n",
+        "--max-procs=4",
+        "--max-threads=4",
+        "--suite=low"
+      ],
+      "name" : "heat_system_low",
+      "properties" : 
+      [
+        {
+          "name" : "ENVIRONMENT",
+          "value" : 
+          [
+            "PYTHONUNBUFFERED=1"
+          ]
+        },
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "M3"
+          ]
+        },
+        {
+          "name" : "PROCESSORS",
+          "value" : 4
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 240.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 35,
+      "command" : 
+      [
+        "/usr/bin/python3",
+        "/home/nuo/courses/projects/parallel-heat-solver/tests/check_system.py",
+        "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_serial",
+        "--mpi=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_mpi",
+        "--openmp=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_openmp",
+        "--mpiexec=/usr/bin/mpiexec",
+        "--npflag=-n",
+        "--max-procs=4",
+        "--max-threads=4",
+        "--suite=endpoint"
+      ],
+      "name" : "heat_system_endpoint",
+      "properties" : 
+      [
+        {
+          "name" : "ENVIRONMENT",
+          "value" : 
+          [
+            "PYTHONUNBUFFERED=1"
+          ]
+        },
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "M3"
+          ]
+        },
+        {
+          "name" : "PROCESSORS",
+          "value" : 4
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 240.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 37,
+      "command" : 
+      [
+        "/usr/bin/python3",
+        "/home/nuo/courses/projects/parallel-heat-solver/tests/check_system.py",
+        "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_serial",
+        "--mpi=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_mpi",
+        "--openmp=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_openmp",
+        "--mpiexec=/usr/bin/mpiexec",
+        "--npflag=-n",
+        "--max-procs=4",
+        "--max-threads=4",
+        "--suite=boundaries"
+      ],
+      "name" : "heat_system_boundaries",
+      "properties" : 
+      [
+        {
+          "name" : "ENVIRONMENT",
+          "value" : 
+          [
+            "PYTHONUNBUFFERED=1"
+          ]
+        },
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "M3"
+          ]
+        },
+        {
+          "name" : "PROCESSORS",
+          "value" : 4
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 240.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    },
+    {
+      "backtrace" : 39,
+      "command" : 
+      [
+        "/usr/bin/python3",
+        "/home/nuo/courses/projects/parallel-heat-solver/tests/check_timing.py",
+        "--serial=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_serial",
+        "--mpi=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_mpi",
+        "--openmp=/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default/heat_openmp",
+        "--mpiexec=/usr/bin/mpiexec",
+        "--npflag=-n",
+        "--max-procs=4",
+        "--max-threads=4"
+      ],
+      "name" : "heat_timing",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "M4"
+          ]
+        },
+        {
+          "name" : "PROCESSORS",
+          "value" : 4
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 180.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-default"
+        }
+      ]
+    }
+  ],
+  "version" : 
+  {
+    "major" : 1,
+    "minor" : 0
+  }
+}
+exit=0
+$ cmake --build build/m4-diagnostic-default --target help
+The following are some of the valid targets for this Makefile:
+... all (the default if no target is provided)
+... clean
+... depend
+... edit_cache
+... rebuild_cache
+... test
+... Continuous
+... ContinuousBuild
+... ContinuousConfigure
+... ContinuousCoverage
+... ContinuousMemCheck
+... ContinuousStart
+... ContinuousSubmit
+... ContinuousTest
+... ContinuousUpdate
+... Experimental
+... ExperimentalBuild
+... ExperimentalConfigure
+... ExperimentalCoverage
+... ExperimentalMemCheck
+... ExperimentalStart
+... ExperimentalSubmit
+... ExperimentalTest
+... ExperimentalUpdate
+... Nightly
+... NightlyBuild
+... NightlyConfigure
+... NightlyCoverage
+... NightlyMemCheck
+... NightlyMemoryCheck
+... NightlyStart
+... NightlySubmit
+... NightlyTest
+... NightlyUpdate
+... check
+... heat_mpi
+... heat_mpi_failures
+... heat_openmp
+... heat_parallel
+... heat_serial
+... heat_shared
+... heat_solver
+... heat_tests
+... src/cli.o
+... src/cli.i
+... src/cli.s
+... src/heat.o
+... src/heat.i
+... src/heat.s
+... src/heat_mpi.o
+... src/heat_mpi.i
+... src/heat_mpi.s
+... src/heat_openmp.o
+... src/heat_openmp.i
+... src/heat_openmp.s
+... src/main.o
+... src/main.i
+... src/main.s
+... src/main_mpi.o
+... src/main_mpi.i
+... src/main_mpi.s
+... src/main_openmp.o
+... src/main_openmp.i
+... src/main_openmp.s
+... tests/test_heat.o
+... tests/test_heat.i
+... tests/test_heat.s
+... tests/test_mpi_failures.o
+... tests/test_mpi_failures.i
+... tests/test_mpi_failures.s
+
+exit=0
+PASS: default OFF; original 20 tests discovered; diagnostic targets absent. Configuration/discovery only, no claim of tests executed in this directory.
+
+Additional synthetic-only end-to-end analysis: 22 mocked records, ratio 2, two configuration rows and one pair; summary/worker CSV generation and warmup validation passed. Fixtures only in ignored build directory; not performance evidence.
