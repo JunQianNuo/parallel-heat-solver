@@ -1,0 +1,124 @@
+M4 diagnostic evidence audit — 2026-11-11 Asia/Shanghai
+$ python3 build/m4-diagnostic-audit.py
+PASS: complete attempts/samples, sequential monotonic timeline, counts, 23x10 reproduction, balanced adjacent pairs, workers, source/binary identity
+{
+  "revision": "1e2fb5fd955867cecb372c17f889eb32e15cd6b0",
+  "invocations": 2775,
+  "measured": 2560,
+  "warmup_invocations": 215,
+  "source_and_binary_unchanged": true
+}
+Measured stage counts: {'reproduce': 230, 'copy': 140, 'profile': 140, 'null': 20, 'common': 40, 'factor': 320, 'layout': 80, 'wait': 40, 'cpu': 80, 'granularity-baseline-fixed-M': 280, 'granularity': 980, 'granularity-baseline-fixed-N': 210}
+PASS: byte-identical regenerated statistics; 256 configuration groups, 95 comparisons
+PASS: repeated run ID rejected before writing; existing artifact hashes unchanged
+Traceback (most recent call last):
+  File "/home/nuo/courses/projects/parallel-heat-solver/scripts/diagnose.py", line 284, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/nuo/courses/projects/parallel-heat-solver/scripts/diagnose.py", line 55, in main
+    require(not any(prefix.parent.glob(prefix.name+'.*')),'run ID already exists; do not overwrite evidence')
+  File "/home/nuo/courses/projects/parallel-heat-solver/scripts/analyze_diagnostics.py", line 15, in require
+    raise RuntimeError(message)
+RuntimeError: run ID already exists; do not overwrite evidence
+PASS: 48 original source/script/test/performance/validation files byte-identical to 7c9ea09
+README.md: OK
+RESULTS.md: OK
+derived/scaled.png: OK
+derived/scaled.svg: OK
+derived/strong.png: OK
+derived/strong.svg: OK
+derived/summary.csv: OK
+protocol.json: OK
+run-01/binding-probe.json: OK
+run-01/clock-audit.log: OK
+run-01/complete.json: OK
+run-01/console.log: OK
+run-01/environment.log: OK
+run-01/matrix.json: OK
+run-01/metadata.json: OK
+run-01/samples.jsonl: OK
+PASS: course source paths/contents unchanged, ignored and untracked; {'count': 2564, 'digest': 'b040e2224e333b454c3ebfed42f91bb41a26f020636a0bf20d3c4445bf109754'}
+NO EXTRA NUMERICAL TEST RUN: frozen code unchanged since documented Debug/Release 21/21
+
+exit=0
+
+The run-ID refusal above is an expected acceptance check, not a failed performance invocation.
+
+$ python3 scripts/analyze_diagnostics.py docs/validation/m4-diagnostic-01
+Validated 256 measured configurations and 95 complete paired comparisons
+$ python3 scripts/analyze_diagnostics.py docs/validation/m4-diagnostic-01 --output build/m4-diagnostic-recomputed --no-plots
+Validated 256 measured configurations and 95 complete paired comparisons
+Both CSV outputs compared byte-for-byte equal. SVG/PNG axes, labels, intervals and point colors visually reviewed.
+
+Auxiliary audit source (preserved here; build itself remains ignored):
+from pathlib import Path
+import collections,hashlib,json,subprocess,sys
+sys.path.insert(0,'scripts')
+from analyze_diagnostics import analyze
+
+prefix=Path('docs/validation/m4-diagnostic-01')
+manifest=json.loads(Path(str(prefix)+'.json').read_text())
+assert manifest['complete'] and manifest['source_and_binary_unchanged']
+rows=[json.loads(x) for x in Path(str(prefix)+'.jsonl').read_text().splitlines()]
+attempts=[r for r in rows if r.get('type')=='attempt']
+samples=[r for r in rows if r.get('type')=='sample']
+assert len(attempts)==len(samples)==manifest['invocations']
+assert {r['id'] for r in attempts}=={r['id'] for r in samples}==set(range(len(samples)))
+assert all(r['returncode']==0 for r in attempts)
+for a,b in zip(attempts,samples):
+    for key in a:
+        if key!='type':assert a[key]==b[key], (a['id'],key)
+assert all(a['mono_end_ns']<=b['mono_start_ns'] for a,b in zip(samples,samples[1:]))
+assert sum(not r['warmup'] for r in samples)==manifest['measured']
+assert sum(r['warmup'] for r in samples)==manifest['warmup_invocations']
+repro=[r for r in samples if r['stage']=='reproduce']
+counts=collections.Counter(json.dumps(r['config'],sort_keys=True) for r in repro)
+assert len(counts)==23 and set(counts.values())=={10} and len(repro)==230
+pairs=collections.defaultdict(list)
+for r in rows:
+    if r.get('type')=='comparison' and r['stage']!='cpu':
+        assert len(r['a'])==len(r['b'])==10
+        order=[a<b for a,b in zip(r['a'],r['b'])]
+        assert sum(order)==5
+        for a,b in zip(r['a'],r['b']):assert abs(a-b)==1
+for r in samples:
+    c=r['config']
+    if c['variant']!='baseline':
+        assert len(r['workers'])==c['p']
+        assert sum(w['rows'] for w in r['workers'])==c['N']-1
+        assert {w['id'] for w in r['workers']}==set(range(c['p']))
+        assert all(w['cpu']==c['cpus'][w['id']] for w in r['workers'])
+    if r['warmup']:assert r['validation']['E_inf']<=r['validation']['truncation_bound']
+digest=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+assert all(digest(p)==v for p,v in manifest['source_sha256'].items())
+assert all(digest(Path('build/m4-diagnostic-release')/('heat_'+k+'_diag'))==v for k,v in manifest['binary_sha256'].items())
+print('PASS: complete attempts/samples, sequential monotonic timeline, counts, 23x10 reproduction, balanced adjacent pairs, workers, source/binary identity')
+print(json.dumps({k:manifest[k] for k in ('revision','invocations','measured','warmup_invocations','source_and_binary_unchanged')},indent=2))
+print('Measured stage counts:',dict(collections.Counter(r['stage'] for r in samples if not r['warmup'])))
+result,effects=analyze(prefix,Path('build/m4-diagnostic-recomputed'),False)
+for suffix in ('.csv','-workers.csv'):
+    assert Path(str(prefix)+suffix).read_bytes()==Path('build/m4-diagnostic-recomputed'+suffix).read_bytes()
+print(f'PASS: byte-identical regenerated statistics; {len(result)} configuration groups, {len(effects)} comparisons')
+before={p:digest(p) for p in prefix.parent.glob(prefix.name+'*') if p.is_file()}
+rerun=subprocess.run([sys.executable,'scripts/diagnose.py','--build','build/m4-diagnostic-release','--run-id','01'],capture_output=True,text=True)
+assert rerun.returncode!=0 and 'run ID already exists' in rerun.stderr
+assert before=={p:digest(p) for p in before}
+print('PASS: repeated run ID rejected before writing; existing artifact hashes unchanged')
+print(rerun.stderr.strip())
+original=subprocess.check_output(['git','ls-tree','-r','--name-only','7c9ea09','--','src','tests','scripts','docs/performance','docs/validation'],text=True).splitlines()
+for p in original:assert Path(p).read_bytes()==subprocess.check_output(['git','show','7c9ea09:'+p]),p
+print(f'PASS: {len(original)} original source/script/test/performance/validation files byte-identical to 7c9ea09')
+oldhash=subprocess.run(['sha256sum','-c','SHA256SUMS'],cwd='docs/performance',capture_output=True,text=True,check=True)
+print(oldhash.stdout.strip())
+paths=sorted(p for p in Path('docs/sources').rglob('*') if p.is_file())
+h=hashlib.sha256()
+for p in paths:h.update(str(p).encode()+b'\0'+hashlib.sha256(p.read_bytes()).digest())
+actual=dict(count=len(paths),digest=h.hexdigest())
+assert actual==json.loads(Path('build/m4-diagnostic-sources-before.json').read_text())
+ignored=subprocess.run(['git','check-ignore','-z','--stdin'],input=b''.join(str(p).encode()+b'\0' for p in paths),capture_output=True,check=True)
+assert len(ignored.stdout.rstrip(b'\0').split(b'\0'))==len(paths)
+assert not subprocess.check_output(['git','ls-files','docs/sources'])
+print('PASS: course source paths/contents unchanged, ignored and untracked;',actual)
+print('NO EXTRA NUMERICAL TEST RUN: frozen code unchanged since documented Debug/Release 21/21')
+
+PASS: 8 existing documents have closed fences and 71 valid relative links; result tables match raw-derived report. No new Markdown files or tracked parent directories; all 21 added files stay within authorized locations. Strict handwritten-document whitespace check passed.

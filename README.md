@@ -6,7 +6,7 @@
 
 ## 当前进度
 
-M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小数显示已补齐并验证。M2 MPI 提交 `34cdd73` 已获用户验收，既有 Debug/Release 回归各 10/10 通过。M2b OpenMP 提交 `17925a9` 已于 2026-11-10 获用户验收，既有 Debug/Release 各 15/15 通过；M3 系统验证提交 `cfffe71` 已获用户验收，证据见下节；M4 已在 `Evaluation` 完成计时、23 配置/115 样本的真实实验与分析，待用户验收；Debug/Release 各 20/20 通过。结果见 [M4 实验分析](docs/performance/RESULTS.md)。用户已选择补充诊断，用户现已要求实施计划，隔离诊断工具及正确性检查正在进行，M5 未开始。M2b 检查输出见 [M2b 验证记录](docs/validation/m2b.log)，历史证据保留在各阶段日志中。
+M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小数显示已补齐并验证。M2 MPI 提交 `34cdd73` 已获用户验收，既有 Debug/Release 回归各 10/10 通过。M2b OpenMP 提交 `17925a9` 已于 2026-11-10 获用户验收，既有 Debug/Release 各 15/15 通过；M3 系统验证提交 `cfffe71` 已获用户验收，证据见下节；M4 已在 `Evaluation` 完成计时、23 配置/115 样本的真实实验与分析，待用户验收；Debug/Release 各 20/20 通过。结果见 [M4 实验分析](docs/performance/RESULTS.md)。用户已选择补充诊断，用户要求实施计划后，隔离诊断及真实对照已完成，Debug/Release各21/21，分析与证据见[DESIGN第11节](docs/DESIGN.md)，待用户验收，M5未开始。M2b 检查输出见 [M2b 验证记录](docs/validation/m2b.log)，历史证据保留在各阶段日志中。
 
 ## 文档导航
 
@@ -130,7 +130,19 @@ OMP_PLACES='{0},{2},{4},{6}' OMP_PROC_BIND=close ./build/m4-release/heat_openmp 
 实测证据与 Amdahl/Gustafson 分析见 [RESULTS.md](docs/performance/RESULTS.md)，完整统计见 [summary.csv](docs/performance/derived/summary.csv)。两组强扩展固定 T=0.01、alpha=1；N=384/M=9216 下 MPI P=4 主基线加速比为 1.521、效率 38.04%，OpenMP Q=4 加速比为 0.976。扩大累计工作量组 p=4 的自身基础网格吞吐增长分别为 MPI 2.205、OpenMP 0.804；不将不同基线的指标混用。原始 23 次完整场验证观测 D_inf 全为 0。源码版本为 `75cdaad`，测量期间源码和二进制哈希未变；原始样本、环境、绑定、编译命令、图表与复现方法均已保留。
 
 
-M4 补充诊断的范围与步骤见现有 [PLAN](PLAN.md)，拟采用的隔离测量与对照方法见 [DESIGN](docs/DESIGN.md) 第 11 节。用户选择仅当前 WSL2、分阶段深入；前次 7c9ea09 仅更新文档，本轮按用户明确授权在既有目录实现隔离诊断代码并保留真实对照证据；不新增 Markdown 文档或目录。后续诊断允许隔离变体，正式求解器/CLI/API 与原性能证据保持现状；采用优化需另行确认，不进入 M5。原 M4 的 20/20 回归和 115 正式样本属于既有交付，不是本次新运行结果。
+M4 补充诊断的范围与步骤见现有 [PLAN](PLAN.md)，冻结的隔离测量方法及本轮结果见 [DESIGN](docs/DESIGN.md) 第 11 节。用户选择仅当前 WSL2、分阶段深入；前次 7c9ea09 仅更新文档，本轮按用户明确授权在既有目录实现隔离诊断代码并保留真实对照证据；不新增 Markdown 文档或目录。后续诊断允许隔离变体，正式求解器/CLI/API 与原性能证据保持现状；采用优化需另行确认，不进入 M5。原 M4 的 20/20 回归和 115 正式样本属于既有交付，不是本次新运行结果。
 
 
-诊断构建开关为 `-DHEAT_BUILD_DIAGNOSTICS=ON`（默认 OFF），生成 heat_serial_diag、heat_mpi_diag、heat_openmp_diag；仅这些入口接受 --variant/--profile。baseline 调用原路径且不允许 --profile，replica 与插桩/对照需分别校准。原求解器、CLI 和 docs/performance 保持不变；新证据使用既有 docs/validation/m4-diagnostic-<run-id> 前缀，最终采样身份、命令与实测结果完成后在此同步。
+诊断构建开关为 `-DHEAT_BUILD_DIAGNOSTICS=ON`（默认 OFF），生成 heat_serial_diag、heat_mpi_diag、heat_openmp_diag；仅这些入口接受 --variant/--profile。baseline 调用原路径且不允许 --profile，replica 与插桩/对照需分别校准。原求解器、CLI 和 docs/performance 保持不变；新证据使用既有 docs/validation/m4-diagnostic-<run-id> 前缀，运行01代码身份为1e2fb5f，完整清单与原始记录已归档；原23配置复测230样本，完整计数和解释见DESIGN第11节。
+
+
+诊断构建与复现（新实验须采用未使用的运行编号）：
+
+```bash
+cmake -S . -B build/m4-diagnostic-release -DCMAKE_BUILD_TYPE=Release -DHEAT_BUILD_DIAGNOSTICS=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+cmake --build build/m4-diagnostic-release --target check --parallel 2
+python3 scripts/diagnose.py --build build/m4-diagnostic-release --run-id 02
+python3 scripts/analyze_diagnostics.py docs/validation/m4-diagnostic-01 --output build/m4-diagnostic-recomputed --no-plots
+```
+
+采样前须提交干净诊断源码并完成正确性检查。运行01的[原始样本](docs/validation/m4-diagnostic-01.jsonl)、[清单](docs/validation/m4-diagnostic-01.json)、[对照图](docs/validation/m4-diagnostic-01.svg)、[统计表](docs/validation/m4-diagnostic-01.csv)及[审计](docs/validation/m4-diagnostic-01-audit.log)均在既有目录；图中点为配对耗时比，横线为探索性bootstrap95%区间，蓝点表示满足预设影响判据，与原M4图的min/max范围条含义不同。

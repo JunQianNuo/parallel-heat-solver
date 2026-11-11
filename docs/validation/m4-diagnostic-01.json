@@ -1,0 +1,1614 @@
+{
+  "schema": 1,
+  "revision": "1e2fb5fd955867cecb372c17f889eb32e15cd6b0",
+  "started_utc": "2026-11-11T05:01:52.207166+00:00",
+  "complete": true,
+  "seed": 20261110,
+  "repeats": 10,
+  "warmups": 1,
+  "environment_defaults": {
+    "OMP_DYNAMIC": "FALSE",
+    "OMP_THREAD_LIMIT": "4",
+    "OMP_PROC_BIND": "close",
+    "OMP_WAIT_POLICY": "ACTIVE",
+    "OMP_PLACES": "{0},{2},{4},{6}",
+    "LC_ALL": "C"
+  },
+  "source_sha256": {
+    "CMakeLists.txt": "1e37c96b63b750686e82cd52a75ab09ba5d841a87514e6d15a7230e23b9f86f5",
+    "src/cli.cpp": "ff246d26988ab6eebdf66c753fdffe836a9d9501079a238c2bc42575d33b5547",
+    "src/cli.hpp": "634870dd10ac960c3da5d90708bc6696aaea74be98fda4a3ce9be1a703cd6101",
+    "src/diagnostic.hpp": "2fe1dfad8526aafc541f7e0bb9141eba26844ded54befc968b6d5ae43ec3a143",
+    "src/diagnostic_kernel.cpp": "fff8a5bf03cf7084b2d0aba9936573b70b21ac93d92d036c0ba63b3aef945380",
+    "src/diagnostic_mpi.cpp": "f2165feb47b92b7967cd9c44f4230373b4a80e6914e4d6b9acfa7326bc7682a6",
+    "src/diagnostic_openmp.cpp": "bb5b9a2ef21f595b2ec8bc30cdc6c4abcb5005f40d03f235babf5100bb65156d",
+    "src/diagnostic_serial.cpp": "610fde1ec32ee90bce0dfdbd5955baf92da00da14edd79743ff46f184ea95c91",
+    "src/heat.cpp": "a32c4a4a619ac96cace88185f4432e0e7a79de05802cafc86fcf3a5302ad0244",
+    "src/heat.hpp": "f52f9e51d0c1d2a64407fee0cb6324755586379e7aa7dcd2da41823bd85ad62a",
+    "src/heat_mpi.cpp": "ed8ae0f3f2e1830f11be41c4994d1ce724045b187730c6c3a270a2dfe0f9c3fc",
+    "src/heat_mpi.hpp": "919651ec47970b83140bf2c8c9bde39519e1476f68332ef592b8aee84acbfc12",
+    "src/heat_openmp.cpp": "b910d751e5aa912fa0f7362ddea6c62f6bd4e0f878668ef2df0e2dc6ccd10932",
+    "src/heat_openmp.hpp": "4d52f1bd6da4f03358eabc7f49788e9c8488b65a4d5e753740009734efde8016",
+    "src/main.cpp": "5485b426d51a64215438c9b7feed82611c75ef9f41e674476441dd817617ed20",
+    "src/main_mpi.cpp": "bb2875aa1a11a576da844ded5c7c6b06098877c4bc1873349b48b48eeaef19e1",
+    "src/main_openmp.cpp": "5f302ed97599717d7ecfc288de9a34d35430f62f2e359db1611845d4542c90fa",
+    "tests/check_cli.py": "357f5e20c425c22407b82ebfa72dc808ccb5a035bf95d328ec19f5d479bf4ac0",
+    "tests/check_diagnostics.py": "3a54561d22099cdf03b735322ecc5b7c57ae63994a8b0c59ccafc78673ffaf82",
+    "tests/check_mpi.py": "205ec65d790b3af78b5ee587e8653d1c19f590b97b89dd951f4f31c7fb6e3dfd",
+    "tests/check_openmp.py": "6a9fa061d1730532cd9793e1aa9e55ab25fe6354cf042537e20b32952bec4cb9",
+    "tests/check_statistics.py": "4d0c538a7f1aef4997c4d71051dacd2525f64d31b081665eefb9be15d0a86a03",
+    "tests/check_system.py": "66f2111e19a854c99fb03188bb171d19eb459e2416aab89b45e955f89078fa55",
+    "tests/check_timing.py": "c71e634362e14cbedf30d484e1a2eee23a64e9af7047bd83846940058a9fe160",
+    "tests/test_heat.cpp": "3a48388842cf9600f3434c407fbb94aee466ecaef335e4e08689b33894b5bae0",
+    "tests/test_mpi_failures.cpp": "80e8898ce3d789db675e710772f4e13b756c84bb00960c7d4a2fbe8bb889dfe0",
+    "scripts/analyze_diagnostics.py": "761e1e55c7e2d0d5d45339da75b606267ba493fc119343e36b22a165ca2c82fd",
+    "scripts/analyze_performance.py": "bad2eff6725d062943aa4107c7c78d10dac9251cee0e1e4b2234adaf7ff4a724",
+    "scripts/benchmark.py": "ffb66bf3b2c7677f9d940cd7a718ad15228d4765cc02fab1c84077aef9ea6991",
+    "scripts/check.py": "0b4292d23902c758b6aedada6ed11399c62a03d2755936f3f09f0353c7d9e563",
+    "scripts/diagnose.py": "52987451e85980e455e4a0db40583e05ace8d130889717eaf3afc8e381ce61e7"
+  },
+  "binary_sha256": {
+    "serial": "f46d82547a3c2034c469b8b130a85d036508f7ccd3bc6597a271489ea7d88c3d",
+    "mpi": "41ea273b37da6bc26f3aec6d016e16cf2753741fae30649bba2fd8eca5dfdea5",
+    "openmp": "de3ce6bcaffa6998ac5365eb914de9859a204341bea77bbfb91284d63c6b4f2e"
+  },
+  "compile_commands": [
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_solver.dir/src/heat.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/heat.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/src/heat.cpp",
+      "output": "CMakeFiles/heat_solver.dir/src/heat.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_solver.dir/src/cli.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/cli.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/src/cli.cpp",
+      "output": "CMakeFiles/heat_solver.dir/src/cli.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_serial.dir/src/main.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/main.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/src/main.cpp",
+      "output": "CMakeFiles/heat_serial.dir/src/main.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_parallel.dir/src/heat_mpi.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/heat_mpi.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/src/heat_mpi.cpp",
+      "output": "CMakeFiles/heat_parallel.dir/src/heat_mpi.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_mpi.dir/src/main_mpi.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/main_mpi.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/src/main_mpi.cpp",
+      "output": "CMakeFiles/heat_mpi.dir/src/main_mpi.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -fopenmp -o CMakeFiles/heat_shared.dir/src/heat_openmp.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/heat_openmp.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/src/heat_openmp.cpp",
+      "output": "CMakeFiles/heat_shared.dir/src/heat_openmp.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -fopenmp -o CMakeFiles/heat_openmp.dir/src/main_openmp.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/main_openmp.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/src/main_openmp.cpp",
+      "output": "CMakeFiles/heat_openmp.dir/src/main_openmp.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -o CMakeFiles/heat_diagnostic_kernel.dir/src/diagnostic_kernel.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/diagnostic_kernel.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/src/diagnostic_kernel.cpp",
+      "output": "CMakeFiles/heat_diagnostic_kernel.dir/src/diagnostic_kernel.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_serial_diag.dir/src/diagnostic_serial.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/diagnostic_serial.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/src/diagnostic_serial.cpp",
+      "output": "CMakeFiles/heat_serial_diag.dir/src/diagnostic_serial.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_mpi_diag.dir/src/diagnostic_mpi.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/diagnostic_mpi.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/src/diagnostic_mpi.cpp",
+      "output": "CMakeFiles/heat_mpi_diag.dir/src/diagnostic_mpi.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -fopenmp -o CMakeFiles/heat_openmp_diag.dir/src/diagnostic_openmp.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/src/diagnostic_openmp.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/src/diagnostic_openmp.cpp",
+      "output": "CMakeFiles/heat_openmp_diag.dir/src/diagnostic_openmp.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -O3 -DNDEBUG -std=c++17 -o CMakeFiles/heat_tests.dir/tests/test_heat.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/tests/test_heat.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/tests/test_heat.cpp",
+      "output": "CMakeFiles/heat_tests.dir/tests/test_heat.cpp.o"
+    },
+    {
+      "directory": "/home/nuo/courses/projects/parallel-heat-solver/build/m4-diagnostic-release",
+      "command": "/usr/bin/c++  -I/home/nuo/courses/projects/parallel-heat-solver/src -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/heat_mpi_failures.dir/tests/test_mpi_failures.cpp.o -c /home/nuo/courses/projects/parallel-heat-solver/tests/test_mpi_failures.cpp",
+      "file": "/home/nuo/courses/projects/parallel-heat-solver/tests/test_mpi_failures.cpp",
+      "output": "CMakeFiles/heat_mpi_failures.dir/tests/test_mpi_failures.cpp.o"
+    }
+  ],
+  "original_protocol": {
+    "schema": 1,
+    "parallelism": [
+      1,
+      2,
+      4
+    ],
+    "cpus": [
+      0,
+      2,
+      4,
+      6
+    ],
+    "T": 0.01,
+    "alpha": 1.0,
+    "repetitions": 5,
+    "warmups": 1,
+    "seed": 20261110,
+    "timeout_seconds": 120,
+    "strong": [
+      {
+        "N": 128,
+        "M": 1024
+      },
+      {
+        "N": 384,
+        "M": 9216
+      }
+    ],
+    "scaled": [
+      {
+        "p": 1,
+        "N": 256,
+        "M": 4096
+      },
+      {
+        "p": 2,
+        "N": 304,
+        "M": 5776
+      },
+      {
+        "p": 4,
+        "N": 362,
+        "M": 8191
+      }
+    ],
+    "env": {
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_WAIT_POLICY": "ACTIVE",
+      "OMP_THREAD_LIMIT": "4"
+    },
+    "mpi_flags": [
+      "--map-by",
+      "core",
+      "--bind-to",
+      "hwthread",
+      "--report-bindings"
+    ]
+  },
+  "protocol": {
+    "profile_overhead": 0.05,
+    "repeatability_ratio": 1.05,
+    "directional_pairs": 8,
+    "bootstrap_draws": 10000,
+    "early_slow_ratio": 1.1,
+    "sync_fraction": 0.2,
+    "fixed_steps": {
+      "N": [
+        128,
+        256,
+        384,
+        512
+      ],
+      "M": 9216,
+      "T": 0.005
+    },
+    "fixed_grid": {
+      "N": 384,
+      "M": [
+        1024,
+        4096,
+        16384
+      ],
+      "T": 0.001
+    },
+    "granularity_variants": "baseline and at most one largest repeatable direct replica contrast per solver"
+  },
+  "finished_utc": "2026-11-11T05:29:22.371213+00:00",
+  "invocations": 2775,
+  "measured": 2560,
+  "warmup_invocations": 215,
+  "decisions": [
+    {
+      "stage": "copy",
+      "pair": "serial1",
+      "ratio": 0.9819002858004416,
+      "low": 0.9495624007215281,
+      "high": 1.0220902438110677,
+      "direction": 6,
+      "repeatable": false,
+      "median_A": 0.5039544,
+      "median_B": 0.5237669215002825
+    },
+    {
+      "stage": "profile",
+      "pair": "serial1",
+      "ratio": 1.028717083149977,
+      "low": 0.9741469379028053,
+      "high": 1.0670902832529936,
+      "direction": 8,
+      "repeatable": false,
+      "median_A": 0.5185201894992133,
+      "median_B": 0.5045519850000346
+    },
+    {
+      "stage": "copy",
+      "pair": "mpi1",
+      "ratio": 1.0103325622464658,
+      "low": 0.9874838423694345,
+      "high": 1.0523324954965945,
+      "direction": 5,
+      "repeatable": false,
+      "median_A": 0.8338505945,
+      "median_B": 0.831507836
+    },
+    {
+      "stage": "profile",
+      "pair": "mpi1",
+      "ratio": 0.9650192388818497,
+      "low": 0.9412937025981192,
+      "high": 0.9952960813819749,
+      "direction": 8,
+      "repeatable": false,
+      "median_A": 0.806023054,
+      "median_B": 0.825523134
+    },
+    {
+      "stage": "copy",
+      "pair": "mpi2",
+      "ratio": 1.0013828525412765,
+      "low": 0.9542408628848823,
+      "high": 1.0555781040948806,
+      "direction": 5,
+      "repeatable": false,
+      "median_A": 0.4594292335,
+      "median_B": 0.46140318049999995
+    },
+    {
+      "stage": "profile",
+      "pair": "mpi2",
+      "ratio": 0.9747814386543439,
+      "low": 0.9573992817839254,
+      "high": 1.0018559816763029,
+      "direction": 7,
+      "repeatable": false,
+      "median_A": 0.448335214,
+      "median_B": 0.46112856150000003
+    },
+    {
+      "stage": "copy",
+      "pair": "mpi4",
+      "ratio": 1.0418821448186,
+      "low": 0.9818304413843013,
+      "high": 1.1062258949653638,
+      "direction": 6,
+      "repeatable": false,
+      "median_A": 0.30672375399999996,
+      "median_B": 0.2950350475
+    },
+    {
+      "stage": "profile",
+      "pair": "mpi4",
+      "ratio": 0.9438647556157771,
+      "low": 0.9207645332751204,
+      "high": 1.0168799560412076,
+      "direction": 7,
+      "repeatable": false,
+      "median_A": 0.348359485,
+      "median_B": 0.3611175735
+    },
+    {
+      "stage": "copy",
+      "pair": "openmp1",
+      "ratio": 1.0360652087427564,
+      "low": 0.9878564328661299,
+      "high": 1.0746875084418073,
+      "direction": 6,
+      "repeatable": false,
+      "median_A": 0.6740376309990097,
+      "median_B": 0.6674852944988743
+    },
+    {
+      "stage": "profile",
+      "pair": "openmp1",
+      "ratio": 0.9983167234565851,
+      "low": 0.9728184764423355,
+      "high": 1.0099615260902168,
+      "direction": 5,
+      "repeatable": false,
+      "median_A": 0.5115997325001445,
+      "median_B": 0.5214713254999879
+    },
+    {
+      "stage": "copy",
+      "pair": "openmp2",
+      "ratio": 1.0010233874324341,
+      "low": 0.9900833782944443,
+      "high": 1.0350314338877538,
+      "direction": 5,
+      "repeatable": false,
+      "median_A": 0.5100686799996765,
+      "median_B": 0.5078052039998511
+    },
+    {
+      "stage": "profile",
+      "pair": "openmp2",
+      "ratio": 0.9985300461128294,
+      "low": 0.935388845838314,
+      "high": 1.0591922777250835,
+      "direction": 5,
+      "repeatable": false,
+      "median_A": 0.5353659094998875,
+      "median_B": 0.5268245179995574
+    },
+    {
+      "stage": "copy",
+      "pair": "openmp4",
+      "ratio": 0.9938846949386517,
+      "low": 0.9606386705432184,
+      "high": 1.0420442595993433,
+      "direction": 6,
+      "repeatable": false,
+      "median_A": 0.5719446999992215,
+      "median_B": 0.573144111500369
+    },
+    {
+      "stage": "profile",
+      "pair": "openmp4",
+      "ratio": 0.984006258511403,
+      "low": 0.9637401189097273,
+      "high": 1.020708049340567,
+      "direction": 8,
+      "repeatable": false,
+      "median_A": 0.5677659829998447,
+      "median_B": 0.578880366500016
+    },
+    {
+      "stage": "null",
+      "pair": "mpi1",
+      "ratio": 1.0101428988737249,
+      "low": 0.9936411446099909,
+      "high": 1.0283863394292716,
+      "direction": 7,
+      "repeatable": false,
+      "median_A": 0.82919371,
+      "median_B": 0.8167691845
+    },
+    {
+      "stage": "common",
+      "pair": "serial1",
+      "ratio": 1.0553387155138334,
+      "low": 1.0092559100956933,
+      "high": 1.083909138070997,
+      "direction": 8,
+      "repeatable": true,
+      "median_A": 0.5648295464998228,
+      "median_B": 0.5408563575001608
+    },
+    {
+      "stage": "common",
+      "pair": "mpi1",
+      "ratio": 1.583232934996752,
+      "low": 1.4817969920768637,
+      "high": 1.693138827199046,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.900028753,
+      "median_B": 0.565156837
+    },
+    {
+      "stage": "factor",
+      "pair": "128-q2-replica/block",
+      "ratio": 2.7248612535593044,
+      "low": 2.403821218913639,
+      "high": 2.8464349233869743,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.012455431499802216,
+      "median_B": 0.0044125599997641984
+    },
+    {
+      "stage": "factor",
+      "pair": "128-q2-replica/private",
+      "ratio": 1.0102572770225406,
+      "low": 0.9814561649971595,
+      "high": 1.0585348156784722,
+      "direction": 7,
+      "repeatable": false,
+      "median_A": 0.013219031000517134,
+      "median_B": 0.012722556000881013
+    },
+    {
+      "stage": "factor",
+      "pair": "128-q2-block/block-private",
+      "ratio": 1.1064429984125983,
+      "low": 1.038247739461844,
+      "high": 1.3405752528279402,
+      "direction": 9,
+      "repeatable": true,
+      "median_A": 0.0040915790004874,
+      "median_B": 0.0037047269997856347
+    },
+    {
+      "stage": "factor",
+      "pair": "128-q2-private/block-private",
+      "ratio": 2.9965318235563743,
+      "low": 2.8290243050580024,
+      "high": 3.0927155776426423,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.011900359000719618,
+      "median_B": 0.0039900144993225695
+    },
+    {
+      "stage": "factor",
+      "pair": "128-q4-replica/block",
+      "ratio": 2.9390650645913565,
+      "low": 2.6115288754485855,
+      "high": 3.1603734631503895,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.00951562150112295,
+      "median_B": 0.0032369754999308498
+    },
+    {
+      "stage": "factor",
+      "pair": "128-q4-replica/private",
+      "ratio": 1.009829007431214,
+      "low": 0.9694250446498464,
+      "high": 1.0650638313580334,
+      "direction": 7,
+      "repeatable": false,
+      "median_A": 0.01023615800022526,
+      "median_B": 0.009738021999510238
+    },
+    {
+      "stage": "factor",
+      "pair": "128-q4-block/block-private",
+      "ratio": 1.2053423941704104,
+      "low": 1.1067782641602641,
+      "high": 1.423962934431334,
+      "direction": 9,
+      "repeatable": true,
+      "median_A": 0.0031119864997890545,
+      "median_B": 0.002656938500877004
+    },
+    {
+      "stage": "factor",
+      "pair": "128-q4-private/block-private",
+      "ratio": 2.975731154589993,
+      "low": 1.984324391998344,
+      "high": 3.1542199355526153,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.00865282050017413,
+      "median_B": 0.003296539499388018
+    },
+    {
+      "stage": "factor",
+      "pair": "384-q2-replica/block",
+      "ratio": 1.9505742878636438,
+      "low": 1.8872715177594026,
+      "high": 2.025578587830944,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.5943500584999128,
+      "median_B": 0.3069729600001665
+    },
+    {
+      "stage": "factor",
+      "pair": "384-q2-replica/private",
+      "ratio": 0.9964151265526164,
+      "low": 0.9792865649189637,
+      "high": 1.0159816542062405,
+      "direction": 5,
+      "repeatable": false,
+      "median_A": 0.5157532055000047,
+      "median_B": 0.5162235699999655
+    },
+    {
+      "stage": "factor",
+      "pair": "384-q2-block/block-private",
+      "ratio": 1.055470425909824,
+      "low": 1.007520622924698,
+      "high": 1.0690028868322452,
+      "direction": 8,
+      "repeatable": true,
+      "median_A": 0.28112853950005956,
+      "median_B": 0.27002712250032346
+    },
+    {
+      "stage": "factor",
+      "pair": "384-q2-private/block-private",
+      "ratio": 1.9717112026976151,
+      "low": 1.891593576569693,
+      "high": 2.0163905830507893,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.5189755664996483,
+      "median_B": 0.2691725864997352
+    },
+    {
+      "stage": "factor",
+      "pair": "384-q4-replica/block",
+      "ratio": 2.7626433088006843,
+      "low": 2.624892372745595,
+      "high": 2.849060194003683,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.5280383640010768,
+      "median_B": 0.19103209400054766
+    },
+    {
+      "stage": "factor",
+      "pair": "384-q4-replica/private",
+      "ratio": 1.0192655183866297,
+      "low": 1.000141014511932,
+      "high": 1.046256093156035,
+      "direction": 8,
+      "repeatable": false,
+      "median_A": 0.5252528275004806,
+      "median_B": 0.5097287994994986
+    },
+    {
+      "stage": "factor",
+      "pair": "384-q4-block/block-private",
+      "ratio": 1.0602281266327371,
+      "low": 1.0235241469972542,
+      "high": 1.092730895493721,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.19678367849974165,
+      "median_B": 0.18543913649955357
+    },
+    {
+      "stage": "factor",
+      "pair": "384-q4-private/block-private",
+      "ratio": 2.700853799579723,
+      "low": 2.5202717441349836,
+      "high": 2.943995565158911,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.5490121709999585,
+      "median_B": 0.19678509549976297
+    },
+    {
+      "stage": "layout",
+      "pair": "q2-replica/padded",
+      "ratio": 0.9883796402299974,
+      "low": 0.9550409081767769,
+      "high": 1.003397552432327,
+      "direction": 8,
+      "repeatable": false,
+      "median_A": 0.5707339025002511,
+      "median_B": 0.571617767999669
+    },
+    {
+      "stage": "layout",
+      "pair": "q2-block/block-padded",
+      "ratio": 1.021816189529809,
+      "low": 0.9623300629514184,
+      "high": 1.0730199259765332,
+      "direction": 6,
+      "repeatable": false,
+      "median_A": 0.2825571729999865,
+      "median_B": 0.2806762954996884
+    },
+    {
+      "stage": "layout",
+      "pair": "q4-replica/padded",
+      "ratio": 1.0121122365622393,
+      "low": 0.9810200169001956,
+      "high": 1.035658575612967,
+      "direction": 6,
+      "repeatable": false,
+      "median_A": 0.5304470204991958,
+      "median_B": 0.5275507900005323
+    },
+    {
+      "stage": "layout",
+      "pair": "q4-block/block-padded",
+      "ratio": 1.059635063278447,
+      "low": 1.019160577447889,
+      "high": 1.0808520720427168,
+      "direction": 9,
+      "repeatable": true,
+      "median_A": 0.20024233200001618,
+      "median_B": 0.18726980249994085
+    },
+    {
+      "stage": "wait",
+      "pair": "q2",
+      "ratio": 0.6623769526398202,
+      "low": 0.6556179426589988,
+      "high": 0.6679246638915552,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.5664415324999936,
+      "median_B": 0.8559633595004925
+    },
+    {
+      "stage": "wait",
+      "pair": "q4",
+      "ratio": 0.4732990508883517,
+      "low": 0.45759232798641036,
+      "high": 0.481470580964957,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.5025099945005422,
+      "median_B": 1.0619359484999222
+    },
+    {
+      "type": "comparison",
+      "stage": "cpu",
+      "pair": "0/2",
+      "a": [
+        1081,
+        1091,
+        1094,
+        1104,
+        1113,
+        1123,
+        1130,
+        1134,
+        1148,
+        1155
+      ],
+      "b": [
+        1084,
+        1092,
+        1097,
+        1102,
+        1111,
+        1118,
+        1131,
+        1139,
+        1145,
+        1151
+      ],
+      "ratio": 0.9946701681441747,
+      "low": 0.9297062170210268,
+      "high": 1.034640065638928,
+      "direction": 5,
+      "repeatable": false,
+      "median_A": 0.4958887485,
+      "median_B": 0.5007728794999999
+    },
+    {
+      "type": "comparison",
+      "stage": "cpu",
+      "pair": "0/4",
+      "a": [
+        1081,
+        1091,
+        1094,
+        1104,
+        1113,
+        1123,
+        1130,
+        1134,
+        1148,
+        1155
+      ],
+      "b": [
+        1085,
+        1090,
+        1101,
+        1108,
+        1112,
+        1125,
+        1132,
+        1136,
+        1142,
+        1154
+      ],
+      "ratio": 0.9929911434476679,
+      "low": 0.9765916327224937,
+      "high": 1.019059417456185,
+      "direction": 6,
+      "repeatable": false,
+      "median_A": 0.4958887485,
+      "median_B": 0.497830189
+    },
+    {
+      "type": "comparison",
+      "stage": "cpu",
+      "pair": "0/6",
+      "a": [
+        1081,
+        1091,
+        1094,
+        1104,
+        1113,
+        1123,
+        1130,
+        1134,
+        1148,
+        1155
+      ],
+      "b": [
+        1082,
+        1088,
+        1098,
+        1109,
+        1117,
+        1119,
+        1129,
+        1138,
+        1149,
+        1150
+      ],
+      "ratio": 1.0069721820242146,
+      "low": 0.9797840839641416,
+      "high": 1.0431961870460165,
+      "direction": 5,
+      "repeatable": false,
+      "median_A": 0.4958887485,
+      "median_B": 0.4907516165
+    },
+    {
+      "type": "comparison",
+      "stage": "cpu",
+      "pair": "0/8",
+      "a": [
+        1081,
+        1091,
+        1094,
+        1104,
+        1113,
+        1123,
+        1130,
+        1134,
+        1148,
+        1155
+      ],
+      "b": [
+        1083,
+        1086,
+        1095,
+        1107,
+        1116,
+        1120,
+        1133,
+        1137,
+        1143,
+        1156
+      ],
+      "ratio": 1.0025499301932554,
+      "low": 0.962215355446326,
+      "high": 1.0148043950115142,
+      "direction": 6,
+      "repeatable": false,
+      "median_A": 0.4958887485,
+      "median_B": 0.4969691175
+    },
+    {
+      "type": "comparison",
+      "stage": "cpu",
+      "pair": "0/10",
+      "a": [
+        1081,
+        1091,
+        1094,
+        1104,
+        1113,
+        1123,
+        1130,
+        1134,
+        1148,
+        1155
+      ],
+      "b": [
+        1080,
+        1087,
+        1100,
+        1103,
+        1115,
+        1121,
+        1127,
+        1141,
+        1146,
+        1152
+      ],
+      "ratio": 1.0064738512579405,
+      "low": 0.9850899088808687,
+      "high": 1.0208003532832919,
+      "direction": 7,
+      "repeatable": false,
+      "median_A": 0.4958887485,
+      "median_B": 0.4985978885
+    },
+    {
+      "type": "comparison",
+      "stage": "cpu",
+      "pair": "0/12",
+      "a": [
+        1081,
+        1091,
+        1094,
+        1104,
+        1113,
+        1123,
+        1130,
+        1134,
+        1148,
+        1155
+      ],
+      "b": [
+        1078,
+        1089,
+        1099,
+        1105,
+        1114,
+        1122,
+        1128,
+        1140,
+        1144,
+        1157
+      ],
+      "ratio": 1.00156702797858,
+      "low": 0.9601166895144885,
+      "high": 1.0450448283692886,
+      "direction": 5,
+      "repeatable": false,
+      "median_A": 0.4958887485,
+      "median_B": 0.4885770305
+    },
+    {
+      "type": "comparison",
+      "stage": "cpu",
+      "pair": "0/14",
+      "a": [
+        1081,
+        1091,
+        1094,
+        1104,
+        1113,
+        1123,
+        1130,
+        1134,
+        1148,
+        1155
+      ],
+      "b": [
+        1079,
+        1093,
+        1096,
+        1106,
+        1110,
+        1124,
+        1126,
+        1135,
+        1147,
+        1153
+      ],
+      "ratio": 1.0027148624231434,
+      "low": 0.9820656289540592,
+      "high": 1.0182957244979782,
+      "direction": 6,
+      "repeatable": false,
+      "median_A": 0.4958887485,
+      "median_B": 0.5000662835
+    },
+    {
+      "type": "decision",
+      "stage": "cpu-group",
+      "action": "not-run",
+      "reason": "CPU contrasts did not meet repeatability rule"
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-128-9216-serial1",
+      "ratio": 1.0832322908403613,
+      "low": 1.0195405154758403,
+      "high": 1.110151309709169,
+      "direction": 9,
+      "repeatable": true,
+      "median_A": 0.05492447149936197,
+      "median_B": 0.051233421500000986
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-128-9216-mpi1",
+      "ratio": 1.5512849823289927,
+      "low": 1.368615922377865,
+      "high": 1.6375591407551895,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.077332069,
+      "median_B": 0.0488822035
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-128-9216-mpi2",
+      "ratio": 1.4907695777341798,
+      "low": 1.4400367718234555,
+      "high": 1.587560579817355,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.053206379,
+      "median_B": 0.0359808915
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-128-9216-mpi4",
+      "ratio": 1.4543241085427185,
+      "low": 1.3412065274593261,
+      "high": 1.5855616042034482,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.038743772999999995,
+      "median_B": 0.0256769015
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-128-9216-openmp1",
+      "ratio": 0.9558591923434445,
+      "low": 0.8731542957330062,
+      "high": 0.9851816233057427,
+      "direction": 9,
+      "repeatable": false,
+      "median_A": 0.049885491999702936,
+      "median_B": 0.05212331950042426
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-128-9216-openmp2",
+      "ratio": 2.5718059348615423,
+      "low": 1.9746737015504359,
+      "high": 2.785967541454999,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.08483063699986815,
+      "median_B": 0.03258786849983153
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-128-9216-openmp4",
+      "ratio": 3.1916909638059283,
+      "low": 3.10103374078616,
+      "high": 3.4110159364799,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.07021704750059143,
+      "median_B": 0.021563803999924858
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-256-9216-serial1",
+      "ratio": 1.0795884665880249,
+      "low": 1.0225502401705169,
+      "high": 1.1262719302556197,
+      "direction": 8,
+      "repeatable": true,
+      "median_A": 0.21192675000020245,
+      "median_B": 0.19619234099991445
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-256-9216-mpi1",
+      "ratio": 1.6950827087992877,
+      "low": 1.63160490028743,
+      "high": 1.7766511888289762,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.332048762,
+      "median_B": 0.1934458935
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-256-9216-mpi2",
+      "ratio": 1.6886390161187275,
+      "low": 1.5483091973576033,
+      "high": 1.7452836441286257,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.19881516700000001,
+      "median_B": 0.11679889749999997
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-256-9216-mpi4",
+      "ratio": 1.640345139925337,
+      "low": 1.3826450748948287,
+      "high": 1.6980246733124835,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.1312052475,
+      "median_B": 0.08397780099999999
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-256-9216-openmp1",
+      "ratio": 0.9354580106587815,
+      "low": 0.882626957823297,
+      "high": 0.9835530244595325,
+      "direction": 9,
+      "repeatable": true,
+      "median_A": 0.2016942675008977,
+      "median_B": 0.21945468799913215
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-256-9216-openmp2",
+      "ratio": 2.1546992312728923,
+      "low": 1.9611040226948833,
+      "high": 2.274248421952231,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.2798246284992274,
+      "median_B": 0.1304195049988266
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-256-9216-openmp4",
+      "ratio": 2.7879698798478705,
+      "low": 2.6727900128290147,
+      "high": 3.126946146535615,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.2680320669996945,
+      "median_B": 0.09695137499966222
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-384-9216-serial1",
+      "ratio": 1.0449787256135452,
+      "low": 0.9997154877099218,
+      "high": 1.0997111249077134,
+      "direction": 8,
+      "repeatable": false,
+      "median_A": 0.5081477180001457,
+      "median_B": 0.4869251299996904
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-384-9216-mpi1",
+      "ratio": 1.6664620517060014,
+      "low": 1.6265825187554308,
+      "high": 1.729749574148537,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.8184147595,
+      "median_B": 0.48685787
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-384-9216-mpi2",
+      "ratio": 1.6829465041373624,
+      "low": 1.6012027791297079,
+      "high": 1.745025754915255,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.4438213875,
+      "median_B": 0.261035258
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-384-9216-mpi4",
+      "ratio": 1.6218494004618145,
+      "low": 1.5315142971324165,
+      "high": 1.7677742446224478,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.280699212,
+      "median_B": 0.1716660375
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-384-9216-openmp1",
+      "ratio": 0.9965445913606739,
+      "low": 0.9518527467833422,
+      "high": 1.0207280558050864,
+      "direction": 6,
+      "repeatable": false,
+      "median_A": 0.4976911529993231,
+      "median_B": 0.49669312500009255
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-384-9216-openmp2",
+      "ratio": 1.9766078889649856,
+      "low": 1.9109874247885448,
+      "high": 2.013251246282941,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.566051509999852,
+      "median_B": 0.2858910189997914
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-384-9216-openmp4",
+      "ratio": 2.621068080755494,
+      "low": 2.5151239170189594,
+      "high": 2.733081721651576,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.5004391795000629,
+      "median_B": 0.1895732474995384
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-512-9216-serial1",
+      "ratio": 1.0177521156468603,
+      "low": 0.998608100241966,
+      "high": 1.0441124744212753,
+      "direction": 8,
+      "repeatable": false,
+      "median_A": 1.0135440285002915,
+      "median_B": 0.9840213755005607
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-512-9216-mpi1",
+      "ratio": 1.5464981146350798,
+      "low": 1.5104980395506518,
+      "high": 1.589199891611123,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 1.4770196635000001,
+      "median_B": 0.9549825949999999
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-512-9216-mpi2",
+      "ratio": 1.5807860187843004,
+      "low": 1.5341107122381525,
+      "high": 1.6460831082770748,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.8568319200000001,
+      "median_B": 0.5416257449999999
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-512-9216-mpi4",
+      "ratio": 1.7010929378424686,
+      "low": 1.5423923233090604,
+      "high": 1.7712022510609726,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.5620612385,
+      "median_B": 0.336109767
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-512-9216-openmp1",
+      "ratio": 0.9934264657546921,
+      "low": 0.9448620100368714,
+      "high": 1.0131432285980768,
+      "direction": 6,
+      "repeatable": false,
+      "median_A": 0.9677747885007193,
+      "median_B": 0.9763804040003379
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-512-9216-openmp2",
+      "ratio": 1.8619453040934835,
+      "low": 1.8085012750947738,
+      "high": 1.8943136125753601,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 1.0215716484999575,
+      "median_B": 0.5489636879992759
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-M-512-9216-openmp4",
+      "ratio": 2.5636900385909778,
+      "low": 2.363198300632771,
+      "high": 2.6649655177124263,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.8782763580011306,
+      "median_B": 0.3433703805003461
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-1024-serial1",
+      "ratio": 1.0174850091513195,
+      "low": 0.9909738026056738,
+      "high": 1.041638955732016,
+      "direction": 7,
+      "repeatable": false,
+      "median_A": 0.056662704500013206,
+      "median_B": 0.05484923299991351
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-1024-mpi1",
+      "ratio": 1.7178854269129884,
+      "low": 1.6051205547269196,
+      "high": 1.7451186120144362,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.09060204100000001,
+      "median_B": 0.05508202249999998
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-1024-mpi2",
+      "ratio": 1.9112277338543326,
+      "low": 1.8198826592178259,
+      "high": 1.9501934543118993,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.0534736125,
+      "median_B": 0.028844293
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-1024-mpi4",
+      "ratio": 1.9052688938594264,
+      "low": 1.5963436911796272,
+      "high": 2.042398835411475,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.032098259000000004,
+      "median_B": 0.016398405499999998
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-1024-openmp1",
+      "ratio": 0.9683137380599355,
+      "low": 0.9388383076809947,
+      "high": 1.0194509872785609,
+      "direction": 7,
+      "repeatable": false,
+      "median_A": 0.05339674950027984,
+      "median_B": 0.05528797550050513
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-1024-openmp2",
+      "ratio": 1.8994600916279265,
+      "low": 1.829327633155752,
+      "high": 1.9878567858393938,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.05438181449972035,
+      "median_B": 0.029121726999619568
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-1024-openmp4",
+      "ratio": 2.8110161532466575,
+      "low": 2.6793046545486927,
+      "high": 2.9681926423170024,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.05666918699989765,
+      "median_B": 0.02005503499913175
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-4096-serial1",
+      "ratio": 1.042240943638943,
+      "low": 1.0195878652929269,
+      "high": 1.0612765171909604,
+      "direction": 10,
+      "repeatable": false,
+      "median_A": 0.23173828549988684,
+      "median_B": 0.22220060800009378
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-4096-mpi1",
+      "ratio": 1.64102972003454,
+      "low": 1.6232997906554258,
+      "high": 1.6720147612201988,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.355357846,
+      "median_B": 0.215967022
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-4096-mpi2",
+      "ratio": 1.7085303619623367,
+      "low": 1.6096785002512675,
+      "high": 1.7517063844677963,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.2032379515,
+      "median_B": 0.1208246575
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-4096-mpi4",
+      "ratio": 1.6698994185473457,
+      "low": 1.609814935702594,
+      "high": 1.888423936739098,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.11955861300000001,
+      "median_B": 0.069688574
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-4096-openmp1",
+      "ratio": 0.9821842666261946,
+      "low": 0.950943942898764,
+      "high": 1.0266933410226267,
+      "direction": 5,
+      "repeatable": false,
+      "median_A": 0.21248974650006858,
+      "median_B": 0.2163688889986588
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-4096-openmp2",
+      "ratio": 1.89135895698172,
+      "low": 1.7917623642135219,
+      "high": 1.953092582298693,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.24639822550034296,
+      "median_B": 0.12978217849922657
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-4096-openmp4",
+      "ratio": 2.808839818404506,
+      "low": 2.6936209391225074,
+      "high": 2.917979054225765,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.21696570200037968,
+      "median_B": 0.07832313800008706
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-16384-serial1",
+      "ratio": 1.0494497132036562,
+      "low": 1.030659193007432,
+      "high": 1.067765982225715,
+      "direction": 9,
+      "repeatable": false,
+      "median_A": 0.9038834819994008,
+      "median_B": 0.8594210689998363
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-16384-mpi1",
+      "ratio": 1.675698610693277,
+      "low": 1.6233741042787972,
+      "high": 1.7081493851344023,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 1.457036325,
+      "median_B": 0.878206626
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-16384-mpi2",
+      "ratio": 1.6915341063355789,
+      "low": 1.6201670757847468,
+      "high": 1.7392204044976158,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.8128464609999999,
+      "median_B": 0.483745399
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-16384-mpi4",
+      "ratio": 1.7564756634601646,
+      "low": 1.6027052486035078,
+      "high": 1.794689023562043,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.513688447,
+      "median_B": 0.29798643450000006
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-16384-openmp1",
+      "ratio": 0.9801933379567525,
+      "low": 0.9410937022886001,
+      "high": 0.9895923649101684,
+      "direction": 9,
+      "repeatable": false,
+      "median_A": 0.8713218999992023,
+      "median_B": 0.8919796419995691
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-16384-openmp2",
+      "ratio": 1.9865079742553469,
+      "low": 1.928257712320888,
+      "high": 2.010098742324935,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.9782587300005616,
+      "median_B": 0.49600135600030626
+    },
+    {
+      "stage": "granularity",
+      "pair": "fixed-N-384-16384-openmp4",
+      "ratio": 2.6981537855579285,
+      "low": 2.5929220030189564,
+      "high": 2.780430861791383,
+      "direction": 10,
+      "repeatable": true,
+      "median_A": 0.9249125580008695,
+      "median_B": 0.3427018105003299
+    }
+  ],
+  "source_and_binary_unchanged": true,
+  "copy_calibration": {
+    "serial1": {
+      "stage": "copy",
+      "pair": "serial1",
+      "ratio": 0.9819002858004416,
+      "low": 0.9495624007215281,
+      "high": 1.0220902438110677,
+      "direction": 6,
+      "repeatable": false,
+      "median_A": 0.5039544,
+      "median_B": 0.5237669215002825
+    },
+    "mpi1": {
+      "stage": "copy",
+      "pair": "mpi1",
+      "ratio": 1.0103325622464658,
+      "low": 0.9874838423694345,
+      "high": 1.0523324954965945,
+      "direction": 5,
+      "repeatable": false,
+      "median_A": 0.8338505945,
+      "median_B": 0.831507836
+    },
+    "mpi2": {
+      "stage": "copy",
+      "pair": "mpi2",
+      "ratio": 1.0013828525412765,
+      "low": 0.9542408628848823,
+      "high": 1.0555781040948806,
+      "direction": 5,
+      "repeatable": false,
+      "median_A": 0.4594292335,
+      "median_B": 0.46140318049999995
+    },
+    "mpi4": {
+      "stage": "copy",
+      "pair": "mpi4",
+      "ratio": 1.0418821448186,
+      "low": 0.9818304413843013,
+      "high": 1.1062258949653638,
+      "direction": 6,
+      "repeatable": false,
+      "median_A": 0.30672375399999996,
+      "median_B": 0.2950350475
+    },
+    "openmp1": {
+      "stage": "copy",
+      "pair": "openmp1",
+      "ratio": 1.0360652087427564,
+      "low": 0.9878564328661299,
+      "high": 1.0746875084418073,
+      "direction": 6,
+      "repeatable": false,
+      "median_A": 0.6740376309990097,
+      "median_B": 0.6674852944988743
+    },
+    "openmp2": {
+      "stage": "copy",
+      "pair": "openmp2",
+      "ratio": 1.0010233874324341,
+      "low": 0.9900833782944443,
+      "high": 1.0350314338877538,
+      "direction": 5,
+      "repeatable": false,
+      "median_A": 0.5100686799996765,
+      "median_B": 0.5078052039998511
+    },
+    "openmp4": {
+      "stage": "copy",
+      "pair": "openmp4",
+      "ratio": 0.9938846949386517,
+      "low": 0.9606386705432184,
+      "high": 1.0420442595993433,
+      "direction": 6,
+      "repeatable": false,
+      "median_A": 0.5719446999992215,
+      "median_B": 0.573144111500369
+    }
+  },
+  "profile_calibration": {
+    "serial1": {
+      "stage": "profile",
+      "pair": "serial1",
+      "ratio": 1.028717083149977,
+      "low": 0.9741469379028053,
+      "high": 1.0670902832529936,
+      "direction": 8,
+      "repeatable": false,
+      "median_A": 0.5185201894992133,
+      "median_B": 0.5045519850000346
+    },
+    "mpi1": {
+      "stage": "profile",
+      "pair": "mpi1",
+      "ratio": 0.9650192388818497,
+      "low": 0.9412937025981192,
+      "high": 0.9952960813819749,
+      "direction": 8,
+      "repeatable": false,
+      "median_A": 0.806023054,
+      "median_B": 0.825523134
+    },
+    "mpi2": {
+      "stage": "profile",
+      "pair": "mpi2",
+      "ratio": 0.9747814386543439,
+      "low": 0.9573992817839254,
+      "high": 1.0018559816763029,
+      "direction": 7,
+      "repeatable": false,
+      "median_A": 0.448335214,
+      "median_B": 0.46112856150000003
+    },
+    "mpi4": {
+      "stage": "profile",
+      "pair": "mpi4",
+      "ratio": 0.9438647556157771,
+      "low": 0.9207645332751204,
+      "high": 1.0168799560412076,
+      "direction": 7,
+      "repeatable": false,
+      "median_A": 0.348359485,
+      "median_B": 0.3611175735
+    },
+    "openmp1": {
+      "stage": "profile",
+      "pair": "openmp1",
+      "ratio": 0.9983167234565851,
+      "low": 0.9728184764423355,
+      "high": 1.0099615260902168,
+      "direction": 5,
+      "repeatable": false,
+      "median_A": 0.5115997325001445,
+      "median_B": 0.5214713254999879
+    },
+    "openmp2": {
+      "stage": "profile",
+      "pair": "openmp2",
+      "ratio": 0.9985300461128294,
+      "low": 0.935388845838314,
+      "high": 1.0591922777250835,
+      "direction": 5,
+      "repeatable": false,
+      "median_A": 0.5353659094998875,
+      "median_B": 0.5268245179995574
+    },
+    "openmp4": {
+      "stage": "profile",
+      "pair": "openmp4",
+      "ratio": 0.984006258511403,
+      "low": 0.9637401189097273,
+      "high": 1.020708049340567,
+      "direction": 8,
+      "repeatable": false,
+      "median_A": 0.5677659829998447,
+      "median_B": 0.578880366500016
+    }
+  }
+}
