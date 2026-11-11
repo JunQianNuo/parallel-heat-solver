@@ -9,7 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from analyze_performance import analyze
 from benchmark import configurations, require
 
-protocol = json.loads((Path(__file__).resolve().parents[1] / 'docs/performance/protocol.json').read_text())
+protocol = json.loads((Path(__file__).resolve().parents[1] / 'results/performance/baseline/protocol.json').read_text())
 matrix = configurations(protocol)
 rows = []
 for c in matrix:

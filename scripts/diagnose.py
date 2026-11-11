@@ -51,8 +51,9 @@ def main():
     parser.add_argument('--run-id',required=True)
     a=parser.parse_args()
     require(a.run_id.replace('-','').isalnum(),'run id must be alphanumeric/hyphens')
-    prefix=Path('docs/validation')/('m4-diagnostic-'+a.run_id)
-    require(not any(prefix.parent.glob(prefix.name+'.*')),'run ID already exists; do not overwrite evidence')
+    directory=Path('results/performance')/('diagnostic-'+a.run_id)
+    require(not directory.exists(),'run directory already exists; do not overwrite evidence')
+    prefix=directory/('m4-diagnostic-'+a.run_id)
     source_paths=[Path('CMakeLists.txt')]+[p for d in ('src','tests','scripts') for p in sorted(Path(d).glob('*')) if p.is_file()]
     require(not subprocess.check_output(['git','status','--porcelain','--','CMakeLists.txt','src','tests','scripts'],text=True),'commit diagnostic source before sampling')
     cache=(a.build/'CMakeCache.txt').read_text()
@@ -61,7 +62,7 @@ def main():
     compile_commands=json.loads((a.build/'compile_commands.json').read_text())
     require(all('-O3' in x['command'] and '-DNDEBUG' in x['command'] and not any(f in x['command'] for f in ['-ffast-math','-march=','-flto']) for x in compile_commands),'non-frozen compiler options')
     binaries={k:str((a.build/f'heat_{k}_diag').resolve()) for k in ('serial','mpi','openmp')}
-    original=json.loads(Path('docs/performance/protocol.json').read_text())
+    original=json.loads(Path('results/performance/baseline/protocol.json').read_text())
     manifest=dict(schema=1,revision=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
                   started_utc=utc(),complete=False,seed=SEED,repeats=REPEATS,warmups=1,
                   environment_defaults=dict(OMP_DYNAMIC='FALSE',OMP_THREAD_LIMIT='4',OMP_PROC_BIND='close',OMP_WAIT_POLICY='ACTIVE',OMP_PLACES='{0},{2},{4},{6}',LC_ALL='C'),
@@ -71,6 +72,7 @@ def main():
                   directional_pairs=8,bootstrap_draws=10000,early_slow_ratio=1.1,sync_fraction=.2,
                   fixed_steps=dict(N=[128,256,384,512],M=9216,T=.005),fixed_grid=dict(N=384,M=[1024,4096,16384],T=.001),
                   granularity_variants='baseline and at most one largest repeatable direct replica contrast per solver'))
+    directory.mkdir(parents=True,exist_ok=False)
     Path(str(prefix)+'.json').write_text(json.dumps(manifest,indent=2)+'\n')
     base_env={k:v for k,v in os.environ.items() if not k.startswith(('OMP_','GOMP_','KMP_','OMPI_','PMI_','PMIX_'))}
     base_env['LC_ALL']='C'

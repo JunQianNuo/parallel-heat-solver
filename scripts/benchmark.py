@@ -70,7 +70,7 @@ def parse_summary(text):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--build', type=Path, required=True)
-    parser.add_argument('--protocol', type=Path, default=Path('docs/performance/protocol.json'))
+    parser.add_argument('--protocol', type=Path, default=Path('results/performance/baseline/protocol.json'))
     parser.add_argument('--output', type=Path, required=True)
     a = parser.parse_args()
     protocol = json.loads(a.protocol.read_text())

@@ -1,0 +1,19 @@
+Validated 23 configurations; summary written to /tmp/heat-result-audit-hqjmeicw/baseline
+Validated 256 measured configurations and 95 complete paired comparisons
+Validated 44 configurations, 44 warmups, 440 measured samples
+STATISTICS correctly rejected missing
+STATISTICS correctly rejected duplicate
+STATISTICS correctly rejected version
+STATISTICS correctly rejected team
+STATISTICS correctly rejected parameters
+STATISTICS correctly rejected nan
+STATISTICS correctly rejected error
+STATISTICS correctly rejected missing-validation
+STATISTICS median/range/baseline/work normalization and eight corruption cases passed (synthetic only)
+PASS 67 artifacts, two snapshots, four historical ledgers; no legacy duplicates
+PASS 123 historical source hashes at four recorded commits; stopped02 excluded
+PASS synthetic-only: medians, paired-round bootstrap, 44/440 CSV, damaged journals/fields/bindings rejected
+DIAG statistics synthetic effect/no-effect/regression/invalid/missing-sample checks passed
+PASS all three completed datasets: five CSV files byte-identical; synthetic checks
+PASS current Markdown file links and code fences
+PASS 2564 course material paths/hashes unchanged and untracked

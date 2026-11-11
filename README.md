@@ -6,7 +6,7 @@
 
 ## 当前进度
 
-M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小数显示已补齐并验证。M2 MPI 提交 `34cdd73` 已获用户验收，既有 Debug/Release 回归各 10/10 通过。M2b OpenMP 提交 `17925a9` 已于 2026-11-10 获用户验收，既有 Debug/Release 各 15/15 通过；M3 系统验证提交 `cfffe71` 已获用户验收，证据见下节；M4 已在 `Evaluation` 完成计时、23 配置/115 样本的真实实验与分析，待用户验收；Debug/Release 各 20/20 通过。结果见 [M4 实验分析](docs/performance/RESULTS.md)。用户已选择补充诊断，用户要求实施计划后，隔离诊断及真实对照已完成，Debug/Release各21/21，分析与证据见[DESIGN第11节](docs/DESIGN.md)，待用户验收，M5未开始。M2b 检查输出见 [M2b 验证记录](docs/validation/m2b.log)，历史证据保留在各阶段日志中。
+M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小数显示已补齐并验证。M2 MPI 提交 `34cdd73` 已获用户验收，既有 Debug/Release 回归各 10/10 通过。M2b OpenMP 提交 `17925a9` 已于 2026-11-10 获用户验收，既有 Debug/Release 各 15/15 通过；M3 系统验证提交 `cfffe71` 已获用户验收，证据见下节；M4 已在 `Evaluation` 完成计时、23 配置/115 样本的真实实验与分析，待用户验收；Debug/Release 各 20/20 通过。结果见 [M4 实验分析](results/RESULTS.md)。用户已选择补充诊断，用户要求实施计划后，隔离诊断及真实对照已完成，Debug/Release各21/21，分析与证据见[DESIGN第11节](docs/DESIGN.md)，待用户验收，M5未开始。M2b 检查输出见 [M2b 验证记录](results/validation/m2b.log)，历史证据保留在各阶段日志中。
 
 ## 文档导航
 
@@ -49,7 +49,7 @@ stdout 为最终时刻 T 的 CSV，首行为 `i,j,x,y,u_numeric,u_exact,abs_erro
 
 `check` 目标先确保测试程序已构建，再执行同一组 CTest 测试，逐项耗时按秒保留 **4 位小数**。也可直接运行 `python3 scripts/check.py --test-dir build`。耗时读取 CTest 的较高精度 XML 测量值；原始控制台输出保留在 `build/ctest-raw.log`，XML 位于 `build/Testing/<TAG>/Test.xml`。若测试失败，显示原始失败诊断并返回非零退出码。直接运行 `ctest --test-dir build --output-on-failure` 仍使用 CTest 默认的两位小数显示。
 
-四位小数表示显示分辨率为 0.1 ms，不代表计时具有相同准确度。测试耗时包含测试进程开销，不作为求解器性能数据。原 M1 日志保持原样，补充验证见 [四位小数显示记录](docs/validation/m1-precision.log)。
+四位小数表示显示分辨率为 0.1 ms，不代表计时具有相同准确度。测试耗时包含测试进程开销，不作为求解器性能数据。原 M1 日志保持原样，补充验证见 [四位小数显示记录](results/validation/m1-precision.log)。
 
 ## MPI 构建、运行与检查
 
@@ -68,7 +68,7 @@ MPI 基本回归包含原 6 项串行检查和 P=1/2/3/4 四项 MPI 检查（另
 
 每项 MPI 检查逐点对照独立串行场，并核查连续解析误差及离散模态、全场/边界/最终层；覆盖每 rank 一行、P>1 不均匀分块、奇偶步、超限 P 和非法/不稳定输入。小规模逐点容差为 1e-13，不要求逐位相同。Linux/GNU 兼容链接器另运行测试专用分配和通信错误注入；其他平台明确记录注入未运行。`/dev/full` 在 rank 内重定向以验证输出失败。
 
-正式记录见 [M2 验证日志](docs/validation/m2.log)，其中包含环境、真实命令、编译选项、原始 CTest 和同一次 XML 捕获的逐项数值/错误测试结果。首轮错误测试方法的失败输出另存 [首轮记录](docs/validation/m2-initial.log)，M1 历史日志未改写。M2 的测试耗时仍由 `check` 从 XML 按四位小数显示，不作为 M4 性能数据。
+正式记录见 [M2 验证日志](results/validation/m2.log)，其中包含环境、真实命令、编译选项、原始 CTest 和同一次 XML 捕获的逐项数值/错误测试结果。首轮错误测试方法的失败输出另存 [首轮记录](results/validation/m2-initial.log)，M1 历史日志未改写。M2 的测试耗时仍由 `check` 从 XML 按四位小数显示，不作为 M4 性能数据。
 
 ## OpenMP 构建、运行与检查
 
@@ -94,7 +94,7 @@ M2b 新增 `heat_openmp_q1..q4` 和 `heat_openmp_limited`，与原 10 项合计 
 
 基本回归逐点对照独立串行并核对离散模态最终层、连续解析误差、CSV 和严格零边界，涵盖奇偶步、小网格、不能均分、线程多于行、稳定性端点、全部既有数值非法输入及线程接口错误。逐点绝对容差 1e-13，沿用 M1/M2 的小规模双精度标准；默认解析误差上限 2e-4。另实测 stdout/stderr/帮助输出失败及 Linux 子进程受限地址空间的分配失败；这不等于真实主机内存耗尽。
 
-环境、构建选项、Debug/Release 结果及逐项请求/实际 Q、D_inf/E_inf 见 [M2b 日志](docs/validation/m2b.log)。M2b 基本实现与验证已获用户验收；M2b 实施时未运行 Q>4、线程创建失败、M3 系统实验或 M4 正式性能比较。本轮 M3 见下节，测试耗时不作为求解器性能数据。
+环境、构建选项、Debug/Release 结果及逐项请求/实际 Q、D_inf/E_inf 见 [M2b 日志](results/validation/m2b.log)。M2b 基本实现与验证已获用户验收；M2b 实施时未运行 Q>4、线程创建失败、M3 系统实验或 M4 正式性能比较。本轮 M3 见下节，测试耗时不作为求解器性能数据。
 
 ## M3 系统正确性验证
 
@@ -111,12 +111,12 @@ ctest --test-dir build -L M3 --output-on-failure
 
 `tests/check_system.py` 以 Python 标准库逐点解析三种独立程序的真实 CSV，分别检查连续解析误差、离散模态与串并行一致性。三组联合加密覆盖 r=0.05/0.1/0.25，输出每组 E_inf、阈值、D_inf、误差比和观测阶；稳定性端点及相邻浮点输入单独核查。默认每组实际 P/Q=1..4，另含请求 Q=4/实际 2；每 rank 一行、超限 P、Q>内部行及奇偶步纳入边界组。不均匀 MPI 分块由加密组和原回归覆盖。完整参数、阈值推导及覆盖表见 [DESIGN 第 9 节](docs/DESIGN.md)。
 
-可降低既有两个资源配置值（1..4），脚本仅核验所选矩阵，不将缺失资源标为通过。每个系统测试 TIMEOUT=240 秒，子进程 25 秒，超时杀死启动器进程组。没有大于 4 的资源或多机验证结论。原始环境/命令/构建/检查及完整逐项输出见 [m3.log](docs/validation/m3.log)，加密数据见 [m3-errors.csv](docs/validation/m3-errors.csv)；CSV 来自该次 CTest 实际输出，不是解析预测值。测试用时不作为性能数据。
+可降低既有两个资源配置值（1..4），脚本仅核验所选矩阵，不将缺失资源标为通过。每个系统测试 TIMEOUT=240 秒，子进程 25 秒，超时杀死启动器进程组。没有大于 4 的资源或多机验证结论。原始环境/命令/构建/检查及完整逐项输出见 [m3.log](results/validation/m3.log)，加密数据见 [m3-errors.csv](results/validation/m3-errors.csv)；CSV 来自该次 CTest 实际输出，不是解析预测值。测试用时不作为性能数据。
 
 
 ## M4 性能计时与实验
 
-详细资源、计时边界、矩阵、统计和复现方法见 [性能实验协议](docs/performance/README.md)。三种程序 stderr 均增加 `loop_seconds`，仅测时间推进；MPI 含 halo 通信并取 rank 最大值，OpenMP 包括团队进入/退出、逐层同步与交换。初始化、收集、验证和输出在计时外。默认 CSV 合同保持，新增无值 `--summary-only` 省略 CSV，仍真实验证 E_inf。
+详细资源、计时边界、矩阵、统计和复现方法见 [性能实验协议](results/performance/baseline/README.md)。三种程序 stderr 均增加 `loop_seconds`，仅测时间推进；MPI 含 halo 通信并取 rank 最大值，OpenMP 包括团队进入/退出、逐层同步与交换。初始化、收集、验证和输出在计时外。默认 CSV 合同保持，新增无值 `--summary-only` 省略 CSV，仍真实验证 E_inf。
 
 ```bash
 ./build/m4-release/heat_serial --N 128 --M 1024 --T .01 --summary-only
@@ -127,7 +127,7 @@ OMP_PLACES='{0},{2},{4},{6}' OMP_PROC_BIND=close ./build/m4-release/heat_openmp 
 本机实验使用 CPU 0/2/4/6；迁移机器先核查可用 CPU 与绑定。正式数据采样、统计与图表命令见协议，不将上述单次示范或 CTest 时间作为性能结论。新增 `heat_timing` 检查计时字段、摘要/全场一致及错误路径；`python3 tests/check_statistics.py` 使用合成数据独立核查统计方法。M4 实施完成，待用户验收，不进入 M5。
 
 
-实测证据与 Amdahl/Gustafson 分析见 [RESULTS.md](docs/performance/RESULTS.md)，完整统计见 [summary.csv](docs/performance/derived/summary.csv)。两组强扩展固定 T=0.01、alpha=1；N=384/M=9216 下 MPI P=4 主基线加速比为 1.521、效率 38.04%，OpenMP Q=4 加速比为 0.976。扩大累计工作量组 p=4 的自身基础网格吞吐增长分别为 MPI 2.205、OpenMP 0.804；不将不同基线的指标混用。原始 23 次完整场验证观测 D_inf 全为 0。源码版本为 `75cdaad`，测量期间源码和二进制哈希未变；原始样本、环境、绑定、编译命令、图表与复现方法均已保留。
+实测证据与 Amdahl/Gustafson 分析见 [RESULTS.md](results/RESULTS.md)，完整统计见 [summary.csv](results/performance/baseline/derived/summary.csv)。两组强扩展固定 T=0.01、alpha=1；N=384/M=9216 下 MPI P=4 主基线加速比为 1.521、效率 38.04%，OpenMP Q=4 加速比为 0.976。扩大累计工作量组 p=4 的自身基础网格吞吐增长分别为 MPI 2.205、OpenMP 0.804；不将不同基线的指标混用。原始 23 次完整场验证观测 D_inf 全为 0。源码版本为 `75cdaad`，测量期间源码和二进制哈希未变；原始样本、环境、绑定、编译命令、图表与复现方法均已保留。
 
 
 M4 补充诊断的范围与步骤见现有 [PLAN](PLAN.md)，冻结的隔离测量方法及本轮结果见 [DESIGN](docs/DESIGN.md) 第 11 节。用户选择仅当前 WSL2、分阶段深入；前次 7c9ea09 仅更新文档，本轮按用户明确授权在既有目录实现隔离诊断代码并保留真实对照证据；不新增 Markdown 文档或目录。后续诊断允许隔离变体，正式求解器/CLI/API 与原性能证据保持现状；采用优化需另行确认，不进入 M5。原 M4 的 20/20 回归和 115 正式样本属于既有交付，不是本次新运行结果。
@@ -142,10 +142,10 @@ M4 补充诊断的范围与步骤见现有 [PLAN](PLAN.md)，冻结的隔离测�
 cmake -S . -B build/m4-diagnostic-release -DCMAKE_BUILD_TYPE=Release -DHEAT_BUILD_DIAGNOSTICS=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 cmake --build build/m4-diagnostic-release --target check --parallel 2
 python3 scripts/diagnose.py --build build/m4-diagnostic-release --run-id diagnostic-example
-python3 scripts/analyze_diagnostics.py docs/validation/m4-diagnostic-01 --output build/m4-diagnostic-recomputed --no-plots
+python3 scripts/analyze_diagnostics.py results/performance/diagnostic-01/m4-diagnostic-01 --output build/m4-diagnostic-recomputed --no-plots
 ```
 
-采样前须提交干净诊断源码并完成正确性检查。运行01的[原始样本](docs/validation/m4-diagnostic-01.jsonl)、[清单](docs/validation/m4-diagnostic-01.json)、[对照图](docs/validation/m4-diagnostic-01.svg)、[统计表](docs/validation/m4-diagnostic-01.csv)及[审计](docs/validation/m4-diagnostic-01-audit.log)均在既有目录；图中点为配对耗时比，横线为探索性bootstrap95%区间，蓝点表示满足预设影响判据，与原M4图的min/max范围条含义不同。
+采样前须提交干净诊断源码并完成正确性检查。运行01的[原始样本](results/performance/diagnostic-01/m4-diagnostic-01.jsonl)、[清单](results/performance/diagnostic-01/m4-diagnostic-01.json)、[对照图](results/performance/diagnostic-01/m4-diagnostic-01.svg)、[统计表](results/performance/diagnostic-01/m4-diagnostic-01.csv)及[审计](results/performance/diagnostic-01/m4-diagnostic-01-audit.log)均在既有目录；图中点为配对耗时比，横线为探索性bootstrap95%区间，蓝点表示满足预设影响判据，与原M4图的min/max范围条含义不同。
 
 
 M4进一步扩大网格数量与P/Q的实验已获用户授权，已完成44次全场预热及440次正式样本，待用户验收。矩阵N=384/512/768/1024、M=N²/16、T=0.01、alpha=1，原MPI/OpenMP各测1/2/4/8/16，以各网格独立串行为基线；16含同WSL可见core上的硬件线程共享。方法与状态分别见现有DESIGN第12节和STATUS，不修改原性能目录或正式求解器。新脚本入口：
@@ -155,7 +155,7 @@ cmake -S . -B build/m4-large-release -DCMAKE_BUILD_TYPE=Release -DHEAT_BUILD_DIA
 cmake --build build/m4-large-release --target check --parallel 2
 python3 tests/check_large.py --build build/m4-large-release
 python3 scripts/benchmark_large.py --build build/m4-large-release --run-id 02-r1
-python3 scripts/analyze_large.py docs/validation/m4-diagnostic-02-r1
+python3 scripts/analyze_large.py results/performance/large-02-r1/m4-diagnostic-02-r1
 ```
 
 此处开启诊断构建仅为保留21项回归；本轮采样只调用原三个程序。采样须在正确性检查及提交冻结后进行；run-id不得重复，原始证据位于既有docs/validation，尚未完成的实验不标通过。
@@ -163,4 +163,12 @@ python3 scripts/analyze_large.py docs/validation/m4-diagnostic-02-r1
 运行02在单rank绑定报告核查时停止，未产生正式样本，失败证据原样保留；修正报告兼容后使用新编号02-r1。P=1虽向启动器提供0,2两个候选CPU，实际仅1个rank绑定CPU0；其余配置不变。
 
 
-扩大实验已由646f7c4冻结，在02-r1完成；[新增分析](docs/DESIGN.md)、[统计](docs/validation/m4-diagnostic-02-r1.csv)、[强扩展图](docs/validation/m4-diagnostic-02-r1-strong.svg)和[逐轮图](docs/validation/m4-diagnostic-02-r1-rounds.svg)保留在既有文件/目录。新复现实验须使用未占用编号，不覆盖上述归档；本轮只测原程序，正式优化仍需用户另行确认。
+扩大实验已由646f7c4冻结，在02-r1完成；[新增分析](docs/DESIGN.md)、[统计](results/performance/large-02-r1/m4-diagnostic-02-r1.csv)、[强扩展图](results/performance/large-02-r1/m4-diagnostic-02-r1-strong.svg)和[逐轮图](results/performance/large-02-r1/m4-diagnostic-02-r1-rounds.svg)保留在既有文件/目录。新复现实验须使用未占用编号，不覆盖上述归档；本轮只测原程序，正式优化仍需用户另行确认。
+
+## 结果与目录分工（本轮整理）
+
+统一入口为 [实验结果与图表](results/RESULTS.md)。`docs/` 保存设计、决策、AI记录；本地 `docs/sources/` 只读且不纳入Git。`results/validation/` 保存构建、正确性与回归证据；`results/performance/` 分开保存 baseline、diagnostic-01、停止的 large-02 与完成的 large-02-r1；`results/figures/` 用于派生展示。`report/` 为 M5 最终报告和答辩预留，目前为空。
+
+用户本轮授权迁移结果，替代上文历史阶段“原性能目录不改、工件存于docs/validation、不新增目录”的布局限制；数学模型、求解器和测量数值不变。历史日志/清单中的路径保持原文，通过 [迁移映射](results/migration.json) 查找；旧哈希统一用 `python3 scripts/check_results.py` 验证。
+
+未来运行01类诊断使用 `--run-id <新编号>` 写入 `results/performance/diagnostic-<新编号>/m4-diagnostic-<新编号>.*`；扩大实验写入 `results/performance/large-<新编号>/m4-diagnostic-<新编号>.*`。目标运行目录已存在即拒绝；上文02-r1是归档身份，不能再次采样覆盖。

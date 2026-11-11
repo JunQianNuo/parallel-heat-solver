@@ -1,0 +1,346 @@
+{
+  "schema": 1,
+  "source_revision": "320437c3ddc87d9235fb808b07fda907bad36bdc",
+  "entries": [
+    {
+      "old": "docs/performance/README.md",
+      "new": "results/performance/baseline/README.md",
+      "sha256": "8d7cf159b59487162d6b8ae488aa3ea43cd64a471d9633547bbb2eb34a03ac88",
+      "snapshot": "results/performance/baseline/README.original.txt",
+      "current_sha256": "23f2986229f77bebde5f561241d3c8c9883411bf2a34715f229b2a11c1b5810b"
+    },
+    {
+      "old": "docs/performance/RESULTS.md",
+      "new": "results/RESULTS.md",
+      "sha256": "b1cb90c1c77a357f6c98f58ae7b4fa7f4b64e3921f9dd113e30602c5bfa6cede",
+      "snapshot": "results/performance/baseline/RESULTS.original.txt",
+      "current_sha256": "a13e8d76f4af67e36609c37ebed6eb399c22dfa25d25f01699e29c330f2ab07b"
+    },
+    {
+      "old": "docs/performance/SHA256SUMS",
+      "new": "results/performance/baseline/SHA256SUMS",
+      "sha256": "a88a3b0daa070e4ce9292e10299044a72d7386316776d1cb728e549607fe1405"
+    },
+    {
+      "old": "docs/performance/audit.log",
+      "new": "results/performance/baseline/audit.log",
+      "sha256": "0952269e4bcf7cfacf66ab3dc8b81a5ac2a0e121a1f20bc1675b6d52b973a272"
+    },
+    {
+      "old": "docs/performance/derived/scaled.png",
+      "new": "results/performance/baseline/derived/scaled.png",
+      "sha256": "e05f8ccb98fe4c2a9d9f978c89801268fa922209a73dae85e78fe8899a87028b"
+    },
+    {
+      "old": "docs/performance/derived/scaled.svg",
+      "new": "results/performance/baseline/derived/scaled.svg",
+      "sha256": "10d2789a33490e9ffc0ce198fe6a004913dfef2bd3aa707656f8c7a1afa69828"
+    },
+    {
+      "old": "docs/performance/derived/strong.png",
+      "new": "results/performance/baseline/derived/strong.png",
+      "sha256": "00cbd176a6169a6bd4b047ea7f02f1c06f4c8c8fa3d0ff9268efc8ebae155995"
+    },
+    {
+      "old": "docs/performance/derived/strong.svg",
+      "new": "results/performance/baseline/derived/strong.svg",
+      "sha256": "6001612444fa2a489bd7918a7107107b6c9daed780042ff4b185e1b689f2b5a9"
+    },
+    {
+      "old": "docs/performance/derived/summary.csv",
+      "new": "results/performance/baseline/derived/summary.csv",
+      "sha256": "c1a21cc590afb6af89892f53ad657cc2558527eda579c82ec03cf55e96174766"
+    },
+    {
+      "old": "docs/performance/protocol.json",
+      "new": "results/performance/baseline/protocol.json",
+      "sha256": "9729d326139c6fbea456e00a4ea6469ad05e698f78ada948b9363dac31274db2"
+    },
+    {
+      "old": "docs/performance/run-01/binding-probe.json",
+      "new": "results/performance/baseline/run-01/binding-probe.json",
+      "sha256": "b12eec4b7199a51318e45fa56cd3977c6ba97cdd19cda9c4172c35b60acbfd34"
+    },
+    {
+      "old": "docs/performance/run-01/clock-audit.log",
+      "new": "results/performance/baseline/run-01/clock-audit.log",
+      "sha256": "cc3b115bcfce46a215c283060d78fc20aeaf342cd4821b24a85218111437a000"
+    },
+    {
+      "old": "docs/performance/run-01/complete.json",
+      "new": "results/performance/baseline/run-01/complete.json",
+      "sha256": "6fb4fd7ad052ed059f3997005e1b5886486b0f3148fd4048cb0d81b0c30f96c6"
+    },
+    {
+      "old": "docs/performance/run-01/console.log",
+      "new": "results/performance/baseline/run-01/console.log",
+      "sha256": "8eeadb43c1bc81a87b7f0ba48bc360ac0d3ca53e2e9056adb5146bece106bbce"
+    },
+    {
+      "old": "docs/performance/run-01/environment.log",
+      "new": "results/performance/baseline/run-01/environment.log",
+      "sha256": "0c1be097728d93075dc11be9e2eb4f0853641fb1b1c8528a421b8d8f59f258ad"
+    },
+    {
+      "old": "docs/performance/run-01/matrix.json",
+      "new": "results/performance/baseline/run-01/matrix.json",
+      "sha256": "0064c3725a55ba13dc41bc9d7208643738b6bb1d6bb1016cb52223c6556f41bb"
+    },
+    {
+      "old": "docs/performance/run-01/metadata.json",
+      "new": "results/performance/baseline/run-01/metadata.json",
+      "sha256": "66d20ed631d2c561e1bbd2535f9d1278c89aa9a54fb6e447573cb931a4a3a058"
+    },
+    {
+      "old": "docs/performance/run-01/samples.jsonl",
+      "new": "results/performance/baseline/run-01/samples.jsonl",
+      "sha256": "d017ad4f330097ffa338eba03ffbffebd1cbe16fa9a7f96858cc589452e31adf"
+    },
+    {
+      "old": "docs/validation/m1-precision.log",
+      "new": "results/validation/m1-precision.log",
+      "sha256": "68407c23b89b2186b9df2c700b10d2d69c3dd69a16e47f51025046b00688b979"
+    },
+    {
+      "old": "docs/validation/m1.log",
+      "new": "results/validation/m1.log",
+      "sha256": "699c83332e8677a38ba347151fc826fa664403cecd906b954b70258fc350503a"
+    },
+    {
+      "old": "docs/validation/m2-initial.log",
+      "new": "results/validation/m2-initial.log",
+      "sha256": "5716ea7a235a88a0a38e7de0e06b0011bffa8a1ab67aef306398afa97a2f172f"
+    },
+    {
+      "old": "docs/validation/m2.log",
+      "new": "results/validation/m2.log",
+      "sha256": "bd07b6909586b5c85066bb5fb6361110c369e2edfa2a1cb615581e190012f441"
+    },
+    {
+      "old": "docs/validation/m2b.log",
+      "new": "results/validation/m2b.log",
+      "sha256": "f7262a0955ee6215eaa36632361abb832e29ceabad8bf8bb2095071009fcaea0"
+    },
+    {
+      "old": "docs/validation/m3-errors.csv",
+      "new": "results/validation/m3-errors.csv",
+      "sha256": "25297b7b53ba33b53111fb6ece657c58cea396c3bcc605a92110eb6b3755ed19"
+    },
+    {
+      "old": "docs/validation/m3.log",
+      "new": "results/validation/m3.log",
+      "sha256": "0624a7eb7318bd22371450e1c07aaed68c90e60a44a7a5e3d28156d9bb058b3a"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-01-audit.log",
+      "new": "results/performance/diagnostic-01/m4-diagnostic-01-audit.log",
+      "sha256": "368ea7d799b99ded3d5449c7498a91736c9638d5ada785a16963d0adbe06d1c4"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-01-console.log",
+      "new": "results/performance/diagnostic-01/m4-diagnostic-01-console.log",
+      "sha256": "f7eca2f5303d0930f603a34b2a33bc5c375a2fa51dd6adf2799a0cfed603dde0"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-01-workers.csv",
+      "new": "results/performance/diagnostic-01/m4-diagnostic-01-workers.csv",
+      "sha256": "ed3252a952ed1f1f2a82b1918bc1d2a398860f318bdccb7e10d7b15088afd913"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-01.csv",
+      "new": "results/performance/diagnostic-01/m4-diagnostic-01.csv",
+      "sha256": "485a4c3a6ea0431f3d2e48f97db4cf7daa85aa362f5de5302e9db58c6629be36"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-01.json",
+      "new": "results/performance/diagnostic-01/m4-diagnostic-01.json",
+      "sha256": "73f497821f36ea6be9fc57475196074fb3d0dbee547019c82407abda244d1cef"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-01.jsonl",
+      "new": "results/performance/diagnostic-01/m4-diagnostic-01.jsonl",
+      "sha256": "7e2817f8a8142e41ee41600c3b8f3ec74d740492ea2f3758f17465220f0dc596"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-01.log",
+      "new": "results/performance/diagnostic-01/m4-diagnostic-01.log",
+      "sha256": "0828af993f4b20de558ec470ea771083dd68c909579e69783888f7c101711c15"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-01.png",
+      "new": "results/performance/diagnostic-01/m4-diagnostic-01.png",
+      "sha256": "e2d3f7102b23196a4bb0e4aca7d4f25ef68bfdf0086443559080a6f6414709e4"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-01.sha256",
+      "new": "results/performance/diagnostic-01/m4-diagnostic-01.sha256",
+      "sha256": "52ae7c36c92d0a8a281318e8c8d1273c0328c4f328e065752edc8dc742293ac7"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-01.svg",
+      "new": "results/performance/diagnostic-01/m4-diagnostic-01.svg",
+      "sha256": "df0276b00c8affe77193abea9ccf1b0b24a26349a64bf51793686703e6e3f021"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-console.log",
+      "new": "results/performance/large-02/m4-diagnostic-02-console.log",
+      "sha256": "26b3c084b66bfa5f9af53196e16144acf43c50382e0aef6bf8c1eb9154dc32a8"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-failed-1.csv",
+      "new": "results/performance/large-02/m4-diagnostic-02-failed-1.csv",
+      "sha256": "3967989e01e1df3af9d5fee91309fcf0ba70bfa5b23df67530504930cd7d1835"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-failed-1.stderr",
+      "new": "results/performance/large-02/m4-diagnostic-02-failed-1.stderr",
+      "sha256": "09ee30bd363f3cbb2dac7c803d30b04cdc6b1708cc8a8f214fb4a4aa0e17a9d2"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-failure.log",
+      "new": "results/performance/large-02/m4-diagnostic-02-failure.log",
+      "sha256": "2c0dd0141db2ad2970ff946b14d060d9188898746f7d541d7ce6e66bf8047dde"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-r1-audit.log",
+      "new": "results/performance/large-02-r1/m4-diagnostic-02-r1-audit.log",
+      "sha256": "0cf92ede147e2c2abe2e9401f52eec3d22259cc6365e9bb988ebb2a9bac161b8"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-r1-clock-audit.log",
+      "new": "results/performance/large-02-r1/m4-diagnostic-02-r1-clock-audit.log",
+      "sha256": "b4351b5d9ea33730bb08f1bb19adbbea33e84c17b0313af7395168bb266ddd4c"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-r1-console.log",
+      "new": "results/performance/large-02-r1/m4-diagnostic-02-r1-console.log",
+      "sha256": "1503ac63b7ecb73a5805f0ada3bddbb8046b5d15006a6380bade0fa0c8e520a4"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-r1-grid.png",
+      "new": "results/performance/large-02-r1/m4-diagnostic-02-r1-grid.png",
+      "sha256": "05c560f673e2003427d019a4d3744381ff4fd768c6ece37189eac3297c38750a"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-r1-grid.svg",
+      "new": "results/performance/large-02-r1/m4-diagnostic-02-r1-grid.svg",
+      "sha256": "6e23cd95115733374c51840e12b6445ce2cee063feab58bad8bb0d06de5492f2"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-r1-rounds.csv",
+      "new": "results/performance/large-02-r1/m4-diagnostic-02-r1-rounds.csv",
+      "sha256": "473f740df017810dc0c93ad5384b22db5801e62c514a359f34875780de379c6e"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-r1-rounds.png",
+      "new": "results/performance/large-02-r1/m4-diagnostic-02-r1-rounds.png",
+      "sha256": "f63be910e11de402ae31b1fd6cc2c17bfeeaf1b6353741213a52ae64a6af6bcc"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-r1-rounds.svg",
+      "new": "results/performance/large-02-r1/m4-diagnostic-02-r1-rounds.svg",
+      "sha256": "9e545a9d7dab12e16fa778cb6656ac60877913d93b98835815a4397512bfc6f8"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-r1-strong.png",
+      "new": "results/performance/large-02-r1/m4-diagnostic-02-r1-strong.png",
+      "sha256": "5f7c6c1bf677232d2fab004978bd0bc2dc804355f10eedb683bafb3d3149b7f1"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-r1-strong.svg",
+      "new": "results/performance/large-02-r1/m4-diagnostic-02-r1-strong.svg",
+      "sha256": "74de1d0e9db946b779eabba5998fb8fb538ecae26a8f40dc05f5f160abf2e125"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-r1.csv",
+      "new": "results/performance/large-02-r1/m4-diagnostic-02-r1.csv",
+      "sha256": "90e4be8eacdec5380dcab85448ccd842982044df0efa21e100579b3f17472b4e"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-r1.json",
+      "new": "results/performance/large-02-r1/m4-diagnostic-02-r1.json",
+      "sha256": "972cf746246b215cd62f4d4f014de87f6835da91b5d8178a22a07d585f944cd5"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-r1.jsonl",
+      "new": "results/performance/large-02-r1/m4-diagnostic-02-r1.jsonl",
+      "sha256": "f4497ed82603f718f7ea65451fb7347bae0c30f6c407b2ac721676211e876c08"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-r1.log",
+      "new": "results/performance/large-02-r1/m4-diagnostic-02-r1.log",
+      "sha256": "8c410593de51a5c7125e07c0d80bcaa85232724e39c37edb79938ffb6d2e0cd0"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02-r1.sha256",
+      "new": "results/performance/large-02-r1/m4-diagnostic-02-r1.sha256",
+      "sha256": "7f3aabf64e4b31ba51a8d5bb39f6139fe04e5f7380e521144c6fe283e42ef595"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02.json",
+      "new": "results/performance/large-02/m4-diagnostic-02.json",
+      "sha256": "fbc35618e497156602e9aa8a036dac3d3b9dd85d9b51185ec5a74f05b8af19d4"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02.jsonl",
+      "new": "results/performance/large-02/m4-diagnostic-02.jsonl",
+      "sha256": "ecc9733536fbb972cc5fcd5da71ecede95acaf2af97f138f3550c0fdcf435623"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02.log",
+      "new": "results/performance/large-02/m4-diagnostic-02.log",
+      "sha256": "df14ca0cf47cbf1ae186190b14070b3954bf0967ced46022076c24bb19e4011a"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-02.sha256",
+      "new": "results/performance/large-02/m4-diagnostic-02.sha256",
+      "sha256": "2365ef118e605e45e773c578d91d5750c9f691f1838ec9f6ec46ba206167cf37"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-debug-checks.log",
+      "new": "results/validation/m4-diagnostic-debug-checks.log",
+      "sha256": "abde68616637a0dec28fd9c07bb218d3b45fbb53fbea28fa7496b0d722d0ad07"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-default-checks.log",
+      "new": "results/validation/m4-diagnostic-default-checks.log",
+      "sha256": "a799e9f805e52daf8ad0f79b09d359ab2b89aad11e3ef1bffcc48162664a1de0"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-large-debug-binding-checks.log",
+      "new": "results/validation/m4-diagnostic-large-debug-binding-checks.log",
+      "sha256": "9190205d989d2883e311937a45137604ebee9f5be6a3348fafe76933a20333e5"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-large-debug-checks.log",
+      "new": "results/validation/m4-diagnostic-large-debug-checks.log",
+      "sha256": "98c78cf86c0f307b02a4caeb158ab028b24789ce67ccbaf823019cfb89d5780d"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-large-development-checks.log",
+      "new": "results/validation/m4-diagnostic-large-development-checks.log",
+      "sha256": "055d6ce24813fa3041661f5f5d77783a60e34094225d9be79805b016c603d981"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-large-release-binding-checks.log",
+      "new": "results/validation/m4-diagnostic-large-release-binding-checks.log",
+      "sha256": "e2b6a37340853ccefb80fa6ad364afa3b4c63b953c37b526ad23592b3e57ce0c"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-large-release-checks.log",
+      "new": "results/validation/m4-diagnostic-large-release-checks.log",
+      "sha256": "da508d7704c1280e8b66c5fd37cfbaabd1d2c4225809b302f9cdae299e04739a"
+    },
+    {
+      "old": "docs/validation/m4-diagnostic-release-checks.log",
+      "new": "results/validation/m4-diagnostic-release-checks.log",
+      "sha256": "0ce7ca3dfa70c4c435388b9e8623922ec825a1ea38d219809982c5521503c446"
+    },
+    {
+      "old": "docs/validation/m4.log",
+      "new": "results/validation/m4.log",
+      "sha256": "685903ddec78ba12087560d11ca4f9da7313577af84a2cc77ad1ca780bfcc6b5"
+    }
+  ],
+  "note": "Old ledger entries resolve relative to their original parent, then through this map. Explanatory Markdown original hashes use snapshots; raw historical paths remain verbatim."
+}

@@ -96,6 +96,10 @@ def main():
         for v in variants['openmp']:
             r=run([str(build/'heat_openmp_diag'),'--threads','4','--variant',v,'--summary-only'],env)
             require(r.returncode==0 and 'Q_requested=4 Q_actual=2' in r.stderr,'limited team')
+    statistics_checks()
+
+
+def statistics_checks():
     # Synthetic values below test method only, never used as performance evidence.
     require(paired([2.0]*10,[1.0]*10)['repeatable'],'detect effect')
     require(not paired([1.0]*10,[1.0]*10)['repeatable'],'identical times')

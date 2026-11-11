@@ -244,8 +244,9 @@ def validate_field(path, c, d, reference=None):
 
 def available_prefix(run_id):
     require(run_id.replace('-', '').isalnum(), 'invalid run ID')
-    prefix = Path('docs/validation')/('m4-diagnostic-'+run_id)
-    require(not list(prefix.parent.glob(prefix.name+'*')), 'run ID already exists; do not overwrite evidence')
+    directory = Path('results/performance')/('large-'+run_id)
+    require(not directory.exists(), 'run directory already exists; do not overwrite evidence')
+    prefix = directory/('m4-diagnostic-'+run_id)
     return prefix
 
 
@@ -281,6 +282,7 @@ def main():
                     timing='Original loop_seconds; MPI halo/max-rank; OpenMP team entry/exit and synchronization; initialization/gather/validation/output excluded')
     # Store only tuning settings, not arbitrary inherited credentials or personal environment.
     manifest['environment'] = {k: v for k, v in environment().items() if k.startswith('OMP_') or k == 'LC_ALL'}
+    prefix.parent.mkdir(parents=True, exist_ok=False)
     Path(str(prefix)+'.json').write_text(json.dumps(manifest, indent=2)+'\n')
     with Path(str(prefix)+'.log').open('w') as log:
         for cmd in [['uname', '-a'], ['lscpu'], ['lscpu', '-e=CPU,CORE,SOCKET,NODE'], ['free', '-h'],
