@@ -4,35 +4,35 @@
   "target": "/home/nuo/courses/projects/parallel-heat-solver/report/heat-defense_ppt169_20261112",
   "source_fingerprint": {
     "algorithm": "sha256",
-    "digest": "d62d4c045c69da1a0020522f56cc376a75f19fdc4d273070a44e0b47017d12c3",
+    "digest": "4967df02de1fff70e63f2f6f1aa732af6312aeb092506127af1b509e10870360",
     "file_count": 5,
     "files": [
       {
         "file": "01_cover.svg",
-        "sha256": "a134edbaca9e6f5b94ab44aadc05da25c3500379fc958f860cb19ae86d1ffac0"
+        "sha256": "8a2ed3deb8f93eedcb785b210257d10f7babd713c23f19a64c7cd346a0ad64d9"
       },
       {
-        "file": "02_stencil.svg",
-        "sha256": "5961f9f6bd456d1c26f0536a65da263d839c311fbe7aec93f0cfce84c00cefc5"
+        "file": "02_route.svg",
+        "sha256": "7812c17a63e138fd6e8637a240742478e30ab62cd69036f41384f224d2c1bf15"
       },
       {
-        "file": "03_mpi.svg",
-        "sha256": "67ef469aa3073f754b30eb1fa1e8ceccca42b430915ebb75990c830c8f5e9cb4"
+        "file": "03_stencil.svg",
+        "sha256": "fd0adc137d7832ef2bac3a82f25b46a9b3cb352462d0a376de7ba731725920e9"
       },
       {
-        "file": "04_openmp.svg",
-        "sha256": "1dcfa28e477c16424fc61d2f55562f35461f912f839e89056218dfdfe8405ca0"
+        "file": "04_mpi.svg",
+        "sha256": "e430efbb17da835eb201dd6f477a0fe2073ff7ce05e54f16ff006c23f8512a90"
       },
       {
-        "file": "05_validation.svg",
-        "sha256": "fde1451fbd976b5aa36b8fae8c4774d36093b2026a020cc909947c5f169abaf0"
+        "file": "05_openmp.svg",
+        "sha256": "9daa69c9dc7ec8a227315afc03561dc0004a8c1bdae0a5ab2f312617a38ff899"
       }
     ]
   },
   "summary": {
     "total": 5,
-    "passed": 2,
-    "warnings": 3,
+    "passed": 5,
+    "warnings": 0,
     "errors": 0
   },
   "issue_types": {},
@@ -42,21 +42,8 @@
       "issues": []
     },
     "introduced": {
-      "count": 3,
-      "issues": [
-        {
-          "file": "02_stencil.svg",
-          "message": "Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (1 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): text[28]:font-size '32' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)"
-        },
-        {
-          "file": "04_openmp.svg",
-          "message": "Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (2 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): g[20]:font-size '32' -> None; g[25]:font-size '32' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)"
-        },
-        {
-          "file": "05_validation.svg",
-          "message": "Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (1 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): g[13]:font-size '32' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)"
-        }
-      ]
+      "count": 0,
+      "issues": []
     },
     "inherited": {
       "count": 0,
@@ -72,21 +59,25 @@
   },
   "drift": {
     "colors": {},
-    "fonts": {},
+    "fonts": {
+      "Cambria Math": [
+        "03_stencil.svg"
+      ]
+    },
     "sizes": {}
   },
   "carrier_receipt": {
     "scope": "informational-not-a-quota",
     "pages": 5,
     "totals": {
-      "text_elements": 72,
+      "text_elements": 99,
       "image_placements": 0,
       "icons": 0,
-      "svg_geometry_elements": 39,
+      "svg_geometry_elements": 75,
       "preset_shapes": 0,
       "page_frame_elements": 5,
       "marker_uses": 0,
-      "inline_emphasis_runs": 3,
+      "inline_emphasis_runs": 0,
       "gradient_uses": 0,
       "filter_uses": 0,
       "text_effects": 0
@@ -98,20 +89,20 @@
       "charts": 0,
       "tables": 0,
       "formulas": 1,
-      "inline_emphasis_runs": 2,
+      "inline_emphasis_runs": 0,
       "gradient_uses": 0,
       "filter_uses": 0,
       "text_effects": 0
     },
     "relationship_pages": 8,
     "geometry_elements": {
-      "circle": 10,
+      "circle": 36,
       "ellipse": 0,
-      "line": 12,
+      "line": 13,
       "path": 0,
       "polygon": 0,
       "polyline": 0,
-      "rect": 17
+      "rect": 26
     },
     "preset_names": {},
     "native_objects": {
@@ -140,7 +131,7 @@
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 8,
+          "text_elements": 6,
           "images": {
             "placements": 0,
             "files": [],
@@ -148,7 +139,7 @@
           },
           "icons": 0,
           "effects": {
-            "inline_emphasis_runs": 2,
+            "inline_emphasis_runs": 0,
             "gradient_uses": 0,
             "filter_uses": 0,
             "text_effects": 0
@@ -156,7 +147,66 @@
           "geometry": {
             "svg_elements": {
               "rect": 2,
-              "circle": 5,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "KaiTi, Arial",
+          "SimHei, Arial"
+        ],
+        "text_elements": 6,
+        "tspan_elements": 1
+      },
+      "passed": true,
+      "source_sha256": "8a2ed3deb8f93eedcb785b210257d10f7babd713c23f19a64c7cd346a0ad64d9"
+    },
+    {
+      "file": "02_route.svg",
+      "path": "report/heat-defense_ppt169_20261112/svg_output/02_route.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 21,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 0,
+            "text_effects": 0
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 6,
+              "circle": 10,
               "ellipse": 0,
               "line": 6,
               "polyline": 0,
@@ -181,26 +231,26 @@
           }
         },
         "fonts": [
-          "Microsoft YaHei, Arial"
+          "Arial",
+          "KaiTi, Arial",
+          "SimHei, Arial"
         ],
-        "text_elements": 8,
-        "tspan_elements": 3
+        "text_elements": 21,
+        "tspan_elements": 1
       },
       "passed": true,
-      "source_sha256": "a134edbaca9e6f5b94ab44aadc05da25c3500379fc958f860cb19ae86d1ffac0"
+      "source_sha256": "7812c17a63e138fd6e8637a240742478e30ab62cd69036f41384f224d2c1bf15"
     },
     {
-      "file": "02_stencil.svg",
-      "path": "report/heat-defense_ppt169_20261112/svg_output/02_stencil.svg",
+      "file": "03_stencil.svg",
+      "path": "report/heat-defense_ppt169_20261112/svg_output/03_stencil.svg",
       "exists": true,
       "errors": [],
-      "warnings": [
-        "Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (1 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): text[28]:font-size '32' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)"
-      ],
+      "warnings": [],
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 11,
+          "text_elements": 31,
           "images": {
             "placements": 0,
             "files": [],
@@ -208,17 +258,17 @@
           },
           "icons": 0,
           "effects": {
-            "inline_emphasis_runs": 1,
+            "inline_emphasis_runs": 0,
             "gradient_uses": 0,
             "filter_uses": 0,
             "text_effects": 0
           },
           "geometry": {
             "svg_elements": {
-              "rect": 2,
-              "circle": 5,
+              "rect": 5,
+              "circle": 12,
               "ellipse": 0,
-              "line": 4,
+              "line": 2,
               "polyline": 0,
               "polygon": 0,
               "path": 0
@@ -241,24 +291,31 @@
           }
         },
         "fonts": [
-          "Microsoft YaHei, Arial"
+          "Cambria Math",
+          "KaiTi, Arial",
+          "SimHei, Arial"
         ],
-        "text_elements": 11,
-        "tspan_elements": 1
+        "text_elements": 31,
+        "tspan_elements": 2,
+        "contextual_values": {
+          "font_families": [
+            "Cambria Math"
+          ]
+        }
       },
       "passed": true,
-      "source_sha256": "5961f9f6bd456d1c26f0536a65da263d839c311fbe7aec93f0cfce84c00cefc5"
+      "source_sha256": "fd0adc137d7832ef2bac3a82f25b46a9b3cb352462d0a376de7ba731725920e9"
     },
     {
-      "file": "03_mpi.svg",
-      "path": "report/heat-defense_ppt169_20261112/svg_output/03_mpi.svg",
+      "file": "04_mpi.svg",
+      "path": "report/heat-defense_ppt169_20261112/svg_output/04_mpi.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 17,
+          "text_elements": 18,
           "images": {
             "placements": 0,
             "files": [],
@@ -273,8 +330,8 @@
           },
           "geometry": {
             "svg_elements": {
-              "rect": 4,
-              "circle": 0,
+              "rect": 8,
+              "circle": 7,
               "ellipse": 0,
               "line": 2,
               "polyline": 0,
@@ -299,26 +356,25 @@
           }
         },
         "fonts": [
-          "Microsoft YaHei, Arial"
+          "KaiTi, Arial",
+          "SimHei, Arial"
         ],
-        "text_elements": 17,
-        "tspan_elements": 4
+        "text_elements": 18,
+        "tspan_elements": 2
       },
       "passed": true,
-      "source_sha256": "67ef469aa3073f754b30eb1fa1e8ceccca42b430915ebb75990c830c8f5e9cb4"
+      "source_sha256": "e430efbb17da835eb201dd6f477a0fe2073ff7ce05e54f16ff006c23f8512a90"
     },
     {
-      "file": "04_openmp.svg",
-      "path": "report/heat-defense_ppt169_20261112/svg_output/04_openmp.svg",
+      "file": "05_openmp.svg",
+      "path": "report/heat-defense_ppt169_20261112/svg_output/05_openmp.svg",
       "exists": true,
       "errors": [],
-      "warnings": [
-        "Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (2 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): g[20]:font-size '32' -> None; g[25]:font-size '32' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)"
-      ],
+      "warnings": [],
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 20,
+          "text_elements": 23,
           "images": {
             "placements": 0,
             "files": [],
@@ -334,9 +390,9 @@
           "geometry": {
             "svg_elements": {
               "rect": 5,
-              "circle": 0,
+              "circle": 7,
               "ellipse": 0,
-              "line": 0,
+              "line": 3,
               "polyline": 0,
               "polygon": 0,
               "path": 0
@@ -359,73 +415,14 @@
           }
         },
         "fonts": [
-          "Microsoft YaHei, Arial"
+          "KaiTi, Arial",
+          "SimHei, Arial"
         ],
-        "text_elements": 20,
+        "text_elements": 23,
         "tspan_elements": 0
       },
       "passed": true,
-      "source_sha256": "1dcfa28e477c16424fc61d2f55562f35461f912f839e89056218dfdfe8405ca0"
-    },
-    {
-      "file": "05_validation.svg",
-      "path": "report/heat-defense_ppt169_20261112/svg_output/05_validation.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [
-        "Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (1 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): g[13]:font-size '32' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)"
-      ],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "carrier_receipt": {
-          "text_elements": 16,
-          "images": {
-            "placements": 0,
-            "files": [],
-            "max_frame_share": 0.0
-          },
-          "icons": 0,
-          "effects": {
-            "inline_emphasis_runs": 0,
-            "gradient_uses": 0,
-            "filter_uses": 0,
-            "text_effects": 0
-          },
-          "geometry": {
-            "svg_elements": {
-              "rect": 4,
-              "circle": 0,
-              "ellipse": 0,
-              "line": 0,
-              "polyline": 0,
-              "polygon": 0,
-              "path": 0
-            },
-            "preset_shapes": 0,
-            "preset_names": {},
-            "page_frame_elements": 1,
-            "marker_uses": {
-              "start": 0,
-              "mid": 0,
-              "end": 0
-            }
-          },
-          "native_objects": {
-            "chart": 0,
-            "table": 0,
-            "formula_block": 0,
-            "formula_inline": 0,
-            "other": 0
-          }
-        },
-        "fonts": [
-          "Microsoft YaHei, Arial"
-        ],
-        "text_elements": 16,
-        "tspan_elements": 0
-      },
-      "passed": true,
-      "source_sha256": "fde1451fbd976b5aa36b8fae8c4774d36093b2026a020cc909947c5f169abaf0"
+      "source_sha256": "9daa69c9dc7ec8a227315afc03561dc0004a8c1bdae0a5ab2f312617a38ff899"
     }
   ]
 }

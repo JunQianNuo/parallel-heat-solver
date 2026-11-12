@@ -17,7 +17,7 @@
 | Artifact Afterlife | 备注、来源与生成源支持会后审阅和复核 |
 | Reading Mode | presentation |
 | Content Strategy | 内容为讲述精简重组，数字与结论保留原证据口径 |
-| Design Style | 自由设计；算法讲解＋计算流程＋证据陈述组合 |
+| Design Style | 按用户指定《单幅图像去雾-第二组》参考重做页眉、疏密、推进、黑体/楷体及字号字色 |
 | AI Image Acquisition Path | not applicable |
 | Generation Mode | continuous |
 | Spec Refinement | disabled |
@@ -42,26 +42,23 @@
 
 - **Mode**: custom
 - **Mode References**: instructional
-- **Mode Behavior**: 先定义五点更新，再对照解释MPI与OpenMP的归属/同步，随后给出正确性与性能证据，每页一个可复核判断。
+- **Mode Behavior**: 研究问题与路线→数值原理→MPI/OpenMP实现→正确性与性能证据→结论与评价边界。
 - **Visual style**: custom
-- **Visual Style References**: swiss-minimal
-- **Visual Style Behavior**: 参考本地两份PPT模板：深蓝底封面/结束页、白底正文、浅蓝分区、铜金强调；清晰左对齐标题和大留白；算法示意承担页面主体，结果页用曲线和大数字形成焦点，灰/模板蓝/铜金持续标识串行/MPI/OpenMP；备份原图保持已验收原色，细线建立层级。
-- **Theme**: 五点网格与旧层/新层作为算法页连续线索，结果页以数值和比较承担视觉重量。
-- **Tone**: 清晰、审慎、可解释。
+- **Visual Style Behavior**: 仿照指定PDF的深色章节导航、蓝色通栏标题、白底黑字、蓝字强调、双条页脚；页面用少量文字和单幅图解释一个问题，不用宣传式大数字/口号或反复的说明框。
+- **Theme**: 参考本地只读docs/sources/PPT模板/单幅图像去雾-第二组.pdf，不复制原页、姓名、校徽或图片。参考为4:3，本交付沿用已确认16:9；竖向比例按720/272.13缩放，导航与标题横向铺满。
+- **Tone**: 简洁、学术答辩、先解释再举证。
 
 ### Color Scheme
 
 | Role | HEX | Purpose |
 | --- | --- | --- |
-| Background | #FFFFFF | 正文页面背景；封面/结束页采用Primary深蓝 |
-| Secondary background | #EDF3FA | 算法区背景 |
-| Primary | #124C8D | 模板深蓝：标题、封面和结束页 |
-| Accent | #C38749 | OpenMP |
-| Secondary accent | #477CB3 | MPI |
-| Body text | #273848 | 正文 |
-| Secondary text | #627487 | 串行/注释 |
-| Divider | #CCD8E7 | 网格/分隔 |
-| On-blue accent | #EDC188 | 模板深底上的浅金强调 |
+| Background | #FFFFFF | 白底正文 |
+| Primary | #115EA2 | 通栏标题、重点蓝字、MPI |
+| Navigation | #092F51 | 深色章节导航 |
+| Footer lower | #0B3D69 | 深蓝页脚下条 |
+| Inactive | #8497A8 | 未激活导航和串行参照 |
+| Body text | #000000 | 正文与OpenMP图线 |
+| Divider | #C9D7E3 | 图线与细分隔 |
 
 ## IV. Typography System
 
@@ -69,34 +66,45 @@
 
 | Role | Character (Reference) | Primary | English if non-English | Fallback tail |
 | --- | --- | --- | --- | --- |
-| Title | 明确的无衬线粗体 | Microsoft YaHei | Arial | sans-serif |
-| Body | 投影可读无衬线 | Microsoft YaHei | Arial | sans-serif |
+| Title | 参考FandolHei黑体 | SimHei | Arial | sans-serif |
+| Cover | 参考黑体封面 | SimHei | Arial | sans-serif |
+| Body | 参考FandolKai楷体 | KaiTi | Arial | serif |
+| Lead | 参考蓝色黑体强调 | SimHei | Arial | sans-serif |
+| Navigation | 参考黑体导航 | SimHei | Arial | sans-serif |
+| Footnote | 参考黑体双条页脚 | SimHei | Arial | sans-serif |
+| Data | 清晰的拉丁数字 | Arial | Arial | sans-serif |
 
-- **Title stack**: Microsoft YaHei, Arial
-- **Body stack**: Microsoft YaHei, Arial
+- **Title stack**: SimHei, Arial
+- **Cover stack**: SimHei, Arial
+- **Body stack**: KaiTi, Arial
+- **Lead stack**: SimHei, Arial
+- **Navigation stack**: SimHei, Arial
+- **Footnote stack**: SimHei, Arial
+- **Data stack**: Arial
+- **Role rationale**: PDF为FandolHei/FandolKai；Windows PowerPoint使用本机已有黑体/楷体对应字形，数学仍为Cambria Math。不是沿用前版微软雅黑。
 
 ### Font Size Hierarchy
 
 | Purpose | Anchor Size (px) |
 | --- | ---: |
 | Body | 32 |
-| Title | 46 |
-| Cover | 64 |
-| Hero | 72 |
-| Subtitle | 36 |
-| Lead | 34 |
+| Title | 38 |
+| Cover | 46 |
+| Lead | 32 |
 | Annotation | 24 |
+| Navigation | 16 |
 | Footnote | 16 |
+| Data | 24 |
 
 ## V. Layout Principles
 
 ### Deck-wide Direction
 
-- **Hierarchy direction**: 标题给判断，中央示意/数据给依据，下方保留解释边界。
-- **Composition tendency**: 算法页用主图与短说明；结果页用主图与右侧关键数字；备份整幅原图。
-- **Cross-page continuity**: 五点网格从封面延续到更新与分工示意；灰/模板蓝/铜金保持实现语义。
-- **Spacing posture**: 正文疏朗，备份图信息密集，结束页降低负荷。
-- **Spacing anchors**: page margin=56; block gap=28; column gutter=40; corner radius=0; body leading=46.
+- **Hierarchy direction**: 顶部三段导航标记阶段，蓝条白字标题提出本页主题，白底正文给一个解释或证据，蓝色短句收束。
+- **Composition tendency**: 图文并置或公式→变量说明→结论；简单段落/编号，减少卡片。
+- **Cross-page continuity**: 问题与路线／数值与并行方法／结果与讨论三级章节导航，全页一致；导航圆点指示本节位置；上下双色页脚。
+- **Spacing posture**: 主讲页每页一个主题，2–4个主要信息单元，正文32px；细节与限定放入备份/备注。
+- **Spacing anchors**: page margin=56; block gap=28; column gutter=40; corner radius=0; body leading=48.
 
 ## VI. Icon Usage Specification
 
@@ -114,117 +122,117 @@
 
 ## IX. Content Outline
 
-### Part 1: Main Talk
+### Part 1: Five-minute defense and appendix
 
-#### Slide 01 - 从五点更新到真实并行收益
+#### Slide 01 - 二维热传导方程：显式有限差分并行求解
 
-- **Audience move**: 尚不清楚项目→了解三程序及证据主线
-- **Relationships**: membership: 三实现属于同一模型
-- **Title**: 从五点更新到真实并行收益
-- **Core message**: 串行、MPI、OpenMP属于同一数学模型；正确性证据先于性能判断
-- **Content**: 完整课题名；独立串行/MPI/OpenMP；正确性有证据，并行收益有条件；姓名学号待填写；封面五点网格仅结构示意
-- **Cover impact**: 五点更新→三种程序→真实收益；五点结构示意结合大标题。
+- **Audience move**: 不了解题目→知道题目与独立串行/MPI/OpenMP范围
+- **Relationships**: membership: 三实现属于同一问题
+- **Title**: 二维热传导方程：显式有限差分并行求解
+- **Core message**: 同一模型的三种实现
+- **Content**: 蓝色居中标题块，白底封面；课程期末汇报；姓名学号待填写；2026年11月；不引用他人身份或校徽
+- **Cover impact**: 完整技术题名与三实现范围，使用参考PDF的蓝色居中标题块。
 
-#### Slide 02 - 五点更新只读旧层，整层完成再交换
+#### Slide 02 - 研究问题与汇报路线
 
-- **Audience move**: 知道题目→理解旧层依赖及稳定性
-- **Relationships**: order: 旧层读→新层写→交换；link: 中心与四邻居
-- **Title**: 五点更新只读旧层，整层完成再交换
-- **Core message**: 模型：单位区域、零边界、正弦初值；h=1/N、dt=T/M；r≤1/4；双缓冲M次更新；时间一阶/空间二阶
-- **Content**: 五点网格示意；旧层→新层；稳定性与双缓冲；解析解只用于核验
+- **Audience move**: 不知道比较对象→明白要在相同条件下比较什么
+- **Relationships**: order: 基线→并行实现→验证与测试
+- **Title**: 研究问题与汇报路线
+- **Core message**: 相同模型和精度下，并行能带来多少收益
+- **Content**: 单位正方形/零边界/正弦初值；三步：建立数值基线、实现两种并行、验证正确性与性能；模型图仅为结构示意
+
+#### Slide 03 - 五点显式格式与双缓冲
+
+- **Audience move**: 知道问题→理解旧层依赖与稳定性
+- **Relationships**: link: 中心与四邻居；order: 读旧层→写新层→交换
+- **Title**: 五点显式格式与双缓冲
+- **Core message**: 整层只读旧层，完成后交换缓冲
+- **Content**: 向前Euler与中心差分；h=1/N、dt=T/M；五点格式；r=αdt/h²≤1/4；时间一阶/空间二阶；真实推进M步
 - **Mathematical content**: U_{ij}^{n+1}=(1-4r)U_{ij}^{n}+r(U_{i-1,j}^{n}+U_{i+1,j}^{n}+U_{i,j-1}^{n}+U_{i,j+1}^{n})
 
-#### Slide 03 - MPI分连续行，先换halo再更新
+#### Slide 04 - MPI：行分块与边界交换
 
-- **Audience move**: 知道五点依赖→理解进程分块和邻居行
-- **Relationships**: membership: 内部行归rank；link: 邻rank旧行交换；order: 通信→更新→交换
-- **Title**: MPI分连续行，先换halo再更新
-- **Core message**: 独立串行是主基线；N=8/P=3分3/2/2行；每步两次旧层Sendrecv；PROC_NULL不自动清零；P≤N−1为本实现约束
-- **Content**: 拥有行与halo；全局行1–3/4–5/6–7；通信→更新→交换；实际P来自Comm_size
+- **Audience move**: 知道差分→理解rank拥有行和halo
+- **Relationships**: membership: 行归属rank；link: 邻rank交换；order: 通信→更新→交换
+- **Title**: MPI：行分块与边界交换
+- **Core message**: 先交换旧层halo，再更新拥有行
+- **Content**: N8/P3分3/2/2行，全局1–3/4–5/6–7；两次Sendrecv；每rank两个halo；端部清零；P≤N−1是本实现约束；实际P来自通信器
 
-#### Slide 04 - OpenMP分整行，两道屏障守住时间层
+#### Slide 05 - OpenMP：行划分与层间同步
 
-- **Audience move**: 知道MPI→理解共享双缓冲与线程同步
-- **Relationships**: membership: 行属于线程；order: 更新完成→交换→进入下一层
-- **Title**: OpenMP分整行，两道屏障守住时间层
-- **Core message**: static,1循环分行；old/next共享，循环变量私有；for屏障→single交换→single屏障；Q>N−1合法；请求/实际团队分开
-- **Content**: N7/Q4行归属{1,5}/{2,6}/{3}/{4}；实际Q在推进团队读取；每点一线程写
+- **Audience move**: 理解MPI→理解共享双缓冲和线程屏障
+- **Relationships**: membership: 行归属线程；order: 更新→屏障→交换→屏障
+- **Title**: OpenMP：行划分与层间同步
+- **Core message**: 一个持续团队，先完成整层再交换
+- **Content**: static,1循环分整行；N7/Q4行{1,5}/{2,6}/{3}/{4}；old/next共享、循环变量私有；for屏障→single交换→single屏障；请求/实际Q分开，Q>内部行合法
 
-#### Slide 05 - 精度与并行一致性分别验证
+#### Slide 06 - 正确性检验与网格加密
 
-- **Audience move**: 知道实现→理解三层验证和联合加密
-- **Relationships**: contrast: 解析精度与串并行一致性；order: 三档联合加密
-- **Title**: 精度与并行一致性分别验证
-- **Core message**: 连续E、离散模态、串行D三层检查；N20/40/80且M400/1600/6400，E=1.1262e-4/2.8181e-5/7.0470e-6；误差约缩小4倍；小规模D≤1e-13
-- **Content**: 联合二阶不是时间二阶；边界/奇偶步/不均匀分块/线程多于行/稳定性端点；历史M3 Debug/Release各19/19
+- **Audience move**: 知道实现→理解连续精度与并行一致性分别验证
+- **Relationships**: contrast: 连续精度与并行一致性；order: 网格加密
+- **Title**: 正确性检验与网格加密
+- **Core message**: E∞与D∞分别检查，联合加密误差约缩小四倍
+- **Content**: N20/M400/E1.1262e-4，N40/M1600/E2.8181e-5，N80/M6400/E7.0470e-6；T0.1/alpha1/r0.1；dt∝h²为联合二阶，非时间二阶；离散模态及并行边界在备注展开
 
-#### Slide 06 - N=1024：MPI16加速3.35倍，OpenMP8为1.80倍
+#### Slide 07 - 性能测试：固定规模强扩展
 
-- **Audience move**: 知道正确→理解正式计时、基线与有限收益
-- **Relationships**: contrast: 同规模独立串行与并行；order: 并行度增加
-- **Title**: N=1024：MPI16加速3.35倍，OpenMP8为1.80倍
-- **Core message**: N1024/M65536/T0.01/alpha1；Ts35.3892秒；MPI16 10.5662秒/S3.3493；OpenMP8 19.6692秒/S1.7992；OpenMP16 21.4382秒；44配置×10正式/44预热；推进计时；同网格独立串行中位数比
-- **Content**: P/Q1/2/4/8/16曲线与探索性95%区间；时间min/max不是区间；16逻辑CPU/14WSL可见core，含兄弟线程
-- **Visualization**: n1024-speedup — 同网格S与探索性不对称区间的数值坐标图；no-template-match。
+- **Audience move**: 知道正确→理解真实性能与计时基线
+- **Relationships**: contrast: 同规模独立串行与并行；order: 增加P/Q
+- **Title**: 性能测试：固定规模强扩展
+- **Core message**: MPI有收益，更多线程不保证更快
+- **Content**: N1024/M65536/T0.01/alpha1；同网格独立串行中位数35.39s；MPI16 10.57s/S3.35；OpenMP8 19.67s/S1.80，16为21.44s；原10点/10条区间；16逻辑CPU覆盖14WSLcore含兄弟线程；计时/统计口径写入备注和备份
+- **Visualization**: n1024-speedup — 10个点及不对称探索性区间；原统计不变。
 - **Native-ready**: n1024-speedup=no
-- **Composition**: 左侧主曲线保留不对称bootstrap误差线，右侧大数字；闭合原生chart payload不支持这组自定义不对称区间，保留可编辑矢量图元。
+- **Composition**: 数值坐标图保留不对称区间；payload不支持该区间组合，保留可编辑图元。
 
-#### Slide 07 - 规模、实施因素与环境共同限制收益
+#### Slide 08 - 结论、局限与AI使用
 
-- **Audience move**: 看到收益→理解扩大工作量与因果边界
-- **Relationships**: contrast: 支持的实施因素与未确定机制
-- **Title**: 规模、实施因素与环境共同限制收益
-- **Core message**: 跨N时M增加，W=M(N−1)²，不称弱扩展；原扩大W约随p增长但时间不恒定；Amdahl不反推真实f，Gustafson未测sigma；诊断支持计算上下文/行划分，未进入正式实现
-- **Content**: MPI收益不随N单调；OpenMP16不保证优于8；非独占WSL、轮次趋势、UTC回退、未外部物理校准；硬件根因未定
+- **Audience move**: 看到结果→理解可支持结论和本人责任
+- **Relationships**: contrast: 支持结论与评价边界
+- **Title**: 结论、局限与AI使用
+- **Core message**: 正确性有证据，并行收益有条件
+- **Content**: 数值检验通过；MPI收益不随N单调、OpenMP16未必优于8；非独占WSL/轮次趋势/时钟限制；Codex辅助实现与分析，本人负责范围审核答辩；解析/串行/日志/重算核查及修正实例放备注
+- **Closing impact**: 用数值正确、有限收益与AI核查责任收束，结尾“恳请批评指正”。
 
-#### Slide 08 - AI辅助实现，真实核查支撑结论
+#### Slide 09 - 备份：计时边界与统计口径
 
-- **Audience move**: 了解结果→理解实际分工与核查责任
-- **Relationships**: order: AI输出→真实检查→修正/采纳
-- **Title**: AI辅助实现，真实核查支撑结论
-- **Core message**: Codex辅助实现/测试/实验/分析/材料；本人负责范围/管理/审核/答辩；MPI启动器重定向错误留证，改rank内验证后通过；不虚构人工复测
-- **Content**: 正确性有证据，并行收益有条件；阶段验收不替代本材料审核；个人信息和人工演练待本人完成
-- **Closing impact**: 正确性有证据，并行收益有条件；用一条核查实例与明确分工收束。
+- **Audience move**: 需要追问→能区分计时与统计对象
+- **Relationships**: contrast: 计时合同与三批统计
+- **Title**: 备份：计时边界与统计口径
+- **Core message**: 三个计时合同可比，但三批统计不可混算
+- **Content**: 串行step检查/边界/更新/交换；MPI含halo等待取rank本地最大，归约收集在外；OpenMP含团队进出和层间同步；原M4 23/115；诊断215预热/2560正式；02-r1 44预热/440正式；停止02 0正式；范围与探索性bootstrap分开
 
-#### Slide 09 - 备份：计时边界与三个统计口径
+#### Slide 10 - 备份：完整强扩展结果
 
-- **Audience move**: 需要追问→可区分基线、计时与统计
-- **Relationships**: contrast: 三种实现计时；contrast: 三批统计对象
-- **Title**: 备份：计时边界与三个统计口径
-- **Core message**: serial含step检查/边界/更新/swap；MPI含halo与等待取rank最大，归约/收集在外；OpenMP含团队进出与逐层同步；初始化验证输出在外
-- **Content**: 原M4 23配置/115正式，中位数比/min-max；诊断01 215预热/2560正式，配对比率中位数；02-r1 44预热/440正式，同轮bootstrap；停止02 0正式
+- **Audience move**: 需要完整矩阵→看到四组固定N/M
+- **Relationships**: contrast: 四组固定问题强扩展
+- **Title**: 备份：完整强扩展结果
+- **Core message**: 完整原图不裁切
+- **Content**: 02-speedup原PNG；各点各自串行基线；MPI16 S3.4885/2.8183/2.9596/3.3493非单调；16硬件线程共享限制；图保留原色
+- **Images**: 02-speedup.png，保留完整坐标与脚注，不裁切。
 
-#### Slide 10 - 备份：四组固定N/M的完整强扩展
+#### Slide 11 - 备份：扩大工作量与可扩展性
 
-- **Audience move**: 需要完整矩阵→读取四网格全部资源结果
-- **Relationships**: contrast: 四个固定问题的强扩展
-- **Title**: 备份：四组固定N/M的完整强扩展
-- **Core message**: 原图02-speedup；4组N384/512/768/1024；每点同网格串行；区间为探索性95%；16逻辑CPU覆盖14core
-- **Content**: 保留全部原图坐标/区间/脚注；MPI16 S3.4885/2.8183/2.9596/3.3493；OpenMP16非总优于8
-- **Images**: 02-speedup.png，完整原图保留不裁切；旁列口径提醒。
+- **Audience move**: 需要扩展讨论→区分联合加密与弱扩展
+- **Relationships**: link: N增加同时M增加；contrast: 跨网格比较
+- **Title**: 备份：扩大工作量与可扩展性
+- **Core message**: 固定区域跨N同时增加M，不称弱扩展
+- **Content**: 05-grid-speedup原图；M=N²/16，W=M(N−1)²约N⁴；MPI非单调与OpenMP16不保证优于8；不单独分离粒度
+- **Images**: 05-grid-speedup.png，保留完整坐标与脚注，不裁切。
 
-#### Slide 11 - 备份：跨网格比较不能称弱扩展
+#### Slide 12 - 备份：模型与机制的适用边界
 
-- **Audience move**: 需要扩展解释→区分N/M共同变化
-- **Relationships**: contrast: 同人数跨网格；link: N增加同时M增加
-- **Title**: 备份：跨网格比较不能称弱扩展
-- **Core message**: 原图05-grid-speedup；T0.01/alpha1/r0.16；M=N²/16；W约N⁴；各点使用各自串行基线
-- **Content**: MPI收益随N非单调；OpenMP16不保证优于8；跨N不单独分离每步粒度效应
-- **Images**: 05-grid-speedup.png，完整原图保留不裁切；旁列口径提醒。
-
-#### Slide 12 - 备份：定律、时钟与归因的适用边界
-
-- **Audience move**: 需要机制追问→理解未被数据证明的部分
-- **Relationships**: contrast: 理想模型与实际测量；contrast: 支持与未确定
-- **Title**: 备份：定律、时钟与归因的适用边界
-- **Core message**: Amdahl常数f假设不足，f_eff不是代码占比；Gustafson相近并行时间未满足且sigma未测；34/44趋势；11处UTC回退；单调计时但未外部物理校准
-- **Content**: 诊断MPI公共内核和OpenMP连续划分支持实施因素；未证明唯一缓存/带宽/伪共享或宿主机制；全部慢样本保留
+- **Audience move**: 追问根因→能区分证据/假设
+- **Relationships**: contrast: 模型与实测；contrast: 支持与未确定
+- **Title**: 备份：模型与机制的适用边界
+- **Core message**: 理想定律不替代测量，实施因素不等于唯一硬件根因
+- **Content**: Amdahl不反推代码f；Gustafson相近时间前提未满足且sigma未测；34/44配置趋势/11处UTC回退；用单调时钟但未外部物理校准；诊断支持上下文/行划分，变体保持隔离
 
 ## X. Speaker Notes Requirements
 
 - **Generation**: enabled
 - **Filename**: match each SVG filename under `notes/`
-- **Content**: 基于最终SVG，前8页沿用已整理讲稿并校准图示，备份页给出答辩解释；来源路径保留于页面页脚，未发生的人工核查不补写。
+- **Content**: 基于最终SVG，前8页按新路线重写讲稿并校准图示，备份页给出答辩解释；来源路径集中保留于报告引用及核查记录，页脚仅课程与题名，未发生的人工核查不补写。
 - **Total duration**: 正文280秒预算＋20秒机动；备份不纳入5分钟；字数估算不是人工实讲。
 - **Notes style**: 中文口语化解释。
 - **Presentation purpose**: 解释算法/实现/验证与真实收益及限制，披露AI使用与修正。

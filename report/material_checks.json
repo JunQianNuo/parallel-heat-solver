@@ -1,62 +1,62 @@
 {
-  "local_file_links_checked": 116,
+  "local_file_links_checked": 117,
   "performance_table": "checked against archived CSV",
   "M3_ratios_orders": "checked against archived CSV",
   "main_script": [
     {
       "page": "01",
       "budget_seconds": 15,
-      "CJK_and_alphanumeric_characters": 75,
-      "characters_per_budget_minute": 300.0
+      "CJK_and_alphanumeric_characters": 62,
+      "characters_per_budget_minute": 248.0
     },
     {
       "page": "02",
-      "budget_seconds": 40,
-      "CJK_and_alphanumeric_characters": 161,
-      "characters_per_budget_minute": 241.5
+      "budget_seconds": 25,
+      "CJK_and_alphanumeric_characters": 90,
+      "characters_per_budget_minute": 216.0
     },
     {
       "page": "03",
       "budget_seconds": 40,
-      "CJK_and_alphanumeric_characters": 152,
-      "characters_per_budget_minute": 228.0
+      "CJK_and_alphanumeric_characters": 142,
+      "characters_per_budget_minute": 213.0
     },
     {
       "page": "04",
       "budget_seconds": 35,
-      "CJK_and_alphanumeric_characters": 159,
-      "characters_per_budget_minute": 272.6
+      "CJK_and_alphanumeric_characters": 141,
+      "characters_per_budget_minute": 241.7
     },
     {
       "page": "05",
-      "budget_seconds": 30,
-      "CJK_and_alphanumeric_characters": 132,
-      "characters_per_budget_minute": 264.0
+      "budget_seconds": 35,
+      "CJK_and_alphanumeric_characters": 139,
+      "characters_per_budget_minute": 238.3
     },
     {
       "page": "06",
-      "budget_seconds": 55,
-      "CJK_and_alphanumeric_characters": 251,
-      "characters_per_budget_minute": 273.8
+      "budget_seconds": 30,
+      "CJK_and_alphanumeric_characters": 127,
+      "characters_per_budget_minute": 254.0
     },
     {
       "page": "07",
-      "budget_seconds": 40,
-      "CJK_and_alphanumeric_characters": 167,
-      "characters_per_budget_minute": 250.5
+      "budget_seconds": 55,
+      "CJK_and_alphanumeric_characters": 221,
+      "characters_per_budget_minute": 241.1
     },
     {
       "page": "08",
-      "budget_seconds": 25,
-      "CJK_and_alphanumeric_characters": 123,
-      "characters_per_budget_minute": 295.2
+      "budget_seconds": 45,
+      "CJK_and_alphanumeric_characters": 206,
+      "characters_per_budget_minute": 274.7
     }
   ],
-  "total_count": 1220,
+  "total_count": 1128,
   "timing_scenario": {
     "assumed_characters_per_minute": 280,
     "assumed_pause_seconds": 20,
-    "estimated_total_seconds": 281.4,
+    "estimated_total_seconds": 261.7,
     "human_rehearsal": "未运行/待用户验证"
   },
   "solver_build_tests_sampling": "未运行：M5只整理既有证据",
@@ -66,10 +66,11 @@
     "slides": 12,
     "notes": 12,
     "native_math": 1,
-    "editable_shapes": 213,
+    "editable_shapes": 344,
     "animations_transitions": 0,
-    "sha256": "729c324f011863a7a14256a4b5c291f3e80ab41ed4f66f229400ec6eb2602ead"
+    "file": "presentation-v2.pptx",
+    "sha256": "7a3f1a71e8b8d5836190a848714807d1ae1fced679fd957285005d4b108a4239"
   },
-  "course_protection": "2568 files: paths/content unchanged since this M5 snapshot",
-  "presentation_pdf_sha256": "e482f35a6b1e6fd3e1685d82116df5ba72c84a5f312e9a19ff362bcef2e88f81"
+  "course_protection": "2570 files: paths/content unchanged since this M5 snapshot",
+  "presentation_pdf_sha256": "c445b361aeb893ee891f718bb7bcd682c879f6f46e14d74c58bcb14be1c6601d"
 }

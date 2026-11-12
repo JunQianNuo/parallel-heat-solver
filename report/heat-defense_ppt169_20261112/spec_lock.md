@@ -8,43 +8,45 @@
 ## communication
 - primary_language: zh-CN
 - audience: 并行与分布式计算课程教师
-- objective: 在5分钟解释算法、三种实现、真实验证与性能及AI核查，使教师理解归属/同步/基线/限制。
+- objective: 在5分钟依研究路线解释算法、并行实现、验证与真实收益，披露AI核查和评价边界。
 - core_message: 正确性有证据，并行收益有条件
 - consumption_mode: presentation
 
 ## mode
 - mode: custom
 - mode_references: instructional
-- mode_behavior: 先定义更新，再对照MPI/OpenMP分工同步，以正确性和性能证据收束。
+- mode_behavior: 问题与路线→数值原理→并行实现→正确性/性能证据→结论与评价边界。
 
 ## visual_style
 - visual_style: custom
-- visual_style_references: swiss-minimal
-- visual_style_behavior: 参考两份本地模板：深蓝封面/结束页、白底正文与浅蓝分区、铜金强调；算法图占主体，主性能图用模板蓝/铜金，备份原图保留原色。
+- visual_style_behavior: 仿照指定去雾PDF的深色章节导航、蓝色通栏白字标题、白底黑字楷体正文与蓝色黑体强调、双条页脚；单页一个主题，少量图文。
 
 ## colors
 - background: #FFFFFF
-- secondary_bg: #EDF3FA
-- primary: #124C8D
-- accent: #C38749
-- secondary_accent: #477CB3
-- body_text: #273848
-- secondary_text: #627487
-- divider: #CCD8E7
-- on_blue_accent: #EDC188
+- primary: #115EA2
+- navigation: #092F51
+- footer_lower: #0B3D69
+- inactive: #8497A8
+- body_text: #000000
+- divider: #C9D7E3
 
 ## typography
-- font_family: Microsoft YaHei, Arial
-- title_family: Microsoft YaHei, Arial
-- body_family: Microsoft YaHei, Arial
+- font_family: KaiTi, Arial
+- body_family: KaiTi, Arial
+- title_family: SimHei, Arial
+- cover_family: SimHei, Arial
+- lead_family: SimHei, Arial
+- navigation_family: SimHei, Arial
+- footnote_family: SimHei, Arial
+- data_family: Arial
 - body: 32
-- title: 46
-- cover: 64
-- hero: 72
-- subtitle: 36
-- lead: 34
+- title: 38
+- cover: 46
+- lead: 32
 - annotation: 24
+- navigation: 16
 - footnote: 16
+- data: 24
 
 ## icons
 - library: none

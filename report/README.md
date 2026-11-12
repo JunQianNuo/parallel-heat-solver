@@ -1,21 +1,21 @@
 # 最终报告与答辩材料
 
-M5材料已完成生成及AI工具核查，待用户验收。用户确认报告Markdown＋A4 PDF、16:9可编辑PPTX＋PDF、逐页讲稿/问答，并确认算法示意＋计算流程＋证据陈述的组合设计。个人信息暂留待填写。最新配色按两份本地PPT模板实际用色修订：深蓝/白/浅蓝/铜金，封面和结束页深蓝底；备份原图保留已验收原色。
+M5材料已完成生成及AI工具核查，待用户验收。用户确认报告Markdown＋A4 PDF、16:9可编辑PPTX＋PDF、逐页讲稿/问答，并确认算法示意＋计算流程＋证据陈述的组合设计。个人信息暂留待填写。用户否定上一版后，现按指定《单幅图像去雾-第二组》重做：白底、深蓝导航、蓝色标题条与双层页脚，黑体标题/楷体正文，按问题→算法→验证→性能→结论推进。当前交付为v2；旧版文件保留，不覆盖正在编辑的文件。
 
 | 材料 | 文件 |
 | --- | --- |
 | 最终报告 | [Markdown](FINAL_REPORT.md)、[8页A4 PDF](FINAL_REPORT.pdf) |
-| 5分钟演示 | [可编辑PPTX](presentation.pptx)、[12页PDF预览](presentation.pdf)、[渲染总览](presentation-contact.png) |
+| 5分钟演示 | [可编辑PPTX](presentation-v2.pptx)、[12页PDF预览](presentation-v2.pdf)、[渲染总览](presentation-v2-contact.png) |
 | 逐页讲稿 | [SPEAKER_NOTES](SPEAKER_NOTES.md)：8页正文、280秒预算，另留20秒；PPT已嵌入12页备注 |
 | 答辩准备 | [DEFENSE_QA](DEFENSE_QA.md)：算法、代码、统计、资源、时钟及AI说明 |
-| 核查结果 | [REVIEW](REVIEW.md)、[自动核查JSON](material_checks.json)、[PPT包检查](presentation_postflight.json) |
+| 核查结果 | [REVIEW](REVIEW.md)、[自动核查JSON](material_checks.json)、[PPT包检查](presentation-v2_postflight.json) |
 | 制作依据 | [M5_PREPARATION](M5_PREPARATION.md)、[设计规范](heat-defense_ppt169_20261112/design_spec.md)、[执行约束](heat-defense_ppt169_20261112/spec_lock.md) |
 
 原始证据在[results](../results/RESULTS.md)。本阶段未修改求解器、未运行新的数值构建/回归、未增加采样。课程资料只读、不随Git；字体只读使用、不分发。PPT正文、算法图、性能主图均为可编辑文本/图元，五点公式含原生Office Math；两页备份图复用完整原PNG。科学计算数据未被替换为装饰性图像。
 
 ## 讲述与人工待办
 
-只讲第1–8页，第9–12页留给提问。讲稿1220个中英文/数字字符，在280字符/分钟加20秒停顿的显式假设下约281.4秒；这是估算，不能代替本人计时演练。姓名学号、本人对代码和结论的掌握、真实实讲及PowerPoint本机显示/编辑仍待本人核实。M4验收不能代替M5材料验收。
+只讲第1–8页，第9–12页留给提问。讲稿1128个中英文/数字字符，在280字符/分钟加20秒停顿的显式假设下约261.7秒；这是估算，不能代替本人计时演练。姓名学号、本人对代码和结论的掌握、真实实讲及PowerPoint本机显示/编辑仍待本人核实。M4验收不能代替M5材料验收。
 
 ## 复现材料
 
@@ -35,7 +35,7 @@ python3 /home/nuo/.codex/skills/ppt-master/scripts/svg_quality_checker.py report
 python3 /home/nuo/.codex/skills/ppt-master/scripts/total_md_split.py report/heat-defense_ppt169_20261112
 python3 /home/nuo/.codex/skills/ppt-master/scripts/finalize_svg.py report/heat-defense_ppt169_20261112
 build/m5-tools/bin/python /home/nuo/.codex/skills/ppt-master/scripts/svg_to_pptx.py report/heat-defense_ppt169_20261112 --no-animations
-# 选择本次exports目录的新文件复制为report/presentation.pptx，再渲染：
+# 选择本次exports目录的新文件复制为report/presentation-v2.pptx，再渲染：
 python3 report/render_presentation.py --soffice /path/to/soffice
 ```
 

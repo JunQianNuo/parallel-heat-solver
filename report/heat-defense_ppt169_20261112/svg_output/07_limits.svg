@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Microsoft YaHei, Arial" font-size="32" data-pptx-page-role="content">
-<rect id="bg" data-pptx-role="background" width="1280" height="720" fill="#FFFFFF"/>
-<g id="title" data-pptx-bounds="56 35 1168 95" fill="#124C8D"><text x="56" y="94" font-size="46" font-weight="bold">规模、实施因素与环境共同限制收益</text></g>
-<g id="scaling" data-pptx-bounds="56 155 1168 130" fill="#273848"><text x="56" y="195" font-size="36" fill="#124C8D" font-weight="bold">固定N/M加人：强扩展　　跨N时M也增大</text><text x="56" y="260">W = M(N−1)²，固定T/r时约随N⁴增长 → 不称弱扩展</text></g>
-<g id="supported" data-pptx-bounds="56 325 560 205" fill="#273848"><rect x="56" y="325" width="560" height="205" fill="#EDF3FA"/><text x="80" y="370" fill="#477CB3" font-size="36" font-weight="bold">诊断支持的因素</text><text x="80" y="428">MPI计算上下文<tspan x="80" dy="48">OpenMP行划分</tspan></text><text x="80" y="515" font-size="24" fill="#627487">变体保持隔离，未进入正式程序</text></g>
-<g id="unresolved" data-pptx-bounds="656 325 568 205" fill="#273848"><text x="656" y="370" fill="#124C8D" font-size="36" font-weight="bold">尚未分离的机制</text><text x="656" y="428">缓存 / 带宽 / 宿主影响<tspan x="656" dy="48">非独占WSL与轮次趋势</tspan></text><text x="656" y="515" font-size="24" fill="#627487">UTC回退；未校准外部物理时间</text></g>
-<g id="models" data-pptx-bounds="56 570 1168 80" fill="#124C8D"><text x="56" y="605" font-size="24">Amdahl：不把有效f当代码串行占比；Gustafson：时间未保持相近，σ未测量<tspan x="56" dy="37">MPI收益不随N单调；OpenMP16不保证优于8；不能把全部差距简单归为“任务太小”</tspan></text></g>
-<g id="footer" data-pptx-role="footer" data-pptx-bounds="56 668 1168 32" fill="#627487" font-size="16"><text x="56" y="688">依据：results/RESULTS.md 原扩大工作量/诊断01/02-r1　|　支持的实施因素 ≠ 已确定唯一硬件根因</text><text x="1224" y="688" text-anchor="end">07 / 12</text></g>
-</svg>

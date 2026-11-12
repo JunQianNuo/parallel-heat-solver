@@ -46,7 +46,7 @@ def main():
     require(pdf.read_bytes().startswith(b'%PDF'),'invalid PDF signature')
     project=ROOT/'heat-defense_ppt169_20261112'
     ns={'s':'http://www.w3.org/2000/svg'}
-    svg=ET.parse(project/'svg_output/06_performance.svg').getroot()
+    svg=ET.parse(project/'svg_output/07_performance.svg').getroot()
     area=svg.find(".//s:g[@id='n1024-speedup-chartArea']",ns)
     expected=[r for r in rows if r['N']=='1024' and r['kind']!='serial']
     points=list(area.findall('.//s:circle',ns))+list(area.findall('.//s:rect',ns))
@@ -66,7 +66,7 @@ def main():
     for n in ['02-speedup.png','05-grid-speedup.png']:
         require(sha(project/'images'/n)==sha(figures/n),'figure copy changed')
     require(sha(project/'sources/m4-diagnostic-02-r1.csv')==sha(REPO/'results/performance/large-02-r1/m4-diagnostic-02-r1.csv'),'CSV copy changed')
-    pptx=ROOT/'presentation.pptx'
+    pptx=ROOT/'presentation-v2.pptx'
     with ZipFile(pptx) as z:
         slides=[n for n in z.namelist() if re.fullmatch(r'ppt/slides/slide\d+\.xml',n)]
         notes_files=[n for n in z.namelist() if re.fullmatch(r'ppt/notesSlides/notesSlide\d+\.xml',n)]
@@ -84,7 +84,7 @@ def main():
             tree=ET.fromstring(z.read(f'ppt/notesSlides/notesSlide{i}.xml'))
             text=''.join(tree.itertext())
             require(txt.strip() in text,f'notes/script mismatch P{i:02}')
-    course_before=REPO/'build/m5-intake/course-before.json'
+    course_before=REPO/'build/m5-intake/dehaze-reference/course-before.json'
     course_check='未运行：当前机器缺少本轮前置快照'
     if course_before.exists():
         before=json.loads(course_before.read_text())
@@ -92,7 +92,7 @@ def main():
         require(before==after,'course files changed since M5 snapshot')
         course_check=f'{len(after)} files: paths/content unchanged since this M5 snapshot'
     summary={'local_file_links_checked':links,'performance_table':'checked against archived CSV','M3_ratios_orders':'checked against archived CSV','main_script':speech,'total_count':total,'timing_scenario':scenario,'solver_build_tests_sampling':'未运行：M5只整理既有证据','report_pdf_sha256':hashlib.sha256(pdf.read_bytes()).hexdigest()}
-    summary.update({'chart_points_and_intervals':'10 points and 10 asymmetric intervals verified from CSV','pptx':{'slides':len(slides),'notes':len(notes_files),'native_math':formula_count,'editable_shapes':shape_count,'animations_transitions':0,'sha256':sha(pptx)},'course_protection':course_check,'presentation_pdf_sha256':sha(ROOT/'presentation.pdf')})
+    summary.update({'chart_points_and_intervals':'10 points and 10 asymmetric intervals verified from CSV','pptx':{'slides':len(slides),'notes':len(notes_files),'native_math':formula_count,'editable_shapes':shape_count,'animations_transitions':0,'file':pptx.name,'sha256':sha(pptx)},'course_protection':course_check,'presentation_pdf_sha256':sha(ROOT/'presentation-v2.pdf')})
     out=ROOT/'material_checks.json';out.write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(summary,ensure_ascii=False,indent=2))
 if __name__=='__main__':main()

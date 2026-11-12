@@ -17,3 +17,7 @@
 - `validation/`: cold workflow audit log, SVG quality reports, and PPTX postflight audit reports
 - `exports/`: final native DrawingML pptx deliverables only (timestamped); `_native_charts_tables.pptx` name with `--native-charts-and-tables`, `_narrated.pptx` name when narration audio is embedded
 - `backup/<timestamp>/`: svg_output/ archive (always written in default-flow mode; safe to delete old timestamps)
+
+## 当前修订
+
+当前源按用户指定《单幅图像去雾-第二组》重做，见design_spec.md与spec_lock.md。对外交付为上级目录presentation-v2.pptx及PDF/渲染总览，旧presentation保留为历史版本。模板与字体仅本地只读使用，不纳入Git。
