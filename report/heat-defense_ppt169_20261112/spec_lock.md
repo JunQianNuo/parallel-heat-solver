@@ -20,17 +20,18 @@
 ## visual_style
 - visual_style: custom
 - visual_style_references: swiss-minimal
-- visual_style_behavior: 白底大留白、左对齐标题；算法图占主体，结果图和大数字聚焦；灰蓝橙保持实现语义。
+- visual_style_behavior: 参考两份本地模板：深蓝封面/结束页、白底正文与浅蓝分区、铜金强调；算法图占主体，主性能图用模板蓝/铜金，备份原图保留原色。
 
 ## colors
 - background: #FFFFFF
-- secondary_bg: #F3F6F9
-- primary: #173B57
-- accent: #D97732
-- secondary_accent: #276FBF
-- body_text: #253746
-- secondary_text: #5F6B76
-- divider: #D7E0E8
+- secondary_bg: #EDF3FA
+- primary: #124C8D
+- accent: #C38749
+- secondary_accent: #477CB3
+- body_text: #273848
+- secondary_text: #627487
+- divider: #CCD8E7
+- on_blue_accent: #EDC188
 
 ## typography
 - font_family: Microsoft YaHei, Arial

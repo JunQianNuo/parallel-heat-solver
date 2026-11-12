@@ -45,7 +45,7 @@
 - **Mode Behavior**: 先定义五点更新，再对照解释MPI与OpenMP的归属/同步，随后给出正确性与性能证据，每页一个可复核判断。
 - **Visual style**: custom
 - **Visual Style References**: swiss-minimal
-- **Visual Style Behavior**: 白底、清晰左对齐标题和大留白；算法示意承担页面主体，结果页用曲线和大数字形成焦点，灰/蓝/橙持续标识串行/MPI/OpenMP，细线建立层级。
+- **Visual Style Behavior**: 参考本地两份PPT模板：深蓝底封面/结束页、白底正文、浅蓝分区、铜金强调；清晰左对齐标题和大留白；算法示意承担页面主体，结果页用曲线和大数字形成焦点，灰/模板蓝/铜金持续标识串行/MPI/OpenMP；备份原图保持已验收原色，细线建立层级。
 - **Theme**: 五点网格与旧层/新层作为算法页连续线索，结果页以数值和比较承担视觉重量。
 - **Tone**: 清晰、审慎、可解释。
 
@@ -53,14 +53,15 @@
 
 | Role | HEX | Purpose |
 | --- | --- | --- |
-| Background | #FFFFFF | 页面背景 |
-| Secondary background | #F3F6F9 | 算法区背景 |
-| Primary | #173B57 | 标题与结构 |
-| Accent | #D97732 | OpenMP |
-| Secondary accent | #276FBF | MPI |
-| Body text | #253746 | 正文 |
-| Secondary text | #5F6B76 | 串行/注释 |
-| Divider | #D7E0E8 | 网格/分隔 |
+| Background | #FFFFFF | 正文页面背景；封面/结束页采用Primary深蓝 |
+| Secondary background | #EDF3FA | 算法区背景 |
+| Primary | #124C8D | 模板深蓝：标题、封面和结束页 |
+| Accent | #C38749 | OpenMP |
+| Secondary accent | #477CB3 | MPI |
+| Body text | #273848 | 正文 |
+| Secondary text | #627487 | 串行/注释 |
+| Divider | #CCD8E7 | 网格/分隔 |
+| On-blue accent | #EDC188 | 模板深底上的浅金强调 |
 
 ## IV. Typography System
 
@@ -93,7 +94,7 @@
 
 - **Hierarchy direction**: 标题给判断，中央示意/数据给依据，下方保留解释边界。
 - **Composition tendency**: 算法页用主图与短说明；结果页用主图与右侧关键数字；备份整幅原图。
-- **Cross-page continuity**: 五点网格从封面延续到更新与分工示意；灰/蓝/橙保持实现语义。
+- **Cross-page continuity**: 五点网格从封面延续到更新与分工示意；灰/模板蓝/铜金保持实现语义。
 - **Spacing posture**: 正文疏朗，备份图信息密集，结束页降低负荷。
 - **Spacing anchors**: page margin=56; block gap=28; column gutter=40; corner radius=0; body leading=46.
 

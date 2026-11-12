@@ -4,56 +4,56 @@
   "target": "/home/nuo/courses/projects/parallel-heat-solver/report/heat-defense_ppt169_20261112",
   "source_fingerprint": {
     "algorithm": "sha256",
-    "digest": "ecc75a78285b947d04d596c70db7f89c0099ab9d157c6b1dc42ea0995c0926b2",
+    "digest": "a24bb04aaa1bd784e39ce555cb0b342e4cbb0b169e0be21f1639af25c0c8ebd1",
     "file_count": 12,
     "files": [
       {
         "file": "01_cover.svg",
-        "sha256": "a134edbaca9e6f5b94ab44aadc05da25c3500379fc958f860cb19ae86d1ffac0"
+        "sha256": "3cb0a3e55e4988d62499d08009fedcdf61204212303b5d3750fa5d66c020199e"
       },
       {
         "file": "02_stencil.svg",
-        "sha256": "27351fbca3fad48f11b724c465b5386c2b2a19b52f2cacf5ad5b9339fcd46afd"
+        "sha256": "f4cd44d90e59a8a698ee35e4e54c704b4399e135d27a9777fddba2b4ed009102"
       },
       {
         "file": "03_mpi.svg",
-        "sha256": "678b08e27bb6f0021f085ea50683265f3f5795ce523bb748ba21fba901cecd69"
+        "sha256": "940c90920a571fb464011ba71df796f1110dd2ae429794906a7ddd7097115e52"
       },
       {
         "file": "04_openmp.svg",
-        "sha256": "aa76bf1853ca89bde0ad3dde42923e912d18f4716ff81818f99f415c31268810"
+        "sha256": "9940b244f40f62919d6236c64d30978fddbc51f47df6f463cb7bd53eb1ea2887"
       },
       {
         "file": "05_validation.svg",
-        "sha256": "0bcab7534ea05b23711ff6026679d05f672eccb4c3535a727ae19384d7599dfd"
+        "sha256": "40602d390f0ecef0e014c740ebe5419fc67f51b674eb569a9bcc647c6613781e"
       },
       {
         "file": "06_performance.svg",
-        "sha256": "4113c0fe8656a97e261f0a53e6cc3aaea793dbd126bf1cb7cf92bdec357d73c2"
+        "sha256": "be37638b345b53c752ef058e1ec35e364aa61147037fbd53ca3393ae81a0ca5b"
       },
       {
         "file": "07_limits.svg",
-        "sha256": "d48d957edee3dba1b868fd02c48bbad8ff8109840a8ef4d96daf0abbf054c314"
+        "sha256": "01e036b27ad7a35c2fbe5a0f981c995f92fc403a9beb7a8f98b7708d9de8f224"
       },
       {
         "file": "08_ai.svg",
-        "sha256": "e873730abdf65b7071a4ff89be49000c277de327310a00d7490905c8e09e2b9a"
+        "sha256": "7f484bf956e1d90cbdf9266a969338df5c1ac9bc932ddb9be8d9eaa010dcd9a5"
       },
       {
         "file": "09_timing.svg",
-        "sha256": "8e9e3017e6e08621638edae3f7154e7e825d916ea0dd861e8f67a0cc2ecfeb6a"
+        "sha256": "7d15d0da89aba61674a36be4dca7d0503833e16bb80e70dc3574f1a3543c7c12"
       },
       {
         "file": "10_full_scaling.svg",
-        "sha256": "df4757670ae7956edfd3be05602862e33e6124a44026d406c762200143a3d4a7"
+        "sha256": "9fda32145dd3f60913bc4062cd3ff7bbb263577c62f899cbb4dd12e21e33dbce"
       },
       {
         "file": "11_grid.svg",
-        "sha256": "e5b420df7bcaf37406784771a22c8e54b45726babd8b9d9f9794ef7e670fde27"
+        "sha256": "63b10fe80df3bf519b91dbf345497f0181003032cc383aa62169b45c30b08111"
       },
       {
         "file": "12_interpretation.svg",
-        "sha256": "70f81857a81067f535e97a00ed7d0fb8808a0525b7b527e86ef6ad3d7ef1f846"
+        "sha256": "35acbf367d16c635ec41e67e721af89cc0dd72774c086a53ff9ffa2747fe52d6"
       }
     ]
   },
@@ -101,7 +101,7 @@
       "preset_shapes": 0,
       "page_frame_elements": 12,
       "marker_uses": 0,
-      "inline_emphasis_runs": 3,
+      "inline_emphasis_runs": 2,
       "gradient_uses": 0,
       "filter_uses": 0,
       "text_effects": 0
@@ -166,7 +166,7 @@
           },
           "icons": 0,
           "effects": {
-            "inline_emphasis_runs": 2,
+            "inline_emphasis_runs": 1,
             "gradient_uses": 0,
             "filter_uses": 0,
             "text_effects": 0
@@ -205,7 +205,7 @@
         "tspan_elements": 3
       },
       "passed": true,
-      "source_sha256": "a134edbaca9e6f5b94ab44aadc05da25c3500379fc958f860cb19ae86d1ffac0"
+      "source_sha256": "3cb0a3e55e4988d62499d08009fedcdf61204212303b5d3750fa5d66c020199e"
     },
     {
       "file": "02_stencil.svg",
@@ -263,7 +263,7 @@
         "tspan_elements": 1
       },
       "passed": true,
-      "source_sha256": "27351fbca3fad48f11b724c465b5386c2b2a19b52f2cacf5ad5b9339fcd46afd"
+      "source_sha256": "f4cd44d90e59a8a698ee35e4e54c704b4399e135d27a9777fddba2b4ed009102"
     },
     {
       "file": "03_mpi.svg",
@@ -321,7 +321,7 @@
         "tspan_elements": 4
       },
       "passed": true,
-      "source_sha256": "678b08e27bb6f0021f085ea50683265f3f5795ce523bb748ba21fba901cecd69"
+      "source_sha256": "940c90920a571fb464011ba71df796f1110dd2ae429794906a7ddd7097115e52"
     },
     {
       "file": "04_openmp.svg",
@@ -379,7 +379,7 @@
         "tspan_elements": 0
       },
       "passed": true,
-      "source_sha256": "aa76bf1853ca89bde0ad3dde42923e912d18f4716ff81818f99f415c31268810"
+      "source_sha256": "9940b244f40f62919d6236c64d30978fddbc51f47df6f463cb7bd53eb1ea2887"
     },
     {
       "file": "05_validation.svg",
@@ -437,7 +437,7 @@
         "tspan_elements": 0
       },
       "passed": true,
-      "source_sha256": "0bcab7534ea05b23711ff6026679d05f672eccb4c3535a727ae19384d7599dfd"
+      "source_sha256": "40602d390f0ecef0e014c740ebe5419fc67f51b674eb569a9bcc647c6613781e"
     },
     {
       "file": "06_performance.svg",
@@ -495,7 +495,7 @@
         "tspan_elements": 2
       },
       "passed": true,
-      "source_sha256": "4113c0fe8656a97e261f0a53e6cc3aaea793dbd126bf1cb7cf92bdec357d73c2"
+      "source_sha256": "be37638b345b53c752ef058e1ec35e364aa61147037fbd53ca3393ae81a0ca5b"
     },
     {
       "file": "07_limits.svg",
@@ -553,7 +553,7 @@
         "tspan_elements": 3
       },
       "passed": true,
-      "source_sha256": "d48d957edee3dba1b868fd02c48bbad8ff8109840a8ef4d96daf0abbf054c314"
+      "source_sha256": "01e036b27ad7a35c2fbe5a0f981c995f92fc403a9beb7a8f98b7708d9de8f224"
     },
     {
       "file": "08_ai.svg",
@@ -611,7 +611,7 @@
         "tspan_elements": 1
       },
       "passed": true,
-      "source_sha256": "e873730abdf65b7071a4ff89be49000c277de327310a00d7490905c8e09e2b9a"
+      "source_sha256": "7f484bf956e1d90cbdf9266a969338df5c1ac9bc932ddb9be8d9eaa010dcd9a5"
     },
     {
       "file": "09_timing.svg",
@@ -669,7 +669,7 @@
         "tspan_elements": 2
       },
       "passed": true,
-      "source_sha256": "8e9e3017e6e08621638edae3f7154e7e825d916ea0dd861e8f67a0cc2ecfeb6a"
+      "source_sha256": "7d15d0da89aba61674a36be4dca7d0503833e16bb80e70dc3574f1a3543c7c12"
     },
     {
       "file": "10_full_scaling.svg",
@@ -729,7 +729,7 @@
         "tspan_elements": 5
       },
       "passed": true,
-      "source_sha256": "df4757670ae7956edfd3be05602862e33e6124a44026d406c762200143a3d4a7"
+      "source_sha256": "9fda32145dd3f60913bc4062cd3ff7bbb263577c62f899cbb4dd12e21e33dbce"
     },
     {
       "file": "11_grid.svg",
@@ -789,7 +789,7 @@
         "tspan_elements": 5
       },
       "passed": true,
-      "source_sha256": "e5b420df7bcaf37406784771a22c8e54b45726babd8b9d9f9794ef7e670fde27"
+      "source_sha256": "63b10fe80df3bf519b91dbf345497f0181003032cc383aa62169b45c30b08111"
     },
     {
       "file": "12_interpretation.svg",
@@ -847,7 +847,7 @@
         "tspan_elements": 2
       },
       "passed": true,
-      "source_sha256": "70f81857a81067f535e97a00ed7d0fb8808a0525b7b527e86ef6ad3d7ef1f846"
+      "source_sha256": "35acbf367d16c635ec41e67e721af89cc0dd72774c086a53ff9ffa2747fe52d6"
     }
   ]
 }
