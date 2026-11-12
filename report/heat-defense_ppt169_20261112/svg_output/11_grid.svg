@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Microsoft YaHei, Arial" font-size="32" data-pptx-page-role="content">
+<rect id="bg" data-pptx-role="background" width="1280" height="720" fill="#FFFFFF"/>
+<g id="title" data-pptx-bounds="56 35 1168 95" fill="#173B57"><text x="56" y="94" font-size="46" font-weight="bold">备份：跨网格比较不能称弱扩展</text></g>
+<g id="complete-grid" data-pptx-bounds="56 145 816 510"><image href="../images/05-grid-speedup.png" x="56" y="145" width="816" height="510" preserveAspectRatio="xMidYMid meet"/></g>
+<g id="grid-reading" data-pptx-bounds="912 145 312 510" fill="#253746"><text x="912" y="190" fill="#173B57" font-size="36" font-weight="bold">单位区域不变</text><text x="912" y="265" font-size="24">T=0.01，α=1<tspan x="912" dy="44">r=0.16，M=N²/16</tspan><tspan x="912" dy="44">W约随N⁴增长</tspan><tspan x="912" dy="44">各点用各自串行基线</tspan></text><text x="912" y="500" font-size="24">MPI收益非单调<tspan x="912" dy="44">OpenMP16未必优于8</tspan><tspan x="912" dy="44">未单独分离粒度效应</tspan></text></g>
+<g id="footer" data-pptx-role="footer" data-pptx-bounds="56 668 1168 32" fill="#5F6B76" font-size="16"><text x="56" y="688">原图：results/figures/large-02-r1-viz-01/05-grid-speedup.png　|　N与M共同增加，不是理想弱扩展或新增Gustafson实证</text><text x="1224" y="688" text-anchor="end">11 / 12</text></g>
+</svg>

@@ -1,12 +1,14 @@
 # 二维热传导方程的串行、MPI 与 OpenMP 求解
 
+当前状态（2026-11-12）：M4交付 `Evaluation@30c4a43` 已获用户验收；M5材料已在用户准备的M5分支完成，入口见 [最终材料](report/README.md)，待用户验收。以下原M4“待验收”及旧分支位置均保留为历史语境。
+
 《并行与分布式计算》期末大作业，对应教师任务书第 4 题。采用显式五点有限差分，以独立串行程序为基线，采用 MPI 行分块与邻居通信，并提供独立 OpenMP 求解器进行比较。
 
 技术选择：C++17、CMake/CTest。必做范围为独立串行、MPI、OpenMP；暂不引入混合并行。
 
 ## 当前进度
 
-M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小数显示已补齐并验证。M2 MPI 提交 `34cdd73` 已获用户验收，既有 Debug/Release 回归各 10/10 通过。M2b OpenMP 提交 `17925a9` 已于 2026-11-10 获用户验收，既有 Debug/Release 各 15/15 通过；M3 系统验证提交 `cfffe71` 已获用户验收，证据见下节；M4 已在 `Evaluation` 完成计时、23 配置/115 样本的真实实验与分析，待用户验收；Debug/Release 各 20/20 通过。结果见 [M4 实验分析](results/RESULTS.md)。用户已选择补充诊断，用户要求实施计划后，隔离诊断及真实对照已完成，Debug/Release各21/21，分析与证据见[统一结果](results/RESULTS.md#补充诊断运行01)，待用户验收，M5未开始。M2b 检查输出见 [M2b 验证记录](results/validation/m2b.log)，历史证据保留在各阶段日志中。
+M0–M4均已获用户验收；M4最终交付30c4a43包括原实验、诊断01、扩大02-r1、结果迁移和九组对比图。M5已生成8页书面报告、12页PPTX/PDF（8页正文＋4页备份）、讲稿及答辩问答，完成数值/链接/包检查与实际渲染，待用户验收。入口见[最终材料](report/README.md)，全部实验结果见[统一结果](results/RESULTS.md)。个人信息及真实人工演练仍待本人完成；本阶段不修改求解器或增加采样。
 
 ## 文档导航
 
@@ -23,7 +25,7 @@ M0、M1 串行基准已获用户验收（2026-11-10）；测试耗时四位小�
 
 ## 结果与目录分工（本轮整理）
 
-统一入口为 [实验结果与图表](results/RESULTS.md)。`docs/` 保存设计、决策、AI记录；本地 `docs/sources/` 只读且不纳入Git。`results/validation/` 保存构建、正确性与回归证据；`results/performance/` 分开保存 baseline、diagnostic-01、停止的 large-02 与完成的 large-02-r1；`results/figures/` 用于派生展示。`report/` 为 M5 最终报告和答辩预留，目前为空。
+统一入口为 [实验结果与图表](results/RESULTS.md)。`docs/` 保存设计、决策、AI记录；本地 `docs/sources/` 只读且不纳入Git。`results/validation/` 保存构建、正确性与回归证据；`results/performance/` 分开保存 baseline、diagnostic-01、停止的 large-02 与完成的 large-02-r1；`results/figures/` 用于派生展示。`report/` 保存最终报告、PPT与答辩材料及生成源，见其README。
 
 用户本轮授权迁移结果，替代此前阶段“原性能目录不改、工件存于docs/validation、不新增目录”的布局限制；数学模型、求解器和测量数值不变。历史日志/清单中的路径保持原文，通过 [迁移映射](results/migration.json) 查找；旧哈希统一用 `python3 scripts/check_results.py` 验证。
 
@@ -125,7 +127,7 @@ ctest --test-dir build -L M3 --output-on-failure
 
 ## M4 性能计时、证据与图表
 
-M4原实验、诊断01和扩大02-r1均已交付，仍待用户验收，未进入M5。统一入口为 [实验结果与九组新版图](results/RESULTS.md)，方法见 [DESIGN第10–12节](docs/DESIGN.md) 和 [原M4协议](results/performance/baseline/README.md)。详细实测表格、归因边界与时钟审计集中在结果入口。
+M4原实验、诊断01、扩大02-r1及图表整理已获用户验收；M5材料已生成，待审核。统一入口为 [实验结果与九组新版图](results/RESULTS.md)，方法见 [DESIGN第10–12节](docs/DESIGN.md) 和 [原M4协议](results/performance/baseline/README.md)。详细实测表格、归因边界与时钟审计集中在结果入口。
 
 三个正式程序的 `loop_seconds` 仅测推进：MPI包含halo并取rank最大值，OpenMP包含团队进入/退出、同步及交换；初始化、收集、验证和输出在外。`--summary-only` 只省略全场CSV，仍推进并检查解析误差。CTest耗时不是性能数据。
 

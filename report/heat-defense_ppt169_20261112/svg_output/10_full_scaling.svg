@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Microsoft YaHei, Arial" font-size="32" data-pptx-page-role="content">
+<rect id="bg" data-pptx-role="background" width="1280" height="720" fill="#FFFFFF"/>
+<g id="title" data-pptx-bounds="56 35 1168 95" fill="#173B57"><text x="56" y="94" font-size="46" font-weight="bold">备份：四组固定N/M的完整强扩展</text></g>
+<g id="complete-figure" data-pptx-bounds="56 145 760 510"><image href="../images/02-speedup.png" x="67.667" y="145" width="736.667" height="510" preserveAspectRatio="xMidYMid meet"/></g>
+<g id="reading" data-pptx-bounds="856 145 368 510" fill="#253746"><text x="856" y="190" fill="#173B57" font-size="36" font-weight="bold">读图口径</text><text x="856" y="255" font-size="24">每个面板固定N/M<tspan x="856" dy="45">每点用同网格独立串行</tspan><tspan x="856" dy="45">区间：探索性95%</tspan><tspan x="856" dy="45">16逻辑CPU / 14可见core</tspan></text><text x="856" y="485" font-size="24" fill="#276FBF">MPI16 S 随N：<tspan x="856" dy="42">3.4885 → 2.8183</tspan><tspan x="856" dy="42">→ 2.9596 → 3.3493</tspan></text><text x="856" y="625" font-size="24">收益没有随N单调增加</text></g>
+<g id="footer" data-pptx-role="footer" data-pptx-bounds="56 668 1168 32" fill="#5F6B76" font-size="16"><text x="56" y="688">原图：results/figures/large-02-r1-viz-01/02-speedup.png　|　完整原图不裁切；44配置/440正式样本</text><text x="1224" y="688" text-anchor="end">10 / 12</text></g>
+</svg>

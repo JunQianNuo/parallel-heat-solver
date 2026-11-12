@@ -1,0 +1,230 @@
+{
+  "schema": "ppt-master.pptx-postflight-report.v1",
+  "status": "passed",
+  "output": {
+    "path": "/home/nuo/courses/projects/parallel-heat-solver/report/heat-defense_ppt169_20261112/exports/heat-defense_20261112_105839.pptx",
+    "bytes": 581147
+  },
+  "source": {
+    "svg_slide_count": 12,
+    "layout_definition_count": 0,
+    "fingerprint": {
+      "algorithm": "sha256",
+      "digest": "ecc75a78285b947d04d596c70db7f89c0099ab9d157c6b1dc42ea0995c0926b2",
+      "file_count": 12,
+      "files": [
+        {
+          "file": "01_cover.svg",
+          "sha256": "a134edbaca9e6f5b94ab44aadc05da25c3500379fc958f860cb19ae86d1ffac0"
+        },
+        {
+          "file": "02_stencil.svg",
+          "sha256": "27351fbca3fad48f11b724c465b5386c2b2a19b52f2cacf5ad5b9339fcd46afd"
+        },
+        {
+          "file": "03_mpi.svg",
+          "sha256": "678b08e27bb6f0021f085ea50683265f3f5795ce523bb748ba21fba901cecd69"
+        },
+        {
+          "file": "04_openmp.svg",
+          "sha256": "aa76bf1853ca89bde0ad3dde42923e912d18f4716ff81818f99f415c31268810"
+        },
+        {
+          "file": "05_validation.svg",
+          "sha256": "0bcab7534ea05b23711ff6026679d05f672eccb4c3535a727ae19384d7599dfd"
+        },
+        {
+          "file": "06_performance.svg",
+          "sha256": "4113c0fe8656a97e261f0a53e6cc3aaea793dbd126bf1cb7cf92bdec357d73c2"
+        },
+        {
+          "file": "07_limits.svg",
+          "sha256": "d48d957edee3dba1b868fd02c48bbad8ff8109840a8ef4d96daf0abbf054c314"
+        },
+        {
+          "file": "08_ai.svg",
+          "sha256": "e873730abdf65b7071a4ff89be49000c277de327310a00d7490905c8e09e2b9a"
+        },
+        {
+          "file": "09_timing.svg",
+          "sha256": "8e9e3017e6e08621638edae3f7154e7e825d916ea0dd861e8f67a0cc2ecfeb6a"
+        },
+        {
+          "file": "10_full_scaling.svg",
+          "sha256": "df4757670ae7956edfd3be05602862e33e6124a44026d406c762200143a3d4a7"
+        },
+        {
+          "file": "11_grid.svg",
+          "sha256": "e5b420df7bcaf37406784771a22c8e54b45726babd8b9d9f9794ef7e670fde27"
+        },
+        {
+          "file": "12_interpretation.svg",
+          "sha256": "70f81857a81067f535e97a00ed7d0fb8808a0525b7b527e86ef6ad3d7ef1f846"
+        }
+      ]
+    },
+    "authoring_roundtrip": null
+  },
+  "package": {
+    "zip_integrity": "passed",
+    "corrupt_member": null,
+    "slides": 12,
+    "notes": 12,
+    "masters": 1,
+    "layouts": 1
+  },
+  "checks": {
+    "zip_integrity": "passed",
+    "slide_count": "passed",
+    "internal_relationships": "enforced-at-build",
+    "structured_package": "not-applicable",
+    "transitions": "enforced-at-build",
+    "animations": "enforced-at-build",
+    "project_svg_contract": "enforced-at-build",
+    "compatibility_normalization": "not-applicable",
+    "authoring_roundtrip": "not-applicable",
+    "quality_gate": "passed",
+    "quality_warnings": "passed",
+    "template_tokens": "passed",
+    "external_images": "passed",
+    "font_portability": "passed"
+  },
+  "quality": {
+    "status": "loaded",
+    "path": "report/heat-defense_ppt169_20261112/validation/svg_quality_report.json",
+    "schema": "ppt-master.svg-quality-report.v1",
+    "stage": "final",
+    "source_match": "passed",
+    "source_fingerprint": {
+      "algorithm": "sha256",
+      "digest": "ecc75a78285b947d04d596c70db7f89c0099ab9d157c6b1dc42ea0995c0926b2",
+      "file_count": 12,
+      "files": [
+        {
+          "file": "01_cover.svg",
+          "sha256": "a134edbaca9e6f5b94ab44aadc05da25c3500379fc958f860cb19ae86d1ffac0"
+        },
+        {
+          "file": "02_stencil.svg",
+          "sha256": "27351fbca3fad48f11b724c465b5386c2b2a19b52f2cacf5ad5b9339fcd46afd"
+        },
+        {
+          "file": "03_mpi.svg",
+          "sha256": "678b08e27bb6f0021f085ea50683265f3f5795ce523bb748ba21fba901cecd69"
+        },
+        {
+          "file": "04_openmp.svg",
+          "sha256": "aa76bf1853ca89bde0ad3dde42923e912d18f4716ff81818f99f415c31268810"
+        },
+        {
+          "file": "05_validation.svg",
+          "sha256": "0bcab7534ea05b23711ff6026679d05f672eccb4c3535a727ae19384d7599dfd"
+        },
+        {
+          "file": "06_performance.svg",
+          "sha256": "4113c0fe8656a97e261f0a53e6cc3aaea793dbd126bf1cb7cf92bdec357d73c2"
+        },
+        {
+          "file": "07_limits.svg",
+          "sha256": "d48d957edee3dba1b868fd02c48bbad8ff8109840a8ef4d96daf0abbf054c314"
+        },
+        {
+          "file": "08_ai.svg",
+          "sha256": "e873730abdf65b7071a4ff89be49000c277de327310a00d7490905c8e09e2b9a"
+        },
+        {
+          "file": "09_timing.svg",
+          "sha256": "8e9e3017e6e08621638edae3f7154e7e825d916ea0dd861e8f67a0cc2ecfeb6a"
+        },
+        {
+          "file": "10_full_scaling.svg",
+          "sha256": "df4757670ae7956edfd3be05602862e33e6124a44026d406c762200143a3d4a7"
+        },
+        {
+          "file": "11_grid.svg",
+          "sha256": "e5b420df7bcaf37406784771a22c8e54b45726babd8b9d9f9794ef7e670fde27"
+        },
+        {
+          "file": "12_interpretation.svg",
+          "sha256": "70f81857a81067f535e97a00ed7d0fb8808a0525b7b527e86ef6ad3d7ef1f846"
+        }
+      ]
+    },
+    "summary": {
+      "total": 12,
+      "passed": 12,
+      "warnings": 0,
+      "errors": 0
+    },
+    "categories": {
+      "blocking": {
+        "count": 0,
+        "issues": []
+      },
+      "introduced": {
+        "count": 0,
+        "issues": []
+      },
+      "inherited": {
+        "count": 0,
+        "issues": []
+      },
+      "source-import": {
+        "count": 0,
+        "summary": {
+          "warning_count": 0,
+          "by_code": {}
+        }
+      }
+    }
+  },
+  "resources": {
+    "unresolved_template_tokens": [],
+    "fonts": {
+      "stacks": [
+        "Microsoft YaHei, Arial"
+      ],
+      "generic_only_stacks": [],
+      "unsafe_exported_faces": []
+    },
+    "images": {
+      "data_uri": 0,
+      "local": 2,
+      "external": 0,
+      "external_references": []
+    }
+  },
+  "export_policy": {
+    "project_svg_contract": "strict",
+    "dangerous_normalization_count": 0
+  },
+  "deck_motion": {
+    "transition": {
+      "effect": null,
+      "effect_options": {},
+      "duration": 0.4,
+      "auto_advance": null,
+      "sound": null
+    },
+    "animation": {
+      "effect": "none",
+      "effect_request": null,
+      "duration": 0.4,
+      "stagger": 0.5,
+      "trigger": "after-previous"
+    },
+    "cli_overrides": {
+      "transition": false,
+      "transition_duration": false,
+      "auto_advance": false,
+      "transition_sound": false,
+      "animation": false,
+      "animation_duration": false,
+      "animation_stagger": false,
+      "animation_trigger": false
+    },
+    "narration_timings": false
+  },
+  "backup_path": "/home/nuo/courses/projects/parallel-heat-solver/report/heat-defense_ppt169_20261112/backup/20261112_105839/svg_output",
+  "conversion_trace_path": null
+}

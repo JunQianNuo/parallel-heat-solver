@@ -1,0 +1,75 @@
+{
+  "local_file_links_checked": 116,
+  "performance_table": "checked against archived CSV",
+  "M3_ratios_orders": "checked against archived CSV",
+  "main_script": [
+    {
+      "page": "01",
+      "budget_seconds": 15,
+      "CJK_and_alphanumeric_characters": 75,
+      "characters_per_budget_minute": 300.0
+    },
+    {
+      "page": "02",
+      "budget_seconds": 40,
+      "CJK_and_alphanumeric_characters": 161,
+      "characters_per_budget_minute": 241.5
+    },
+    {
+      "page": "03",
+      "budget_seconds": 40,
+      "CJK_and_alphanumeric_characters": 152,
+      "characters_per_budget_minute": 228.0
+    },
+    {
+      "page": "04",
+      "budget_seconds": 35,
+      "CJK_and_alphanumeric_characters": 159,
+      "characters_per_budget_minute": 272.6
+    },
+    {
+      "page": "05",
+      "budget_seconds": 30,
+      "CJK_and_alphanumeric_characters": 132,
+      "characters_per_budget_minute": 264.0
+    },
+    {
+      "page": "06",
+      "budget_seconds": 55,
+      "CJK_and_alphanumeric_characters": 251,
+      "characters_per_budget_minute": 273.8
+    },
+    {
+      "page": "07",
+      "budget_seconds": 40,
+      "CJK_and_alphanumeric_characters": 167,
+      "characters_per_budget_minute": 250.5
+    },
+    {
+      "page": "08",
+      "budget_seconds": 25,
+      "CJK_and_alphanumeric_characters": 123,
+      "characters_per_budget_minute": 295.2
+    }
+  ],
+  "total_count": 1220,
+  "timing_scenario": {
+    "assumed_characters_per_minute": 280,
+    "assumed_pause_seconds": 20,
+    "estimated_total_seconds": 281.4,
+    "human_rehearsal": "未运行/待用户验证"
+  },
+  "solver_build_tests_sampling": "未运行：M5只整理既有证据",
+  "report_pdf_sha256": "db5a8a33ef67bb860f90ef9186d0e4f528420799f6f5f845b2d1c8ff4b2e3ca3",
+  "chart_points_and_intervals": "10 points and 10 asymmetric intervals verified from CSV",
+  "pptx": {
+    "slides": 12,
+    "notes": 12,
+    "native_math": 1,
+    "editable_shapes": 213,
+    "animations_transitions": 0,
+    "sha256": "134ba5421b258192a55f4558e6d233fc016e8b9cea9088dfdd806420b5c99f4c"
+  },
+  "course_protection": "2568 files: paths/content unchanged since this M5 snapshot",
+  "presentation_pdf_sha256": "790f7d816699dcd167ae3f1d7f3760b853366a42d54e210151d220d5125a5c4a"
+}

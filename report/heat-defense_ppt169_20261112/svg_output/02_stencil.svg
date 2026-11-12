@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Microsoft YaHei, Arial" font-size="32" data-pptx-page-role="content">
+<rect id="bg" data-pptx-role="background" width="1280" height="720" fill="#FFFFFF" />
+<g id="title" data-pptx-bounds="56 35 1168 95" fill="#173B57"><text x="56" y="94" font-size="46" font-weight="bold">五点更新只读旧层，整层完成再交换</text></g>
+<g id="model" data-pptx-bounds="56 145 1168 65" fill="#253746"><text x="56" y="182">单位方形 · 四边零温 · 正弦初值　　h=1/N，Δt=T/M</text></g>
+<g id="old-to-new" data-pptx-bounds="56 235 1168 230">
+<rect x="56" y="235" width="430" height="230" fill="#F3F6F9" /><g fill="#276FBF"><circle cx="270" cy="275" r="14" /><circle cx="180" cy="340" r="14" /><circle cx="360" cy="340" r="14" /><circle cx="270" cy="405" r="14" /></g><circle cx="270" cy="340" r="20" fill="#D97732" />
+<g stroke="#276FBF" stroke-width="2"><line x1="270" y1="290" x2="270" y2="319" /><line x1="195" y1="340" x2="249" y2="340" /><line x1="291" y1="340" x2="345" y2="340" /><line x1="270" y1="361" x2="270" y2="390" /></g>
+<g fill="#253746" font-size="24"><text x="80" y="445">old：同一时间层 n 的五个值</text><text x="530" y="340" font-size="46">→</text><text x="630" y="300" font-size="36" fill="#173B57">next：只写新层 n+1</text><text x="630" y="365">整层更新结束 → swap → 下一步</text><text x="630" y="425">解析解仅用于核验，不代替推进</text></g></g>
+<g id="update-equation" data-pptx-replace-with="formula" data-pptx-x="56" data-pptx-y="485" data-pptx-width="1168" data-pptx-height="60" data-pptx-bounds="56 485 1168 60"><metadata type="application/json">{"latex":"U_{ij}^{n+1}=(1-4r)U_{ij}^{n}+r(U_{i-1,j}^{n}+U_{i+1,j}^{n}+U_{i,j-1}^{n}+U_{i,j+1}^{n})","display":"block","font_size":32,"color":"#173B57","align":"left"}</metadata><text x="56" y="525" fill="#173B57">U_new = (1−4r) U_old + r (U_up + U_down + U_left + U_right)</text></g>
+<g id="stability" data-pptx-bounds="56 565 1168 70" fill="#173B57"><text x="56" y="607" font-weight="bold">0 &lt; r = αΔt/h² ≤ 1/4　　<tspan fill="#5F6B76" font-weight="normal">时间一阶 · 空间二阶</tspan></text></g>
+<g id="footer" data-pptx-role="footer" data-pptx-bounds="56 668 1168 32" fill="#5F6B76" font-size="16"><text x="56" y="688">依据：任务书第3页；src/heat.cpp：step/solve　|　推进恰好M步，终点T一致</text><text x="1224" y="688" text-anchor="end">02 / 12</text></g>
+</svg>

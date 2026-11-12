@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Microsoft YaHei, Arial" font-size="32" data-pptx-page-role="content">
+<rect id="bg" data-pptx-role="background" width="1280" height="720" fill="#FFFFFF"/>
+<g id="title" data-pptx-bounds="56 35 1168 95" fill="#173B57"><text x="56" y="94" font-size="46" font-weight="bold">备份：定律、时钟与归因的适用边界</text></g>
+<g id="law-boundary" data-pptx-bounds="56 155 1168 130" fill="#173B57"><text x="56" y="195">Amdahl：有效f包含通信、同步、实现和环境影响<tspan x="56" dy="60">Gustafson：相近并行时间前提未满足，σ未单独测量</tspan></text></g>
+<g id="clock" data-pptx-bounds="56 325 1168 165" fill="#253746"><rect x="56" y="325" width="1168" height="165" fill="#F3F6F9"/><text x="80" y="370" font-size="36" fill="#173B57" font-weight="bold">02-r1：34/44配置有前慢后快趋势，11处UTC起点回退</text><text x="80" y="428" font-size="24">耗时与顺序核查使用单调时钟，全部慢样本保留<tspan x="80" dy="42">未独立校准外部物理时间；不能据此完全排除虚拟机计时影响</tspan></text></g>
+<g id="causality" data-pptx-bounds="56 535 1168 110" fill="#253746"><text x="56" y="575">诊断支持：MPI计算上下文、OpenMP行划分</text><text x="56" y="630" font-size="24" fill="#5F6B76">没有直接硬件事件，未确定唯一缓存/带宽/伪共享或宿主机制；诊断变体仍隔离</text></g>
+<g id="footer" data-pptx-role="footer" data-pptx-bounds="56 668 1168 32" fill="#5F6B76" font-size="16"><text x="56" y="688">来源：results/RESULTS.md；02-r1-clock-audit.log；docs/AI_USAGE.md　|　不由S反推真实代码串行比例</text><text x="1224" y="688" text-anchor="end">12 / 12</text></g>
+</svg>

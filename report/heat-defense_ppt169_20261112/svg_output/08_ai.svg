@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Microsoft YaHei, Arial" font-size="32" data-pptx-page-role="ending">
+<rect id="bg" data-pptx-role="background" width="1280" height="720" fill="#FFFFFF"/>
+<g id="title" data-pptx-bounds="56 35 1168 95" fill="#173B57"><text x="56" y="94" font-size="46" font-weight="bold">AI辅助实现，真实核查支撑结论</text></g>
+<g id="roles" data-pptx-bounds="56 155 1168 115" fill="#253746"><text x="56" y="192">Codex：实现、测试、实验、分析与材料整理<tspan x="56" dy="58">本人：范围选择、项目管理、审核验收与现场答辩</tspan></text></g>
+<g id="correction" data-pptx-bounds="56 305 1168 170"><rect x="56" y="305" width="1168" height="170" fill="#F3F6F9"/><text x="80" y="352" font-size="24" fill="#5F6B76">一个实际修正实例</text><text x="80" y="412" fill="#173B57">启动器重定向误测 → 保留失败 → 改rank内验证 → 回归通过</text><text x="80" y="455" font-size="24" fill="#5F6B76">核查依据：解析解、串行全场、真实日志与统计重算；不虚构人工复测</text></g>
+<g id="closing" data-pptx-bounds="56 515 1168 130" fill="#173B57"><text x="56" y="572" font-size="46" font-weight="bold">正确性有证据，并行收益有条件</text><text x="56" y="630" font-size="24" fill="#5F6B76">阶段验收不代替材料审核；姓名学号与真实口头演练待本人完成</text></g>
+<g id="footer" data-pptx-role="footer" data-pptx-bounds="56 668 1168 32" fill="#5F6B76" font-size="16"><text x="56" y="688">来源：docs/AI_USAGE.md；results/validation/m2-initial.log、m2.log　|　正文结束；以下4页仅用于提问</text><text x="1224" y="688" text-anchor="end">08 / 12</text></g>
+</svg>
