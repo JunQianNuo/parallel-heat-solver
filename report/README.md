@@ -7,6 +7,7 @@ M5材料已完成生成及AI工具核查，待用户验收。用户确认报告M
 | 最终报告 | [Markdown](FINAL_REPORT.md)、[8页A4 PDF](FINAL_REPORT.pdf) |
 | 5分钟演示 | [可编辑PPTX](presentation-v3.pptx)、[12页PDF预览](presentation-v3.pdf)、[渲染总览](presentation-v3-contact.png) |
 | 逐页讲稿 | [SPEAKER_NOTES](SPEAKER_NOTES.md)：8页正文、280秒预算，另留20秒；PPT已嵌入12页备注 |
+| AI制图调研 | [PaperBanana安装/用法与三份输入样稿](paperbanana/README.md)；尚未生成图片 |
 | 答辩准备 | [DEFENSE_QA](DEFENSE_QA.md)：算法、代码、统计、资源、时钟及AI说明 |
 | 核查结果 | [REVIEW](REVIEW.md)、[自动核查JSON](material_checks.json)、[PPT包检查](presentation-v3_postflight.json) |
 | 制作依据 | [M5_PREPARATION](M5_PREPARATION.md)、[设计规范](heat-defense_ppt169_20261112/design_spec.md)、[执行约束](heat-defense_ppt169_20261112/spec_lock.md) |

@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-13",
+  "upstream": "https://github.com/dwzhu-pku/PaperBanana",
+  "source_commit": "9ceea039be86dd40294361856a4b7bf097d9e2b7",
+  "skill": "/home/nuo/.codex/skills/paperbanana",
+  "runtime": "/home/nuo/.local/share/paperbanana",
+  "python": "3.12.3",
+  "local_entry": "/home/nuo/.codex/skills/paperbanana/run-local.sh",
+  "upstream_run_py_sha256": "be9df9c1fae0f661104386f5170a1b4e25cfc94b5a13e5e557941dfed243f7d6",
+  "copied_entry_unchanged": true,
+  "local_additions": [
+    "SKILL.md local-runtime note",
+    "LOCAL_INSTALL.md",
+    "run-local.sh"
+  ],
+  "requirements_sha256": "a4a6848e57db039144435f3a0b1a4ec54e71f179998a16f3f1cea66bb556bd7b",
+  "dependency_environment_freeze_sha256": "e0f7d5e5bc1672e70a4002943ac821f8f05ce35072c56b150e9ee8950a63ff23",
+  "dependency_check": "uv pip check: 91 packages, compatible",
+  "cli_help": "PASS (complete checkout and local wrapper)",
+  "pipeline_imports": "PASS; Planner/Visualizer/Critic/Retriever/Stylist/Processor imported without generation",
+  "upstream_offline_tests": {
+    "command": ".venv/bin/python -m unittest discover -s tests -p test_skill_run*.py",
+    "count": 20,
+    "result": "OK",
+    "intentional_invalid_size": "20cm argparse rejection is an expected negative test"
+  },
+  "retrieval_dataset": {
+    "repository": "dwzhu/PaperBananaBench",
+    "revision": "2ac62aa3e9118d0ea8d169d00a8c3b0f05b9cb09",
+    "task": "diagram",
+    "splits": {
+      "ref": {
+        "count": 298,
+        "sha256": "9e143e544b17642d60b9a24004f7a9558afd275c219884d9a2528102092d8468",
+        "all_referenced_images_exist": true
+      },
+      "test": {
+        "count": 292,
+        "sha256": "d65204ae3433c84731b41cd889a992a5c52cdbc85aff2d3cbe6204d0f3715774",
+        "all_referenced_images_exist": true
+      }
+    }
+  },
+  "environment_credentials_present": {
+    "OPENROUTER_API_KEY": false,
+    "GOOGLE_API_KEY": false
+  },
+  "generation_api_calls": "未运行：本轮安装调研，未配置生成密钥",
+  "generation_quality": "未运行/待验证",
+  "existing_ppt_report_results": "未修改"
+}
