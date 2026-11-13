@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="KaiTi, Arial" font-size="32" data-pptx-page-role="cover">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="KaiTi, Arial" font-size="40" data-pptx-page-role="cover">
 <rect id="bg" data-pptx-role="background" width="1280" height="720" fill="#FFFFFF"/>
-<g id="title" data-pptx-bounds="56 60 1168 240" font-family="SimHei, Arial" fill="#FFFFFF" text-anchor="middle"><rect x="56" y="60" width="1168" height="240" rx="12" fill="#115EA2"/><text x="640" y="140" font-size="46">二维热传导方程<tspan x="640" dy="66">显式有限差分并行求解</tspan></text><text x="640" y="267">并行与分布式计算 · 期末汇报</text></g>
+<g id="title" data-pptx-bounds="56 60 1168 240" font-family="SimHei, Arial" fill="#FFFFFF" text-anchor="middle"><rect x="56" y="60" width="1168" height="240" rx="12" fill="#115EA2"/><text x="640" y="140" font-size="58">二维热传导方程<tspan x="640" dy="66">显式有限差分并行求解</tspan></text><text x="640" y="267">并行与分布式计算 · 期末汇报</text></g>
 <g id="identity" data-pptx-bounds="56 340 1168 230" fill="#000000" text-anchor="middle"><text x="640" y="385">汇报人：待填写　　学号：待填写</text><text x="640" y="455">独立串行　/　MPI　/　OpenMP</text><text x="640" y="535">2026年11月</text></g>
 <g id="scope" data-pptx-bounds="56 590 1168 70" fill="#115EA2" font-family="SimHei, Arial"><text x="640" y="630" text-anchor="middle">算法实现 · 正确性检验 · 性能分析</text></g>
 </svg>

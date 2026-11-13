@@ -33,8 +33,8 @@
 | Format | PPT 16:9 |
 | Dimensions | 1280 × 720 |
 | viewBox | `0 0 1280 720` |
-| Margins | 56 px |
-| Content Area | x=56..1224, y=140..640 |
+| Margins | 40 px minimum |
+| Content Area | x=40..1240, y=130..650 |
 
 ## III. Visual Theme
 
@@ -87,14 +87,17 @@
 
 | Purpose | Anchor Size (px) |
 | --- | ---: |
-| Body | 32 |
-| Title | 38 |
-| Cover | 46 |
-| Lead | 32 |
-| Annotation | 24 |
-| Navigation | 16 |
-| Footnote | 16 |
-| Data | 24 |
+| Body | 40 |
+| Title | 44 |
+| Cover | 58 |
+| Lead | 40 |
+| Annotation | 30 |
+| Navigation | 20 |
+| Footnote | 20 |
+| Data | 30 |
+| Diagram / formula | 36 |
+| Compact lead | 34 |
+| Math script | 22 |
 
 ## V. Layout Principles
 
@@ -103,7 +106,7 @@
 - **Hierarchy direction**: 顶部三段导航标记阶段，蓝条白字标题提出本页主题，白底正文给一个解释或证据，蓝色短句收束。
 - **Composition tendency**: 图文并置或公式→变量说明→结论；简单段落/编号，减少卡片。
 - **Cross-page continuity**: 问题与路线／数值与并行方法／结果与讨论三级章节导航，全页一致；导航圆点指示本节位置；上下双色页脚。
-- **Spacing posture**: 主讲页每页一个主题，2–4个主要信息单元，正文32px；细节与限定放入备份/备注。
+- **Spacing posture**: 主讲页每页一个主题，2–4个主要信息单元，正文40px；细节与限定放入备份/备注。
 - **Spacing anchors**: page margin=56; block gap=28; column gutter=40; corner radius=0; body leading=48.
 
 ## VI. Icon Usage Specification
@@ -144,11 +147,11 @@
 #### Slide 03 - 五点显式格式与双缓冲
 
 - **Audience move**: 知道问题→理解旧层依赖与稳定性
-- **Relationships**: link: 中心与四邻居；order: 读旧层→写新层→交换
+- **Relationships**: link: 旧层中心及四邻居按权重汇入新层中心；order: 初始化→读旧层→计算写新层→整层完成→交换→重复M步
 - **Title**: 五点显式格式与双缓冲
 - **Core message**: 整层只读旧层，完成后交换缓冲
 - **Content**: 向前Euler与中心差分；h=1/N、dt=T/M；五点格式；r=αdt/h²≤1/4；时间一阶/空间二阶；真实推进M步
-- **Mathematical content**: U_{ij}^{n+1}=(1-4r)U_{ij}^{n}+r(U_{i-1,j}^{n}+U_{i+1,j}^{n}+U_{i,j-1}^{n}+U_{i,j+1}^{n})
+- **Mathematical content**: \begin{aligned}U_{ij}^{n+1}=(1-4r)U_{ij}^{n}\\\quad+r(U_{i-1,j}^{n}+U_{i+1,j}^{n}+U_{i,j-1}^{n}+U_{i,j+1}^{n})\end{aligned}
 
 #### Slide 04 - MPI：行分块与边界交换
 
@@ -236,3 +239,7 @@
 - **Total duration**: 正文280秒预算＋20秒机动；备份不纳入5分钟；字数估算不是人工实讲。
 - **Notes style**: 中文口语化解释。
 - **Presentation purpose**: 解释算法/实现/验证与真实收益及限制，披露AI使用与修正。
+
+## Revision v3 — 2026-11-13
+
+用户要求整体增字、减少中央留白、修复P03公式并补全五点计算流程机理。正文40px、标题44px；密集数据注释30px，导航页脚20px，公式36px。所有页重新排版而非缩放文本硬挤。P03公式用aligned两行，显式显示旧层n的五点坐标/权重、计算写入next中心、遍历全部内点/零边界、整层完成后交换、n<M回路；并行同步细节由P04/P05展开。两幅原图保持字节，按可用宽度放大；原始数据不变。

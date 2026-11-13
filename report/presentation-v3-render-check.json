@@ -1,0 +1,89 @@
+{
+  "renderer": "LibreOffice actual PPTX to PDF; PyMuPDF rasterization",
+  "presentation_pdf_sha256": "134df20a91fa04c3ecb795f05526a5c2934607499541bd2ea4e4388738d351dd",
+  "pages": [
+    {
+      "page": 1,
+      "text_spans": 20,
+      "within_page": true,
+      "pixels_equal_to_reviewed_v3_before_native_token_fix": true
+    },
+    {
+      "page": 2,
+      "text_spans": 25,
+      "within_page": true,
+      "pixels_equal_to_reviewed_v3_before_native_token_fix": true
+    },
+    {
+      "page": 3,
+      "text_spans": 71,
+      "within_page": true,
+      "pixels_equal_to_reviewed_v3_before_native_token_fix": true
+    },
+    {
+      "page": 4,
+      "text_spans": 46,
+      "within_page": true,
+      "pixels_equal_to_reviewed_v3_before_native_token_fix": true
+    },
+    {
+      "page": 5,
+      "text_spans": 55,
+      "within_page": true,
+      "pixels_equal_to_reviewed_v3_before_native_token_fix": true
+    },
+    {
+      "page": 6,
+      "text_spans": 36,
+      "within_page": true,
+      "pixels_equal_to_reviewed_v3_before_native_token_fix": true
+    },
+    {
+      "page": 7,
+      "text_spans": 56,
+      "within_page": true,
+      "pixels_equal_to_reviewed_v3_before_native_token_fix": true
+    },
+    {
+      "page": 8,
+      "text_spans": 24,
+      "within_page": true,
+      "pixels_equal_to_reviewed_v3_before_native_token_fix": true
+    },
+    {
+      "page": 9,
+      "text_spans": 55,
+      "within_page": true,
+      "pixels_equal_to_reviewed_v3_before_native_token_fix": true
+    },
+    {
+      "page": 10,
+      "text_spans": 18,
+      "within_page": true,
+      "pixels_equal_to_reviewed_v3_before_native_token_fix": true
+    },
+    {
+      "page": 11,
+      "text_spans": 18,
+      "within_page": true,
+      "pixels_equal_to_reviewed_v3_before_native_token_fix": true
+    },
+    {
+      "page": 12,
+      "text_spans": 28,
+      "within_page": true,
+      "pixels_equal_to_reviewed_v3_before_native_token_fix": true
+    }
+  ],
+  "body_example_P06": {
+    "v2_points": [
+      24.01
+    ],
+    "v3_points": [
+      29.99
+    ]
+  },
+  "human_PowerPoint_review": "未运行/待用户验证",
+  "human_timed_rehearsal": "未运行/待用户验证",
+  "AI_visual_review": "12-page contact sheet and P03 detailed rendering inspected; final PDF pixels compared after native-only reexport"
+}

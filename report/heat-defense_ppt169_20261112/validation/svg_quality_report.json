@@ -4,56 +4,56 @@
   "target": "/home/nuo/courses/projects/parallel-heat-solver/report/heat-defense_ppt169_20261112",
   "source_fingerprint": {
     "algorithm": "sha256",
-    "digest": "7ebeeb437313155b609a9c391775141642e4931f04d627b3ea736afbcbd02b38",
+    "digest": "22bae6006aaa4b2a379f61010377a39d33b36e1a579026fa1aabd77056aec77d",
     "file_count": 12,
     "files": [
       {
         "file": "01_cover.svg",
-        "sha256": "8a2ed3deb8f93eedcb785b210257d10f7babd713c23f19a64c7cd346a0ad64d9"
+        "sha256": "195347ee165e3d95dfbbf152fb48694b0a4912fbd2a3a6548ef4b335c3e486d1"
       },
       {
         "file": "02_route.svg",
-        "sha256": "7812c17a63e138fd6e8637a240742478e30ab62cd69036f41384f224d2c1bf15"
+        "sha256": "9a5ba02b61fc78ffe8db8edb2497514ba824860a017321f523b659682f78ad79"
       },
       {
         "file": "03_stencil.svg",
-        "sha256": "fd0adc137d7832ef2bac3a82f25b46a9b3cb352462d0a376de7ba731725920e9"
+        "sha256": "624d5ef4133499279ebe56abeee126035590517056217ea9616e91e4d5a86a07"
       },
       {
         "file": "04_mpi.svg",
-        "sha256": "e430efbb17da835eb201dd6f477a0fe2073ff7ce05e54f16ff006c23f8512a90"
+        "sha256": "5d5f265c4341d719267d63d35c8293c519d7b0d01e345d0ec0d1223aeae622d2"
       },
       {
         "file": "05_openmp.svg",
-        "sha256": "9daa69c9dc7ec8a227315afc03561dc0004a8c1bdae0a5ab2f312617a38ff899"
+        "sha256": "aa9b1887750ded2824dcec71d2c846ed5334be9b8ba73db27928f1e02bc0ad5a"
       },
       {
         "file": "06_validation.svg",
-        "sha256": "ef661466c75cf64ec26f503d76329e83cd720bb43bbf0487123b96ee7fe69df5"
+        "sha256": "4c311559635c6582123d1d30d7107917c055c9268c85d33af7ec2f9ab7cd228b"
       },
       {
         "file": "07_performance.svg",
-        "sha256": "67a01f2663977d5c473d7b342b9cff78b1525575def69a93bc1c49d9fd7ffd5a"
+        "sha256": "e239a5c39b43be50785631402766a972711dbcf3c0cc19f3acfc3ff2b38d6426"
       },
       {
         "file": "08_conclusion.svg",
-        "sha256": "954eda8f718d4897548350fa722b38d2eb8f869323233c650c599f1a51c07073"
+        "sha256": "5c724637302ce6df61ef9cc479e2fb4b0ebae8814733c97fb27d25a25cc026c5"
       },
       {
         "file": "09_timing.svg",
-        "sha256": "e09297ddfd4923182e9e0c54a4c3809bee0f2c30102a7f9ff11578edf57d37d5"
+        "sha256": "912e889d4394f283a1baa1d7251d701998d4f9a04518b4110d91b437901226a0"
       },
       {
         "file": "10_full_scaling.svg",
-        "sha256": "f22e00f4cfd357498cf01aa0da8d5c7a9c10f9d91ea85293c0e31dcf01a8c38c"
+        "sha256": "02ccec1e235de69428d7a56b1e71610c1864abc072d06fb7540cf99cf68c74b5"
       },
       {
         "file": "11_grid.svg",
-        "sha256": "aac1c93c4bc7ac2e19a8274dc4003cb0e89d45315e6df8461cb2f6ea94b72574"
+        "sha256": "9deb576240633de50e789a770eb26448c3dafde092c41ad45dea06656f1d4a2c"
       },
       {
         "file": "12_interpretation.svg",
-        "sha256": "07ad42a0c189da905d1d6448422dfe32f35b13ff028734ad836060e1009acf49"
+        "sha256": "2862ecfc1d53a9b27a6de6b38d2041fa3dafbb9f348a9839b904271c1d2854b7"
       }
     ]
   },
@@ -98,14 +98,14 @@
     "scope": "informational-not-a-quota",
     "pages": 12,
     "totals": {
-      "text_elements": 197,
+      "text_elements": 228,
       "image_placements": 2,
       "icons": 0,
-      "svg_geometry_elements": 158,
+      "svg_geometry_elements": 169,
       "preset_shapes": 0,
       "page_frame_elements": 12,
       "marker_uses": 0,
-      "inline_emphasis_runs": 6,
+      "inline_emphasis_runs": 2,
       "gradient_uses": 0,
       "filter_uses": 0,
       "text_effects": 0
@@ -117,7 +117,7 @@
       "charts": 0,
       "tables": 0,
       "formulas": 1,
-      "inline_emphasis_runs": 2,
+      "inline_emphasis_runs": 1,
       "gradient_uses": 0,
       "filter_uses": 0,
       "text_effects": 0
@@ -126,11 +126,11 @@
     "geometry_elements": {
       "circle": 62,
       "ellipse": 0,
-      "line": 28,
+      "line": 36,
       "path": 0,
       "polygon": 0,
       "polyline": 2,
-      "rect": 66
+      "rect": 69
     },
     "preset_names": {},
     "native_objects": {
@@ -141,8 +141,8 @@
       "table": 0
     },
     "image_page_max_frame_share_range": [
-      0.4077,
-      0.4516
+      0.452,
+      0.4694
     ]
   },
   "project_issues": {
@@ -210,7 +210,7 @@
         "tspan_elements": 1
       },
       "passed": true,
-      "source_sha256": "8a2ed3deb8f93eedcb785b210257d10f7babd713c23f19a64c7cd346a0ad64d9"
+      "source_sha256": "195347ee165e3d95dfbbf152fb48694b0a4912fbd2a3a6548ef4b335c3e486d1"
     },
     {
       "file": "02_route.svg",
@@ -270,7 +270,7 @@
         "tspan_elements": 1
       },
       "passed": true,
-      "source_sha256": "7812c17a63e138fd6e8637a240742478e30ab62cd69036f41384f224d2c1bf15"
+      "source_sha256": "9a5ba02b61fc78ffe8db8edb2497514ba824860a017321f523b659682f78ad79"
     },
     {
       "file": "03_stencil.svg",
@@ -281,7 +281,7 @@
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 31,
+          "text_elements": 49,
           "images": {
             "placements": 0,
             "files": [],
@@ -296,10 +296,10 @@
           },
           "geometry": {
             "svg_elements": {
-              "rect": 5,
+              "rect": 8,
               "circle": 12,
               "ellipse": 0,
-              "line": 2,
+              "line": 10,
               "polyline": 0,
               "polygon": 0,
               "path": 0
@@ -326,8 +326,8 @@
           "KaiTi, Arial",
           "SimHei, Arial"
         ],
-        "text_elements": 31,
-        "tspan_elements": 2,
+        "text_elements": 49,
+        "tspan_elements": 0,
         "contextual_values": {
           "font_families": [
             "Cambria Math"
@@ -335,7 +335,7 @@
         }
       },
       "passed": true,
-      "source_sha256": "fd0adc137d7832ef2bac3a82f25b46a9b3cb352462d0a376de7ba731725920e9"
+      "source_sha256": "624d5ef4133499279ebe56abeee126035590517056217ea9616e91e4d5a86a07"
     },
     {
       "file": "04_mpi.svg",
@@ -391,10 +391,10 @@
           "SimHei, Arial"
         ],
         "text_elements": 18,
-        "tspan_elements": 2
+        "tspan_elements": 3
       },
       "passed": true,
-      "source_sha256": "e430efbb17da835eb201dd6f477a0fe2073ff7ce05e54f16ff006c23f8512a90"
+      "source_sha256": "5d5f265c4341d719267d63d35c8293c519d7b0d01e345d0ec0d1223aeae622d2"
     },
     {
       "file": "05_openmp.svg",
@@ -405,7 +405,7 @@
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 23,
+          "text_elements": 28,
           "images": {
             "placements": 0,
             "files": [],
@@ -449,11 +449,11 @@
           "KaiTi, Arial",
           "SimHei, Arial"
         ],
-        "text_elements": 23,
+        "text_elements": 28,
         "tspan_elements": 0
       },
       "passed": true,
-      "source_sha256": "9daa69c9dc7ec8a227315afc03561dc0004a8c1bdae0a5ab2f312617a38ff899"
+      "source_sha256": "aa9b1887750ded2824dcec71d2c846ed5334be9b8ba73db27928f1e02bc0ad5a"
     },
     {
       "file": "06_validation.svg",
@@ -512,7 +512,7 @@
         "tspan_elements": 3
       },
       "passed": true,
-      "source_sha256": "ef661466c75cf64ec26f503d76329e83cd720bb43bbf0487123b96ee7fe69df5"
+      "source_sha256": "4c311559635c6582123d1d30d7107917c055c9268c85d33af7ec2f9ab7cd228b"
     },
     {
       "file": "07_performance.svg",
@@ -572,7 +572,7 @@
         "tspan_elements": 1
       },
       "passed": true,
-      "source_sha256": "67a01f2663977d5c473d7b342b9cff78b1525575def69a93bc1c49d9fd7ffd5a"
+      "source_sha256": "e239a5c39b43be50785631402766a972711dbcf3c0cc19f3acfc3ff2b38d6426"
     },
     {
       "file": "08_conclusion.svg",
@@ -583,7 +583,7 @@
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 10,
+          "text_elements": 17,
           "images": {
             "placements": 0,
             "files": [],
@@ -591,7 +591,7 @@
           },
           "icons": 0,
           "effects": {
-            "inline_emphasis_runs": 4,
+            "inline_emphasis_runs": 0,
             "gradient_uses": 0,
             "filter_uses": 0,
             "text_effects": 0
@@ -627,11 +627,11 @@
           "KaiTi, Arial",
           "SimHei, Arial"
         ],
-        "text_elements": 10,
-        "tspan_elements": 7
+        "text_elements": 17,
+        "tspan_elements": 1
       },
       "passed": true,
-      "source_sha256": "954eda8f718d4897548350fa722b38d2eb8f869323233c650c599f1a51c07073"
+      "source_sha256": "5c724637302ce6df61ef9cc479e2fb4b0ebae8814733c97fb27d25a25cc026c5"
     },
     {
       "file": "09_timing.svg",
@@ -642,133 +642,11 @@
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 11,
+          "text_elements": 12,
           "images": {
             "placements": 0,
             "files": [],
             "max_frame_share": 0.0
-          },
-          "icons": 0,
-          "effects": {
-            "inline_emphasis_runs": 0,
-            "gradient_uses": 0,
-            "filter_uses": 0,
-            "text_effects": 0
-          },
-          "geometry": {
-            "svg_elements": {
-              "rect": 5,
-              "circle": 0,
-              "ellipse": 0,
-              "line": 0,
-              "polyline": 0,
-              "polygon": 0,
-              "path": 0
-            },
-            "preset_shapes": 0,
-            "preset_names": {},
-            "page_frame_elements": 1,
-            "marker_uses": {
-              "start": 0,
-              "mid": 0,
-              "end": 0
-            }
-          },
-          "native_objects": {
-            "chart": 0,
-            "table": 0,
-            "formula_block": 0,
-            "formula_inline": 0,
-            "other": 0
-          }
-        },
-        "fonts": [
-          "KaiTi, Arial",
-          "SimHei, Arial"
-        ],
-        "text_elements": 11,
-        "tspan_elements": 5
-      },
-      "passed": true,
-      "source_sha256": "e09297ddfd4923182e9e0c54a4c3809bee0f2c30102a7f9ff11578edf57d37d5"
-    },
-    {
-      "file": "10_full_scaling.svg",
-      "path": "report/heat-defense_ppt169_20261112/svg_output/10_full_scaling.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "carrier_receipt": {
-          "text_elements": 12,
-          "images": {
-            "placements": 1,
-            "files": [
-              "02-speedup.png"
-            ],
-            "max_frame_share": 0.4077
-          },
-          "icons": 0,
-          "effects": {
-            "inline_emphasis_runs": 0,
-            "gradient_uses": 0,
-            "filter_uses": 0,
-            "text_effects": 0
-          },
-          "geometry": {
-            "svg_elements": {
-              "rect": 5,
-              "circle": 0,
-              "ellipse": 0,
-              "line": 0,
-              "polyline": 0,
-              "polygon": 0,
-              "path": 0
-            },
-            "preset_shapes": 0,
-            "preset_names": {},
-            "page_frame_elements": 1,
-            "marker_uses": {
-              "start": 0,
-              "mid": 0,
-              "end": 0
-            }
-          },
-          "native_objects": {
-            "chart": 0,
-            "table": 0,
-            "formula_block": 0,
-            "formula_inline": 0,
-            "other": 0
-          }
-        },
-        "fonts": [
-          "KaiTi, Arial",
-          "SimHei, Arial"
-        ],
-        "text_elements": 12,
-        "tspan_elements": 2
-      },
-      "passed": true,
-      "source_sha256": "f22e00f4cfd357498cf01aa0da8d5c7a9c10f9d91ea85293c0e31dcf01a8c38c"
-    },
-    {
-      "file": "11_grid.svg",
-      "path": "report/heat-defense_ppt169_20261112/svg_output/11_grid.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "carrier_receipt": {
-          "text_elements": 12,
-          "images": {
-            "placements": 1,
-            "files": [
-              "05-grid-speedup.png"
-            ],
-            "max_frame_share": 0.4516
           },
           "icons": 0,
           "effects": {
@@ -812,7 +690,129 @@
         "tspan_elements": 4
       },
       "passed": true,
-      "source_sha256": "aac1c93c4bc7ac2e19a8274dc4003cb0e89d45315e6df8461cb2f6ea94b72574"
+      "source_sha256": "912e889d4394f283a1baa1d7251d701998d4f9a04518b4110d91b437901226a0"
+    },
+    {
+      "file": "10_full_scaling.svg",
+      "path": "report/heat-defense_ppt169_20261112/svg_output/10_full_scaling.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 12,
+          "images": {
+            "placements": 1,
+            "files": [
+              "02-speedup.png"
+            ],
+            "max_frame_share": 0.452
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 0,
+            "text_effects": 0
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 5,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "KaiTi, Arial",
+          "SimHei, Arial"
+        ],
+        "text_elements": 12,
+        "tspan_elements": 3
+      },
+      "passed": true,
+      "source_sha256": "02ccec1e235de69428d7a56b1e71610c1864abc072d06fb7540cf99cf68c74b5"
+    },
+    {
+      "file": "11_grid.svg",
+      "path": "report/heat-defense_ppt169_20261112/svg_output/11_grid.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 12,
+          "images": {
+            "placements": 1,
+            "files": [
+              "05-grid-speedup.png"
+            ],
+            "max_frame_share": 0.4694
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 0,
+            "text_effects": 0
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 5,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "KaiTi, Arial",
+          "SimHei, Arial"
+        ],
+        "text_elements": 12,
+        "tspan_elements": 4
+      },
+      "passed": true,
+      "source_sha256": "9deb576240633de50e789a770eb26448c3dafde092c41ad45dea06656f1d4a2c"
     },
     {
       "file": "12_interpretation.svg",
@@ -868,10 +868,10 @@
           "SimHei, Arial"
         ],
         "text_elements": 12,
-        "tspan_elements": 4
+        "tspan_elements": 5
       },
       "passed": true,
-      "source_sha256": "07ad42a0c189da905d1d6448422dfe32f35b13ff028734ad836060e1009acf49"
+      "source_sha256": "2862ecfc1d53a9b27a6de6b38d2041fa3dafbb9f348a9839b904271c1d2854b7"
     }
   ]
 }

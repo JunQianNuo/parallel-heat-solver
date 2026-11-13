@@ -39,14 +39,17 @@
 - navigation_family: SimHei, Arial
 - footnote_family: SimHei, Arial
 - data_family: Arial
-- body: 32
-- title: 38
-- cover: 46
-- lead: 32
-- annotation: 24
-- navigation: 16
-- footnote: 16
-- data: 24
+- body: 40
+- title: 44
+- cover: 58
+- lead: 40
+- annotation: 30
+- navigation: 20
+- footnote: 20
+- data: 30
+- diagram: 36
+- compact_lead: 34
+- math_script: 22
 
 ## icons
 - library: none
