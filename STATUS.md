@@ -1,10 +1,10 @@
 # 项目状态
 
-当前状态（2026-11-13）：M4交付 `Evaluation@30c4a43` 已获用户验收；M5材料已在用户准备的M5分支完成，入口见 [最终材料](report/README.md)，待用户验收。以下原M4“待验收”及旧分支位置均保留为历史语境。
+当前状态（2026-11-14）：M4交付 `Evaluation@30c4a43` 已获用户验收；M5材料已在用户准备的M5分支完成，入口见 [最终材料](report/README.md)，待用户验收。以下原M4“待验收”及旧分支位置均保留为历史语境。
 
-本轮当前任务（2026-11-13）：PPT v3已交审；按用户要求安装PaperBanana并调研项目制图。Skill、独立环境及检索数据就绪，CLI/导入/离线检查通过；三份输入样稿和调研已整理，未调用模型出图。
+本轮当前任务（2026-11-14）：按用户要求，借鉴PaperBanana规划/审图提示，由GPT-6.1-sol直接绘制五点显式机理图；完整图及两张PPT宽幅图已完成独立SVG/PNG/PDF与核查，待用户审阅。未运行PaperBanana模型API，未替换现有PPT。
 
-更新日期：2026-11-13（Asia/Shanghai）。
+更新日期：2026-11-14（Asia/Shanghai）。
 
 ## 当前阶段
 
@@ -375,3 +375,10 @@ M5历史准备阶段实际检查（制作PPT之前）：`python3 scripts/check_r
 用户要求安装指定官方Skill并调研项目配图。已用skill-installer安装paperbanana到本机技能目录，固定上游9ceea039；完整运行库/独立Python/91依赖包和diagram数据集放项目外。CLI与模块导入通过，20项上游离线检查通过；ref298/test292及全部引用图像存在。具体版本/位置/验证见report/paperbanana/installation-check.json，方案和三份输入见report/paperbanana/README.md。
 
 推荐先试五点与双缓冲、MPI halo、OpenMP同步机理图，PNG候选与可编辑PPT重建分别处理；正式统计图保留原证据。生成密钥未配置，真实生成、API连通性和图像质量未运行/待验证；不把调研当作完成出图。当前PPT、最终报告、求解器和数据未修改，M5仍待验收。
+
+
+## M5原生五点机理图（2026-11-14）
+
+用户要求尝试PaperBanana指导、GPT-6.1-sol使用自身能力绘图。主代理读取已装上游Planner/Stylist/Critic提示，向用户指定的绘图模型交付科学与视觉规格；实际绘图为原生SVG＋本地CairoSVG导出，不冒充原PaperBanana API流水线。完成总览1800×1080、五点读写宽图1800×650、时间循环宽图1800×550，各有2倍PNG及矢量PDF，入口见report/paperbanana/stencil-sol-v1/README.md。
+
+实际核对五点轴向几何与可见权重、old n只读/next n+1只写、全层后交换和M步控制流；三份SVG/PNG/PDF核查通过，最终总览/宽图及1200宽预览已查看。数学幂次和否分支连接经审图修正。课程2570文件本轮前后哈希一致。未改求解器/数据/原PPT/报告/讲稿，未运行数值构建/回归/采样；PowerPoint本机显示/编辑、图的用户审阅及M5验收仍待完成。

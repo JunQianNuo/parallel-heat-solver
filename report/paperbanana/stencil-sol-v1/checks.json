@@ -1,0 +1,75 @@
+{
+  "date": "2026-11-14",
+  "guidance": "PaperBanana Planner/Stylist/Critic prompt principles adapted by main agent; original API pipeline not executed",
+  "drawing_model": "gpt-6.1-sol (explicit user-requested delegated drawing)",
+  "rendering": "local SVG source and CairoSVG PNG/PDF",
+  "external_generation_APIs": "not called",
+  "sources": {
+    "SPEC.md": "74cf30a81a7d2eac8c8110b7f3ed94ee39485cb081c293c91382d310d80032f9",
+    "docs/DESIGN.md": "f9ea4a098b5df99a986258899a91e8e97a983aeb0ed9c143fbfe71eb833114eb",
+    "src/heat.cpp": "a32c4a4a619ac96cace88185f4432e0e7a79de05802cafc86fcf3a5302ad0244",
+    "report/paperbanana/01-stencil.md": "3f866bd13444c71cb08443c068612f244f0d7be52c4a561f1f87be207657f490"
+  },
+  "variants": [
+    {
+      "artifact": "diagram",
+      "canvas": [
+        1800.0,
+        1080.0
+      ],
+      "checks": {
+        "SVG_XML": "parsed",
+        "external_images": 0,
+        "stencil": "five axial inputs; visible weights match 1-4r/r/r/r/r; old n read -> next n+1 write",
+        "control_flow": "increment before n<M; full-layer update/zero boundaries; loop back to update; final old at M (AI visual/source review)",
+        "PNG_size": [
+          3600,
+          2160
+        ],
+        "PDF_pages": 1,
+        "PDF_text_spans_inside_page": 85
+      }
+    },
+    {
+      "artifact": "mechanism-wide",
+      "canvas": [
+        1800.0,
+        650.0
+      ],
+      "checks": {
+        "SVG_XML": "parsed",
+        "external_images": 0,
+        "stencil": "five axial inputs; visible weights match 1-4r/r/r/r/r; old n read -> next n+1 write",
+        "PNG_size": [
+          3600,
+          1300
+        ],
+        "PDF_pages": 1,
+        "PDF_text_spans_inside_page": 45
+      }
+    },
+    {
+      "artifact": "time-loop-wide",
+      "canvas": [
+        1800.0,
+        550.0
+      ],
+      "checks": {
+        "SVG_XML": "parsed",
+        "external_images": 0,
+        "control_flow": "increment before n<M; full-layer update/zero boundaries; loop back to update; final old at M (AI visual/source review)",
+        "PNG_size": [
+          3600,
+          1100
+        ],
+        "PDF_pages": 1,
+        "PDF_text_spans_inside_page": 38
+      }
+    }
+  ],
+  "visual_review": "final overview and both wide PNGs inspected by main agent; initial caret superscripts and exit connector repaired",
+  "course_protection": "2570 files, paths/content unchanged since this task snapshot",
+  "solver_build_regression_sampling": "未运行：未改求解器/数据",
+  "PPT_integration_PowerPoint_manual_review": "未运行/待验证：本轮仅独立图",
+  "user_acceptance": "待用户审阅"
+}

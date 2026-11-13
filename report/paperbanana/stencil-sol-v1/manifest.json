@@ -1,0 +1,22 @@
+{
+  "started": "2026-11-13",
+  "delivered": "2026-11-14",
+  "drawing_model": "gpt-6.1-sol",
+  "method": "PaperBanana prompt-guided native SVG drawing; not upstream API pipeline",
+  "files_sha256": {
+    "DESIGN.md": "28c1da846c4382529cbdba6b2e08a2c8759ce6e5ea3639f94d729b50871b67d2",
+    "GUIDANCE.md": "d00b87390937efa9d5a5c582d931c7390b0dd51482ee85eaf0e6969de7cad29a",
+    "README.md": "68306f7663b09792357fc8d0640018a32b85430834d0a9b394628b21d4e4d389",
+    "checks.json": "e9c9e8fdeed51cc5fe8781d434f7dd48077d45e8b90c283d9befc4e2063ed595",
+    "diagram.pdf": "9e6e91d3fec0346dbf48708d9522cde2b3fae82638e1b93d634a35a7eea0f477",
+    "diagram.png": "5f47d3cb13d216a753f8e460f86c716ced8798def63c128e3758981733302406",
+    "diagram.svg": "6a31ca941f7600820bc9652dc7591f54307526d66dc253cdfb7fe5a404cfbe8a",
+    "mechanism-wide.pdf": "c2944236843f09242759594cab6108bc51acd336a150a137db07eb223449ec9e",
+    "mechanism-wide.png": "346803a1a29a71d2d937f58e5fdf1b0f1cca434f68b220361d6dfef370d25830",
+    "mechanism-wide.svg": "f90e94147e9e93cb89d5dddafde286f45ca44f3c0dfee3649a52f326a357df78",
+    "render.py": "f7c0ba5d17da66117d55f6f5714d5a48b1be1407cacc2d1fe1bf9ca70975b272",
+    "time-loop-wide.pdf": "7ae0a1e04789f4421caba41117f27929bf561bd41a69bb3653e07215fd34a101",
+    "time-loop-wide.png": "4fc462eff8dc5358b06e88c34c705950c70da3093430c5ee740378c8daf81e92",
+    "time-loop-wide.svg": "0bf63e2dbc5a04c3298826cbda49e2527ae88787f40557788659fd687c4933e3"
+  }
+}

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="550" viewBox="0 0 1800 550" role="img" aria-labelledby="title desc">
+<title id="title">双缓冲整层推进控制流程</title><desc id="desc">初始化后更新全部内部点，保持物理零边界，整层完成后交换并累计步数；n小于M继续，否则从old取最终解。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#115EA2"/></marker></defs>
+<rect width="1800" height="1080" fill="white"/>
+<g id="time-loop">
+<rect x="35" y="40" width="300" height="188" rx="20" fill="#F8FBFE" stroke="#C9D7E3" stroke-width="3"/>
+<text x="185" y="93" text-anchor="middle" font-family="SimHei, Arial, sans-serif" font-size="44" font-weight="bold" fill="#092F51">初始化</text>
+<g aria-label="old = U^0">
+<text x="104.15" y="151" font-family="SimHei, Arial, sans-serif" font-size="42" fill="#111111">old = U</text>
+<text x="251.15" y="135.04" font-family="SimHei, Arial, sans-serif" font-size="29.4" fill="#111111">0</text>
+<text x="265.85" y="151" font-family="SimHei, Arial, sans-serif" font-size="42" fill="#111111"></text>
+</g>
+<text x="185" y="204" text-anchor="middle" font-family="SimHei, Arial, sans-serif" font-size="36" font-weight="normal" fill="#111111">next = 0, n = 0</text>
+<rect x="390" y="40" width="400" height="188" rx="20" fill="#EAF2F8" stroke="#115EA2" stroke-width="3"/>
+<text x="590" y="94" text-anchor="middle" font-family="SimHei, Arial, sans-serif" font-size="44" font-weight="bold" fill="#092F51">更新全部内部点</text>
+<text x="590" y="151" text-anchor="middle" font-family="SimHei, Arial, sans-serif" font-size="44" font-weight="normal" fill="#115EA2">old → next</text>
+<text x="590" y="204" text-anchor="middle" font-family="SimHei, Arial, sans-serif" font-size="34" font-weight="normal" fill="#111111">全局四条物理边界 = 0</text>
+<path d="M343 134H380" fill="none" stroke="#115EA2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="845" y="40" width="270" height="188" rx="20" fill="#F8FBFE" stroke="#C9D7E3" stroke-width="3"/>
+<text x="980" y="117" text-anchor="middle" font-family="SimHei, Arial, sans-serif" font-size="44" font-weight="bold" fill="#092F51">整层完成</text>
+<text x="980" y="179" text-anchor="middle" font-family="SimHei, Arial, sans-serif" font-size="42" font-weight="normal" fill="#092F51">再交换</text>
+<path d="M798 134H835" fill="none" stroke="#115EA2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="1170" y="40" width="300" height="188" rx="20" fill="#EAF2F8" stroke="#115EA2" stroke-width="3"/>
+<text x="1320" y="100" text-anchor="middle" font-family="SimHei, Arial, sans-serif" font-size="36" font-weight="bold" fill="#092F51">交换 old / next</text>
+<text x="1320" y="160" text-anchor="middle" font-family="SimHei, Arial, sans-serif" font-size="44" font-weight="normal" fill="#115EA2">n ← n+1</text>
+<text x="1320" y="208" text-anchor="middle" font-family="SimHei, Arial, sans-serif" font-size="36" font-weight="normal" fill="#092F51">新层成为旧层</text>
+<path d="M1123 134H1160" fill="none" stroke="#115EA2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M1630 43L1750 134L1630 225L1510 134Z" fill="white" stroke="#115EA2" stroke-width="3"/>
+<text x="1630" y="149" text-anchor="middle" font-family="SimHei, Arial, sans-serif" font-size="42" font-weight="normal" fill="#092F51">n &lt; M?</text>
+<path d="M1478 134H1500" fill="none" stroke="#115EA2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M1630 235V330H590V238" fill="none" stroke="#115EA2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="1075" y="310" text-anchor="middle" font-family="SimHei, Arial, sans-serif" font-size="40" font-weight="normal" fill="#115EA2">是：读取交换后的 old，继续下一步</text>
+<rect x="900" y="414" width="720" height="100" rx="20" fill="#F8FBFE" stroke="#C9D7E3" stroke-width="3"/>
+<g aria-label="n = M：取 old = U^M，结束">
+<text x="1011.15" y="477" font-family="SimHei, Arial, sans-serif" font-size="42" fill="#092F51">n = M：取 old = U</text>
+<text x="1368.15" y="461.04" font-family="SimHei, Arial, sans-serif" font-size="29.4" fill="#092F51">M</text>
+<text x="1382.8500000000001" y="477" font-family="SimHei, Arial, sans-serif" font-size="42" fill="#092F51">，结束</text>
+</g>
+<path d="M1760 134H1780V464H1620" fill="none" stroke="#115EA2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="1724" y="374" text-anchor="middle" font-family="SimHei, Arial, sans-serif" font-size="42" font-weight="normal" fill="#115EA2">否</text>
+<text x="440" y="473" text-anchor="middle" font-family="SimHei, Arial, sans-serif" font-size="40" font-weight="normal" fill="#092F51">M ≥ 1；每层只交换一次</text>
+</g>
+</svg>
