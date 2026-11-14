@@ -1,0 +1,143 @@
+{
+  "base": "b7ada61",
+  "authorization": "用户明确一并应用批注",
+  "annotations": [
+    {
+      "file": "02_route.svg",
+      "element_id": "_edit_13",
+      "annotation": "标题需要修改，不要将一句话放在标题上"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "bg",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "update-equation",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_15",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_16",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_17",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_18",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_19",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_20",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_21",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_22",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_23",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_24",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_25",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_26",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_27",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_28",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_29",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_30",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_31",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_32",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_33",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_34",
+      "annotation": "这种公式难看"
+    },
+    {
+      "file": "03_stencil.svg",
+      "element_id": "_edit_52",
+      "annotation": "位置偏移严重，可能字体过于大了，挡住了下方的内容"
+    },
+    {
+      "file": "04_mpi.svg",
+      "element_id": "_edit_13",
+      "annotation": "这些观点不要写成标题，改为MPI。其他页面同理"
+    },
+    {
+      "file": "08_conclusion.svg",
+      "element_id": "_edit_21",
+      "annotation": "这个结论不知所云，我们应该回答问题，而不是在这里作免责声明"
+    }
+  ],
+  "resolution": {
+    "titles": "全部正文/备份用短主题名；P04为MPI",
+    "formula": "单行44px原生Office Math；STIX路径只作非PowerPoint预览",
+    "position": "五点上下节点对称，标注避开标题和点",
+    "closing": "实现/验证/数值收益/模型分析为主体，限制保留备份及备注"
+  },
+  "human_review": "未验收，待用户查看"
+}

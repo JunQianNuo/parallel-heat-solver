@@ -180,66 +180,66 @@
 - **Cover impact**: 完整题名与三实现明确，现场从实际求解的问题进入。
 - **Fact IDs**: F-COURSE, F-AI。
 
-#### Slide 02 - 同一模型、同一终点，建立公平比较
+#### Slide 02 - 数学模型
 
 - **File**: 02_route.svg
 - **Timing**: 20秒，累计0:35。
 - **Audience move**: 只知程序名称→知道网格/步数和比较条件。
 - **Relationships**: membership: 三程序共享模型与输入；order: 数值基线→并行实现→两层验证→计时比较。
-- **Title**: 同一模型、同一终点，建立公平比较
+- **Title**: 数学模型
 - **Core message**: N是每方向区间数，M是推进步数；三程序在相同输入和精度条件下比较。
 - **Content**: 单位正方形、四边零温、初值sin(πx)sin(πy)；h=1/N，Δt=T/M，节点共(N+1)²；同一N/M/T/α下完成到T。独立串行基线与两种并行数值程序均真实推进，不以解析公式替代计算。
 - **Speaking focus**: N、M与P/Q不是同一数量；验证组与性能组可有不同参数，但同一比较组输入必须一致。
 - **Composition**: 单幅域/网格示意配简短参数定义和路线，避免再用一页目录占满讲述。
 - **Fact IDs**: F-COURSE, F-MODEL, F-SERIAL。
 
-#### Slide 03 - 五点依赖、双数组与稳定推进
+#### Slide 03 - 五点显式差分
 
 - **File**: 03_stencil.svg
 - **Timing**: 45秒，累计1:20。
 - **Audience move**: 知道离散参数→能解释每步从哪里读、向哪里写、为何不能原地更新。
 - **Relationships**: link: 同一旧层中心/四邻居加权到新层同坐标；order: 初始化→全部内点更新→整层完成→交换+n增量→判断继续或取最终层。
-- **Title**: 五点依赖、双数组与稳定推进
+- **Title**: 五点显式差分
 - **Core message**: 五个输入都来自n层，写入独立n+1层；完整一层后才交换。
 - **Content**: 中心系数1−4r、四邻居各r，无对角点。old只读、next写入；四条物理边界保持零。初始化old=U⁰、next=0、n=0，整层后swap并n增1，n<M则继续；n=M从old取Uᴹ。r=αΔt/h²≤1/4；时间一阶、空间二阶。
-- **Mathematical content**: U_{ij}^{n+1}=(1-4r)U_{ij}^{n}+r(U_{i-1,j}^{n}+U_{i+1,j}^{n}+U_{i,j-1}^{n}+U_{i,j+1}^{n})
+- **Mathematical content**: U_{i,j}^{n+1}=(1-4r)U_{i,j}^{n}+r\left(U_{i-1,j}^{n}+U_{i+1,j}^{n}+U_{i,j-1}^{n}+U_{i,j+1}^{n}\right); r=\alpha\Delta t/h^2\le1/4
 - **Speaking focus**: 向前Euler加空间中心差分给出五点式；r≤1/4使系数非负且权重和为1，支持标准二维稳定性论证。程序严格校验此充分稳定条件，不能从短算例未发散而放宽。分开新旧层是为避免同一步读到新邻值；交换是角色切换，恰好M步到T，不按浮点时钟累加停止。
-- **Composition**: 以F-FIG读写机理为主，原生重排保留清晰标注；完整公式可分行，控制逻辑用简洁流程表达。正文必须能讲清，完整循环图供备注/问答，不把多个完整图挤成缩略图。
+- **Composition**: 顶部44px单行原生公式，矢量数学排版预览；下方五点节点/权重→加权求和→新层，底部整层完成/swap/n增量/循环。顶端邻点下移25px，避免文字和层标签挤在一起。
 - **Fact IDs**: F-COURSE, F-MODEL, F-SERIAL, F-FIG。
 
-#### Slide 04 - MPI：连续行分块，先交换halo再计算
+#### Slide 04 - MPI
 
 - **File**: 04_mpi.svg
 - **Timing**: 35秒，累计1:55。
 - **Audience move**: 知道五点依赖→能说明rank拥有行和为何要额外halo。
 - **Relationships**: membership: 拥有行属于rank，halo只是邻居旧层副本；link: 两次Sendrecv取得跨块依赖；order: 端部清零→通信→本地更新→换层。
-- **Title**: MPI：连续行分块，先交换halo再计算
+- **Title**: MPI
 - **Core message**: 通信对象是旧层边界行，halo不改变全局归属。
 - **Content**: N=8/P=3的7条内部行分成3/2/2，rank0/1/2拥有全局1–3/4–5/6–7。每rank双缓冲，上下各一条halo。两次Sendrecv完成旧层边界获取后，更新本rank内点再swap。请求P与MPI_Comm_size实际P分别记录；本实现P≤N−1以保证每rank至少一行。
 - **Speaking focus**: 余数分给前面的rank，初值使用全局坐标。第一次首拥有行发向up、从down收到下halo；第二次尾拥有行发向down、从up收到上halo。MPI_PROC_NULL接收不会自动清零；物理端部须自行清零。基线无通信计算重叠、无每步全局Barrier；Gatherv在推进结束后收集拥有行，halo不参加。错误路径需所有rank一致退出，不能让单rank返回后留下邻居等待。
 - **Composition**: 用拥有行/halo示意及两向箭头解释依赖，旁边仅列通信→更新→换层；P限制标成实现约束，不写成MPI通用定理。
 - **Fact IDs**: F-MPI, F-MODEL。
 
-#### Slide 05 - OpenMP：循环分行，两次同步保护换层
+#### Slide 05 - OpenMP
 
 - **File**: 05_openmp.svg
 - **Timing**: 35秒，累计2:30。
 - **Audience move**: 理解MPI独立内存→能解释共享缓冲中的唯一写者和同步先后。
 - **Relationships**: membership: static,1为线程分配整行；order: for更新→for末屏障→single交换→single末屏障→下一层。
-- **Title**: OpenMP：循环分行，两次同步保护换层
+- **Title**: OpenMP
 - **Core message**: 每点只有一个写者；写完并发布新缓冲角色后才能进入下一步。
 - **Content**: 一个持续parallel团队完成M步，schedule(static,1)按整行循环分配；N=7、实际Q=4时，线程0/1/2/3对应{1,5}/{2,6}/{3}/{4}。old/next共享，循环变量私有；for屏障完成整层写入，single完成交换，single屏障发布新角色。
 - **Speaking focus**: 实际Q=A时，行i归线程(i−1)%A，而不是MPI那样连续分块。N/M/w/r为firstprivate只读副本；边界在两数组初始化为零后不再写。不能删去任一必要屏障，也不能各线程独立swap。请求Q与omp_get_num_threads实际Q分开，Q大于内部行数合法，空闲线程仍同步；不把MPI的P限制套给Q。团队进入/退出不等于每步新建OS线程。
 - **Composition**: 上部显示线程拥有行，下部用更新/两道屏障/single的顺序示意，不用长代码截图替代解释。
 - **Fact IDs**: F-OMP。
 
-#### Slide 06 - 正确性：连续精度与并行一致性分开验证
+#### Slide 06 - 正确性验证
 
 - **File**: 06_validation.svg
 - **Timing**: 35秒，累计3:05。
 - **Audience move**: 知道程序能运行→知道两类误差各自能证明什么。
 - **Relationships**: contrast: 连续解析误差与串并行差；order: 固定T/α/r下联合加密→观察误差比。
-- **Title**: 正确性：连续精度与并行一致性分开验证
+- **Title**: 正确性验证
 - **Core message**: D∞小不能代替E∞检验；误差约缩小四倍来自联合加密。
 - **Content**: E∞与连续解析解比较，D∞与相同输入独立串行全场比较。默认归档组T=0.1/α=1/r=0.1：N/M=20/400、40/1600、80/6400，E∞约1.1262e−4、2.8181e−5、7.0470e−6；误差比3.996299/3.999078，观测阶约2。N加倍、M四倍，Δt∝h²，不能称时间二阶。
 - **Mathematical content**: E_\infty=\max_{i,j}|U_{ij}^{M}-u(x_i,y_j,T)|; D_\infty=\max_{i,j}|U_{ij,\mathrm{parallel}}^{M}-U_{ij,\mathrm{serial}}^{M}|; u(x,y,t)=e^{-2\alpha\pi^2t}\sin(\pi x)\sin(\pi y)
@@ -247,13 +247,13 @@
 - **Composition**: 两个清楚的比较对象配三行数据，用加密箭头串联；不放满测试日志，也不把不同批次/参数的误差合并。
 - **Fact IDs**: F-VALID, F-MODEL。
 
-#### Slide 07 - 固定规模性能：独立串行基线、加速比与效率
+#### Slide 07 - 性能结果
 
 - **File**: 07_performance.svg
 - **Timing**: 55秒，累计4:00。
 - **Audience move**: 看到时间曲线→能解释S/E的分母、计时边界与实际资源。
 - **Relationships**: contrast: 同网格独立串行与并行耗时；order: 固定问题改变实际P/Q。
-- **Title**: 固定规模性能：独立串行基线、加速比与效率
+- **Title**: 性能结果
 - **Core message**: MPI在该规模有收益，但效率远低于理想；OpenMP更多线程不保证更快。
 - **Content**: 02-r1固定N=1024/M=65536/T=0.01/α=1/r=0.16；Ts为同网格独立串行的中位数，35.39s。MPI实际16进程10.57s，S=3.3493、E=20.93%；OpenMP实际8线程19.67s，S=1.7992、E=22.49%，16线程21.44s，S=1.6508、E=10.32%。保留原10个点及探索性区间。
 - **Mathematical content**: S_k=\frac{\operatorname{median}(T_s)}{\operatorname{median}(T_k)},\qquad E_k=\frac{S_k}{k};\quad k=P_{\mathrm{actual}}\ \mathrm{or}\ Q_{\mathrm{actual}}
@@ -263,54 +263,54 @@
 - **Composition**: 一幅清晰主图配Ts和三个代表行的S/E短表，计时边界用简短说明；完整计时合同/统计口径留P09，不把四组完整曲线全塞正文。
 - **Fact IDs**: F-LARGE, F-SERIAL, F-MPI, F-OMP。
 
-#### Slide 08 - 两个定律解释什么，结论应止于哪里
+#### Slide 08 - 总结与分析
 
 - **File**: 08_conclusion.svg
 - **Timing**: 40秒，累计4:40。
-- **Audience move**: 知道有加速→知道理想模型的前提与实测结论边界。
-- **Relationships**: contrast: 固定工作量的Amdahl与扩大工作量的Gustafson；contrast: 已支持的结论与不能外推的机制。
-- **Title**: 两个定律解释什么，结论应止于哪里
-- **Core message**: 正确性有证据，并行收益有条件；扩大网格并不自动验证Gustafson或构成弱扩展。
-- **Content**: Amdahl用于固定工作量：理想加速受固定串行部分限制，通信/同步/实现与环境成本使实测S偏离理想，不能从S反推源码真实串行比例。Gustafson讨论扩大可并行工作、相近并行时间下的扩展潜力；本实验时间未维持相近，σ未单测，故只讨论前提与吞吐。固定物理域、N增大时M也增加，现有跨规模实验不称弱扩展。MPI收益不随N单调，OpenMP16不保证优于8。末尾保留AI使用与本人责任说明。
-- **Speaking focus**: 不把效率低简单归因为“任务太小”，也不由曲线唯一断言缓存/带宽/WSL宿主根因。保留非独占WSL、轮次趋势、UTC回退及外部物理时间未校准限制。AI披露：Codex辅助实现/实验分析/材料，使用者负责范围管理、审核和答辩；用解析解、独立串行全场、日志和统计重算核查。给出真实修正例：启动器重定向曾误当rank输出失败测试，后改rank内验证并回归，不编造个人测试经历。
-- **Composition**: 两个定律各用一条“前提→本实验能说到哪里”的短句；结论/AI用简短收束，完整公式和问答留P12。
-- **Closing impact**: 用可支持的完成情况、有限收益、AI核查责任收束，保留“恳请批评指正”。
-- **Fact IDs**: F-LAWS, F-LARGE, F-BASE, F-DIAG, F-AI。
+- **Audience move**: 了解各项证据→能概括实现、正确性和真实并行收益。
+- **Relationships**: order: 实现/验证→数值收益→性能模型分析；contrast: 两个模型的固定/扩大工作量前提。
+- **Title**: 总结与分析
+- **Core message**: 三种实现完成同一离散问题；联合加密误差约四分之一；MPI16在最大网格约3.35倍，OpenMP8约1.80倍，收益有条件。
+- **Content**: 以实现与验证、并行收益、性能分析三组收束。N=1024的MPI16约3.35倍、OpenMP8约1.80倍，OpenMP16反而更慢；MPI收益跨N不单调。Amdahl讨论固定规模的理想限制，Gustafson讨论扩大工作量的潜力。短注保留非弱扩展及备份限定，末行保留AI核查。
+- **Speaking focus**: Amdahl的理想串行比例不等于实测反推源码占比；通信/同步/实现与环境均可能影响S。Gustafson需讨论扩大工作量和相近并行时间，本项目σ未单测、时间未保持相近，不宣称已验证线性扩展。固定物理域联合加密不能称弱扩展。非独占WSL、轮次趋势、UTC回退、未校准外部物理时间详见P12及备注。AI辅助与使用者管理审核答辩职责分开，真实失败/修正例仍保留备注，不编造人工测试。
+- **Composition**: 三组结果陈述，先回答完成了什么、验证了什么、获得了多少收益；详细解释边界用备份/备注承接，避免整页以免责声明为主体。
+- **Closing impact**: 用实现和量化结论结束，保留AI核查及“恳请批评指正”。
+- **Fact IDs**: F-LAWS, F-LARGE, F-BASE, F-DIAG, F-AI, F-VALID。
 
 ### Part 2: Appendix for questions
 
-#### Slide 09 - 备份：计时合同、基线与三批统计
+#### Slide 09 - 备份：计时与统计
 
 - **File**: 09_timing.svg
 - **Timing**: 问答备用，不计入280秒。
 - **Audience move**: 追问是否公平→可逐项对照范围和统计对象。
 - **Relationships**: contrast: 三程序计时合同；contrast: 三批统计对象及停止02。
-- **Title**: 备份：计时合同、基线与三批统计
+- **Title**: 备份：计时与统计
 - **Core message**: 正式S是中位数之比，诊断配对比率不能混算；时间范围不是置信区间。
 - **Content**: 串行M次step内检查/边界清零/更新/swap计入；MPI物理halo清零、两次Sendrecv/等待、本地更新/swap计入，各rank本地差的最大值为样本；OpenMP一次团队进出、实际Q查询、更新/屏障/single交换计入。三者初始化/验证/输出在外；MPI生命周期、广播、开始Barrier、Reduce/Gatherv在外。原M4为23配置/115正式（各5次）；诊断01为215预热/2560正式调用，对照用配对耗时比率中位数；02-r1为44配置/44预热/440正式（各10次），同网格中位数之比及同轮共同bootstrap。停止02在预热阶段终止、0正式，保留但不混入完成统计。
 - **Speaking focus**: 三种实现保留其必要管理开销，loop_seconds不是端到端时间或纯算术时间。MPI不是用不同rank绝对时钟相减，最大值归约本身在计时外；OpenMP进入/退出不等于OS线程每次重建。原M4/诊断/02-r1三种统计口径分开，全部慢样本保留，bootstrap仅探索性。
 - **Fact IDs**: F-BASE, F-DIAG, F-LARGE, F-SERIAL, F-MPI, F-OMP。
 
-#### Slide 10 - 备份：四组固定问题的强扩展
+#### Slide 10 - 备份：强扩展
 
 - **File**: 10_full_scaling.svg
 - **Timing**: 问答备用，不计入280秒。
 - **Audience move**: 质疑只展示最大N→能看到完整矩阵与非单调事实。
 - **Relationships**: contrast: 各自固定N/M/T/α的四组强扩展曲线。
-- **Title**: 备份：四组固定问题的强扩展
+- **Title**: 备份：强扩展
 - **Core message**: 每个面板内固定工作量改变P/Q，各点用同网格独立串行基线。
 - **Content**: 完整02-speedup原PNG，不裁切坐标/区间/脚注。MPI16在N=384/512/768/1024的S为3.4885/2.8183/2.9596/3.3493，并非随N单调增加；OpenMP16也不保证优于8。16逻辑CPU/14WSL可见core的资源限定不可省略。
 - **Speaking focus**: 图上误差线的统计定义见P09；不能从相邻曲线差直接判定唯一硬件机制或以新增采样补美观。
 - **Images**: 02-speedup.png，已有归档PNG字节不变。
 - **Fact IDs**: F-LARGE。
 
-#### Slide 11 - 备份：扩大工作量是联合加密，不是弱扩展
+#### Slide 11 - 备份：工作量与网格加密
 
 - **File**: 11_grid.svg
 - **Timing**: 问答备用，不计入280秒。
 - **Audience move**: 将跨规模图误认弱扩展→能写出实际累计工作量及时间前提。
 - **Relationships**: link: 固定物理域下N增加同时M增加；contrast: 固定规模强扩展、扩大工作量与理想弱扩展。
-- **Title**: 备份：扩大工作量是联合加密，不是弱扩展
+- **Title**: 备份：工作量与网格加密
 - **Core message**: W=M(N−1)²；本矩阵M随N²增加，所以W约N⁴，不能只按每worker节点数命名。
 - **Content**: 完整05-grid-speedup原PNG；02-r1固定T=0.01/α=1/r=0.16，M=N²/16，物理域仍为单位正方形。跨N比较时N与M共同改变，工作量W=M(N−1)²约随N⁴增长；这不是当前范围内的弱扩展实证。
 - **Mathematical content**: W=M(N-1)^2,\qquad M=\frac{N^2}{16},\qquad W\sim\frac{N^4}{16}
@@ -318,13 +318,13 @@
 - **Images**: 05-grid-speedup.png，已有归档PNG字节不变。
 - **Fact IDs**: F-BASE, F-LARGE, F-LAWS。
 
-#### Slide 12 - 备份：Amdahl、Gustafson与解释边界
+#### Slide 12 - 备份：性能模型与诊断
 
 - **File**: 12_interpretation.svg
 - **Timing**: 问答备用，不计入280秒。
 - **Audience move**: 要求从实测归因→能写出模型且区分模型参数与实测证据。
 - **Relationships**: contrast: 两种理想模型的固定/扩大工作量前提；contrast: 已支持因素与未确定硬件机制。
-- **Title**: 备份：Amdahl、Gustafson与解释边界
+- **Title**: 备份：性能模型与诊断
 - **Core message**: 用定律约束解释，不用定律制造未测的串行比例或理想加速结论。
 - **Content**: Amdahl的f指固定问题的理想串行比例，f>0时理想极限为1/f；这是模型含义，不是本项目测得的上限。从实测S得到的有效f包含通信/同步、实现差异与环境成本，可能不恒定或超出比例范围，不等同源码占比，不能据此外推无限核心上限。Gustafson的σ为扩展问题并行执行时间中的串行部分比例，本项目未单独测量；并行时间未保持相近，不能代入虚构σ证明线性。诊断01支持计算执行上下文与行划分影响，变体没有进入正式求解器；不能唯一确认缓存/带宽/宿主根因。
 - **Mathematical content**: S_A(k)=\frac{1}{f+(1-f)/k};\quad f_{\mathrm{eff}}=\frac{k/S-1}{k-1}\ (k>1);\quad S_G(k)=k-\sigma(k-1)
@@ -336,14 +336,14 @@
 
 - **Generation**: enabled
 - **Filename**: match each SVG filename under `notes/`
-- **Content**: 本规范已获批准，基于最终SVG修订讲稿；逐页与§IX的科学内容、事实限定和Timing一致，备份给出源码/统计解释。保留AI核查真实实例，来源集中保留在备注/报告；不将未发生的人工测试或用户审核写成已完成。已按最终v4页面更新SPEAKER_NOTES和12页备注，逐页预算不变。
-- **Total duration**: P01–P08预算15/20/45/35/35/35/55/40秒，总计280秒，另留20秒机动；P09–P12不计入5分钟。执行后统计正文1049个中英文/数字字符；按280字符/分钟加20秒停顿估算244.8秒，预算/估算不冒充人工实讲。
+- **Content**: 本规范已获批准，基于最终SVG修订讲稿；逐页与§IX的科学内容、事实限定和Timing一致，备份给出源码/统计解释。保留AI核查真实实例，来源集中保留在备注/报告；不将未发生的人工测试或用户审核写成已完成。已按最终v4-r1页面更新SPEAKER_NOTES和12页备注，逐页预算不变。
+- **Total duration**: P01–P08预算15/20/45/35/35/35/55/40秒，总计280秒，另留20秒机动；P09–P12不计入5分钟。执行后统计正文1065个中英文/数字字符；按280字符/分钟加20秒停顿估算248.2秒，预算/估算不冒充人工实讲。
 - **Notes style**: 中文口语化解释。
 - **Presentation purpose**: 解释算法/实现/验证与真实收益及限制，披露AI使用与修正。
 
 ## Revision v3 — 2026-11-13
 
-用户要求整体增字、减少中央留白、修复P03公式并补全五点计算流程机理。正文40px、标题44px；密集数据注释30px，导航页脚20px，公式36px。所有页重新排版而非缩放文本硬挤。P03公式用aligned两行，显式显示旧层n的五点坐标/权重、计算写入next中心、遍历全部内点/零边界、整层完成后交换、n<M回路；并行同步细节由P04/P05展开。两幅原图保持字节，按可用宽度放大；原始数据不变。
+用户要求整体增字、减少中央留白、修复P03公式并补全五点计算流程机理。正文40px、标题44px；密集数据注释30px，导航页脚20px，公式36px。所有页重新排版而非缩放文本硬挤。历史v3的P03公式用aligned两行，显式显示旧层n的五点坐标/权重、计算写入next中心、遍历全部内点/零边界、整层完成后交换、n<M回路；并行同步细节由P04/P05展开。两幅原图保持字节，按可用宽度放大；原始数据不变。
 
 
 ## Revision refine-spec — 2026-11-14 (approved)
@@ -357,3 +357,8 @@
 ### 2026-11-14 Approved execution — v4
 
 用户聊天明确“批准”后同步锁并执行12页与讲稿；上一节批准前状态是历史。P03保留五点公式与双数组完整循环，P07增加S/E，P08/P12说明两定律边界。共含5个原生Office Math公式，总计8正文/4备份，280秒预算不变。预览另有待应用批注，尚未获明确应用指令；本轮不将其标为已处理或用户验收。实际检查记录见[REVIEW](../REVIEW.md)。
+
+
+### 2026-11-14 Annotation revision — authorized
+
+用户明确“一并应用批注”，26处批注归并为短标题、公式排版、标注避让和结果收束四类。正文/备份均用主题短标题；P03单行44px原生公式，普通SVG路径提供精确数学预览；P08以实现、验证和数值收益作总结。原始图表/数据、两定律的前提和资源/统计/时钟限制继续保留。前述待应用状态属于历史，处理台账见[annotation_application](validation/annotation_application.json)。交付v4-r1，不覆盖v4文件。

@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parent
 
 def main():
     ap=argparse.ArgumentParser()
-    ap.add_argument('--input',type=Path,default=ROOT/'presentation-v4.pptx')
+    ap.add_argument('--input',type=Path,default=ROOT/'presentation-v4-r1.pptx')
     ap.add_argument('--soffice',default=shutil.which('soffice'))
     ap.add_argument('--library-path',help='Optional isolated LibreOffice runtime library path')
     ap.add_argument('--fontconfig',type=Path,help='Optional existing fontconfig XML')

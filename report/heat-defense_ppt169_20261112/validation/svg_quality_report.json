@@ -4,7 +4,7 @@
   "target": "/home/nuo/courses/projects/parallel-heat-solver/report/heat-defense_ppt169_20261112",
   "source_fingerprint": {
     "algorithm": "sha256",
-    "digest": "243952e6c7d5125d46f958121f9bb45809ba438d6c41e7a39a322604fd0316b1",
+    "digest": "3788f82dacfd26b326222d6f94f2d4873ab5c58893b9e6656d3150c6181dcfdc",
     "file_count": 12,
     "files": [
       {
@@ -13,47 +13,47 @@
       },
       {
         "file": "02_route.svg",
-        "sha256": "02dc02ef50fc366d67b61a407416e99d3f98b037fc151bc4a58cf2b9cdb3a0d1"
+        "sha256": "c11811059e5ec7383a2f13b64ad4c096654ede67c060feb3720445b9b3410839"
       },
       {
         "file": "03_stencil.svg",
-        "sha256": "98b3c047d556e704fd36ce1b78b3df944206112d0934e2c65e8168d49a1f0eb1"
+        "sha256": "6982c2f9a0d5444fff6ad5891da28f74750ddc7ad2a8e2e73b89d76e2ac51626"
       },
       {
         "file": "04_mpi.svg",
-        "sha256": "854ea63b4127253ce916635191997200055c71954756650ba4a77f7d12a3cac6"
+        "sha256": "d2d9714aee385de5b5f4873e7ace4f03ddd1b5835724949206a8ef4c728f768e"
       },
       {
         "file": "05_openmp.svg",
-        "sha256": "446c4da853e395781187d3233be33ee32c2a33b376a7ff2a001f90454afca520"
+        "sha256": "8a636675132b786e5867d729e74ed344d538828c6d73525d32c6a0fcaa3fc5e6"
       },
       {
         "file": "06_validation.svg",
-        "sha256": "09cc7af75255309d91d9ce0fd948db7e17b6e3822f23ee648676835cf96fadb2"
+        "sha256": "4581eb5c47705a2cc6c747f4b320507b390d946fa30bee7a4ccadf06c17618e6"
       },
       {
         "file": "07_performance.svg",
-        "sha256": "d01d2070943f78f7c98e08c1390a2778f70ef47f1f477ee247b07d35898a2f7b"
+        "sha256": "c1a1cce844aa5febaad442a882c8ad7bd06bf3819fe94d37164c38ced442a63d"
       },
       {
         "file": "08_conclusion.svg",
-        "sha256": "4f49a147e4a4f7a3d9c0c8eca126e2e445ac2210d96b4170a0c49f7f8dbc2d2a"
+        "sha256": "538277c8ff6ebd017c70b035fdd82c988e7ca139ddedd139f168b02b7f65013d"
       },
       {
         "file": "09_timing.svg",
-        "sha256": "85582ad1b08e223a54ca446a32226395da33bff0446c9bd11737438f48ee91af"
+        "sha256": "83cadd83e1227b7dcbdc28ca9ad98da64de423053832ad5cb5a5bff5e2b5216d"
       },
       {
         "file": "10_full_scaling.svg",
-        "sha256": "22f81f6cd1bc74db1d4be3806bdba9125c0731140dd2737917c5016a7ee84c5a"
+        "sha256": "9101915184e5bb673b438696c9aaf05d773f658fbef444a1a1bc760ab55d3a33"
       },
       {
         "file": "11_grid.svg",
-        "sha256": "3a2c8ad9bb0c6dcf6ac9e85a3451e23fb434cab12bfd5119e27cae38b61fd373"
+        "sha256": "cbd6f83975d6119f0b7ace01f3c42f47b860b72e53ba50e32a7d293bf62f0b63"
       },
       {
         "file": "12_interpretation.svg",
-        "sha256": "8ba873a2e92dcba0b8635c741261126ec019725c30b903c4abc8c5b7cc47d8af"
+        "sha256": "4e7c062e6f270d4ea18e8c68ab88c58946a2450b3dafa73e4cd87eda73c136a7"
       }
     ]
   },
@@ -89,7 +89,6 @@
     "colors": {},
     "fonts": {
       "Cambria Math": [
-        "03_stencil.svg",
         "12_interpretation.svg"
       ]
     },
@@ -99,10 +98,10 @@
     "scope": "informational-not-a-quota",
     "pages": 12,
     "totals": {
-      "text_elements": 244,
+      "text_elements": 226,
       "image_placements": 2,
       "icons": 0,
-      "svg_geometry_elements": 166,
+      "svg_geometry_elements": 221,
       "preset_shapes": 0,
       "page_frame_elements": 12,
       "marker_uses": 0,
@@ -123,12 +122,12 @@
       "filter_uses": 0,
       "text_effects": 0
     },
-    "relationship_pages": 8,
+    "relationship_pages": 9,
     "geometry_elements": {
       "circle": 60,
       "ellipse": 0,
       "line": 36,
-      "path": 0,
+      "path": 55,
       "polygon": 0,
       "polyline": 2,
       "rect": 68
@@ -270,7 +269,7 @@
         "tspan_elements": 3
       },
       "passed": true,
-      "source_sha256": "02dc02ef50fc366d67b61a407416e99d3f98b037fc151bc4a58cf2b9cdb3a0d1"
+      "source_sha256": "c11811059e5ec7383a2f13b64ad4c096654ede67c060feb3720445b9b3410839"
     },
     {
       "file": "03_stencil.svg",
@@ -281,7 +280,7 @@
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 51,
+          "text_elements": 32,
           "images": {
             "placements": 0,
             "files": [],
@@ -302,7 +301,7 @@
               "line": 10,
               "polyline": 0,
               "polygon": 0,
-              "path": 0
+              "path": 55
             },
             "preset_shapes": 0,
             "preset_names": {},
@@ -322,20 +321,14 @@
           }
         },
         "fonts": [
-          "Cambria Math",
           "KaiTi, Arial",
           "SimHei, Arial"
         ],
-        "text_elements": 51,
-        "tspan_elements": 0,
-        "contextual_values": {
-          "font_families": [
-            "Cambria Math"
-          ]
-        }
+        "text_elements": 32,
+        "tspan_elements": 0
       },
       "passed": true,
-      "source_sha256": "98b3c047d556e704fd36ce1b78b3df944206112d0934e2c65e8168d49a1f0eb1"
+      "source_sha256": "6982c2f9a0d5444fff6ad5891da28f74750ddc7ad2a8e2e73b89d76e2ac51626"
     },
     {
       "file": "04_mpi.svg",
@@ -394,7 +387,7 @@
         "tspan_elements": 2
       },
       "passed": true,
-      "source_sha256": "854ea63b4127253ce916635191997200055c71954756650ba4a77f7d12a3cac6"
+      "source_sha256": "d2d9714aee385de5b5f4873e7ace4f03ddd1b5835724949206a8ef4c728f768e"
     },
     {
       "file": "05_openmp.svg",
@@ -453,7 +446,7 @@
         "tspan_elements": 0
       },
       "passed": true,
-      "source_sha256": "446c4da853e395781187d3233be33ee32c2a33b376a7ff2a001f90454afca520"
+      "source_sha256": "8a636675132b786e5867d729e74ed344d538828c6d73525d32c6a0fcaa3fc5e6"
     },
     {
       "file": "06_validation.svg",
@@ -512,7 +505,7 @@
         "tspan_elements": 3
       },
       "passed": true,
-      "source_sha256": "09cc7af75255309d91d9ce0fd948db7e17b6e3822f23ee648676835cf96fadb2"
+      "source_sha256": "4581eb5c47705a2cc6c747f4b320507b390d946fa30bee7a4ccadf06c17618e6"
     },
     {
       "file": "07_performance.svg",
@@ -572,7 +565,7 @@
         "tspan_elements": 1
       },
       "passed": true,
-      "source_sha256": "d01d2070943f78f7c98e08c1390a2778f70ef47f1f477ee247b07d35898a2f7b"
+      "source_sha256": "c1a1cce844aa5febaad442a882c8ad7bd06bf3819fe94d37164c38ced442a63d"
     },
     {
       "file": "08_conclusion.svg",
@@ -583,7 +576,7 @@
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 19,
+          "text_elements": 20,
           "images": {
             "placements": 0,
             "files": [],
@@ -627,11 +620,11 @@
           "KaiTi, Arial",
           "SimHei, Arial"
         ],
-        "text_elements": 19,
+        "text_elements": 20,
         "tspan_elements": 0
       },
       "passed": true,
-      "source_sha256": "4f49a147e4a4f7a3d9c0c8eca126e2e445ac2210d96b4170a0c49f7f8dbc2d2a"
+      "source_sha256": "538277c8ff6ebd017c70b035fdd82c988e7ca139ddedd139f168b02b7f65013d"
     },
     {
       "file": "09_timing.svg",
@@ -690,7 +683,7 @@
         "tspan_elements": 4
       },
       "passed": true,
-      "source_sha256": "85582ad1b08e223a54ca446a32226395da33bff0446c9bd11737438f48ee91af"
+      "source_sha256": "83cadd83e1227b7dcbdc28ca9ad98da64de423053832ad5cb5a5bff5e2b5216d"
     },
     {
       "file": "10_full_scaling.svg",
@@ -751,7 +744,7 @@
         "tspan_elements": 3
       },
       "passed": true,
-      "source_sha256": "22f81f6cd1bc74db1d4be3806bdba9125c0731140dd2737917c5016a7ee84c5a"
+      "source_sha256": "9101915184e5bb673b438696c9aaf05d773f658fbef444a1a1bc760ab55d3a33"
     },
     {
       "file": "11_grid.svg",
@@ -812,7 +805,7 @@
         "tspan_elements": 4
       },
       "passed": true,
-      "source_sha256": "3a2c8ad9bb0c6dcf6ac9e85a3451e23fb434cab12bfd5119e27cae38b61fd373"
+      "source_sha256": "cbd6f83975d6119f0b7ace01f3c42f47b860b72e53ba50e32a7d293bf62f0b63"
     },
     {
       "file": "12_interpretation.svg",
@@ -877,7 +870,7 @@
         }
       },
       "passed": true,
-      "source_sha256": "8ba873a2e92dcba0b8635c741261126ec019725c30b903c4abc8c5b7cc47d8af"
+      "source_sha256": "4e7c062e6f270d4ea18e8c68ab88c58946a2450b3dafa73e4cd87eda73c136a7"
     }
   ]
 }

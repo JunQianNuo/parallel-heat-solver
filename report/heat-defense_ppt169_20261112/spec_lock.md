@@ -19,7 +19,7 @@
 
 ## visual_style
 - visual_style: custom
-- visual_style_behavior: 仿照指定去雾PDF的深色章节导航、蓝色通栏白字标题、白底黑字楷体正文与蓝色黑体强调、双条页脚；单页一个主题，少量图文。
+- visual_style_behavior: 仿照指定去雾PDF的深色章节导航、蓝色通栏白字标题、白底黑字楷体正文与蓝色黑体强调、双条页脚；单页一个主题，少量图文；标题使用简短主题名，结果及判断放正文。
 
 ## colors
 - background: #FFFFFF

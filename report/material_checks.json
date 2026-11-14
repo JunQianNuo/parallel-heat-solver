@@ -1,5 +1,5 @@
 {
-  "local_file_links_checked": 167,
+  "local_file_links_checked": 171,
   "performance_table": "checked against archived CSV",
   "M3_ratios_orders": "checked against archived CSV",
   "main_script": [
@@ -48,30 +48,30 @@
     {
       "page": "08",
       "budget_seconds": 40,
-      "CJK_and_alphanumeric_characters": 167,
-      "characters_per_budget_minute": 250.5
+      "CJK_and_alphanumeric_characters": 183,
+      "characters_per_budget_minute": 274.5
     }
   ],
-  "total_count": 1049,
+  "total_count": 1065,
   "timing_scenario": {
     "assumed_characters_per_minute": 280,
     "assumed_pause_seconds": 20,
-    "estimated_total_seconds": 244.8,
+    "estimated_total_seconds": 248.2,
     "human_rehearsal": "未运行/待用户验证"
   },
   "solver_build_tests_sampling": "未运行：M5只整理既有证据",
   "report_pdf_sha256": "db5a8a33ef67bb860f90ef9186d0e4f528420799f6f5f845b2d1c8ff4b2e3ca3",
-  "P03_native_formula": "two rows; six space/time scripts checked; no visible alignment token",
+  "P03_native_formula": "single line; six space/time scripts checked; no visible alignment token",
   "chart_points_and_intervals": "10 points and 10 asymmetric intervals verified from CSV",
   "pptx": {
     "slides": 12,
     "notes": 12,
     "native_math": 5,
-    "editable_shapes": 403,
+    "editable_shapes": 440,
     "animations_transitions": 0,
-    "file": "presentation-v4.pptx",
-    "sha256": "aaa21d22e6b032c1a20ce8bceff64b26fbe8e44adc7ecf4065dbc7d0233e5953"
+    "file": "presentation-v4-r1.pptx",
+    "sha256": "edbff4ceccef48c98dff9f06a939a4f1d154c74539b53c192be0566b17f6a3c3"
   },
   "course_protection": "2570 files: paths/content unchanged since this M5 snapshot",
-  "presentation_pdf_sha256": "5f07e432c4e7e7a8d7efe307be640e433955f3d184115cce7d1fdb390b322981"
+  "presentation_pdf_sha256": "6784efdee7ca5f16abe2fc174f777ab91522df6c52d01485372f56bd08ad6dfb"
 }

@@ -71,7 +71,7 @@ def main():
     for n in ['02-speedup.png','05-grid-speedup.png']:
         require(sha(project/'images'/n)==sha(figures/n),'figure copy changed')
     require(sha(project/'sources/m4-diagnostic-02-r1.csv')==sha(REPO/'results/performance/large-02-r1/m4-diagnostic-02-r1.csv'),'CSV copy changed')
-    pptx=ROOT/'presentation-v4.pptx'
+    pptx=ROOT/'presentation-v4-r1.pptx'
     with ZipFile(pptx) as z:
         slides=[n for n in z.namelist() if re.fullmatch(r'ppt/slides/slide\d+\.xml',n)]
         notes_files=[n for n in z.namelist() if re.fullmatch(r'ppt/notesSlides/notesSlide\d+\.xml',n)]
@@ -93,18 +93,19 @@ def main():
             require(actual_math==expected_math,f'native math content mismatch P{i}')
         math_tree=ET.fromstring(z.read('ppt/slides/slide3.xml'))
         math_parts=math_tree.findall('.//m:eqArr/m:e',namespaces)
-        require(len(math_parts)==2,'P03 expected two native equation rows')
+        require(len(math_parts)==0,'P03 expected a single unbroken native formula')
+        require(''.join(math_tree.find('.//m:oMath',namespaces).itertext())=='Ui,jn+1=1−4rUi,jn+rUi−1,jn+Ui+1,jn+Ui,j−1n+Ui,j+1n','P03 full update equation mismatch')
         require(not any('&' in (e.text or '') for e in math_tree.findall('.//m:t',namespaces)),'P03 leaked alignment token')
         scripts=math_tree.findall('.//m:sSubSup',namespaces)
         pairs=[(''.join(e.find('m:sub',namespaces).itertext()),''.join(e.find('m:sup',namespaces).itertext())) for e in scripts]
-        require(pairs==[('ij','n+1'),('ij','n'),('i−1,j','n'),('i+1,j','n'),('i,j−1','n'),('i,j+1','n')],'P03 native formula subscripts/time layers mismatch')
+        require(pairs==[('i,j','n+1'),('i,j','n'),('i−1,j','n'),('i+1,j','n'),('i,j−1','n'),('i,j+1','n')],'P03 native formula subscripts/time layers mismatch')
         media={hashlib.sha256(z.read(n)).hexdigest() for n in z.namelist() if n.startswith('ppt/media/')}
         require(all(sha(figures/n) in media for n in ['02-speedup.png','05-grid-speedup.png']),'embedded figure mismatch')
         for i,(_,_,txt) in enumerate(pages,1):
             tree=ET.fromstring(z.read(f'ppt/notesSlides/notesSlide{i}.xml'))
             text=''.join(tree.itertext())
             require(txt.strip() in text,f'notes/script mismatch P{i:02}')
-    course_before=REPO/'build/m5-v4/course-before.json'
+    course_before=REPO/'build/m5-v4-annotations/course-before.json'
     course_check='未运行：当前机器缺少本轮前置快照'
     if course_before.exists():
         before=json.loads(course_before.read_text())
@@ -112,7 +113,7 @@ def main():
         require(before==after,'course files changed since M5 snapshot')
         course_check=f'{len(after)} files: paths/content unchanged since this M5 snapshot'
     summary={'local_file_links_checked':links,'performance_table':'checked against archived CSV','M3_ratios_orders':'checked against archived CSV','main_script':speech,'total_count':total,'timing_scenario':scenario,'solver_build_tests_sampling':'未运行：M5只整理既有证据','report_pdf_sha256':hashlib.sha256(pdf.read_bytes()).hexdigest()}
-    summary.update({'P03_native_formula':'two rows; six space/time scripts checked; no visible alignment token','chart_points_and_intervals':'10 points and 10 asymmetric intervals verified from CSV','pptx':{'slides':len(slides),'notes':len(notes_files),'native_math':formula_count,'editable_shapes':shape_count,'animations_transitions':0,'file':pptx.name,'sha256':sha(pptx)},'course_protection':course_check,'presentation_pdf_sha256':sha(ROOT/'presentation-v4.pdf')})
+    summary.update({'P03_native_formula':'single line; six space/time scripts checked; no visible alignment token','chart_points_and_intervals':'10 points and 10 asymmetric intervals verified from CSV','pptx':{'slides':len(slides),'notes':len(notes_files),'native_math':formula_count,'editable_shapes':shape_count,'animations_transitions':0,'file':pptx.name,'sha256':sha(pptx)},'course_protection':course_check,'presentation_pdf_sha256':sha(ROOT/'presentation-v4-r1.pdf')})
     out=ROOT/'material_checks.json';out.write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(summary,ensure_ascii=False,indent=2))
 if __name__=='__main__':main()
