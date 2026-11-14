@@ -20,13 +20,13 @@
 | Design Style | 按用户指定《单幅图像去雾-第二组》参考重做页眉、疏密、推进、黑体/楷体及字号字色 |
 | AI Image Acquisition Path | not applicable |
 | Generation Mode | continuous |
-| Spec Refinement | enabled — 2026-11-14用户显式调用refine-spec；本文件待审，尚未冻结新版执行计划 |
+| Spec Refinement | enabled — 2026-11-14用户显式调用refine-spec；用户已于2026-11-14明确“批准”，进入Gate 2与制作 |
 | Speaker Notes | enabled — explicit user confirmation |
 | Custom Animations | disabled — explicit user confirmation, all-motion scope |
 | Narration Audio | disabled — explicit user confirmation |
 | Created Date | 2026-11-12 |
 | Revised Date | 2026-11-14 |
-| Review Status | Gate 1自查完成，等待用户审阅/确认；现有PPT v3和SVG仅代表此前交付，旧spec_lock不参与本轮审阅，批准后才同步 |
+| Review Status | 用户于2026-11-14明确批准6920cbb规范；Gate 2同步后制作v4，保留v3历史交付 |
 
 ### Evidence Ledger
 
@@ -336,8 +336,8 @@
 
 - **Generation**: enabled
 - **Filename**: match each SVG filename under `notes/`
-- **Content**: 本轮仅规划，批准后基于最终SVG修订讲稿；逐页与§IX的科学内容、事实限定和Timing一致，备份给出源码/统计解释。保留AI核查真实实例，来源集中保留在备注/报告；不将未发生的人工测试或用户审核写成已完成。现有SPEAKER_NOTES仍对应v3，尚未被本规范替换。
-- **Total duration**: P01–P08预算15/20/45/35/35/35/55/40秒，总计280秒，另留20秒机动；P09–P12不计入5分钟。批准后重新统计字数并实际检查讲述时长，预算/估算不冒充人工实讲。
+- **Content**: 本规范已获批准，基于最终SVG修订讲稿；逐页与§IX的科学内容、事实限定和Timing一致，备份给出源码/统计解释。保留AI核查真实实例，来源集中保留在备注/报告；不将未发生的人工测试或用户审核写成已完成。已按最终v4页面更新SPEAKER_NOTES和12页备注，逐页预算不变。
+- **Total duration**: P01–P08预算15/20/45/35/35/35/55/40秒，总计280秒，另留20秒机动；P09–P12不计入5分钟。执行后统计正文1049个中英文/数字字符；按280字符/分钟加20秒停顿估算244.8秒，预算/估算不冒充人工实讲。
 - **Notes style**: 中文口语化解释。
 - **Presentation purpose**: 解释算法/实现/验证与真实收益及限制，披露AI使用与修正。
 
@@ -346,6 +346,14 @@
 用户要求整体增字、减少中央留白、修复P03公式并补全五点计算流程机理。正文40px、标题44px；密集数据注释30px，导航页脚20px，公式36px。所有页重新排版而非缩放文本硬挤。P03公式用aligned两行，显式显示旧层n的五点坐标/权重、计算写入next中心、遍历全部内点/零边界、整层完成后交换、n<M回路；并行同步细节由P04/P05展开。两幅原图保持字节，按可用宽度放大；原始数据不变。
 
 
-## Revision refine-spec — 2026-11-14 (pending review)
+## Revision refine-spec — 2026-11-14 (approved)
 
 用户本轮显式要求按“懂算法/懂代码/懂验证/懂性能”细化。已在同一§IX逐页补入完整解释、来源、主讲/备份分工和时间预算；未改变已确认视觉方向、总页数、总时长或真实数值。现有SVG/PPT/讲稿未更新。旧执行锁是待同步的历史派生状态，本轮不读取其内容、不更新/使用/验证；仅在用户明确批准本规范后进入Gate 2及后续制作。
+
+
+审批接续：用户2026-11-14明确“批准”，此前待审文字保留为审阅阶段语境。现允许同步执行锁及继续制作；不将规范批准误记为成品或M5验收。
+
+
+### 2026-11-14 Approved execution — v4
+
+用户聊天明确“批准”后同步锁并执行12页与讲稿；上一节批准前状态是历史。P03保留五点公式与双数组完整循环，P07增加S/E，P08/P12说明两定律边界。共含5个原生Office Math公式，总计8正文/4备份，280秒预算不变。预览另有待应用批注，尚未获明确应用指令；本轮不将其标为已处理或用户验收。实际检查记录见[REVIEW](../REVIEW.md)。

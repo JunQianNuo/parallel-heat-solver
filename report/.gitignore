@@ -7,3 +7,6 @@ heat-defense_ppt169_20261112/validation/heat-defense_*.report.json
 
 # Office editing lock files stay local.
 ~$*.pptx
+
+# Spec review UI storage is local runtime state.
+heat-defense_ppt169_20261112/spec_review/

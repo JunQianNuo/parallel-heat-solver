@@ -4,7 +4,7 @@
   "target": "/home/nuo/courses/projects/parallel-heat-solver/report/heat-defense_ppt169_20261112",
   "source_fingerprint": {
     "algorithm": "sha256",
-    "digest": "2ac36bdb2e2ef83b947f4b3852ef137ec14e1eff5ceadd3f0a14450690ee9cba",
+    "digest": "243952e6c7d5125d46f958121f9bb45809ba438d6c41e7a39a322604fd0316b1",
     "file_count": 12,
     "files": [
       {
@@ -13,85 +13,65 @@
       },
       {
         "file": "02_route.svg",
-        "sha256": "9a5ba02b61fc78ffe8db8edb2497514ba824860a017321f523b659682f78ad79"
+        "sha256": "02dc02ef50fc366d67b61a407416e99d3f98b037fc151bc4a58cf2b9cdb3a0d1"
       },
       {
         "file": "03_stencil.svg",
-        "sha256": "40bfe00f01e727e688567b75ac438471b8f45931e0863908220e8cf25025b976"
+        "sha256": "98b3c047d556e704fd36ce1b78b3df944206112d0934e2c65e8168d49a1f0eb1"
       },
       {
         "file": "04_mpi.svg",
-        "sha256": "5d5f265c4341d719267d63d35c8293c519d7b0d01e345d0ec0d1223aeae622d2"
+        "sha256": "854ea63b4127253ce916635191997200055c71954756650ba4a77f7d12a3cac6"
       },
       {
         "file": "05_openmp.svg",
-        "sha256": "aa9b1887750ded2824dcec71d2c846ed5334be9b8ba73db27928f1e02bc0ad5a"
+        "sha256": "446c4da853e395781187d3233be33ee32c2a33b376a7ff2a001f90454afca520"
       },
       {
         "file": "06_validation.svg",
-        "sha256": "4c311559635c6582123d1d30d7107917c055c9268c85d33af7ec2f9ab7cd228b"
+        "sha256": "09cc7af75255309d91d9ce0fd948db7e17b6e3822f23ee648676835cf96fadb2"
       },
       {
         "file": "07_performance.svg",
-        "sha256": "0ece8cd98d4d88ada1569619041d8ab07107efa37b5c071a976e305a4fd48606"
+        "sha256": "d01d2070943f78f7c98e08c1390a2778f70ef47f1f477ee247b07d35898a2f7b"
       },
       {
         "file": "08_conclusion.svg",
-        "sha256": "c9dd72cb697b1b3db38b11754e46a5c1743d554972b58bba7860b6fba1043060"
+        "sha256": "4f49a147e4a4f7a3d9c0c8eca126e2e445ac2210d96b4170a0c49f7f8dbc2d2a"
       },
       {
         "file": "09_timing.svg",
-        "sha256": "84319a3342f3aacafbb80b4026bc3857a839257699b30a0dde636591b05e3f2f"
+        "sha256": "85582ad1b08e223a54ca446a32226395da33bff0446c9bd11737438f48ee91af"
       },
       {
         "file": "10_full_scaling.svg",
-        "sha256": "72fb63d26e4c4754163d9da49b9cc802d16c0611d99dc71a7a1b853a54346ae5"
+        "sha256": "22f81f6cd1bc74db1d4be3806bdba9125c0731140dd2737917c5016a7ee84c5a"
       },
       {
         "file": "11_grid.svg",
-        "sha256": "5e70ba0b44a8ed1190e11beee7d1f2448a18a05c60ca26fc957caa7b1363a49e"
+        "sha256": "3a2c8ad9bb0c6dcf6ac9e85a3451e23fb434cab12bfd5119e27cae38b61fd373"
       },
       {
         "file": "12_interpretation.svg",
-        "sha256": "07cac7dc62e8de7d450f57f59c2c11dd8b29760e4406faf4d743a41ef5159180"
+        "sha256": "8ba873a2e92dcba0b8635c741261126ec019725c30b903c4abc8c5b7cc47d8af"
       }
     ]
   },
   "summary": {
     "total": 12,
-    "passed": 9,
-    "warnings": 1,
-    "errors": 2
+    "passed": 12,
+    "warnings": 0,
+    "errors": 0
   },
-  "issue_types": {
-    "Other": 2
-  },
+  "issue_types": {},
   "categories": {
     "blocking": {
-      "count": 2,
-      "issues": [
-        {
-          "file": "07_performance.svg",
-          "message": "<text> (x=56, y=174; text='N=1024，M=65536；同网格串行…') exceeds <g id=\"n1024-speedup\"> data-pptx-bounds on the horizontal axis: content (56.0, 140.0)-(833.3, 188.0), container (56.0, 140.0)-(780.0, 620.0), overflow horizontal 7.4%, vertical 0.0% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text; ≈33.8 px per mixed char at 40px incl. headroom; ≈21 chars fit in 724 px"
-        },
-        {
-          "file": "10_full_scaling.svg",
-          "message": "<text> (x=856, y=610; text='完整原图，保留全部区间。') exceeds <g id=\"figure-reading\"> data-pptx-bounds on the horizontal axis: content (856.0, 584.5)-(1259.2, 620.5), container (856.0, 145.0)-(1224.0, 635.0), overflow horizontal 9.6%, vertical 0.0% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text; ≈33.6 px per CJK char at 30px incl. headroom; ≈10 chars fit in 368 px"
-        }
-      ]
+      "count": 0,
+      "issues": []
     },
     "introduced": {
-      "count": 2,
-      "issues": [
-        {
-          "file": "07_performance.svg",
-          "message": "<text> (x=56, y=651; text='竖线为探索性95%区间；16逻辑CPU覆…') exceeds <g id=\"interval-and-resource\"> data-pptx-bounds on the vertical axis: content (56.0, 625.5)-(1145.2, 661.5), container (56.0, 625.0)-(1224.0, 660.0), overflow horizontal 0.0%, vertical 4.3% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text"
-        },
-        {
-          "file": "08_conclusion.svg",
-          "message": "<text> (x=56, y=205; text='数值实现 通过解析解、离散模态与串行全场…') exceeds <g id=\"conclusions\"> data-pptx-bounds on the horizontal axis: content (56.0, 171.0)-(1232.8, 489.0), container (56.0, 155.0)-(1224.0, 540.0), overflow horizontal 0.8%, vertical 0.0% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text; ≈42.0 px per mixed char at 40px incl. headroom; ≈27 chars fit in 1168 px"
-        }
-      ]
+      "count": 0,
+      "issues": []
     },
     "inherited": {
       "count": 0,
@@ -109,7 +89,8 @@
     "colors": {},
     "fonts": {
       "Cambria Math": [
-        "03_stencil.svg"
+        "03_stencil.svg",
+        "12_interpretation.svg"
       ]
     },
     "sizes": {}
@@ -118,14 +99,14 @@
     "scope": "informational-not-a-quota",
     "pages": 12,
     "totals": {
-      "text_elements": 220,
+      "text_elements": 244,
       "image_placements": 2,
       "icons": 0,
-      "svg_geometry_elements": 169,
+      "svg_geometry_elements": 166,
       "preset_shapes": 0,
       "page_frame_elements": 12,
       "marker_uses": 0,
-      "inline_emphasis_runs": 6,
+      "inline_emphasis_runs": 0,
       "gradient_uses": 0,
       "filter_uses": 0,
       "text_effects": 0
@@ -136,33 +117,33 @@
       "presets": 0,
       "charts": 0,
       "tables": 0,
-      "formulas": 1,
-      "inline_emphasis_runs": 2,
+      "formulas": 3,
+      "inline_emphasis_runs": 0,
       "gradient_uses": 0,
       "filter_uses": 0,
       "text_effects": 0
     },
     "relationship_pages": 8,
     "geometry_elements": {
-      "circle": 62,
+      "circle": 60,
       "ellipse": 0,
       "line": 36,
       "path": 0,
       "polygon": 0,
       "polyline": 2,
-      "rect": 69
+      "rect": 68
     },
     "preset_names": {},
     "native_objects": {
       "chart": 0,
-      "formula_block": 1,
+      "formula_block": 5,
       "formula_inline": 0,
       "other": 0,
       "table": 0
     },
     "image_page_max_frame_share_range": [
-      0.4077,
-      0.4516
+      0.452,
+      0.4694
     ]
   },
   "project_issues": {
@@ -241,7 +222,7 @@
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 21,
+          "text_elements": 18,
           "images": {
             "placements": 0,
             "files": [],
@@ -257,7 +238,7 @@
           "geometry": {
             "svg_elements": {
               "rect": 6,
-              "circle": 10,
+              "circle": 7,
               "ellipse": 0,
               "line": 6,
               "polyline": 0,
@@ -282,15 +263,14 @@
           }
         },
         "fonts": [
-          "Arial",
           "KaiTi, Arial",
           "SimHei, Arial"
         ],
-        "text_elements": 21,
-        "tspan_elements": 1
+        "text_elements": 18,
+        "tspan_elements": 3
       },
       "passed": true,
-      "source_sha256": "9a5ba02b61fc78ffe8db8edb2497514ba824860a017321f523b659682f78ad79"
+      "source_sha256": "02dc02ef50fc366d67b61a407416e99d3f98b037fc151bc4a58cf2b9cdb3a0d1"
     },
     {
       "file": "03_stencil.svg",
@@ -301,7 +281,7 @@
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 49,
+          "text_elements": 51,
           "images": {
             "placements": 0,
             "files": [],
@@ -316,8 +296,8 @@
           },
           "geometry": {
             "svg_elements": {
-              "rect": 8,
-              "circle": 12,
+              "rect": 7,
+              "circle": 13,
               "ellipse": 0,
               "line": 10,
               "polyline": 0,
@@ -346,7 +326,7 @@
           "KaiTi, Arial",
           "SimHei, Arial"
         ],
-        "text_elements": 49,
+        "text_elements": 51,
         "tspan_elements": 0,
         "contextual_values": {
           "font_families": [
@@ -355,7 +335,7 @@
         }
       },
       "passed": true,
-      "source_sha256": "40bfe00f01e727e688567b75ac438471b8f45931e0863908220e8cf25025b976"
+      "source_sha256": "98b3c047d556e704fd36ce1b78b3df944206112d0934e2c65e8168d49a1f0eb1"
     },
     {
       "file": "04_mpi.svg",
@@ -366,7 +346,7 @@
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 18,
+          "text_elements": 20,
           "images": {
             "placements": 0,
             "files": [],
@@ -410,11 +390,11 @@
           "KaiTi, Arial",
           "SimHei, Arial"
         ],
-        "text_elements": 18,
-        "tspan_elements": 3
+        "text_elements": 20,
+        "tspan_elements": 2
       },
       "passed": true,
-      "source_sha256": "5d5f265c4341d719267d63d35c8293c519d7b0d01e345d0ec0d1223aeae622d2"
+      "source_sha256": "854ea63b4127253ce916635191997200055c71954756650ba4a77f7d12a3cac6"
     },
     {
       "file": "05_openmp.svg",
@@ -473,7 +453,7 @@
         "tspan_elements": 0
       },
       "passed": true,
-      "source_sha256": "aa9b1887750ded2824dcec71d2c846ed5334be9b8ba73db27928f1e02bc0ad5a"
+      "source_sha256": "446c4da853e395781187d3233be33ee32c2a33b376a7ff2a001f90454afca520"
     },
     {
       "file": "06_validation.svg",
@@ -532,22 +512,18 @@
         "tspan_elements": 3
       },
       "passed": true,
-      "source_sha256": "4c311559635c6582123d1d30d7107917c055c9268c85d33af7ec2f9ab7cd228b"
+      "source_sha256": "09cc7af75255309d91d9ce0fd948db7e17b6e3822f23ee648676835cf96fadb2"
     },
     {
       "file": "07_performance.svg",
       "path": "report/heat-defense_ppt169_20261112/svg_output/07_performance.svg",
       "exists": true,
-      "errors": [
-        "<text> (x=56, y=174; text='N=1024，M=65536；同网格串行…') exceeds <g id=\"n1024-speedup\"> data-pptx-bounds on the horizontal axis: content (56.0, 140.0)-(833.3, 188.0), container (56.0, 140.0)-(780.0, 620.0), overflow horizontal 7.4%, vertical 0.0% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text; ≈33.8 px per mixed char at 40px incl. headroom; ≈21 chars fit in 724 px"
-      ],
-      "warnings": [
-        "<text> (x=56, y=651; text='竖线为探索性95%区间；16逻辑CPU覆…') exceeds <g id=\"interval-and-resource\"> data-pptx-bounds on the vertical axis: content (56.0, 625.5)-(1145.2, 661.5), container (56.0, 625.0)-(1224.0, 660.0), overflow horizontal 0.0%, vertical 4.3% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text"
-      ],
+      "errors": [],
+      "warnings": [],
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 29,
+          "text_elements": 32,
           "images": {
             "placements": 0,
             "files": [],
@@ -582,7 +558,7 @@
           "native_objects": {
             "chart": 0,
             "table": 0,
-            "formula_block": 0,
+            "formula_block": 1,
             "formula_inline": 0,
             "other": 0
           }
@@ -592,24 +568,22 @@
           "KaiTi, Arial",
           "SimHei, Arial"
         ],
-        "text_elements": 29,
+        "text_elements": 32,
         "tspan_elements": 1
       },
-      "passed": false,
-      "source_sha256": "0ece8cd98d4d88ada1569619041d8ab07107efa37b5c071a976e305a4fd48606"
+      "passed": true,
+      "source_sha256": "d01d2070943f78f7c98e08c1390a2778f70ef47f1f477ee247b07d35898a2f7b"
     },
     {
       "file": "08_conclusion.svg",
       "path": "report/heat-defense_ppt169_20261112/svg_output/08_conclusion.svg",
       "exists": true,
       "errors": [],
-      "warnings": [
-        "<text> (x=56, y=205; text='数值实现 通过解析解、离散模态与串行全场…') exceeds <g id=\"conclusions\"> data-pptx-bounds on the horizontal axis: content (56.0, 171.0)-(1232.8, 489.0), container (56.0, 155.0)-(1224.0, 540.0), overflow horizontal 0.8%, vertical 0.0% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text; ≈42.0 px per mixed char at 40px incl. headroom; ≈27 chars fit in 1168 px"
-      ],
+      "warnings": [],
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 10,
+          "text_elements": 19,
           "images": {
             "placements": 0,
             "files": [],
@@ -617,7 +591,7 @@
           },
           "icons": 0,
           "effects": {
-            "inline_emphasis_runs": 4,
+            "inline_emphasis_runs": 0,
             "gradient_uses": 0,
             "filter_uses": 0,
             "text_effects": 0
@@ -653,11 +627,11 @@
           "KaiTi, Arial",
           "SimHei, Arial"
         ],
-        "text_elements": 10,
-        "tspan_elements": 7
+        "text_elements": 19,
+        "tspan_elements": 0
       },
       "passed": true,
-      "source_sha256": "c9dd72cb697b1b3db38b11754e46a5c1743d554972b58bba7860b6fba1043060"
+      "source_sha256": "4f49a147e4a4f7a3d9c0c8eca126e2e445ac2210d96b4170a0c49f7f8dbc2d2a"
     },
     {
       "file": "09_timing.svg",
@@ -668,7 +642,7 @@
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 11,
+          "text_elements": 12,
           "images": {
             "placements": 0,
             "files": [],
@@ -712,19 +686,17 @@
           "KaiTi, Arial",
           "SimHei, Arial"
         ],
-        "text_elements": 11,
-        "tspan_elements": 5
+        "text_elements": 12,
+        "tspan_elements": 4
       },
       "passed": true,
-      "source_sha256": "84319a3342f3aacafbb80b4026bc3857a839257699b30a0dde636591b05e3f2f"
+      "source_sha256": "85582ad1b08e223a54ca446a32226395da33bff0446c9bd11737438f48ee91af"
     },
     {
       "file": "10_full_scaling.svg",
       "path": "report/heat-defense_ppt169_20261112/svg_output/10_full_scaling.svg",
       "exists": true,
-      "errors": [
-        "<text> (x=856, y=610; text='完整原图，保留全部区间。') exceeds <g id=\"figure-reading\"> data-pptx-bounds on the horizontal axis: content (856.0, 584.5)-(1259.2, 620.5), container (856.0, 145.0)-(1224.0, 635.0), overflow horizontal 9.6%, vertical 0.0% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text; ≈33.6 px per CJK char at 30px incl. headroom; ≈10 chars fit in 368 px"
-      ],
+      "errors": [],
       "warnings": [],
       "info": {
         "viewbox": "0 0 1280 720",
@@ -735,7 +707,7 @@
             "files": [
               "02-speedup.png"
             ],
-            "max_frame_share": 0.4077
+            "max_frame_share": 0.452
           },
           "icons": 0,
           "effects": {
@@ -776,10 +748,10 @@
           "SimHei, Arial"
         ],
         "text_elements": 12,
-        "tspan_elements": 2
+        "tspan_elements": 3
       },
-      "passed": false,
-      "source_sha256": "72fb63d26e4c4754163d9da49b9cc802d16c0611d99dc71a7a1b853a54346ae5"
+      "passed": true,
+      "source_sha256": "22f81f6cd1bc74db1d4be3806bdba9125c0731140dd2737917c5016a7ee84c5a"
     },
     {
       "file": "11_grid.svg",
@@ -796,7 +768,7 @@
             "files": [
               "05-grid-speedup.png"
             ],
-            "max_frame_share": 0.4516
+            "max_frame_share": 0.4694
           },
           "icons": 0,
           "effects": {
@@ -840,7 +812,7 @@
         "tspan_elements": 4
       },
       "passed": true,
-      "source_sha256": "5e70ba0b44a8ed1190e11beee7d1f2448a18a05c60ca26fc957caa7b1363a49e"
+      "source_sha256": "3a2c8ad9bb0c6dcf6ac9e85a3451e23fb434cab12bfd5119e27cae38b61fd373"
     },
     {
       "file": "12_interpretation.svg",
@@ -851,7 +823,7 @@
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 12,
+          "text_elements": 22,
           "images": {
             "placements": 0,
             "files": [],
@@ -859,7 +831,7 @@
           },
           "icons": 0,
           "effects": {
-            "inline_emphasis_runs": 2,
+            "inline_emphasis_runs": 0,
             "gradient_uses": 0,
             "filter_uses": 0,
             "text_effects": 0
@@ -886,20 +858,26 @@
           "native_objects": {
             "chart": 0,
             "table": 0,
-            "formula_block": 0,
+            "formula_block": 3,
             "formula_inline": 0,
             "other": 0
           }
         },
         "fonts": [
+          "Cambria Math",
           "KaiTi, Arial",
           "SimHei, Arial"
         ],
-        "text_elements": 12,
-        "tspan_elements": 4
+        "text_elements": 22,
+        "tspan_elements": 4,
+        "contextual_values": {
+          "font_families": [
+            "Cambria Math"
+          ]
+        }
       },
       "passed": true,
-      "source_sha256": "07cac7dc62e8de7d450f57f59c2c11dd8b29760e4406faf4d743a41ef5159180"
+      "source_sha256": "8ba873a2e92dcba0b8635c741261126ec019725c30b903c4abc8c5b7cc47d8af"
     }
   ]
 }

@@ -42,6 +42,11 @@ def main():
     total=sum(p['CJK_and_alphanumeric_characters'] for p in speech)
     # Explicit scenario, not an observed human speech rate or timed rehearsal.
     scenario={'assumed_characters_per_minute':280,'assumed_pause_seconds':20,'estimated_total_seconds':round(total/280*60+20,1),'human_rehearsal':'未运行/待用户验证'}
+    for kind,k in [('mpi',16),('openmp',8),('openmp',16)]:
+        row=next(r for r in rows if r['N']=='1024' and r['kind']==kind and int(r['actual'])==k)
+        slide_text=''.join(ET.parse(ROOT/'heat-defense_ppt169_20261112/svg_output/07_performance.svg').getroot().itertext())
+        require(f"S={float(row['speedup_serial']):.4f}" in slide_text,'P07 speedup mismatch')
+        require(f"E={float(row['efficiency'])*100:.2f}%" in slide_text,'P07 efficiency mismatch')
     pdf=ROOT/'FINAL_REPORT.pdf'
     require(pdf.read_bytes().startswith(b'%PDF'),'invalid PDF signature')
     project=ROOT/'heat-defense_ppt169_20261112'
@@ -66,7 +71,7 @@ def main():
     for n in ['02-speedup.png','05-grid-speedup.png']:
         require(sha(project/'images'/n)==sha(figures/n),'figure copy changed')
     require(sha(project/'sources/m4-diagnostic-02-r1.csv')==sha(REPO/'results/performance/large-02-r1/m4-diagnostic-02-r1.csv'),'CSV copy changed')
-    pptx=ROOT/'presentation-v3.pptx'
+    pptx=ROOT/'presentation-v4.pptx'
     with ZipFile(pptx) as z:
         slides=[n for n in z.namelist() if re.fullmatch(r'ppt/slides/slide\d+\.xml',n)]
         notes_files=[n for n in z.namelist() if re.fullmatch(r'ppt/notesSlides/notesSlide\d+\.xml',n)]
@@ -77,7 +82,15 @@ def main():
             tree=ET.fromstring(z.read(n));formula_count+=len(tree.findall('.//m:oMath',namespaces));shape_count+=len(tree.findall('.//p:sp',namespaces))
             require(tree.find('p:timing',namespaces) is None,'unexpected animations')
             require(tree.find('p:transition',namespaces) is None,'unexpected transitions')
-        require(formula_count>=1 and shape_count>100,'expected native math and editable text/shapes')
+        require(formula_count==5 and shape_count>100,'expected five native formulas and editable text/shapes')
+        for i,count in [(3,1),(7,1),(12,3)]:
+            tree=ET.fromstring(z.read(f'ppt/slides/slide{i}.xml'))
+            require(len(tree.findall('.//m:oMath',namespaces))==count,f'native formula count P{i}')
+            require(not any('&' in (e.text or '') for e in tree.findall('.//m:t',namespaces)),f'leaked math alignment token P{i}')
+        for i,expected_math in [(7,['Sk=medianTsmedianTk,\u2003Ek=Skk']),(12,['SAk=1f+1−f/k','SGk=k−σk−1','feff=k/S−1k−1\u2003k>1'])]:
+            tree=ET.fromstring(z.read(f'ppt/slides/slide{i}.xml'))
+            actual_math=[''.join(e.itertext()) for e in tree.findall('.//m:oMath',namespaces)]
+            require(actual_math==expected_math,f'native math content mismatch P{i}')
         math_tree=ET.fromstring(z.read('ppt/slides/slide3.xml'))
         math_parts=math_tree.findall('.//m:eqArr/m:e',namespaces)
         require(len(math_parts)==2,'P03 expected two native equation rows')
@@ -91,7 +104,7 @@ def main():
             tree=ET.fromstring(z.read(f'ppt/notesSlides/notesSlide{i}.xml'))
             text=''.join(tree.itertext())
             require(txt.strip() in text,f'notes/script mismatch P{i:02}')
-    course_before=REPO/'build/m5-v3/course-before.json'
+    course_before=REPO/'build/m5-v4/course-before.json'
     course_check='未运行：当前机器缺少本轮前置快照'
     if course_before.exists():
         before=json.loads(course_before.read_text())
@@ -99,7 +112,7 @@ def main():
         require(before==after,'course files changed since M5 snapshot')
         course_check=f'{len(after)} files: paths/content unchanged since this M5 snapshot'
     summary={'local_file_links_checked':links,'performance_table':'checked against archived CSV','M3_ratios_orders':'checked against archived CSV','main_script':speech,'total_count':total,'timing_scenario':scenario,'solver_build_tests_sampling':'未运行：M5只整理既有证据','report_pdf_sha256':hashlib.sha256(pdf.read_bytes()).hexdigest()}
-    summary.update({'P03_native_formula':'two rows; six space/time scripts checked; no visible alignment token','chart_points_and_intervals':'10 points and 10 asymmetric intervals verified from CSV','pptx':{'slides':len(slides),'notes':len(notes_files),'native_math':formula_count,'editable_shapes':shape_count,'animations_transitions':0,'file':pptx.name,'sha256':sha(pptx)},'course_protection':course_check,'presentation_pdf_sha256':sha(ROOT/'presentation-v3.pdf')})
+    summary.update({'P03_native_formula':'two rows; six space/time scripts checked; no visible alignment token','chart_points_and_intervals':'10 points and 10 asymmetric intervals verified from CSV','pptx':{'slides':len(slides),'notes':len(notes_files),'native_math':formula_count,'editable_shapes':shape_count,'animations_transitions':0,'file':pptx.name,'sha256':sha(pptx)},'course_protection':course_check,'presentation_pdf_sha256':sha(ROOT/'presentation-v4.pdf')})
     out=ROOT/'material_checks.json';out.write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(summary,ensure_ascii=False,indent=2))
 if __name__=='__main__':main()

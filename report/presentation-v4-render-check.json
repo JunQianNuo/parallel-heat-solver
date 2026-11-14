@@ -1,0 +1,81 @@
+{
+  "renderer": "LibreOffice 24.2.7.2 → PDF; PyMuPDF 1.5× all 12 pages",
+  "presentation_pdf_sha256": "5f07e432c4e7e7a8d7efe307be640e433955f3d184115cce7d1fdb390b322981",
+  "pages": [
+    {
+      "page": 1,
+      "outside_text": [],
+      "min_font_pt": 29.99,
+      "max_font_pt": 43.51
+    },
+    {
+      "page": 2,
+      "outside_text": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 3,
+      "outside_text": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 4,
+      "outside_text": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 5,
+      "outside_text": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 6,
+      "outside_text": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 7,
+      "outside_text": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 8,
+      "outside_text": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 9,
+      "outside_text": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 10,
+      "outside_text": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 11,
+      "outside_text": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 12,
+      "outside_text": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    }
+  ],
+  "human_PowerPoint_and_rehearsal": "未运行/待本人验证",
+  "AI_visual_review": "Contact sheet plus P03/P07/P08/P12 detailed rendering inspected; final re-export pixels identical on all 12 pages.",
+  "final_reexport_pixels_match_reviewed_pages": true
+}

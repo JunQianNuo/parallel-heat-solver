@@ -8,14 +8,14 @@
 ## communication
 - primary_language: zh-CN
 - audience: 并行与分布式计算课程教师
-- objective: 在5分钟依研究路线解释算法、并行实现、验证与真实收益，披露AI核查和评价边界。
+- objective: 在5分钟沿算法依赖、代码划分同步、两类误差及真实性能证据解释三实现，使教师能追问基线/计时/S/E和Amdahl/Gustafson适用边界，并披露AI核查。
 - core_message: 正确性有证据，并行收益有条件
 - consumption_mode: presentation
 
 ## mode
 - mode: custom
 - mode_references: instructional
-- mode_behavior: 问题与路线→数值原理→并行实现→正确性/性能证据→结论与评价边界。
+- mode_behavior: 同一问题→懂算法→懂MPI/OpenMP代码→懂两类验证→懂基线/计时/S/E→两个定律与真实结论边界。
 
 ## visual_style
 - visual_style: custom

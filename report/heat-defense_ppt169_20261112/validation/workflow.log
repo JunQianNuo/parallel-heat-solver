@@ -631,3 +631,317 @@ stdout:
     [PPTX] report/heat-defense_ppt169_20261112/exports/heat-defense_20261113_184321.pptx
     [REPORT] report/heat-defense_ppt169_20261112/validation/heat-defense_20261113_184321.report.json
 === 2026-11-13T10:43:22.272Z END run=79de88cec7c2 elapsed_ms=1454 output_lines=56 retained=4 omitted=52 ===
+
+=== 2026-11-14T09:30:35.496Z PYTHON run=46e91933fbb7 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/check_spec_annotations.py", "report/heat-defense_ppt169_20261112"]
+=== 2026-11-14T09:30:35.571Z END run=46e91933fbb7 elapsed_ms=75 output_lines=1 retained=0 omitted=1 ===
+
+=== 2026-11-14T09:30:36.394Z PYTHON run=426f8a167708 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/project_manager.py", "validate", "report/heat-defense_ppt169_20261112"]
+stdout:
+  [OK] Project structure is complete.
+=== 2026-11-14T09:30:36.976Z END run=426f8a167708 elapsed_ms=582 output_lines=3 retained=1 omitted=2 ===
+
+=== 2026-11-14T09:30:37.069Z PYTHON run=13d41ecf7ddc ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/text_measure.py", "calibrate", "report/heat-defense_ppt169_20261112", "--outline"]
+=== 2026-11-14T09:30:37.207Z END run=13d41ecf7ddc elapsed_ms=138 output_lines=21 retained=0 omitted=21 ===
+
+=== 2026-11-14T09:31:00.621Z PYTHON run=fdf7d9e1bf31 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/home/nuo/courses/projects/parallel-heat-solver/build/m5-tools/bin/python", "/home/nuo/.codex/skills/ppt-master/scripts/svg_editor/server.py", "report/heat-defense_ppt169_20261112", "--live", "--daemon"]
+stderr:
+  [17:31:01] [INFO] svg_editor: started live preview in background: http://127.0.0.1:6060 (pid=202996)
+  [17:31:01] [INFO] svg_editor: log: /home/nuo/courses/projects/parallel-heat-solver/report/heat-defense_ppt169_20261112/live_preview/server.log
+  [17:31:01] [INFO] svg_editor: browser launch request accepted by OS: http://127.0.0.1:6060
+=== 2026-11-14T09:31:01.813Z END run=fdf7d9e1bf31 elapsed_ms=1192 output_lines=3 retained=3 omitted=0 ===
+
+=== 2026-11-14T09:33:30.661Z PYTHON run=b5c93edfb5e0 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/svg_quality_checker.py", "report/heat-defense_ppt169_20261112", "--canonical-authoring", "--stage", "early", "--json"]
+stdout:
+  [OK] 01_cover.svg - Passed
+  [SUMMARY] Check Summary
+  Total files: 12
+    [OK] Fully passed: 12 (100%)
+    [WARN] With warnings: 0 (0%)
+    [ERROR] With errors: 0 (0%)
+  Provenance categories:
+    blocking: 0          hard findings; gate also requires exit 0
+    introduced: 0        advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 12 | text: 224 | images: 2 | icons: 0
+    Geometry: SVG elements 166 | native presets 0 | page-frame elements 12 | marker uses 0
+  [REPORT] JSON quality report exported: report/heat-defense_ppt169_20261112/validation/svg_quality_early_report.json
+=== 2026-11-14T09:33:31.593Z END run=b5c93edfb5e0 elapsed_ms=932 output_lines=51 retained=15 omitted=36 ===
+
+=== 2026-11-14T09:36:27.210Z PYTHON run=8c88ea9d1bd4 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/svg_quality_checker.py", "report/heat-defense_ppt169_20261112", "--canonical-authoring", "--stage", "final", "--json"]
+stdout:
+  [OK] 01_cover.svg - Passed
+  [ERROR] 07_performance.svg - Failed
+     viewBox: 0 0 1280 720
+     [ERROR] <text> (x=620, y=154; text='N=1024，M=65536；k取实际P…') exceeds <g id="performance-context"> data-pptx-bounds on the vertical axis: content (620.0, 128.5)-(1129.7, 200.5), container (620.0, 124.0)-(1240.0, 194.0), overflow horizontal 0.0%, vertical 9.3% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+     [WARN] <text> (x=200, y=213; text='● MPI') exceeds <g id="n1024-speedup"> data-pptx-bounds on the vertical axis: content (200.0, 187.5)-(284.6, 223.5), container (56.0, 198.0)-(780.0, 618.0), overflow horizontal 0.0%, vertical 2.5% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+     [WARN] <text> (x=360, y=213; text='■ OpenMP') exceeds <g id="n1024-speedup"> data-pptx-bounds on the vertical axis: content (360.0, 187.5)-(513.9, 223.5), container (56.0, 198.0)-(780.0, 618.0), overflow horizontal 0.0%, vertical 2.5% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+     [WARN] <text> (x=555, y=213; text='S=1') exceeds <g id="n1024-speedup"> data-pptx-bounds on the vertical axis: content (555.0, 187.5)-(615.7, 223.5), container (56.0, 198.0)-(780.0, 618.0), overflow horizontal 0.0%, vertical 2.5% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+  [OK] 08_conclusion.svg - Passed
+  [ERROR] 12_interpretation.svg - Failed
+     viewBox: 0 0 1280 720
+     [ERROR] <text> (x=800, y=297; text='扩大问题；σ未单测并行时间未保持相近') exceeds <g id="gustafson-scope"> data-pptx-bounds on the vertical axis: content (800.0, 271.5)-(1102.4, 347.5), container (800.0, 263.0)-(1240.0, 343.0), overflow horizontal 0.0%, vertical 5.6% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+  [SUMMARY] Check Summary
+  Total files: 12
+    [OK] Fully passed: 10 (83%)
+    [WARN] With warnings: 0 (0%)
+    [ERROR] With errors: 2 (16%)
+  Provenance categories:
+    blocking: 2          hard findings; gate also requires exit 0
+    introduced: 3        advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 12 | text: 239 | images: 2 | icons: 0
+    Geometry: SVG elements 166 | native presets 0 | page-frame elements 12 | marker uses 0
+    Effects: inline emphasis 0 (pages 0) | gradients 0 (pages 0) | filters 0 (pages 0) | text effects 0 (pages 0)
+    Native objects: charts 0 | tables 0 | formulas 5
+    Presets: (none)
+    Relationship pages: 8 (§IX names order / link / parent / membership) | pages carrying a preset or connector: 0
+  [REPORT] JSON quality report exported: report/heat-defense_ppt169_20261112/validation/svg_quality_report.json
+=== 2026-11-14T09:36:28.068Z END run=8c88ea9d1bd4 elapsed_ms=858 output_lines=64 retained=29 omitted=35 ===
+
+=== 2026-11-14T09:37:14.128Z PYTHON run=56b17d55ea8e ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/svg_quality_checker.py", "report/heat-defense_ppt169_20261112", "--canonical-authoring", "--stage", "final", "--json"]
+stdout:
+  [OK] 01_cover.svg - Passed
+  [SUMMARY] Check Summary
+  Total files: 12
+    [OK] Fully passed: 12 (100%)
+    [WARN] With warnings: 0 (0%)
+    [ERROR] With errors: 0 (0%)
+  Provenance categories:
+    blocking: 0          hard findings; gate also requires exit 0
+    introduced: 0        advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 12 | text: 239 | images: 2 | icons: 0
+    Geometry: SVG elements 166 | native presets 0 | page-frame elements 12 | marker uses 0
+  [REPORT] JSON quality report exported: report/heat-defense_ppt169_20261112/validation/svg_quality_report.json
+=== 2026-11-14T09:37:14.951Z END run=56b17d55ea8e elapsed_ms=823 output_lines=51 retained=15 omitted=36 ===
+
+=== 2026-11-14T09:42:38.766Z PYTHON run=44d932dd6976 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/total_md_split.py", "report/heat-defense_ppt169_20261112"]
+stdout:
+  [OK] SVG files and notes have one-to-one correspondence
+  [Done] Successfully generated 12/12 file(s)
+  [Done] Notes splitting complete
+=== 2026-11-14T09:42:38.771Z END run=44d932dd6976 elapsed_ms=4 output_lines=21 retained=3 omitted=18 ===
+
+=== 2026-11-14T09:42:42.267Z PYTHON run=f64b01221ca9 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/finalize_svg.py", "report/heat-defense_ppt169_20261112"]
+stdout:
+  [OK] Done!
+=== 2026-11-14T09:42:43.584Z END run=f64b01221ca9 elapsed_ms=1316 output_lines=12 retained=1 omitted=11 ===
+
+=== 2026-11-14T09:42:46.954Z PYTHON run=a77d958a4279 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/home/nuo/courses/projects/parallel-heat-solver/build/m5-tools/bin/python", "/home/nuo/.codex/skills/ppt-master/scripts/svg_to_pptx.py", "report/heat-defense_ppt169_20261112", "--no-animations"]
+stderr:
+  Error: default release export requires a passing final SVG quality report for the current svg_output/; found stale.
+  Run: python3 skills/ppt-master/scripts/svg_quality_checker.py "report/heat-defense_ppt169_20261112" --canonical-authoring --stage final --json
+=== 2026-11-14T09:42:47.831Z END run=a77d958a4279 elapsed_ms=876 output_lines=2 retained=2 omitted=0 ===
+
+=== 2026-11-14T09:42:51.976Z PYTHON run=4ac3c4955d7d ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/svg_quality_checker.py", "report/heat-defense_ppt169_20261112", "--canonical-authoring", "--stage", "final", "--json"]
+stdout:
+  [OK] 01_cover.svg - Passed
+  [SUMMARY] Check Summary
+  Total files: 12
+    [OK] Fully passed: 12 (100%)
+    [WARN] With warnings: 0 (0%)
+    [ERROR] With errors: 0 (0%)
+  Provenance categories:
+    blocking: 0          hard findings; gate also requires exit 0
+    introduced: 0        advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 12 | text: 239 | images: 2 | icons: 0
+    Geometry: SVG elements 166 | native presets 0 | page-frame elements 12 | marker uses 0
+  [REPORT] JSON quality report exported: report/heat-defense_ppt169_20261112/validation/svg_quality_report.json
+=== 2026-11-14T09:42:52.830Z END run=4ac3c4955d7d elapsed_ms=854 output_lines=51 retained=15 omitted=36 ===
+
+=== 2026-11-14T09:42:58.902Z PYTHON run=3343690b603a ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/home/nuo/courses/projects/parallel-heat-solver/build/m5-tools/bin/python", "/home/nuo/.codex/skills/ppt-master/scripts/svg_to_pptx.py", "report/heat-defense_ppt169_20261112", "--no-animations"]
+stdout:
+  [Done] Saved: report/heat-defense_ppt169_20261112/exports/heat-defense_20261114_174259.pptx
+    [POSTFLIGHT] status=passed quality_gate=passed slides=12 warning_categories=0
+    [PPTX] report/heat-defense_ppt169_20261112/exports/heat-defense_20261114_174259.pptx
+    [REPORT] report/heat-defense_ppt169_20261112/validation/heat-defense_20261114_174259.report.json
+=== 2026-11-14T09:43:00.203Z END run=3343690b603a elapsed_ms=1300 output_lines=56 retained=4 omitted=52 ===
+
+=== 2026-11-14T09:45:27.755Z PYTHON run=f1ecf8764916 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/svg_quality_checker.py", "report/heat-defense_ppt169_20261112", "--canonical-authoring", "--stage", "final", "--json"]
+stdout:
+  [OK] 01_cover.svg - Passed
+  [SUMMARY] Check Summary
+  Total files: 12
+    [OK] Fully passed: 12 (100%)
+    [WARN] With warnings: 0 (0%)
+    [ERROR] With errors: 0 (0%)
+  Provenance categories:
+    blocking: 0          hard findings; gate also requires exit 0
+    introduced: 0        advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 12 | text: 240 | images: 2 | icons: 0
+    Geometry: SVG elements 166 | native presets 0 | page-frame elements 12 | marker uses 0
+  [REPORT] JSON quality report exported: report/heat-defense_ppt169_20261112/validation/svg_quality_report.json
+=== 2026-11-14T09:45:28.631Z END run=f1ecf8764916 elapsed_ms=876 output_lines=51 retained=15 omitted=36 ===
+
+=== 2026-11-14T09:45:31.864Z PYTHON run=c2290796f2a5 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/finalize_svg.py", "report/heat-defense_ppt169_20261112"]
+stdout:
+  [OK] Done!
+=== 2026-11-14T09:45:33.193Z END run=c2290796f2a5 elapsed_ms=1329 output_lines=12 retained=1 omitted=11 ===
+
+=== 2026-11-14T09:45:36.513Z PYTHON run=24f16c0d70dc ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/home/nuo/courses/projects/parallel-heat-solver/build/m5-tools/bin/python", "/home/nuo/.codex/skills/ppt-master/scripts/svg_to_pptx.py", "report/heat-defense_ppt169_20261112", "--no-animations"]
+stdout:
+  [Done] Saved: report/heat-defense_ppt169_20261112/exports/heat-defense_20261114_174537.pptx
+    [POSTFLIGHT] status=passed quality_gate=passed slides=12 warning_categories=0
+    [PPTX] report/heat-defense_ppt169_20261112/exports/heat-defense_20261114_174537.pptx
+    [REPORT] report/heat-defense_ppt169_20261112/validation/heat-defense_20261114_174537.report.json
+=== 2026-11-14T09:45:37.780Z END run=24f16c0d70dc elapsed_ms=1266 output_lines=55 retained=4 omitted=51 ===
+
+=== 2026-11-14T09:47:14.965Z PYTHON run=95414e55ba0b ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/svg_quality_checker.py", "report/heat-defense_ppt169_20261112", "--canonical-authoring", "--stage", "final", "--json"]
+stdout:
+  [OK] 01_cover.svg - Passed
+  [SUMMARY] Check Summary
+  Total files: 12
+    [OK] Fully passed: 12 (100%)
+    [WARN] With warnings: 0 (0%)
+    [ERROR] With errors: 0 (0%)
+  Provenance categories:
+    blocking: 0          hard findings; gate also requires exit 0
+    introduced: 0        advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 12 | text: 244 | images: 2 | icons: 0
+    Geometry: SVG elements 166 | native presets 0 | page-frame elements 12 | marker uses 0
+  [REPORT] JSON quality report exported: report/heat-defense_ppt169_20261112/validation/svg_quality_report.json
+=== 2026-11-14T09:47:15.986Z END run=95414e55ba0b elapsed_ms=1021 output_lines=51 retained=15 omitted=36 ===
+
+=== 2026-11-14T09:47:22.292Z PYTHON run=8e6e3ef9d84c ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/finalize_svg.py", "report/heat-defense_ppt169_20261112"]
+stdout:
+  [OK] Done!
+=== 2026-11-14T09:47:23.578Z END run=8e6e3ef9d84c elapsed_ms=1285 output_lines=12 retained=1 omitted=11 ===
+
+=== 2026-11-14T09:47:28.449Z PYTHON run=f4f0ae8245c4 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/home/nuo/courses/projects/parallel-heat-solver/build/m5-tools/bin/python", "/home/nuo/.codex/skills/ppt-master/scripts/svg_to_pptx.py", "report/heat-defense_ppt169_20261112", "--no-animations"]
+stdout:
+  [Done] Saved: report/heat-defense_ppt169_20261112/exports/heat-defense_20261114_174729.pptx
+    [POSTFLIGHT] status=passed quality_gate=passed slides=12 warning_categories=0
+    [PPTX] report/heat-defense_ppt169_20261112/exports/heat-defense_20261114_174729.pptx
+    [REPORT] report/heat-defense_ppt169_20261112/validation/heat-defense_20261114_174729.report.json
+=== 2026-11-14T09:47:29.802Z END run=f4f0ae8245c4 elapsed_ms=1353 output_lines=55 retained=4 omitted=51 ===
+
+=== 2026-11-14T09:49:53.797Z PYTHON run=ace9a7459bb6 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/svg_quality_checker.py", "report/heat-defense_ppt169_20261112", "--canonical-authoring", "--stage", "early", "--json"]
+stdout:
+  [OK] 01_cover.svg - Passed
+  [SUMMARY] Check Summary
+  Total files: 12
+    [OK] Fully passed: 12 (100%)
+    [WARN] With warnings: 0 (0%)
+    [ERROR] With errors: 0 (0%)
+  Provenance categories:
+    blocking: 0          hard findings; gate also requires exit 0
+    introduced: 0        advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 12 | text: 244 | images: 2 | icons: 0
+    Geometry: SVG elements 166 | native presets 0 | page-frame elements 12 | marker uses 0
+  [REPORT] JSON quality report exported: report/heat-defense_ppt169_20261112/validation/svg_quality_early_report.json
+=== 2026-11-14T09:49:54.564Z END run=ace9a7459bb6 elapsed_ms=767 output_lines=51 retained=15 omitted=36 ===
+
+=== 2026-11-14T09:50:01.343Z PYTHON run=87dddcd10c4a ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/svg_quality_checker.py", "report/heat-defense_ppt169_20261112", "--canonical-authoring", "--stage", "final", "--json"]
+stdout:
+  [OK] 01_cover.svg - Passed
+  [SUMMARY] Check Summary
+  Total files: 12
+    [OK] Fully passed: 12 (100%)
+    [WARN] With warnings: 0 (0%)
+    [ERROR] With errors: 0 (0%)
+  Provenance categories:
+    blocking: 0          hard findings; gate also requires exit 0
+    introduced: 0        advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 12 | text: 244 | images: 2 | icons: 0
+    Geometry: SVG elements 166 | native presets 0 | page-frame elements 12 | marker uses 0
+  [REPORT] JSON quality report exported: report/heat-defense_ppt169_20261112/validation/svg_quality_report.json
+=== 2026-11-14T09:50:02.161Z END run=87dddcd10c4a elapsed_ms=818 output_lines=51 retained=15 omitted=36 ===
+
+=== 2026-11-14T09:50:07.792Z PYTHON run=77bd814e511b ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/finalize_svg.py", "report/heat-defense_ppt169_20261112"]
+stdout:
+  [OK] Done!
+=== 2026-11-14T09:50:09.073Z END run=77bd814e511b elapsed_ms=1281 output_lines=12 retained=1 omitted=11 ===
+
+=== 2026-11-14T09:50:13.968Z PYTHON run=f838a1926360 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/home/nuo/courses/projects/parallel-heat-solver/build/m5-tools/bin/python", "/home/nuo/.codex/skills/ppt-master/scripts/svg_to_pptx.py", "report/heat-defense_ppt169_20261112", "--no-animations"]
+stdout:
+  [Done] Saved: report/heat-defense_ppt169_20261112/exports/heat-defense_20261114_175015.pptx
+    [POSTFLIGHT] status=passed quality_gate=passed slides=12 warning_categories=0
+    [PPTX] report/heat-defense_ppt169_20261112/exports/heat-defense_20261114_175015.pptx
+    [REPORT] report/heat-defense_ppt169_20261112/validation/heat-defense_20261114_175015.report.json
+=== 2026-11-14T09:50:16.106Z END run=f838a1926360 elapsed_ms=2137 output_lines=55 retained=4 omitted=51 ===
+
+=== 2026-11-14T09:52:20.768Z PYTHON run=1df9e0ef36ec ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/svg_quality_checker.py", "report/heat-defense_ppt169_20261112", "--canonical-authoring", "--stage", "final", "--json"]
+stdout:
+  [OK] 01_cover.svg - Passed
+  [SUMMARY] Check Summary
+  Total files: 12
+    [OK] Fully passed: 12 (100%)
+    [WARN] With warnings: 0 (0%)
+    [ERROR] With errors: 0 (0%)
+  Provenance categories:
+    blocking: 0          hard findings; gate also requires exit 0
+    introduced: 0        advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 12 | text: 244 | images: 2 | icons: 0
+    Geometry: SVG elements 166 | native presets 0 | page-frame elements 12 | marker uses 0
+  [REPORT] JSON quality report exported: report/heat-defense_ppt169_20261112/validation/svg_quality_report.json
+=== 2026-11-14T09:52:21.776Z END run=1df9e0ef36ec elapsed_ms=1008 output_lines=51 retained=15 omitted=36 ===
