@@ -43,7 +43,7 @@
 | F-BASE | [原M4协议](../../results/performance/baseline/README.md)、[统一结果](../../results/RESULTS.md) | 原23配置/115正式、扩大工作量与独立基线 |
 | F-DIAG | [统一结果的诊断01](../../results/RESULTS.md#补充诊断运行01)、[报告第6.4节](../FINAL_REPORT.md) | 215预热/2560正式调用、隔离变体与支持程度 |
 | F-LARGE | [02-r1统计CSV](../../results/performance/large-02-r1/m4-diagnostic-02-r1.csv)、[统一结果](../../results/RESULTS.md) | 44配置/44预热/440正式、时间/S/E、资源和趋势 |
-| F-LAWS | [报告第6.3节](../FINAL_REPORT.md)、[答辩问答](../DEFENSE_QA.md) | 两个定律的定义、推断边界与非弱扩展解释 |
+| F-LAWS | [报告第6.3节](../FINAL_REPORT.md)、[答辩问答](../presentation/DEFENSE_QA.md) | 两个定律的定义、推断边界与非弱扩展解释 |
 | F-AI | [AI使用记录](../../docs/AI_USAGE.md) | 实际辅助环节、失败修正与用户角色，未发生的人工核查不补写 |
 | F-FIG | [五点机理图说明](../paperbanana/stencil-sol-v1/README.md) | 已有原生SVG图源及完整时间循环，供重排参考 |
 
@@ -356,7 +356,7 @@
 
 ### 2026-11-14 Approved execution — v4
 
-用户聊天明确“批准”后同步锁并执行12页与讲稿；上一节批准前状态是历史。P03保留五点公式与双数组完整循环，P07增加S/E，P08/P12说明两定律边界。共含5个原生Office Math公式，总计8正文/4备份，280秒预算不变。预览另有待应用批注，尚未获明确应用指令；本轮不将其标为已处理或用户验收。实际检查记录见[REVIEW](../REVIEW.md)。
+用户聊天明确“批准”后同步锁并执行12页与讲稿；上一节批准前状态是历史。P03保留五点公式与双数组完整循环，P07增加S/E，P08/P12说明两定律边界。共含5个原生Office Math公式，总计8正文/4备份，280秒预算不变。预览另有待应用批注，尚未获明确应用指令；本轮不将其标为已处理或用户验收。实际检查记录见[REVIEW](../records/REVIEW.md)。
 
 
 ### 2026-11-14 Annotation revision — authorized

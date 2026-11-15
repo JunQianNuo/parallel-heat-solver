@@ -18,6 +18,6 @@
 - `exports/`: final native DrawingML pptx deliverables only (timestamped); `_native_charts_tables.pptx` name with `--native-charts-and-tables`, `_narrated.pptx` name when narration audio is embedded
 - `backup/<timestamp>/`: svg_output/ archive (always written in default-flow mode; safe to delete old timestamps)
 
-## 当前修订
+## 当前状态
 
-当前源按用户指定《单幅图像去雾-第二组》重做，见design_spec.md与spec_lock.md。对外交付为上级目录presentation-v3.pptx及PDF/渲染总览，旧presentation保留为历史版本。模板与字体仅本地只读使用，不纳入Git。
+2026-11-15起优先完成书面报告，本工作区暂停制作。源文件保留原位置，浏览器运行目录不迁移。最近既有成品为[可编辑v4-r1](../presentation/current/presentation-v4-r1.pptx)及[PDF](../presentation/current/presentation-v4-r1.pdf)，版本与工具入口见[归档说明](../presentation/README.md)。本轮只修复移动文件的链接，没有改页面、公式、图表、备注或重新导出。模板与字体仅本地只读，不纳入Git。

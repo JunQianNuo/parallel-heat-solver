@@ -1,0 +1,628 @@
+{
+  "base": "a4d266eb8656f208788b9057e7105a9849a51019",
+  "entries": [
+    {
+      "old_path": "report/.gitignore",
+      "new_path": "report/.gitignore",
+      "sha256_before": "93344bd169ad35dae04451e7912a08b2f1fdc04fab9536c3b069e267f527c57d",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/DEFENSE_QA.md",
+      "new_path": "report/presentation/DEFENSE_QA.md",
+      "sha256_before": "bbcc1d936f8a5ada2cd3a55dd60587432601eed78d339131650f78b64a36fa70",
+      "bytes_preserved": false,
+      "change_reason": "仅修复移动后的相对链接"
+    },
+    {
+      "old_path": "report/FINAL_REPORT.md",
+      "new_path": "report/FINAL_REPORT.md",
+      "sha256_before": "31d6f7d5b8f35463678a20512c8f488099e887563d27acd8781cfc68992208a3",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/FINAL_REPORT.pdf",
+      "new_path": "report/FINAL_REPORT.pdf",
+      "sha256_before": "db5a8a33ef67bb860f90ef9186d0e4f528420799f6f5f845b2d1c8ff4b2e3ca3",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/M5_PREPARATION.md",
+      "new_path": "report/records/M5_PREPARATION.md",
+      "sha256_before": "27867c5f961400732a8e46d04292c09faa4091a5387223dcb456d14caeb21968",
+      "bytes_preserved": false,
+      "change_reason": "仅修复移动后的相对链接，历史文字/命令保留"
+    },
+    {
+      "old_path": "report/README.md",
+      "new_path": "report/README.md",
+      "sha256_before": "789f9092a22d1603d97803097a77e419a90bacbc6cd14da0af96132fef6e7ea9",
+      "bytes_preserved": false,
+      "change_reason": "改为书面报告入口，原综合入口归档到presentation/README.md"
+    },
+    {
+      "old_path": "report/REVIEW.md",
+      "new_path": "report/records/REVIEW.md",
+      "sha256_before": "f258abe9c3a487ad4fa0e01b8aa116995aa1983c550c04bfc9d2208e3deed2f0",
+      "bytes_preserved": false,
+      "change_reason": "仅修复移动后的相对链接，历史核查文字/命令保留"
+    },
+    {
+      "old_path": "report/SHA256SUMS",
+      "new_path": "report/SHA256SUMS",
+      "sha256_before": "beedb76e68e1897192e966741952f124318a16760ed2481865d6c54beb39b8ec",
+      "bytes_preserved": false,
+      "change_reason": "生成整理后清单，旧清单原字节另存records/SHA256SUMS.before-reorganization.txt"
+    },
+    {
+      "old_path": "report/SPEAKER_NOTES.md",
+      "new_path": "report/presentation/SPEAKER_NOTES.md",
+      "sha256_before": "b505a5b6d11e2b416c1493a5d12c96a4d6f88d598f24e8a5840f9b9265e7e92e",
+      "bytes_preserved": false,
+      "change_reason": "仅修复移动后的相对链接"
+    },
+    {
+      "old_path": "report/check_materials.py",
+      "new_path": "report/presentation/check_materials.py",
+      "sha256_before": "78efc8a5beee34516be07e0c9788351a7b67360bca584604e967d57401c9512d",
+      "bytes_preserved": false,
+      "change_reason": "适配ROOT和归档路径，输出到新文件以保护旧快照"
+    },
+    {
+      "old_path": "report/evidence-check.log",
+      "new_path": "report/records/evidence-check.log",
+      "sha256_before": "69c4919389de576e9acfdd3efd146e649e8eb1f9e0fdb823421e03e75d36c7c9",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/README.md",
+      "new_path": "report/heat-defense_ppt169_20261112/README.md",
+      "sha256_before": "60aeb21cd3905f04fe79c2662e2966c0c776d49c856d7546a03d2c202e3fe5a4",
+      "bytes_preserved": false,
+      "change_reason": "修复过期版本入口并记录PPT暂停，页面/图表不变"
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/analysis/image_analysis.csv",
+      "new_path": "report/heat-defense_ppt169_20261112/analysis/image_analysis.csv",
+      "sha256_before": "09cf2d98a1cc9ae67668e42dbb6deee0d85f1fd09f4c6d3bdd3a1f471c93a72c",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/design_spec.md",
+      "new_path": "report/heat-defense_ppt169_20261112/design_spec.md",
+      "sha256_before": "e296bbeb39d2e462f0b9dd48d4415240d0a3244a4695a0610cac9062e77a47d0",
+      "bytes_preserved": false,
+      "change_reason": "仅修复移动后QA和REVIEW的相对链接，内容规划不变"
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/images/02-speedup.png",
+      "new_path": "report/heat-defense_ppt169_20261112/images/02-speedup.png",
+      "sha256_before": "c54249ebb8bd480efe3173fd692924dffdd0a697fa1ebc9c1c89ca6dd5f3ed82",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/images/05-grid-speedup.png",
+      "new_path": "report/heat-defense_ppt169_20261112/images/05-grid-speedup.png",
+      "sha256_before": "088a48f5c943f5644b865aff4ea2b7bc63cc9f6578a2460783be2b1350352baf",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/notes/01_cover.md",
+      "new_path": "report/heat-defense_ppt169_20261112/notes/01_cover.md",
+      "sha256_before": "4e1d77975e6654b2a938c168bb41a694a045cbd588edfe5df07ff167bb923003",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/notes/02_route.md",
+      "new_path": "report/heat-defense_ppt169_20261112/notes/02_route.md",
+      "sha256_before": "1ae8dcfe41839d8fc796988d4bcdda7ac15e701db4ffe7e8cb24c72d7b8eebe1",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/notes/03_stencil.md",
+      "new_path": "report/heat-defense_ppt169_20261112/notes/03_stencil.md",
+      "sha256_before": "a5ec103a1c11cdb948b99b69ee587c015334971f9648b8e44818190d961f57fc",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/notes/04_mpi.md",
+      "new_path": "report/heat-defense_ppt169_20261112/notes/04_mpi.md",
+      "sha256_before": "8f05cae3773dce9a30c59f7658f9a67e1102f0dc7376b3728f12513d735e76c8",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/notes/05_openmp.md",
+      "new_path": "report/heat-defense_ppt169_20261112/notes/05_openmp.md",
+      "sha256_before": "6cab8c22bf83550fef96664c0213c6c80c505cf722ea815ba5427b8c083e64d7",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/notes/06_validation.md",
+      "new_path": "report/heat-defense_ppt169_20261112/notes/06_validation.md",
+      "sha256_before": "a04ec4c01a1440af78508f64dfccb8d8e5a19a13a7d37bfb75aecc1682b4b218",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/notes/07_performance.md",
+      "new_path": "report/heat-defense_ppt169_20261112/notes/07_performance.md",
+      "sha256_before": "9b5f9960860a8793aa20fbe0602f1c453d2ebb8ebd1ed2251e9d3430d322c27e",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/notes/08_conclusion.md",
+      "new_path": "report/heat-defense_ppt169_20261112/notes/08_conclusion.md",
+      "sha256_before": "a5698085039179b17c8f1dd4b17f66156948e2bec77a9c5a17ea185defa9ca63",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/notes/09_timing.md",
+      "new_path": "report/heat-defense_ppt169_20261112/notes/09_timing.md",
+      "sha256_before": "4035fcb7a10c3c0830059304b813c3ed3f9a561b9609e23cbcb7b693a608bbab",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/notes/10_full_scaling.md",
+      "new_path": "report/heat-defense_ppt169_20261112/notes/10_full_scaling.md",
+      "sha256_before": "2adeef081f128885d8522e46a761fe93c712ce0647db54f11b7d9f0ec260d5d2",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/notes/11_grid.md",
+      "new_path": "report/heat-defense_ppt169_20261112/notes/11_grid.md",
+      "sha256_before": "20832c5f0ec590116f9aef5f18e0ddc9b4319bec14c632e8391747b64e246ede",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/notes/12_interpretation.md",
+      "new_path": "report/heat-defense_ppt169_20261112/notes/12_interpretation.md",
+      "sha256_before": "5e799dda31b403e565b2a755034fec3dcd6280bff70622ca850746892fa6cf1d",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/notes/total.md",
+      "new_path": "report/heat-defense_ppt169_20261112/notes/total.md",
+      "sha256_before": "395736aac971fde3c95788a846e205822c6819cea80179509fbcb760d5105d1c",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/sources/FINAL_REPORT.md",
+      "new_path": "report/heat-defense_ppt169_20261112/sources/FINAL_REPORT.md",
+      "sha256_before": "b50604fd72157ba2940445c68d26eaef9031a88633d9a0620511e3ff8ea958c5",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/sources/SPEAKER_NOTES.md",
+      "new_path": "report/heat-defense_ppt169_20261112/sources/SPEAKER_NOTES.md",
+      "sha256_before": "70c24a5dde240ef718b52ce9a342c47d27f371631806a360943e80f63fd1d9ef",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/sources/m4-diagnostic-02-r1.csv",
+      "new_path": "report/heat-defense_ppt169_20261112/sources/m4-diagnostic-02-r1.csv",
+      "sha256_before": "90e4be8eacdec5380dcab85448ccd842982044df0efa21e100579b3f17472b4e",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/spec_lock.md",
+      "new_path": "report/heat-defense_ppt169_20261112/spec_lock.md",
+      "sha256_before": "5e4ad0402518169510b0d8215e9025db9be574e640767a0998190dae4ef53f1a",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/svg_output/01_cover.svg",
+      "new_path": "report/heat-defense_ppt169_20261112/svg_output/01_cover.svg",
+      "sha256_before": "195347ee165e3d95dfbbf152fb48694b0a4912fbd2a3a6548ef4b335c3e486d1",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/svg_output/02_route.svg",
+      "new_path": "report/heat-defense_ppt169_20261112/svg_output/02_route.svg",
+      "sha256_before": "c11811059e5ec7383a2f13b64ad4c096654ede67c060feb3720445b9b3410839",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/svg_output/03_stencil.svg",
+      "new_path": "report/heat-defense_ppt169_20261112/svg_output/03_stencil.svg",
+      "sha256_before": "6982c2f9a0d5444fff6ad5891da28f74750ddc7ad2a8e2e73b89d76e2ac51626",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/svg_output/04_mpi.svg",
+      "new_path": "report/heat-defense_ppt169_20261112/svg_output/04_mpi.svg",
+      "sha256_before": "d2d9714aee385de5b5f4873e7ace4f03ddd1b5835724949206a8ef4c728f768e",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/svg_output/05_openmp.svg",
+      "new_path": "report/heat-defense_ppt169_20261112/svg_output/05_openmp.svg",
+      "sha256_before": "8a636675132b786e5867d729e74ed344d538828c6d73525d32c6a0fcaa3fc5e6",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/svg_output/06_validation.svg",
+      "new_path": "report/heat-defense_ppt169_20261112/svg_output/06_validation.svg",
+      "sha256_before": "4581eb5c47705a2cc6c747f4b320507b390d946fa30bee7a4ccadf06c17618e6",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/svg_output/07_performance.svg",
+      "new_path": "report/heat-defense_ppt169_20261112/svg_output/07_performance.svg",
+      "sha256_before": "c1a1cce844aa5febaad442a882c8ad7bd06bf3819fe94d37164c38ced442a63d",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/svg_output/08_conclusion.svg",
+      "new_path": "report/heat-defense_ppt169_20261112/svg_output/08_conclusion.svg",
+      "sha256_before": "538277c8ff6ebd017c70b035fdd82c988e7ca139ddedd139f168b02b7f65013d",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/svg_output/09_timing.svg",
+      "new_path": "report/heat-defense_ppt169_20261112/svg_output/09_timing.svg",
+      "sha256_before": "83cadd83e1227b7dcbdc28ca9ad98da64de423053832ad5cb5a5bff5e2b5216d",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/svg_output/10_full_scaling.svg",
+      "new_path": "report/heat-defense_ppt169_20261112/svg_output/10_full_scaling.svg",
+      "sha256_before": "9101915184e5bb673b438696c9aaf05d773f658fbef444a1a1bc760ab55d3a33",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/svg_output/11_grid.svg",
+      "new_path": "report/heat-defense_ppt169_20261112/svg_output/11_grid.svg",
+      "sha256_before": "cbd6f83975d6119f0b7ace01f3c42f47b860b72e53ba50e32a7d293bf62f0b63",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/svg_output/12_interpretation.svg",
+      "new_path": "report/heat-defense_ppt169_20261112/svg_output/12_interpretation.svg",
+      "sha256_before": "4e7c062e6f270d4ea18e8c68ab88c58946a2450b3dafa73e4cd87eda73c136a7",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/validation/annotation_application.json",
+      "new_path": "report/heat-defense_ppt169_20261112/validation/annotation_application.json",
+      "sha256_before": "f41e4110c934a349e364bc4870bc6b832a426406b1b1d7d15ae769558c3aa393",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/validation/svg_quality_early_report.json",
+      "new_path": "report/heat-defense_ppt169_20261112/validation/svg_quality_early_report.json",
+      "sha256_before": "8e7cdbe55ab354040cd637a5fd4b3107e6621afd6cf6d25609ad4db78260c31b",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/validation/svg_quality_report.json",
+      "new_path": "report/heat-defense_ppt169_20261112/validation/svg_quality_report.json",
+      "sha256_before": "ddc622ab221ecb8680e686b356fa0e8cec0e84b2883c450f666a7a923bb86b81",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/validation/text_calibration.json",
+      "new_path": "report/heat-defense_ppt169_20261112/validation/text_calibration.json",
+      "sha256_before": "364248eff8a3b32fbd3fa31f57479cc420f85a9809e2ef7f4e776b0bf8dabb44",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/heat-defense_ppt169_20261112/validation/workflow.log",
+      "new_path": "report/heat-defense_ppt169_20261112/validation/workflow.log",
+      "sha256_before": "3229611687f88bdf71aa5bfb2f7d16e614d108c1a4941f7df7ceba1a061948b7",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/material_checks.json",
+      "new_path": "report/records/material_checks.json",
+      "sha256_before": "6fa2ccb620f68c91774a8bff9e2b2ff5727fc2d25a775ced486f1f15db9a3731",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/01-stencil.md",
+      "new_path": "report/paperbanana/01-stencil.md",
+      "sha256_before": "3f866bd13444c71cb08443c068612f244f0d7be52c4a561f1f87be207657f490",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/02-mpi-halo.md",
+      "new_path": "report/paperbanana/02-mpi-halo.md",
+      "sha256_before": "54c6a89dfdec9f21a01d7f7eb779aec593b47a4f81b14e8eeeb2e488f4ef306b",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/03-openmp-sync.md",
+      "new_path": "report/paperbanana/03-openmp-sync.md",
+      "sha256_before": "7a07e7c2debb1e95a930cae70a6efcebfed2a047fd910d5a9904fa54c0e1265a",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/README.md",
+      "new_path": "report/paperbanana/README.md",
+      "sha256_before": "2e060d3072cf501f7946a3be7e8aefa2be70d84d2c7102d7f4f8409d4c43c2e2",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/installation-check.json",
+      "new_path": "report/paperbanana/installation-check.json",
+      "sha256_before": "1bbaf63bd806eeefc1e1405b58927efb502bdc2a46b015675283d28ebabfa974",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/stencil-sol-v1/DESIGN.md",
+      "new_path": "report/paperbanana/stencil-sol-v1/DESIGN.md",
+      "sha256_before": "28c1da846c4382529cbdba6b2e08a2c8759ce6e5ea3639f94d729b50871b67d2",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/stencil-sol-v1/GUIDANCE.md",
+      "new_path": "report/paperbanana/stencil-sol-v1/GUIDANCE.md",
+      "sha256_before": "d00b87390937efa9d5a5c582d931c7390b0dd51482ee85eaf0e6969de7cad29a",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/stencil-sol-v1/README.md",
+      "new_path": "report/paperbanana/stencil-sol-v1/README.md",
+      "sha256_before": "68306f7663b09792357fc8d0640018a32b85430834d0a9b394628b21d4e4d389",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/stencil-sol-v1/checks.json",
+      "new_path": "report/paperbanana/stencil-sol-v1/checks.json",
+      "sha256_before": "e9c9e8fdeed51cc5fe8781d434f7dd48077d45e8b90c283d9befc4e2063ed595",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/stencil-sol-v1/diagram.pdf",
+      "new_path": "report/paperbanana/stencil-sol-v1/diagram.pdf",
+      "sha256_before": "9e6e91d3fec0346dbf48708d9522cde2b3fae82638e1b93d634a35a7eea0f477",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/stencil-sol-v1/diagram.png",
+      "new_path": "report/paperbanana/stencil-sol-v1/diagram.png",
+      "sha256_before": "5f47d3cb13d216a753f8e460f86c716ced8798def63c128e3758981733302406",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/stencil-sol-v1/diagram.svg",
+      "new_path": "report/paperbanana/stencil-sol-v1/diagram.svg",
+      "sha256_before": "6a31ca941f7600820bc9652dc7591f54307526d66dc253cdfb7fe5a404cfbe8a",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/stencil-sol-v1/manifest.json",
+      "new_path": "report/paperbanana/stencil-sol-v1/manifest.json",
+      "sha256_before": "d0ccb90732d7c96ace49543cadafe09a2c9145014aa365d4bd500be32b636a33",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/stencil-sol-v1/mechanism-wide.pdf",
+      "new_path": "report/paperbanana/stencil-sol-v1/mechanism-wide.pdf",
+      "sha256_before": "c2944236843f09242759594cab6108bc51acd336a150a137db07eb223449ec9e",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/stencil-sol-v1/mechanism-wide.png",
+      "new_path": "report/paperbanana/stencil-sol-v1/mechanism-wide.png",
+      "sha256_before": "346803a1a29a71d2d937f58e5fdf1b0f1cca434f68b220361d6dfef370d25830",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/stencil-sol-v1/mechanism-wide.svg",
+      "new_path": "report/paperbanana/stencil-sol-v1/mechanism-wide.svg",
+      "sha256_before": "f90e94147e9e93cb89d5dddafde286f45ca44f3c0dfee3649a52f326a357df78",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/stencil-sol-v1/render.py",
+      "new_path": "report/paperbanana/stencil-sol-v1/render.py",
+      "sha256_before": "f7c0ba5d17da66117d55f6f5714d5a48b1be1407cacc2d1fe1bf9ca70975b272",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/stencil-sol-v1/time-loop-wide.pdf",
+      "new_path": "report/paperbanana/stencil-sol-v1/time-loop-wide.pdf",
+      "sha256_before": "7ae0a1e04789f4421caba41117f27929bf561bd41a69bb3653e07215fd34a101",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/stencil-sol-v1/time-loop-wide.png",
+      "new_path": "report/paperbanana/stencil-sol-v1/time-loop-wide.png",
+      "sha256_before": "4fc462eff8dc5358b06e88c34c705950c70da3093430c5ee740378c8daf81e92",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/paperbanana/stencil-sol-v1/time-loop-wide.svg",
+      "new_path": "report/paperbanana/stencil-sol-v1/time-loop-wide.svg",
+      "sha256_before": "0bf63e2dbc5a04c3298826cbda49e2527ae88787f40557788659fd687c4933e3",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-contact.png",
+      "new_path": "report/presentation/history/v1/presentation-contact.png",
+      "sha256_before": "a28005f35f56e0c0f2d10c3a7ac158015ca46d8940a344ee8af73fe66e7000ed",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v2-contact.png",
+      "new_path": "report/presentation/history/v2/presentation-v2-contact.png",
+      "sha256_before": "562ab14a1721f5dabe7b835835b9f2efc94e78038fdb26ee0684ed2424ed4a14",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v2.pdf",
+      "new_path": "report/presentation/history/v2/presentation-v2.pdf",
+      "sha256_before": "c445b361aeb893ee891f718bb7bcd682c879f6f46e14d74c58bcb14be1c6601d",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v2.pptx",
+      "new_path": "report/presentation/history/v2/presentation-v2.pptx",
+      "sha256_before": "7a3f1a71e8b8d5836190a848714807d1ae1fced679fd957285005d4b108a4239",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v2_postflight.json",
+      "new_path": "report/presentation/history/v2/presentation-v2_postflight.json",
+      "sha256_before": "2ff05fcbb1dcef1294f9cb44af27662c76589d446f786827ba97bd88993cba8f",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v3-contact.png",
+      "new_path": "report/presentation/history/v3/presentation-v3-contact.png",
+      "sha256_before": "f69a0d238dd0d6f84f2dc54585c6d9deafd9cf63b0ca11f813e4aee1aa2d6c0a",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v3-p03.png",
+      "new_path": "report/presentation/history/v3/presentation-v3-p03.png",
+      "sha256_before": "aa6c507f7551af9701e799698b70a971385bdc4d28b720dd967c450ff584e37e",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v3-render-check.json",
+      "new_path": "report/presentation/history/v3/presentation-v3-render-check.json",
+      "sha256_before": "6ef4957b2b34f57b46de45a5ce6e4accc0df78af01b9e527438c00d185304fc7",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v3.pdf",
+      "new_path": "report/presentation/history/v3/presentation-v3.pdf",
+      "sha256_before": "134df20a91fa04c3ecb795f05526a5c2934607499541bd2ea4e4388738d351dd",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v3.pptx",
+      "new_path": "report/presentation/history/v3/presentation-v3.pptx",
+      "sha256_before": "22aeefb9db9d941ebab3208d7cf9f3fd2320207b9efcf3f3be558e567b7a9da2",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v3_postflight.json",
+      "new_path": "report/presentation/history/v3/presentation-v3_postflight.json",
+      "sha256_before": "342b9121d0d63130b047ae8dd8957e1d70057887a9e30ce4e26b94352bf22aa6",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v4-contact.png",
+      "new_path": "report/presentation/history/v4/presentation-v4-contact.png",
+      "sha256_before": "1327025ad17e1f12cd07a3bcf24dafcd684f01137cf74ee08dbd04a3ba6e1a5c",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v4-r1-contact.png",
+      "new_path": "report/presentation/current/presentation-v4-r1-contact.png",
+      "sha256_before": "98450f66266d63ebdae4cd7e5150af0ae04e6a1937393744bd99a5cb73377034",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v4-r1-render-check.json",
+      "new_path": "report/presentation/current/presentation-v4-r1-render-check.json",
+      "sha256_before": "305d0f2be361d0fd3eb2dac96a85ea12eb435b021582a6abaceb5ad0a8f22da1",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v4-r1.pdf",
+      "new_path": "report/presentation/current/presentation-v4-r1.pdf",
+      "sha256_before": "6784efdee7ca5f16abe2fc174f777ab91522df6c52d01485372f56bd08ad6dfb",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v4-r1.pptx",
+      "new_path": "report/presentation/current/presentation-v4-r1.pptx",
+      "sha256_before": "edbff4ceccef48c98dff9f06a939a4f1d154c74539b53c192be0566b17f6a3c3",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v4-r1_postflight.json",
+      "new_path": "report/presentation/current/presentation-v4-r1_postflight.json",
+      "sha256_before": "b75de30eb580365389c696acaef018ff7c519f076ddaea500d1f4b73007f39d3",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v4-render-check.json",
+      "new_path": "report/presentation/history/v4/presentation-v4-render-check.json",
+      "sha256_before": "282d1b2e9420b270f373a8c66875e7618f49caa2b0d4a010a8350f03ff097733",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v4.pdf",
+      "new_path": "report/presentation/history/v4/presentation-v4.pdf",
+      "sha256_before": "5f07e432c4e7e7a8d7efe307be640e433955f3d184115cce7d1fdb390b322981",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v4.pptx",
+      "new_path": "report/presentation/history/v4/presentation-v4.pptx",
+      "sha256_before": "aaa21d22e6b032c1a20ce8bceff64b26fbe8e44adc7ecf4065dbc7d0233e5953",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation-v4_postflight.json",
+      "new_path": "report/presentation/history/v4/presentation-v4_postflight.json",
+      "sha256_before": "079b37e437b0994025eda5e52030fb9dff5bdfaff8c5be9a7beab76a14927126",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation.pdf",
+      "new_path": "report/presentation/history/v1/presentation.pdf",
+      "sha256_before": "e482f35a6b1e6fd3e1685d82116df5ba72c84a5f312e9a19ff362bcef2e88f81",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation.pptx",
+      "new_path": "report/presentation/history/v1/presentation.pptx",
+      "sha256_before": "729c324f011863a7a14256a4b5c291f3e80ab41ed4f66f229400ec6eb2602ead",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/presentation_postflight.json",
+      "new_path": "report/presentation/history/v1/presentation_postflight.json",
+      "sha256_before": "9f6003a9704372f2629ab1a930978d87e595dffec4a61da83d454cb697f39108",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/render_formula_preview.py",
+      "new_path": "report/presentation/render_formula_preview.py",
+      "sha256_before": "1c1e76b79ba894cdbbdfbbf537898333b25af31c402876ecc329f0d472eca777",
+      "bytes_preserved": true
+    },
+    {
+      "old_path": "report/render_presentation.py",
+      "new_path": "report/presentation/render_presentation.py",
+      "sha256_before": "b1aa144fc6af6cf5c2122bb3b923faf425d8f5918ed19a22bfbb2513184e8392",
+      "bytes_preserved": false,
+      "change_reason": "适配ROOT及当前成品路径，PDF输出随输入文件所在目录"
+    },
+    {
+      "old_path": "report/render_report.py",
+      "new_path": "report/render_report.py",
+      "sha256_before": "a9b7c80b1ddc7183fec310f6ea4f67dcb5f83ba2dfbd82f35e2429a9a82bad17",
+      "bytes_preserved": true
+    }
+  ],
+  "date": "2026-11-15",
+  "scope": "目录整理；书面报告正文与PDF不变，PPT内容暂停",
+  "moved_files": 33,
+  "old_file_count": 98,
+  "old_report_root_files": 39,
+  "unchanged_original_files": 88,
+  "historical_paths": "日志/JSON及历史命令保留旧路径；此映射解释当前位置",
+  "new_files": [
+    "report/check_report.py",
+    "report/presentation/README.md",
+    "report/records/README.md",
+    "report/records/report_checks.json",
+    "report/records/SHA256SUMS.before-reorganization.txt",
+    "report/records/reorganization.json"
+  ],
+  "verification": {
+    "original_ledger_rows": 97,
+    "active_markdown_links": 268,
+    "original_files_located": 98,
+    "moved_files": 33,
+    "exact_byte_preservation_required_and_checked": 88,
+    "solver_build_config_tests_scripts_results": "git diff HEAD: no changes",
+    "PDF_PPT_regeneration": "未运行",
+    "report_content_revision": "本轮未进行"
+  }
+}

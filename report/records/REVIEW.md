@@ -63,7 +63,7 @@ PPT项目sources中报告副本只将相对链接改为适合其归档位置；�
 
 实际检查与修复：校准、项目验证及早期源门通过。初次最终门发现P07图例/语境、P12注释边界，合并修正后通过。备注更新后导出曾因凭证过期被拒绝，重跑最终检查后成功。实际LibreOffice渲染又发现P03长组合文本扩宽向左偏移；单纯分两行未解决，拆为多个独立语义对象后重新检查/导出/渲染，最终12页文字均在页界内。源门最终12/12、0错误0警告；postflight通过。PPT包12页/12备注、403个可编辑文本图元、5个原生Office Math公式，无动画配音；P03两行/六组上下标/无&及P07/P12原生公式内容通过包核查。
 
-LibreOffice24.2.7.2实际打开PPTX→12页PDF，PyMuPDF逐页渲染，AI查看总览及P03/P07/P08/P12细图；见[presentation-v4-render-check](presentation-v4-render-check.json)。它展示普通公式预览，包内原生公式另验；不能据此声称Microsoft PowerPoint人工编辑通过。原图/CSV副本字节一致，主图10点/10区间与归档CSV匹配，P07显示的S/E逐项匹配。`python3 scripts/check_results.py`再次通过原证据/三批五份CSV复算/九组图等校验，日志[evidence-check](evidence-check.log)。本轮课程2570文件前后路径/哈希一致；报告、v1/v2/v3、求解器、构建配置、测试、脚本和results保持字节不变。
+LibreOffice24.2.7.2实际打开PPTX→12页PDF，PyMuPDF逐页渲染，AI查看总览及P03/P07/P08/P12细图；见[presentation-v4-render-check](../presentation/history/v4/presentation-v4-render-check.json)。它展示普通公式预览，包内原生公式另验；不能据此声称Microsoft PowerPoint人工编辑通过。原图/CSV副本字节一致，主图10点/10区间与归档CSV匹配，P07显示的S/E逐项匹配。`python3 scripts/check_results.py`再次通过原证据/三批五份CSV复算/九组图等校验，日志[evidence-check](evidence-check.log)。本轮课程2570文件前后路径/哈希一致；报告、v1/v2/v3、求解器、构建配置、测试、脚本和results保持字节不变。
 
 正文1049个中英文/数字字符；280字符/分钟加20秒停顿估算244.8秒，8页预算仍为15/20/45/35/35/35/55/40=280秒，另留20秒。未运行/待验证：人工口头演练、PowerPoint本机显示/编辑。未运行求解器构建/数值回归/性能采样；既有记录不冒充本轮重跑。
 
@@ -72,8 +72,8 @@ LibreOffice24.2.7.2实际打开PPTX→12页PDF，PyMuPDF逐页渲染，AI查看�
 
 ## 2026-11-14：v4-r1批注修订
 
-用户明确授权后应用4页26处批注（22处为同一公式意见），清除源标记并逐项留存[处理台账](heat-defense_ppt169_20261112/validation/annotation_application.json)。标题统一为简短主题，P03保持等价五点式，使用44px单行Office Math和STIX字形路径预览；顶部邻点/标签下移避免挤压。总结页以实现、联合加密误差和最大网格量化收益作主体，模型/资源/统计/时钟边界保留在短注、备注与备份。
+用户明确授权后应用4页26处批注（22处为同一公式意见），清除源标记并逐项留存[处理台账](../heat-defense_ppt169_20261112/validation/annotation_application.json)。标题统一为简短主题，P03保持等价五点式，使用44px单行Office Math和STIX字形路径预览；顶部邻点/标签下移避免挤压。总结页以实现、联合加密误差和最大网格量化收益作主体，模型/资源/统计/时钟边界保留在短注、备注与备份。
 
-实际检查：首轮早期门发现P08区域重叠10px、P03坐标/色值提示，合并修正后早期及最终门12/12、0错误0警告；导出postflight通过。包12页/12备注、5原生公式、440可编辑文本图元，无动画配音；P03原生单行式与六组上下标、P07/P12数学内容、图上10点10区间、两幅原PNG/CSV副本、备注/讲稿一致。公式helper重跑几何与嵌入预览一致。实际LibreOffice打开最终PPTX→12页PDF，再逐页渲染，AI查看总览和P03/P08细图，[文字页界检查](presentation-v4-r1-render-check.json)通过。普通客户端显示字形路径预览，原生Math另从包核对，不声称PowerPoint人工编辑通过。
+实际检查：首轮早期门发现P08区域重叠10px、P03坐标/色值提示，合并修正后早期及最终门12/12、0错误0警告；导出postflight通过。包12页/12备注、5原生公式、440可编辑文本图元，无动画配音；P03原生单行式与六组上下标、P07/P12数学内容、图上10点10区间、两幅原PNG/CSV副本、备注/讲稿一致。公式helper重跑几何与嵌入预览一致。实际LibreOffice打开最终PPTX→12页PDF，再逐页渲染，AI查看总览和P03/P08细图，[文字页界检查](../presentation/current/presentation-v4-r1-render-check.json)通过。普通客户端显示字形路径预览，原生Math另从包核对，不声称PowerPoint人工编辑通过。
 
 正文1065字符，280字符/分钟＋20秒停顿估算248.2秒，8页仍280秒预算、另留20秒；真实口头演练未运行/待本人验证。2570课程文件前后路径/哈希一致；原报告、求解器、tests/scripts/results及全部旧版成品与起点字节一致。没有重跑构建/数值回归/采样，也不重复冒称旧证据统一复算为本轮新实验。v4-r1另存，原v4保留；预览可刷新查看，M5仍待用户验收。

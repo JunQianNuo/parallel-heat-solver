@@ -1,0 +1,21 @@
+{
+  "scope": "书面报告；未调用PPT工具、求解器、构建、数值回归或性能采样",
+  "report_links_checked": 24,
+  "numbered_sections": 8,
+  "performance_table_N": [
+    384,
+    512,
+    768,
+    1024
+  ],
+  "M3_error_ratios_orders": "对照归档CSV通过",
+  "report_markdown_sha256": "31d6f7d5b8f35463678a20512c8f488099e887563d27acd8781cfc68992208a3",
+  "report_pdf_sha256": "db5a8a33ef67bb860f90ef9186d0e4f528420799f6f5f845b2d1c8ff4b2e3ca3",
+  "pdf": {
+    "pages": 8,
+    "text_outside_page": [],
+    "page_analysis": "读取现有PDF；未重新生成或渲染"
+  },
+  "course_protection": "2570 files: paths/content unchanged",
+  "human_review": "未验收；姓名学号待填写，内容/排版待用户审阅"
+}

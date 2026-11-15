@@ -21,13 +21,13 @@
 
 | 部分 | 权威证据 | 必须说明 |
 | --- | --- | --- |
-| 模型与数值 | [DESIGN](../docs/DESIGN.md)、[串行源码](../src/heat.cpp) | 时间一阶/空间二阶，r≤1/4，旧层依赖与双缓冲 |
-| MPI | [源码](../src/heat_mpi.cpp) | 连续余数分块、全局行、两次Sendrecv、halo、PROC_NULL、错误协调、收集 |
-| OpenMP | [源码](../src/heat_openmp.cpp) | static,1循环分行、共享双缓冲、私有变量、for及single屏障、实际团队 |
-| 验证 | [M3数据](../results/validation/m3-errors.csv)、[测试](../tests/check_system.py) | E_inf与D_inf分开、离散模态、联合加密/端点/边界；历史检查不是本轮重跑 |
-| 性能 | [统一入口](../results/RESULTS.md)、[协议](../results/performance/baseline/README.md) | 独立串行基线、请求/实际P/Q、精确计时范围、重复/绑定 |
-| 图表 | [九组图入口](../results/figures/large-02-r1-viz-01/generation.json) | 原M4、诊断01、02-r1分批；min/max与探索性区间分开 |
-| AI与审核 | [AI记录](../docs/AI_USAGE.md) | 区分AI检查、用户验收、待人工演练；不虚构贡献 |
+| 模型与数值 | [DESIGN](../../docs/DESIGN.md)、[串行源码](../../src/heat.cpp) | 时间一阶/空间二阶，r≤1/4，旧层依赖与双缓冲 |
+| MPI | [源码](../../src/heat_mpi.cpp) | 连续余数分块、全局行、两次Sendrecv、halo、PROC_NULL、错误协调、收集 |
+| OpenMP | [源码](../../src/heat_openmp.cpp) | static,1循环分行、共享双缓冲、私有变量、for及single屏障、实际团队 |
+| 验证 | [M3数据](../../results/validation/m3-errors.csv)、[测试](../../tests/check_system.py) | E_inf与D_inf分开、离散模态、联合加密/端点/边界；历史检查不是本轮重跑 |
+| 性能 | [统一入口](../../results/RESULTS.md)、[协议](../../results/performance/baseline/README.md) | 独立串行基线、请求/实际P/Q、精确计时范围、重复/绑定 |
+| 图表 | [九组图入口](../../results/figures/large-02-r1-viz-01/generation.json) | 原M4、诊断01、02-r1分批；min/max与探索性区间分开 |
+| AI与审核 | [AI记录](../../docs/AI_USAGE.md) | 区分AI检查、用户验收、待人工演练；不虚构贡献 |
 
 原M4为23配置/115正式样本；诊断01为215预热/2560正式调用；02-r1为44预热/440正式样本，停止02为0正式样本。正式性能使用原三程序，诊断变体未合入。三批统计口径分开，不混用中位数之比与配对比率中位数。
 

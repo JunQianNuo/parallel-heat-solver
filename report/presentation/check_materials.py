@@ -3,7 +3,7 @@
 import csv, hashlib, json, re, xml.etree.ElementTree as ET
 from zipfile import ZipFile
 from pathlib import Path
-ROOT=Path(__file__).resolve().parent
+ROOT=Path(__file__).resolve().parents[1]
 REPO=ROOT.parent
 
 def require(condition,message):
@@ -31,7 +31,7 @@ def main():
         if r['build']=='debug' and r['suite']=='default' and r['solver']=='serial' and r['ratio']:
             require(f"{float(r['ratio']):.6f}" in report,'M3 ratio mismatch')
             require(f"{float(r['order']):.6f}" in report,'M3 order mismatch')
-    notes=(ROOT/'SPEAKER_NOTES.md').read_text()
+    notes=(ROOT/'presentation/SPEAKER_NOTES.md').read_text()
     pages=re.findall(r'## P(\d+) .*?· (\d+)秒[^\n]*\n\n(.*?)(?=\n## |\Z)',notes,re.S)
     require(len(pages)==8,'expected eight main-script pages')
     require(sum(int(t) for _,t,_ in pages)==280,'expected 280 seconds')
@@ -71,7 +71,7 @@ def main():
     for n in ['02-speedup.png','05-grid-speedup.png']:
         require(sha(project/'images'/n)==sha(figures/n),'figure copy changed')
     require(sha(project/'sources/m4-diagnostic-02-r1.csv')==sha(REPO/'results/performance/large-02-r1/m4-diagnostic-02-r1.csv'),'CSV copy changed')
-    pptx=ROOT/'presentation-v4-r1.pptx'
+    pptx=ROOT/'presentation/current/presentation-v4-r1.pptx'
     with ZipFile(pptx) as z:
         slides=[n for n in z.namelist() if re.fullmatch(r'ppt/slides/slide\d+\.xml',n)]
         notes_files=[n for n in z.namelist() if re.fullmatch(r'ppt/notesSlides/notesSlide\d+\.xml',n)]
@@ -113,7 +113,7 @@ def main():
         require(before==after,'course files changed since M5 snapshot')
         course_check=f'{len(after)} files: paths/content unchanged since this M5 snapshot'
     summary={'local_file_links_checked':links,'performance_table':'checked against archived CSV','M3_ratios_orders':'checked against archived CSV','main_script':speech,'total_count':total,'timing_scenario':scenario,'solver_build_tests_sampling':'未运行：M5只整理既有证据','report_pdf_sha256':hashlib.sha256(pdf.read_bytes()).hexdigest()}
-    summary.update({'P03_native_formula':'single line; six space/time scripts checked; no visible alignment token','chart_points_and_intervals':'10 points and 10 asymmetric intervals verified from CSV','pptx':{'slides':len(slides),'notes':len(notes_files),'native_math':formula_count,'editable_shapes':shape_count,'animations_transitions':0,'file':pptx.name,'sha256':sha(pptx)},'course_protection':course_check,'presentation_pdf_sha256':sha(ROOT/'presentation-v4-r1.pdf')})
-    out=ROOT/'material_checks.json';out.write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')
+    summary.update({'P03_native_formula':'single line; six space/time scripts checked; no visible alignment token','chart_points_and_intervals':'10 points and 10 asymmetric intervals verified from CSV','pptx':{'slides':len(slides),'notes':len(notes_files),'native_math':formula_count,'editable_shapes':shape_count,'animations_transitions':0,'file':pptx.name,'sha256':sha(pptx)},'course_protection':course_check,'presentation_pdf_sha256':sha(ROOT/'presentation/current/presentation-v4-r1.pdf')})
+    out=ROOT/'records/presentation_checks.json';out.write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(summary,ensure_ascii=False,indent=2))
 if __name__=='__main__':main()
