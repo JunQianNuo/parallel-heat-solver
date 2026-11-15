@@ -9,7 +9,7 @@
     1024
   ],
   "M3_error_ratios_orders": "对照归档CSV通过",
-  "report_markdown_sha256": "31d6f7d5b8f35463678a20512c8f488099e887563d27acd8781cfc68992208a3",
+  "report_markdown_sha256": "595e07f5541b4f7da56d9bb0949064feb0e3e9d45a5de90d587ff00521bcbd4a",
   "report_pdf_sha256": "db5a8a33ef67bb860f90ef9186d0e4f528420799f6f5f845b2d1c8ff4b2e3ca3",
   "pdf": {
     "pages": 8,
@@ -17,5 +17,17 @@
     "page_analysis": "读取现有PDF；未重新生成或渲染"
   },
   "course_protection": "2570 files: paths/content unchanged",
-  "human_review": "未验收；姓名学号待填写，内容/排版待用户审阅"
+  "human_review": "未验收；姓名学号待填写，内容/排版待用户审阅",
+  "revision": "2026-11-15：面向非实现者，先讲问题/功能/输入输出/实际效果",
+  "pdf_source_sync": "未同步；PDF保持e09695c时旧版，未包含本次Markdown文字修订；新版生成与排版检查未运行",
+  "additional_checks": {
+    "math_expressions_parsed": 36,
+    "max_grid_time_rows": 5,
+    "max_grid_openmp_efficiency_values": 2,
+    "M3_error_values": 3,
+    "protected_files_unchanged": 219,
+    "new_pdf_render": "未运行；按本轮Markdown修订范围保留旧PDF",
+    "solver_regression": "未运行；文字修改未改求解器",
+    "performance_sampling": "未运行"
+  }
 }

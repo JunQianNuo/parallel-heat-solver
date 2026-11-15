@@ -1,6 +1,6 @@
 # 过程与核查记录
 
-本目录保存M5准备、既有材料检查和2026-11-15目录整理记录；这些文件不是书面报告正文，也不是新的实验样本。
+本目录保存M5准备、既有材料检查、2026-11-15目录整理及报告文字修订记录；这些文件不是书面报告正文，也不是新的实验样本。
 
 | 文件 | 性质 |
 | --- | --- |
@@ -12,4 +12,4 @@
 | [reorganization.json](reorganization.json) | 起点提交、原98文件路径/新路径/原哈希及内容保留情况 |
 | [report_checks.json](report_checks.json) | 本轮独立报告核查；不依赖PPT，不调用求解器 |
 
-当前文件清单为上级[SHA256SUMS](../SHA256SUMS)。历史日志或JSON中的旧路径/命令是当时事实，未全局替换；只有Markdown链接和实际工具寻址按移动后路径适配。所有旧PPT/PDF/PNG、报告正文/PDF、源SVG/素材/数据及原日志/JSON保持字节；允许变化的旧文件及原因见reorganization.json。
+当前文件清单为上级[SHA256SUMS](../SHA256SUMS)。历史日志或JSON中的旧路径/命令是当时事实，未全局替换；只有Markdown链接和实际工具寻址按移动后路径适配。reorganization.json描述目录整理完成时的字节保留情况，不能当成后续报告文字仍未修改的声明。本次FINAL_REPORT.md已修订，旧PDF尚未同步；PPT、源SVG/素材/数据及历史日志/JSON保留。当前报告核查见report_checks.json。
