@@ -9,8 +9,8 @@
     1024
   ],
   "M3_error_ratios_orders": "对照归档CSV通过",
-  "report_markdown_sha256": "dc438537640a099dd7291e7ef518bf3e7781346c713dc0ba795315685f60e73b",
-  "report_pdf_sha256": "9c95f9664b34f8db0d34eff97bae7744d66bc7877db799d11ada424d13f09715",
+  "report_markdown_sha256": "3608f0db18d417b3aa4ee8106f538c20971b66d234c5bd227e9d4047b95681df",
+  "report_pdf_sha256": "dc8cd80e814b1d8901e49634dfcc972e7947b64d5bfb355db381b8fb00984961",
   "pdf": {
     "pages": 13,
     "text_outside_page": [],
@@ -18,35 +18,43 @@
   },
   "course_protection": "2570 files: paths/content unchanged",
   "human_review": "未验收；姓名学号待填写，内容/排版待用户审阅",
-  "revision": "2026-11-15：落实第1—4节Rivise及逐项确认",
-  "review_scope": "三种实现伪代码、正文/表格数学排版、MPI拥有行/halo简化、第三类参考清理",
-  "pdf_source_sync": "实际从当前Markdown生成13页PDF，全部渲染；AI查看总览及算法/公式细页",
+  "performance_tables": {
+    "fixed_size_N": 1024,
+    "MPI_actual_P": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "fixed_size_rows_checked": 8,
+    "grid_metrics": [
+      "MPI16 S",
+      "MPI16 E",
+      "OpenMP16 S",
+      "OpenMP16 E"
+    ],
+    "grid_rows_checked": 4,
+    "method": "逐行逐单元格对照归档CSV；耗时9位、S四位、效率百分数两位"
+  },
+  "revision": "2026-11-15：按指定并行度及四项S/E指标调整性能表",
+  "review_scope": "保留用户当前编辑，仅替换第6.1节两张性能表；更新检查器适配逐格核对",
+  "pdf_source_sync": "从当前Markdown生成13页PDF，全部实际渲染，AI查看总览和第9页",
   "additional_checks": {
-    "scope_preservation": "摘要及第5—7节逐字保持；第8节仅删除离散模态并列表述",
-    "existing_math_preserved": 36,
-    "current_math_occurrences": 143,
-    "current_math_unique": 98,
-    "pseudocode": [
+    "user_draft_preserved": "本轮前置快照除两张表外逐字保持；保留用户既有未提交修改",
+    "pdf_pages_rendered": 13,
+    "tables_complete_on_one_page": [
       {
-        "page": 4,
-        "lines": 12,
-        "point_update_x": 96.19,
-        "complete_on_one_page": true
+        "table": "fixed",
+        "page": 9,
+        "complete": true
       },
       {
-        "page": 5,
-        "lines": 18,
-        "point_update_x": 96.19,
-        "complete_on_one_page": true
-      },
-      {
-        "page": 6,
-        "lines": 14,
-        "point_update_x": 106.26,
-        "complete_on_one_page": true
+        "table": "grid",
+        "page": 9,
+        "complete": true
       }
     ],
-    "error_scientific_notation_on_single_line": 3,
     "figure_captions_same_page": [
       {
         "figure": 1,
@@ -57,9 +65,7 @@
         "page": 10
       }
     ],
-    "protected_files_unchanged": 219,
-    "pdf_pages_rendered": 13,
-    "pseudocode_source_review": "AI对照src/heat.cpp、heat_mpi.cpp、heat_openmp.cpp核对执行顺序；未冒充运行数值测试"
+    "protected_files_unchanged": 219
   },
   "internal_experiment_mapping": {
     "基础性能实验": "results/performance/baseline",
@@ -67,6 +73,6 @@
     "扩大网格实验": "results/performance/large-02-r1",
     "初次扩大实验（预热停止，0正式）": "results/performance/large-02"
   },
-  "pending_user_draft": "姓名学号、报告内容/排版审阅及用户验收待完成；PPT暂停",
-  "execution_notes": "未运行构建、数值回归或性能采样；无求解器/测试/结果/PPT改动"
+  "pending_user_draft": "姓名学号、报告审阅及最终验收待用户；PPT暂停",
+  "execution_notes": "未运行构建、数值回归或性能采样；无求解器/测试/结果/PPT改动，生成器保持"
 }
