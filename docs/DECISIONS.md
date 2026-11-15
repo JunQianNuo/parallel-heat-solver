@@ -235,3 +235,10 @@ P03将顶部邻点与标签下移，五点上下对称，避免层标签/点/坐
 用户要求先解释/整理report再安排下一步，因此本轮仅归类与核查，保留报告正文/PDF内容。root保留书面稿和生成/独立检查入口，presentation分current与history，records承载准备/历史核查/迁移。PPT制作工作区保持原路径，避免本轮目录整理破坏预览服务或触发PPT重建；paperbanana自带校验清单的素材目录也不迁移。只适配相关Markdown链接与工具寻址，日志/JSON内部旧路径是历史事实，通过迁移表解释。
 
 旧SHA清单原样另存，当前清单覆盖整理后文件；独立check_report.py只读报告/归档CSV/现有PDF，不依赖PPT。旧综合检查工具保留供之后恢复PPT使用，输出改为新presentation_checks.json，防止覆盖旧检查快照。目录整理与报告科学内容定稿分别验收。
+
+
+## M5：build按配置与用途分离（2026-11-15）
+
+旧根部CMake及阶段缓存带绝对路径，移动后只作历史归档；不全局替换CMakeCache/Makefile，也不将旧缓存当成可移植构建。新Debug/Release在build/debug、build/release从原源码配置，默认正式程序/诊断选项不变。旧一次性脚本、console/复算与材料导入放archive/work，示例输出、公式缓存及工具环境各自分区，不删除旧工件或运行旧update.py。
+
+Python命令shebang和LibreOffice配置有旧绝对路径，因此物理归入tools后保留m5-tools、m5-lo两处兼容链接；这保留原环境语义，不把虚拟环境宣称成可直接迁移至其他机器。活跃材料工具改用新路径；scripts/check.py历史默认值不改，CMake自定义check及文档手动命令显式指定build/debug。Debug全量回归一次，Release只配置/构建，避免对纯路径变化重复两套数值检查。原实验/报告证据及教师资料保持，新增日志仅在忽略的本地build中。

@@ -43,7 +43,7 @@ report/
 检查现稿及归档数值，不调用求解器、不检查或渲染PPT：
 
 ```bash
-build/m5-tools/bin/python report/check_report.py
+build/tools/python/bin/python report/check_report.py
 ```
 
 检查结果写入[records/report_checks.json](records/report_checks.json)。包含报告链接、章节、归档CSV中的加速比/效率与误差比、已有PDF签名/页数/文字页界；文件存在或软件核查通过不等同报告内容已人工验收。
@@ -51,7 +51,7 @@ build/m5-tools/bin/python report/check_report.py
 修改源稿后生成PDF：
 
 ```bash
-build/m5-tools/bin/python report/render_report.py --font /mnt/c/Windows/Fonts/msyh.ttc --math-python python3
+build/tools/python/bin/python report/render_report.py --font /mnt/c/Windows/Fonts/msyh.ttc --math-python python3
 ```
 
 生成需要reportlab、Pillow及Matplotlib；默认只读使用本机Microsoft YaHei字体，可用`--font`指定其他已有中文TrueType字体。字体、工具环境和临时数学图片不入Git。该生成命令本轮未运行，现有PDF保持原样。

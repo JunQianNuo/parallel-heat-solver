@@ -105,7 +105,7 @@ def main():
             tree=ET.fromstring(z.read(f'ppt/notesSlides/notesSlide{i}.xml'))
             text=''.join(tree.itertext())
             require(txt.strip() in text,f'notes/script mismatch P{i:02}')
-    course_before=REPO/'build/m5-v4-annotations/course-before.json'
+    course_before=REPO/'build/archive/work/m5-v4-annotations/course-before.json'
     course_check='未运行：当前机器缺少本轮前置快照'
     if course_before.exists():
         before=json.loads(course_before.read_text())

@@ -2,7 +2,7 @@
 
 当前状态（2026-11-15）：M4交付 `Evaluation@30c4a43` 已获用户验收；M5材料已在用户准备的M5分支完成，入口见 [最终材料](report/README.md)，待用户验收。以下原M4“待验收”及旧分支位置均保留为历史语境。
 
-本轮当前任务（2026-11-15）：用户要求优先完成书面Report，暂不考虑PPT；本轮先解释并整理report目录，已将33个文件归类移动，报告正文/PDF保持原字节，独立报告检查通过。等待用户安排报告内容修订的下一步；不继续PPT重组。
+本轮当前任务（2026-11-15）：用户要求盘点并按正常项目结构整理build；已将旧89个顶层条目归类，当前Debug/Release、tools/cache/outputs/logs/archive分开，旧工件保留。新Debug20/20通过，Release构建成功但未运行Release CTest。报告内容修订及PPT任务仍待用户后续安排。
 
 更新日期：2026-11-15（Asia/Shanghai）。
 
@@ -412,3 +412,12 @@ M5历史准备阶段实际检查（制作PPT之前）：`python3 scripts/check_r
 起点M5/origin/M5=a4d266e，工作区干净。用户明确先完成Report，本轮先盘点98个跟踪文件（39个位于report根目录），将33个文件归类到presentation/current、presentation/history/v1–v4和records；PPT工作区及paperbanana保留位置，报告源稿/PDF/生成器不变。根目录新增独立check_report.py和面向书面报告的README，旧综合工具移入presentation并适配寻址，不再将报告检查与PPT绑定。旧SHA清单另存，完整移动映射/原哈希在records/reorganization.json。
 
 独立报告检查：24链接、8个正文章节、归档CSV中的所检S/E及M3误差比/观测阶通过，读取现有8页PDF并检查文字页界通过；未重新生成/渲染PDF。2570课程文件前后路径/哈希一致；原报告、全部PPT/PDF/PNG、源SVG/素材/CSV及原JSON/日志保持字节。仅修复移动后的Markdown链接、工具路径及目录说明，原历史文字中的旧路径由映射解释。无求解器/测试/实验改动，未构建/回归/采样，也未制作或渲染PPT。整理完成交用户查看，再由用户安排报告内容修订；不把目录整理记作报告定稿或M5验收。
+
+
+## M5：本地build归类与新构建入口（2026-11-15）
+
+起点M5/origin/M5=195b9ee，干净。build原89顶层条目、约808.82MiB，含13套CMake树、M4/M5临时工作、Python/LibreOffice、公式缓存及示例解。按docs/BUILD_LAYOUT.md归到debug/release/tools/cache/outputs/logs/archive；历史CMake缓存保留原字节，不在归档中继续构建；保留m5-tools/m5-lo两个兼容软链接以支持绝对shebang/配置，未改写第三方环境。移动映射与原哈希在本地archive/layout-20261115，13,479普通文件及301链接目标保持；一处第三方文档断链在原快照已无目标，本轮无新增断链。
+
+实际运行新Debug的configure及`cmake --build build/debug --target check --parallel 2`，20/20通过；Release configure/build成功，Release CTest未运行。日志在build/logs/layout-20261115，CTest计时不作为正式样本。Python新路径/旧兼容路径导入、LibreOffice版本入口、独立报告检查通过；未生成报告/PPT，2570课程文件本轮保护通过。源码、CMakeLists、tests/scripts、results、报告正文/PDF及PPT成品保持；仅更新活跃使用说明和材料工具缓存/环境路径。未运行归档的一次性脚本、未新增正式性能采样。
+
+仅文档/工具寻址与校验清单提交同名origin/M5；build全部继续被忽略，不提交环境/二进制/日志或本机配置。目录整理不等于报告定稿或M5验收。

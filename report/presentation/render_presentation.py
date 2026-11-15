@@ -15,7 +15,7 @@ def main():
     env=os.environ.copy();env['SAL_USE_VCLPLUGIN']='svp'
     if args.library_path:env['LD_LIBRARY_PATH']=args.library_path
     if args.fontconfig:env['FONTCONFIG_FILE']=str(args.fontconfig.resolve())
-    profile=ROOT.parent/'build/m5-lo/profile';profile.mkdir(parents=True,exist_ok=True)
+    profile=ROOT.parent/'build/tools/libreoffice/profile';profile.mkdir(parents=True,exist_ok=True)
     subprocess.run([args.soffice,f'-env:UserInstallation={profile.resolve().as_uri()}','--headless','--convert-to','pdf','--outdir',str(args.input.resolve().parent),str(args.input.resolve())],env=env,check=True,timeout=120)
     require=args.input.resolve().with_suffix('.pdf')
     if not require.exists():raise RuntimeError('PDF was not produced')

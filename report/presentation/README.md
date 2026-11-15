@@ -30,7 +30,7 @@ v4增加稳定性权重解释、完整时间循环、两次MPI交换、OpenMP两
 报告生成使用reportlab、Pillow与带Matplotlib的Python；PPT生成使用本地ppt-master技能。默认报告只读使用已有Microsoft YaHei字体，可通过--font指定机器上已有的中文TrueType字体。技能包、字体和工具环境不纳入Git。
 
 ```bash
-build/m5-tools/bin/python report/render_report.py --font /mnt/c/Windows/Fonts/msyh.ttc --math-python python3
+build/tools/python/bin/python report/render_report.py --font /mnt/c/Windows/Fonts/msyh.ttc --math-python python3
 python3 report/presentation/check_materials.py
 python3 scripts/check_results.py
 ```
@@ -42,7 +42,7 @@ python3 /home/nuo/.codex/skills/ppt-master/scripts/project_manager.py validate r
 python3 /home/nuo/.codex/skills/ppt-master/scripts/total_md_split.py report/heat-defense_ppt169_20261112
 python3 /home/nuo/.codex/skills/ppt-master/scripts/svg_quality_checker.py report/heat-defense_ppt169_20261112 --canonical-authoring --stage final --json
 python3 /home/nuo/.codex/skills/ppt-master/scripts/finalize_svg.py report/heat-defense_ppt169_20261112
-build/m5-tools/bin/python /home/nuo/.codex/skills/ppt-master/scripts/svg_to_pptx.py report/heat-defense_ppt169_20261112 --no-animations
+build/tools/python/bin/python /home/nuo/.codex/skills/ppt-master/scripts/svg_to_pptx.py report/heat-defense_ppt169_20261112 --no-animations
 # 选择本次exports目录的新文件复制为report/presentation/current/presentation-v4-r1.pptx，再渲染：
 python3 report/presentation/render_presentation.py --soffice /path/to/soffice
 ```

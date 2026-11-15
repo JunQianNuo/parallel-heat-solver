@@ -1,6 +1,6 @@
 # 二维热传导方程的串行、MPI 与 OpenMP 求解
 
-当前状态（2026-11-12）：M4交付 `Evaluation@30c4a43` 已获用户验收；M5材料已在用户准备的M5分支完成，入口见 [最终材料](report/README.md)，待用户验收。以下原M4“待验收”及旧分支位置均保留为历史语境。
+当前状态（2026-11-15）：M4交付 `Evaluation@30c4a43` 已获用户验收；M5材料已在用户准备的M5分支完成，入口见 [最终材料](report/README.md)，待用户验收。以下原M4“待验收”及旧分支位置均保留为历史语境。
 
 《并行与分布式计算》期末大作业，对应教师任务书第 4 题。采用显式五点有限差分，以独立串行程序为基线，采用 MPI 行分块与邻居通信，并提供独立 OpenMP 求解器进行比较。
 
@@ -21,6 +21,7 @@ M0–M4均已获用户验收；M4最终交付30c4a43包括原实验、诊断01�
 | [DESIGN.md](docs/DESIGN.md) | 数学模型、数值算法、MPI 实现与 OpenMP 设计基线 |
 | [DECISIONS.md](docs/DECISIONS.md) | 已确认选择及理由 |
 | [AI_USAGE.md](docs/AI_USAGE.md) | AI 使用与人工核查记录 |
+| [BUILD_LAYOUT.md](docs/BUILD_LAYOUT.md) | build目录用途、历史归档及本地工具路径 |
 | [RESULTS.md](results/RESULTS.md) | 三批实验结果、最新9组中文对比图与证据入口 |
 
 ## 结果与目录分工（本轮整理）
@@ -41,15 +42,18 @@ M0–M4均已获用户验收；M4最终交付30c4a43包括原实验、诊断01�
 
 ## 构建与运行
 
+构建输出按配置分别放在`build/debug`、`build/release`，避免与工具、缓存及历史阶段混放。旧阶段构建和临时文件已保留在`build/archive`；CMake缓存含原绝对路径，不在归档树中继续构建，详见[目录说明](docs/BUILD_LAYOUT.md)。
+
 需要支持 C++17 的编译器、CMake ≥ 3.20、MPI 开发环境/启动器（本轮 Open MPI 4.1.6）和 OpenMP C++ 支持（本轮 GNU OpenMP 4.5/libgomp）；启用测试时需要 Python 3 标准库，无 GoogleTest 或联网下载依赖。
 
 ```bash
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
-cmake --build build --parallel 2
-cmake --build build --target check --parallel 2
-./build/heat_serial --help
-./build/heat_serial > build/solution.csv
-./build/heat_serial --N 40 --M 1600 --T 0.1 --alpha 1 > build/solution-N40.csv
+mkdir -p build/outputs/examples
+cmake -S . -B build/debug -DCMAKE_BUILD_TYPE=Debug
+cmake --build build/debug --parallel 2
+cmake --build build/debug --target check --parallel 2
+./build/debug/heat_serial --help
+./build/debug/heat_serial > build/outputs/examples/solution.csv
+./build/debug/heat_serial --N 40 --M 1600 --T 0.1 --alpha 1 > build/outputs/examples/solution-N40.csv
 ```
 
 命名参数可独立覆盖，默认 `N=20 M=400 T=0.1 alpha=1`，此时 `r=0.1`。N 为每方向区间数（共 `(N+1)^2` 节点），M 为实际推进步数；程序计算 `dt=T/M`，不自动修改 M。要求 `N≥2,M≥1`、有限正 T 和 alpha、可表示的正 dt/r、`r≤1/4` 及可表示的双数组规模。内存须由实际机器提供，分配失败报错；大规模输入可能耗费大量内存和时间。
@@ -58,17 +62,17 @@ stdout 为最终时刻 T 的 CSV，首行为 `i,j,x,y,u_numeric,u_exact,abs_erro
 
 基本测试阈值、手算及加密参数见 [DESIGN](docs/DESIGN.md)。这些是 M1 回归标准，不是任意输入的精度保证；M1 当时未做性能实验。
 
-`check` 目标先确保测试程序已构建，再执行同一组 CTest 测试，逐项耗时按秒保留 **4 位小数**。也可直接运行 `python3 scripts/check.py --test-dir build`。耗时读取 CTest 的较高精度 XML 测量值；原始控制台输出保留在 `build/ctest-raw.log`，XML 位于 `build/Testing/<TAG>/Test.xml`。若测试失败，显示原始失败诊断并返回非零退出码。直接运行 `ctest --test-dir build --output-on-failure` 仍使用 CTest 默认的两位小数显示。
+`check` 目标先确保测试程序已构建，再执行同一组 CTest 测试，逐项耗时按秒保留 **4 位小数**。也可直接运行 `python3 scripts/check.py --test-dir build/debug`。耗时读取 CTest 的较高精度 XML 测量值；原始控制台输出保留在 `build/debug/ctest-raw.log`，XML 位于 `build/debug/Testing/<TAG>/Test.xml`。若测试失败，显示原始失败诊断并返回非零退出码。直接运行 `ctest --test-dir build/debug --output-on-failure` 仍使用 CTest 默认的两位小数显示。
 
 四位小数表示显示分辨率为 0.1 ms，不代表计时具有相同准确度。测试耗时包含测试进程开销，不作为求解器性能数据。原 M1 日志保持原样，补充验证见 [四位小数显示记录](results/validation/m1-precision.log)。
 
 ## MPI 构建、运行与检查
 
 ```bash
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DHEAT_MPI_TEST_MAX_PROCS=4
-cmake --build build --target check --parallel 2
-mpiexec -n 3 ./build/heat_mpi --N 20 --M 400 --T 0.1 --alpha 1 > build/mpi-p3.csv
-mpiexec -n 3 ./build/heat_mpi --help
+cmake -S . -B build/debug -DCMAKE_BUILD_TYPE=Debug -DHEAT_MPI_TEST_MAX_PROCS=4
+cmake --build build/debug --target check --parallel 2
+mpiexec -n 3 ./build/debug/heat_mpi --N 20 --M 400 --T 0.1 --alpha 1 > build/outputs/examples/mpi-p3.csv
+mpiexec -n 3 ./build/debug/heat_mpi --help
 ```
 
 MPI 与串行采用相同命名参数、默认值、全场 CSV 和参数/E_inf 摘要；仅 rank 0 输出，成功求解后 stderr 另记录 `P_actual`（来自 MPI_Comm_size）；请求 P 来自启动命令，M3 核对请求/实际一致。要求 `1≤P≤N-1`，以及 `(N-1)(N+1)≤INT_MAX`，当前 int 范围对应 N≤46340；这是经典 MPI count/displacement 的保守输入限制，并非内存容量保证。分块、halo 通信表和错误路径见 [DESIGN 第 7 节](docs/DESIGN.md)。独立 `heat_serial` 继续作为正确性及后续性能基线，MPI 程序不内嵌串行复算。
@@ -84,15 +88,15 @@ MPI 基本回归包含原 6 项串行检查和 P=1/2/3/4 四项 MPI 检查（另
 ## OpenMP 构建、运行与检查
 
 ```bash
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DHEAT_OPENMP_TEST_MAX_THREADS=4
-cmake --build build --target check --parallel 2
-./build/heat_openmp --help
-./build/heat_openmp --threads 4 --N 20 --M 400 --T 0.1 --alpha 1 > build/openmp-q4.csv
+cmake -S . -B build/debug -DCMAKE_BUILD_TYPE=Debug -DHEAT_OPENMP_TEST_MAX_THREADS=4
+cmake --build build/debug --target check --parallel 2
+./build/debug/heat_openmp --help
+./build/debug/heat_openmp --threads 4 --N 20 --M 400 --T 0.1 --alpha 1 > build/outputs/examples/openmp-q4.csv
 # 实际团队可能受限，摘要会同时记录请求 4、实际 2：
-OMP_THREAD_LIMIT=2 ./build/heat_openmp --threads 4 > build/openmp-limited.csv
+OMP_THREAD_LIMIT=2 ./build/debug/heat_openmp --threads 4 > build/outputs/examples/openmp-limited.csv
 
-cmake -S . -B build/m2b-release -DCMAKE_BUILD_TYPE=Release
-cmake --build build/m2b-release --target check --parallel 2
+cmake -S . -B build/release -DCMAKE_BUILD_TYPE=Release
+cmake --build build/release --target check --parallel 2
 ```
 
 用户已确认 OpenMP 专用选项 `--threads Q`，默认 1，接受 1..INT_MAX 的十进制整数；零、负数、溢出、重复、缺值和残余文本均报输入错误（退出 2）。数值参数、默认值、CSV 与 E_inf 摘要沿用前述合同；成功输出前另在 stderr 一行记录 `Q_requested`、`Q_actual`。MPI 继续用 P 表示进程数。
@@ -112,12 +116,12 @@ M2b 新增 `heat_openmp_q1..q4` 和 `heat_openmp_limited`，与原 10 项合计 
 M3 提交 `cfffe71` 已获用户验收；既有 Debug/Release 各 19/19 通过，原始证据保持不变；M3 当时未开展 M4，本轮性能结果见末节。复现全部基本回归及四项 M3 系统测试：
 
 ```bash
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DHEAT_MPI_TEST_MAX_PROCS=4 -DHEAT_OPENMP_TEST_MAX_THREADS=4
-cmake --build build --target check --parallel 2
-cmake -S . -B build/m3-release -DCMAKE_BUILD_TYPE=Release -DHEAT_MPI_TEST_MAX_PROCS=4 -DHEAT_OPENMP_TEST_MAX_THREADS=4
-cmake --build build/m3-release --target check --parallel 2
+cmake -S . -B build/debug -DCMAKE_BUILD_TYPE=Debug -DHEAT_MPI_TEST_MAX_PROCS=4 -DHEAT_OPENMP_TEST_MAX_THREADS=4
+cmake --build build/debug --target check --parallel 2
+cmake -S . -B build/release -DCMAKE_BUILD_TYPE=Release -DHEAT_MPI_TEST_MAX_PROCS=4 -DHEAT_OPENMP_TEST_MAX_THREADS=4
+cmake --build build/release --target check --parallel 2
 # 已构建后，仅重现 M3（CTest 默认耗时格式）：
-ctest --test-dir build -L M3 --output-on-failure
+ctest --test-dir build/debug -L M3 --output-on-failure
 ```
 
 `tests/check_system.py` 以 Python 标准库逐点解析三种独立程序的真实 CSV，分别检查连续解析误差、离散模态与串并行一致性。三组联合加密覆盖 r=0.05/0.1/0.25，输出每组 E_inf、阈值、D_inf、误差比和观测阶；稳定性端点及相邻浮点输入单独核查。默认每组实际 P/Q=1..4，另含请求 Q=4/实际 2；每 rank 一行、超限 P、Q>内部行及奇偶步纳入边界组。不均匀 MPI 分块由加密组和原回归覆盖。完整参数、阈值推导及覆盖表见 [DESIGN 第 9 节](docs/DESIGN.md)。
@@ -137,10 +141,10 @@ M4原实验、诊断01、扩大02-r1及图表整理已获用户验收；M5材料
 # 校验旧清单、采样源码身份、重算统计、合成检查及新版图覆盖；不调用求解器：
 python3 scripts/check_results.py
 # 只重画已完成数据，必须使用未占用的输出目录：
-python3 scripts/plot_results.py --output build/results-viz-review
+python3 scripts/plot_results.py --output build/outputs/results-viz-review
 # 可选：--font /path/to/existing-chinese-font.ttf
 # 独立复算最新统计到忽略的build目录：
-python3 scripts/analyze_large.py results/performance/large-02-r1/m4-diagnostic-02-r1 --output build/m4-large-recomputed --no-plots
+python3 scripts/analyze_large.py results/performance/large-02-r1/m4-diagnostic-02-r1 --output build/outputs/m4-large-recomputed --no-plots
 ```
 
 生成目录包含9组SVG/PNG、原统计CSV副本、生成清单和SHA256SUMS。中文SVG字形转为路径；字体只读使用，不入Git。耗时条为min/max，S/E条为探索性95%区间，逐轮图不能用于比较绝对速度；所有慢样本与WSL时钟/趋势限制保留。

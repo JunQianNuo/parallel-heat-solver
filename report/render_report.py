@@ -19,7 +19,7 @@ def main():
     args=ap.parse_args()
     pdfmetrics.registerFont(TTFont('Chinese',args.font,subfontIndex=0))
     source=(ROOT/'FINAL_REPORT.md').read_text()
-    cache=ROOT.parent/'build/m5-report-math';cache.mkdir(parents=True,exist_ok=True)
+    cache=ROOT.parent/'build/cache/report-math';cache.mkdir(parents=True,exist_ok=True)
     formulas=list(dict.fromkeys(re.findall(r'\$\$(.*?)\$\$|(?<!\$)\$([^$\n]+)\$(?!\$)',source,re.S)))
     expressions=[a.strip() or b.strip() for a,b in formulas]
     jobs=[]
