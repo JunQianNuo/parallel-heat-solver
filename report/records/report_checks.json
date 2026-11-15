@@ -1,6 +1,6 @@
 {
   "scope": "书面报告；未调用PPT工具、求解器、构建、数值回归或性能采样",
-  "report_links_checked": 24,
+  "report_links_checked": 2,
   "numbered_sections": 8,
   "performance_table_N": [
     384,
@@ -9,25 +9,29 @@
     1024
   ],
   "M3_error_ratios_orders": "对照归档CSV通过",
-  "report_markdown_sha256": "595e07f5541b4f7da56d9bb0949064feb0e3e9d45a5de90d587ff00521bcbd4a",
-  "report_pdf_sha256": "db5a8a33ef67bb860f90ef9186d0e4f528420799f6f5f845b2d1c8ff4b2e3ca3",
+  "report_markdown_sha256": "ad3ea435fd318f2372db93a672866f4d800ea7255c9442cea6812264b64a978d",
+  "report_pdf_sha256": "ed0f6e4ba660e3efb7d4cac90a3271ce085b66e12215851f05fccafe22c5224e",
   "pdf": {
-    "pages": 8,
+    "pages": 13,
     "text_outside_page": [],
-    "page_analysis": "读取现有PDF；未重新生成或渲染"
+    "page_analysis": "读取本轮新生成PDF；文字页界检查通过，实际渲染与AI查看另见pdf_source_sync"
   },
   "course_protection": "2570 files: paths/content unchanged",
   "human_review": "未验收；姓名学号待填写，内容/排版待用户审阅",
-  "revision": "2026-11-15：面向非实现者，先讲问题/功能/输入输出/实际效果",
-  "pdf_source_sync": "未同步；PDF保持e09695c时旧版，未包含本次Markdown文字修订；新版生成与排版检查未运行",
+  "revision": "2026-11-15：教师版移除引用、证据入口及内部交接指引",
+  "pdf_source_sync": "已从当前FINAL_REPORT.md实际生成PDF；13页逐页渲染，AI查看最终总览及公式细页",
   "additional_checks": {
-    "math_expressions_parsed": 36,
-    "max_grid_time_rows": 5,
+    "math_expressions_unchanged": 36,
+    "max_grid_time_speedup_rows": 5,
     "max_grid_openmp_efficiency_values": 2,
     "M3_error_values": 3,
-    "protected_files_unchanged": 219,
-    "new_pdf_render": "未运行；按本轮Markdown修订范围保留旧PDF",
-    "solver_regression": "未运行；文字修改未改求解器",
+    "markdown_citations_and_internal_pointers": "无残留",
+    "pdf_citations_and_internal_pointers": "无残留；无链接注释",
+    "figure_captions_same_page": 2,
+    "footer_date": "各页与正文日期一致",
+    "protected_files_unchanged": 218,
+    "PPT": "未修改/未生成",
+    "solver_regression": "未运行；仅报告和生成器排版修改",
     "performance_sampling": "未运行"
   }
 }

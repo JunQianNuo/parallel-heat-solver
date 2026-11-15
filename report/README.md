@@ -1,17 +1,17 @@
 # 书面报告
 
-当前工作（2026-11-15）：先审阅、完善书面报告，PPT工作暂停。Markdown已按“面向非实现者、先说明功能与输入输出及实际效果”修订，尚未由用户验收；姓名、学号仍待填写。
+当前工作（2026-11-15）：先审阅、完善书面报告，PPT工作暂停。报告面向课程教师独立阅读，先说明功能、输入输出与实际效果；已删除引用编号、证据索引及内部交接指引，并同步生成PDF。姓名、学号仍待填写，报告尚未验收。
 
 ## 先看这两个文件
 
 | 文件 | 用途 |
 | --- | --- |
 | [FINAL_REPORT.md](FINAL_REPORT.md) | 书面报告的唯一编辑源稿，后续内容修改从这里开始 |
-| [FINAL_REPORT.pdf](FINAL_REPORT.pdf) | 旧版8页A4预览，本轮未重新生成，尚未同步2026-11-15的Markdown内容修订 |
+| [FINAL_REPORT.pdf](FINAL_REPORT.pdf) | 本轮从当前Markdown生成的13页A4预览，已逐页渲染检查 |
 
-现稿先说明薄板冷却问题、三种方式的功能、输入参数与CSV/摘要输出，再解释均匀网格、五点显式更新、双数组时间推进与稳定性。实现部分按分工与依赖讲解MPI邻接行交换和OpenMP换层同步；验证区分解析误差与串并行差。性能部分先交代公平比较方法，再展示最大网格的实际耗时及完整趋势、Amdahl/Gustafson与诊断限制，最后说明AI使用和复现。
+现稿先说明薄板冷却问题、三种方式的功能、输入参数与CSV/摘要输出，再解释均匀网格、五点显式更新、双数组时间推进与稳定性。实现部分按分工与依赖讲解MPI邻接行交换和OpenMP换层同步；验证区分解析误差与串并行差。性能部分先交代公平比较方法，再展示最大网格的实际耗时及完整趋势、Amdahl/Gustafson与诊断限制，最后说明AI使用与项目结论。
 
-报告使用已验收M4数据和原图。原始证据统一在[results/RESULTS.md](../results/RESULTS.md)，实现依据在[docs/DESIGN.md](../docs/DESIGN.md)。本轮调整叙述顺序、补足术语与过程解释，已有数据、正式程序和性能结论口径保持。未新增实验；材料核查不作为重新运行求解器的测试记录。
+报告使用已验收M4数据和原图。原始证据统一在[results/RESULTS.md](../results/RESULTS.md)，实现依据在[docs/DESIGN.md](../docs/DESIGN.md)。教师阅读的正文已删除仓库引用、提交身份、内部验收/交接说明与复现脚本入口；实验数据、统计定义、测试方法和AI核查实例保留。内部追溯仍通过本入口及records维护，已有数据、正式程序和性能结论口径保持。未新增实验；材料核查不作为重新运行求解器的测试记录。
 
 ## 目录分工
 
@@ -46,7 +46,7 @@ report/
 build/tools/python/bin/python report/check_report.py
 ```
 
-检查结果写入[records/report_checks.json](records/report_checks.json)。包含报告链接、章节、归档CSV中的加速比/效率与误差比、已有PDF签名/页数/文字页界。本次修订记录还核对36处数学表达式、最大网格5行耗时和3个加密误差值，并明确PDF仍为旧版；检查旧PDF的页界不表示新版Markdown已生成PDF或完成排版核查。文件存在或软件核查通过不等同报告内容已人工验收。
+检查结果写入[records/report_checks.json](records/report_checks.json)。包含2个图表素材链接、8个章节、归档CSV中的加速比/效率与误差比、PDF签名/页数/文字页界。本次修订记录另核对36处数学表达式、最大网格5行耗时和3个加密误差值，记录13页PDF实际生成/逐页渲染、引用残留检查与图注同页检查；check_report.py本身只读取PDF，不执行生成或目视检查。文件存在或软件核查通过不等同报告内容已人工验收。
 
 修改源稿后生成PDF：
 
@@ -54,6 +54,6 @@ build/tools/python/bin/python report/check_report.py
 build/tools/python/bin/python report/render_report.py --font /mnt/c/Windows/Fonts/msyh.ttc --math-python python3
 ```
 
-生成需要reportlab、Pillow及Matplotlib；默认只读使用本机Microsoft YaHei字体，可用`--font`指定其他已有中文TrueType字体。字体、工具环境和临时数学图片不入Git。该生成命令本轮未运行，现有PDF保持原样。
+生成需要reportlab、Pillow及Matplotlib；默认只读使用本机Microsoft YaHei字体，可用`--font`指定其他已有中文TrueType字体。字体、工具环境和临时数学图片不入Git。该生成命令本轮已运行。生成器同步正文日期到页脚，逐项排版编号步骤，并将图与图注保持同页。
 
 后续先按教师要求审阅报告内容与排版，再由用户安排PPT任务。个人信息、实际人工复核与最终验收由用户确认，不以历史M4验收替代。

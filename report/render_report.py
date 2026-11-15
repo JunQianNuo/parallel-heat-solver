@@ -19,6 +19,7 @@ def main():
     args=ap.parse_args()
     pdfmetrics.registerFont(TTFont('Chinese',args.font,subfontIndex=0))
     source=(ROOT/'FINAL_REPORT.md').read_text()
+    report_date=re.search(r'日期：(\d{4}-\d{2}-\d{2})',source).group(1)
     cache=ROOT.parent/'build/cache/report-math';cache.mkdir(parents=True,exist_ok=True)
     formulas=list(dict.fromkeys(re.findall(r'\$\$(.*?)\$\$|(?<!\$)\$([^$\n]+)\$(?!\$)',source,re.S)))
     expressions=[a.strip() or b.strip() for a,b in formulas]
@@ -38,7 +39,7 @@ for j in json.load(open(sys.argv[1])):
     paths={e:Path(j['path']) for e,j in zip(expressions,jobs)}
     body=ParagraphStyle('body',fontName='Chinese',fontSize=9.4,leading=16,wordWrap=None,spaceAfter=7)
     cell=ParagraphStyle('cell',parent=body,fontSize=8,leading=12,spaceAfter=0)
-    styles={n:ParagraphStyle(n,parent=body,fontSize=size,leading=lead,spaceBefore=12,spaceAfter=8,textColor=colors.HexColor('#164e63')) for n,size,lead in [('h1',21,31),('h2',14,22),('h3',11,18)]}
+    styles={n:ParagraphStyle(n,parent=body,fontSize=size,leading=lead,spaceBefore=12,spaceAfter=8,keepWithNext=True,textColor=colors.HexColor('#164e63')) for n,size,lead in [('h1',21,31),('h2',14,22),('h3',11,18)]}
     def inline(txt):
         pieces=re.split(r'(\$[^$]+\$)',txt)
         out=[]
@@ -64,7 +65,14 @@ for j in json.load(open(sys.argv[1])):
             story.extend([Image(str(p),width=width,height=height),Spacer(1,10)]);i+=1;continue
         if line.startswith('!['):
             path=ROOT/re.search(r'\]\(([^)]+)\)',line).group(1);w,h=ImageReader(str(path)).getSize(); width=475
-            story.extend([Image(str(path),width=width,height=width*h/w),Spacer(1,7)]);i+=1;continue
+            figure=[Image(str(path),width=width,height=width*h/w),Spacer(1,7)]
+            after=i+1
+            while after<len(lines) and not lines[after].strip():after+=1
+            if after<len(lines) and re.match(r'^图\d+[：:]',lines[after].strip()):
+                figure.append(Paragraph(inline(lines[after].strip()),body))
+                story.append(KeepTogether(figure));i=after+1
+            else:story.extend(figure);i+=1
+            continue
         if line.startswith('|'):
             rows=[]
             while i<len(lines) and lines[i].strip().startswith('|'):
@@ -80,13 +88,15 @@ for j in json.load(open(sys.argv[1])):
             while i<len(lines) and not lines[i].startswith('```'):
                 story.append(Paragraph(html.escape(lines[i]),ParagraphStyle('code',parent=cell,fontSize=7.5,leading=12)));i+=1
             story.append(Spacer(1,8));i+=1;continue
+        if re.match(r'^\d+\. ',line):
+            story.append(Paragraph(inline(line),body));i+=1;continue
         match=re.match(r'^(#{1,3}) (.+)',line)
         if match:story.append(Paragraph(inline(match[2]),styles['h'+str(len(match[1]))]));i+=1;continue
         buf=[line];i+=1
-        while i<len(lines) and lines[i].strip() and not re.match(r'^(#|\||\$\$|!\[|```|- )',lines[i].strip()):buf.append(lines[i].strip());i+=1
+        while i<len(lines) and lines[i].strip() and not re.match(r'^(#|\||\$\$|!\[|```|- |\d+\. )',lines[i].strip()):buf.append(lines[i].strip());i+=1
         story.append(Paragraph(inline(' '.join(buf)),body))
     def footer(c,doc):
-        c.setFont('Chinese',8);c.setFillColor(colors.HexColor('#64748b'));c.drawString(48,27,'二维热传导 · 最终报告 · 2026-11-12');c.drawRightString(547,27,str(doc.page))
+        c.setFont('Chinese',8);c.setFillColor(colors.HexColor('#64748b'));c.drawString(48,27,'二维热传导 · 最终报告 · '+report_date);c.drawRightString(547,27,str(doc.page))
     doc=SimpleDocTemplate(str(ROOT/'FINAL_REPORT.pdf'),pagesize=(595.28,841.89),rightMargin=60,leftMargin=60,topMargin=42,bottomMargin=48,title='二维热传导方程的串行、MPI与OpenMP求解',author='姓名待填写；Codex辅助整理')
     doc.build(story,onFirstPage=footer,onLaterPages=footer)
     print('Rendered',ROOT/'FINAL_REPORT.pdf')
