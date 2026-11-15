@@ -9,27 +9,37 @@
     1024
   ],
   "M3_error_ratios_orders": "对照归档CSV通过",
-  "report_markdown_sha256": "a2510a21de088b4eea4196427e374ada9a2e4a75f3ea656006df64bb9a91f7e4",
-  "report_pdf_sha256": "afca678a298301e5bb1147c1291d92e1b6a3346a88ebb283ed85f1445c463faf",
+  "report_markdown_sha256": "1a0a605c897268d993acd65e42e7a1184ce8a3a5c92f46fcb362c9530da12f87",
+  "report_pdf_sha256": "53b86378dd2b051e51551845ea2303530633528006dd1c003219ace0aade7511",
   "pdf": {
     "pages": 12,
     "text_outside_page": [],
-    "page_analysis": "读取本轮新生成PDF；页界检查通过，实际渲染另见pdf_source_sync"
+    "page_analysis": "本轮新生成PDF的文字页界检查通过；实际渲染另见pdf_source_sync"
   },
   "course_protection": "2570 files: paths/content unchanged",
   "human_review": "未验收；姓名学号待填写，内容/排版待用户审阅",
-  "revision": "2026-11-15：删除课程概念入门说明，改为项目方法与结果分析",
-  "pdf_source_sync": "从当前Markdown实际生成12页PDF，逐页渲染并由AI查看总览；用户审阅待完成",
+  "revision": "2026-11-15：先推送原样用户稿132f66a，再仅重组第6节",
+  "review_scope": "仅第6节的表达、数据展示和PDF生成；非第6节正文保持，不表示全报告定稿",
+  "pdf_source_sync": "已从当前Markdown生成12页PDF；实际逐页渲染，AI查看最终总览和第11页",
   "additional_checks": {
-    "math_expressions_unchanged": 36,
-    "scientific_table_rows_unchanged": 57,
-    "max_grid_time_speedup_rows_checked": 5,
-    "basic_course_concept_examples": "正文/PDF均无入门例句残留",
-    "citations_and_internal_pointers": "正文/PDF均无残留",
-    "figure_captions_same_page": 2,
+    "checkpoint": "132f66a",
+    "sections_1_to_5": "与用户已推送稿逐字一致，含两条Rivise标记",
+    "sections_7_to_8": "与用户已推送稿逐字一致",
+    "existing_math_expressions_preserved": 33,
+    "typeset_expressions_added": 3,
+    "max_grid_time_speedup_rows": 5,
+    "four_grid_speedup_efficiency_rows": 4,
+    "original_fixed_scale_rows": 2,
+    "scaled_workload_configuration_rows": 3,
+    "scaled_throughput_rows": 2,
+    "scaled_time_values": 4,
+    "diagnostic_pair_rows": 2,
+    "figures_unchanged": 2,
+    "MPI_median_time_trends": "四网格随P下降",
     "protected_files_unchanged": 220,
-    "PPT": "未修改/未生成",
-    "solver_regression": "未运行；仅报告文字修改",
-    "performance_sampling": "未运行"
-  }
+    "solver_regression": "未运行",
+    "performance_sampling": "未运行",
+    "figure_captions_same_page": 2
+  },
+  "pending_user_draft": "第1—5节保留原样，含两条Rivise及此前指出的halo/三类参考衔接问题；姓名学号、用户审阅及全报告验收待完成"
 }
