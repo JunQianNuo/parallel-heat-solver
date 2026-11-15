@@ -9,12 +9,12 @@
     1024
   ],
   "M3_error_ratios_orders": "对照归档CSV通过",
-  "report_markdown_sha256": "1419c53eaa6540a26eb6641ba89da5c1b134a47335ef90babbb4f72af1e760ea",
-  "report_pdf_sha256": "9f2156d5ef698a491caaba106fdc66a60afdc8788243dfcbca44d4dfca60d304",
+  "report_markdown_sha256": "891a636588ddf21c324998d522db0fa49c1601af5326cdf201a69f3395669268",
+  "report_pdf_sha256": "d195a79091e3a3cf839716d3f2599a5d6ece983883f0b563e58e544d4f4f7dbc",
   "pdf": {
-    "pages": 13,
+    "pages": 16,
     "text_outside_page": [],
-    "page_analysis": "第5节修订后实际生成13页并全部渲染，AI查看总览及第7/8页；编译选项无span标签，五档并行度完整"
+    "page_analysis": "本轮统一标题后生成16页，全部实际渲染；AI查看封面及总览，35个标题及PDF属性核对通过"
   },
   "course_protection": "2570 files: paths/content unchanged",
   "human_review": "未验收；姓名学号待填写，内容/排版待用户审阅",
@@ -34,17 +34,13 @@
       8,
       16
     ],
-    "fixed_size_rows_checked": 11,
-    "grid_metrics": [
-      "串行耗时Ts（秒）",
-      "MPI16 S",
-      "MPI16 E",
-      "OpenMP16 S",
-      "OpenMP16 E"
-    ],
-    "grid_total_columns": 6,
+    "fixed_size_rows_checked": 5,
     "grid_rows_checked": 4,
-    "method": "逐行逐单元格对照归档CSV；耗时9位、S四位、效率百分数两位"
+    "scaled_configuration_rows_checked": 3,
+    "scaled_throughput_rows_checked": 6,
+    "diagnostic_rows_checked": 2,
+    "numeric_cells_checked": 73,
+    "method": "五表逐行逐格对照归档CSV；耗时/S/工作量比四位、效率百分数两位；诊断仅使用原配对比率中位数"
   },
   "figure_labels": "01–03及07–09保留N、M；04–06保留P(Q)；24个N/M标识对照归档统计通过",
   "user_edits": "保留用户本轮并行编辑，最新快照核对保持；未自动提交推送",
@@ -122,5 +118,141 @@
     "checks": "归档结果/三批五CSV复算、九图覆盖/哈希、44配置/440样本、报告逐格数值/误差比/链接/13页页界及103项SHA通过",
     "report_bytes": "与前轮实际生成/渲染检查版哈希一致，本轮未重新生成或渲染",
     "acceptance": "仅提交授权；材料仍待用户验收"
+  },
+  "section6_math_revision_20261116": {
+    "human_changes_against_HEAD": {
+      "baseline": "HEAD e413c69 → 用户保存稿",
+      "section6_lines_before": 119,
+      "section6_lines_after": 267,
+      "section6_chars_before": 5031,
+      "section6_chars_after": 10307,
+      "section6_tables_before": 6,
+      "section6_tables_after": 5,
+      "lines_added": 217,
+      "lines_removed": 69,
+      "outside_section6_change": "第5.2节句号改冒号；第5.3节表格仅空格对齐"
+    },
+    "format_changes_against_saved_draft": {
+      "baseline": "用户保存稿→本轮格式稿",
+      "scope": "仅第6节；第5节用户标点/表格对齐和其他章节逐字保持",
+      "display_formulas": 7,
+      "inline_formulas": 58,
+      "inline_unique": 32,
+      "format_event_count": 65,
+      "approved_cleanup": "删除旧版第6节标题与旧导语，共2个非空行；保留新版",
+      "code_cleanup": "只去除schedule(static,1)外围的span标签，代码文本不变",
+      "roundtrip_protection": "逐项撤销格式替换并还原获准删除块后，与用户保存稿逐字一致",
+      "numeric_tokens_preserved": 312,
+      "table_blocks": 5,
+      "table_data_rows": 20,
+      "lines_before": 267,
+      "lines_after": 256,
+      "lines_added": 51,
+      "lines_removed": 62,
+      "report_math_before": 142,
+      "report_math_after": 207,
+      "protected_files_unchanged": 218,
+      "pdf_pages_rendered": 16,
+      "formula_section_pages": [
+        11,
+        13,
+        14
+      ],
+      "figure_captions_same_page": [
+        {
+          "figure": "6-1",
+          "page": 10
+        },
+        {
+          "figure": "6-2",
+          "page": 11
+        }
+      ],
+      "table_captions_with_table": [
+        {
+          "table": "6-1",
+          "page": 9
+        },
+        {
+          "table": "6-2",
+          "page": 10
+        },
+        {
+          "table": "6-3",
+          "page": 12
+        },
+        {
+          "table": "6-4",
+          "page": 12
+        },
+        {
+          "table": "6-5",
+          "page": 14
+        }
+      ],
+      "render_log": "最终生成无警告或错误；中文下标和left/right定界符正常生成"
+    },
+    "review": "用户明确删除旧第6节标题/导语；其他文字/数值保持，材料仍待用户审阅",
+    "git": "保留第5节人工附带修改，未自动提交或推送",
+    "tests": "仅材料/归档CSV/字体/排版核对；未构建、数值回归或性能采样"
+  },
+  "heading_revision_20261116": {
+    "headings_specified": 35,
+    "headings_changed": 27,
+    "headings_already_matching": 8,
+    "non_heading_content": "相对最新保存稿逐字保持；两个原诊断子标题保留",
+    "PDF_metadata_title": "二维热传导方程的串行与并行数值求解",
+    "pdf_pages_rendered": 16,
+    "headings_found_in_PDF": 35,
+    "PDF_heading_pages": {
+      "二维热传导方程的串行与并行数值求解": 1,
+      "1. 问题描述与程序功能": 1,
+      "1.1 研究问题与求解目标": 1,
+      "1.2 输入参数与运行约束": 2,
+      "1.3 结果输出与评价指标": 2,
+      "1.4 项目实现范围": 2,
+      "2. 数学模型与数值离散方法": 3,
+      "2.1 热传导模型与网格离散": 3,
+      "2.2 五点显式差分格式": 3,
+      "2.3 双数组时间推进方法": 3,
+      "2.4 数值稳定性条件": 4,
+      "3. 串行与并行算法实现": 4,
+      "3.1 串行求解器与性能基准": 4,
+      "3.2 MPI 行分块与邻接通信": 5,
+      "3.3 OpenMP 行划分与线程同步": 5,
+      "4. 数值正确性与系统验证": 6,
+      "4.1 解析误差与串并行一致性": 6,
+      "4.2 网格加密与收敛阶验证": 6,
+      "4.3 自动化测试方案": 7,
+      "4.4 边界测试与验证结果": 7,
+      "5. 性能实验设计与测量方法": 7,
+      "5.1 实验平台与运行配置": 7,
+      "5.2 计时范围与测量口径": 8,
+      "5.3 重复采样与统计方法": 8,
+      "6. 性能测试结果与分析": 8,
+      "6.1 固定规模下的并行加速效果": 8,
+      "6.2 不同网格规模下的加速效果": 9,
+      "6.3 扩大工作量后的吞吐变化": 11,
+      "6.4 并行性能模型分析": 13,
+      "6.4.1 Amdahl 定律：固定规模下的加速限制": 13,
+      "6.4.2 Gustafson 定律：扩大工作量后的扩展潜力": 13,
+      "6.5 并行实现方式对计算性能的影响": 14,
+      "6.6 实验波动与结果适用范围": 15,
+      "7. AI 辅助开发与成果核查": 16,
+      "8. 总结与结论": 16
+    },
+    "protected_files_unchanged": 218,
+    "concurrent_save": "用户保存覆盖首轮标题后，保留新保存稿的表格格式和空行修改，重新应用标题",
+    "checker": "仅表头忽略空白差异，数值仍逐格严格比较",
+    "git": "保留此前未提交修改；本轮未暂存、提交或推送"
+  },
+  "submission_section6_headings_20261116": {
+    "user_instruction": "提交",
+    "branch": "M5",
+    "remote": "origin/M5",
+    "files": 10,
+    "checks": "五表73项数值、M3误差比/阶、2图链接、16页页界及2570课程文件通过；35标题/PDF属性和103项SHA一致",
+    "PDF": "沿用前轮已生成/渲染且记录哈希一致的16页PDF，本轮未重新生成或渲染",
+    "acceptance": "提交授权；报告和M5仍待用户验收"
   }
 }

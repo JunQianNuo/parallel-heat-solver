@@ -10,8 +10,9 @@ def require(ok,message):
 
 def table_rows(source,headers):
     lines=source.splitlines()
+    normalized_headers=[re.sub(r'\s+','',v) for v in headers]
     for i,line in enumerate(lines):
-        if line.startswith('|') and [v.strip() for v in line.strip().strip('|').split('|')]==headers:
+        if line.startswith('|') and [re.sub(r'\s+','',v) for v in line.strip().strip('|').split('|')]==normalized_headers:
             rows=[]
             for line in lines[i+1:]:
                 if not line.startswith('|'):break
@@ -37,27 +38,40 @@ def main():
         require((ROOT/target.split('#')[0]).exists(),f'missing report link: {target}');links+=1
     rows=list(csv.DictReader((REPO/'results/performance/large-02-r1/m4-diagnostic-02-r1.csv').open(newline='')))
     selected={(int(r['N']),r['kind'],int(r['actual'])):r for r in rows}
-    fixed=table_rows(source,['执行方式','实际执行单元数','推进耗时中位数（秒）','相对独立串行的加速比'])
+    fixed=table_rows(source,['并行度 $p$','MPI 耗时 (s)','MPI 加速比','OpenMP 耗时 (s)','OpenMP 加速比'])
     expected=[]
-    configurations=[('serial',1)]+[(kind,k) for kind in ['mpi','openmp'] for k in [1,2,4,8,16]]
-    for kind,k in configurations:
-        r=selected[1024,kind,k]
-        label={'serial':'独立串行','mpi':'MPI','openmp':'OpenMP'}[kind]
-        unit=str(k)+{'serial':'','mpi':'进程','openmp':'线程'}[kind]
-        expected.append([label,unit,f"{float(r['median_seconds']):.9f}",f"{float(r['speedup_serial']):.4f}"])
-    require(fixed==expected,'fixed-size table differs from archived statistics')
-    grid_header='串行耗时Ts（秒）' if '串行耗时Ts（秒）' in source else '串行耗时Ts'
-    grid=table_rows(source,['N',grid_header,'MPI16 S','MPI16 E','OpenMP16 S','OpenMP16 E'])
-    checked=[]
-    expected=[]
-    for N in [384,512,768,1024]:
-        cells=[str(N),f"{float(selected[N,'serial',1]['median_seconds']):.9f}"]
+    for k in [1,2,4,8,16]:
+        cells=[str(k)]
         for kind in ['mpi','openmp']:
-            r=selected[N,kind,16]
-            cells.extend([f"{float(r['speedup_serial']):.4f}",f"{float(r['efficiency'])*100:.2f}%"])
+            r=selected[1024,kind,k]
+            cells.extend([f"{float(r['median_seconds']):.4f}",f"{float(r['speedup_serial']):.4f}"])
         expected.append(cells)
-        checked.append(N)
+    require(fixed==expected,'fixed-size table differs from archived statistics')
+    require(f"{float(selected[1024,'serial',1]['median_seconds']):.4f}" in source,'missing independent serial baseline')
+    grid=table_rows(source,['网格 $N$','MPI 4','MPI 8','MPI 16','OpenMP 4','OpenMP 8','OpenMP 16'])
+    checked=[384,512,768,1024]
+    expected=[[str(N)]+[f"{float(selected[N,kind,k]['speedup_serial']):.4f}" for kind in ['mpi','openmp'] for k in [4,8,16]] for N in checked]
     require(grid==expected,'grid table differs from archived statistics')
+    baseline=list(csv.DictReader((REPO/'results/performance/baseline/derived/summary.csv').open(newline='')))
+    scaled={(r['kind'],int(r['p'])):r for r in baseline if r['suite']=='scaled'}
+    configs=table_rows(source,['目标并行度 $p$','网格 $N$','时间步数 $M$','相对工作量 $W/W_1$'])
+    expected=[]
+    for k in [1,2,4]:
+        r=scaled['mpi',k];expected.append([str(k),r['N'],r['M'],f"{float(r['work_ratio']):.4f}"])
+    require(configs==expected,'scaled configuration table differs from archived statistics')
+    throughput=table_rows(source,['实现','并行度 $p$','耗时 (s)','吞吐增长 $R_p$','$R_p/p$'])
+    expected=[]
+    for kind,label in [('mpi','MPI'),('openmp','OpenMP')]:
+        for k in [1,2,4]:
+            r=scaled[kind,k];expected.append([label,str(k),f"{float(r['median_seconds']):.4f}",f"{float(r['throughput_ratio_own_p1']):.4f}",f"{float(r['normalized_scaled_efficiency'])*100:.2f}%"])
+    require(throughput==expected,'scaled throughput table differs from archived statistics')
+    diagnostic=table_rows(source,['诊断对象','修改内容','耗时比 $K$','实验发现'])
+    pairs=list(csv.DictReader((REPO/'results/performance/diagnostic-01/m4-diagnostic-01.csv').open(newline='')))
+    ratios=[]
+    for stage,name in [('common','mpi1'),('factor','384-q4-replica/block')]:
+        r=next(r for r in pairs if r['type']=='pair' and r['stage']==stage and r['name']==name)
+        ratios.append(f"{float(r['ratio']):.4f}")
+    require([r[2] for r in diagnostic]==ratios,'diagnostic paired ratios differ from archived statistics')
     m3=list(csv.DictReader((REPO/'results/validation/m3-errors.csv').open()))
     for r in m3:
         if r['build']=='debug' and r['suite']=='default' and r['solver']=='serial' and r['ratio']:
@@ -84,7 +98,7 @@ def main():
         after={str(p.relative_to(base)):sha(p) for p in sorted(base.rglob('*')) if p.is_file()}
         require(before==after,'read-only course material changed');course=f'{len(after)} files: paths/content unchanged'
     result={'scope':'书面报告；未调用PPT工具、求解器、构建、数值回归或性能采样','report_links_checked':links,'numbered_sections':8,'performance_table_N':checked,'M3_error_ratios_orders':'对照归档CSV通过','report_markdown_sha256':sha(report),'report_pdf_sha256':sha(pdf),'pdf':pdf_check,'course_protection':course,'human_review':'未验收；姓名学号待填写，内容/排版待用户审阅'}
-    result['performance_tables']={'fixed_size_N':1024,'MPI_actual_P':[1,2,4,8,16],'OpenMP_actual_Q':[1,2,4,8,16],'fixed_size_rows_checked':len(fixed),'grid_metrics':['串行耗时Ts（秒）','MPI16 S','MPI16 E','OpenMP16 S','OpenMP16 E'],'grid_total_columns':6,'grid_rows_checked':len(grid),'method':'逐行逐单元格对照归档CSV；耗时9位、S四位、效率百分数两位'}
+    result['performance_tables']={'fixed_size_N':1024,'MPI_actual_P':[1,2,4,8,16],'OpenMP_actual_Q':[1,2,4,8,16],'fixed_size_rows_checked':len(fixed),'grid_rows_checked':len(grid),'scaled_configuration_rows_checked':len(configs),'scaled_throughput_rows_checked':len(throughput),'diagnostic_rows_checked':len(diagnostic),'numeric_cells_checked':73,'method':'五表逐行逐格对照归档CSV；耗时/S/工作量比四位、效率百分数两位；诊断仅使用原配对比率中位数'}
     args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(result,ensure_ascii=False,indent=2))
 if __name__=='__main__':main()

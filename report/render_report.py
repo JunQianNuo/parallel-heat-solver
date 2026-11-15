@@ -18,7 +18,11 @@ def main():
     ap.add_argument('--math-python', default='python3')
     args=ap.parse_args()
     pdfmetrics.registerFont(TTFont('Chinese',args.font,subfontIndex=0))
+    bold_font=Path(args.font).with_name(Path(args.font).stem+'bd'+Path(args.font).suffix)
+    if bold_font.exists():pdfmetrics.registerFont(TTFont('ChineseBold',str(bold_font),subfontIndex=0))
+    pdfmetrics.registerFontFamily('Chinese',normal='Chinese',bold='ChineseBold' if bold_font.exists() else 'Chinese',italic='Chinese',boldItalic='ChineseBold' if bold_font.exists() else 'Chinese')
     source=(ROOT/'FINAL_REPORT.md').read_text()
+    report_title=re.search(r'^# (.+)$',source,re.M).group(1)
     report_date=re.search(r'日期：(\d{4}-\d{2}-\d{2})',source).group(1)
     cache=ROOT.parent/'build/cache/report-math';cache.mkdir(parents=True,exist_ok=True)
     formulas=list(dict.fromkeys(re.findall(r'\$\$(.*?)\$\$|(?<!\$)\$([^$\n]+)\$(?!\$)',source,re.S)))
@@ -28,21 +32,27 @@ def main():
         path=cache/(hashlib.sha256(expr.encode()).hexdigest()[:20]+'.png')
         jobs.append({'expr':expr.replace('\n',' '),'path':str(path)})
     jobfile=cache/'jobs.json';jobfile.write_text(json.dumps(jobs))
-    code=r"""import json,sys,matplotlib
+    code=r"""import json,sys,re,matplotlib
 matplotlib.use('Agg')
 from matplotlib.mathtext import math_to_image
+from matplotlib import font_manager
+font_manager.fontManager.addfont(sys.argv[2])
+family=font_manager.FontProperties(fname=sys.argv[2]).get_name()
 jobs=json.load(open(sys.argv[1]))
 for j in jobs:
- expr=j['expr'].replace(r'\le',r'\leq').replace(r'\bmod',r'\;\mathrm{mod}\;')
- j['depth']=float(math_to_image('$'+expr+'$',j['path'],dpi=200,format='png',color='#172e38'))
+ expr=re.sub(r'\\le(?![A-Za-z])',lambda m:r'\leq',j['expr']).replace(r'\bmod',r'\;\mathrm{mod}\;')
+ settings={'mathtext.fontset':'custom','mathtext.rm':family,'mathtext.it':'DejaVu Sans:italic','mathtext.bf':'DejaVu Sans:bold','mathtext.cal':'DejaVu Sans'} if re.search(r'[\u4e00-\u9fff]',expr) else {}
+ with matplotlib.rc_context(settings):
+  j['depth']=float(math_to_image('$'+expr+'$',j['path'],dpi=200,format='png',color='#172e38'))
 json.dump(jobs,open(sys.argv[1],'w'))
 """
-    subprocess.run([args.math_python,'-c',code,str(jobfile)],check=True)
+    subprocess.run([args.math_python,'-c',code,str(jobfile),args.font],check=True)
     jobs=json.loads(jobfile.read_text())
     paths={e:Path(j['path']) for e,j in zip(expressions,jobs)}
     depths={e:j['depth'] for e,j in zip(expressions,jobs)}
     body=ParagraphStyle('body',fontName='Chinese',fontSize=9.4,leading=16,wordWrap=None,spaceAfter=7)
     cell=ParagraphStyle('cell',parent=body,fontSize=8,leading=12,spaceAfter=0)
+    caption=ParagraphStyle('caption',parent=body,keepWithNext=True)
     styles={n:ParagraphStyle(n,parent=body,fontSize=size,leading=lead,spaceBefore=12,spaceAfter=8,keepWithNext=True,textColor=colors.HexColor('#164e63')) for n,size,lead in [('h1',21,31),('h2',14,22),('h3',11,18),('h4',10.2,16)]}
     def inline(txt,font_size=9.4):
         pieces=re.split(r'(\$[^$]+\$)',txt)
@@ -57,7 +67,8 @@ json.dump(jobs,open(sys.argv[1],'w'))
                 part=re.sub(r'`([^`]+)`',r'<font color="#155e75">\1</font>',part)
                 part=re.sub(r'\[([^\]]+)\]\(([^)]+)\)',r'<link href="\2" color="#155e75">\1</link>',part)
                 out.append(part)
-        return ''.join(out)
+        result=re.sub(r'\*\*(.+?)\*\*',r'<b>\1</b>',''.join(out))
+        return re.sub(r'(?<!\*)\*([^*]+)\*(?!\*)',r'\1',result)
     lines=source.splitlines(); story=[]; i=0
     while i<len(lines):
         line=lines[i].strip()
@@ -65,7 +76,7 @@ json.dump(jobs,open(sys.argv[1],'w'))
         if line=='$$':
             i+=1;buf=[]
             while i<len(lines) and lines[i].strip()!='$$':buf.append(lines[i]);i+=1
-            expr='\n'.join(buf).strip();p=paths[expr];w,h=ImageReader(str(p)).getSize();height=20; width=w/h*height
+            expr='\n'.join(buf).strip();p=paths[expr];w,h=ImageReader(str(p)).getSize();height=h*72/200*1.3; width=w/h*height
             if width>475:height*=475/width;width=475
             story.extend([Image(str(p),width=width,height=height),Spacer(1,10)]);i+=1;continue
         if line.startswith('!['):
@@ -73,7 +84,7 @@ json.dump(jobs,open(sys.argv[1],'w'))
             figure=[Image(str(path),width=width,height=width*h/w),Spacer(1,7)]
             after=i+1
             while after<len(lines) and not lines[after].strip():after+=1
-            if after<len(lines) and re.match(r'^图\d+[：:]',lines[after].strip()):
+            if after<len(lines) and re.match(r'^\*?图\s*\d+(?:-\d+)?(?:[：:]|\s)',lines[after].strip()):
                 figure.append(Paragraph(inline(lines[after].strip()),body))
                 story.append(KeepTogether(figure));i=after+1
             else:story.extend(figure);i+=1
@@ -98,6 +109,8 @@ json.dump(jobs,open(sys.argv[1],'w'))
             i+=1;continue
         if re.match(r'^\d+\. ',line):
             story.append(Paragraph(inline(line),body));i+=1;continue
+        if re.match(r'^\*{0,2}表\s*\d+(?:-\d+)?(?:\s|[：:])',line):
+            story.append(Paragraph(inline(line),caption));i+=1;continue
         match=re.match(r'^(#{1,4}) (.+)',line)
         if match:
             style=styles['h'+str(len(match[1]))]
@@ -107,7 +120,7 @@ json.dump(jobs,open(sys.argv[1],'w'))
         story.append(Paragraph(inline(' '.join(buf)),body))
     def footer(c,doc):
         c.setFont('Chinese',8);c.setFillColor(colors.HexColor('#64748b'));c.drawString(48,27,'二维热传导 · 最终报告 · '+report_date);c.drawRightString(547,27,str(doc.page))
-    doc=SimpleDocTemplate(str(ROOT/'FINAL_REPORT.pdf'),pagesize=(595.28,841.89),rightMargin=60,leftMargin=60,topMargin=42,bottomMargin=48,title='二维热传导方程的串行、MPI与OpenMP求解',author='姓名待填写；Codex辅助整理')
+    doc=SimpleDocTemplate(str(ROOT/'FINAL_REPORT.pdf'),pagesize=(595.28,841.89),rightMargin=60,leftMargin=60,topMargin=42,bottomMargin=48,title=report_title,author='姓名待填写；Codex辅助整理')
     doc.build(story,onFirstPage=footer,onLaterPages=footer)
     print('Rendered',ROOT/'FINAL_REPORT.pdf')
 if __name__=='__main__':main()
