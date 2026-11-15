@@ -9,37 +9,34 @@
     1024
   ],
   "M3_error_ratios_orders": "对照归档CSV通过",
-  "report_markdown_sha256": "1a0a605c897268d993acd65e42e7a1184ce8a3a5c92f46fcb362c9530da12f87",
-  "report_pdf_sha256": "53b86378dd2b051e51551845ea2303530633528006dd1c003219ace0aade7511",
+  "report_markdown_sha256": "10168caf0e86b3cb8eef4a1faab30f39ccf042fd51abdf3b283362bd1d4c7866",
+  "report_pdf_sha256": "b833d1bb6692c35afb9f08e498b59bb2c61b286d93c2a241f79e224b1f247b83",
   "pdf": {
     "pages": 12,
     "text_outside_page": [],
-    "page_analysis": "本轮新生成PDF的文字页界检查通过；实际渲染另见pdf_source_sync"
+    "page_analysis": "读取本轮新生成PDF检查页界；实际渲染另见pdf_source_sync"
   },
   "course_protection": "2570 files: paths/content unchanged",
   "human_review": "未验收；姓名学号待填写，内容/排版待用户审阅",
-  "revision": "2026-11-15：先推送原样用户稿132f66a，再仅重组第6节",
-  "review_scope": "仅第6节的表达、数据展示和PDF生成；非第6节正文保持，不表示全报告定稿",
-  "pdf_source_sync": "已从当前Markdown生成12页PDF；实际逐页渲染，AI查看最终总览和第11页",
+  "revision": "2026-11-15：用实验目的命名，清理正文内部代号和相关术语",
+  "review_scope": "实验命名与相关说明的可读性；原有Rivise及其他待修订事项未处理",
+  "pdf_source_sync": "实际从当前Markdown生成12页PDF，逐页渲染并由AI查看总览",
   "additional_checks": {
-    "checkpoint": "132f66a",
-    "sections_1_to_5": "与用户已推送稿逐字一致，含两条Rivise标记",
-    "sections_7_to_8": "与用户已推送稿逐字一致",
-    "existing_math_expressions_preserved": 33,
-    "typeset_expressions_added": 3,
-    "max_grid_time_speedup_rows": 5,
-    "four_grid_speedup_efficiency_rows": 4,
-    "original_fixed_scale_rows": 2,
-    "scaled_workload_configuration_rows": 3,
-    "scaled_throughput_rows": 2,
-    "scaled_time_values": 4,
-    "diagnostic_pair_rows": 2,
-    "figures_unchanged": 2,
-    "MPI_median_time_trends": "四网格随P下降",
+    "formulas_unchanged": 36,
+    "table_content": "仅实验名称和一项对照设置措辞变化；所有数值及其余单元格保持",
+    "table_rows_compared": 71,
+    "visible_run_ids": "Markdown正文及PDF提取文字中均无内部运行编号",
+    "image_paths_unchanged": 2,
+    "figure_captions_same_page": 2,
+    "pdf_pages_rendered": 12,
     "protected_files_unchanged": 220,
-    "solver_regression": "未运行",
-    "performance_sampling": "未运行",
-    "figure_captions_same_page": 2
+    "Rivise_annotations": "保持原样，未执行"
   },
-  "pending_user_draft": "第1—5节保留原样，含两条Rivise及此前指出的halo/三类参考衔接问题；姓名学号、用户审阅及全报告验收待完成"
+  "internal_experiment_mapping": {
+    "基础性能实验": "results/performance/baseline",
+    "补充诊断实验": "results/performance/diagnostic-01",
+    "扩大网格实验": "results/performance/large-02-r1",
+    "初次扩大实验（预热停止，0正式）": "results/performance/large-02"
+  },
+  "pending_user_draft": "姓名学号、两条Rivise、halo/三类参考衔接问题和用户验收待完成"
 }
