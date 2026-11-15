@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "generated_utc": "2026-11-15T15:47:12.431526+00:00",
-  "generation_revision": "5b3ea91bc2512e3ffc70f07afbcc53046d8bdd62",
+  "generated_utc": "2026-11-15T16:30:05.943931+00:00",
+  "generation_revision": "677126d4be622a76312cd40b2ce74b0d805ce16b",
   "sampling_revision": "646f7c460d5a2b409c1063face7e7ed7655db5fc",
   "inputs": {
     "results/performance/large-02-r1/m4-diagnostic-02-r1.json": "972cf746246b215cd62f4d4f014de87f6835da91b5d8178a22a07d585f944cd5",
@@ -9,7 +9,7 @@
     "results/performance/large-02-r1/m4-diagnostic-02-r1.csv": "90e4be8eacdec5380dcab85448ccd842982044df0efa21e100579b3f17472b4e"
   },
   "script_sha256": {
-    "scripts/plot_results.py": "3663081e2c16323bc077b41c9d4101eac5c9d0b19fa84e04a53ebd5c3d956f35",
+    "scripts/plot_results.py": "ccd8aa372f3d172187437ad83a47c383e9a0a69aea2bfa596fd197616cf525b3",
     "scripts/analyze_large.py": "d48c9b152eab7a9302739cb956e3b1d64f53625afdb5f1673adacb8c58a276fe",
     "scripts/benchmark_large.py": "082986e7a262996f51073bcae659769c26cecc801103b5681f679c4f57200c0d",
     "scripts/benchmark.py": "4ab152651e9948dc91cd15c01b25f2c59860b8f247667c61a5d5eef71871e3d9"
@@ -80,10 +80,10 @@
       "note": "每配置10次；点为中位数，竖线为min/max范围",
       "layout_check": "all axes labels and legends within figure bounds",
       "panel_labels": [
-        "N=384",
-        "N=512",
-        "N=768",
-        "N=1024"
+        "N=384，M=9216",
+        "N=512，M=16384",
+        "N=768，M=36864",
+        "N=1024，M=65536"
       ]
     },
     {
@@ -137,10 +137,10 @@
       "note": "每配置10次；点为中位数之比，竖线为同轮bootstrap探索性95%区间；未作多重比较校正",
       "layout_check": "all axes labels and legends within figure bounds",
       "panel_labels": [
-        "N=384",
-        "N=512",
-        "N=768",
-        "N=1024"
+        "N=384，M=9216",
+        "N=512，M=16384",
+        "N=768，M=36864",
+        "N=1024，M=65536"
       ]
     },
     {
@@ -194,10 +194,10 @@
       "note": "每配置10次；点为中位数之比，竖线为同轮bootstrap探索性95%区间；未作多重比较校正",
       "layout_check": "all axes labels and legends within figure bounds",
       "panel_labels": [
-        "N=384",
-        "N=512",
-        "N=768",
-        "N=1024"
+        "N=384，M=9216",
+        "N=512，M=16384",
+        "N=768，M=36864",
+        "N=1024，M=65536"
       ]
     },
     {
@@ -425,10 +425,10 @@
       "note": "每个点代表一次新进程正式样本；短横线为配置中位数；仅横向确定性抖动，未改变耗时",
       "layout_check": "all axes labels and legends within figure bounds",
       "panel_labels": [
-        "N=384",
-        "N=512",
-        "N=768",
-        "N=1024"
+        "N=384，M=9216",
+        "N=512，M=16384",
+        "N=768，M=36864",
+        "N=1024，M=65536"
       ],
       "raw_sample_points": 440
     },
@@ -463,10 +463,10 @@
       "note": "每条线以自身中位数归一化，只反映轮次变化；不能用曲线高低比较求解器绝对速度",
       "layout_check": "all axes labels and legends within figure bounds",
       "panel_labels": [
-        "N=384",
-        "N=512",
-        "N=768",
-        "N=1024"
+        "N=384，M=9216",
+        "N=512，M=16384",
+        "N=768，M=36864",
+        "N=1024，M=65536"
       ],
       "raw_sample_points": 240
     },
@@ -501,10 +501,10 @@
       "note": "每条线以自身中位数归一化，只反映轮次变化；不能用曲线高低比较求解器绝对速度",
       "layout_check": "all axes labels and legends within figure bounds",
       "panel_labels": [
-        "N=384",
-        "N=512",
-        "N=768",
-        "N=1024"
+        "N=384，M=9216",
+        "N=512，M=16384",
+        "N=768，M=36864",
+        "N=1024，M=65536"
       ],
       "raw_sample_points": 240
     }
@@ -514,7 +514,7 @@
     "language": "中文",
     "titles": false,
     "explanations": false,
-    "panel_labels": "N / P(Q)",
+    "panel_labels": "N, M / P(Q)",
     "legend_names": {
       "serial": "串行",
       "mpi": "MPI",

@@ -9,12 +9,12 @@
     1024
   ],
   "M3_error_ratios_orders": "对照归档CSV通过",
-  "report_markdown_sha256": "e7cf6ab86b0f2b3b82a321ef8b29cdeb898fc472a389eab7e24a2f8350304922",
-  "report_pdf_sha256": "ecbc7a3b0d51218c00f3b31aa1d5271afeb96580c895fd81d0b58976aac22140",
+  "report_markdown_sha256": "1419c53eaa6540a26eb6641ba89da5c1b134a47335ef90babbb4f72af1e760ea",
+  "report_pdf_sha256": "9f2156d5ef698a491caaba106fdc66a60afdc8788243dfcbca44d4dfca60d304",
   "pdf": {
     "pages": 13,
     "text_outside_page": [],
-    "page_analysis": "本轮从现稿生成13页PDF并全部渲染；AI查看总览及第11页四级标题/正文，页界通过"
+    "page_analysis": "第5节修订后实际生成13页并全部渲染，AI查看总览及第7/8页；编译选项无span标签，五档并行度完整"
   },
   "course_protection": "2570 files: paths/content unchanged",
   "human_review": "未验收；姓名学号待填写，内容/排版待用户审阅",
@@ -46,50 +46,81 @@
     "grid_rows_checked": 4,
     "method": "逐行逐单元格对照归档CSV；耗时9位、S四位、效率百分数两位"
   },
-  "figure_redesign": {
-    "groups": 9,
-    "formats": [
-      "PNG",
-      "SVG"
+  "figure_labels": "01–03及07–09保留N、M；04–06保留P(Q)；24个N/M标识对照归档统计通过",
+  "user_edits": "保留用户本轮并行编辑，最新快照核对保持；未自动提交推送",
+  "section5_revision_20261116": {
+    "scope": "仅第5节；第1—4及第6—8节逐字保持",
+    "timing_table": "原表逐字保持；初始化后开始计时的说明已澄清",
+    "raw_journal_counts": {
+      "baseline": {
+        "warmup": 23,
+        "formal": 115
+      },
+      "diagnostic": {
+        "warmup": 215,
+        "formal": 2560
+      },
+      "large": {
+        "warmup": 44,
+        "formal": 440
+      }
+    },
+    "compile_flags_pages": [
+      7
     ],
-    "configurations": 44,
-    "raw_samples": 440,
-    "data": "原始输入与五份重算CSV逐字节核对通过，9组图输入/统计/脚本/字体/图像哈希通过",
-    "layout": "绘图时检查全部坐标、标签及图例位于画布内；AI查看9图总览",
-    "PPT": "保持原版本及其原图副本，不在本轮范围内",
-    "report_source": "与本轮开始时的用户稿逐字节一致"
-  },
-  "section_6_4_split": {
-    "report_change": "仅新增两个子节标题；其余正文、公式、数据和图表路径逐字保持",
-    "subsections": [
+    "section5_pages": [
+      7,
+      8
+    ],
+    "figure_captions_same_page": [
       {
-        "heading": "6.4.1 Amdahl定律：固定规模下的加速表现",
-        "page": 11,
-        "font_size": 10.2,
-        "following_text_same_page": true
+        "figure": 1,
+        "page": 10
       },
       {
-        "heading": "6.4.2 Gustafson定律：扩大工作量后的可扩展性",
-        "page": 11,
-        "font_size": 10.2,
-        "following_text_same_page": true
+        "figure": 2,
+        "page": 10
       }
     ],
+    "protected_files_unchanged": 202,
     "pdf_pages_rendered": 13,
-    "protected_tracked_files_unchanged": 235,
-    "preexisting_changes": "保留；未暂存、未提交、未推送",
-    "git": "起点已有其他任务未提交改动；按AGENTS第4节未暂存、提交或推送",
-    "other_records": "figure_redesign保留前序图表重绘核查语境，本轮未重新绘图"
+    "sampling_numbers": "PDF中完整数字核对通过；调整预热语序避免拆分23/44",
+    "concurrent_changes": [
+      "results/figures/large-02-r1-viz-01/01-time.png",
+      "results/figures/large-02-r1-viz-01/01-time.svg",
+      "results/figures/large-02-r1-viz-01/02-speedup.png",
+      "results/figures/large-02-r1-viz-01/02-speedup.svg",
+      "results/figures/large-02-r1-viz-01/03-efficiency.png",
+      "results/figures/large-02-r1-viz-01/03-efficiency.svg",
+      "results/figures/large-02-r1-viz-01/04-grid-time.svg",
+      "results/figures/large-02-r1-viz-01/05-grid-speedup.svg",
+      "results/figures/large-02-r1-viz-01/06-grid-throughput.svg",
+      "results/figures/large-02-r1-viz-01/07-samples.png",
+      "results/figures/large-02-r1-viz-01/07-samples.svg",
+      "results/figures/large-02-r1-viz-01/08-rounds-mpi.png",
+      "results/figures/large-02-r1-viz-01/08-rounds-mpi.svg",
+      "results/figures/large-02-r1-viz-01/09-rounds-openmp.png",
+      "results/figures/large-02-r1-viz-01/09-rounds-openmp.svg",
+      "results/figures/large-02-r1-viz-01/SHA256SUMS",
+      "results/figures/large-02-r1-viz-01/generation.json",
+      "scripts/plot_results.py"
+    ],
+    "concurrent_changes_note": "执行中另一项工作恢复图内M标识，18个保护路径发生变化；本轮未写这些文件，不声称其保持原哈希",
+    "pdf_embedded_figures_match_current_files": [
+      "02-speedup",
+      "05-grid-speedup"
+    ],
+    "git": "执行期间存在另一项图表修改，未暂存、提交或推送",
+    "tests": "仅材料/日志检查；未构建、数值回归或性能采样",
+    "final_pdf_check": "另一项任务重新生成PDF后，13页实际栅格像素与本轮已查看版本逐页一致；校验记录同步当前PDF字节"
   },
-  "submission_20261116": {
+  "submission_section5_20261116": {
     "user_instruction": "提交",
     "branch": "M5",
     "remote": "origin/M5",
-    "files_in_scope": 33,
-    "results_check": "python3 scripts/check_results.py：历史来源/三批五份CSV复算/九组图覆盖及哈希/拒绝覆盖检查通过",
-    "report_check": "独立检查11行/四网格逐格核对、M3误差比/阶、8章/2链接及13页页界通过",
-    "checksums": "103项报告SHA及当前Markdown/PDF记录哈希通过",
-    "pdf_rendering": "未重新运行：PDF哈希与2026-11-15已实际生成并渲染版本一致",
-    "acceptance": "提交授权；报告与M5仍待用户验收"
+    "files": 28,
+    "checks": "归档结果/三批五CSV复算、九图覆盖/哈希、44配置/440样本、报告逐格数值/误差比/链接/13页页界及103项SHA通过",
+    "report_bytes": "与前轮实际生成/渲染检查版哈希一致，本轮未重新生成或渲染",
+    "acceptance": "仅提交授权；材料仍待用户验收"
   }
 }

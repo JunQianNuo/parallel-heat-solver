@@ -69,6 +69,7 @@ def generate(prefix, output, font):
     import matplotlib.pyplot as plt
     from matplotlib.ticker import ScalarFormatter, PercentFormatter
     ns = sorted({r['N'] for r in rows})
+    steps_by_n = {r['N']: r['M'] for r in rows}
     charts = []
 
     def panel_grid(shape=(2, 2), size=(11, 7)):
@@ -142,7 +143,7 @@ def generate(prefix, output, font):
             else:
                 ax.scatter([1], [1], marker='D', color=COLORS['serial'], label='_nolegend_')
                 ax.axhline(1, color=COLORS['serial'], linestyle=':', label='串行')
-            identify(ax, f'N={n}')
+            identify(ax, f'N={n}，M={steps_by_n[n]}')
             ax.set(xlabel='并行度 P(Q)', ylabel=ylabel,
                    xscale='log', xticks=WORKERS)
             ax.xaxis.set_major_formatter(ScalarFormatter())
@@ -189,7 +190,7 @@ def generate(prefix, output, font):
             ax.plot([index-.28, index+.28], [row['median_seconds']]*2, color=COLORS[row['kind']], linewidth=2.5)
             raw_points += len(times)
         labels = ['串行']+[f'{NAMES[k]} {p}' for k in ('mpi', 'openmp') for p in WORKERS]
-        identify(ax, f'N={n}')
+        identify(ax, f'N={n}，M={steps_by_n[n]}')
         ax.set(xlabel='执行配置', ylabel='耗时（秒）', xticks=range(11), xticklabels=labels)
         ax.tick_params(axis='x', labelrotation=45, labelsize=9)
         ax.grid(axis='y', alpha=.2)
@@ -211,7 +212,7 @@ def generate(prefix, output, font):
                 ax.plot(range(1, 11), times, marker='D' if serial else ['o','s','^','v','X'][WORKERS.index(row['actual'])],
                         color=color, label=NAMES['serial'] if serial else ('P=' if kind == 'mpi' else 'Q=')+str(row['actual']), linewidth=1.3, markersize=4)
             ax.axhline(1, color='#aaaaaa', linestyle=':', linewidth=1)
-            identify(ax, f'N={n}')
+            identify(ax, f'N={n}，M={steps_by_n[n]}')
             ax.set(xlabel='采样轮次', ylabel='归一化耗时', xticks=range(1, 11))
             decorate(ax)
         finish(fig, filename, selected, '每条线以自身中位数归一化，只反映轮次变化；不能用曲线高低比较求解器绝对速度')
@@ -231,7 +232,7 @@ def generate(prefix, output, font):
         configuration_count=44, measured_samples=440, seed=20261110,
         statistics='Unchanged archived CSV; ratio of medians; 10000 common-round bootstrap draws, indices249/9749',
         charts=charts, limitations=FOOTER,
-        design=dict(language='中文', titles=False, explanations=False, panel_labels='N / P(Q)',
+        design=dict(language='中文', titles=False, explanations=False, panel_labels='N, M / P(Q)',
                     legend_names=NAMES, normalized_time='单次耗时 / 该配置10次耗时中位数'))
     (output/'generation.json').write_text(json.dumps(generation, indent=2, ensure_ascii=False)+'\n')
     files = sorted(p for p in output.iterdir() if p.is_file())
