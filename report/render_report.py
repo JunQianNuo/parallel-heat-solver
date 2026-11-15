@@ -7,7 +7,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib import colors
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.enums import TA_CENTER
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, Table, TableStyle, KeepTogether
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Preformatted, Spacer, Image, Table, TableStyle, KeepTogether
 from reportlab.lib.utils import ImageReader
 
 ROOT=Path(__file__).resolve().parent
@@ -31,22 +31,27 @@ def main():
     code=r"""import json,sys,matplotlib
 matplotlib.use('Agg')
 from matplotlib.mathtext import math_to_image
-for j in json.load(open(sys.argv[1])):
- expr=j['expr'].replace(r'\le',r'\leq').replace(r'\bmod',r'\mathrm{mod}')
- math_to_image('$'+expr+'$',j['path'],dpi=200,format='png',color='#172e38')
+jobs=json.load(open(sys.argv[1]))
+for j in jobs:
+ expr=j['expr'].replace(r'\le',r'\leq').replace(r'\bmod',r'\;\mathrm{mod}\;')
+ j['depth']=float(math_to_image('$'+expr+'$',j['path'],dpi=200,format='png',color='#172e38'))
+json.dump(jobs,open(sys.argv[1],'w'))
 """
     subprocess.run([args.math_python,'-c',code,str(jobfile)],check=True)
+    jobs=json.loads(jobfile.read_text())
     paths={e:Path(j['path']) for e,j in zip(expressions,jobs)}
+    depths={e:j['depth'] for e,j in zip(expressions,jobs)}
     body=ParagraphStyle('body',fontName='Chinese',fontSize=9.4,leading=16,wordWrap=None,spaceAfter=7)
     cell=ParagraphStyle('cell',parent=body,fontSize=8,leading=12,spaceAfter=0)
     styles={n:ParagraphStyle(n,parent=body,fontSize=size,leading=lead,spaceBefore=12,spaceAfter=8,keepWithNext=True,textColor=colors.HexColor('#164e63')) for n,size,lead in [('h1',21,31),('h2',14,22),('h3',11,18)]}
-    def inline(txt):
+    def inline(txt,font_size=9.4):
         pieces=re.split(r'(\$[^$]+\$)',txt)
         out=[]
         for part in pieces:
             if part.startswith('$') and part.endswith('$'):
-                p=paths[part[1:-1].strip()]; w,h=ImageReader(str(p)).getSize(); ht=11
-                out.append(f'<img src="{p}" width="{w/h*ht:.2f}" height="{ht}" valign="-2"/>')
+                expr=part[1:-1].strip();p=paths[expr];w,h=ImageReader(str(p)).getSize()
+                scale=font_size/10;ht=h*72/200*scale;baseline=-depths[expr]*scale
+                out.append(f'<img src="{p}" width="{w/h*ht:.2f}" height="{ht:.2f}" valign="{baseline:.2f}"/>')
             else:
                 part=html.escape(part)
                 part=re.sub(r'`([^`]+)`',r'<font color="#155e75">\1</font>',part)
@@ -80,18 +85,23 @@ for j in json.load(open(sys.argv[1])):
                 if not all(re.fullmatch(r':?-+:?',v) for v in row):rows.append(row)
                 i+=1
             count=len(rows[0]); widths=([60,200,215] if count==3 else [475/count]*count)
-            table=Table([[Paragraph(inline(v),cell) for v in row] for row in rows],colWidths=widths,repeatRows=1,hAlign='LEFT')
+            if count==5 and rows[0][2]==r'$E_\infty$':widths=[45,55,180,110,85]
+            table=Table([[Paragraph(inline(v,cell.fontSize),cell) for v in row] for row in rows],colWidths=widths,repeatRows=1,hAlign='LEFT')
             table.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),colors.HexColor('#eaf1f5')),('VALIGN',(0,0),(-1,-1),'TOP'),('LINEBELOW',(0,0),(-1,0),.7,colors.HexColor('#94a3b8')),('LINEBELOW',(0,1),(-1,-1),.25,colors.HexColor('#dce3e9')),('LEFTPADDING',(0,0),(-1,-1),5),('RIGHTPADDING',(0,0),(-1,-1),5),('TOPPADDING',(0,0),(-1,-1),6),('BOTTOMPADDING',(0,0),(-1,-1),6)]))
             story.extend([table,Spacer(1,10)]);continue
         if line.startswith('```'):
-            i+=1
+            i+=1;buf=[]
             while i<len(lines) and not lines[i].startswith('```'):
-                story.append(Paragraph(html.escape(lines[i]),ParagraphStyle('code',parent=cell,fontSize=7.5,leading=12)));i+=1
-            story.append(Spacer(1,8));i+=1;continue
+                buf.append(lines[i]);i+=1
+            code_style=ParagraphStyle('code',parent=cell,fontSize=8.5,leading=14)
+            story.extend([KeepTogether([Preformatted('\n'.join(buf),code_style)]),Spacer(1,8)])
+            i+=1;continue
         if re.match(r'^\d+\. ',line):
             story.append(Paragraph(inline(line),body));i+=1;continue
         match=re.match(r'^(#{1,3}) (.+)',line)
-        if match:story.append(Paragraph(inline(match[2]),styles['h'+str(len(match[1]))]));i+=1;continue
+        if match:
+            style=styles['h'+str(len(match[1]))]
+            story.append(Paragraph(inline(match[2],style.fontSize),style));i+=1;continue
         buf=[line];i+=1
         while i<len(lines) and lines[i].strip() and not re.match(r'^(#|\||\$\$|!\[|```|- |\d+\. )',lines[i].strip()):buf.append(lines[i].strip());i+=1
         story.append(Paragraph(inline(' '.join(buf)),body))

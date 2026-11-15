@@ -9,28 +9,57 @@
     1024
   ],
   "M3_error_ratios_orders": "对照归档CSV通过",
-  "report_markdown_sha256": "10168caf0e86b3cb8eef4a1faab30f39ccf042fd51abdf3b283362bd1d4c7866",
-  "report_pdf_sha256": "b833d1bb6692c35afb9f08e498b59bb2c61b286d93c2a241f79e224b1f247b83",
+  "report_markdown_sha256": "dc438537640a099dd7291e7ef518bf3e7781346c713dc0ba795315685f60e73b",
+  "report_pdf_sha256": "9c95f9664b34f8db0d34eff97bae7744d66bc7877db799d11ada424d13f09715",
   "pdf": {
-    "pages": 12,
+    "pages": 13,
     "text_outside_page": [],
-    "page_analysis": "读取本轮新生成PDF检查页界；实际渲染另见pdf_source_sync"
+    "page_analysis": "读取本轮生成PDF检查页界；13页全部实际渲染"
   },
   "course_protection": "2570 files: paths/content unchanged",
   "human_review": "未验收；姓名学号待填写，内容/排版待用户审阅",
-  "revision": "2026-11-15：用实验目的命名，清理正文内部代号和相关术语",
-  "review_scope": "实验命名与相关说明的可读性；原有Rivise及其他待修订事项未处理",
-  "pdf_source_sync": "实际从当前Markdown生成12页PDF，逐页渲染并由AI查看总览",
+  "revision": "2026-11-15：落实第1—4节Rivise及逐项确认",
+  "review_scope": "三种实现伪代码、正文/表格数学排版、MPI拥有行/halo简化、第三类参考清理",
+  "pdf_source_sync": "实际从当前Markdown生成13页PDF，全部渲染；AI查看总览及算法/公式细页",
   "additional_checks": {
-    "formulas_unchanged": 36,
-    "table_content": "仅实验名称和一项对照设置措辞变化；所有数值及其余单元格保持",
-    "table_rows_compared": 71,
-    "visible_run_ids": "Markdown正文及PDF提取文字中均无内部运行编号",
-    "image_paths_unchanged": 2,
-    "figure_captions_same_page": 2,
-    "pdf_pages_rendered": 12,
-    "protected_files_unchanged": 220,
-    "Rivise_annotations": "保持原样，未执行"
+    "scope_preservation": "摘要及第5—7节逐字保持；第8节仅删除离散模态并列表述",
+    "existing_math_preserved": 36,
+    "current_math_occurrences": 143,
+    "current_math_unique": 98,
+    "pseudocode": [
+      {
+        "page": 4,
+        "lines": 12,
+        "point_update_x": 96.19,
+        "complete_on_one_page": true
+      },
+      {
+        "page": 5,
+        "lines": 18,
+        "point_update_x": 96.19,
+        "complete_on_one_page": true
+      },
+      {
+        "page": 6,
+        "lines": 14,
+        "point_update_x": 106.26,
+        "complete_on_one_page": true
+      }
+    ],
+    "error_scientific_notation_on_single_line": 3,
+    "figure_captions_same_page": [
+      {
+        "figure": 1,
+        "page": 10
+      },
+      {
+        "figure": 2,
+        "page": 10
+      }
+    ],
+    "protected_files_unchanged": 219,
+    "pdf_pages_rendered": 13,
+    "pseudocode_source_review": "AI对照src/heat.cpp、heat_mpi.cpp、heat_openmp.cpp核对执行顺序；未冒充运行数值测试"
   },
   "internal_experiment_mapping": {
     "基础性能实验": "results/performance/baseline",
@@ -38,5 +67,6 @@
     "扩大网格实验": "results/performance/large-02-r1",
     "初次扩大实验（预热停止，0正式）": "results/performance/large-02"
   },
-  "pending_user_draft": "姓名学号、两条Rivise、halo/三类参考衔接问题和用户验收待完成"
+  "pending_user_draft": "姓名学号、报告内容/排版审阅及用户验收待完成；PPT暂停",
+  "execution_notes": "未运行构建、数值回归或性能采样；无求解器/测试/结果/PPT改动"
 }

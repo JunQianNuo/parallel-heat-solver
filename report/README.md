@@ -1,17 +1,17 @@
 # 书面报告
 
-当前工作（2026-11-15）：报告面向非实现者，实验按目的命名为基础性能实验、补充诊断实验、扩大网格实验；正文不要求读者理解内部运行编号。本轮清理相关名称和说明，并同步12页PDF。原有两条Rivise标记与其他待修订事项保留，PPT暂停，报告仍待用户审阅。
+当前工作（2026-11-15）：已按用户逐项确认完成第1—4节Rivise：三种实现各一段中文伪代码、正文/表格数学变量排版、简化MPI拥有行/halo说明、清理第三类参考残留。已同步13页PDF并实际渲染检查，PPT暂停，报告仍待用户审阅。
 
 ## 先看这两个文件
 
 | 文件 | 用途 |
 | --- | --- |
 | [FINAL_REPORT.md](FINAL_REPORT.md) | 书面报告的唯一编辑源稿，后续内容修改从这里开始 |
-| [FINAL_REPORT.pdf](FINAL_REPORT.pdf) | 本轮从当前Markdown生成的12页A4预览，已逐页渲染检查 |
+| [FINAL_REPORT.pdf](FINAL_REPORT.pdf) | 本轮从当前Markdown生成的13页A4预览，已逐页渲染检查 |
 
 第6节按“固定规模的实际加速效果—扩大工作量的吞吐变化—两个定律分析—诊断因素—实验限制”展开。保留两张原图，增加便于比较的原实验、工作量、吞吐和诊断表格；结论直接对应实测结果，资源/轮次/时钟限制集中说明。
 
-报告使用已验收M4数据和原图。原始证据统一在[results/RESULTS.md](../results/RESULTS.md)，实现依据在[docs/DESIGN.md](../docs/DESIGN.md)。前轮已完成第6节组织修订；本轮统一摘要、实验方法、结果与AI说明中的实验名称，简化需要依赖内部历史才能理解的措辞。算法、数据、原图和实验限制保持；不改求解器、不新增实验、不推进PPT，原伪代码/数学符号修订标记与此前衔接问题未在本轮处理。
+报告使用已验收M4数据和原图。原始证据统一在[results/RESULTS.md](../results/RESULTS.md)，实现依据在[docs/DESIGN.md](../docs/DESIGN.md)。本轮第1—4节采用中文伪代码串起初始化、计算、换层、通信/同步和输出，区分解析误差与串并行差。摘要及第5—7节原文保持，第8节仅清理第三类参考残留。未修改求解器或原始数据，未新增实验，未推进PPT。
 
 ## 目录分工
 
@@ -46,7 +46,7 @@ report/
 build/tools/python/bin/python report/check_report.py
 ```
 
-检查结果写入[records/report_checks.json](records/report_checks.json)。本轮核对2图表路径、8章、归档S/E与误差比；36处数学表达式保持，逐单元格比较71行表格，仅四个实验名称和一项对照设置措辞变化，全部数值不变。记录12页PDF实际生成/逐页渲染、无内部编号残留及图注同页检查，并在内部记录保留实验名称与工件目录的对应关系。软件与AI核查不等同全报告定稿或用户验收。
+检查结果写入[records/report_checks.json](records/report_checks.json)。本轮核对2图表路径、8章、归档S/E与M3误差比/观测阶；另核对原36处表达式保留、三段伪代码与源码顺序一致、摘要及第5—7节逐字保持。13页PDF已实际生成并逐页渲染，三段伪代码不跨页且缩进保留，科学计数误差值不折行，图注同页及页界通过。当前数学排版共143处、98种表达式，均成功生成。软件与AI核查不等同全报告定稿或用户验收。
 
 修改源稿后生成PDF：
 
@@ -54,6 +54,6 @@ build/tools/python/bin/python report/check_report.py
 build/tools/python/bin/python report/render_report.py --font /mnt/c/Windows/Fonts/msyh.ttc --math-python python3
 ```
 
-生成需要reportlab、Pillow及Matplotlib；默认只读使用本机Microsoft YaHei字体，可用`--font`指定其他已有中文TrueType字体。字体、工具环境和临时数学图片不入Git。该生成命令本轮已运行。生成器同步正文日期到页脚，逐项排版编号步骤，并将图与图注保持同页。
+生成需要reportlab、Pillow及Matplotlib；默认只读使用本机Microsoft YaHei字体，可用`--font`指定其他已有中文TrueType字体。字体、工具环境和临时数学图片不入Git。该生成命令本轮已运行。生成器同步正文日期到页脚，逐项排版编号步骤，保留伪代码缩进并避免整段跨页，行内数学字号/基线随正文或表格字号，并将图与图注保持同页。
 
 后续先按教师要求审阅报告内容与排版，再由用户安排PPT任务。个人信息、实际人工复核与最终验收由用户确认，不以历史M4验收替代。
