@@ -9,29 +9,27 @@
     1024
   ],
   "M3_error_ratios_orders": "对照归档CSV通过",
-  "report_markdown_sha256": "ad3ea435fd318f2372db93a672866f4d800ea7255c9442cea6812264b64a978d",
-  "report_pdf_sha256": "ed0f6e4ba660e3efb7d4cac90a3271ce085b66e12215851f05fccafe22c5224e",
+  "report_markdown_sha256": "a2510a21de088b4eea4196427e374ada9a2e4a75f3ea656006df64bb9a91f7e4",
+  "report_pdf_sha256": "afca678a298301e5bb1147c1291d92e1b6a3346a88ebb283ed85f1445c463faf",
   "pdf": {
-    "pages": 13,
+    "pages": 12,
     "text_outside_page": [],
-    "page_analysis": "读取本轮新生成PDF；文字页界检查通过，实际渲染与AI查看另见pdf_source_sync"
+    "page_analysis": "读取本轮新生成PDF；页界检查通过，实际渲染另见pdf_source_sync"
   },
   "course_protection": "2570 files: paths/content unchanged",
   "human_review": "未验收；姓名学号待填写，内容/排版待用户审阅",
-  "revision": "2026-11-15：教师版移除引用、证据入口及内部交接指引",
-  "pdf_source_sync": "已从当前FINAL_REPORT.md实际生成PDF；13页逐页渲染，AI查看最终总览及公式细页",
+  "revision": "2026-11-15：删除课程概念入门说明，改为项目方法与结果分析",
+  "pdf_source_sync": "从当前Markdown实际生成12页PDF，逐页渲染并由AI查看总览；用户审阅待完成",
   "additional_checks": {
     "math_expressions_unchanged": 36,
-    "max_grid_time_speedup_rows": 5,
-    "max_grid_openmp_efficiency_values": 2,
-    "M3_error_values": 3,
-    "markdown_citations_and_internal_pointers": "无残留",
-    "pdf_citations_and_internal_pointers": "无残留；无链接注释",
+    "scientific_table_rows_unchanged": 57,
+    "max_grid_time_speedup_rows_checked": 5,
+    "basic_course_concept_examples": "正文/PDF均无入门例句残留",
+    "citations_and_internal_pointers": "正文/PDF均无残留",
     "figure_captions_same_page": 2,
-    "footer_date": "各页与正文日期一致",
-    "protected_files_unchanged": 218,
+    "protected_files_unchanged": 220,
     "PPT": "未修改/未生成",
-    "solver_regression": "未运行；仅报告和生成器排版修改",
+    "solver_regression": "未运行；仅报告文字修改",
     "performance_sampling": "未运行"
   }
 }
