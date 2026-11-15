@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "generated_utc": "2026-11-11T12:27:22.145697+00:00",
-  "generation_revision": "7ff6adfe2bbd8df6fe926a28d2c9521ef18d4707",
+  "generated_utc": "2026-11-15T15:47:12.431526+00:00",
+  "generation_revision": "5b3ea91bc2512e3ffc70f07afbcc53046d8bdd62",
   "sampling_revision": "646f7c460d5a2b409c1063face7e7ed7655db5fc",
   "inputs": {
     "results/performance/large-02-r1/m4-diagnostic-02-r1.json": "972cf746246b215cd62f4d4f014de87f6835da91b5d8178a22a07d585f944cd5",
@@ -9,7 +9,7 @@
     "results/performance/large-02-r1/m4-diagnostic-02-r1.csv": "90e4be8eacdec5380dcab85448ccd842982044df0efa21e100579b3f17472b4e"
   },
   "script_sha256": {
-    "scripts/plot_results.py": "f079649cc753d7abdbf59c5cf883a0424cdba26b34166f6a1a6b4bdc0c97f058",
+    "scripts/plot_results.py": "3663081e2c16323bc077b41c9d4101eac5c9d0b19fa84e04a53ebd5c3d956f35",
     "scripts/analyze_large.py": "d48c9b152eab7a9302739cb956e3b1d64f53625afdb5f1673adacb8c58a276fe",
     "scripts/benchmark_large.py": "082986e7a262996f51073bcae659769c26cecc801103b5681f679c4f57200c0d",
     "scripts/benchmark.py": "4ab152651e9948dc91cd15c01b25f2c59860b8f247667c61a5d5eef71871e3d9"
@@ -77,7 +77,14 @@
         42,
         43
       ],
-      "note": "每配置10次；点为中位数，竖线为min/max范围"
+      "note": "每配置10次；点为中位数，竖线为min/max范围",
+      "layout_check": "all axes labels and legends within figure bounds",
+      "panel_labels": [
+        "N=384",
+        "N=512",
+        "N=768",
+        "N=1024"
+      ]
     },
     {
       "name": "02-speedup",
@@ -127,7 +134,14 @@
         42,
         43
       ],
-      "note": "每配置10次；点为中位数之比，竖线为同轮bootstrap探索性95%区间；未作多重比较校正"
+      "note": "每配置10次；点为中位数之比，竖线为同轮bootstrap探索性95%区间；未作多重比较校正",
+      "layout_check": "all axes labels and legends within figure bounds",
+      "panel_labels": [
+        "N=384",
+        "N=512",
+        "N=768",
+        "N=1024"
+      ]
     },
     {
       "name": "03-efficiency",
@@ -177,7 +191,14 @@
         42,
         43
       ],
-      "note": "每配置10次；点为中位数之比，竖线为同轮bootstrap探索性95%区间；未作多重比较校正"
+      "note": "每配置10次；点为中位数之比，竖线为同轮bootstrap探索性95%区间；未作多重比较校正",
+      "layout_check": "all axes labels and legends within figure bounds",
+      "panel_labels": [
+        "N=384",
+        "N=512",
+        "N=768",
+        "N=1024"
+      ]
     },
     {
       "name": "04-grid-time",
@@ -227,7 +248,15 @@
         42,
         43
       ],
-      "note": "每配置10次；竖线由实际min/max耗时计算，全部慢样本保留"
+      "note": "每配置10次；竖线由实际min/max耗时计算，全部慢样本保留",
+      "layout_check": "all axes labels and legends within figure bounds",
+      "panel_labels": [
+        "P(Q)=1",
+        "P(Q)=2",
+        "P(Q)=4",
+        "P(Q)=8",
+        "P(Q)=16"
+      ]
     },
     {
       "name": "05-grid-speedup",
@@ -277,7 +306,15 @@
         42,
         43
       ],
-      "note": "竖线为同轮bootstrap探索性95%区间；无多重比较校正"
+      "note": "竖线为同轮bootstrap探索性95%区间；无多重比较校正",
+      "layout_check": "all axes labels and legends within figure bounds",
+      "panel_labels": [
+        "P(Q)=1",
+        "P(Q)=2",
+        "P(Q)=4",
+        "P(Q)=8",
+        "P(Q)=16"
+      ]
     },
     {
       "name": "06-grid-throughput",
@@ -327,7 +364,15 @@
         42,
         43
       ],
-      "note": "每配置10次；竖线由实际min/max耗时计算，全部慢样本保留"
+      "note": "每配置10次；竖线由实际min/max耗时计算，全部慢样本保留",
+      "layout_check": "all axes labels and legends within figure bounds",
+      "panel_labels": [
+        "P(Q)=1",
+        "P(Q)=2",
+        "P(Q)=4",
+        "P(Q)=8",
+        "P(Q)=16"
+      ]
     },
     {
       "name": "07-samples",
@@ -378,6 +423,13 @@
         43
       ],
       "note": "每个点代表一次新进程正式样本；短横线为配置中位数；仅横向确定性抖动，未改变耗时",
+      "layout_check": "all axes labels and legends within figure bounds",
+      "panel_labels": [
+        "N=384",
+        "N=512",
+        "N=768",
+        "N=1024"
+      ],
       "raw_sample_points": 440
     },
     {
@@ -409,6 +461,13 @@
         38
       ],
       "note": "每条线以自身中位数归一化，只反映轮次变化；不能用曲线高低比较求解器绝对速度",
+      "layout_check": "all axes labels and legends within figure bounds",
+      "panel_labels": [
+        "N=384",
+        "N=512",
+        "N=768",
+        "N=1024"
+      ],
       "raw_sample_points": 240
     },
     {
@@ -440,8 +499,27 @@
         43
       ],
       "note": "每条线以自身中位数归一化，只反映轮次变化；不能用曲线高低比较求解器绝对速度",
+      "layout_check": "all axes labels and legends within figure bounds",
+      "panel_labels": [
+        "N=384",
+        "N=512",
+        "N=768",
+        "N=1024"
+      ],
       "raw_sample_points": 240
     }
   ],
-  "limitations": "固定单位区域，T=0.01，α=1；N增大时M=N²/16也增大，跨N比较不是弱扩展。\n16个执行单元使用14个WSL可见core上的16逻辑CPU，含共享硬件线程；非16个独立物理核心。\n单机非独占WSL2；UTC有回退、存在轮次趋势；保留全部慢样本，未独立校准外部物理时钟。"
+  "limitations": "固定单位区域，T=0.01，α=1；N增大时M=N²/16也增大，跨N比较不是弱扩展。\n16个执行单元使用14个WSL可见core上的16逻辑CPU，含共享硬件线程；非16个独立物理核心。\n单机非独占WSL2；UTC有回退、存在轮次趋势；保留全部慢样本，未独立校准外部物理时钟。",
+  "design": {
+    "language": "中文",
+    "titles": false,
+    "explanations": false,
+    "panel_labels": "N / P(Q)",
+    "legend_names": {
+      "serial": "串行",
+      "mpi": "MPI",
+      "openmp": "OpenMP"
+    },
+    "normalized_time": "单次耗时 / 该配置10次耗时中位数"
+  }
 }

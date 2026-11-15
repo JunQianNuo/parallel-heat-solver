@@ -20,7 +20,7 @@ from benchmark import require
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_PREFIX = ROOT/'results/performance/large-02-r1/m4-diagnostic-02-r1'
 COLORS = {'serial': '#737373', 'mpi': '#2166ac', 'openmp': '#d66a16'}
-NAMES = {'serial': '串行（1 CPU）', 'mpi': 'MPI', 'openmp': 'OpenMP'}
+NAMES = {'serial': '串行', 'mpi': 'MPI', 'openmp': 'OpenMP'}
 MARKERS = {'serial': 'D', 'mpi': 'o', 'openmp': 's'}
 WORKERS = [1, 2, 4, 8, 16]
 FOOTER = ('固定单位区域，T=0.01，α=1；N增大时M=N²/16也增大，跨N比较不是弱扩展。\n'
@@ -56,7 +56,8 @@ def configure_font(font):
     require(all(ord(ch) in face.get_charmap() for ch in required if not ch.isspace()), 'font lacks required glyphs')
     font_manager.fontManager.addfont(str(font))
     matplotlib.rcParams.update({'font.family': face.family_name, 'font.size': 11,
-        'axes.titlesize': 12, 'axes.labelsize': 11, 'legend.fontsize': 9,
+        'axes.labelsize': 11, 'legend.fontsize': 10,
+        'axes.spines.top': False, 'axes.spines.right': False,
         'svg.fonttype': 'path', 'svg.hashsalt': 'm4-large-viz-01', 'axes.unicode_minus': False})
     return matplotlib, face.family_name
 
@@ -70,23 +71,42 @@ def generate(prefix, output, font):
     ns = sorted({r['N'] for r in rows})
     charts = []
 
-    def panel_grid(title, shape=(2, 2), size=(13, 9)):
+    def panel_grid(shape=(2, 2), size=(11, 7)):
         fig, axes = plt.subplots(*shape, figsize=size, squeeze=False)
-        fig.subplots_adjust(left=.085, right=.97, top=.85, bottom=.20, hspace=.62, wspace=.29)
-        fig.suptitle(title, fontsize=17, y=.97)
-        fig.text(.5, .025, FOOTER, ha='center', va='bottom', fontsize=9, color='#555555', linespacing=1.6)
+        fig.subplots_adjust(left=.09, right=.98, top=.90, bottom=.12, hspace=.40, wspace=.30)
         return fig, list(axes.flat)
 
+    def identify(ax, label):
+        ax.text(.03, .96, label, transform=ax.transAxes, va='top', fontsize=11,
+                bbox=dict(facecolor='white', edgecolor='none', alpha=.85, pad=2))
+
     def finish(fig, filename, covered, note):
-        fig.text(.5, .91, note, ha='center', fontsize=10)
+        # Definitions and experimental limits belong in metadata/captions, outside the image.
+        handles, labels = fig.axes[0].get_legend_handles_labels()
+        if not handles:
+            from matplotlib.lines import Line2D
+            handles = [Line2D([], [], color=COLORS[k], marker=MARKERS[k], linestyle='none')
+                       for k in ('serial', 'mpi', 'openmp')]
+            labels = [NAMES[k] for k in ('serial', 'mpi', 'openmp')]
+        fig.legend(handles, labels, loc='upper center', bbox_to_anchor=(.5, .995),
+                   ncol=len(labels), frameon=False, handlelength=2)
+        require(not fig.texts and all(not ax.get_title() for ax in fig.axes), 'unexpected title or figure explanation')
+        fig.canvas.draw()
+        renderer = fig.canvas.get_renderer()
+        boxes = [ax.get_tightbbox(renderer) for ax in fig.axes]
+        boxes += [legend.get_window_extent(renderer) for legend in fig.legends]
+        require(all(b.x0 >= 0 and b.y0 >= 0 and b.x1 <= fig.bbox.width and b.y1 <= fig.bbox.height
+                    for b in boxes), 'chart labels cross figure boundary')
         for suffix in ('.svg', '.png'):
-            fig.savefig(output/(filename+suffix), dpi=160, metadata={'Creator': 'scripts/plot_results.py'}
+            fig.savefig(output/(filename+suffix), dpi=180, metadata={'Creator': 'scripts/plot_results.py'}
                         if suffix == '.svg' else {'Software': 'scripts/plot_results.py'})
             if suffix == '.svg':
                 path = output/(filename+suffix)
                 path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines())+'\n')
         plt.close(fig)
-        charts.append(dict(name=filename, configurations=[r['id'] for r in covered], note=note))
+        charts.append(dict(name=filename, configurations=[r['id'] for r in covered], note=note,
+                           layout_check='all axes labels and legends within figure bounds',
+                           panel_labels=[ax.texts[0].get_text() for ax in fig.axes]))
 
     def series(ax, group, xkey, metric, low=None, high=None, scale=1., label=None, color=None):
         kind = group[0]['kind']
@@ -103,26 +123,27 @@ def generate(prefix, output, font):
     def decorate(ax):
         ax.grid(alpha=.22)
         ax.set_axisbelow(True)
-        ax.legend(loc='best')
+        ax.margins(y=.18)
 
     output.mkdir(parents=True, exist_ok=False)
     for filename, title, metric, low, high, ylabel in [
-        ('01-time', '固定网格：三种求解器的推进耗时', 'median_seconds', 'minimum_seconds', 'maximum_seconds', '推进耗时（秒）'),
-        ('02-speedup', '固定网格：相对独立串行的加速比', 'speedup_serial', 'speedup_low', 'speedup_high', '加速比 S = 串行中位数 / 并行中位数'),
-        ('03-efficiency', '固定网格：MPI与OpenMP的并行效率', 'efficiency', 'efficiency_low', 'efficiency_high', '效率 E = S / 实际P或Q')]:
-        fig, axes = panel_grid(title)
+        ('01-time', '固定网格：三种求解器的推进耗时', 'median_seconds', 'minimum_seconds', 'maximum_seconds', '耗时（秒）'),
+        ('02-speedup', '固定网格：相对独立串行的加速比', 'speedup_serial', 'speedup_low', 'speedup_high', '加速比'),
+        ('03-efficiency', '固定网格：MPI与OpenMP的并行效率', 'efficiency', 'efficiency_low', 'efficiency_high', '并行效率（%）')]:
+        fig, axes = panel_grid()
         for ax, n in zip(axes, ns):
             sub = [r for r in rows if r['N'] == n]
             serial = next(r for r in sub if r['kind'] == 'serial')
             for kind in ('mpi', 'openmp'):
                 series(ax, [r for r in sub if r['kind'] == kind], 'actual', metric, low, high)
             if metric == 'median_seconds':
-                series(ax, [serial], 'actual', metric, low, high)
-                ax.axhline(serial[metric], color=COLORS['serial'], linestyle=':', label='串行1CPU中位数参考')
+                series(ax, [serial], 'actual', metric, low, high, label='_nolegend_')
+                ax.axhline(serial[metric], color=COLORS['serial'], linestyle=':', label='串行')
             else:
-                ax.scatter([1], [1], marker='D', color=COLORS['serial'], label='串行真实1CPU基准')
-                ax.axhline(1, color=COLORS['serial'], linestyle=':', label='基准1' if metric == 'speedup_serial' else '100%理想参考')
-            ax.set(title=f'N={n}，M={serial["M"]}', xlabel='实际P / Q（对数间距）', ylabel=ylabel,
+                ax.scatter([1], [1], marker='D', color=COLORS['serial'], label='_nolegend_')
+                ax.axhline(1, color=COLORS['serial'], linestyle=':', label='串行')
+            identify(ax, f'N={n}')
+            ax.set(xlabel='并行度 P(Q)', ylabel=ylabel,
                    xscale='log', xticks=WORKERS)
             ax.xaxis.set_major_formatter(ScalarFormatter())
             if metric == 'efficiency':
@@ -133,32 +154,30 @@ def generate(prefix, output, font):
                '每配置10次；点为中位数之比，竖线为同轮bootstrap探索性95%区间；未作多重比较校正')
 
     for filename, metric, low, high, title, ylabel in [
-        ('04-grid-time', 'median_seconds', 'minimum_seconds', 'maximum_seconds', '固定人数：推进耗时随网格数量变化', '推进耗时（秒，对数坐标）'),
-        ('05-grid-speedup', 'speedup_serial', 'speedup_low', 'speedup_high', '固定人数：加速比随网格数量变化', '相对同网格独立串行的加速比'),
-        ('06-grid-throughput', 'updates_per_second', None, None, '固定人数：三种求解器的更新吞吐', '内点更新量（十亿次/秒）')]:
-        fig, axes = panel_grid(title, (2, 3), (16, 10))
+        ('04-grid-time', 'median_seconds', 'minimum_seconds', 'maximum_seconds', '固定人数：推进耗时随网格数量变化', '耗时（秒）'),
+        ('05-grid-speedup', 'speedup_serial', 'speedup_low', 'speedup_high', '固定人数：加速比随网格数量变化', '加速比'),
+        ('06-grid-throughput', 'updates_per_second', None, None, '固定人数：三种求解器的更新吞吐', '吞吐量（十亿次更新/秒）')]:
+        fig, axes = panel_grid((2, 3), (14, 7.5))
         for ax, p in zip(axes, WORKERS):
             for kind in ('serial', 'mpi', 'openmp'):
                 selected = [r for r in rows if r['kind'] == kind and (kind == 'serial' or r['actual'] == p)]
-                label = '串行1CPU（固定参考）' if kind == 'serial' and p > 1 else NAMES[kind]
+                label = NAMES[kind]
                 series(ax, selected, 'N', metric, low, high, 1e-9 if metric == 'updates_per_second' else 1., label)
                 if metric == 'updates_per_second':
                     ax.vlines(ns, [r['updates']/r['maximum_seconds']*1e-9 for r in selected],
                               [r['updates']/r['minimum_seconds']*1e-9 for r in selected], color=COLORS[kind], alpha=.7)
-            ax.set(title=f'MPI P={p} / OpenMP Q={p}'+('（含共享硬件线程）' if p == 16 else ''),
-                   xlabel='每边划分数N；M=N²/16', ylabel=ylabel, xticks=ns)
+            identify(ax, f'P(Q)={p}')
+            ax.set(xlabel='网格划分数 N', ylabel=ylabel, xticks=ns)
             if metric == 'median_seconds':
                 ax.set_yscale('log')
             else:
                 ax.set_ylim(bottom=0)
             decorate(ax)
-        note_ax = axes[5]
-        note_ax.axis('off')
-        note_ax.text(.05, .9, '串行始终只用1 CPU。\n多人数面板重复同网格串行参考，\n不是新增串行样本。\n\nW=M(N−1)²；吞吐=W/推进时间。\nN与M联合增加，不能把差异\n单独归因于每步网格大小。', va='top', fontsize=12, linespacing=1.8)
+        fig.delaxes(axes[5])
         finish(fig, filename, rows, '竖线为同轮bootstrap探索性95%区间；无多重比较校正' if metric == 'speedup_serial' else
                '每配置10次；竖线由实际min/max耗时计算，全部慢样本保留')
 
-    fig, axes = panel_grid('全部440个正式样本：原始推进耗时与中位数', size=(16, 10))
+    fig, axes = panel_grid(size=(14, 9))
     jitter = random.Random(20261110)
     raw_points = 0
     for ax, n in zip(axes, ns):
@@ -169,17 +188,19 @@ def generate(prefix, output, font):
                        color=COLORS[row['kind']], alpha=.65, s=20)
             ax.plot([index-.28, index+.28], [row['median_seconds']]*2, color=COLORS[row['kind']], linewidth=2.5)
             raw_points += len(times)
-        labels = ['串行1']+[f'{NAMES[k]}{p}' for k in ('mpi', 'openmp') for p in WORKERS]
-        ax.set(title=f'N={n}', xlabel='实现与实际P/Q（串行恒为1）', ylabel='原始推进耗时（秒）', xticks=range(11), xticklabels=labels)
+        labels = ['串行']+[f'{NAMES[k]} {p}' for k in ('mpi', 'openmp') for p in WORKERS]
+        identify(ax, f'N={n}')
+        ax.set(xlabel='执行配置', ylabel='耗时（秒）', xticks=range(11), xticklabels=labels)
         ax.tick_params(axis='x', labelrotation=45, labelsize=9)
         ax.grid(axis='y', alpha=.2)
         ax.set_ylim(bottom=0)
+        ax.margins(y=.18)
     require(raw_points == 440, 'raw plot must include every sample')
     finish(fig, '07-samples', rows, '每个点代表一次新进程正式样本；短横线为配置中位数；仅横向确定性抖动，未改变耗时')
     charts[-1]['raw_sample_points'] = raw_points
 
     for kind, filename in [('mpi', '08-rounds-mpi'), ('openmp', '09-rounds-openmp')]:
-        fig, axes = panel_grid(NAMES[kind]+'与串行参考：逐轮波动', size=(14, 10))
+        fig, axes = panel_grid(size=(12, 8))
         selected = [r for r in rows if r['kind'] in ('serial', kind)]
         shades = plt.get_cmap('Blues' if kind == 'mpi' else 'Oranges')
         for ax, n in zip(axes, ns):
@@ -188,9 +209,10 @@ def generate(prefix, output, font):
                 color = COLORS['serial'] if serial else shades(.4+.55*WORKERS.index(row['actual'])/4)
                 times = [groups[row['id']][rep]['summary']['loop_seconds']/row['median_seconds'] for rep in range(1, 11)]
                 ax.plot(range(1, 11), times, marker='D' if serial else ['o','s','^','v','X'][WORKERS.index(row['actual'])],
-                        color=color, label=NAMES['serial'] if serial else NAMES[kind]+f' {row["actual"]}', linewidth=1.3, markersize=4)
+                        color=color, label=NAMES['serial'] if serial else ('P=' if kind == 'mpi' else 'Q=')+str(row['actual']), linewidth=1.3, markersize=4)
             ax.axhline(1, color='#aaaaaa', linestyle=':', linewidth=1)
-            ax.set(title=f'N={n}', xlabel='打乱配置顺序的采样轮次', ylabel='本次耗时 / 该配置10次中位数', xticks=range(1, 11))
+            identify(ax, f'N={n}')
+            ax.set(xlabel='采样轮次', ylabel='归一化耗时', xticks=range(1, 11))
             decorate(ax)
         finish(fig, filename, selected, '每条线以自身中位数归一化，只反映轮次变化；不能用曲线高低比较求解器绝对速度')
         charts[-1]['raw_sample_points'] = 240
@@ -208,7 +230,9 @@ def generate(prefix, output, font):
         versions=dict(python=platform.python_version(), matplotlib=matplotlib.__version__),
         configuration_count=44, measured_samples=440, seed=20261110,
         statistics='Unchanged archived CSV; ratio of medians; 10000 common-round bootstrap draws, indices249/9749',
-        charts=charts, limitations=FOOTER)
+        charts=charts, limitations=FOOTER,
+        design=dict(language='中文', titles=False, explanations=False, panel_labels='N / P(Q)',
+                    legend_names=NAMES, normalized_time='单次耗时 / 该配置10次耗时中位数'))
     (output/'generation.json').write_text(json.dumps(generation, indent=2, ensure_ascii=False)+'\n')
     files = sorted(p for p in output.iterdir() if p.is_file())
     (output/'SHA256SUMS').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in files))

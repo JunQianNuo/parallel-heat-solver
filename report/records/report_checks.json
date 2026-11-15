@@ -9,12 +9,12 @@
     1024
   ],
   "M3_error_ratios_orders": "对照归档CSV通过",
-  "report_markdown_sha256": "8e6ab502fbb9a27fe748398324c0a6135cc85740f155d0d5ffdb9e7404006599",
-  "report_pdf_sha256": "ed760f977a5a007bf7333527319a3486a95ba697d0bc7a27c7fb21145cdf4dd2",
+  "report_markdown_sha256": "e7cf6ab86b0f2b3b82a321ef8b29cdeb898fc472a389eab7e24a2f8350304922",
+  "report_pdf_sha256": "ecbc7a3b0d51218c00f3b31aa1d5271afeb96580c895fd81d0b58976aac22140",
   "pdf": {
     "pages": 13,
     "text_outside_page": [],
-    "page_analysis": "读取本轮生成PDF检查页界；13页全部实际渲染"
+    "page_analysis": "本轮从现稿生成13页PDF并全部渲染；AI查看总览及第11页四级标题/正文，页界通过"
   },
   "course_protection": "2570 files: paths/content unchanged",
   "human_review": "未验收；姓名学号待填写，内容/排版待用户审阅",
@@ -46,45 +46,50 @@
     "grid_rows_checked": 4,
     "method": "逐行逐单元格对照归档CSV；耗时9位、S四位、效率百分数两位"
   },
-  "revision": "2026-11-15：补齐OpenMP 1/2/4/8/16及四网格串行耗时列",
-  "review_scope": "仅替换第6.1节两表；固定规模完整MPI/OpenMP并行度，跨网格6列经用户确认",
-  "pdf_source_sync": "从当前Markdown生成13页PDF，全部实际渲染，AI查看总览和第9页",
-  "additional_checks": {
-    "scope_preservation": "前置快照除第6.1节两张表外逐字保持",
-    "formulas_unchanged": 143,
+  "figure_redesign": {
+    "groups": 9,
+    "formats": [
+      "PNG",
+      "SVG"
+    ],
+    "configurations": 44,
+    "raw_samples": 440,
+    "data": "原始输入与五份重算CSV逐字节核对通过，9组图输入/统计/脚本/字体/图像哈希通过",
+    "layout": "绘图时检查全部坐标、标签及图例位于画布内；AI查看9图总览",
+    "PPT": "保持原版本及其原图副本，不在本轮范围内",
+    "report_source": "与本轮开始时的用户稿逐字节一致"
+  },
+  "section_6_4_split": {
+    "report_change": "仅新增两个子节标题；其余正文、公式、数据和图表路径逐字保持",
+    "subsections": [
+      {
+        "heading": "6.4.1 Amdahl定律：固定规模下的加速表现",
+        "page": 11,
+        "font_size": 10.2,
+        "following_text_same_page": true
+      },
+      {
+        "heading": "6.4.2 Gustafson定律：扩大工作量后的可扩展性",
+        "page": 11,
+        "font_size": 10.2,
+        "following_text_same_page": true
+      }
+    ],
     "pdf_pages_rendered": 13,
-    "tables_complete_on_one_page": [
-      {
-        "table": "fixed",
-        "page": 9,
-        "complete": true,
-        "numbers_unwrapped": true
-      },
-      {
-        "table": "grid",
-        "page": 9,
-        "complete": true,
-        "numbers_unwrapped": true
-      }
-    ],
-    "figure_captions_same_page": [
-      {
-        "figure": 1,
-        "page": 10
-      },
-      {
-        "figure": 2,
-        "page": 10
-      }
-    ],
-    "protected_files_unchanged": 219
+    "protected_tracked_files_unchanged": 235,
+    "preexisting_changes": "保留；未暂存、未提交、未推送",
+    "git": "起点已有其他任务未提交改动；按AGENTS第4节未暂存、提交或推送",
+    "other_records": "figure_redesign保留前序图表重绘核查语境，本轮未重新绘图"
   },
-  "internal_experiment_mapping": {
-    "基础性能实验": "results/performance/baseline",
-    "补充诊断实验": "results/performance/diagnostic-01",
-    "扩大网格实验": "results/performance/large-02-r1",
-    "初次扩大实验（预热停止，0正式）": "results/performance/large-02"
-  },
-  "pending_user_draft": "姓名学号、报告审阅及最终验收待用户；PPT暂停",
-  "execution_notes": "未运行构建、数值回归或性能采样；无求解器/测试/结果/PPT改动，生成器保持"
+  "submission_20261116": {
+    "user_instruction": "提交",
+    "branch": "M5",
+    "remote": "origin/M5",
+    "files_in_scope": 33,
+    "results_check": "python3 scripts/check_results.py：历史来源/三批五份CSV复算/九组图覆盖及哈希/拒绝覆盖检查通过",
+    "report_check": "独立检查11行/四网格逐格核对、M3误差比/阶、8章/2链接及13页页界通过",
+    "checksums": "103项报告SHA及当前Markdown/PDF记录哈希通过",
+    "pdf_rendering": "未重新运行：PDF哈希与2026-11-15已实际生成并渲染版本一致",
+    "acceptance": "提交授权；报告与M5仍待用户验收"
+  }
 }

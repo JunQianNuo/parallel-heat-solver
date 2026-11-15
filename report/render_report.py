@@ -43,7 +43,7 @@ json.dump(jobs,open(sys.argv[1],'w'))
     depths={e:j['depth'] for e,j in zip(expressions,jobs)}
     body=ParagraphStyle('body',fontName='Chinese',fontSize=9.4,leading=16,wordWrap=None,spaceAfter=7)
     cell=ParagraphStyle('cell',parent=body,fontSize=8,leading=12,spaceAfter=0)
-    styles={n:ParagraphStyle(n,parent=body,fontSize=size,leading=lead,spaceBefore=12,spaceAfter=8,keepWithNext=True,textColor=colors.HexColor('#164e63')) for n,size,lead in [('h1',21,31),('h2',14,22),('h3',11,18)]}
+    styles={n:ParagraphStyle(n,parent=body,fontSize=size,leading=lead,spaceBefore=12,spaceAfter=8,keepWithNext=True,textColor=colors.HexColor('#164e63')) for n,size,lead in [('h1',21,31),('h2',14,22),('h3',11,18),('h4',10.2,16)]}
     def inline(txt,font_size=9.4):
         pieces=re.split(r'(\$[^$]+\$)',txt)
         out=[]
@@ -98,7 +98,7 @@ json.dump(jobs,open(sys.argv[1],'w'))
             i+=1;continue
         if re.match(r'^\d+\. ',line):
             story.append(Paragraph(inline(line),body));i+=1;continue
-        match=re.match(r'^(#{1,3}) (.+)',line)
+        match=re.match(r'^(#{1,4}) (.+)',line)
         if match:
             style=styles['h'+str(len(match[1]))]
             story.append(Paragraph(inline(match[2],style.fontSize),style));i+=1;continue

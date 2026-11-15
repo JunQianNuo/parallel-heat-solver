@@ -46,7 +46,8 @@ def main():
         unit=str(k)+{'serial':'','mpi':'进程','openmp':'线程'}[kind]
         expected.append([label,unit,f"{float(r['median_seconds']):.9f}",f"{float(r['speedup_serial']):.4f}"])
     require(fixed==expected,'fixed-size table differs from archived statistics')
-    grid=table_rows(source,['N','串行耗时Ts（秒）','MPI16 S','MPI16 E','OpenMP16 S','OpenMP16 E'])
+    grid_header='串行耗时Ts（秒）' if '串行耗时Ts（秒）' in source else '串行耗时Ts'
+    grid=table_rows(source,['N',grid_header,'MPI16 S','MPI16 E','OpenMP16 S','OpenMP16 E'])
     checked=[]
     expected=[]
     for N in [384,512,768,1024]:
