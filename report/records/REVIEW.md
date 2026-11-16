@@ -91,3 +91,8 @@ LibreOffice24.2.7.2实际打开PPTX→12页PDF，PyMuPDF逐页渲染，AI查看�
 ## WPS公式统一（2026-11-16）
 
 本轮针对用户人工改稿，交付[WPS PPTX](../presentation/current/presentation-v5-wps.pptx)、[PDF](../presentation/current/presentation-v5-wps.pdf)及[总览](../presentation/current/presentation-v5-wps-contact.png)，核查见[wps_formula_checks.json](wps_formula_checks.json)。Windows MCP实际打开WPS，使用原生LaTeX转换及字体/上下标排版，12个原生公式、14页备注；两张完整PNG原字节保持，用户输入未覆盖。WPS实际渲染14页，AI检查总览及公式页；修正页码字体误匹配后PDF文字边界通过。旧生成版检查、讲稿与SVG不作用户人工修改同步依据。第9页网格标注按用户明确确认修正，第10页输入空白正文保持。人工实讲和PowerPoint检查未运行，书面报告本轮未修改。
+
+
+## P09/P10局部修订（2026-11-16）
+
+用户确认P09加入OpenMP16对照；[最新PPTX](../presentation/current/presentation-v5-wps-r1.pptx)、[PDF](../presentation/current/presentation-v5-wps-r1.pdf)、[两页预览](../presentation/current/presentation-v5-wps-r1-p09-p10.png)。[独立检查](p9_p10_checks.json)证明15页中仅P09/P10及备注、关联关系变化；其他13页字节保持。8个图值、18个配置/增长值与归档一致，两原生定义公式及一图一表可编辑，两个完整原图字节保持。源门0错误0警告、postflight通过，交付检查仅字体可移植性建议；Windows MCP打开WPS导出15页PNG/PDF，AI实际检查总览及修改页放大图，P09/P10文字边界通过。工具命名空间及WPS回退叠影已实际修复，过程见[修订说明](../presentation/revisions/p9-p10-20261116/README.md)。P02既有越界标签、旧页码和P11空白正文未改，不宣称整稿已完成排版验收；人工实讲、PowerPoint检查未运行。未构建、回归或采样。

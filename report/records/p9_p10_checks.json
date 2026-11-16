@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-16",
+  "approval": "P09 include OpenMP16; P10 confirmed 3-configuration table and conclusion",
+  "input": "report/presentation/current/presentation-v5-wps.pptx",
+  "input_sha256": "8f5d073aa33711b09533e61fd64dbe1f63ddc087ee47814d6f906629531c0ee4",
+  "output": "report/presentation/current/presentation-v5-wps-r1.pptx",
+  "output_sha256": "7426c1844fc030112d93bcb004f6a3d9cc576cfb4af4fd6b2cc818a64a847b6a",
+  "pdf_sha256": "0dcd04ed493dd12cfcf1f1a5e9c69197ef0b5d5df69b2ef5a53752b34aec5e08",
+  "slides": 15,
+  "changed_slide_xml": [
+    9,
+    10
+  ],
+  "changed_notes_xml": [
+    9,
+    10
+  ],
+  "changed_slide_relationships": [
+    9,
+    10
+  ],
+  "other_slide_xml_and_notes_preserved_byte_for_byte": 13,
+  "native_charts_added": 1,
+  "native_tables_added": 1,
+  "new_native_equations_on_p10": 2,
+  "total_native_equations": 14,
+  "chart_series_full_precision": {
+    "mpi": [
+      3.4885416407241086,
+      2.8182793391551044,
+      2.9596179310210524,
+      3.34927513011968
+    ],
+    "openmp": [
+      1.189370682193624,
+      1.24405093607809,
+      1.4062675823270663,
+      1.6507513580489832
+    ]
+  },
+  "chart_fallback_point_max_error_px": 3.1098949193619774e-07,
+  "table_readback": [
+    [
+      "p",
+      "N",
+      "M",
+      "W/W₁",
+      "MPI Rₚ",
+      "OpenMP Rₚ"
+    ],
+    [
+      "1",
+      "256",
+      "4096",
+      "1.0000",
+      "1.0000",
+      "1.0000"
+    ],
+    [
+      "2",
+      "304",
+      "5776",
+      "1.9910",
+      "1.6477",
+      "0.7244"
+    ],
+    [
+      "4",
+      "362",
+      "8191",
+      "4.0078",
+      "2.2053",
+      "0.8037"
+    ]
+  ],
+  "table_values_verified_against_archived_csv": true,
+  "original_complete_chart_png_payloads_preserved": 2,
+  "svg_gate": {
+    "total": 15,
+    "passed": 15,
+    "warnings": 0,
+    "errors": 0
+  },
+  "pptx_postflight": "passed",
+  "renderer": "Windows WPS Presentation 12.0 via Windows MCP; SaveCopyAs PDF, no save/normalize of PPTX",
+  "rendered_pages": 15,
+  "p09_p10_pdf_text_outside_page": [],
+  "inherited_other_page_outside_labels": [
+    [
+      2,
+      "N"
+    ],
+    [
+      2,
+      "="
+    ],
+    [
+      2,
+      "8：9"
+    ],
+    [
+      2,
+      "9"
+    ]
+  ],
+  "speech_notes_characters": {
+    "9": 160,
+    "10": 204
+  },
+  "limitations": [
+    "Source footer numbers retain prior user values, including P09 8/14 and P10 9/14; global renumbering outside approved page edit scope",
+    "P11 summary body empty in user source, preserved",
+    "External full-deck notes and old 280-second budget not retimed for user 15-page edits",
+    "Microsoft PowerPoint check and human spoken rehearsal not run",
+    "No solver builds, numerical regression or performance samples run"
+  ],
+  "tool_repairs": [
+    "Local wrapper registers the standard Office Math a14 namespace for new native formulas; all original exporter validations retained; installed skill unchanged",
+    "WPS grouped block-formula fallback duplicated rendering; final uses bounded one-line native math runs with reserved fraction height",
+    "New chart uses category-slot centres to avoid first-point label/y-axis collisions; xlabel separate to preserve spacing",
+    "P09 condition removes false constant-work claim, replaces affected source formula only; unrelated math native bytes preserved"
+  ]
+}

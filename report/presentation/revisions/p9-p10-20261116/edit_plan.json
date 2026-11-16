@@ -1,0 +1,116 @@
+{
+  "date": "2026-11-16",
+  "route": "Edit Native PPTX",
+  "source_sha256": "8f5d073aa33711b09533e61fd64dbe1f63ddc087ee47814d6f906629531c0ee4",
+  "approval": "User confirmed P9 including OpenMP16 comparison and P10 proposal",
+  "roster": [
+    {
+      "output": 1,
+      "source_slide": 1,
+      "status": "referenced",
+      "reason": "Preserve user native content and order"
+    },
+    {
+      "output": 2,
+      "source_slide": 2,
+      "status": "referenced",
+      "reason": "Preserve user native content and order"
+    },
+    {
+      "output": 3,
+      "source_slide": 3,
+      "status": "referenced",
+      "reason": "Preserve user native content and order"
+    },
+    {
+      "output": 4,
+      "source_slide": 4,
+      "status": "referenced",
+      "reason": "Preserve user native content and order"
+    },
+    {
+      "output": 5,
+      "source_slide": 5,
+      "status": "referenced",
+      "reason": "Preserve user native content and order"
+    },
+    {
+      "output": 6,
+      "source_slide": 6,
+      "status": "referenced",
+      "reason": "Preserve user native content and order"
+    },
+    {
+      "output": 7,
+      "source_slide": 7,
+      "status": "referenced",
+      "reason": "Preserve user native content and order"
+    },
+    {
+      "output": 8,
+      "source_slide": 8,
+      "status": "referenced",
+      "reason": "Preserve user native content and order"
+    },
+    {
+      "output": 9,
+      "source_slide": 9,
+      "status": "edited",
+      "reason": "Add MPI16/OpenMP16 grid speedup chart and correct workload statement"
+    },
+    {
+      "output": 10,
+      "source_slide": 10,
+      "status": "edited",
+      "reason": "Define throughput; add three workload configurations and conclusion"
+    },
+    {
+      "output": 11,
+      "source_slide": 11,
+      "status": "referenced",
+      "reason": "Preserve user native content and order"
+    },
+    {
+      "output": 12,
+      "source_slide": 12,
+      "status": "referenced",
+      "reason": "Preserve user native content and order"
+    },
+    {
+      "output": 13,
+      "source_slide": 13,
+      "status": "referenced",
+      "reason": "Preserve user native content and order"
+    },
+    {
+      "output": 14,
+      "source_slide": 14,
+      "status": "referenced",
+      "reason": "Preserve user native content and order"
+    },
+    {
+      "output": 15,
+      "source_slide": 15,
+      "status": "referenced",
+      "reason": "Preserve user native content and order"
+    }
+  ],
+  "modules": {
+    "notes": "Rewrite P09/P10 notes only",
+    "narration": false,
+    "animation": "preserve source; no additions",
+    "transition": "preserve source; no additions",
+    "auto_advance": false,
+    "native_chart": true,
+    "native_table": true
+  },
+  "data": {
+    "p9_source": "results/performance/large-02-r1/m4-diagnostic-02-r1.csv",
+    "p10_source": "results/performance/baseline/derived/summary.csv"
+  },
+  "fail_closed": [
+    "No dropped, repeated or reordered slides",
+    "Do not edit preserved math on other pages",
+    "Only changed P9 math-bearing condition text replaced, no other Office Math reconstruction required"
+  ]
+}

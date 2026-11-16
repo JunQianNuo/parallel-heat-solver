@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1280" height="720" viewBox="0 0 1280 720" font-family="Arial, SimHei, sans-serif"><rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+<g id="shape-6" data-pptx-object="group" data-pptx-frame="0 0 1280 48" data-pptx-source-ref="slide:6">
+<g id="shape-2" data-pptx-object="shape" data-pptx-frame="0 0 1280 48" data-pptx-prst="rect" data-pptx-source-ref="slide:2" data-pptx-semantic-object="shape">
+<path d="M 0 0 L 1280 0 L 1280 48 L 0 48 Z" fill="#092F51" stroke="none" data-pptx-part="geometry"/>
+
+</g>
+<g id="shape-3" data-pptx-object="shape" data-pptx-frame="39.2 9 107.6 30.8" data-pptx-prst="rect" data-pptx-source-ref="slide:3" data-pptx-semantic-object="shape">
+<path d="M 39.2 9 L 146.8 9 L 146.8 39.8 L 39.2 39.8 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="39.2" y="29" text-anchor="start" xml:space="preserve" font-size="20" fill="#8497A8" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">问题与模型</tspan></text>
+</g>
+<g id="shape-4" data-pptx-object="shape" data-pptx-frame="509.2 9 150 30.8" data-pptx-prst="rect" data-pptx-source-ref="slide:4" data-pptx-semantic-object="shape">
+<path d="M 509.2 9 L 659.2 9 L 659.2 39.8 L 509.2 39.8 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="509.2" y="29" text-anchor="start" xml:space="preserve" font-size="20" fill="#8497A8" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">数值与并行方法</tspan></text>
+</g>
+<g id="shape-5" data-pptx-object="shape" data-pptx-frame="1049.2 9 124.6 30.8" data-pptx-prst="rect" data-pptx-source-ref="slide:5" data-pptx-semantic-object="shape">
+<path d="M 1049.2 9 L 1173.8 9 L 1173.8 39.8 L 1049.2 39.8 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="1049.2" y="29" text-anchor="start" xml:space="preserve" font-size="20" fill="#FFFFFF" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">● </tspan><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">结果与讨论</tspan></text>
+</g>
+</g>
+<g id="shape-9" data-pptx-object="group" data-pptx-frame="0 48 1280 62" data-pptx-source-ref="slide:9">
+<g id="shape-7" data-pptx-object="shape" data-pptx-frame="0 48 1280 62" data-pptx-prst="rect" data-pptx-source-ref="slide:7" data-pptx-semantic-object="shape">
+<path d="M 0 48 L 1280 48 L 1280 110 L 0 110 Z" fill="#115EA2" stroke="none" data-pptx-part="geometry"/>
+
+</g>
+<g id="shape-8" data-pptx-object="shape" data-pptx-frame="38.24 48.67 396 53.27" data-pptx-prst="rect" data-pptx-source-ref="slide:8" data-pptx-semantic-object="shape">
+<path d="M 38.24 48.67 L 434.24 48.67 L 434.24 101.93 L 38.24 101.93 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="38.24" y="94" text-anchor="start" xml:space="preserve" font-size="44" fill="#FFFFFF" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">规模</tspan><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">变化强扩展实验</tspan></text>
+</g>
+</g>
+<g id="shape-10" data-pptx-object="shape" data-pptx-frame="90 127 1120 49" data-pptx-prst="rect" data-pptx-source-ref="slide:10" data-pptx-semantic-object="shape">
+<path d="M 90 127 L 1210 127 L 1210 176 L 90 176 Z" fill="none" stroke="none" data-pptx-part="geometry"/><text x="90" y="157" font-size="30" font-family="KaiTi, Arial" fill="#000000" text-anchor="start">T = 0.01，α = 1，p = 16；每组网格分别进行固定规模比较</text></g>
+<g id="shape-75" data-pptx-object="group" data-pptx-frame="633.33 598.67 13.33 68.33" data-pptx-source-ref="slide:75">
+<g id="shape-73" data-pptx-object="shape" data-pptx-frame="633.33 598.67 13.33 36.33" data-pptx-prst="rect" data-pptx-source-ref="slide:73" data-pptx-semantic-object="shape">
+<path d="M 633.33 598.67 L 646.67 598.67 L 646.67 635 L 633.33 635 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+</g>
+<g id="shape-74" data-pptx-object="shape" data-pptx-frame="633.33 630.67 13.33 36.33" data-pptx-prst="rect" data-pptx-source-ref="slide:74" data-pptx-semantic-object="shape">
+<path d="M 633.33 630.67 L 646.67 630.67 L 646.67 667 L 633.33 667 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+</g>
+</g>
+<g id="shape-80" data-pptx-object="group" data-pptx-frame="0 671 1280 49" data-pptx-source-ref="slide:80">
+<g id="shape-76" data-pptx-object="shape" data-pptx-frame="0 672 1280 24" data-pptx-prst="rect" data-pptx-source-ref="slide:76" data-pptx-semantic-object="shape">
+<path d="M 0 672 L 1280 672 L 1280 696 L 0 696 Z" fill="#115EA2" stroke="none" data-pptx-part="geometry"/>
+
+</g>
+<g id="shape-77" data-pptx-object="shape" data-pptx-frame="0 696 1280 24" data-pptx-prst="rect" data-pptx-source-ref="slide:77" data-pptx-semantic-object="shape">
+<path d="M 0 696 L 1280 696 L 1280 720 L 0 720 Z" fill="#0B3D69" stroke="none" data-pptx-part="geometry"/>
+
+</g>
+<g id="shape-78" data-pptx-object="shape" data-pptx-frame="39.2 671 362 30.8" data-pptx-prst="rect" data-pptx-source-ref="slide:78" data-pptx-semantic-object="shape">
+<path d="M 39.2 671 L 401.2 671 L 401.2 701.8 L 39.2 701.8 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="39.2" y="691" text-anchor="start" xml:space="preserve" font-size="20" fill="#FFFFFF" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">二维热传导方程的串行与并行数值求解</tspan></text>
+</g>
+<g id="shape-79" data-pptx-object="shape" data-pptx-frame="1199.2 694 50 24.2" data-pptx-prst="rect" data-pptx-source-ref="slide:79" data-pptx-semantic-object="shape">
+<path d="M 1199.2 694 L 1249.2 694 L 1249.2 718.2 L 1199.2 718.2 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="1199.2" y="714" text-anchor="start" xml:space="preserve" font-size="20" fill="#FFFFFF" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">8 / 14</tspan></text>
+</g>
+</g>
+<g id="shape-11" data-pptx-object="group" data-pptx-frame="197.2 493.13 856 92.87" data-pptx-source-ref="slide:11">
+<g id="shape-12" data-pptx-object="shape" data-pptx-frame="125 496 1100 46" data-pptx-prst="rect" data-pptx-source-ref="slide:12" data-pptx-semantic-object="shape">
+<path d="M 125 496 L 1225 496 L 1225 542 L 125 542 Z" fill="none" stroke="none" data-pptx-part="geometry"/><text x="125" y="526" font-size="30" font-family="Cambria Math, Arial" fill="#000000">N/M：384/9216 → 512/16384 → 768/36864 → 1024/65536</text></g>
+<g id="shape-81" data-pptx-object="shape" data-pptx-frame="200 541.07 960 50" data-pptx-prst="rect" data-pptx-source-ref="slide:81" data-pptx-semantic-object="shape">
+<path d="M 200 541.07 L 1160 541.07 L 1160 591.07 L 200 591.07 Z" fill="none" stroke="none" data-pptx-part="geometry"/><text x="200" y="577.07" font-size="36" font-family="Cambria Math, KaiTi" fill="#000000" text-anchor="start">MPI16 S：3.4885 → 2.8183 → 2.9596 → 3.3493</text></g>
+</g>
+<g id="shape-82" data-pptx-object="shape" data-pptx-frame="237.2 593.6 806.87 53.2" data-pptx-prst="rect" data-pptx-source-ref="slide:82" data-pptx-semantic-object="shape">
+<path d="M 237.2 593.6 L 1044.07 593.6 L 1044.07 646.8 L 237.2 646.8 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="246.8" y="634.4" text-anchor="start" xml:space="preserve" font-family="Arial, KaiTi, sans-serif" font-size="36" fill="#115EA2" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none"> </tspan><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">更大的计算规模不一定带来更高的并行加速比。</tspan></text>
+</g><g id="grid-speedup-comparison" data-pptx-replace-with="chart" data-pptx-fallback-sha256="f7bfc0918586615141582d28ed3ddc9eeaf2850c25167b2c1dfd1596c36f4083" data-pptx-bounds="95 178 1090 307"><metadata type="application/json">{"name": "grid-speedup-comparison", "type": "line", "x": 95, "y": 178, "width": 1090, "height": 307, "plot_area": {"x": 180, "y": 226, "width": 940, "height": 192}, "categories": ["384", "512", "768", "1024"], "series": [{"name": "MPI16", "values": [3.4885416407241086, 2.8182793391551044, 2.9596179310210524, 3.34927513011968]}, {"name": "OpenMP16", "values": [1.189370682193624, 1.24405093607809, 1.4062675823270663, 1.6507513580489832]}], "line_style": "lineMarker", "line_width": 3, "marker_size": 10, "show_legend": true, "legend_position": "top", "data_labels": {"show_value": true, "position": "above", "number_format": "0.0000", "font_size": 28, "font_family": "Arial", "color": "#000000"}, "axes": {"category": {"position": "bottom", "font_size": 30}, "value": {"position": "left", "minimum": 0, "maximum": 4, "major_unit": 1, "major_gridlines": true, "cross_between": "between", "number_format": "0", "font_size": 30}}, "axis_titles": {"value": {"text": "加速比 S", "font_size": 30, "font_family": "KaiTi"}}, "style": {"colors": ["#115EA2", "#000000"], "font_family": "Arial", "axis_font_size": 30, "axis_title_font_size": 30, "legend_font_size": 30, "chart_area_fill": "#FFFFFF", "plot_area_fill": "#FFFFFF", "text_color": "#000000", "axis_color": "#000000", "grid_color": "#C9D7E3"}}</metadata><rect x="95" y="178" width="1090" height="307" fill="#FFFFFF"/><g id="grid-speedup-comparison-chartArea"><!-- chart-plot-area: object=grid-speedup-comparison | x_min=180,y_min=226,x_max=1120,y_max=418 | y_range=0,4 | category points=slot-midpoints --><line id="grid-y-0" x1="180" y1="418" x2="1120" y2="418" stroke="#C9D7E3" stroke-width="1"/><text x="161" y="428" font-size="30" font-family="Arial" fill="#000000" text-anchor="end">0</text><line id="grid-y-1" x1="180" y1="370" x2="1120" y2="370" stroke="#C9D7E3" stroke-width="1"/><text x="161" y="380" font-size="30" font-family="Arial" fill="#000000" text-anchor="end">1</text><line id="grid-y-2" x1="180" y1="322" x2="1120" y2="322" stroke="#C9D7E3" stroke-width="1"/><text x="161" y="332" font-size="30" font-family="Arial" fill="#000000" text-anchor="end">2</text><line id="grid-y-3" x1="180" y1="274" x2="1120" y2="274" stroke="#C9D7E3" stroke-width="1"/><text x="161" y="284" font-size="30" font-family="Arial" fill="#000000" text-anchor="end">3</text><line id="grid-y-4" x1="180" y1="226" x2="1120" y2="226" stroke="#C9D7E3" stroke-width="1"/><text x="161" y="236" font-size="30" font-family="Arial" fill="#000000" text-anchor="end">4</text><line id="axis-y" x1="180" y1="226" x2="180" y2="418" stroke="#000000" stroke-width="1.5"/><line id="axis-x" x1="180" y1="418" x2="1120" y2="418" stroke="#000000" stroke-width="1.5"/><text x="297.5" y="452" font-size="30" font-family="Arial" fill="#000000" text-anchor="middle">384</text><text x="532.5" y="452" font-size="30" font-family="Arial" fill="#000000" text-anchor="middle">512</text><text x="767.5" y="452" font-size="30" font-family="Arial" fill="#000000" text-anchor="middle">768</text><text x="1002.5" y="452" font-size="30" font-family="Arial" fill="#000000" text-anchor="middle">1024</text><polyline id="mpi-curve" points="297.5,250.550001 532.5,282.722592 767.5,275.938339 1002.5,257.234794" fill="none" stroke="#115EA2" stroke-width="3"/><circle id="mpi-point-0" cx="297.5" cy="250.550001" r="5" fill="#115EA2"/><text x="297.5" y="235.55000124524278" font-size="28" font-family="Arial" fill="#000000" text-anchor="middle">3.4885</text><circle id="mpi-point-1" cx="532.5" cy="282.722592" r="5" fill="#115EA2"/><text x="532.5" y="267.722591720555" font-size="28" font-family="Arial" fill="#000000" text-anchor="middle">2.8183</text><circle id="mpi-point-2" cx="767.5" cy="275.938339" r="5" fill="#115EA2"/><text x="767.5" y="260.9383393109895" font-size="28" font-family="Arial" fill="#000000" text-anchor="middle">2.9596</text><circle id="mpi-point-3" cx="1002.5" cy="257.234794" r="5" fill="#115EA2"/><text x="1002.5" y="242.23479375425535" font-size="28" font-family="Arial" fill="#000000" text-anchor="middle">3.3493</text><polyline id="openmp-curve" points="297.5,360.910207 532.5,358.285555 767.5,350.499156 1002.5,338.763935" fill="none" stroke="#000000" stroke-width="3"/><circle id="openmp-point-0" cx="297.5" cy="360.910207" r="5" fill="#000000"/><text x="297.5" y="345.91020725470605" font-size="28" font-family="Arial" fill="#000000" text-anchor="middle">1.1894</text><circle id="openmp-point-1" cx="532.5" cy="358.285555" r="5" fill="#000000"/><text x="532.5" y="343.2855550682517" font-size="28" font-family="Arial" fill="#000000" text-anchor="middle">1.2441</text><circle id="openmp-point-2" cx="767.5" cy="350.499156" r="5" fill="#000000"/><text x="767.5" y="335.49915604830085" font-size="28" font-family="Arial" fill="#000000" text-anchor="middle">1.4063</text><circle id="openmp-point-3" cx="1002.5" cy="338.763935" r="5" fill="#000000"/><text x="1002.5" y="323.7639348136488" font-size="28" font-family="Arial" fill="#000000" text-anchor="middle">1.6508</text></g><line x1="452" y1="194" x2="485" y2="194" stroke="#115EA2" stroke-width="3"/><circle cx="468.5" cy="194" r="5" fill="#115EA2"/><text x="500" y="204" font-size="30" font-family="Arial" fill="#000000" text-anchor="start">MPI16</text><line x1="697" y1="194" x2="730" y2="194" stroke="#000000" stroke-width="3"/><circle cx="713.5" cy="194" r="5" fill="#000000"/><text x="745" y="204" font-size="30" font-family="Arial" fill="#000000" text-anchor="start">OpenMP16</text><text x="99" y="224" font-size="30" font-family="KaiTi" fill="#000000" text-anchor="start">加速比 S</text></g><g id="grid-axis-title" data-pptx-bounds="520 450 250 50"><text x="650" y="483" font-size="30" font-family="KaiTi, Arial" text-anchor="middle" fill="#000000">网格 N</text></g></svg>
