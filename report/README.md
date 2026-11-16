@@ -1,6 +1,6 @@
 # 书面报告与答辩材料
 
-当前PPT局部修订（2026-11-16）：[最新PPTX](presentation/current/presentation-v5-wps-r1.pptx)、[PDF](presentation/current/presentation-v5-wps-r1.pdf)、[P09/P10预览](presentation/current/presentation-v5-wps-r1-p09-p10.png)。以用户15页手改稿为输入，只改两页及备注：P09加入MPI16/OpenMP16曲线，P10给出吞吐定义、三配置表及结论，其余13页原生字节保持。详见[修订说明](presentation/revisions/p9-p10-20261116/README.md)；原稿页码、其他页既有问题及旧全稿讲述时间未作全局整理，报告未改。
+当前PPT局部修订（2026-11-16）：[最新PPTX](presentation/current/presentation-v5-wps-r1.pptx)、[PDF](presentation/current/presentation-v5-wps-r1.pdf)、[P09/P10预览](presentation/current/presentation-v5-wps-r1-p09-p10.png)。以用户15页手改稿为输入，只改两页及备注：P09加入MPI16/OpenMP16曲线，P10给出吞吐定义、三配置表及结论，其余13页XML与备注字节保持。详见[修订说明](presentation/revisions/p9-p10-20261116/README.md)；原稿页码、其他页既有问题及旧全稿讲述时间未作全局整理，报告未改。
 
 以下为前序工作记录。
 

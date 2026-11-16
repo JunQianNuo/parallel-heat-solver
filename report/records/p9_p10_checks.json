@@ -4,8 +4,8 @@
   "input": "report/presentation/current/presentation-v5-wps.pptx",
   "input_sha256": "8f5d073aa33711b09533e61fd64dbe1f63ddc087ee47814d6f906629531c0ee4",
   "output": "report/presentation/current/presentation-v5-wps-r1.pptx",
-  "output_sha256": "7426c1844fc030112d93bcb004f6a3d9cc576cfb4af4fd6b2cc818a64a847b6a",
-  "pdf_sha256": "0dcd04ed493dd12cfcf1f1a5e9c69197ef0b5d5df69b2ef5a53752b34aec5e08",
+  "output_sha256": "2d683f6e97ab38149ecaaed89bca8b1c489ee5fac8378e63eebba34f65ec3347",
+  "pdf_sha256": "53192658e8c5d1561481bf18c0b6924a602d6e430a7331c6e12587ed50509adf",
   "slides": 15,
   "changed_slide_xml": [
     9,
@@ -17,25 +17,29 @@
   ],
   "changed_slide_relationships": [
     9,
-    10
+    10,
+    13,
+    14,
+    15
   ],
   "other_slide_xml_and_notes_preserved_byte_for_byte": 13,
+  "other_slide_relationships_preserve_resolved_payloads": true,
   "native_charts_added": 1,
   "native_tables_added": 1,
   "new_native_equations_on_p10": 2,
   "total_native_equations": 14,
   "chart_series_full_precision": {
     "mpi": [
-      3.4885416407241086,
-      2.8182793391551044,
-      2.9596179310210524,
+      3.48854164072411,
+      2.8182793391551,
+      2.95961793102105,
       3.34927513011968
     ],
     "openmp": [
-      1.189370682193624,
+      1.18937068219362,
       1.24405093607809,
-      1.4062675823270663,
-      1.6507513580489832
+      1.40626758232707,
+      1.65075135804898
     ]
   },
   "chart_fallback_point_max_error_px": 3.1098949193619774e-07,
@@ -81,8 +85,10 @@
     "warnings": 0,
     "errors": 0
   },
-  "pptx_postflight": "passed",
-  "renderer": "Windows WPS Presentation 12.0 via Windows MCP; SaveCopyAs PDF, no save/normalize of PPTX",
+  "pptx_postflight_before_later_wps_save": "passed",
+  "final_delivery_check": "passed-with-advisories (font portability only)",
+  "renderer": "Windows WPS Presentation 12.0 via Windows MCP; final later-saved file verified through read-only copy; PDF regenerated",
+  "later_save": "P10 upper-body placement and Office Math/chart packaging differ from initial skill export; text, data and 13 other slide XML/notes preserved",
   "rendered_pages": 15,
   "p09_p10_pdf_text_outside_page": [],
   "inherited_other_page_outside_labels": [
@@ -112,12 +118,18 @@
     "P11 summary body empty in user source, preserved",
     "External full-deck notes and old 280-second budget not retimed for user 15-page edits",
     "Microsoft PowerPoint check and human spoken rehearsal not run",
-    "No solver builds, numerical regression or performance samples run"
+    "No solver builds, numerical regression or performance samples run",
+    "Archived SVGs/postflight describe the initial native export before later WPS save; final PPTX is authoritative"
   ],
   "tool_repairs": [
+    "Concurrent disk save detected after staging; commit command failed to stop on failed disk-equality assertion; no push performed until revalidation and separate follow-up commit",
     "Local wrapper registers the standard Office Math a14 namespace for new native formulas; all original exporter validations retained; installed skill unchanged",
     "WPS grouped block-formula fallback duplicated rendering; final uses bounded one-line native math runs with reserved fraction height",
     "New chart uses category-slot centres to avoid first-point label/y-axis collisions; xlabel separate to preserve spacing",
     "P09 condition removes false constant-work claim, replaces affected source formula only; unrelated math native bytes preserved"
-  ]
+  ],
+  "later_save_pixel_changed_pages": [
+    10
+  ],
+  "embedded_workbook_values_verified": 8
 }

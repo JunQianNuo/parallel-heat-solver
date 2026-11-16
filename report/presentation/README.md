@@ -4,7 +4,7 @@
 
 - [最新PPTX](current/presentation-v5-wps-r1.pptx)、[WPS导出PDF](current/presentation-v5-wps-r1.pdf)、[两页预览](current/presentation-v5-wps-r1-p09-p10.png)、[全页总览](current/presentation-v5-wps-r1-contact.png)。
 - P09补充MPI16与OpenMP16跨网格对比原生图；P10定义吞吐量及增长倍数，原生表格展示p=1、2、4三组配置，表下写“并行收益均低于理想线性扩展水平”。
-- 仅P09/P10及其备注变化；其余13页、关联关系和备注逐字节保留。具体核查见[检查记录](../records/p9_p10_checks.json)，可追溯局部源与导出修复见[修订说明](revisions/p9-p10-20261116/README.md)。
+- 仅P09/P10及其备注变化；其余13页XML和备注逐字节保留，媒体链接的解析内容保持。具体核查见[检查记录](../records/p9_p10_checks.json)，可追溯局部源与导出修复见[修订说明](revisions/p9-p10-20261116/README.md)。
 - 图表/表格可编辑，两个新定义公式为原生Office Math。15页已由WPS实际导出，AI检查修改页和总览；源门0错误0警告，包检查通过。原稿页码和其他页面既有问题保持，未将局部修改当作整稿验收；人工演练未运行。
 
 后续从最新PPTX编辑。下文为前序公式统一与生成版本记录，不代表用户15页改稿与旧PDF/讲稿同步。
