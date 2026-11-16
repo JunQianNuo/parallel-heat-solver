@@ -1,5 +1,16 @@
 # PPT与答辩材料
 
+当前文件为用户手工修订后、经Windows MCP在WPS中统一公式的版本：
+
+- [WPS修订PPTX](current/presentation-v5-wps.pptx)、[WPS导出PDF](current/presentation-v5-wps.pdf)、[全页总览](current/presentation-v5-wps-contact.png)。
+- [公式与保留检查](../records/wps_formula_checks.json)：14页、12个原生公式，数学字体Cambria Math；分式、上下标和行内变量同步统一，清除Amdahl旧文本叠影，调整公式附近间距。
+- [用户输入PPTX](current/presentation-v5.pptx)按开始时原字节保留。第9页按用户确认，四组N/M改为384/9216、512/16384、768/36864、1024/65536，与四个MPI16加速比对应。
+- WPS实际导出14页PNG及PDF，AI查看全页总览和公式页；两张完整结果图原PNG字节及14页备注原文保持。第10页正文在用户输入中为空，本轮保持；外部逐页讲稿尚未按用户手工修改重新核对，真实演练未运行。
+
+**后续编辑从WPS修订PPTX继续。** 下面的SVG、讲稿、旧v5 PDF和检查记录属于此前生成版本，不能证明当前用户修订版内容同步；从旧SVG重新导出会覆盖用户修改。本轮未通过SVG重建页面，未刷新书面报告PDF，未运行求解器或增加性能采样。
+
+## 此前生成版本与检查记录
+
 当前交付为2026-11-16制作的v5，按用户批准的设计规范及“非实现者只接触PPT和最终报告”要求制作。10页正文＋4页备份，主讲预算280秒，另留20秒。沿用《单幅图像去雾-第二组》参考的页眉、蓝白配色、黑体标题和楷体正文；模型、网格、五点读写、串行循环、MPI、OpenMP依次展开，再展示验证与性能。没有内部实验批次称谓、文件路径或另读实验报告的前提。
 
 | 材料 | 文件 |
@@ -30,7 +41,7 @@ build/tools/python/bin/python report/presentation/check_materials.py
 python3 scripts/check_results.py
 ```
 
-页面以svg_output为唯一设计源。修改内容应先同步同一设计规范，保持公式、图表和讲稿一致；不要从PDF或截图反向制作。以下技能路径为本机安装位置：
+以下命令仅适用于此前生成版本，该阶段以svg_output为设计源。修改内容应先同步同一设计规范，保持公式、图表和讲稿一致；不要从PDF或截图反向制作。以下技能路径为本机安装位置：
 
 ```bash
 python3 /home/nuo/.codex/skills/ppt-master/scripts/project_manager.py validate report/heat-defense_ppt169_20261112

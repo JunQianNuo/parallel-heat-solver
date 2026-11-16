@@ -86,3 +86,8 @@ LibreOffice24.2.7.2实际打开PPTX→12页PDF，PyMuPDF逐页渲染，AI查看�
 实际命令：ppt-master的project_manager validate、text_measure calibrate、svg_quality_checker early/final、svg_position_calculator calc line（MPI/OpenMP各一次）、total_md_split、finalize_svg、svg_to_pptx --no-animations；python3 scripts/check_results.py；build/tools/python/bin/python report/presentation/check_materials.py；LibreOffice通过render_presentation.py实际打开PPTX转PDF，PyMuPDF渲染全部14页。初次工具启动因迁移旧路径失败，修复忽略目录内配置后重试成功。
 
 源门0错误/5项独立字段文本框组织建议，包passed-with-warnings；14备注/4原生公式/298可编辑文本run/0动画。10点10区间与归档一致，两幅原PNG在包内字节保持，102个本地链接检查通过。AI看过全页总览和P03/08/11/14放大图，PDF页界通过。材料细项见[本轮检查](presentation_checks.json)、[实际渲染记录](../presentation/current/presentation-v5-render-check.json)。讲稿956字符、显式语速假设估算224.9秒，不代替实际口头演练。未运行构建/数值回归/性能采样；姓名学号、PowerPoint人工显示编辑和实讲待验证，不宣称用户验收。
+
+
+## WPS公式统一（2026-11-16）
+
+本轮针对用户人工改稿，交付[WPS PPTX](../presentation/current/presentation-v5-wps.pptx)、[PDF](../presentation/current/presentation-v5-wps.pdf)及[总览](../presentation/current/presentation-v5-wps-contact.png)，核查见[wps_formula_checks.json](wps_formula_checks.json)。Windows MCP实际打开WPS，使用原生LaTeX转换及字体/上下标排版，12个原生公式、14页备注；两张完整PNG原字节保持，用户输入未覆盖。WPS实际渲染14页，AI检查总览及公式页；修正页码字体误匹配后PDF文字边界通过。旧生成版检查、讲稿与SVG不作用户人工修改同步依据。第9页网格标注按用户明确确认修正，第10页输入空白正文保持。人工实讲和PowerPoint检查未运行，书面报告本轮未修改。

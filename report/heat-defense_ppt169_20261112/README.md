@@ -1,5 +1,7 @@
 # heat-defense
 
+2026-11-16补充：用户已直接修改原生PPTX，并指定Windows MCP在WPS统一公式。当前以[WPS修订PPTX](../presentation/current/presentation-v5-wps.pptx)为后续编辑源，[PDF预览](../presentation/current/presentation-v5-wps.pdf)由WPS导出。本目录SVG/备注保留此前生成版本，尚未反向同步用户改稿；禁止将其重导出覆盖当前成品。
+
 - Canvas format: ppt169
 - Created: 20261112
 

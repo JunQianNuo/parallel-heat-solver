@@ -1,0 +1,94 @@
+{
+  "date": "2026-11-16",
+  "application": "WPS Presentation 12.0 on Windows via Windows MCP",
+  "input": "presentation-v5.pptx (user-edited)",
+  "input_sha256": "daf66c8b3ffc8bd827fc744e87a042030e9009a17891814dcc35e95344a8d547",
+  "output": "presentation-v5-wps.pptx",
+  "output_sha256": "36afddaf10368d662d6a6680c7bdcdd6c4d1c077949e2b61a794e767ee23f4a2",
+  "pdf_sha256": "bfb16a0dadc31c36d57c0a8d185a0636d15415b7d31a44f365db3bfd05e92dbd",
+  "slides": 14,
+  "native_equations": {
+    "1": 3,
+    "2": 2,
+    "3": 2,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 1,
+    "8": 1,
+    "9": 0,
+    "10": 0,
+    "11": 0,
+    "12": 0,
+    "13": 1,
+    "14": 2
+  },
+  "math_fonts": [
+    "Cambria Math"
+  ],
+  "equation_text_readback": {
+    "1": [
+      "𝑢𝑡=𝛼(𝑢𝑥𝑥+𝑢𝑦𝑦), 𝛼>0",
+      "(𝑥,𝑦)∈(0,1)2, 0<𝑡≤𝑇",
+      "𝑢(𝑥,𝑦,0)=sin(𝜋𝑥)sin(𝜋𝑦)"
+    ],
+    "2": [
+      "ℎ=1𝑁, 𝑥𝑖=𝑖ℎ, 𝑦𝑗=𝑗ℎ",
+      "𝛥𝑡=𝑇𝑀"
+    ],
+    "3": [
+      "𝑈𝑖,𝑗𝑛+1=1−4𝑟𝑈𝑖,𝑗𝑛+𝑟𝑈𝑖−1,𝑗𝑛+𝑈𝑖+1,𝑗𝑛+𝑈𝑖,𝑗−1𝑛+𝑈𝑖,𝑗+1𝑛",
+      "𝑟=𝛼𝛥𝑡ℎ2≤14"
+    ],
+    "4": [],
+    "5": [],
+    "6": [],
+    "7": [
+      "𝑢𝑥,𝑦,𝑡=𝑒−2𝛼𝜋2𝑡sin𝜋𝑥sin𝜋𝑦"
+    ],
+    "8": [
+      "𝑇𝑠=35.3892 s; 𝑆=median(𝑇𝑠)median(𝑇𝑝), 𝐸=𝑆实际并行度"
+    ],
+    "9": [],
+    "10": [],
+    "11": [],
+    "12": [],
+    "13": [
+      "𝑇=0.01, 𝛼=1, 𝑟=0.16; 𝑀=𝑁216, 𝑊=𝑀(𝑁−1)2"
+    ],
+    "14": [
+      "𝑆𝐴(𝑝)=1𝑓+1−𝑓𝑝",
+      "𝑆𝐺(𝑝)=𝑝−𝜎(𝑝−1)"
+    ]
+  },
+  "chinese_character_multisets_preserved_per_slide": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "original_chart_png_payloads_preserved": 2,
+  "old_formula_image_fallbacks": "WPS regenerated; not expected byte-identical",
+  "notes_text_preserved": true,
+  "unmodified_or_script_normalized_original_text_shapes": 257,
+  "unexpected_text_changes": [],
+  "pdf_pages": 14,
+  "pdf_text_outside_page": [],
+  "additional_authorized_content_change": "P09 N/M corrected to 384/9216, 512/16384, 768/36864, 1024/65536, matching four MPI16 speedups",
+  "limitations": [
+    "P10 has empty body in user input and output; preserved for this formula-only task",
+    "Prior SVGs/notes/checks describe generated v5, not subsequent user native edits",
+    "No numerical builds, regression tests or performance samples run",
+    "No timed human rehearsal or Microsoft PowerPoint check run"
+  ]
+}

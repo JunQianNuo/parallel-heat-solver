@@ -1,5 +1,9 @@
 # 书面报告与答辩材料
 
+当前PPT（2026-11-16）：以用户手改文件为输入，通过Windows MCP在WPS中统一公式，交付[WPS修订PPTX](presentation/current/presentation-v5-wps.pptx)、[WPS导出PDF](presentation/current/presentation-v5-wps.pdf)和[总览](presentation/current/presentation-v5-wps-contact.png)。14页含12个原生公式；第9页网格标注已按确认修正。用户输入文件原字节保留，第10页空白正文未改。旧SVG/讲稿及旧v5检查不代表当前人工修订内容同步，后续从WPS修订PPTX编辑，详见[PPT入口](presentation/README.md)。
+
+以下保留此前任务记录。
+
 当前工作（2026-11-16）：用户已确认PPT新规范及“面向非实现者、只接触PPT和最终报告”的要求。已完成[新版v5 PPTX](presentation/current/presentation-v5.pptx)、[14页PDF](presentation/current/presentation-v5.pdf)及[渲染总览](presentation/current/presentation-v5-contact.png)：10页正文＋4备份、280秒预算。讲稿、问答和核查入口已同步；实际LibreOffice打开并检查全部页，用户验收和人工实讲待完成。
 
 书面报告以最新保存的FINAL_REPORT.md为准；本轮保持报告源稿及现有PDF原字节，PDF尚未同步最近人工修改。以下报告/PPT暂停及旧页数记录均保留此前语境。
