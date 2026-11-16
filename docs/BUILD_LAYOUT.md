@@ -2,30 +2,20 @@
 
 2026-11-15整理。`build/`全部为本地生成物，继续由`.gitignore`排除；提交的是使用说明及工具路径适配，不提交二进制、环境或历史临时脚本。
 
-## 当前结构
+## 当前结构（2026-11-16中间产物清理后）
 
 ```text
 build/
-├── debug/                         当前Debug构建、可执行文件及CTest输出
-├── release/                       当前Release构建、可执行文件
-├── tools/
-│   ├── python/                    原m5-tools：报告/PPT所需本地Python环境
-│   └── libreoffice/               原m5-lo：解包的LibreOffice、字体配置及运行资料
-├── cache/
-│   ├── report-math/               原m5-report-math：报告公式图片缓存
-│   └── libreoffice-smoke-profile/ 工具可用性检查的隔离配置
-├── outputs/examples/              原solution.csv、solution-N40.csv等示例输出
-├── logs/layout-20261115/           本次配置、构建、检查日志
-├── archive/
-│   ├── cmake/legacy-root/         原直接位于build根部的CMake输出
-│   ├── cmake/m2…m4…、sanitize/    旧阶段构建，保留原字节
-│   ├── work/m4/                   根部散落的M4脚本、日志、复算与快照
-│   ├── work/m4-acceptance/         原验收记录草稿update.py
-│   ├── work/m5-*、其他整理目录/    既有材料准备、渲染、复算与目录整理临时工件
-│   └── layout-20261115/            本轮移动映射、原哈希与保护检查
-├── m5-tools -> tools/python       旧路径兼容链接
-├── m5-lo -> tools/libreoffice     旧路径兼容链接
-└── README.md                      本地简要导航
+├── debug/、release/               当前构建
+├── tools/python/                  报告工具环境
+├── tools/libreoffice/              解包运行环境与配置，deb下载缓存已清理
+├── tools/font-preview/             保留字体选择记录，生成字体缓存已清理
+├── logs/                          保留过程日志/JSON/CSV，渲染图片已清理
+├── archive/work/                  保留历史脚本、记录，图像/预览副本已清理
+├── archive/layout-20261115/        旧整理映射及哈希
+├── m5-tools -> tools/python       兼容链接
+├── m5-lo -> tools/libreoffice     兼容链接
+└── README.md                      当前导航
 ```
 
 规范构建目录固定为`build/debug`与`build/release`。`archive/cmake`中的CMakeCache/Makefile含原绝对路径，属于历史归档，不在其中继续构建，也没有通过替换缓存文本伪装成可搬移构建。
@@ -86,3 +76,13 @@ build/tools/python/bin/python report/check_report.py
 | 报告与课程资料 | 独立报告检查通过；2,570课程文件路径/内容不变 |
 
 本轮不改源码、CMakeLists、测试或实验脚本、results与报告正文/PDF，未新增正式性能采样。Debug CTest的计时回归和耗时输出只验证程序/检查入口，不进入M4统计。详见本地logs/layout-20261115；它们是新构建验证，不覆盖results中原阶段日志。
+
+
+## 2026-11-16旧版本清理
+
+用户新要求覆盖上述“全部旧工件保留”的工作区策略：build中的临时PPTX、旧presentation/report PDF和报告Markdown快照已清理，源码构建、运行日志、工具环境和正式results证据保留。所有移除文件先备份到仓库外，详见report/records/workspace-cleanup-20261116.json；历史layout清单描述的是当时状态。
+
+
+## 2026-11-16删除中间产物
+
+用户明确授权删除中间产物。archive/cmake、outputs和cache已移除；后续命令会按需重新建立输出/缓存目录。logs及archive/work中的渲染图片、预览PDF/SVG已清理，文本日志、JSON、CSV等追溯记录保留。tools中的Python、LibreOffice解包运行环境及兼容链接保留，仅清理deb下载包及字体网页生成缓存。上文原文件保护、旧目录及测试描述均为历史状态。清单见report/records/intermediate-cleanup-20261116.json。

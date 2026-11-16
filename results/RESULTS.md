@@ -8,7 +8,7 @@
 | --- | --- | ---: | --- |
 | 原 M4 baseline | `75cdaad` | 23配置×5=115 | 中位数之比；时间min/max，无置信区间 |
 | 补充诊断01 | `1e2fb5f` | 2560，另215次预热 | 10对比率中位数及配对bootstrap；不作正式优化结果 |
-| 停止运行02 | `e715560` | 0 | 预热绑定报告被拒绝，保留失败，不纳入统计 |
+| 停止运行02 | `e715560` | 0 | 预热绑定报告被拒绝，不纳入统计；原文件已按用户要求移除 |
 | 扩大运行02-r1 | `646f7c4` | 44配置×10=440 | 同网格串行中位数之比；同轮bootstrap探索性95%区间 |
 
 ## 导航
@@ -333,11 +333,11 @@ MPI common在全部21个资源/粒度组合上满足正向影响判据；OpenMP 
 
 ### 扩大网格与并行度实测结果（运行02-r1，2026-11-11，待用户验收）
 
-冻结采样版本 `646f7c460d5a2b409c1063face7e7ed7655db5fc`，只运行原heat_serial、heat_mpi、heat_openmp。完成44配置、44次完整场验证预热和440次正式样本，当前完成运行没有失败、重试或样本剔除；所有慢样本保留。初次02在单rank绑定报告检查处停止，0正式样本，证据完整保留；02与02-r1没有混合统计。实际P/Q、绑定和稳定性逐次核验，单调调用区间无重叠，采样前后源码/二进制哈希一致。
+冻结采样版本 `646f7c460d5a2b409c1063face7e7ed7655db5fc`，只运行原heat_serial、heat_mpi、heat_openmp。完成44配置、44次完整场验证预热和440次正式样本，当前完成运行没有失败、重试或样本剔除；所有慢样本保留。初次02在单rank绑定报告检查处停止，0正式样本，该批原文件已于2026-11-16按用户要求移除；02与02-r1没有混合统计。实际P/Q、绑定和稳定性逐次核验，单调调用区间无重叠，采样前后源码/二进制哈希一致。
 
 所有预热全场观测最大D_inf=0，最大离散模态差=6.638023464233811e-13；解析误差E_inf范围1.1692579471311859e-07至8.3147843088493545e-07。CSV逐行核查的坐标、边界、字段、解析与串行参考均通过；仅记录验证摘要和输出哈希，成功临时全场文件不作为正式计时数据。
 
-证据：[清单与代码/编译身份](performance/large-02-r1/m4-diagnostic-02-r1.json)、[原始attempt/sample](performance/large-02-r1/m4-diagnostic-02-r1.jsonl)、[环境](performance/large-02-r1/m4-diagnostic-02-r1.log)、[控制台](performance/large-02-r1/m4-diagnostic-02-r1-console.log)、[统计](performance/large-02-r1/m4-diagnostic-02-r1.csv)、[逐轮统计](performance/large-02-r1/m4-diagnostic-02-r1-rounds.csv)、[审计](performance/large-02-r1/m4-diagnostic-02-r1-audit.log)、[哈希清单](performance/large-02-r1/m4-diagnostic-02-r1.sha256)。初次失败见[02留证](performance/large-02/m4-diagnostic-02-failure.log)，其完整全场CSV与原attempt SHA-256一致。新增检查及原21项日志独立保留，不把检查耗时或合成数据纳入下表。
+证据：[清单与代码/编译身份](performance/large-02-r1/m4-diagnostic-02-r1.json)、[原始attempt/sample](performance/large-02-r1/m4-diagnostic-02-r1.jsonl)、[环境](performance/large-02-r1/m4-diagnostic-02-r1.log)、[控制台](performance/large-02-r1/m4-diagnostic-02-r1-console.log)、[统计](performance/large-02-r1/m4-diagnostic-02-r1.csv)、[逐轮统计](performance/large-02-r1/m4-diagnostic-02-r1-rounds.csv)、[审计](performance/large-02-r1/m4-diagnostic-02-r1-audit.log)、[哈希清单](performance/large-02-r1/m4-diagnostic-02-r1.sha256)。初次失败批次large-02的8个文件已于2026-11-16按用户要求移除；删除前已核验仓库外备份，历史描述保留，不将该批计入正式统计。新增检查及原21项日志独立保留，不把检查耗时或合成数据纳入下表。
 
 #### 四组固定规模强扩展
 
@@ -448,3 +448,6 @@ T=0.01、alpha=1、r=0.16，M=N²/16。每个N分别用该网格10次独立串�
 时钟审计进一步发现11处相邻调用UTC起点回退，146次调用的UTC/单调区间差绝对值超过1s；UTC结束还包含读取输出/哈希后处理，后者计数不能解释为精确校时次数。从首调用起点到末调用终点，单调跨度5193.6842s，UTC跨度4761.3747s，二者不一致，不能用UTC相减报告实验耗时。三种求解器正常计时路径及父进程均使用CLOCK_MONOTONIC；当前运行时二进制哈希与原时钟反汇编证据一致，loop_seconds均被各自单调调用区间包含，记录区间无重叠。原始时戳全部保留，不据此删样本，不推断NTP、宿主或虚拟机的具体机制，也不声称独立校准了单调时钟与外部物理时间。完整数值与定义见[新时钟审计](performance/large-02-r1/m4-diagnostic-02-r1-clock-audit.log)。结果按本轮WSL/单调计时定义解释，不作为已排除虚拟机时钟影响的裸机结论。
 
 这些结果支持“扩大网格能改善部分配置的收益，增加人数有边际成本，现有实现仍有限制”的描述；不保证更大N或16人总更优。16组含同WSL可见core的硬件线程共享，且跨N同时增加M；数据不支持把所有差距仅归为规模小，也不支持确定唯一硬件根因。优化采用与M4验收仍由用户决定。
+
+
+2026-11-16目录清理：用户明确要求删除performance/large-02，失败批次文件已移除。迁移清单保留其原路径/哈希及removed标记；校验脚本明确报告这8项已移除，不宣称仍可在工作区验证其原始文件。仓库外备份为`../parallel-heat-solver-large-02-backup-20261116/`；其余完整实验、统计及正式图表保持。

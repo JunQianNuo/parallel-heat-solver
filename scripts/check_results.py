@@ -31,6 +31,11 @@ def check_migration():
     require(len(entries) == 67, 'expected 67 original artifacts')
     require(len({e['old'] for e in entries}) == len({e['new'] for e in entries}) == 67,
             'duplicate migration paths')
+    removed = {e['new'] for e in entries if e.get('removed')}
+    expected_removed = {e['new'] for e in entries
+                        if e['new'].startswith('results/performance/large-02/')}
+    require(len(expected_removed) == 8 and removed == expected_removed,
+            'only the eight user-removed stopped02 artifacts may be absent')
     mapping = {e['old']: e for e in entries}
     original_paths = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only',
         manifest['source_revision'], '--', 'docs/performance', 'docs/validation'], cwd=ROOT, text=True).splitlines()
@@ -39,6 +44,11 @@ def check_migration():
         original = subprocess.check_output(['git', 'show', manifest['source_revision']+':'+e['old']], cwd=ROOT)
         require(hashlib.sha256(original).hexdigest() == e['sha256'], 'migration original hash mismatch')
         require(not (ROOT/e['old']).exists(), 'legacy path still exists: '+e['old'])
+        if e['new'] in removed:
+            require(e['removed']['reason'] == 'user_requested_deletion'
+                    and e['removed']['date'] == '2026-11-16', 'invalid removal record')
+            require(not (ROOT/e['new']).exists(), 'removed artifact reappeared: '+e['new'])
+            continue
         require((ROOT/e['new']).is_file(), 'missing destination: '+e['new'])
         require(digest(ROOT/e.get('snapshot', e['new'])) == e['sha256'], 'changed evidence: '+e['old'])
         if 'current_sha256' in e:
@@ -47,6 +57,8 @@ def check_migration():
     for e in entries:
         if Path(e['old']).suffix != '.sha256' and Path(e['old']).name != 'SHA256SUMS':
             continue
+        if e['new'] in removed:
+            continue
         ledgers += 1
         for line in (ROOT/e['new']).read_text().splitlines():
             expected, name = line.split(maxsplit=1)
@@ -54,15 +66,16 @@ def check_migration():
             require(old in mapping, 'unmapped ledger path: '+old)
             item = mapping[old]
             require(digest(ROOT/item.get('snapshot', item['new'])) == expected, 'old ledger mismatch: '+old)
-    require(ledgers == 4, 'expected four original ledgers')
-    print('PASS 67 artifacts, two snapshots, four historical ledgers; no legacy duplicates')
+    require(ledgers == 3, 'expected three retained historical ledgers')
+    print('PASS 67 migration identities; 59 retained artifacts, two snapshots, three retained ledgers')
+    print('REMOVED 8 stopped02 artifacts by user request; local contents not checked')
     return entries
 
 
 def check_sources():
     base = ROOT/'results/performance'
     files = [base/'baseline/run-01/metadata.json'] + [base/d/('m4-diagnostic-'+i+'.json')
-             for d, i in [('diagnostic-01', '01'), ('large-02', '02'), ('large-02-r1', '02-r1')]]
+             for d, i in [('diagnostic-01', '01'), ('large-02-r1', '02-r1')]]
     total = 0
     for path in files:
         m = json.loads(path.read_text())
@@ -70,9 +83,8 @@ def check_sources():
             data = subprocess.check_output(['git', 'show', m['revision']+':'+name], cwd=ROOT)
             require(hashlib.sha256(data).hexdigest() == expected, 'historical source mismatch: '+name)
             total += 1
-    require(not json.loads(files[2].read_text())['complete'] and json.loads(files[3].read_text())['complete'],
-            'stopped/completed identity mismatch')
-    print(f'PASS {total} historical source hashes at four recorded commits; stopped02 excluded')
+    require(json.loads(files[2].read_text())['complete'], 'completed02-r1 identity mismatch')
+    print(f'PASS {total} historical source hashes at three retained commits; removed stopped02 not checked')
 
 
 def run(args):

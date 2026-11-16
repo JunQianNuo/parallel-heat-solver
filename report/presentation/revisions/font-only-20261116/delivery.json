@@ -1,0 +1,551 @@
+{
+  "schema": "ppt-master.pptx-delivery-check.v1",
+  "status": "passed-with-advisories",
+  "file": {
+    "path": "/home/nuo/courses/projects/parallel-heat-solver/report/presentation/current/presentation-v5-wps-r4.pptx",
+    "bytes": 1594466
+  },
+  "package": {
+    "zip_integrity": "passed",
+    "corrupt_member": null,
+    "duplicate_parts": [],
+    "canonical_part_collisions": [],
+    "parts": {
+      "entries": 108,
+      "unique": 108,
+      "slides": 16,
+      "notes": 16,
+      "masters": 1,
+      "layouts": 1,
+      "media": 22
+    },
+    "relationships": {
+      "problems": []
+    }
+  },
+  "slides": {
+    "count": 16,
+    "hidden_count": 0,
+    "hidden": []
+  },
+  "fonts": {
+    "theme": {
+      "title": {
+        "latin": "Arial",
+        "ea": "SimHei",
+        "cs": "Arial",
+        "scripts": {
+          "Jpan": "SimHei",
+          "Hang": "SimHei",
+          "Hans": "SimHei",
+          "Hant": "SimHei"
+        }
+      },
+      "body": {
+        "latin": "Arial",
+        "ea": "KaiTi",
+        "cs": "Arial",
+        "scripts": {
+          "Jpan": "KaiTi",
+          "Hang": "KaiTi",
+          "Hans": "KaiTi",
+          "Hant": "KaiTi"
+        }
+      }
+    },
+    "declared": {
+      "latin": [
+        {
+          "value": "Cambria Math",
+          "count": 615
+        },
+        {
+          "value": "+mn-lt",
+          "count": 297
+        },
+        {
+          "value": "+mj-lt",
+          "count": 178
+        },
+        {
+          "value": "Arial",
+          "count": 154
+        },
+        {
+          "value": "SimHei",
+          "count": 6
+        },
+        {
+          "value": "楷体",
+          "count": 2
+        }
+      ],
+      "ea": [
+        {
+          "value": "+mn-ea",
+          "count": 432
+        },
+        {
+          "value": "楷体",
+          "count": 320
+        },
+        {
+          "value": "+mj-ea",
+          "count": 215
+        },
+        {
+          "value": "微软雅黑",
+          "count": 97
+        },
+        {
+          "value": "Cambria Math",
+          "count": 76
+        },
+        {
+          "value": "MS Mincho",
+          "count": 30
+        },
+        {
+          "value": "Arial",
+          "count": 28
+        },
+        {
+          "value": "SimHei",
+          "count": 19
+        },
+        {
+          "value": "黑体",
+          "count": 10
+        },
+        {
+          "value": "KaiTi",
+          "count": 4
+        }
+      ],
+      "cs": [
+        {
+          "value": "Cambria Math",
+          "count": 615
+        },
+        {
+          "value": "+mn-cs",
+          "count": 297
+        },
+        {
+          "value": "+mj-cs",
+          "count": 178
+        },
+        {
+          "value": "Arial",
+          "count": 160
+        },
+        {
+          "value": "楷体",
+          "count": 2
+        }
+      ]
+    },
+    "embedded_parts": [],
+    "portability_advisory_faces": [
+      "微软雅黑",
+      "楷体",
+      "黑体"
+    ]
+  },
+  "media": {
+    "embedded_count": 22,
+    "external_count": 0,
+    "embedded": [
+      {
+        "part": "ppt/media/image1.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 1083432,
+        "compressed_bytes": 1075905,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image19.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 147553,
+        "compressed_bytes": 123492,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image18.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 131970,
+        "compressed_bytes": 116006,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image17.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 30639,
+        "compressed_bytes": 26384,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image12.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 13670,
+        "compressed_bytes": 12457,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image11.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 13371,
+        "compressed_bytes": 12893,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image7.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 12270,
+        "compressed_bytes": 10060,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image16.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 12226,
+        "compressed_bytes": 11930,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image10.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 11727,
+        "compressed_bytes": 10731,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image13.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 11657,
+        "compressed_bytes": 9323,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image20.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 8552,
+        "compressed_bytes": 7530,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image9.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 8464,
+        "compressed_bytes": 8220,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image21.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 7008,
+        "compressed_bytes": 6334,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image5.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 5510,
+        "compressed_bytes": 4812,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image3.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 5420,
+        "compressed_bytes": 4981,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image4.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 5360,
+        "compressed_bytes": 4991,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image22.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 5316,
+        "compressed_bytes": 4258,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image14.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 5081,
+        "compressed_bytes": 5086,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image2.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 4593,
+        "compressed_bytes": 4283,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image8.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 4050,
+        "compressed_bytes": 3908,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image6.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 3450,
+        "compressed_bytes": 3335,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image15.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 3375,
+        "compressed_bytes": 3380,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      }
+    ],
+    "external": [],
+    "uncompressed_bytes": 1534694,
+    "archive_compressed_bytes": 1470299,
+    "share_of_archive": 0.922126,
+    "share_of_uncompressed_parts": 0.664307,
+    "top_contributors": [
+      {
+        "part": "ppt/media/image1.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 1083432,
+        "compressed_bytes": 1075905,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image19.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 147553,
+        "compressed_bytes": 123492,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image18.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 131970,
+        "compressed_bytes": 116006,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image17.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 30639,
+        "compressed_bytes": 26384,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image12.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 13670,
+        "compressed_bytes": 12457,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image11.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 13371,
+        "compressed_bytes": 12893,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image7.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 12270,
+        "compressed_bytes": 10060,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image16.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 12226,
+        "compressed_bytes": 11930,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image10.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 11727,
+        "compressed_bytes": 10731,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      },
+      {
+        "part": "ppt/media/image13.png",
+        "kind": "image",
+        "content_type": "image/png",
+        "bytes": 11657,
+        "compressed_bytes": 9323,
+        "reference_count": 1,
+        "relationship_types": [
+          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+        ]
+      }
+    ]
+  },
+  "motion": {
+    "transitions": {
+      "carrier_slide_count": 0,
+      "visual_effect_slide_count": 0,
+      "timed_advance_slide_count": 0,
+      "carrier_slides": [],
+      "visual_effect_slides": [],
+      "timed_advance_slides": [],
+      "effects": {}
+    },
+    "object_animations": {
+      "timing_slide_count": 0,
+      "object_animation_slide_count": 0,
+      "audio_timing_slide_count": 0,
+      "timing_slides": [],
+      "object_animation_slides": [],
+      "audio_timing_slides": []
+    }
+  },
+  "errors": [],
+  "advisories": [
+    {
+      "code": "font_portability",
+      "message": "Some fonts declared or referenced by the presentation are outside the common Office/OS portability set; target-system availability was not verified.",
+      "faces": [
+        "微软雅黑",
+        "楷体",
+        "黑体"
+      ]
+    }
+  ]
+}

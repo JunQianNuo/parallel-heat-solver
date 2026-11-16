@@ -1,0 +1,437 @@
+{
+  "status": "passed",
+  "input_sha256": "6e8777620c37ccbc6561939a9aa1630f09418638add9d279cc487f81efd444e9",
+  "output_sha256": "b7283acec89bf73f96e107cf4bd4a003c48d8b1694864d39406e1e5799a8ec3e",
+  "source": "user-input.pptx (latest r3 snapshot)",
+  "output": "report/presentation/current/presentation-v5-wps-r4.pptx",
+  "changed_parts": [
+    "ppt/slides/slide1.xml",
+    "ppt/slides/slide12.xml",
+    "ppt/slides/slide13.xml",
+    "ppt/slides/slide16.xml",
+    "ppt/slides/slide8.xml"
+  ],
+  "font_attribute_changes": 25,
+  "edits": [
+    {
+      "slide": 1,
+      "shape_id": "3",
+      "text": "二维热传导方程的",
+      "role": "cover-title",
+      "font_slot": "latin",
+      "before": "楷体",
+      "after": "SimHei"
+    },
+    {
+      "slide": 1,
+      "shape_id": "3",
+      "text": "二维热传导方程的",
+      "role": "cover-title",
+      "font_slot": "ea",
+      "before": "楷体",
+      "after": "SimHei"
+    },
+    {
+      "slide": 1,
+      "shape_id": "3",
+      "text": "二维热传导方程的",
+      "role": "cover-title",
+      "font_slot": "latin",
+      "before": "楷体",
+      "after": "SimHei"
+    },
+    {
+      "slide": 1,
+      "shape_id": "3",
+      "text": "二维热传导方程的",
+      "role": "cover-title",
+      "font_slot": "ea",
+      "before": "楷体",
+      "after": "SimHei"
+    },
+    {
+      "slide": 1,
+      "shape_id": "4",
+      "text": "串行与并行数值求解",
+      "role": "cover-title",
+      "font_slot": "latin",
+      "before": "楷体",
+      "after": "SimHei"
+    },
+    {
+      "slide": 1,
+      "shape_id": "4",
+      "text": "串行与并行数值求解",
+      "role": "cover-title",
+      "font_slot": "ea",
+      "before": "楷体",
+      "after": "SimHei"
+    },
+    {
+      "slide": 1,
+      "shape_id": "4",
+      "text": "串行与并行数值求解",
+      "role": "cover-title",
+      "font_slot": "latin",
+      "before": "楷体",
+      "after": "SimHei"
+    },
+    {
+      "slide": 1,
+      "shape_id": "4",
+      "text": "串行与并行数值求解",
+      "role": "cover-title",
+      "font_slot": "ea",
+      "before": "楷体",
+      "after": "SimHei"
+    },
+    {
+      "slide": 1,
+      "shape_id": "5",
+      "text": "并行与分布式计算课程大作业",
+      "role": "cover-title",
+      "font_slot": "latin",
+      "before": "楷体",
+      "after": "SimHei"
+    },
+    {
+      "slide": 1,
+      "shape_id": "5",
+      "text": "并行与分布式计算课程大作业",
+      "role": "cover-title",
+      "font_slot": "ea",
+      "before": "楷体",
+      "after": "SimHei"
+    },
+    {
+      "slide": 1,
+      "shape_id": "5",
+      "text": "并行与分布式计算课程大作业",
+      "role": "cover-title",
+      "font_slot": "latin",
+      "before": "楷体",
+      "after": "SimHei"
+    },
+    {
+      "slide": 1,
+      "shape_id": "5",
+      "text": "并行与分布式计算课程大作业",
+      "role": "cover-title",
+      "font_slot": "ea",
+      "before": "楷体",
+      "after": "SimHei"
+    },
+    {
+      "slide": 12,
+      "shape_id": "37",
+      "text": "串行 / MPI / OpenMP",
+      "role": "body",
+      "font_slot": "ea",
+      "before": "微软雅黑",
+      "after": "KaiTi"
+    },
+    {
+      "slide": 12,
+      "shape_id": "37",
+      "text": "串行 / MPI / OpenMP",
+      "role": "body",
+      "font_slot": "ea",
+      "before": "微软雅黑",
+      "after": "KaiTi"
+    },
+    {
+      "slide": 13,
+      "shape_id": "15",
+      "text": "程序",
+      "role": "table-heading",
+      "font_slot": "ea",
+      "before": "+mn-ea",
+      "after": "SimHei"
+    },
+    {
+      "slide": 13,
+      "shape_id": "15",
+      "text": "程序",
+      "role": "table-heading",
+      "font_slot": "ea",
+      "before": "+mn-ea",
+      "after": "SimHei"
+    },
+    {
+      "slide": 13,
+      "shape_id": "16",
+      "text": "推进计时包含",
+      "role": "table-heading",
+      "font_slot": "ea",
+      "before": "+mn-ea",
+      "after": "SimHei"
+    },
+    {
+      "slide": 13,
+      "shape_id": "16",
+      "text": "推进计时包含",
+      "role": "table-heading",
+      "font_slot": "ea",
+      "before": "+mn-ea",
+      "after": "SimHei"
+    },
+    {
+      "slide": 13,
+      "shape_id": "17",
+      "text": "另行排除",
+      "role": "table-heading",
+      "font_slot": "ea",
+      "before": "+mn-ea",
+      "after": "SimHei"
+    },
+    {
+      "slide": 13,
+      "shape_id": "17",
+      "text": "另行排除",
+      "role": "table-heading",
+      "font_slot": "ea",
+      "before": "+mn-ea",
+      "after": "SimHei"
+    },
+    {
+      "slide": 16,
+      "shape_id": "10",
+      "text": "Amdahl：固定规模",
+      "role": "subheading",
+      "font_slot": "ea",
+      "before": "+mn-ea",
+      "after": "SimHei"
+    },
+    {
+      "slide": 16,
+      "shape_id": "10",
+      "text": "Amdahl：固定规模",
+      "role": "subheading",
+      "font_slot": "ea",
+      "before": "+mn-ea",
+      "after": "SimHei"
+    },
+    {
+      "slide": 16,
+      "shape_id": "11",
+      "text": "Gustafson：扩大任务",
+      "role": "subheading",
+      "font_slot": "ea",
+      "before": "+mn-ea",
+      "after": "SimHei"
+    },
+    {
+      "slide": 16,
+      "shape_id": "11",
+      "text": "Gustafson：扩大任务",
+      "role": "subheading",
+      "font_slot": "ea",
+      "before": "+mn-ea",
+      "after": "SimHei"
+    },
+    {
+      "slide": 8,
+      "shape_id": "48",
+      "text": "最大解析误差 E∞",
+      "role": "table-heading",
+      "font_slot": "ea",
+      "before": "楷体",
+      "after": "SimHei"
+    }
+  ],
+  "proof": [
+    {
+      "part": "ppt/slides/slide1.xml",
+      "font_attributes_changed": 12,
+      "changes": [
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[1]/p:sp[1]/p:txBody/a:p/a:r/a:rPr/a:latin",
+          "before": "楷体",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[1]/p:sp[1]/p:txBody/a:p/a:r/a:rPr/a:ea",
+          "before": "楷体",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[1]/p:sp[1]/p:txBody/a:p/a:endParaRPr/a:latin",
+          "before": "楷体",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[1]/p:sp[1]/p:txBody/a:p/a:endParaRPr/a:ea",
+          "before": "楷体",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[1]/p:sp[2]/p:txBody/a:p/a:r/a:rPr/a:latin",
+          "before": "楷体",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[1]/p:sp[2]/p:txBody/a:p/a:r/a:rPr/a:ea",
+          "before": "楷体",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[1]/p:sp[2]/p:txBody/a:p/a:endParaRPr/a:latin",
+          "before": "楷体",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[1]/p:sp[2]/p:txBody/a:p/a:endParaRPr/a:ea",
+          "before": "楷体",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[1]/p:sp[3]/p:txBody/a:p/a:r/a:rPr/a:latin",
+          "before": "楷体",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[1]/p:sp[3]/p:txBody/a:p/a:r/a:rPr/a:ea",
+          "before": "楷体",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[1]/p:sp[3]/p:txBody/a:p/a:endParaRPr/a:latin",
+          "before": "楷体",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[1]/p:sp[3]/p:txBody/a:p/a:endParaRPr/a:ea",
+          "before": "楷体",
+          "after": "SimHei"
+        }
+      ]
+    },
+    {
+      "part": "ppt/slides/slide12.xml",
+      "font_attributes_changed": 2,
+      "changes": [
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[5]/p:sp[4]/p:txBody/a:p/a:r/a:rPr/a:ea",
+          "before": "微软雅黑",
+          "after": "KaiTi"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[5]/p:sp[4]/p:txBody/a:p/a:endParaRPr/a:ea",
+          "before": "微软雅黑",
+          "after": "KaiTi"
+        }
+      ]
+    },
+    {
+      "part": "ppt/slides/slide13.xml",
+      "font_attributes_changed": 6,
+      "changes": [
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[4]/p:grpSp[1]/p:grpSp/p:sp[1]/p:txBody/a:p/a:r/a:rPr/a:ea",
+          "before": "+mn-ea",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[4]/p:grpSp[1]/p:grpSp/p:sp[1]/p:txBody/a:p/a:endParaRPr/a:ea",
+          "before": "+mn-ea",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[4]/p:grpSp[1]/p:grpSp/p:sp[2]/p:txBody/a:p/a:r/a:rPr/a:ea",
+          "before": "+mn-ea",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[4]/p:grpSp[1]/p:grpSp/p:sp[2]/p:txBody/a:p/a:endParaRPr/a:ea",
+          "before": "+mn-ea",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[4]/p:grpSp[1]/p:grpSp/p:sp[3]/p:txBody/a:p/a:r/a:rPr/a:ea",
+          "before": "+mn-ea",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[4]/p:grpSp[1]/p:grpSp/p:sp[3]/p:txBody/a:p/a:endParaRPr/a:ea",
+          "before": "+mn-ea",
+          "after": "SimHei"
+        }
+      ]
+    },
+    {
+      "part": "ppt/slides/slide16.xml",
+      "font_attributes_changed": 4,
+      "changes": [
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[3]/p:sp[1]/p:txBody/a:p/a:r/a:rPr/a:ea",
+          "before": "+mn-ea",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[3]/p:sp[1]/p:txBody/a:p/a:endParaRPr/a:ea",
+          "before": "+mn-ea",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[3]/p:sp[2]/p:txBody/a:p/a:r/a:rPr/a:ea",
+          "before": "+mn-ea",
+          "after": "SimHei"
+        },
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[3]/p:sp[2]/p:txBody/a:p/a:endParaRPr/a:ea",
+          "before": "+mn-ea",
+          "after": "SimHei"
+        }
+      ]
+    },
+    {
+      "part": "ppt/slides/slide8.xml",
+      "font_attributes_changed": 1,
+      "changes": [
+        {
+          "xpath": "/p:sld/p:cSld/p:spTree/p:grpSp[5]/p:grpSp/p:sp[4]/p:txBody/a:p/a:r[1]/a:rPr/a:ea",
+          "before": "楷体",
+          "after": "SimHei"
+        }
+      ]
+    }
+  ],
+  "invariants": [
+    "all package parts retained",
+    "all non-font-name bytes retained",
+    "font sizes retained",
+    "positions/shapes/geometry retained",
+    "text and notes retained",
+    "bold/italic/color/spacing retained",
+    "Office Math retained",
+    "chart/image/embedding bytes retained",
+    "slide order retained"
+  ],
+  "scope": "Editable Chinese headings SimHei; body KaiTi; existing Latin/numeric/math fonts retained; no image text edit",
+  "WPS_rendered_slides": 16,
+  "changed_page_PDF_bounds": [
+    {
+      "slide": 1,
+      "text_bounds": "within page"
+    },
+    {
+      "slide": 8,
+      "text_bounds": "within page"
+    },
+    {
+      "slide": 12,
+      "text_bounds": "within page"
+    },
+    {
+      "slide": 13,
+      "text_bounds": "within page"
+    },
+    {
+      "slide": 16,
+      "text_bounds": "within page"
+    }
+  ],
+  "human_rehearsal": "未运行（仅字体修改）",
+  "PowerPoint_check": "未运行",
+  "PPT_source_snapshot_kept": true
+}

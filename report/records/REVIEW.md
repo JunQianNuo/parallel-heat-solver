@@ -63,7 +63,7 @@ PPT项目sources中报告副本只将相对链接改为适合其归档位置；�
 
 实际检查与修复：校准、项目验证及早期源门通过。初次最终门发现P07图例/语境、P12注释边界，合并修正后通过。备注更新后导出曾因凭证过期被拒绝，重跑最终检查后成功。实际LibreOffice渲染又发现P03长组合文本扩宽向左偏移；单纯分两行未解决，拆为多个独立语义对象后重新检查/导出/渲染，最终12页文字均在页界内。源门最终12/12、0错误0警告；postflight通过。PPT包12页/12备注、403个可编辑文本图元、5个原生Office Math公式，无动画配音；P03两行/六组上下标/无&及P07/P12原生公式内容通过包核查。
 
-LibreOffice24.2.7.2实际打开PPTX→12页PDF，PyMuPDF逐页渲染，AI查看总览及P03/P07/P08/P12细图；见[presentation-v4-render-check](../presentation/history/v4/presentation-v4-render-check.json)。它展示普通公式预览，包内原生公式另验；不能据此声称Microsoft PowerPoint人工编辑通过。原图/CSV副本字节一致，主图10点/10区间与归档CSV匹配，P07显示的S/E逐项匹配。`python3 scripts/check_results.py`再次通过原证据/三批五份CSV复算/九组图等校验，日志[evidence-check](evidence-check.log)。本轮课程2570文件前后路径/哈希一致；报告、v1/v2/v3、求解器、构建配置、测试、脚本和results保持字节不变。
+LibreOffice24.2.7.2实际打开PPTX→12页PDF，PyMuPDF逐页渲染，AI查看总览及P03/P07/P08/P12细图；见[presentation-v4-render-check](presentation-history/history/v4/presentation-v4-render-check.json)。它展示普通公式预览，包内原生公式另验；不能据此声称Microsoft PowerPoint人工编辑通过。原图/CSV副本字节一致，主图10点/10区间与归档CSV匹配，P07显示的S/E逐项匹配。`python3 scripts/check_results.py`再次通过原证据/三批五份CSV复算/九组图等校验，日志[evidence-check](evidence-check.log)。本轮课程2570文件前后路径/哈希一致；报告、v1/v2/v3、求解器、构建配置、测试、脚本和results保持字节不变。
 
 正文1049个中英文/数字字符；280字符/分钟加20秒停顿估算244.8秒，8页预算仍为15/20/45/35/35/35/55/40=280秒，另留20秒。未运行/待验证：人工口头演练、PowerPoint本机显示/编辑。未运行求解器构建/数值回归/性能采样；既有记录不冒充本轮重跑。
 
@@ -72,27 +72,27 @@ LibreOffice24.2.7.2实际打开PPTX→12页PDF，PyMuPDF逐页渲染，AI查看�
 
 ## 2026-11-14：v4-r1批注修订
 
-用户明确授权后应用4页26处批注（22处为同一公式意见），清除源标记并逐项留存[处理台账](../heat-defense_ppt169_20261112/validation/annotation_application.json)。标题统一为简短主题，P03保持等价五点式，使用44px单行Office Math和STIX字形路径预览；顶部邻点/标签下移避免挤压。总结页以实现、联合加密误差和最大网格量化收益作主体，模型/资源/统计/时钟边界保留在短注、备注与备份。
+用户明确授权后应用4页26处批注（22处为同一公式意见），清除源标记并逐项留存处理台账（历史文件已移除：`../heat-defense_ppt169_20261112/validation/annotation_application.json`）。标题统一为简短主题，P03保持等价五点式，使用44px单行Office Math和STIX字形路径预览；顶部邻点/标签下移避免挤压。总结页以实现、联合加密误差和最大网格量化收益作主体，模型/资源/统计/时钟边界保留在短注、备注与备份。
 
-实际检查：首轮早期门发现P08区域重叠10px、P03坐标/色值提示，合并修正后早期及最终门12/12、0错误0警告；导出postflight通过。包12页/12备注、5原生公式、440可编辑文本图元，无动画配音；P03原生单行式与六组上下标、P07/P12数学内容、图上10点10区间、两幅原PNG/CSV副本、备注/讲稿一致。公式helper重跑几何与嵌入预览一致。实际LibreOffice打开最终PPTX→12页PDF，再逐页渲染，AI查看总览和P03/P08细图，[文字页界检查](../presentation/current/presentation-v4-r1-render-check.json)通过。普通客户端显示字形路径预览，原生Math另从包核对，不声称PowerPoint人工编辑通过。
+实际检查：首轮早期门发现P08区域重叠10px、P03坐标/色值提示，合并修正后早期及最终门12/12、0错误0警告；导出postflight通过。包12页/12备注、5原生公式、440可编辑文本图元，无动画配音；P03原生单行式与六组上下标、P07/P12数学内容、图上10点10区间、两幅原PNG/CSV副本、备注/讲稿一致。公式helper重跑几何与嵌入预览一致。实际LibreOffice打开最终PPTX→12页PDF，再逐页渲染，AI查看总览和P03/P08细图，[文字页界检查](presentation-history/current/presentation-v4-r1-render-check.json)通过。普通客户端显示字形路径预览，原生Math另从包核对，不声称PowerPoint人工编辑通过。
 
 正文1065字符，280字符/分钟＋20秒停顿估算248.2秒，8页仍280秒预算、另留20秒；真实口头演练未运行/待本人验证。2570课程文件前后路径/哈希一致；原报告、求解器、tests/scripts/results及全部旧版成品与起点字节一致。没有重跑构建/数值回归/采样，也不重复冒称旧证据统一复算为本轮新实验。v4-r1另存，原v4保留；预览可刷新查看，M5仍待用户验收。
 
 
 ## v5：最新报告驱动的14页答辩（2026-11-16）
 
-用户批准规范并补充非实现者阅读条件后，交付[可编辑PPTX](../presentation/current/presentation-v5.pptx)、[14页PDF](../presentation/current/presentation-v5.pdf)及[总览](../presentation/current/presentation-v5-contact.png)。10正文＋4备份，280秒预算；报告原文、原始实验工件及课程资料保持。
+用户批准规范并补充非实现者阅读条件后，交付可编辑PPTX（旧文件已清理：`../presentation/current/presentation-v5.pptx`）、14页PDF（旧文件已清理：`../presentation/current/presentation-v5.pdf`）及总览（旧文件已清理：`../presentation/current/presentation-v5-contact.png`）。10正文＋4备份，280秒预算；报告原文、原始实验工件及课程资料保持。
 
 实际命令：ppt-master的project_manager validate、text_measure calibrate、svg_quality_checker early/final、svg_position_calculator calc line（MPI/OpenMP各一次）、total_md_split、finalize_svg、svg_to_pptx --no-animations；python3 scripts/check_results.py；build/tools/python/bin/python report/presentation/check_materials.py；LibreOffice通过render_presentation.py实际打开PPTX转PDF，PyMuPDF渲染全部14页。初次工具启动因迁移旧路径失败，修复忽略目录内配置后重试成功。
 
-源门0错误/5项独立字段文本框组织建议，包passed-with-warnings；14备注/4原生公式/298可编辑文本run/0动画。10点10区间与归档一致，两幅原PNG在包内字节保持，102个本地链接检查通过。AI看过全页总览和P03/08/11/14放大图，PDF页界通过。材料细项见[本轮检查](presentation_checks.json)、[实际渲染记录](../presentation/current/presentation-v5-render-check.json)。讲稿956字符、显式语速假设估算224.9秒，不代替实际口头演练。未运行构建/数值回归/性能采样；姓名学号、PowerPoint人工显示编辑和实讲待验证，不宣称用户验收。
+源门0错误/5项独立字段文本框组织建议，包passed-with-warnings；14备注/4原生公式/298可编辑文本run/0动画。10点10区间与归档一致，两幅原PNG在包内字节保持，102个本地链接检查通过。AI看过全页总览和P03/08/11/14放大图，PDF页界通过。材料细项见[本轮检查](presentation_checks.json)、[实际渲染记录](presentation-history/current/presentation-v5-render-check.json)。讲稿956字符、显式语速假设估算224.9秒，不代替实际口头演练。未运行构建/数值回归/性能采样；姓名学号、PowerPoint人工显示编辑和实讲待验证，不宣称用户验收。
 
 
 ## WPS公式统一（2026-11-16）
 
-本轮针对用户人工改稿，交付[WPS PPTX](../presentation/current/presentation-v5-wps.pptx)、[PDF](../presentation/current/presentation-v5-wps.pdf)及[总览](../presentation/current/presentation-v5-wps-contact.png)，核查见[wps_formula_checks.json](wps_formula_checks.json)。Windows MCP实际打开WPS，使用原生LaTeX转换及字体/上下标排版，12个原生公式、14页备注；两张完整PNG原字节保持，用户输入未覆盖。WPS实际渲染14页，AI检查总览及公式页；修正页码字体误匹配后PDF文字边界通过。旧生成版检查、讲稿与SVG不作用户人工修改同步依据。第9页网格标注按用户明确确认修正，第10页输入空白正文保持。人工实讲和PowerPoint检查未运行，书面报告本轮未修改。
+本轮针对用户人工改稿，交付WPS PPTX（旧文件已清理：`../presentation/current/presentation-v5-wps.pptx`）、PDF（旧文件已清理：`../presentation/current/presentation-v5-wps.pdf`）及总览（旧文件已清理：`../presentation/current/presentation-v5-wps-contact.png`），核查见[wps_formula_checks.json](wps_formula_checks.json)。Windows MCP实际打开WPS，使用原生LaTeX转换及字体/上下标排版，12个原生公式、14页备注；两张完整PNG原字节保持，用户输入未覆盖。WPS实际渲染14页，AI检查总览及公式页；修正页码字体误匹配后PDF文字边界通过。旧生成版检查、讲稿与SVG不作用户人工修改同步依据。第9页网格标注按用户明确确认修正，第10页输入空白正文保持。人工实讲和PowerPoint检查未运行，书面报告本轮未修改。
 
 
 ## P09/P10局部修订（2026-11-16）
 
-用户确认P09加入OpenMP16对照；[最新PPTX](../presentation/current/presentation-v5-wps-r1.pptx)、[PDF](../presentation/current/presentation-v5-wps-r1.pdf)、[两页预览](../presentation/current/presentation-v5-wps-r1-p09-p10.png)。[独立检查](p9_p10_checks.json)证明15页中仅P09/P10正文及备注变化；其他13页XML/备注字节保持，媒体链接解析内容保持。8个图值、18个配置/增长值与归档一致，两原生定义公式及一图一表可编辑，两个完整原图字节保持。源门0错误0警告、postflight通过，交付检查仅字体可移植性建议；Windows MCP打开WPS导出15页PNG/PDF，AI实际检查总览及修改页放大图，P09/P10文字边界通过。工具命名空间及WPS回退叠影已实际修复，过程见[修订说明](../presentation/revisions/p9-p10-20261116/README.md)。P02既有越界标签、旧页码和P11空白正文未改，不宣称整稿已完成排版验收；人工实讲、PowerPoint检查未运行。未构建、回归或采样。
+用户确认P09加入OpenMP16对照；最新PPTX（旧文件已清理：`../presentation/current/presentation-v5-wps-r1.pptx`）、PDF（旧文件已清理：`../presentation/current/presentation-v5-wps-r1.pdf`）、两页预览（旧文件已清理：`../presentation/current/presentation-v5-wps-r1-p09-p10.png`）。[独立检查](p9_p10_checks.json)证明15页中仅P09/P10正文及备注变化；其他13页XML/备注字节保持，媒体链接解析内容保持。8个图值、18个配置/增长值与归档一致，两原生定义公式及一图一表可编辑，两个完整原图字节保持。源门0错误0警告、postflight通过，交付检查仅字体可移植性建议；Windows MCP打开WPS导出15页PNG/PDF，AI实际检查总览及修改页放大图，P09/P10文字边界通过。工具命名空间及WPS回退叠影已实际修复，过程见[修订说明](../presentation/revisions/p9-p10-20261116/README.md)。P02既有越界标签、旧页码和P11空白正文未改，不宣称整稿已完成排版验收；人工实讲、PowerPoint检查未运行。未构建、回归或采样。

@@ -1,6 +1,6 @@
 # P09/P10 局部修订（2026-11-16）
 
-用户确认P09增加OpenMP16对照后，对其15页手改PPT执行ppt-master Edit Native PPTX流程。输入为[用户手改WPS版](../../current/presentation-v5-wps.pptx)，输出为[修订PPTX](../../current/presentation-v5-wps-r1.pptx)、[WPS PDF](../../current/presentation-v5-wps-r1.pdf)、[两页预览](../../current/presentation-v5-wps-r1-p09-p10.png)。输入哈希及归档数值核查见[本轮检查](../../../records/p9_p10_checks.json)。
+用户确认P09增加OpenMP16对照后，对其15页手改PPT执行ppt-master Edit Native PPTX流程。输入为用户手改WPS版（旧文件已清理：`../../current/presentation-v5-wps.pptx`），输出为修订PPTX（旧文件已清理：`../../current/presentation-v5-wps-r1.pptx`）、WPS PDF（旧文件已清理：`../../current/presentation-v5-wps-r1.pdf`）、两页预览（旧文件已清理：`../../current/presentation-v5-wps-r1-p09-p10.png`）。输入哈希及归档数值核查见[本轮检查](../../../records/p9_p10_checks.json)。
 
 - P09：新增可编辑原生折线图，对比四组网格的MPI16/OpenMP16加速比；修正错误的工作量不变表述，保留N/M、MPI数值及结论。图中类别是四个独立网格配置，等距排列；不是连续数值横轴。点为各规模中位数之比，未额外绘制区间。
 - P10：定义吞吐量及相对各实现自身单执行单元配置的增长倍数；新增原生三配置表，给出用户指定结论及p>1适用范围，标题不称弱扩展。

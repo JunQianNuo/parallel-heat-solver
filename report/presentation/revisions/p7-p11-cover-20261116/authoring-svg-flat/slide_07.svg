@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1280" height="720" viewBox="0 0 1280 720" font-family="Arial, sans-serif"><rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+<g id="shape-6" data-pptx-object="group" data-pptx-frame="0 0 1280 48" data-pptx-source-ref="slide:6">
+<g id="shape-2" data-pptx-object="shape" data-pptx-frame="0 0 1280 48" data-pptx-prst="rect" data-pptx-source-ref="slide:2" data-pptx-semantic-object="shape">
+<path d="M 0 0 L 1280 0 L 1280 48 L 0 48 Z" fill="#092F51" stroke="none" data-pptx-part="geometry"/>
+
+</g>
+<g id="shape-3" data-pptx-object="shape" data-pptx-frame="39.2 9 107.6 30.8" data-pptx-prst="rect" data-pptx-source-ref="slide:3" data-pptx-semantic-object="shape">
+<path d="M 39.2 9 L 146.8 9 L 146.8 39.8 L 39.2 39.8 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="39.2" y="29" text-anchor="start" xml:space="preserve" font-family="Arial, SimHei, sans-serif" font-size="20" fill="#8497A8" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">问题与模型</tspan></text>
+</g>
+<g id="shape-4" data-pptx-object="shape" data-pptx-frame="509.2 9 150 30.8" data-pptx-prst="rect" data-pptx-source-ref="slide:4" data-pptx-semantic-object="shape">
+<path d="M 509.2 9 L 659.2 9 L 659.2 39.8 L 509.2 39.8 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="509.2" y="29" text-anchor="start" xml:space="preserve" font-family="Arial, SimHei, sans-serif" font-size="20" fill="#8497A8" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">数值与并行方法</tspan></text>
+</g>
+<g id="shape-5" data-pptx-object="shape" data-pptx-frame="1049.2 9 124.6 30.8" data-pptx-prst="rect" data-pptx-source-ref="slide:5" data-pptx-semantic-object="shape">
+<path d="M 1049.2 9 L 1173.8 9 L 1173.8 39.8 L 1049.2 39.8 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="1049.2" y="29" text-anchor="start" xml:space="preserve" font-family="Arial, SimHei, sans-serif" font-size="20" fill="#FFFFFF" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">● </tspan><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">结果与讨论</tspan></text>
+</g>
+</g>
+<g id="shape-9" data-pptx-object="group" data-pptx-frame="0 48 1280 68.43" data-pptx-source-ref="slide:9">
+<g id="shape-7" data-pptx-object="shape" data-pptx-frame="0 48 1280 62" data-pptx-prst="rect" data-pptx-source-ref="slide:7" data-pptx-semantic-object="shape">
+<path d="M 0 48 L 1280 48 L 1280 110 L 0 110 Z" fill="#115EA2" stroke="none" data-pptx-part="geometry"/>
+
+</g>
+<g id="shape-8" data-pptx-object="shape" data-pptx-frame="38.24 48.67 236.72 67.76" data-pptx-prst="rect" data-pptx-source-ref="slide:8" data-pptx-semantic-object="shape">
+<path d="M 38.24 48.67 L 274.96 48.67 L 274.96 116.43 L 38.24 116.43 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="38.24" y="94" text-anchor="start" xml:space="preserve" font-family="Arial, SimHei, sans-serif" font-size="44" fill="#FFFFFF" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">正确性检验</tspan></text>
+</g>
+</g>
+<g id="shape-12" data-pptx-object="group" data-pptx-frame="297.37 137.16 685.27 48.2" data-pptx-source-ref="slide:12">
+<g id="shape-10" data-pptx-object="shape" data-pptx-frame="297.37 137.16 685.27 48.2" data-pptx-prst="rect" data-pptx-source-ref="slide:10" data-pptx-semantic-object="shape">
+<path d="M 297.37 137.16 L 982.63 137.16 L 982.63 185.36 L 297.37 185.36 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="640" y="171.8280315" text-anchor="middle" xml:space="preserve" font-family="&quot;Cambria Math&quot;, &quot;楷体&quot;, sans-serif" font-size="36" fill="#000000" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">解析解：</tspan><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">𝑢𝑥,𝑦,𝑡=𝑒−2𝛼𝜋2𝑡sin𝜋𝑥sin𝜋𝑦</tspan></text>
+</g>
+</g>
+<g id="shape-15" data-pptx-object="group" data-pptx-frame="78.56 228 728.07 99.6" data-pptx-source-ref="slide:15">
+<g id="shape-13" data-pptx-object="shape" data-pptx-frame="78.56 228 725 43.6" data-pptx-prst="rect" data-pptx-source-ref="slide:13" data-pptx-semantic-object="shape">
+<path d="M 78.56 228 L 803.56 228 L 803.56 271.6 L 78.56 271.6 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="78.56" y="258.6" text-anchor="start" xml:space="preserve" font-family="&quot;Cambria Math&quot;, KaiTi, sans-serif" font-size="36" fill="#115EA2" font-weight="bold" font-style="italic"><tspan fill-opacity="1" text-decoration="none">E</tspan><tspan fill-opacity="1" font-style="normal" text-decoration="none">∞</tspan><tspan font-family="Arial, KaiTi, sans-serif" fill-opacity="1" font-style="normal" text-decoration="none">：</tspan><tspan fill="#000000" font-family="Arial, KaiTi, sans-serif" fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">数值场与解析解的最大差，检验离散精度</tspan></text>
+</g>
+<g id="shape-14" data-pptx-object="shape" data-pptx-frame="78.56 284 728.07 43.6" data-pptx-prst="rect" data-pptx-source-ref="slide:14" data-pptx-semantic-object="shape">
+<path d="M 78.56 284 L 806.63 284 L 806.63 327.6 L 78.56 327.6 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="78.56" y="314.6" text-anchor="start" xml:space="preserve" font-family="&quot;Cambria Math&quot;, KaiTi, sans-serif" font-size="36" fill="#115EA2" font-weight="bold" font-style="italic"><tspan fill-opacity="1" text-decoration="none">D</tspan><tspan fill-opacity="1" font-style="normal" text-decoration="none">∞</tspan><tspan font-family="Arial, KaiTi, sans-serif" fill-opacity="1" font-style="normal" text-decoration="none">：</tspan><tspan fill="#000000" font-family="Arial, KaiTi, sans-serif" fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">相同输入下并行场与独立串行场的最大差</tspan></text>
+</g>
+</g>
+<g id="shape-37" data-pptx-object="group" data-pptx-frame="100 355 1080 240" data-pptx-source-ref="slide:37">
+<g id="correctness-table" data-pptx-replace-with="table" data-pptx-bounds="90 360 1100 240" data-pptx-fallback-sha256="babc69d2a05ac779efb2a93957e30d0f86902f54b0e8a6813b11c315db24338a"><metadata type="application/json">{"schema": "ppt-master.semantic-table.v2", "name": "correctness-table", "x": 90, "y": 360, "width": 1100, "height": 240, "columns": [{"text": "N", "align": "r", "font_size": 30, "color": "#FFFFFF", "fill": "#115EA2"}, {"text": "M", "align": "r", "font_size": 30, "color": "#FFFFFF", "fill": "#115EA2"}, {"text": "最大解析误差 E∞", "align": "r", "font_size": 30, "color": "#FFFFFF", "fill": "#115EA2"}, {"text": "D∞", "align": "r", "font_size": 30, "color": "#FFFFFF", "fill": "#115EA2"}], "rows": [[{"text": "20", "align": "r", "font_size": 30}, {"text": "400", "align": "r", "font_size": 30}, {"text": "1.1262 × 10⁻⁴", "align": "r", "font_size": 30}, {"text": "0", "align": "r", "font_size": 30}], [{"text": "40", "align": "r", "font_size": 30}, {"text": "1600", "align": "r", "font_size": 30}, {"text": "2.8181 × 10⁻⁵", "align": "r", "font_size": 30}, {"text": "0", "align": "r", "font_size": 30}], [{"text": "80", "align": "r", "font_size": 30}, {"text": "6400", "align": "r", "font_size": 30}, {"text": "7.0470 × 10⁻⁶", "align": "r", "font_size": 30}, {"text": "0", "align": "r", "font_size": 30}]], "column_widths": [160, 240, 400, 300], "row_heights": [1, 1, 1, 1], "style": {"font_family": "Arial", "font_size": 30, "header_font_size": 30, "header_fill": "#115EA2", "header_text": "#FFFFFF", "body_text": "#000000", "body_fill": "#FFFFFF", "band_row": false}, "defaults": {"cell": {"valign": "middle", "padding": {"left": 20, "right": 30, "top": 4, "bottom": 4}, "borders": {"left": {"style": "none"}, "right": {"style": "none"}, "top": {"style": "none"}, "bottom": {"style": "solid", "color": "#C9D7E3", "width": 1}}}}}</metadata><rect x="90" y="360" width="1100" height="60" fill="#115EA2"/><g data-pptx-bounds="90 360 160 60"><text x="220" y="397" font-family="Cambria Math, Arial" font-size="30" fill="#FFFFFF" text-anchor="end">N</text></g><g data-pptx-bounds="250 360 240 60"><text x="460" y="397" font-family="Cambria Math, Arial" font-size="30" fill="#FFFFFF" text-anchor="end">M</text></g><g data-pptx-bounds="490 360 400 60"><text x="860" y="397" font-family="Arial, KaiTi" font-size="30" fill="#FFFFFF" text-anchor="end">最大解析误差 E<tspan baseline-shift="sub">∞</tspan></text></g><g data-pptx-bounds="890 360 300 60"><text x="1160" y="397" font-family="Cambria Math, Arial" font-size="30" fill="#FFFFFF" text-anchor="end">D<tspan baseline-shift="sub">∞</tspan></text></g><line x1="90" y1="420" x2="1190" y2="420" stroke="#C9D7E3" stroke-width="1"/><g data-pptx-bounds="90 420 160 60"><text x="220" y="457" font-family="Cambria Math, Arial" font-size="30" fill="#000000" text-anchor="end">20</text></g><g data-pptx-bounds="250 420 240 60"><text x="460" y="457" font-family="Cambria Math, Arial" font-size="30" fill="#000000" text-anchor="end">400</text></g><g data-pptx-bounds="490 420 400 60"><text x="860" y="457" font-family="Cambria Math, Arial" font-size="30" fill="#000000" text-anchor="end">1.1262 × 10⁻⁴</text></g><g data-pptx-bounds="890 420 300 60"><text x="1160" y="457" font-family="Cambria Math, Arial" font-size="30" fill="#000000" text-anchor="end">0</text></g><line x1="90" y1="480" x2="1190" y2="480" stroke="#C9D7E3" stroke-width="1"/><g data-pptx-bounds="90 480 160 60"><text x="220" y="517" font-family="Cambria Math, Arial" font-size="30" fill="#000000" text-anchor="end">40</text></g><g data-pptx-bounds="250 480 240 60"><text x="460" y="517" font-family="Cambria Math, Arial" font-size="30" fill="#000000" text-anchor="end">1600</text></g><g data-pptx-bounds="490 480 400 60"><text x="860" y="517" font-family="Cambria Math, Arial" font-size="30" fill="#000000" text-anchor="end">2.8181 × 10⁻⁵</text></g><g data-pptx-bounds="890 480 300 60"><text x="1160" y="517" font-family="Cambria Math, Arial" font-size="30" fill="#000000" text-anchor="end">0</text></g><line x1="90" y1="540" x2="1190" y2="540" stroke="#C9D7E3" stroke-width="1"/><g data-pptx-bounds="90 540 160 60"><text x="220" y="577" font-family="Cambria Math, Arial" font-size="30" fill="#000000" text-anchor="end">80</text></g><g data-pptx-bounds="250 540 240 60"><text x="460" y="577" font-family="Cambria Math, Arial" font-size="30" fill="#000000" text-anchor="end">6400</text></g><g data-pptx-bounds="490 540 400 60"><text x="860" y="577" font-family="Cambria Math, Arial" font-size="30" fill="#000000" text-anchor="end">7.0470 × 10⁻⁶</text></g><g data-pptx-bounds="890 540 300 60"><text x="1160" y="577" font-family="Cambria Math, Arial" font-size="30" fill="#000000" text-anchor="end">0</text></g><line x1="90" y1="600" x2="1190" y2="600" stroke="#C9D7E3" stroke-width="1"/></g></g>
+<g id="shape-39" data-pptx-object="group" data-pptx-frame="311.33 608.67 657.33 72.67" data-pptx-source-ref="slide:39">
+<g id="shape-38" data-pptx-object="shape" data-pptx-frame="311.33 608.67 657.33 72.67" data-pptx-prst="rect" data-pptx-source-ref="slide:38" data-pptx-semantic-object="shape">
+<path d="M 311.33 608.67 L 968.67 608.67 L 968.67 681.33 L 311.33 681.33 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="640" y="638" text-anchor="middle" xml:space="preserve" font-family="Arial, KaiTi, sans-serif" font-size="30" fill="#000000" font-style="italic" data-pptx-text-baseline="metrics-v1" data-pptx-text-model="paragraphs" data-paragraph-line-height="36"><tspan><tspan fill-opacity="1" font-weight="normal" text-decoration="none">计算得时间</tspan><tspan fill-opacity="1" font-weight="normal" text-decoration="none">空间联合加密观测阶</tspan><tspan font-family="&quot;Cambria Math&quot;, KaiTi, sans-serif" fill-opacity="1" font-weight="normal" text-decoration="none">𝑝𝑜𝑏𝑠=1.9987≈2</tspan></tspan><tspan><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none"> </tspan></tspan></text>
+</g>
+</g>
+<g id="shape-44" data-pptx-object="group" data-pptx-frame="0 671 1280 49" data-pptx-source-ref="slide:44">
+<g id="shape-40" data-pptx-object="shape" data-pptx-frame="0 672 1280 24" data-pptx-prst="rect" data-pptx-source-ref="slide:40" data-pptx-semantic-object="shape">
+<path d="M 0 672 L 1280 672 L 1280 696 L 0 696 Z" fill="#115EA2" stroke="none" data-pptx-part="geometry"/>
+
+</g>
+<g id="shape-41" data-pptx-object="shape" data-pptx-frame="0 696 1280 24" data-pptx-prst="rect" data-pptx-source-ref="slide:41" data-pptx-semantic-object="shape">
+<path d="M 0 696 L 1280 696 L 1280 720 L 0 720 Z" fill="#0B3D69" stroke="none" data-pptx-part="geometry"/>
+
+</g>
+<g id="shape-42" data-pptx-object="shape" data-pptx-frame="39.2 671 362 30.8" data-pptx-prst="rect" data-pptx-source-ref="slide:42" data-pptx-semantic-object="shape">
+<path d="M 39.2 671 L 401.2 671 L 401.2 701.8 L 39.2 701.8 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="39.2" y="691" text-anchor="start" xml:space="preserve" font-family="Arial, SimHei, sans-serif" font-size="20" fill="#FFFFFF" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">二维热传导方程的串行与并行数值求解</tspan></text>
+</g>
+<g id="shape-43" data-pptx-object="shape" data-pptx-frame="1199.2 694 50 24.2" data-pptx-prst="rect" data-pptx-source-ref="slide:43" data-pptx-semantic-object="shape">
+<path d="M 1199.2 694 L 1249.2 694 L 1249.2 718.2 L 1199.2 718.2 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="1199.2" y="714" text-anchor="start" xml:space="preserve" font-family="Arial, SimHei, sans-serif" font-size="20" fill="#FFFFFF" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">7 / 14</tspan></text>
+</g>
+</g>
+<g id="shape-11" data-pptx-object="shape" data-pptx-frame="832 283.53 640 45.93" data-pptx-prst="rect" data-pptx-source-ref="slide:11" data-pptx-semantic-object="shape">
+<path d="M 832 283.53 L 1472 283.53 L 1472 329.47 L 832 329.47 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="841.6" y="317.66666667" text-anchor="start" xml:space="preserve" font-family="&quot;Cambria Math&quot;, KaiTi, sans-serif" font-size="30" fill="#000000" font-style="italic" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" text-decoration="none">T</tspan><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none"> = 0.1</tspan><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">，</tspan><tspan fill-opacity="1" font-weight="normal" text-decoration="none">α</tspan><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none"> = 1</tspan><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">，</tspan><tspan fill-opacity="1" font-weight="normal" text-decoration="none">r</tspan><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none"> = 0.1</tspan></text>
+</g></svg>

@@ -13,3 +13,6 @@
 | [report_checks.json](report_checks.json) | 本轮独立报告核查；不依赖PPT，不调用求解器 |
 
 当前文件清单为上级[SHA256SUMS](../SHA256SUMS)。历史日志或JSON中的旧路径/命令是当时事实，未全局替换；只有Markdown链接和实际工具寻址按移动后路径适配。reorganization.json描述目录整理完成时的字节保留情况，不能当成后续报告文字仍未修改的声明。本次FINAL_REPORT.md面向教师删除引用及内部指引，PDF已同步重新生成；PPT、源SVG/素材/数据及历史日志/JSON保留。当前报告核查见report_checks.json。
+
+
+2026-11-16清理后，当前文件清单仍为上级SHA256SUMS；旧版成品已移出工作区，其历史检查JSON保留在presentation-history/并按原current/history路径分层。workspace-cleanup-20261116.json记录移除路径、原哈希、迁移路径、保留文件及验证结果；历史JSON中的路径与哈希保留当时事实，不代表目标仍在当前工作区。

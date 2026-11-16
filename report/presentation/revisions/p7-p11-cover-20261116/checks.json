@@ -1,0 +1,148 @@
+{
+  "status": "passed",
+  "input_sha256": "77dfecb357493803d83d8bae427a58e90dd35db8d5518c16cc0b8051c474c993",
+  "output_sha256": "98ee2c726a81fd31438da448c83ba24c5da94b11174e1d9613dcf444325bbd92",
+  "input_current_matches_snapshot": true,
+  "source_slides": 15,
+  "output_slides": 16,
+  "unchanged_pages": [
+    {
+      "source_slide": 1,
+      "output_slide": 2,
+      "xml": "identical",
+      "notes": "identical",
+      "linked_assets": "same bytes"
+    },
+    {
+      "source_slide": 2,
+      "output_slide": 3,
+      "xml": "identical",
+      "notes": "identical",
+      "linked_assets": "same bytes"
+    },
+    {
+      "source_slide": 3,
+      "output_slide": 4,
+      "xml": "identical",
+      "notes": "identical",
+      "linked_assets": "same bytes"
+    },
+    {
+      "source_slide": 4,
+      "output_slide": 5,
+      "xml": "identical",
+      "notes": "identical",
+      "linked_assets": "same bytes"
+    },
+    {
+      "source_slide": 5,
+      "output_slide": 6,
+      "xml": "identical",
+      "notes": "identical",
+      "linked_assets": "same bytes"
+    },
+    {
+      "source_slide": 6,
+      "output_slide": 7,
+      "xml": "identical",
+      "notes": "identical",
+      "linked_assets": "same bytes"
+    },
+    {
+      "source_slide": 8,
+      "output_slide": 9,
+      "xml": "identical",
+      "notes": "identical",
+      "linked_assets": "same bytes"
+    },
+    {
+      "source_slide": 9,
+      "output_slide": 10,
+      "xml": "identical",
+      "notes": "identical",
+      "linked_assets": "same bytes"
+    },
+    {
+      "source_slide": 10,
+      "output_slide": 11,
+      "xml": "identical",
+      "notes": "identical",
+      "linked_assets": "same bytes"
+    },
+    {
+      "source_slide": 12,
+      "output_slide": 13,
+      "xml": "identical",
+      "notes": "identical",
+      "linked_assets": "same bytes"
+    },
+    {
+      "source_slide": 13,
+      "output_slide": 14,
+      "xml": "identical",
+      "notes": "identical",
+      "linked_assets": "same bytes"
+    },
+    {
+      "source_slide": 14,
+      "output_slide": 15,
+      "xml": "identical",
+      "notes": "identical",
+      "linked_assets": "same bytes"
+    },
+    {
+      "source_slide": 15,
+      "output_slide": 16,
+      "xml": "identical",
+      "notes": "identical",
+      "linked_assets": "same bytes"
+    }
+  ],
+  "edited_source_slides": [
+    7,
+    11
+  ],
+  "new_cover": true,
+  "WPS_rendered_pages": 16,
+  "edited_pages_text_bounds": [
+    {
+      "output_slide": 1,
+      "text_within_page": true
+    },
+    {
+      "output_slide": 8,
+      "text_within_page": true
+    },
+    {
+      "output_slide": 12,
+      "text_within_page": true
+    }
+  ],
+  "blank_fields": [
+    "王君豪实际分工",
+    "靳卓凡实际分工",
+    "AI使用环节",
+    "AI核查与采纳"
+  ],
+  "human_rehearsal": "未运行",
+  "PowerPoint_check": "未运行",
+  "new_performance_sampling": "未运行（本任务不需要）",
+  "source_pdf_sha256": "5535f3d60a5f8cd139d77b4be9e6d35f5ffa9a963a51ed2cb70e5d93f38bdebf",
+  "notes": "原页脚页码保持；其他页面仅原生保留，不宣称整稿排版验收。",
+  "native_math_xml_nodes_source_output": [
+    28,
+    28
+  ],
+  "manual_visual_review": {
+    "tool": "Windows MCP + WPS COM PNG/PDF",
+    "reviewed": [
+      "16页总览",
+      "封面",
+      "原P7／输出P8",
+      "原P11／输出P12"
+    ],
+    "result": "三处修改页可读，未发现遮挡；其他页按原生保留核查，不作全局排版验收"
+  },
+  "global_report_SHA256SUMS": "未刷新：用户报告和r1/r2仍在修改，本次使用独立修订清单",
+  "git": "未提交/推送：工作区存在本任务之外的用户报告修改，按AGENTS.md等待处理"
+}

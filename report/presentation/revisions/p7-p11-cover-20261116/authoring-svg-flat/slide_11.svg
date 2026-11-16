@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1280" height="720" viewBox="0 0 1280 720" font-family="Arial, SimHei, sans-serif"><rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+<g id="shape-6" data-pptx-object="group" data-pptx-frame="0 0 1280 48" data-pptx-source-ref="slide:6">
+<g id="shape-2" data-pptx-object="shape" data-pptx-frame="0 0 1280 48" data-pptx-prst="rect" data-pptx-source-ref="slide:2" data-pptx-semantic-object="shape">
+<path d="M 0 0 L 1280 0 L 1280 48 L 0 48 Z" fill="#092F51" stroke="none" data-pptx-part="geometry"/>
+
+</g>
+<g id="shape-3" data-pptx-object="shape" data-pptx-frame="39.2 9 107.6 30.8" data-pptx-prst="rect" data-pptx-source-ref="slide:3" data-pptx-semantic-object="shape">
+<path d="M 39.2 9 L 146.8 9 L 146.8 39.8 L 39.2 39.8 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="39.2" y="29" text-anchor="start" xml:space="preserve" font-size="20" fill="#8497A8" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">问题与模型</tspan></text>
+</g>
+<g id="shape-4" data-pptx-object="shape" data-pptx-frame="509.2 9 150 30.8" data-pptx-prst="rect" data-pptx-source-ref="slide:4" data-pptx-semantic-object="shape">
+<path d="M 509.2 9 L 659.2 9 L 659.2 39.8 L 509.2 39.8 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="509.2" y="29" text-anchor="start" xml:space="preserve" font-size="20" fill="#8497A8" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">数值与并行方法</tspan></text>
+</g>
+<g id="shape-5" data-pptx-object="shape" data-pptx-frame="1049.2 9 124.6 30.8" data-pptx-prst="rect" data-pptx-source-ref="slide:5" data-pptx-semantic-object="shape">
+<path d="M 1049.2 9 L 1173.8 9 L 1173.8 39.8 L 1049.2 39.8 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="1049.2" y="29" text-anchor="start" xml:space="preserve" font-size="20" fill="#FFFFFF" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">● </tspan><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">结果与讨论</tspan></text>
+</g>
+</g>
+<g id="shape-9" data-pptx-object="group" data-pptx-frame="0 48 1280 71.09" data-pptx-source-ref="slide:9">
+<g id="shape-7" data-pptx-object="shape" data-pptx-frame="0 48 1280 62" data-pptx-prst="rect" data-pptx-source-ref="slide:7" data-pptx-semantic-object="shape">
+<path d="M 0 48 L 1280 48 L 1280 110 L 0 110 Z" fill="#115EA2" stroke="none" data-pptx-part="geometry"/>
+
+</g>
+<g id="shape-8" data-pptx-object="shape" data-pptx-frame="38.24 50 700 60" data-pptx-prst="rect" data-pptx-source-ref="slide:8" data-pptx-semantic-object="shape">
+<path d="M 38.24 51.33 L 346.42 51.33 L 346.42 119.09 L 38.24 119.09 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="38.24" y="94" text-anchor="start" xml:space="preserve" font-size="44" fill="#FFFFFF" data-pptx-text-baseline="metrics-v1">总结与 AI 声明</text>
+</g>
+</g>
+<g id="shape-17" data-pptx-object="group" data-pptx-frame="88.4 488.67 13.73 149.33" data-pptx-source-ref="slide:17">
+<g id="shape-14" data-pptx-object="shape" data-pptx-frame="88.4 488.67 13.33 48.47" data-pptx-prst="rect" data-pptx-source-ref="slide:14" data-pptx-semantic-object="shape">
+<path d="M 88.4 488.67 L 101.73 488.67 L 101.73 537.13 L 88.4 537.13 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+</g>
+<g id="shape-16" data-pptx-object="shape" data-pptx-frame="88.8 601.67 13.33 36.33" data-pptx-prst="rect" data-pptx-source-ref="slide:16" data-pptx-semantic-object="shape">
+<path d="M 88.8 601.67 L 102.13 601.67 L 102.13 638 L 88.8 638 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+</g>
+</g>
+<g id="shape-22" data-pptx-object="group" data-pptx-frame="0 671 1280 49" data-pptx-source-ref="slide:22">
+<g id="shape-18" data-pptx-object="shape" data-pptx-frame="0 672 1280 24" data-pptx-prst="rect" data-pptx-source-ref="slide:18" data-pptx-semantic-object="shape">
+<path d="M 0 672 L 1280 672 L 1280 696 L 0 696 Z" fill="#115EA2" stroke="none" data-pptx-part="geometry"/>
+
+</g>
+<g id="shape-19" data-pptx-object="shape" data-pptx-frame="0 696 1280 24" data-pptx-prst="rect" data-pptx-source-ref="slide:19" data-pptx-semantic-object="shape">
+<path d="M 0 696 L 1280 696 L 1280 720 L 0 720 Z" fill="#0B3D69" stroke="none" data-pptx-part="geometry"/>
+
+</g>
+<g id="shape-20" data-pptx-object="shape" data-pptx-frame="39.2 671 362 30.8" data-pptx-prst="rect" data-pptx-source-ref="slide:20" data-pptx-semantic-object="shape">
+<path d="M 39.2 671 L 401.2 671 L 401.2 701.8 L 39.2 701.8 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="39.2" y="691" text-anchor="start" xml:space="preserve" font-size="20" fill="#FFFFFF" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">二维热传导方程的串行与并行数值求解</tspan></text>
+</g>
+<g id="shape-21" data-pptx-object="shape" data-pptx-frame="1199.2 694 61.13 24.2" data-pptx-prst="rect" data-pptx-source-ref="slide:21" data-pptx-semantic-object="shape">
+<path d="M 1199.2 694 L 1260.33 694 L 1260.33 718.2 L 1199.2 718.2 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="1199.2" y="714" text-anchor="start" xml:space="preserve" font-size="20" fill="#FFFFFF" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">10 / 14</tspan></text>
+</g>
+</g><g id="summary" data-pptx-bounds="75 145 545 475"><text x="90" y="185" font-family="SimHei, Arial" font-size="40" fill="#115EA2" text-anchor="start">总结</text><text x="90" y="255" font-family="Arial" font-size="32" fill="#115EA2" text-anchor="start">1</text><text x="135" y="255" font-family="KaiTi, Arial" font-size="36" fill="#000000" text-anchor="start">完成三种求解器</text><text x="135" y="300" font-family="Arial" font-size="32" fill="#000000" text-anchor="start">串行 / MPI / OpenMP</text><text x="90" y="385" font-family="Arial" font-size="32" fill="#115EA2" text-anchor="start">2</text><text x="135" y="385" font-family="KaiTi, Arial" font-size="36" fill="#000000" text-anchor="start">误差约二阶收敛</text><text x="135" y="430" font-family="KaiTi, Arial" font-size="32" fill="#000000" text-anchor="start">已测串并行结果一致</text><text x="90" y="515" font-family="Arial" font-size="32" fill="#115EA2" text-anchor="start">3</text><text x="135" y="515" font-family="KaiTi, Arial" font-size="36" fill="#000000" text-anchor="start">并行收益受实现</text><text x="135" y="560" font-family="KaiTi, Arial" font-size="36" fill="#000000" text-anchor="start">与配置影响</text></g><line x1="650" y1="150" x2="650" y2="632" stroke="#C9D7E3" stroke-width="1.5"/><g id="ai-and-members" data-pptx-bounds="690 145 530 492"><text x="700" y="185" font-family="SimHei, Arial" font-size="40" fill="#115EA2" text-anchor="start">AI辅助与成员分工</text><text x="700" y="250" font-family="KaiTi, Arial" font-size="34" fill="#000000" text-anchor="start">AI辅助代码实现与报告初稿</text><text x="700" y="335" font-family="KaiTi, Arial" font-size="34" fill="#000000" text-anchor="start">王君豪：</text><line x1="850" y1="342" x2="1200" y2="342" stroke="#8497A8" stroke-width="1"/><text x="700" y="395" font-family="KaiTi, Arial" font-size="34" fill="#000000" text-anchor="start">靳卓凡：</text><line x1="850" y1="402" x2="1200" y2="402" stroke="#8497A8" stroke-width="1"/><text x="700" y="480" font-family="SimHei, Arial" font-size="34" fill="#115EA2" text-anchor="start">AI输出核查实例</text><text x="700" y="535" font-family="KaiTi, Arial" font-size="30" fill="#000000" text-anchor="start">使用环节：</text><line x1="865" y1="542" x2="1200" y2="542" stroke="#8497A8" stroke-width="1"/><text x="700" y="600" font-family="KaiTi, Arial" font-size="30" fill="#000000" text-anchor="start">核查与采纳：</text><line x1="895" y1="607" x2="1200" y2="607" stroke="#8497A8" stroke-width="1"/></g></svg>

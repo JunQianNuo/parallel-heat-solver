@@ -1,0 +1,344 @@
+{
+  "date": "2026-11-16",
+  "scope": "Current report and r4/r3 PPT dependency inspection; no deletions",
+  "limitations": [
+    "没有从无引用推断从未使用；历史制作源与原始证据单独分类。",
+    "嵌入媒体匹配采用SHA-256，重新编码的图像不保证同哈希。",
+    "未重导出报告/PPT，未做语义全稿或视觉验收。",
+    "docs/sources为只读课程原件，不列入清理候选。"
+  ],
+  "report_images": [
+    "../results/figures/large-02-r1-viz-01/02-speedup.png",
+    "../results/figures/large-02-r1-viz-01/05-grid-speedup.png"
+  ],
+  "decks": [
+    {
+      "path": "report/presentation/current/presentation-v5-wps-r3.pptx",
+      "sha256": "6e8777620c37ccbc6561939a9aa1630f09418638add9d279cc487f81efd444e9",
+      "external_relationships": [],
+      "media_sha256": {
+        "ppt/media/": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ppt/media/image1.png": "c30a421f40f7c5641714c41cfbed7131c39543d9b4ae2fa36db12d38c5fb96a3",
+        "ppt/media/image10.png": "8195d669351fcf6fb919c03e71c1c47b2f116d9a55ea2736277281a494eee5af",
+        "ppt/media/image11.png": "51c5e7fe6d419d95e5b3095aebc72284abbb090fda5a5f652fed19a7a271c02c",
+        "ppt/media/image12.png": "1ad998b6bdda36f402c6b71f914817f2db07350868b3385a25900fcc838ad12a",
+        "ppt/media/image13.png": "42a492fc7d473116883ad2ca9533fb6bee76cea2f5c81913afe114460d5a93fd",
+        "ppt/media/image14.png": "311f16b96091e2ce5503e7face5d1c974cfb357ccf07eaec14f9ea3e06baea3f",
+        "ppt/media/image15.png": "9284236f29b798e89128320e9c5dc0ac78049a3d7d3695f29298969572f31bb8",
+        "ppt/media/image16.png": "2eb25141badc720d92b3dc6ab2eb04cb80c91387b804d551dc2b9e24423a0c72",
+        "ppt/media/image17.png": "7b057dd0f7cd7ab2965a185b3748212d87b5ae2e03b12c71444e53882ab45dfd",
+        "ppt/media/image18.png": "8c7ef65de1aa3e6d1e4efa2fb2ba41403470c2d9861b22c69305d956563f99cb",
+        "ppt/media/image19.png": "7d9fe0176acc2806131018b34c8d6b80f73e4ddd1b11de6954037fe2f0203383",
+        "ppt/media/image2.png": "fddcdefe0a709b16a33f2d826f17616356abaf165ec5f46d43d22001c26684e0",
+        "ppt/media/image20.png": "33cb571ae371767fbb77ea1169b8f1a68574bf77c9fc6b0105e5702cb202bc14",
+        "ppt/media/image21.png": "63982386d5b1ad8f05f5d251348e9cdb84e3712b53f7ced50720af2b74728502",
+        "ppt/media/image22.png": "e213c906868233f9fde3ac5ef6c54f01d05aacde69c24153bcb2fb4639115c29",
+        "ppt/media/image3.png": "49f5e7764bbfc36c41e1b5bc1b0a4d1a0d93eb11e328c740c5f3cf25c14018a6",
+        "ppt/media/image4.png": "c744e4c8f58e411ce27d3f733b0b3be45f06924a655713838b6393cd2fbd2066",
+        "ppt/media/image5.png": "38db2e9d7b51de361eefd93336f084ce3f9e809a753e94066e03113f046448a1",
+        "ppt/media/image6.png": "c7d5bf5c26614d354a4453abee663beed3e92994556bc8189bd918aa1721a201",
+        "ppt/media/image7.png": "e15a716f4a4bf99db6ef7065883d0824e754f24d9e38780a66b6d9c469ba3917",
+        "ppt/media/image8.png": "c20449e73d726fbbaa7c5dd2564f908299189aa64eefd89fd5593247d370844a",
+        "ppt/media/image9.png": "8a82a8b6d1f00a8081ffe6b84379af56e6f41058c8feab40df95e51ac8818b02"
+      }
+    },
+    {
+      "path": "report/presentation/current/presentation-v5-wps-r4.pptx",
+      "sha256": "b7283acec89bf73f96e107cf4bd4a003c48d8b1694864d39406e1e5799a8ec3e",
+      "external_relationships": [],
+      "media_sha256": {
+        "ppt/media/": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ppt/media/image1.png": "c30a421f40f7c5641714c41cfbed7131c39543d9b4ae2fa36db12d38c5fb96a3",
+        "ppt/media/image10.png": "8195d669351fcf6fb919c03e71c1c47b2f116d9a55ea2736277281a494eee5af",
+        "ppt/media/image11.png": "51c5e7fe6d419d95e5b3095aebc72284abbb090fda5a5f652fed19a7a271c02c",
+        "ppt/media/image12.png": "1ad998b6bdda36f402c6b71f914817f2db07350868b3385a25900fcc838ad12a",
+        "ppt/media/image13.png": "42a492fc7d473116883ad2ca9533fb6bee76cea2f5c81913afe114460d5a93fd",
+        "ppt/media/image14.png": "311f16b96091e2ce5503e7face5d1c974cfb357ccf07eaec14f9ea3e06baea3f",
+        "ppt/media/image15.png": "9284236f29b798e89128320e9c5dc0ac78049a3d7d3695f29298969572f31bb8",
+        "ppt/media/image16.png": "2eb25141badc720d92b3dc6ab2eb04cb80c91387b804d551dc2b9e24423a0c72",
+        "ppt/media/image17.png": "7b057dd0f7cd7ab2965a185b3748212d87b5ae2e03b12c71444e53882ab45dfd",
+        "ppt/media/image18.png": "8c7ef65de1aa3e6d1e4efa2fb2ba41403470c2d9861b22c69305d956563f99cb",
+        "ppt/media/image19.png": "7d9fe0176acc2806131018b34c8d6b80f73e4ddd1b11de6954037fe2f0203383",
+        "ppt/media/image2.png": "fddcdefe0a709b16a33f2d826f17616356abaf165ec5f46d43d22001c26684e0",
+        "ppt/media/image20.png": "33cb571ae371767fbb77ea1169b8f1a68574bf77c9fc6b0105e5702cb202bc14",
+        "ppt/media/image21.png": "63982386d5b1ad8f05f5d251348e9cdb84e3712b53f7ced50720af2b74728502",
+        "ppt/media/image22.png": "e213c906868233f9fde3ac5ef6c54f01d05aacde69c24153bcb2fb4639115c29",
+        "ppt/media/image3.png": "49f5e7764bbfc36c41e1b5bc1b0a4d1a0d93eb11e328c740c5f3cf25c14018a6",
+        "ppt/media/image4.png": "c744e4c8f58e411ce27d3f733b0b3be45f06924a655713838b6393cd2fbd2066",
+        "ppt/media/image5.png": "38db2e9d7b51de361eefd93336f084ce3f9e809a753e94066e03113f046448a1",
+        "ppt/media/image6.png": "c7d5bf5c26614d354a4453abee663beed3e92994556bc8189bd918aa1721a201",
+        "ppt/media/image7.png": "e15a716f4a4bf99db6ef7065883d0824e754f24d9e38780a66b6d9c469ba3917",
+        "ppt/media/image8.png": "c20449e73d726fbbaa7c5dd2564f908299189aa64eefd89fd5593247d370844a",
+        "ppt/media/image9.png": "8a82a8b6d1f00a8081ffe6b84379af56e6f41058c8feab40df95e51ac8818b02"
+      }
+    }
+  ],
+  "items": [
+    {
+      "path": "report/heat-defense_ppt169_20261112/live_preview",
+      "classification": "runtime_candidate",
+      "reason": "旧SVG编辑器日志及批注；当前报告和PPT无文件依赖，批注可能有历史审阅价值。",
+      "file_count": 2,
+      "logical_bytes": 1721267
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/spec_review",
+      "classification": "runtime_candidate",
+      "reason": "旧设计审阅网页状态；不是成品输入。",
+      "file_count": 2,
+      "logical_bytes": 62
+    },
+    {
+      "path": "report/presentation/font-preview",
+      "classification": "completed_selection_tool",
+      "reason": "字体选择网页，已用于选择并完成r4字体修订；不是成品运行依赖。serve.py仍从封面修订目录读取校徽。",
+      "file_count": 4,
+      "logical_bytes": 32277
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/svg_output",
+      "classification": "historical_authoring_source",
+      "reason": "此前14页生成稿的SVG；当前为人工16页PPT，不能据此覆盖当前成品。",
+      "file_count": 14,
+      "logical_bytes": 81199
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/notes",
+      "classification": "historical_authoring_source",
+      "reason": "旧14页讲稿与备注源，未逐页同步16页人工成品。",
+      "file_count": 15,
+      "logical_bytes": 15045
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/images",
+      "classification": "used_embedded_asset_copies",
+      "reason": "两张PNG与报告正式图及两版PPT内媒体逐字节一致；目录副本可替换为正式路径，但不能称为未使用。",
+      "file_count": 2,
+      "logical_bytes": 279523
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/sources",
+      "classification": "historical_data_copy",
+      "reason": "制作阶段统计CSV副本，正式数据保留于results。",
+      "file_count": 1,
+      "logical_bytes": 13560
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/analysis",
+      "classification": "historical_intermediate",
+      "reason": "旧制作工具分析记录。",
+      "file_count": 1,
+      "logical_bytes": 402
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/validation",
+      "classification": "historical_evidence",
+      "reason": "旧制作检查与审计日志，非成品文件依赖。",
+      "file_count": 18,
+      "logical_bytes": 246041
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/icons",
+      "classification": "empty_directory",
+      "reason": "空目录。",
+      "file_count": 0,
+      "logical_bytes": 0
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/templates",
+      "classification": "empty_directory",
+      "reason": "空目录。",
+      "file_count": 0,
+      "logical_bytes": 0
+    },
+    {
+      "path": "report/presentation/revisions/p9-p10-20261116",
+      "classification": "historical_revision_source_and_evidence",
+      "reason": "已应用的P09/P10局部修订源及核查，不是未采用方案。",
+      "file_count": 10,
+      "logical_bytes": 108301
+    },
+    {
+      "path": "report/presentation/revisions/p7-p11-cover-20261116",
+      "classification": "used_revision_source_and_evidence",
+      "reason": "封面和正确性/总结页修订源及证据；校徽仍供字体网页读取。",
+      "file_count": 16,
+      "logical_bytes": 2551950
+    },
+    {
+      "path": "report/presentation/revisions/font-only-20261116",
+      "classification": "current_revision_evidence",
+      "reason": "当前r4字体变更证明及独立哈希清单。",
+      "file_count": 4,
+      "logical_bytes": 29585
+    },
+    {
+      "path": "report/records",
+      "classification": "audit_evidence",
+      "reason": "历史验证、迁移、清理及报告核查，不直接参与成品排版。",
+      "file_count": 22,
+      "logical_bytes": 203465
+    },
+    {
+      "path": "report/presentation/check_materials.py",
+      "classification": "historical_checker",
+      "reason": "只适用于已清理的旧14页生成稿。",
+      "file_count": 1,
+      "logical_bytes": 8774
+    },
+    {
+      "path": "report/presentation/render_formula_preview.py",
+      "classification": "historical_authoring_tool",
+      "reason": "旧SVG公式回退片段制作工具，当前PPT为原生人工稿。",
+      "file_count": 1,
+      "logical_bytes": 2507
+    },
+    {
+      "path": "report/presentation/SPEAKER_NOTES.md",
+      "classification": "auxiliary_material_needs_sync",
+      "reason": "辅助讲稿对应旧14页，未逐页同步当前16页PPT。",
+      "file_count": 1,
+      "logical_bytes": 8494
+    },
+    {
+      "path": "report/presentation/DEFENSE_QA.md",
+      "classification": "auxiliary_defense_material",
+      "reason": "答辩辅助材料，不是报告/PPT排版输入。",
+      "file_count": 1,
+      "logical_bytes": 8029
+    },
+    {
+      "path": "build/archive/cmake",
+      "classification": "old_build_candidate",
+      "reason": "历史构建缓存与二进制，当前构建使用debug/release。",
+      "file_count": 3769,
+      "logical_bytes": 65596932
+    },
+    {
+      "path": "build/archive/work",
+      "classification": "historical_intermediates_and_evidence",
+      "reason": "旧导入、预览、一次性脚本及快照；非当前成品运行依赖，按追溯用途取舍。",
+      "file_count": 249,
+      "logical_bytes": 35500698
+    },
+    {
+      "path": "build/archive/layout-20261115",
+      "classification": "historical_evidence",
+      "reason": "目录迁移映射及保护哈希。",
+      "file_count": 3,
+      "logical_bytes": 3621155
+    },
+    {
+      "path": "build/outputs",
+      "classification": "generated_output_candidate",
+      "reason": "三套派生图表及求解器示例，非当前报告/PPT直接输入；最新图表21/21已在results正式归档。",
+      "file_count": 65,
+      "logical_bytes": 9018407
+    },
+    {
+      "path": "build/logs",
+      "classification": "mixed_evidence_and_renders",
+      "reason": "旧过程日志与渲染图片混合，需按内容保留证据并清理重复图片。",
+      "file_count": 880,
+      "logical_bytes": 93643446
+    },
+    {
+      "path": "build/cache",
+      "classification": "regenerable_cache",
+      "reason": "公式及运行缓存，可再生成。",
+      "file_count": 138,
+      "logical_bytes": 355445
+    },
+    {
+      "path": "build/tools/libreoffice/debs",
+      "classification": "installer_cache",
+      "reason": "已解包运行环境的deb下载缓存，当前渲染入口使用root。",
+      "file_count": 63,
+      "logical_bytes": 92118842
+    },
+    {
+      "path": "build/tools/font-preview",
+      "classification": "completed_selection_runtime",
+      "reason": "已完成字体选择的运行资源和偏好记录，保留偏好有助追溯。",
+      "file_count": 10,
+      "logical_bytes": 786540
+    },
+    {
+      "path": "build/tools/python",
+      "classification": "active_tool_environment",
+      "reason": "报告生成/检查所需本地依赖，不能因不是交付材料而判定无用。",
+      "file_count": 6560,
+      "logical_bytes": 353577350
+    },
+    {
+      "path": "build/tools/libreoffice/root",
+      "classification": "active_tool_environment",
+      "reason": "PPT可选LibreOffice渲染环境。",
+      "file_count": 2835,
+      "logical_bytes": 299216042
+    },
+    {
+      "path": "build/debug",
+      "classification": "active_build",
+      "reason": "当前程序构建，不是报告素材，但属于项目实现。",
+      "file_count": 300,
+      "logical_bytes": 5988464
+    },
+    {
+      "path": "build/release",
+      "classification": "active_build",
+      "reason": "当前Release构建，不是报告素材，但属于项目实现。",
+      "file_count": 295,
+      "logical_bytes": 1780939
+    },
+    {
+      "path": "src",
+      "classification": "project_implementation",
+      "reason": "独立串行/MPI/OpenMP及诊断实现，是课程项目主体。",
+      "file_count": 16,
+      "logical_bytes": 42017
+    },
+    {
+      "path": "tests",
+      "classification": "project_validation",
+      "reason": "实现正确性验证代码。",
+      "file_count": 14,
+      "logical_bytes": 105745
+    },
+    {
+      "path": "scripts",
+      "classification": "experiment_and_validation_tools",
+      "reason": "正式采样、分析和绘图工具。",
+      "file_count": 17,
+      "logical_bytes": 288156
+    },
+    {
+      "path": "results",
+      "classification": "experiment_evidence",
+      "reason": "正式原始数据、统计及图表；未直接插图的文件仍用于支撑结果。",
+      "file_count": 93,
+      "logical_bytes": 34431911
+    },
+    {
+      "path": "report/__pycache__",
+      "classification": "regenerable_cache",
+      "reason": "Python字节码缓存。",
+      "file_count": 5,
+      "logical_bytes": 47734
+    },
+    {
+      "path": "report/presentation/__pycache__",
+      "classification": "regenerable_cache",
+      "reason": "Python字节码缓存。",
+      "file_count": 3,
+      "logical_bytes": 26739
+    },
+    {
+      "path": "report/presentation/font-preview/__pycache__",
+      "classification": "regenerable_cache",
+      "reason": "Python字节码缓存。",
+      "file_count": 1,
+      "logical_bytes": 7646
+    }
+  ]
+}

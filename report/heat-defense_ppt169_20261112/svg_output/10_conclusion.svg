@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="KaiTi, Arial" font-size="40" data-pptx-page-role="ending">
-<rect id="bg" data-pptx-role="background" width="1280" height="720" fill="#FFFFFF"/>
-<g id="navigation" data-pptx-role="header" data-pptx-bounds="0 0 1280 48" font-family="SimHei, Arial" font-size="20"><rect width="1280" height="48" fill="#092F51"/><text x="40" y="29" fill="#8497A8">问题与模型</text><text x="510" y="29" fill="#8497A8">数值与并行方法</text><text x="1050" y="29" fill="#FFFFFF">● 结果与讨论</text></g>
-<g id="title" data-pptx-bounds="0 48 1280 62" font-family="SimHei, Arial"><rect x="0" y="48" width="1280" height="62" fill="#115EA2"/><text x="40" y="94" font-size="44" fill="#FFFFFF">总结与 AI 使用</text></g>
-<g id="conclusion" data-pptx-bounds="70 150 1140 140" font-family="SimHei, Arial" fill="#115EA2"><text x="90" y="199">三种实现完成同一离散问题，<tspan x="90" dy="61">通过两类检验；并行收益有条件。</tspan></text></g>
-<g id="roles" data-pptx-bounds="70 320 1140 135"><text x="90" y="366">AI 辅助代码、测试、统计与材料；<tspan x="90" dy="62">本人负责范围选择、管理、审核与答辩。</tspan></text></g>
-<g id="correction-example" data-pptx-bounds="70 485 1140 160"><text x="90" y="530" font-family="SimHei, Arial" fill="#115EA2">真实修正实例</text><text x="90" y="584" font-size="36">输出失败测试构造不当 → 修正重定向位置 → 回归通过</text><text x="90" y="631" font-size="30">修正与回归由 AI 执行，不记作本人手工复测。</text></g>
-<g id="footer" data-pptx-role="footer" data-pptx-bounds="0 672 1280 48" font-family="SimHei, Arial" font-size="20"><rect x="0" y="672" width="1280" height="24" fill="#115EA2"/><rect x="0" y="696" width="1280" height="24" fill="#0B3D69"/><text x="40" y="691" fill="#FFFFFF">二维热传导方程的串行与并行数值求解</text><text x="1200" y="714" fill="#FFFFFF">10 / 14</text></g>
-</svg>

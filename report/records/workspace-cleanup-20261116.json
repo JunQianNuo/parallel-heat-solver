@@ -1,0 +1,1627 @@
+{
+  "summary": {
+    "backup": "/home/nuo/courses/projects/parallel-heat-solver-cleanup-backup-20261116",
+    "removed_files": 252,
+    "moved_audits": 10,
+    "removed_bytes": 62167965
+  },
+  "files": [
+    {
+      "path": "README.md.local-empty",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/figures-redesign-20261115/user-report.md",
+      "sha256": "b4ef2e6865fa938fc59fd732cc001a6150bb068739b982c1a6654fd54b52c430",
+      "bytes": 36147,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/figures-restore-m-20261116/latest-report.md",
+      "sha256": "1419c53eaa6540a26eb6641ba89da5c1b134a47335ef90babbb4f72af1e760ea",
+      "bytes": 35688,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/figures-restore-m-20261116/user-report.md",
+      "sha256": "aae66bd32cfdef3e8d9b194ee4a2a30e0dac49dd21f02c7c902e3a05688c012f",
+      "bytes": 35717,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-font-only-20261116/user-input.pptx",
+      "sha256": "6e8777620c37ccbc6561939a9aa1630f09418638add9d279cc487f81efd444e9",
+      "bytes": 1676768,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-font-only-20261116/wps-readonly.pptx",
+      "sha256": "b7283acec89bf73f96e107cf4bd4a003c48d8b1694864d39406e1e5799a8ec3e",
+      "bytes": 1594466,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p7-p11-cover-20261116/roundtrip/exports/roundtrip_20261116_174258.pptx",
+      "sha256": "2ad10691cc5402621c8c7af95a5fc3b0e925c5e3928b8eb73acb53ca5ec4ce74",
+      "bytes": 779564,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p7-p11-cover-20261116/roundtrip/sources/source.pptx",
+      "sha256": "c2bb041f6e71c67c9fa04e9a9672e55d5ee217400af1f7c49199d13b3d114de2",
+      "bytes": 602897,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/exports/roundtrip-latest_20261116_174333.pptx",
+      "sha256": "2b33d266d24c82c961d3b14c36f4e2efef1d87a054a75c99263e6e46367301ad",
+      "bytes": 779569,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/exports/roundtrip-latest_20261116_174407.pptx",
+      "sha256": "fc46111e4286f6f36e0d67b40950d20c284a5caaa6043c3908799a663d353efb",
+      "bytes": 1607536,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/exports/roundtrip-latest_20261116_174518.pptx",
+      "sha256": "c556a7cf77ec34330ad10cef48da5a6b15debd06dc27cc881957b2c84b55ac6d",
+      "bytes": 1607573,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/exports/roundtrip-latest_20261116_174700.pptx",
+      "sha256": "98ee2c726a81fd31438da448c83ba24c5da94b11174e1d9613dcf444325bbd92",
+      "bytes": 1607565,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/sources/source.pptx",
+      "sha256": "77dfecb357493803d83d8bae427a58e90dd35db8d5518c16cc0b8051c474c993",
+      "bytes": 602902,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p7-p11-cover-20261116/user-input-latest.pptx",
+      "sha256": "77dfecb357493803d83d8bae427a58e90dd35db8d5518c16cc0b8051c474c993",
+      "bytes": 602902,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p7-p11-cover-20261116/user-input.pptx",
+      "sha256": "c2bb041f6e71c67c9fa04e9a9672e55d5ee217400af1f7c49199d13b3d114de2",
+      "bytes": 602897,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p7-p11-cover-20261116/wps-readonly-final.pptx",
+      "sha256": "c556a7cf77ec34330ad10cef48da5a6b15debd06dc27cc881957b2c84b55ac6d",
+      "bytes": 1607573,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p7-p11-cover-20261116/wps-readonly-final2.pptx",
+      "sha256": "98ee2c726a81fd31438da448c83ba24c5da94b11174e1d9613dcf444325bbd92",
+      "bytes": 1607565,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p7-p11-cover-20261116/wps-readonly.pptx",
+      "sha256": "fc46111e4286f6f36e0d67b40950d20c284a5caaa6043c3908799a663d353efb",
+      "bytes": 1607536,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p9-p10-20261116/roundtrip/exports/roundtrip_20261116_152155_native_charts_tables.pptx",
+      "sha256": "f9a84f3a0fa4b744564771dcbd54d17fddd48b2b9cf032ab2e12ea3847617ca0",
+      "bytes": 444254,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p9-p10-20261116/roundtrip/exports/roundtrip_20261116_152715_native_charts_tables.pptx",
+      "sha256": "9742d028c3fe2dd0accc9cd96d2b52ca9b677a5c6486c4dbd98e61a4ce0a74c2",
+      "bytes": 443471,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p9-p10-20261116/roundtrip/exports/roundtrip_20261116_152856_native_charts_tables.pptx",
+      "sha256": "cd6e780910b75f1b995d8265b4a1746ef6299891b5762d18ae1553f8c1c1f0ec",
+      "bytes": 443545,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p9-p10-20261116/roundtrip/exports/roundtrip_20261116_152922_native_charts_tables.pptx",
+      "sha256": "7426c1844fc030112d93bcb004f6a3d9cc576cfb4af4fd6b2cc818a64a847b6a",
+      "bytes": 443544,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p9-p10-20261116/roundtrip/sources/source.pptx",
+      "sha256": "8f5d073aa33711b09533e61fd64dbe1f63ddc087ee47814d6f906629531c0ee4",
+      "bytes": 514276,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p9-p10-20261116/user-before.pptx",
+      "sha256": "8f5d073aa33711b09533e61fd64dbe1f63ddc087ee47814d6f906629531c0ee4",
+      "bytes": 514276,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p9-p10-20261116/wps-render/presentation.pdf",
+      "sha256": "060043cfa20c1de0e5a89b9146941a6b6f2de54716aa5158e17aeadcd113e1d7",
+      "bytes": 1587543,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p9-p10-20261116/wps-render-final/presentation.pdf",
+      "sha256": "86c7bb05a4bd5abf9c6229b7f1197af97d90012d694f3bc7de2f9665a0c8fd46",
+      "bytes": 1622296,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p9-p10-20261116/wps-saved.pptx",
+      "sha256": "2d683f6e97ab38149ecaaed89bca8b1c489ee5fac8378e63eebba34f65ec3347",
+      "bytes": 517902,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p9-remove384-20261116/input.pptx",
+      "sha256": "79a282abfe9807ddc0d0033414f665a4a023f7534f43b1ed04e275c6caebfa1f",
+      "bytes": 590097,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-p9-remove384-20261116/preview-readonly.pptx",
+      "sha256": "4654ee803caf0e4caf6a05d683abe9c4921ff2e02872d91e489dd4e1ef245a9e",
+      "bytes": 516955,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/m5-wps-formulas-20261116/user-before.pptx",
+      "sha256": "daf66c8b3ffc8bd827fc744e87a042030e9009a17891814dcc35e95344a8d547",
+      "bytes": 436099,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-academic-20261115/before-FINAL_REPORT.md",
+      "sha256": "ad3ea435fd318f2372db93a672866f4d800ea7255c9442cea6812264b64a978d",
+      "bytes": 34602,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-academic-20261115/before-FINAL_REPORT.pdf",
+      "sha256": "ed0f6e4ba660e3efb7d4cac90a3271ce085b66e12215851f05fccafe22c5224e",
+      "bytes": 1088249,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-headings-20261116/before-FINAL_REPORT.md",
+      "sha256": "ac7cdcfb2a9fc8449678881be0851d5bd5b1a6345ad72774cabf88f2bb335fb3",
+      "bytes": 47932,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-headings-20261116/before-FINAL_REPORT.pdf",
+      "sha256": "b5e596dddd9b14366924e633305b610a511cc0bdfdb69bb5a56f406257e41411",
+      "bytes": 1051969,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-laws-sections-20261115/before-FINAL_REPORT.md",
+      "sha256": "10822fdc6e9da4cd865c1c4461fef64e423fe78607ee6a95b3436ba580719257",
+      "bytes": 35934,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-laws-sections-20261115/before-FINAL_REPORT.pdf",
+      "sha256": "20729df6db614af2839153136328a4f1c78fda4220fd1596910582e1041a04e8",
+      "bytes": 889051,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-performance-tables-20261115/before-FINAL_REPORT.md",
+      "sha256": "254886a37a90b7b8a043089af06a56c532e0fe94a15f64b282cc67dc7a5c37b7",
+      "bytes": 36147,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-performance-tables-20261115/before-FINAL_REPORT.pdf",
+      "sha256": "9c95f9664b34f8db0d34eff97bae7744d66bc7877db799d11ada424d13f09715",
+      "bytes": 1161088,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-reader-20261115/report-before.md",
+      "sha256": "31d6f7d5b8f35463678a20512c8f488099e887563d27acd8781cfc68992208a3",
+      "bytes": 22162,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-revise-1-4-20261115/before-FINAL_REPORT.md",
+      "sha256": "10168caf0e86b3cb8eef4a1faab30f39ccf042fd51abdf3b283362bd1d4c7866",
+      "bytes": 33721,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-revise-1-4-20261115/before-FINAL_REPORT.pdf",
+      "sha256": "b833d1bb6692c35afb9f08e498b59bb2c61b286d93c2a241f79e224b1f247b83",
+      "bytes": 1059223,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-section5-20261116/before-FINAL_REPORT.md",
+      "sha256": "e7cf6ab86b0f2b3b82a321ef8b29cdeb898fc472a389eab7e24a2f8350304922",
+      "bytes": 36056,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-section5-20261116/before-FINAL_REPORT.pdf",
+      "sha256": "ecbc7a3b0d51218c00f3b31aa1d5271afeb96580c895fd81d0b58976aac22140",
+      "bytes": 888988,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-section6-20261115/before-FINAL_REPORT.md",
+      "sha256": "452365321e8e489cbef51b09934358dc50670142236cf78ff8c94a32f6332006",
+      "bytes": 33036,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-section6-20261115/before-FINAL_REPORT.pdf",
+      "sha256": "afca678a298301e5bb1147c1291d92e1b6a3346a88ebb283ed85f1445c463faf",
+      "bytes": 1068356,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-section6-math-20261116/before-report.pdf",
+      "sha256": "9f2156d5ef698a491caaba106fdc66a60afdc8788243dfcbca44d4dfca60d304",
+      "bytes": 898662,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-section6-math-20261116/head-report.md",
+      "sha256": "1419c53eaa6540a26eb6641ba89da5c1b134a47335ef90babbb4f72af1e760ea",
+      "bytes": 35688,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-tables-complete-20261115/before-FINAL_REPORT.md",
+      "sha256": "3608f0db18d417b3aa4ee8106f538c20971b66d234c5bd227e9d4047b95681df",
+      "bytes": 35994,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-tables-complete-20261115/before-FINAL_REPORT.pdf",
+      "sha256": "dc8cd80e814b1d8901e49634dfcc972e7947b64d5bfb355db381b8fb00984961",
+      "bytes": 1161069,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-teacher-20261115/before-FINAL_REPORT.md",
+      "sha256": "595e07f5541b4f7da56d9bb0949064feb0e3e9d45a5de90d587ff00521bcbd4a",
+      "bytes": 37601,
+      "action": "remove"
+    },
+    {
+      "path": "build/logs/report-teacher-20261115/before-FINAL_REPORT.pdf",
+      "sha256": "db5a8a33ef67bb860f90ef9186d0e4f528420799f6f5f845b2d1c8ff4b2e3ca3",
+      "bytes": 1033601,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105518/svg_output/01_cover.svg",
+      "sha256": "a134edbaca9e6f5b94ab44aadc05da25c3500379fc958f860cb19ae86d1ffac0",
+      "bytes": 2037,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105518/svg_output/02_stencil.svg",
+      "sha256": "8b5e5154a6e1721f3e02f7460df93b7d15c3d5a30d6b377379040b01f8c2ca72",
+      "bytes": 2566,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105518/svg_output/03_mpi.svg",
+      "sha256": "67ef469aa3073f754b30eb1fa1e8ceccca42b430915ebb75990c830c8f5e9cb4",
+      "bytes": 2486,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105518/svg_output/04_openmp.svg",
+      "sha256": "aa76bf1853ca89bde0ad3dde42923e912d18f4716ff81818f99f415c31268810",
+      "bytes": 2268,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105518/svg_output/05_validation.svg",
+      "sha256": "e1529f92ce05a8cc29fc2061b99f59f8fb63e402b8ad2d99d4b50de41cabd3ed",
+      "bytes": 2152,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105518/svg_output/06_performance.svg",
+      "sha256": "4113c0fe8656a97e261f0a53e6cc3aaea793dbd126bf1cb7cf92bdec357d73c2",
+      "bytes": 4188,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105518/svg_output/07_limits.svg",
+      "sha256": "d48d957edee3dba1b868fd02c48bbad8ff8109840a8ef4d96daf0abbf054c314",
+      "bytes": 2166,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105518/svg_output/08_ai.svg",
+      "sha256": "e873730abdf65b7071a4ff89be49000c277de327310a00d7490905c8e09e2b9a",
+      "bytes": 1757,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105518/svg_output/09_timing.svg",
+      "sha256": "8e9e3017e6e08621638edae3f7154e7e825d916ea0dd861e8f67a0cc2ecfeb6a",
+      "bytes": 1718,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105518/svg_output/10_full_scaling.svg",
+      "sha256": "df4757670ae7956edfd3be05602862e33e6124a44026d406c762200143a3d4a7",
+      "bytes": 1541,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105518/svg_output/11_grid.svg",
+      "sha256": "e5b420df7bcaf37406784771a22c8e54b45726babd8b9d9f9794ef7e670fde27",
+      "bytes": 1471,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105518/svg_output/12_interpretation.svg",
+      "sha256": "70f81857a81067f535e97a00ed7d0fb8808a0525b7b527e86ef6ad3d7ef1f846",
+      "bytes": 1782,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105839/svg_output/01_cover.svg",
+      "sha256": "a134edbaca9e6f5b94ab44aadc05da25c3500379fc958f860cb19ae86d1ffac0",
+      "bytes": 2037,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105839/svg_output/02_stencil.svg",
+      "sha256": "27351fbca3fad48f11b724c465b5386c2b2a19b52f2cacf5ad5b9339fcd46afd",
+      "bytes": 2507,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105839/svg_output/03_mpi.svg",
+      "sha256": "678b08e27bb6f0021f085ea50683265f3f5795ce523bb748ba21fba901cecd69",
+      "bytes": 2490,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105839/svg_output/04_openmp.svg",
+      "sha256": "aa76bf1853ca89bde0ad3dde42923e912d18f4716ff81818f99f415c31268810",
+      "bytes": 2268,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105839/svg_output/05_validation.svg",
+      "sha256": "0bcab7534ea05b23711ff6026679d05f672eccb4c3535a727ae19384d7599dfd",
+      "bytes": 2127,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105839/svg_output/06_performance.svg",
+      "sha256": "4113c0fe8656a97e261f0a53e6cc3aaea793dbd126bf1cb7cf92bdec357d73c2",
+      "bytes": 4188,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105839/svg_output/07_limits.svg",
+      "sha256": "d48d957edee3dba1b868fd02c48bbad8ff8109840a8ef4d96daf0abbf054c314",
+      "bytes": 2166,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105839/svg_output/08_ai.svg",
+      "sha256": "e873730abdf65b7071a4ff89be49000c277de327310a00d7490905c8e09e2b9a",
+      "bytes": 1757,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105839/svg_output/09_timing.svg",
+      "sha256": "8e9e3017e6e08621638edae3f7154e7e825d916ea0dd861e8f67a0cc2ecfeb6a",
+      "bytes": 1718,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105839/svg_output/10_full_scaling.svg",
+      "sha256": "df4757670ae7956edfd3be05602862e33e6124a44026d406c762200143a3d4a7",
+      "bytes": 1541,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105839/svg_output/11_grid.svg",
+      "sha256": "e5b420df7bcaf37406784771a22c8e54b45726babd8b9d9f9794ef7e670fde27",
+      "bytes": 1471,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_105839/svg_output/12_interpretation.svg",
+      "sha256": "70f81857a81067f535e97a00ed7d0fb8808a0525b7b527e86ef6ad3d7ef1f846",
+      "bytes": 1782,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_111137/svg_output/01_cover.svg",
+      "sha256": "3cb0a3e55e4988d62499d08009fedcdf61204212303b5d3750fa5d66c020199e",
+      "bytes": 2020,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_111137/svg_output/02_stencil.svg",
+      "sha256": "f4cd44d90e59a8a698ee35e4e54c704b4399e135d27a9777fddba2b4ed009102",
+      "bytes": 2507,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_111137/svg_output/03_mpi.svg",
+      "sha256": "940c90920a571fb464011ba71df796f1110dd2ae429794906a7ddd7097115e52",
+      "bytes": 2490,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_111137/svg_output/04_openmp.svg",
+      "sha256": "9940b244f40f62919d6236c64d30978fddbc51f47df6f463cb7bd53eb1ea2887",
+      "bytes": 2268,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_111137/svg_output/05_validation.svg",
+      "sha256": "40602d390f0ecef0e014c740ebe5419fc67f51b674eb569a9bcc647c6613781e",
+      "bytes": 2127,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_111137/svg_output/06_performance.svg",
+      "sha256": "be37638b345b53c752ef058e1ec35e364aa61147037fbd53ca3393ae81a0ca5b",
+      "bytes": 4188,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_111137/svg_output/07_limits.svg",
+      "sha256": "01e036b27ad7a35c2fbe5a0f981c995f92fc403a9beb7a8f98b7708d9de8f224",
+      "bytes": 2166,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_111137/svg_output/08_ai.svg",
+      "sha256": "7f484bf956e1d90cbdf9266a969338df5c1ac9bc932ddb9be8d9eaa010dcd9a5",
+      "bytes": 1757,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_111137/svg_output/09_timing.svg",
+      "sha256": "7d15d0da89aba61674a36be4dca7d0503833e16bb80e70dc3574f1a3543c7c12",
+      "bytes": 1718,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_111137/svg_output/10_full_scaling.svg",
+      "sha256": "9fda32145dd3f60913bc4062cd3ff7bbb263577c62f899cbb4dd12e21e33dbce",
+      "bytes": 1541,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_111137/svg_output/11_grid.svg",
+      "sha256": "63b10fe80df3bf519b91dbf345497f0181003032cc383aa62169b45c30b08111",
+      "bytes": 1471,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_111137/svg_output/12_interpretation.svg",
+      "sha256": "35acbf367d16c635ec41e67e721af89cc0dd72774c086a53ff9ffa2747fe52d6",
+      "bytes": 1782,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_120032/svg_output/01_cover.svg",
+      "sha256": "8a2ed3deb8f93eedcb785b210257d10f7babd713c23f19a64c7cd346a0ad64d9",
+      "bytes": 1073,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_120032/svg_output/02_route.svg",
+      "sha256": "7812c17a63e138fd6e8637a240742478e30ab62cd69036f41384f224d2c1bf15",
+      "bytes": 3051,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_120032/svg_output/03_stencil.svg",
+      "sha256": "fd0adc137d7832ef2bac3a82f25b46a9b3cb352462d0a376de7ba731725920e9",
+      "bytes": 3930,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_120032/svg_output/04_mpi.svg",
+      "sha256": "e430efbb17da835eb201dd6f477a0fe2073ff7ce05e54f16ff006c23f8512a90",
+      "bytes": 2937,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_120032/svg_output/05_openmp.svg",
+      "sha256": "9daa69c9dc7ec8a227315afc03561dc0004a8c1bdae0a5ab2f312617a38ff899",
+      "bytes": 2892,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_120032/svg_output/06_validation.svg",
+      "sha256": "ef661466c75cf64ec26f503d76329e83cd720bb43bbf0487123b96ee7fe69df5",
+      "bytes": 2383,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_120032/svg_output/07_performance.svg",
+      "sha256": "67a01f2663977d5c473d7b342b9cff78b1525575def69a93bc1c49d9fd7ffd5a",
+      "bytes": 4859,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_120032/svg_output/08_conclusion.svg",
+      "sha256": "954eda8f718d4897548350fa722b38d2eb8f869323233c650c599f1a51c07073",
+      "bytes": 2397,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_120032/svg_output/09_timing.svg",
+      "sha256": "e09297ddfd4923182e9e0c54a4c3809bee0f2c30102a7f9ff11578edf57d37d5",
+      "bytes": 2242,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_120032/svg_output/10_full_scaling.svg",
+      "sha256": "f22e00f4cfd357498cf01aa0da8d5c7a9c10f9d91ea85293c0e31dcf01a8c38c",
+      "bytes": 1918,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_120032/svg_output/11_grid.svg",
+      "sha256": "aac1c93c4bc7ac2e19a8274dc4003cb0e89d45315e6df8461cb2f6ea94b72574",
+      "bytes": 1985,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261112_120032/svg_output/12_interpretation.svg",
+      "sha256": "07ad42a0c189da905d1d6448422dfe32f35b13ff028734ad836060e1009acf49",
+      "bytes": 2293,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184103/svg_output/01_cover.svg",
+      "sha256": "195347ee165e3d95dfbbf152fb48694b0a4912fbd2a3a6548ef4b335c3e486d1",
+      "bytes": 1073,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184103/svg_output/02_route.svg",
+      "sha256": "9a5ba02b61fc78ffe8db8edb2497514ba824860a017321f523b659682f78ad79",
+      "bytes": 3079,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184103/svg_output/03_stencil.svg",
+      "sha256": "983d4cb965e5841d258225129e7aac221c9952400b1da94b4e204d8c05f2e9ea",
+      "bytes": 5468,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184103/svg_output/04_mpi.svg",
+      "sha256": "5d5f265c4341d719267d63d35c8293c519d7b0d01e345d0ec0d1223aeae622d2",
+      "bytes": 2981,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184103/svg_output/05_openmp.svg",
+      "sha256": "aa9b1887750ded2824dcec71d2c846ed5334be9b8ba73db27928f1e02bc0ad5a",
+      "bytes": 3101,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184103/svg_output/06_validation.svg",
+      "sha256": "4c311559635c6582123d1d30d7107917c055c9268c85d33af7ec2f9ab7cd228b",
+      "bytes": 2383,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184103/svg_output/07_performance.svg",
+      "sha256": "e239a5c39b43be50785631402766a972711dbcf3c0cc19f3acfc3ff2b38d6426",
+      "bytes": 4832,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184103/svg_output/08_conclusion.svg",
+      "sha256": "5c724637302ce6df61ef9cc479e2fb4b0ebae8814733c97fb27d25a25cc026c5",
+      "bytes": 2360,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184103/svg_output/09_timing.svg",
+      "sha256": "912e889d4394f283a1baa1d7251d701998d4f9a04518b4110d91b437901226a0",
+      "bytes": 2264,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184103/svg_output/10_full_scaling.svg",
+      "sha256": "02ccec1e235de69428d7a56b1e71610c1864abc072d06fb7540cf99cf68c74b5",
+      "bytes": 1933,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184103/svg_output/11_grid.svg",
+      "sha256": "9deb576240633de50e789a770eb26448c3dafde092c41ad45dea06656f1d4a2c",
+      "bytes": 1973,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184103/svg_output/12_interpretation.svg",
+      "sha256": "2862ecfc1d53a9b27a6de6b38d2041fa3dafbb9f348a9839b904271c1d2854b7",
+      "bytes": 2325,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184321/svg_output/01_cover.svg",
+      "sha256": "195347ee165e3d95dfbbf152fb48694b0a4912fbd2a3a6548ef4b335c3e486d1",
+      "bytes": 1073,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184321/svg_output/02_route.svg",
+      "sha256": "9a5ba02b61fc78ffe8db8edb2497514ba824860a017321f523b659682f78ad79",
+      "bytes": 3079,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184321/svg_output/03_stencil.svg",
+      "sha256": "624d5ef4133499279ebe56abeee126035590517056217ea9616e91e4d5a86a07",
+      "bytes": 5458,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184321/svg_output/04_mpi.svg",
+      "sha256": "5d5f265c4341d719267d63d35c8293c519d7b0d01e345d0ec0d1223aeae622d2",
+      "bytes": 2981,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184321/svg_output/05_openmp.svg",
+      "sha256": "aa9b1887750ded2824dcec71d2c846ed5334be9b8ba73db27928f1e02bc0ad5a",
+      "bytes": 3101,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184321/svg_output/06_validation.svg",
+      "sha256": "4c311559635c6582123d1d30d7107917c055c9268c85d33af7ec2f9ab7cd228b",
+      "bytes": 2383,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184321/svg_output/07_performance.svg",
+      "sha256": "e239a5c39b43be50785631402766a972711dbcf3c0cc19f3acfc3ff2b38d6426",
+      "bytes": 4832,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184321/svg_output/08_conclusion.svg",
+      "sha256": "5c724637302ce6df61ef9cc479e2fb4b0ebae8814733c97fb27d25a25cc026c5",
+      "bytes": 2360,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184321/svg_output/09_timing.svg",
+      "sha256": "912e889d4394f283a1baa1d7251d701998d4f9a04518b4110d91b437901226a0",
+      "bytes": 2264,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184321/svg_output/10_full_scaling.svg",
+      "sha256": "02ccec1e235de69428d7a56b1e71610c1864abc072d06fb7540cf99cf68c74b5",
+      "bytes": 1933,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184321/svg_output/11_grid.svg",
+      "sha256": "9deb576240633de50e789a770eb26448c3dafde092c41ad45dea06656f1d4a2c",
+      "bytes": 1973,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261113_184321/svg_output/12_interpretation.svg",
+      "sha256": "2862ecfc1d53a9b27a6de6b38d2041fa3dafbb9f348a9839b904271c1d2854b7",
+      "bytes": 2325,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174259/svg_output/01_cover.svg",
+      "sha256": "195347ee165e3d95dfbbf152fb48694b0a4912fbd2a3a6548ef4b335c3e486d1",
+      "bytes": 1073,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174259/svg_output/02_route.svg",
+      "sha256": "02dc02ef50fc366d67b61a407416e99d3f98b037fc151bc4a58cf2b9cdb3a0d1",
+      "bytes": 3184,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174259/svg_output/03_stencil.svg",
+      "sha256": "6389a9141a6ea68903f5c8abce0594263986801aa2fba0b4ccc4de81ce7e4341",
+      "bytes": 7437,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174259/svg_output/04_mpi.svg",
+      "sha256": "854ea63b4127253ce916635191997200055c71954756650ba4a77f7d12a3cac6",
+      "bytes": 3283,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174259/svg_output/05_openmp.svg",
+      "sha256": "446c4da853e395781187d3233be33ee32c2a33b376a7ff2a001f90454afca520",
+      "bytes": 3116,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174259/svg_output/06_validation.svg",
+      "sha256": "09cc7af75255309d91d9ce0fd948db7e17b6e3822f23ee648676835cf96fadb2",
+      "bytes": 2391,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174259/svg_output/07_performance.svg",
+      "sha256": "d01d2070943f78f7c98e08c1390a2778f70ef47f1f477ee247b07d35898a2f7b",
+      "bytes": 5609,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174259/svg_output/08_conclusion.svg",
+      "sha256": "4f49a147e4a4f7a3d9c0c8eca126e2e445ac2210d96b4170a0c49f7f8dbc2d2a",
+      "bytes": 2993,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174259/svg_output/09_timing.svg",
+      "sha256": "85582ad1b08e223a54ca446a32226395da33bff0446c9bd11737438f48ee91af",
+      "bytes": 2273,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174259/svg_output/10_full_scaling.svg",
+      "sha256": "22f81f6cd1bc74db1d4be3806bdba9125c0731140dd2737917c5016a7ee84c5a",
+      "bytes": 1980,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174259/svg_output/11_grid.svg",
+      "sha256": "3a2c8ad9bb0c6dcf6ac9e85a3451e23fb434cab12bfd5119e27cae38b61fd373",
+      "bytes": 1991,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174259/svg_output/12_interpretation.svg",
+      "sha256": "8ba873a2e92dcba0b8635c741261126ec019725c30b903c4abc8c5b7cc47d8af",
+      "bytes": 3968,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174537/svg_output/01_cover.svg",
+      "sha256": "195347ee165e3d95dfbbf152fb48694b0a4912fbd2a3a6548ef4b335c3e486d1",
+      "bytes": 1073,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174537/svg_output/02_route.svg",
+      "sha256": "02dc02ef50fc366d67b61a407416e99d3f98b037fc151bc4a58cf2b9cdb3a0d1",
+      "bytes": 3184,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174537/svg_output/03_stencil.svg",
+      "sha256": "08defc26b25ac897ef2eb0bb6a605df904e5bde175c786c68056cb81fc904c3d",
+      "bytes": 7561,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174537/svg_output/04_mpi.svg",
+      "sha256": "854ea63b4127253ce916635191997200055c71954756650ba4a77f7d12a3cac6",
+      "bytes": 3283,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174537/svg_output/05_openmp.svg",
+      "sha256": "446c4da853e395781187d3233be33ee32c2a33b376a7ff2a001f90454afca520",
+      "bytes": 3116,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174537/svg_output/06_validation.svg",
+      "sha256": "09cc7af75255309d91d9ce0fd948db7e17b6e3822f23ee648676835cf96fadb2",
+      "bytes": 2391,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174537/svg_output/07_performance.svg",
+      "sha256": "d01d2070943f78f7c98e08c1390a2778f70ef47f1f477ee247b07d35898a2f7b",
+      "bytes": 5609,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174537/svg_output/08_conclusion.svg",
+      "sha256": "4f49a147e4a4f7a3d9c0c8eca126e2e445ac2210d96b4170a0c49f7f8dbc2d2a",
+      "bytes": 2993,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174537/svg_output/09_timing.svg",
+      "sha256": "85582ad1b08e223a54ca446a32226395da33bff0446c9bd11737438f48ee91af",
+      "bytes": 2273,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174537/svg_output/10_full_scaling.svg",
+      "sha256": "22f81f6cd1bc74db1d4be3806bdba9125c0731140dd2737917c5016a7ee84c5a",
+      "bytes": 1980,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174537/svg_output/11_grid.svg",
+      "sha256": "3a2c8ad9bb0c6dcf6ac9e85a3451e23fb434cab12bfd5119e27cae38b61fd373",
+      "bytes": 1991,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174537/svg_output/12_interpretation.svg",
+      "sha256": "8ba873a2e92dcba0b8635c741261126ec019725c30b903c4abc8c5b7cc47d8af",
+      "bytes": 3968,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174729/svg_output/01_cover.svg",
+      "sha256": "195347ee165e3d95dfbbf152fb48694b0a4912fbd2a3a6548ef4b335c3e486d1",
+      "bytes": 1073,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174729/svg_output/02_route.svg",
+      "sha256": "02dc02ef50fc366d67b61a407416e99d3f98b037fc151bc4a58cf2b9cdb3a0d1",
+      "bytes": 3184,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174729/svg_output/03_stencil.svg",
+      "sha256": "98b3c047d556e704fd36ce1b78b3df944206112d0934e2c65e8168d49a1f0eb1",
+      "bytes": 7578,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174729/svg_output/04_mpi.svg",
+      "sha256": "854ea63b4127253ce916635191997200055c71954756650ba4a77f7d12a3cac6",
+      "bytes": 3283,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174729/svg_output/05_openmp.svg",
+      "sha256": "446c4da853e395781187d3233be33ee32c2a33b376a7ff2a001f90454afca520",
+      "bytes": 3116,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174729/svg_output/06_validation.svg",
+      "sha256": "09cc7af75255309d91d9ce0fd948db7e17b6e3822f23ee648676835cf96fadb2",
+      "bytes": 2391,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174729/svg_output/07_performance.svg",
+      "sha256": "d01d2070943f78f7c98e08c1390a2778f70ef47f1f477ee247b07d35898a2f7b",
+      "bytes": 5609,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174729/svg_output/08_conclusion.svg",
+      "sha256": "4f49a147e4a4f7a3d9c0c8eca126e2e445ac2210d96b4170a0c49f7f8dbc2d2a",
+      "bytes": 2993,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174729/svg_output/09_timing.svg",
+      "sha256": "85582ad1b08e223a54ca446a32226395da33bff0446c9bd11737438f48ee91af",
+      "bytes": 2273,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174729/svg_output/10_full_scaling.svg",
+      "sha256": "22f81f6cd1bc74db1d4be3806bdba9125c0731140dd2737917c5016a7ee84c5a",
+      "bytes": 1980,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174729/svg_output/11_grid.svg",
+      "sha256": "3a2c8ad9bb0c6dcf6ac9e85a3451e23fb434cab12bfd5119e27cae38b61fd373",
+      "bytes": 1991,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_174729/svg_output/12_interpretation.svg",
+      "sha256": "8ba873a2e92dcba0b8635c741261126ec019725c30b903c4abc8c5b7cc47d8af",
+      "bytes": 3968,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_175015/svg_output/01_cover.svg",
+      "sha256": "195347ee165e3d95dfbbf152fb48694b0a4912fbd2a3a6548ef4b335c3e486d1",
+      "bytes": 1073,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_175015/svg_output/02_route.svg",
+      "sha256": "02dc02ef50fc366d67b61a407416e99d3f98b037fc151bc4a58cf2b9cdb3a0d1",
+      "bytes": 3184,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_175015/svg_output/03_stencil.svg",
+      "sha256": "98b3c047d556e704fd36ce1b78b3df944206112d0934e2c65e8168d49a1f0eb1",
+      "bytes": 7578,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_175015/svg_output/04_mpi.svg",
+      "sha256": "854ea63b4127253ce916635191997200055c71954756650ba4a77f7d12a3cac6",
+      "bytes": 3283,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_175015/svg_output/05_openmp.svg",
+      "sha256": "446c4da853e395781187d3233be33ee32c2a33b376a7ff2a001f90454afca520",
+      "bytes": 3116,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_175015/svg_output/06_validation.svg",
+      "sha256": "09cc7af75255309d91d9ce0fd948db7e17b6e3822f23ee648676835cf96fadb2",
+      "bytes": 2391,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_175015/svg_output/07_performance.svg",
+      "sha256": "d01d2070943f78f7c98e08c1390a2778f70ef47f1f477ee247b07d35898a2f7b",
+      "bytes": 5609,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_175015/svg_output/08_conclusion.svg",
+      "sha256": "4f49a147e4a4f7a3d9c0c8eca126e2e445ac2210d96b4170a0c49f7f8dbc2d2a",
+      "bytes": 2993,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_175015/svg_output/09_timing.svg",
+      "sha256": "85582ad1b08e223a54ca446a32226395da33bff0446c9bd11737438f48ee91af",
+      "bytes": 2273,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_175015/svg_output/10_full_scaling.svg",
+      "sha256": "22f81f6cd1bc74db1d4be3806bdba9125c0731140dd2737917c5016a7ee84c5a",
+      "bytes": 1980,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_175015/svg_output/11_grid.svg",
+      "sha256": "3a2c8ad9bb0c6dcf6ac9e85a3451e23fb434cab12bfd5119e27cae38b61fd373",
+      "bytes": 1991,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_175015/svg_output/12_interpretation.svg",
+      "sha256": "8ba873a2e92dcba0b8635c741261126ec019725c30b903c4abc8c5b7cc47d8af",
+      "bytes": 3968,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_191937/svg_output/01_cover.svg",
+      "sha256": "195347ee165e3d95dfbbf152fb48694b0a4912fbd2a3a6548ef4b335c3e486d1",
+      "bytes": 1073,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_191937/svg_output/02_route.svg",
+      "sha256": "c11811059e5ec7383a2f13b64ad4c096654ede67c060feb3720445b9b3410839",
+      "bytes": 3046,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_191937/svg_output/03_stencil.svg",
+      "sha256": "6982c2f9a0d5444fff6ad5891da28f74750ddc7ad2a8e2e73b89d76e2ac51626",
+      "bytes": 32925,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_191937/svg_output/04_mpi.svg",
+      "sha256": "d2d9714aee385de5b5f4873e7ace4f03ddd1b5835724949206a8ef4c728f768e",
+      "bytes": 3129,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_191937/svg_output/05_openmp.svg",
+      "sha256": "8a636675132b786e5867d729e74ed344d538828c6d73525d32c6a0fcaa3fc5e6",
+      "bytes": 3074,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_191937/svg_output/06_validation.svg",
+      "sha256": "4581eb5c47705a2cc6c747f4b320507b390d946fa30bee7a4ccadf06c17618e6",
+      "bytes": 2352,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_191937/svg_output/07_performance.svg",
+      "sha256": "c1a1cce844aa5febaad442a882c8ad7bd06bf3819fe94d37164c38ced442a63d",
+      "bytes": 5561,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_191937/svg_output/08_conclusion.svg",
+      "sha256": "538277c8ff6ebd017c70b035fdd82c988e7ca139ddedd139f168b02b7f65013d",
+      "bytes": 3170,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_191937/svg_output/09_timing.svg",
+      "sha256": "83cadd83e1227b7dcbdc28ca9ad98da64de423053832ad5cb5a5bff5e2b5216d",
+      "bytes": 2252,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_191937/svg_output/10_full_scaling.svg",
+      "sha256": "9101915184e5bb673b438696c9aaf05d773f658fbef444a1a1bc760ab55d3a33",
+      "bytes": 1959,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_191937/svg_output/11_grid.svg",
+      "sha256": "cbd6f83975d6119f0b7ace01f3c42f47b860b72e53ba50e32a7d293bf62f0b63",
+      "bytes": 1967,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261114_191937/svg_output/12_interpretation.svg",
+      "sha256": "4e7c062e6f270d4ea18e8c68ab88c58946a2450b3dafa73e4cd87eda73c136a7",
+      "bytes": 3956,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261116_025409/svg_output/01_model.svg",
+      "sha256": "4e8c22a1ab7b3abd32db46ba4dce75f8e10808c248b958c5aba88d4ef89989a6",
+      "bytes": 2684,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261116_025409/svg_output/02_grid.svg",
+      "sha256": "35891cef6e7d1170ae95c8f5912ac2ff845abadf2f78c3c0c9a75fa8ca1f73c3",
+      "bytes": 3860,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261116_025409/svg_output/03_stencil.svg",
+      "sha256": "9fa5d27b20dfb42c3a402742033fbd4db6c7490ee743709a2895358e95352cdf",
+      "bytes": 31978,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261116_025409/svg_output/04_serial.svg",
+      "sha256": "7fe34ae8402a0bbb1deade77671757e3fa6dbadea2b3ca578b7f27b5fe616871",
+      "bytes": 3086,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261116_025409/svg_output/05_mpi.svg",
+      "sha256": "3f34d2e6e79b82294395b3e8e7ee64c48db6c9451186e1596afe61db8727973b",
+      "bytes": 4046,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261116_025409/svg_output/06_openmp.svg",
+      "sha256": "a113950ebbf89be9e33f3fd1edeb2e00b5b82576d8e20809007acc7769504dd0",
+      "bytes": 4071,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261116_025409/svg_output/07_validation.svg",
+      "sha256": "b9b2e4947a29f0c7df6957e1d067ead5e84bdabf492ee00fb0d9b44f22ba11cf",
+      "bytes": 5881,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261116_025409/svg_output/08_performance.svg",
+      "sha256": "0a573e57e309e842a8a967c90d3d024b9966e7b90fe7be9045b700a632e2c504",
+      "bytes": 5014,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261116_025409/svg_output/09_scalability.svg",
+      "sha256": "5e482a04106fd20402f582a3656f7794f368bb4883156047ff381e3888cbc2c5",
+      "bytes": 5239,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261116_025409/svg_output/10_conclusion.svg",
+      "sha256": "edba554a80ca742d210899a73731166b28a4251e27513f13282f3f491a73c71e",
+      "bytes": 2014,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261116_025409/svg_output/11_timing.svg",
+      "sha256": "ab79cb72857a429c46e3e1632a595a8b6267e81650b020efa87134dcaeb4cfa5",
+      "bytes": 6040,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261116_025409/svg_output/12_full_scaling.svg",
+      "sha256": "db4e0e288a6356e5eb49700f50c11e447b0234b41a83b2f4089f9eb6662794d6",
+      "bytes": 2105,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261116_025409/svg_output/13_grid.svg",
+      "sha256": "dd3bc82e428cb80b864d392266092570d581dfc06fc8c30cf7c60b769fdb82f1",
+      "bytes": 1711,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/backup/20261116_025409/svg_output/14_interpretation.svg",
+      "sha256": "15a114a07c5bbac8b7bd91f7f3a102a84f21fd49e95c541f85f4d79e15cd4e3b",
+      "bytes": 3470,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/exports/heat-defense_20261112_105518.pptx",
+      "sha256": "df9e1847b2795b731fb20a069ad17db4c7cead39ed5baa03dd4370445baf34e8",
+      "bytes": 581175,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/exports/heat-defense_20261112_105839.pptx",
+      "sha256": "134ba5421b258192a55f4558e6d233fc016e8b9cea9088dfdd806420b5c99f4c",
+      "bytes": 581147,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/exports/heat-defense_20261112_111137.pptx",
+      "sha256": "729c324f011863a7a14256a4b5c291f3e80ab41ed4f66f229400ec6eb2602ead",
+      "bytes": 581181,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/exports/heat-defense_20261112_120032.pptx",
+      "sha256": "7a3f1a71e8b8d5836190a848714807d1ae1fced679fd957285005d4b108a4239",
+      "bytes": 583688,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/exports/heat-defense_20261113_184103.pptx",
+      "sha256": "03f9d6ff54664a9cb6228076dcb1899e645423964508feb2e31902b80d03834a",
+      "bytes": 585057,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/exports/heat-defense_20261113_184321.pptx",
+      "sha256": "22aeefb9db9d941ebab3208d7cf9f3fd2320207b9efcf3f3be558e567b7a9da2",
+      "bytes": 585046,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/exports/heat-defense_20261114_174259.pptx",
+      "sha256": "2afb1b4a5c674c084bac7a4ac3bd2a757853484439ff185bd31a046d1512b766",
+      "bytes": 588426,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/exports/heat-defense_20261114_174537.pptx",
+      "sha256": "466a9c7ec018e51b32c41915a366ed9ab20eefd0a419982466a96e56058dfe9b",
+      "bytes": 588416,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/exports/heat-defense_20261114_174729.pptx",
+      "sha256": "23388773d801bc4128199076af7ac973710cb03276791f8235d90cd2124a146c",
+      "bytes": 588517,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/exports/heat-defense_20261114_175015.pptx",
+      "sha256": "aaa21d22e6b032c1a20ce8bceff64b26fbe8e44adc7ecf4065dbc7d0233e5953",
+      "bytes": 588519,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/exports/heat-defense_20261114_191937.pptx",
+      "sha256": "edbff4ceccef48c98dff9f06a939a4f1d154c74539b53c192be0566b17f6a3c3",
+      "bytes": 596202,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/exports/heat-defense_20261116_025409.pptx",
+      "sha256": "09be612096e18a53b5f5350bc66ccfa7fa30d62a0363e2fbe39ea35cadd7eee1",
+      "bytes": 328568,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/sources/FINAL_REPORT.md",
+      "sha256": "c43fbe390830fb27ea8f6787669bf9a1c6e05cb7f4d7c395b8bfa1a4d3487169",
+      "bytes": 46090,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/sources/SPEAKER_NOTES.md",
+      "sha256": "70c24a5dde240ef718b52ce9a342c47d27f371631806a360943e80f63fd1d9ef",
+      "bytes": 4279,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/svg_final/01_model.svg",
+      "sha256": "4e8c22a1ab7b3abd32db46ba4dce75f8e10808c248b958c5aba88d4ef89989a6",
+      "bytes": 2684,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/svg_final/02_grid.svg",
+      "sha256": "35891cef6e7d1170ae95c8f5912ac2ff845abadf2f78c3c0c9a75fa8ca1f73c3",
+      "bytes": 3860,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/svg_final/03_stencil.svg",
+      "sha256": "9fa5d27b20dfb42c3a402742033fbd4db6c7490ee743709a2895358e95352cdf",
+      "bytes": 31978,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/svg_final/04_serial.svg",
+      "sha256": "7fe34ae8402a0bbb1deade77671757e3fa6dbadea2b3ca578b7f27b5fe616871",
+      "bytes": 3086,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/svg_final/05_mpi.svg",
+      "sha256": "3f34d2e6e79b82294395b3e8e7ee64c48db6c9451186e1596afe61db8727973b",
+      "bytes": 4046,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/svg_final/06_openmp.svg",
+      "sha256": "a113950ebbf89be9e33f3fd1edeb2e00b5b82576d8e20809007acc7769504dd0",
+      "bytes": 4071,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/svg_final/07_validation.svg",
+      "sha256": "b9b2e4947a29f0c7df6957e1d067ead5e84bdabf492ee00fb0d9b44f22ba11cf",
+      "bytes": 5881,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/svg_final/08_performance.svg",
+      "sha256": "0a573e57e309e842a8a967c90d3d024b9966e7b90fe7be9045b700a632e2c504",
+      "bytes": 5014,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/svg_final/09_scalability.svg",
+      "sha256": "5e482a04106fd20402f582a3656f7794f368bb4883156047ff381e3888cbc2c5",
+      "bytes": 5239,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/svg_final/10_conclusion.svg",
+      "sha256": "dc0ad630e52d4fa774662ae3a0903dc513e1e99034933d23ae1649b4a14546a7",
+      "bytes": 2014,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/svg_final/11_timing.svg",
+      "sha256": "2ad6abcaba6caf6b12066a8618040a70bb4f72dabb95c6210ece4d31983817be",
+      "bytes": 6033,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/svg_final/12_full_scaling.svg",
+      "sha256": "11e9faf60ff84c6b3cc6c83d6ddb06c37b68094c2fb1c59fac4a4615e94a5f23",
+      "bytes": 326162,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/svg_final/13_grid.svg",
+      "sha256": "641f0c0bd7c05b4de536c7bd59234a07e6646b3451bf8d7ac3512f53b2608f41",
+      "bytes": 288938,
+      "action": "remove"
+    },
+    {
+      "path": "report/heat-defense_ppt169_20261112/svg_final/14_interpretation.svg",
+      "sha256": "2d3b1cdd909b38801b9e2e5611bf41b84d1270f48fd1fdaf3f632526bf3f8665",
+      "bytes": 3471,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/current/presentation-v4-r1-contact.png",
+      "sha256": "98450f66266d63ebdae4cd7e5150af0ae04e6a1937393744bd99a5cb73377034",
+      "bytes": 884979,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/current/presentation-v4-r1-render-check.json",
+      "sha256": "305d0f2be361d0fd3eb2dac96a85ea12eb435b021582a6abaceb5ad0a8f22da1",
+      "bytes": 1768,
+      "action": "move",
+      "new_path": "report/records/presentation-history/current/presentation-v4-r1-render-check.json"
+    },
+    {
+      "path": "report/presentation/current/presentation-v4-r1.pdf",
+      "sha256": "6784efdee7ca5f16abe2fc174f777ab91522df6c52d01485372f56bd08ad6dfb",
+      "bytes": 711278,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/current/presentation-v4-r1.pptx",
+      "sha256": "edbff4ceccef48c98dff9f06a939a4f1d154c74539b53c192be0566b17f6a3c3",
+      "bytes": 596202,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/current/presentation-v4-r1_postflight.json",
+      "sha256": "b75de30eb580365389c696acaef018ff7c519f076ddaea500d1f4b73007f39d3",
+      "bytes": 6949,
+      "action": "move",
+      "new_path": "report/records/presentation-history/current/presentation-v4-r1_postflight.json"
+    },
+    {
+      "path": "report/presentation/current/presentation-v5-contact.png",
+      "sha256": "5836ec82fccae898ebdf8fc9d1a7606dcf1da319e7f045540b0c69e7b773f1b1",
+      "bytes": 1058599,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/current/presentation-v5-render-check.json",
+      "sha256": "539c9477cd346161d245a0d25e4e830b1144b1660aa50dcfc2d48b758da3fc10",
+      "bytes": 2841,
+      "action": "move",
+      "new_path": "report/records/presentation-history/current/presentation-v5-render-check.json"
+    },
+    {
+      "path": "report/presentation/current/presentation-v5-wps-contact.png",
+      "sha256": "5c6decdb25cbbf3f1c8b85972cc6e31a5588b7317638950969cd9020a101017f",
+      "bytes": 362146,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/current/presentation-v5-wps-r1-contact.png",
+      "sha256": "bcb4efa7fd5e5bf274bd407694fb9a20080b2166e5d63df8e36aff94fd595b8c",
+      "bytes": 379872,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/current/presentation-v5-wps-r1-p09-p10.png",
+      "sha256": "2887b9d5fb0cb6a12026d50f8db3c6ee912cc24a68dac4ee453b2aa8e5ab40d1",
+      "bytes": 238720,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/current/presentation-v5-wps-r1.pdf",
+      "sha256": "53192658e8c5d1561481bf18c0b6924a602d6e430a7331c6e12587ed50509adf",
+      "bytes": 1622288,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/current/presentation-v5-wps-r1.pptx",
+      "sha256": "79a282abfe9807ddc0d0033414f665a4a023f7534f43b1ed04e275c6caebfa1f",
+      "bytes": 590097,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/current/presentation-v5-wps-r2.pptx",
+      "sha256": "4f2583ac4410c6448bcdb1a9609243edc85b15a84a544715b91b60543911b609",
+      "bytes": 602866,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/current/presentation-v5-wps.pdf",
+      "sha256": "bfb16a0dadc31c36d57c0a8d185a0636d15415b7d31a44f365db3bfd05e92dbd",
+      "bytes": 1510607,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/current/presentation-v5-wps.pptx",
+      "sha256": "8f5d073aa33711b09533e61fd64dbe1f63ddc087ee47814d6f906629531c0ee4",
+      "bytes": 514276,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/current/presentation-v5.pdf",
+      "sha256": "19799f9cf61bd42bc18945c46f3ae28a20f9dff223dd5843a914a55a150d6d49",
+      "bytes": 611935,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/current/presentation-v5.pptx",
+      "sha256": "daf66c8b3ffc8bd827fc744e87a042030e9009a17891814dcc35e95344a8d547",
+      "bytes": 436099,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/current/presentation-v5_postflight.json",
+      "sha256": "cbd924c00fb1e8607870723d4def65eb7fa7f95386abb00ae672d383214d33b8",
+      "bytes": 10303,
+      "action": "move",
+      "new_path": "report/records/presentation-history/current/presentation-v5_postflight.json"
+    },
+    {
+      "path": "report/presentation/history/v1/presentation-contact.png",
+      "sha256": "a28005f35f56e0c0f2d10c3a7ac158015ca46d8940a344ee8af73fe66e7000ed",
+      "bytes": 1017899,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/history/v1/presentation.pdf",
+      "sha256": "e482f35a6b1e6fd3e1685d82116df5ba72c84a5f312e9a19ff362bcef2e88f81",
+      "bytes": 920032,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/history/v1/presentation.pptx",
+      "sha256": "729c324f011863a7a14256a4b5c291f3e80ab41ed4f66f229400ec6eb2602ead",
+      "bytes": 581181,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/history/v1/presentation_postflight.json",
+      "sha256": "9f6003a9704372f2629ab1a930978d87e595dffec4a61da83d454cb697f39108",
+      "bytes": 6879,
+      "action": "move",
+      "new_path": "report/records/presentation-history/history/v1/presentation_postflight.json"
+    },
+    {
+      "path": "report/presentation/history/v2/presentation-v2-contact.png",
+      "sha256": "562ab14a1721f5dabe7b835835b9f2efc94e78038fdb26ee0684ed2424ed4a14",
+      "bytes": 274360,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/history/v2/presentation-v2.pdf",
+      "sha256": "c445b361aeb893ee891f718bb7bcd682c879f6f46e14d74c58bcb14be1c6601d",
+      "bytes": 760022,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/history/v2/presentation-v2.pptx",
+      "sha256": "7a3f1a71e8b8d5836190a848714807d1ae1fced679fd957285005d4b108a4239",
+      "bytes": 583688,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/history/v2/presentation-v2_postflight.json",
+      "sha256": "2ff05fcbb1dcef1294f9cb44af27662c76589d446f786827ba97bd88993cba8f",
+      "bytes": 6949,
+      "action": "move",
+      "new_path": "report/records/presentation-history/history/v2/presentation-v2_postflight.json"
+    },
+    {
+      "path": "report/presentation/history/v3/presentation-v3-contact.png",
+      "sha256": "f69a0d238dd0d6f84f2dc54585c6d9deafd9cf63b0ca11f813e4aee1aa2d6c0a",
+      "bytes": 498537,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/history/v3/presentation-v3-p03.png",
+      "sha256": "aa6c507f7551af9701e799698b70a971385bdc4d28b720dd967c450ff584e37e",
+      "bytes": 127044,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/history/v3/presentation-v3-render-check.json",
+      "sha256": "6ef4957b2b34f57b46de45a5ce6e4accc0df78af01b9e527438c00d185304fc7",
+      "bytes": 2311,
+      "action": "move",
+      "new_path": "report/records/presentation-history/history/v3/presentation-v3-render-check.json"
+    },
+    {
+      "path": "report/presentation/history/v3/presentation-v3.pdf",
+      "sha256": "134df20a91fa04c3ecb795f05526a5c2934607499541bd2ea4e4388738d351dd",
+      "bytes": 688915,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/history/v3/presentation-v3.pptx",
+      "sha256": "22aeefb9db9d941ebab3208d7cf9f3fd2320207b9efcf3f3be558e567b7a9da2",
+      "bytes": 585046,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/history/v3/presentation-v3_postflight.json",
+      "sha256": "342b9121d0d63130b047ae8dd8957e1d70057887a9e30ce4e26b94352bf22aa6",
+      "bytes": 6949,
+      "action": "move",
+      "new_path": "report/records/presentation-history/history/v3/presentation-v3_postflight.json"
+    },
+    {
+      "path": "report/presentation/history/v4/presentation-v4-contact.png",
+      "sha256": "1327025ad17e1f12cd07a3bcf24dafcd684f01137cf74ee08dbd04a3ba6e1a5c",
+      "bytes": 960131,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/history/v4/presentation-v4-render-check.json",
+      "sha256": "282d1b2e9420b270f373a8c66875e7618f49caa2b0d4a010a8350f03ff097733",
+      "bytes": 1785,
+      "action": "move",
+      "new_path": "report/records/presentation-history/history/v4/presentation-v4-render-check.json"
+    },
+    {
+      "path": "report/presentation/history/v4/presentation-v4.pdf",
+      "sha256": "5f07e432c4e7e7a8d7efe307be640e433955f3d184115cce7d1fdb390b322981",
+      "bytes": 704613,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/history/v4/presentation-v4.pptx",
+      "sha256": "aaa21d22e6b032c1a20ce8bceff64b26fbe8e44adc7ecf4065dbc7d0233e5953",
+      "bytes": 588519,
+      "action": "remove"
+    },
+    {
+      "path": "report/presentation/history/v4/presentation-v4_postflight.json",
+      "sha256": "079b37e437b0994025eda5e52030fb9dff5bdfaff8c5be9a7beab76a14927126",
+      "bytes": 6949,
+      "action": "move",
+      "new_path": "report/records/presentation-history/history/v4/presentation-v4_postflight.json"
+    }
+  ],
+  "retained": {
+    "report/presentation/current/presentation-v5-wps-r4.pdf": "c5ae73695206636287b9fa5b885d11384eb040aa21e9b80133f5a6ed5ea263bc",
+    "report/presentation/current/presentation-v5-wps-r3.pdf": "46c44f64bfb1ca0356e680aa194be250463fc15b82b9dc48b6a779b8a783134f",
+    "report/presentation/current/presentation-v5-wps-r4-contact.png": "02d91ff6b7b9c290d63fba08586cbb3dfd5e0dd69616de9f6453ab850a09af04",
+    "report/presentation/current/presentation-v5-wps-r3.pptx": "6e8777620c37ccbc6561939a9aa1630f09418638add9d279cc487f81efd444e9",
+    "report/presentation/current/presentation-v5-wps-r3-contact.png": "b9ba3f4618e3cb710536c85cc8036ad8c69c6d7df697d2c42f400cf87009ebb4",
+    "report/presentation/current/presentation-v5-wps-r3-changes.png": "508d82b5b4c42663a5c561e550ebc6f8e03b5e79babac3c2d65b0d27f3ad2075",
+    "report/presentation/current/presentation-v5-wps-r4.pptx": "b7283acec89bf73f96e107cf4bd4a003c48d8b1694864d39406e1e5799a8ec3e",
+    "report/FINAL_REPORT.md": "c40765d2691457399052f029a981d78468bf0583c123cb474acf366c8f77d5f2",
+    "report/FINAL_REPORT.pdf": "d195a79091e3a3cf839716d3f2599a5d6ece983883f0b563e58e544d4f4f7dbc"
+  },
+  "verification": {
+    "backup_hashes": "passed",
+    "protected_src_tests_results_report_and_retained_ppt_hashes": "passed",
+    "pptx_count_excluding_tools_and_course_sources": 2,
+    "packages": {
+      "report/presentation/current/presentation-v5-wps-r3.pptx": {
+        "slides": 16,
+        "pdf_pages": 16,
+        "zip_xml": "passed",
+        "sha256": "6e8777620c37ccbc6561939a9aa1630f09418638add9d279cc487f81efd444e9"
+      },
+      "report/presentation/current/presentation-v5-wps-r4.pptx": {
+        "slides": 16,
+        "pdf_pages": 16,
+        "zip_xml": "passed",
+        "sha256": "b7283acec89bf73f96e107cf4bd4a003c48d8b1694864d39406e1e5799a8ec3e"
+      }
+    },
+    "markdown_broken_links": [],
+    "python_compile": "passed",
+    "historical_checker_help": "passed",
+    "numerical_tests": "not run: file cleanup only",
+    "visual_review": "not run: retained original bytes"
+  }
+}

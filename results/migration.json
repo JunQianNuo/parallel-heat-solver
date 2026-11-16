@@ -14,7 +14,7 @@
       "new": "results/RESULTS.md",
       "sha256": "b1cb90c1c77a357f6c98f58ae7b4fa7f4b64e3921f9dd113e30602c5bfa6cede",
       "snapshot": "results/performance/baseline/RESULTS.original.txt",
-      "current_sha256": "31a7882cfbdeb7559bdaacaa0a6b9e68dde12f18cbc78f69fa546dc7234312b4"
+      "current_sha256": "ed68f247ae718965f5caa5754cac70c627aa77059ac3ece296fd7075a36c5583"
     },
     {
       "old": "docs/performance/SHA256SUMS",
@@ -184,22 +184,42 @@
     {
       "old": "docs/validation/m4-diagnostic-02-console.log",
       "new": "results/performance/large-02/m4-diagnostic-02-console.log",
-      "sha256": "26b3c084b66bfa5f9af53196e16144acf43c50382e0aef6bf8c1eb9154dc32a8"
+      "sha256": "26b3c084b66bfa5f9af53196e16144acf43c50382e0aef6bf8c1eb9154dc32a8",
+      "removed": {
+        "date": "2026-11-16",
+        "reason": "user_requested_deletion",
+        "backup": "/home/nuo/courses/projects/parallel-heat-solver-large-02-backup-20261116"
+      }
     },
     {
       "old": "docs/validation/m4-diagnostic-02-failed-1.csv",
       "new": "results/performance/large-02/m4-diagnostic-02-failed-1.csv",
-      "sha256": "3967989e01e1df3af9d5fee91309fcf0ba70bfa5b23df67530504930cd7d1835"
+      "sha256": "3967989e01e1df3af9d5fee91309fcf0ba70bfa5b23df67530504930cd7d1835",
+      "removed": {
+        "date": "2026-11-16",
+        "reason": "user_requested_deletion",
+        "backup": "/home/nuo/courses/projects/parallel-heat-solver-large-02-backup-20261116"
+      }
     },
     {
       "old": "docs/validation/m4-diagnostic-02-failed-1.stderr",
       "new": "results/performance/large-02/m4-diagnostic-02-failed-1.stderr",
-      "sha256": "09ee30bd363f3cbb2dac7c803d30b04cdc6b1708cc8a8f214fb4a4aa0e17a9d2"
+      "sha256": "09ee30bd363f3cbb2dac7c803d30b04cdc6b1708cc8a8f214fb4a4aa0e17a9d2",
+      "removed": {
+        "date": "2026-11-16",
+        "reason": "user_requested_deletion",
+        "backup": "/home/nuo/courses/projects/parallel-heat-solver-large-02-backup-20261116"
+      }
     },
     {
       "old": "docs/validation/m4-diagnostic-02-failure.log",
       "new": "results/performance/large-02/m4-diagnostic-02-failure.log",
-      "sha256": "2c0dd0141db2ad2970ff946b14d060d9188898746f7d541d7ce6e66bf8047dde"
+      "sha256": "2c0dd0141db2ad2970ff946b14d060d9188898746f7d541d7ce6e66bf8047dde",
+      "removed": {
+        "date": "2026-11-16",
+        "reason": "user_requested_deletion",
+        "backup": "/home/nuo/courses/projects/parallel-heat-solver-large-02-backup-20261116"
+      }
     },
     {
       "old": "docs/validation/m4-diagnostic-02-r1-audit.log",
@@ -279,22 +299,42 @@
     {
       "old": "docs/validation/m4-diagnostic-02.json",
       "new": "results/performance/large-02/m4-diagnostic-02.json",
-      "sha256": "fbc35618e497156602e9aa8a036dac3d3b9dd85d9b51185ec5a74f05b8af19d4"
+      "sha256": "fbc35618e497156602e9aa8a036dac3d3b9dd85d9b51185ec5a74f05b8af19d4",
+      "removed": {
+        "date": "2026-11-16",
+        "reason": "user_requested_deletion",
+        "backup": "/home/nuo/courses/projects/parallel-heat-solver-large-02-backup-20261116"
+      }
     },
     {
       "old": "docs/validation/m4-diagnostic-02.jsonl",
       "new": "results/performance/large-02/m4-diagnostic-02.jsonl",
-      "sha256": "ecc9733536fbb972cc5fcd5da71ecede95acaf2af97f138f3550c0fdcf435623"
+      "sha256": "ecc9733536fbb972cc5fcd5da71ecede95acaf2af97f138f3550c0fdcf435623",
+      "removed": {
+        "date": "2026-11-16",
+        "reason": "user_requested_deletion",
+        "backup": "/home/nuo/courses/projects/parallel-heat-solver-large-02-backup-20261116"
+      }
     },
     {
       "old": "docs/validation/m4-diagnostic-02.log",
       "new": "results/performance/large-02/m4-diagnostic-02.log",
-      "sha256": "df14ca0cf47cbf1ae186190b14070b3954bf0967ced46022076c24bb19e4011a"
+      "sha256": "df14ca0cf47cbf1ae186190b14070b3954bf0967ced46022076c24bb19e4011a",
+      "removed": {
+        "date": "2026-11-16",
+        "reason": "user_requested_deletion",
+        "backup": "/home/nuo/courses/projects/parallel-heat-solver-large-02-backup-20261116"
+      }
     },
     {
       "old": "docs/validation/m4-diagnostic-02.sha256",
       "new": "results/performance/large-02/m4-diagnostic-02.sha256",
-      "sha256": "2365ef118e605e45e773c578d91d5750c9f691f1838ec9f6ec46ba206167cf37"
+      "sha256": "2365ef118e605e45e773c578d91d5750c9f691f1838ec9f6ec46ba206167cf37",
+      "removed": {
+        "date": "2026-11-16",
+        "reason": "user_requested_deletion",
+        "backup": "/home/nuo/courses/projects/parallel-heat-solver-large-02-backup-20261116"
+      }
     },
     {
       "old": "docs/validation/m4-diagnostic-debug-checks.log",

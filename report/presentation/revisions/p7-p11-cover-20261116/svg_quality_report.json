@@ -1,0 +1,489 @@
+{
+  "schema": "ppt-master.svg-quality-report.v1",
+  "stage": "final",
+  "target": "/home/nuo/courses/projects/parallel-heat-solver/build/logs/m5-p7-p11-cover-20261116/roundtrip-latest",
+  "source_fingerprint": {
+    "algorithm": "sha256",
+    "digest": "f4b2f9a363300d672b53c6bb3ad43321cd6a62913bfe97d2678a1225ed88c29e",
+    "file_count": 17,
+    "files": [
+      {
+        "file": "authoring-svg-flat/cover.svg",
+        "sha256": "e71b004f0aa5945cecaae9eee2d42136c14c937f4617064e9ef9e1a5ac2e7c6e"
+      },
+      {
+        "file": "authoring-svg-flat/slide_01.svg",
+        "sha256": "867a4e7d40019782650e3946875fc687cc0e77582198fa4099192937e369d5ce"
+      },
+      {
+        "file": "authoring-svg-flat/slide_02.svg",
+        "sha256": "cade84c2022c7a9f897957827eb64e3f7d45a42ecb2bc904443918163f20456b"
+      },
+      {
+        "file": "authoring-svg-flat/slide_03.svg",
+        "sha256": "6c21f280344efebc48153244177f1c63d36c76d07afc8d425d6f497ce379d47f"
+      },
+      {
+        "file": "authoring-svg-flat/slide_04.svg",
+        "sha256": "d24f6c223245a48f1addc8df857ec7ede4b8aa72703be4a751a35144eb4b57bc"
+      },
+      {
+        "file": "authoring-svg-flat/slide_05.svg",
+        "sha256": "bdc3e0fea24554cdbfc4261ee7a536df9fb07dca1bee781a54738e37bf782e49"
+      },
+      {
+        "file": "authoring-svg-flat/slide_06.svg",
+        "sha256": "dbab63320f1209a59bb43d2934de27098604f81620cb8a035ea164685a1f26ed"
+      },
+      {
+        "file": "authoring-svg-flat/slide_07.svg",
+        "sha256": "7f78dfb944f70c8f21dbd0d1a64b7009bcce9cfe4b974263b896b29779e0fe05"
+      },
+      {
+        "file": "authoring-svg-flat/slide_08.svg",
+        "sha256": "d9a90c3969ea0db25be4be70d700d8a40ad9771a36dcc78bb386035de044bf1e"
+      },
+      {
+        "file": "authoring-svg-flat/slide_09.svg",
+        "sha256": "12db1a17d5285931b93e7db30e1dbb39bec1e760ab36dab848c777ede1e39c6c"
+      },
+      {
+        "file": "authoring-svg-flat/slide_10.svg",
+        "sha256": "cc93257753b0266afa548c04061d97b6f02788006c000c532f2ca07bfcd671a5"
+      },
+      {
+        "file": "authoring-svg-flat/slide_11.svg",
+        "sha256": "f49e69e1d704e5c3fe5a731a74a23846957e8d1b83a70c6385c7930f51bbdd55"
+      },
+      {
+        "file": "authoring-svg-flat/slide_12.svg",
+        "sha256": "61d9b3d0a1764c020950a89ee1a794242e785bc3d29378215217376f3294eb2b"
+      },
+      {
+        "file": "authoring-svg-flat/slide_13.svg",
+        "sha256": "ded754b0c0273446d8eeab9a015415114c04ee9e0c5f1f9767397efd14a31665"
+      },
+      {
+        "file": "authoring-svg-flat/slide_14.svg",
+        "sha256": "ec614fc9f9340fa3febf06616959454a35d9f6edbe3a9a1a49448358a54e4eb7"
+      },
+      {
+        "file": "authoring-svg-flat/slide_15.svg",
+        "sha256": "086e0a96ad374022d4073db15462fbbcd89d424a258aecd5eaf113d4f5ad4cf9"
+      },
+      {
+        "file": "page_plan.json",
+        "sha256": "9bc7f1cc6a0d312147cb6117f1f00086fa0bd81a18511870c7e2c5a8c435a3d3"
+      }
+    ]
+  },
+  "summary": {
+    "total": 16,
+    "passed": 16,
+    "warnings": 0,
+    "errors": 0
+  },
+  "issue_types": {},
+  "categories": {
+    "blocking": {
+      "count": 0,
+      "issues": []
+    },
+    "introduced": {
+      "count": 0,
+      "issues": []
+    },
+    "inherited": {
+      "count": 0,
+      "issues": []
+    },
+    "source-import": {
+      "count": 0,
+      "summary": {
+        "warning_count": 0,
+        "by_code": {}
+      }
+    }
+  },
+  "drift": {
+    "colors": {},
+    "fonts": {},
+    "sizes": {}
+  },
+  "carrier_receipt": {
+    "scope": "informational-not-a-quota",
+    "pages": 0,
+    "totals": {
+      "text_elements": 0,
+      "image_placements": 0,
+      "icons": 0,
+      "svg_geometry_elements": 0,
+      "preset_shapes": 0,
+      "page_frame_elements": 0,
+      "marker_uses": 0,
+      "inline_emphasis_runs": 0,
+      "gradient_uses": 0,
+      "filter_uses": 0,
+      "text_effects": 0
+    },
+    "pages_with": {
+      "images": 0,
+      "icons": 0,
+      "presets": 0,
+      "charts": 0,
+      "tables": 0,
+      "formulas": 0,
+      "inline_emphasis_runs": 0,
+      "gradient_uses": 0,
+      "filter_uses": 0,
+      "text_effects": 0
+    },
+    "relationship_pages": null,
+    "geometry_elements": {},
+    "preset_names": {},
+    "native_objects": {},
+    "image_page_max_frame_share_range": []
+  },
+  "project_issues": {
+    "template": [],
+    "animation": [],
+    "illustration": [],
+    "communication_trace": [],
+    "pptx_structure": []
+  },
+  "files": [
+    {
+      "file": "cover.svg",
+      "path": "/home/nuo/courses/projects/parallel-heat-solver/build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/authoring-svg-flat/cover.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 1,
+        "source_slide": 11,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 5,
+        "fonts": [
+          "KaiTi, Arial",
+          "SimHei, Arial"
+        ],
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 0,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "e71b004f0aa5945cecaae9eee2d42136c14c937f4617064e9ef9e1a5ac2e7c6e"
+    },
+    {
+      "file": "slide_01.svg",
+      "path": "/home/nuo/courses/projects/parallel-heat-solver/build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/authoring-svg-flat/slide_01.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 2,
+        "source_slide": 1,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 0,
+        "roundtrip_text_calibration": {
+          "factor": 0.1,
+          "measured_unchanged": 19,
+          "positive_unchanged": 6
+        }
+      },
+      "passed": true,
+      "source_sha256": "867a4e7d40019782650e3946875fc687cc0e77582198fa4099192937e369d5ce"
+    },
+    {
+      "file": "slide_02.svg",
+      "path": "/home/nuo/courses/projects/parallel-heat-solver/build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/authoring-svg-flat/slide_02.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 3,
+        "source_slide": 2,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 0,
+        "roundtrip_text_calibration": {
+          "factor": 0.1,
+          "measured_unchanged": 21,
+          "positive_unchanged": 11
+        }
+      },
+      "passed": true,
+      "source_sha256": "cade84c2022c7a9f897957827eb64e3f7d45a42ecb2bc904443918163f20456b"
+    },
+    {
+      "file": "slide_03.svg",
+      "path": "/home/nuo/courses/projects/parallel-heat-solver/build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/authoring-svg-flat/slide_03.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 4,
+        "source_slide": 3,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 0,
+        "roundtrip_text_calibration": {
+          "factor": 0.1,
+          "measured_unchanged": 24,
+          "positive_unchanged": 15
+        }
+      },
+      "passed": true,
+      "source_sha256": "6c21f280344efebc48153244177f1c63d36c76d07afc8d425d6f497ce379d47f"
+    },
+    {
+      "file": "slide_04.svg",
+      "path": "/home/nuo/courses/projects/parallel-heat-solver/build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/authoring-svg-flat/slide_04.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 5,
+        "source_slide": 4,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 0,
+        "roundtrip_text_calibration": {
+          "factor": 0.1,
+          "measured_unchanged": 16,
+          "positive_unchanged": 5
+        }
+      },
+      "passed": true,
+      "source_sha256": "d24f6c223245a48f1addc8df857ec7ede4b8aa72703be4a751a35144eb4b57bc"
+    },
+    {
+      "file": "slide_05.svg",
+      "path": "/home/nuo/courses/projects/parallel-heat-solver/build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/authoring-svg-flat/slide_05.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 6,
+        "source_slide": 5,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 0,
+        "roundtrip_text_calibration": {
+          "factor": 0.06084800000000087,
+          "measured_unchanged": 26,
+          "positive_unchanged": 4
+        }
+      },
+      "passed": true,
+      "source_sha256": "bdc3e0fea24554cdbfc4261ee7a536df9fb07dca1bee781a54738e37bf782e49"
+    },
+    {
+      "file": "slide_06.svg",
+      "path": "/home/nuo/courses/projects/parallel-heat-solver/build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/authoring-svg-flat/slide_06.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 7,
+        "source_slide": 6,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 0,
+        "roundtrip_text_calibration": {
+          "factor": 0.06084800000000087,
+          "measured_unchanged": 31,
+          "positive_unchanged": 5
+        }
+      },
+      "passed": true,
+      "source_sha256": "dbab63320f1209a59bb43d2934de27098604f81620cb8a035ea164685a1f26ed"
+    },
+    {
+      "file": "slide_07.svg",
+      "path": "/home/nuo/courses/projects/parallel-heat-solver/build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/authoring-svg-flat/slide_07.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 8,
+        "source_slide": 7,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 16,
+        "fonts": [
+          "Arial, KaiTi",
+          "Cambria Math, Arial"
+        ],
+        "roundtrip_text_calibration": {
+          "factor": 0.1,
+          "measured_unchanged": 11,
+          "positive_unchanged": 4
+        }
+      },
+      "passed": true,
+      "source_sha256": "7f78dfb944f70c8f21dbd0d1a64b7009bcce9cfe4b974263b896b29779e0fe05"
+    },
+    {
+      "file": "slide_08.svg",
+      "path": "/home/nuo/courses/projects/parallel-heat-solver/build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/authoring-svg-flat/slide_08.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 9,
+        "source_slide": 8,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 0,
+        "roundtrip_text_calibration": {
+          "factor": 0.08307394736842127,
+          "measured_unchanged": 24,
+          "positive_unchanged": 8
+        }
+      },
+      "passed": true,
+      "source_sha256": "d9a90c3969ea0db25be4be70d700d8a40ad9771a36dcc78bb386035de044bf1e"
+    },
+    {
+      "file": "slide_09.svg",
+      "path": "/home/nuo/courses/projects/parallel-heat-solver/build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/authoring-svg-flat/slide_09.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 10,
+        "source_slide": 9,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 0,
+        "roundtrip_text_calibration": {
+          "factor": 0.07442444012046562,
+          "measured_unchanged": 26,
+          "positive_unchanged": 5
+        }
+      },
+      "passed": true,
+      "source_sha256": "12db1a17d5285931b93e7db30e1dbb39bec1e760ab36dab848c777ede1e39c6c"
+    },
+    {
+      "file": "slide_10.svg",
+      "path": "/home/nuo/courses/projects/parallel-heat-solver/build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/authoring-svg-flat/slide_10.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 11,
+        "source_slide": 10,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 0,
+        "roundtrip_text_calibration": {
+          "factor": 0.1,
+          "measured_unchanged": 27,
+          "positive_unchanged": 2
+        }
+      },
+      "passed": true,
+      "source_sha256": "cc93257753b0266afa548c04061d97b6f02788006c000c532f2ca07bfcd671a5"
+    },
+    {
+      "file": "slide_11.svg",
+      "path": "/home/nuo/courses/projects/parallel-heat-solver/build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/authoring-svg-flat/slide_11.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 12,
+        "source_slide": 11,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 18,
+        "fonts": [
+          "Arial",
+          "KaiTi, Arial",
+          "SimHei, Arial"
+        ],
+        "roundtrip_text_calibration": {
+          "factor": 0.06058956322591025,
+          "measured_unchanged": 5,
+          "positive_unchanged": 1
+        }
+      },
+      "passed": true,
+      "source_sha256": "f49e69e1d704e5c3fe5a731a74a23846957e8d1b83a70c6385c7930f51bbdd55"
+    },
+    {
+      "file": "slide_12.svg",
+      "path": "/home/nuo/courses/projects/parallel-heat-solver/build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/authoring-svg-flat/slide_12.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 13,
+        "source_slide": 12,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 0,
+        "roundtrip_text_calibration": {
+          "factor": 0.1,
+          "measured_unchanged": 23,
+          "positive_unchanged": 11
+        }
+      },
+      "passed": true,
+      "source_sha256": "61d9b3d0a1764c020950a89ee1a794242e785bc3d29378215217376f3294eb2b"
+    },
+    {
+      "file": "slide_13.svg",
+      "path": "/home/nuo/courses/projects/parallel-heat-solver/build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/authoring-svg-flat/slide_13.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 14,
+        "source_slide": 13,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 0,
+        "roundtrip_text_calibration": {
+          "factor": 0.1,
+          "measured_unchanged": 11,
+          "positive_unchanged": 4
+        }
+      },
+      "passed": true,
+      "source_sha256": "ded754b0c0273446d8eeab9a015415114c04ee9e0c5f1f9767397efd14a31665"
+    },
+    {
+      "file": "slide_14.svg",
+      "path": "/home/nuo/courses/projects/parallel-heat-solver/build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/authoring-svg-flat/slide_14.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 15,
+        "source_slide": 14,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 0,
+        "roundtrip_text_calibration": {
+          "factor": 0.06058956322591025,
+          "measured_unchanged": 8,
+          "positive_unchanged": 2
+        }
+      },
+      "passed": true,
+      "source_sha256": "ec614fc9f9340fa3febf06616959454a35d9f6edbe3a9a1a49448358a54e4eb7"
+    },
+    {
+      "file": "slide_15.svg",
+      "path": "/home/nuo/courses/projects/parallel-heat-solver/build/logs/m5-p7-p11-cover-20261116/roundtrip-latest/authoring-svg-flat/slide_15.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 16,
+        "source_slide": 15,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 0,
+        "roundtrip_text_calibration": {
+          "factor": 0.1,
+          "measured_unchanged": 17,
+          "positive_unchanged": 6
+        }
+      },
+      "passed": true,
+      "source_sha256": "086e0a96ad374022d4073db15462fbbcd89d424a258aecd5eaf113d4f5ad4cf9"
+    }
+  ]
+}

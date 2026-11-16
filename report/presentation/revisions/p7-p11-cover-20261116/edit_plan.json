@@ -1,0 +1,35 @@
+{
+  "scope": "P07 D column; P11 summary/AI/member placeholders; new cover before current P01",
+  "confirmation": "User supplied presenter/member names and logo source, requested member contributions and AI example left blank",
+  "summary": [
+    "完成三种求解器",
+    "误差约二阶收敛，已测串并行结果一致",
+    "并行收益受实现与配置影响"
+  ],
+  "ai_statement": "AI辅助代码实现与报告初稿",
+  "blank_fields": [
+    "王君豪实际分工",
+    "靳卓凡实际分工",
+    "AI使用环节",
+    "核查与采纳实例"
+  ],
+  "cover": {
+    "title": "二维热传导方程的串行与并行数值求解",
+    "presenter": "靳卓凡",
+    "members": [
+      "王君豪",
+      "靳卓凡"
+    ],
+    "logo": "User-specified dehaze PDF cover image xref 32; source file read-only",
+    "school_name": false,
+    "date": false
+  },
+  "roster_pages": 16,
+  "current_p07_output": 8,
+  "current_p11_output": 12,
+  "page_numbers": "No global changes to inherited footer text; cover has no footer",
+  "animations": "No additions; source preserved",
+  "narration": false,
+  "native_table_activation": false,
+  "table": "Native-ready data + visible editable vector fallback; retain mathematical fonts and scripts; no rasterization"
+}

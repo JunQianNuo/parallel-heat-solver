@@ -1,0 +1,95 @@
+[
+  {
+    "N": 20,
+    "M": 400,
+    "builds": [
+      "debug",
+      "release"
+    ],
+    "D_inf": 0.0,
+    "solvers": {
+      "mpi": {
+        "samples": 8,
+        "max_D_inf": 0.0,
+        "actual_parallelism": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "openmp": {
+        "samples": 10,
+        "max_D_inf": 0.0,
+        "actual_parallelism": [
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    }
+  },
+  {
+    "N": 40,
+    "M": 1600,
+    "builds": [
+      "debug",
+      "release"
+    ],
+    "D_inf": 0.0,
+    "solvers": {
+      "mpi": {
+        "samples": 8,
+        "max_D_inf": 0.0,
+        "actual_parallelism": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "openmp": {
+        "samples": 10,
+        "max_D_inf": 0.0,
+        "actual_parallelism": [
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    }
+  },
+  {
+    "N": 80,
+    "M": 6400,
+    "builds": [
+      "debug",
+      "release"
+    ],
+    "D_inf": 0.0,
+    "solvers": {
+      "mpi": {
+        "samples": 8,
+        "max_D_inf": 0.0,
+        "actual_parallelism": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "openmp": {
+        "samples": 10,
+        "max_D_inf": 0.0,
+        "actual_parallelism": [
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    }
+  }
+]
