@@ -1,0 +1,85 @@
+{
+  "charts": [
+    {
+      "page": "08_performance.svg",
+      "object": "n1024-speedup",
+      "mode": "direct-calc",
+      "scale": [
+        0,
+        4
+      ],
+      "calculator_runs": 2,
+      "points_checked": 10,
+      "intervals_checked": 10,
+      "max_coordinate_error_px": 0.0008567163329757932
+    },
+    {
+      "page": "12_full_scaling.svg",
+      "object": "full-grid-speedup",
+      "mode": "manual-verify",
+      "reason": "embedded complete provided raster; geometry retained from verified original",
+      "byte_identity": true
+    },
+    {
+      "page": "13_grid.svg",
+      "object": "across-grid-speedup",
+      "mode": "manual-verify",
+      "reason": "embedded complete provided raster; geometry retained from verified original",
+      "byte_identity": true
+    }
+  ],
+  "carrier_review": {
+    "preset_absence": "网格、负责行和内存场的边界均是矩形；额外折角或非矩形轮廓会误示数据归属，因此由矩形、圆点和直线表达。",
+    "direction_and_sequence": "细线端箭头直接连接数据读写位置、循环返回和通信源/目标，保持网格坐标及行副本清楚，不以宽块箭头遮挡科学关系。",
+    "grouping_and_ownership": "行编号与矩形分区已明确表示唯一归属；附加括号或牌框会混入新的拥有范围。",
+    "emphasis_and_annotation": "短标签就近附着于变量、halo和同步步骤；不额外画气泡，避免遮挡依赖关系。",
+    "gradients_and_filters_absence": "温度示意用明确标注的透明同色区域；数据图的颜色用于区分系列，渐变/阴影会引入额外的强度或层级暗示。",
+    "inline_emphasis": "两类误差使用同一段内的蓝色加粗标签。",
+    "paragraph_advisories": "5项提示涉及独立数学条件、参数字段及指标行，保留分开的可编辑文本框；长叙述段落已使用tspan换行。"
+  },
+  "timing": {
+    "main_pages": 10,
+    "backup_pages": 4,
+    "budget_seconds": [
+      25,
+      20,
+      40,
+      20,
+      35,
+      30,
+      25,
+      40,
+      30,
+      15
+    ],
+    "sum_seconds": 280,
+    "chars_by_page": [
+      82,
+      68,
+      114,
+      75,
+      106,
+      106,
+      85,
+      138,
+      131,
+      51
+    ],
+    "main_chars": 956,
+    "estimate_assumption": "280 counted CJK/Latin/digit characters per minute + 20 seconds pauses",
+    "estimate_seconds": 224.9,
+    "manual_rehearsal": "未运行/待本人验证"
+  },
+  "self_containment": {
+    "checked": true,
+    "forbidden_internal_references_found": false,
+    "report_md_sha256": "f532838d294884b5c6c62c4d6f864f4df2f20d329d909439aa33fbbab6986243"
+  },
+  "animations_sidecar_exists": false,
+  "preservation": {
+    "files": 2696,
+    "changed": [],
+    "course_source_files": 2570,
+    "report_markdown_and_pdf": "original user bytes preserved"
+  }
+}

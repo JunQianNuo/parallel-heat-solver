@@ -8,14 +8,14 @@
 ## communication
 - primary_language: zh-CN
 - audience: 并行与分布式计算课程教师
-- objective: 在5分钟沿算法依赖、代码划分同步、两类误差及真实性能证据解释三实现，使教师能追问基线/计时/S/E和Amdahl/Gustafson适用边界，并披露AI核查。
+- objective: 面向只能接触PPT和最终报告的课程教师，按模型、均匀网格、显式差分、串行与并行实现、主要测试结果说明算法和分工及通信同步，并完整解释比较条件和AI修正实例，不依赖仓库或实验专属报告。
 - core_message: 正确性有证据，并行收益有条件
 - consumption_mode: presentation
 
 ## mode
 - mode: custom
 - mode_references: instructional
-- mode_behavior: 同一问题→懂算法→懂MPI/OpenMP代码→懂两类验证→懂基线/计时/S/E→两个定律与真实结论边界。
+- mode_behavior: 从薄板及条件进入，沿均匀网格、五点读写、串行完整推进、MPI连续分块和OpenMP交错分行逐步建立理解，再给出两类验证、固定规模及扩大工作量结果和AI实例。
 
 ## visual_style
 - visual_style: custom
@@ -27,6 +27,7 @@
 - navigation: #092F51
 - footer_lower: #0B3D69
 - inactive: #8497A8
+- secondary_text: #8497A8
 - body_text: #000000
 - divider: #C9D7E3
 
@@ -57,17 +58,27 @@
 
 ## page_rhythm
 - P01: anchor
-- P02: dense
+- P02: breathing
 - P03: dense
-- P04: dense
+- P04: breathing
 - P05: dense
 - P06: dense
 - P07: dense
-- P08: anchor
+- P08: dense
 - P09: dense
-- P10: dense
+- P10: anchor
 - P11: dense
 - P12: dense
+- P13: dense
+- P14: dense
+
+## page_visualizations
+- P07: table/record_table
+- P08: chart/line_chart
+- P09: table/metric_table
+- P11: table/comparison_matrix
+- P12: chart/line_chart
+- P13: chart/line_chart
 
 ## images
 - full-strong: images/02-speedup.png | source=user | crop=no-crop
@@ -79,3 +90,4 @@
 ## forbidden
 - `mask`, `<style>`, `class`, external CSS, `<foreignObject>`, `textPath`, `@font-face`, `<animate*>`, `<set>`, `<script>` / event attributes, `<iframe>`
 - HTML named entities in text; write typography as raw Unicode and escape XML reserved characters
+- 请不要出现实验专属的报告 (user)

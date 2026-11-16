@@ -1,0 +1,33 @@
+{
+  "scope": "current v5 presentation only; no numerical solver runs",
+  "passed": true,
+  "slide_count": 14,
+  "main_pages": 10,
+  "backup_pages": 4,
+  "notes": 14,
+  "native_math_objects": 4,
+  "editable_text_runs": 298,
+  "source_image_bytes_preserved": true,
+  "chart_points": 10,
+  "chart_intervals": 10,
+  "max_coordinate_error_px": 0.0008567163329757932,
+  "budget_seconds": [
+    25,
+    20,
+    40,
+    20,
+    35,
+    30,
+    25,
+    40,
+    30,
+    15
+  ],
+  "main_script_characters": 956,
+  "speech_estimate_seconds": 224.9,
+  "speech_assumption": "280 characters/min + 20s pauses; not a timed human rehearsal",
+  "pptx_sha256": "09be612096e18a53b5f5350bc66ccfa7fa30d62a0363e2fbe39ea35cadd7eee1",
+  "pdf_sha256": "19799f9cf61bd42bc18945c46f3ae28a20f9dff223dd5843a914a55a150d6d49",
+  "report_md_sha256": "f532838d294884b5c6c62c4d6f864f4df2f20d329d909439aa33fbbab6986243",
+  "manual_PowerPoint_and_rehearsal": "未运行/待本人验证"
+}

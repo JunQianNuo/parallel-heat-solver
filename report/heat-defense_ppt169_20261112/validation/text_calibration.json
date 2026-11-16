@@ -9,13 +9,11 @@
       "caps_chars_per_100px": 4.5,
       "digits_chars_per_100px": 4.3,
       "citation_chars_per_100px": 4.5,
-      "script_clusters_per_100px": {
-        "Greek": 4.2
-      },
+      "script_clusters_per_100px": {},
       "longest_planned_line": {
-        "px": 5054.6,
-        "slide": "P12",
-        "text": "这是模型含义，不是本项目测得的上限。从实测S得到的有效f包含通信/同步、实现差…"
+        "px": 5023.9,
+        "slide": "P05",
+        "text": "同一N=8网格的7条内部行分给3进程，rank0/1/2负责1–3/4–5/6…"
       }
     },
     "title": {
@@ -27,13 +25,11 @@
       "caps_chars_per_100px": 4.1,
       "digits_chars_per_100px": 3.9,
       "citation_chars_per_100px": 4.1,
-      "script_clusters_per_100px": {
-        "Greek": 3.8
-      },
+      "script_clusters_per_100px": {},
       "longest_planned_line": {
-        "px": 932.8,
-        "slide": "P07",
-        "text": "固定规模性能：独立串行基线、加速比与效率"
+        "px": 792.9,
+        "slide": "P01",
+        "text": "二维热传导方程的串行与并行数值求解"
       }
     },
     "annotation": {
@@ -45,9 +41,7 @@
       "caps_chars_per_100px": 6.0,
       "digits_chars_per_100px": 5.7,
       "citation_chars_per_100px": 6.0,
-      "script_clusters_per_100px": {
-        "Greek": 5.6
-      },
+      "script_clusters_per_100px": {},
       "longest_planned_line": null
     },
     "compact_lead": {
@@ -59,9 +53,7 @@
       "caps_chars_per_100px": 5.3,
       "digits_chars_per_100px": 5.0,
       "citation_chars_per_100px": 5.3,
-      "script_clusters_per_100px": {
-        "Greek": 5.0
-      },
+      "script_clusters_per_100px": {},
       "longest_planned_line": null
     },
     "cover": {
@@ -73,9 +65,7 @@
       "caps_chars_per_100px": 3.1,
       "digits_chars_per_100px": 3.0,
       "citation_chars_per_100px": 3.1,
-      "script_clusters_per_100px": {
-        "Greek": 2.9
-      },
+      "script_clusters_per_100px": {},
       "longest_planned_line": null
     },
     "data": {
@@ -87,9 +77,7 @@
       "caps_chars_per_100px": 5.2,
       "digits_chars_per_100px": 5.7,
       "citation_chars_per_100px": 6.6,
-      "script_clusters_per_100px": {
-        "Greek": 5.6
-      },
+      "script_clusters_per_100px": {},
       "longest_planned_line": null
     },
     "diagram": {
@@ -101,9 +89,7 @@
       "caps_chars_per_100px": 5.0,
       "digits_chars_per_100px": 4.8,
       "citation_chars_per_100px": 5.0,
-      "script_clusters_per_100px": {
-        "Greek": 4.7
-      },
+      "script_clusters_per_100px": {},
       "longest_planned_line": null
     },
     "footnote": {
@@ -115,9 +101,7 @@
       "caps_chars_per_100px": 9.0,
       "digits_chars_per_100px": 8.6,
       "citation_chars_per_100px": 9.0,
-      "script_clusters_per_100px": {
-        "Greek": 8.5
-      },
+      "script_clusters_per_100px": {},
       "longest_planned_line": null
     },
     "lead": {
@@ -129,9 +113,7 @@
       "caps_chars_per_100px": 4.5,
       "digits_chars_per_100px": 4.3,
       "citation_chars_per_100px": 4.5,
-      "script_clusters_per_100px": {
-        "Greek": 4.2
-      },
+      "script_clusters_per_100px": {},
       "longest_planned_line": null
     },
     "math_script": {
@@ -143,9 +125,7 @@
       "caps_chars_per_100px": 8.2,
       "digits_chars_per_100px": 7.8,
       "citation_chars_per_100px": 8.2,
-      "script_clusters_per_100px": {
-        "Greek": 7.7
-      },
+      "script_clusters_per_100px": {},
       "longest_planned_line": null
     },
     "navigation": {
@@ -157,17 +137,13 @@
       "caps_chars_per_100px": 9.0,
       "digits_chars_per_100px": 8.6,
       "citation_chars_per_100px": 9.0,
-      "script_clusters_per_100px": {
-        "Greek": 8.5
-      },
+      "script_clusters_per_100px": {},
       "longest_planned_line": null
     }
   },
-  "script_samples": {
-    "Greek": "ππΔααΔαΔασασσ"
-  },
+  "script_samples": {},
   "source": "spec_lock.md",
-  "generated_at": "2026-11-14T09:30:37Z",
+  "generated_at": "2026-11-15T18:33:33Z",
   "notes": [
     "every role is measured at normal weight; recalibrate a role realized as bold deck-wide with --role NAME:FAMILY:SIZE:bold: bold widens Latin and digits about 7%, while the bundled advance table gives CJK one width for both weights"
   ]

@@ -1070,3 +1070,243 @@ argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/check_ann
 stdout:
   [OK] No annotations found.
 === 2026-11-14T11:23:10.009Z END run=04c74b9ec3b4 elapsed_ms=3 output_lines=1 retained=1 omitted=0 ===
+
+=== 2026-11-15T18:33:32.505Z PYTHON run=181ecccaf902 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/project_manager.py", "validate", "report/heat-defense_ppt169_20261112"]
+stdout:
+  [OK] Project structure is complete.
+=== 2026-11-15T18:33:33.057Z END run=181ecccaf902 elapsed_ms=552 output_lines=3 retained=1 omitted=2 ===
+
+=== 2026-11-15T18:33:33.150Z PYTHON run=a8537cf9394c ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/analyze_images.py", "report/heat-defense_ppt169_20261112/images"]
+stdout:
+  [REPORT] Image analysis CSV: /home/nuo/courses/projects/parallel-heat-solver/report/heat-defense_ppt169_20261112/analysis/image_analysis.csv
+=== 2026-11-15T18:33:33.238Z END run=a8537cf9394c elapsed_ms=88 output_lines=16 retained=1 omitted=15 ===
+
+=== 2026-11-15T18:33:33.320Z PYTHON run=4aa4e40e5389 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/text_measure.py", "calibrate", "report/heat-defense_ppt169_20261112", "--outline"]
+=== 2026-11-15T18:33:33.472Z END run=4aa4e40e5389 elapsed_ms=151 output_lines=20 retained=0 omitted=20 ===
+
+=== 2026-11-15T18:33:52.372Z PYTHON run=b9cf32268e0e ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/home/nuo/courses/projects/parallel-heat-solver/build/tools/python/bin/python", "/home/nuo/.codex/skills/ppt-master/scripts/svg_editor/server.py", "report/heat-defense_ppt169_20261112", "--live", "--daemon"]
+stderr:
+  [02:33:53] [INFO] svg_editor: started live preview in background: http://127.0.0.1:6060 (pid=147216)
+  [02:33:53] [INFO] svg_editor: log: /home/nuo/courses/projects/parallel-heat-solver/report/heat-defense_ppt169_20261112/live_preview/server.log
+  [02:33:53] [INFO] svg_editor: browser launch request accepted by OS: http://127.0.0.1:6060
+=== 2026-11-15T18:33:53.603Z END run=b9cf32268e0e elapsed_ms=1231 output_lines=3 retained=3 omitted=0 ===
+
+=== 2026-11-15T18:39:00.012Z PYTHON run=db559a13b68c ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/svg_quality_checker.py", "report/heat-defense_ppt169_20261112", "--canonical-authoring", "--stage", "early", "--json"]
+stdout:
+  [WARN] 01_model.svg - Passed (with warnings)
+     [WARN] Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (3 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): conditions:font-size None -> '36'; text[25]:font-size '36' -> None; text[26]:font-size '36' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)
+     [WARN] <text> (x=280, y=603; text='初始温度示意') exceeds <g id="plate"> data-pptx-bounds on the vertical axis: content (179.2, 577.5)-(380.8, 613.5), container (40.0, 140.0)-(520.0, 610.0), overflow horizontal 0.0%, vertical 0.7% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+     [WARN] Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id="model"> x=580.0, y=248.0..299.0, 2 lines; <g id="conditions"> x=580.0, y=376.0..432.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy="0". Keep semantically independent text frames separate.
+  [OK] 03_stencil.svg - Passed
+  [ERROR] 05_mpi.svg - Failed
+     viewBox: 0 0 1280 720
+     [ERROR] <text> (x=270, y=545; text='示意 N = 8，P = 3，连续分为 …') exceeds the root viewBox on the horizontal axis: content (-5.2, 519.5)-(545.2, 555.5), canvas (0.0, 0.0)-(1280.0, 720.0), overflow horizontal 0.4%, vertical 0.0%; move or reflow the text until its estimated bounds stay on-page; ≈27.5 px per mixed char at 30px without headroom; ≈46 chars fit in 1280 px
+     [WARN] Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (3 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): mpi-step:text-anchor None -> 'middle'; text[51]:text-anchor 'middle' -> None; text[52]:text-anchor 'middle' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)
+  [SUMMARY] Check Summary
+  Total files: 5
+    [OK] Fully passed: 1 (20%)
+    [WARN] With warnings: 3 (60%)
+    [ERROR] With errors: 1 (20%)
+  Provenance categories:
+    blocking: 1          hard findings; gate also requires exit 0
+    introduced: 6        advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 5 | text: 105 | images: 0 | icons: 0
+    Geometry: SVG elements 140 | native presets 0 | page-frame elements 5 | marker uses 8
+    Effects: inline emphasis 0 (pages 0) | gradients 0 (pages 0) | filters 0 (pages 0) | text effects 0 (pages 0)
+    Native objects: charts 0 | tables 0 | formulas 1
+    Presets: (none)
+  [REPORT] JSON quality report exported: report/heat-defense_ppt169_20261112/validation/svg_quality_early_report.json
+=== 2026-11-15T18:39:00.679Z END run=db559a13b68c elapsed_ms=666 output_lines=47 retained=26 omitted=21 ===
+
+=== 2026-11-15T18:39:10.757Z PYTHON run=8d7b6019d94a ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/svg_quality_checker.py", "report/heat-defense_ppt169_20261112", "--canonical-authoring", "--stage", "early", "--json"]
+stdout:
+  [WARN] 01_model.svg - Passed (with warnings)
+     [WARN] Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (3 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): conditions:font-size None -> '36'; text[25]:font-size '36' -> None; text[26]:font-size '36' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)
+     [WARN] Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id="model"> x=580.0, y=248.0..299.0, 2 lines; <g id="conditions"> x=580.0, y=376.0..432.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy="0". Keep semantically independent text frames separate.
+  [WARN] 02_grid.svg - Passed (with warnings)
+  [OK] 03_stencil.svg - Passed
+  [SUMMARY] Check Summary
+  Total files: 5
+    [OK] Fully passed: 2 (40%)
+    [WARN] With warnings: 3 (60%)
+    [ERROR] With errors: 0 (0%)
+  Provenance categories:
+    blocking: 0          hard findings; gate also requires exit 0
+    introduced: 5        advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 5 | text: 105 | images: 0 | icons: 0
+    Geometry: SVG elements 140 | native presets 0 | page-frame elements 5 | marker uses 8
+  [REPORT] JSON quality report exported: report/heat-defense_ppt169_20261112/validation/svg_quality_early_report.json
+=== 2026-11-15T18:39:11.397Z END run=8d7b6019d94a elapsed_ms=640 output_lines=43 retained=19 omitted=24 ===
+
+=== 2026-11-15T18:47:01.919Z PYTHON run=994fa13903ce ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/compact_svg_styles.py", "report/heat-defense_ppt169_20261112/svg_output", "--inplace"]
+=== 2026-11-15T18:47:01.930Z END run=994fa13903ce elapsed_ms=10 output_lines=1 retained=0 omitted=1 ===
+
+=== 2026-11-15T18:47:02.139Z PYTHON run=10d75c234705 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/stamp_native_fallbacks.py", "report/heat-defense_ppt169_20261112/svg_output", "--write"]
+=== 2026-11-15T18:47:02.154Z END run=10d75c234705 elapsed_ms=15 output_lines=15 retained=0 omitted=15 ===
+
+=== 2026-11-15T18:47:02.231Z PYTHON run=5fb168f29d6b ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/svg_quality_checker.py", "report/heat-defense_ppt169_20261112", "--canonical-authoring", "--stage", "final", "--json"]
+stdout:
+  [WARN] 01_model.svg - Passed (with warnings)
+     [WARN] Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id="model"> x=580.0, y=248.0..299.0, 2 lines; <g id="conditions"> x=580.0, y=376.0..432.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy="0". Keep semantically independent text frames separate.
+  [WARN] 02_grid.svg - Passed (with warnings)
+     [WARN] Detected 1 paragraph-like line run(s) split across sibling <text> elements (<g id="space-definition"> x=595.0, y=251.0..308.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy="0". Keep semantically independent text frames separate.
+  [OK] 03_stencil.svg - Passed
+  [ERROR] 08_performance.svg - Failed
+     viewBox: 0 0 1280 720
+     [ERROR] <text> (x=60, y=199; text='独立串行 Tₛ = 35.3892 s；…') exceeds <g id="performance-conditions"> data-pptx-bounds on the vertical axis: content (60.0, 173.5)-(1223.1, 209.5), container (40.0, 125.0)-(1240.0, 205.0), overflow horizontal 0.0%, vertical 5.6% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+     [ERROR] <text> (x=850, y=551; text='16 线程：21.4382 s，反而变慢') exceeds <g id="key-results"> data-pptx-bounds on the horizontal axis: content (850.0, 525.5)-(1312.8, 561.5), container (835.0, 220.0)-(1240.0, 590.0), overflow horizontal 18.0%, vertical 0.0% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text; ≈25.7 px per mixed char at 30px incl. headroom; ≈15 chars fit in 405 px
+     [ERROR] <text> (x=640, y=660; text='非独占 WSL；16 个执行单元使用 1…') exceeds <g id="performance-caveats"> data-pptx-bounds on the vertical axis: content (131.1, 634.5)-(1148.9, 670.5), container (40.0, 600.0)-(1240.0, 666.0), overflow horizontal 0.0%, vertical 6.8% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+     [WARN] <text> (x=62, y=231; text='S') exceeds <g id="n1024-speedup"> data-pptx-bounds on the vertical axis: content (62.0, 205.5)-(80.5, 241.5), container (40.0, 215.0)-(810.0, 590.0), overflow horizontal 0.0%, vertical 2.5% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+     [WARN] <text> (x=447, y=231; text='● MPI') exceeds <g id="n1024-speedup"> data-pptx-bounds on the vertical axis: content (447.0, 205.5)-(526.3, 241.5), container (40.0, 215.0)-(810.0, 590.0), overflow horizontal 0.0%, vertical 2.5% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+     [WARN] <text> (x=625, y=231; text='■ OpenMP') exceeds <g id="n1024-speedup"> data-pptx-bounds on the vertical axis: content (625.0, 205.5)-(771.5, 241.5), container (40.0, 215.0)-(810.0, 590.0), overflow horizontal 0.0%, vertical 2.5% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+     [WARN] <text> (x=850, y=584; text='S = 1.6508，E = 10.32…') exceeds <g id="key-results"> data-pptx-bounds on the vertical axis: content (850.0, 558.5)-(1226.3, 594.5), container (835.0, 220.0)-(1240.0, 590.0), overflow horizontal 0.0%, vertical 1.2% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+  [ERROR] 12_full_scaling.svg - Failed
+     viewBox: 0 0 1280 720
+     [ERROR] <text> (x=925, y=469; text='16 个执行单元使用 14 个可见 co…') exceeds <g id="complete-results-reading"> data-pptx-bounds on the horizontal axis: content (925.0, 443.5)-(1281.5, 569.5), container (910.0, 145.0)-(1240.0, 645.0), overflow horizontal 12.6%, vertical 0.0% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text; ≈32.4 px per mixed char at 30px incl. headroom; ≈10 chars fit in 330 px
+     [ERROR] <text> (x=925, y=630; text='更多线程不保证更快。') exceeds <g id="complete-results-reading"> data-pptx-bounds on the horizontal axis: content (925.0, 604.5)-(1261.0, 640.5), container (910.0, 145.0)-(1240.0, 645.0), overflow horizontal 6.4%, vertical 0.0% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text; ≈33.6 px per CJK char at 30px incl. headroom; ≈9 chars fit in 330 px
+  [WARN] 13_grid.svg - Passed (with warnings)
+     viewBox: 0 0 1280 720
+     [WARN] <text> (x=640, y=168; text='单位物理域不变；T = 0.01，α =…') exceeds <g id="grid-conditions"> data-pptx-bounds on the horizontal axis: content (8.0, 142.5)-(1272.0, 178.5), container (40.0, 125.0)-(1240.0, 191.0), overflow horizontal 2.7%, vertical 0.0% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text; ≈26.3 px per mixed char at 30px incl. headroom; ≈45 chars fit in 1200 px
+  [WARN] 14_interpretation.svg - Passed (with warnings)
+  [SUMMARY] Check Summary
+  Total files: 14
+    [OK] Fully passed: 4 (28%)
+    [WARN] With warnings: 8 (57%)
+    [ERROR] With errors: 2 (14%)
+  Provenance categories:
+    blocking: 5          hard findings; gate also requires exit 0
+    introduced: 19       advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 14 | text: 283 | images: 2 | icons: 0
+    Geometry: SVG elements 236 | native presets 0 | page-frame elements 14 | marker uses 9
+  [REPORT] JSON quality report exported: report/heat-defense_ppt169_20261112/validation/svg_quality_report.json
+=== 2026-11-15T18:47:03.139Z END run=5fb168f29d6b elapsed_ms=907 output_lines=83 retained=36 omitted=47 ===
+
+=== 2026-11-15T18:49:25.118Z PYTHON run=3387ca326014 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/stamp_native_fallbacks.py", "report/heat-defense_ppt169_20261112/svg_output", "--write"]
+=== 2026-11-15T18:49:25.129Z END run=3387ca326014 elapsed_ms=11 output_lines=15 retained=0 omitted=15 ===
+
+=== 2026-11-15T18:49:25.202Z PYTHON run=939a5f262a6d ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/svg_quality_checker.py", "report/heat-defense_ppt169_20261112", "--canonical-authoring", "--stage", "final", "--json"]
+stdout:
+  [WARN] 01_model.svg - Passed (with warnings)
+     [WARN] Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id="model"> x=580.0, y=248.0..299.0, 2 lines; <g id="conditions"> x=580.0, y=376.0..432.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy="0". Keep semantically independent text frames separate.
+  [WARN] 02_grid.svg - Passed (with warnings)
+     [WARN] Detected 1 paragraph-like line run(s) split across sibling <text> elements (<g id="space-definition"> x=595.0, y=251.0..308.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy="0". Keep semantically independent text frames separate.
+  [OK] 03_stencil.svg - Passed
+  [ERROR] 08_performance.svg - Failed
+     viewBox: 0 0 1280 720
+     [ERROR] <text> (x=850, y=551; text='16线程：21.4382 s（更慢）') exceeds <g id="key-results"> data-pptx-bounds on the horizontal axis: content (850.0, 525.5)-(1269.6, 561.5), container (835.0, 220.0)-(1240.0, 600.0), overflow horizontal 7.3%, vertical 0.0% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text; ≈24.7 px per mixed char at 30px incl. headroom; ≈16 chars fit in 405 px
+     [WARN] Detected 3 paragraph-like line run(s) split across sibling <text> elements (<g id="performance-conditions"> x=60.0, y=160.0..194.0, 2 lines; <g id="key-results"> x=850.0, y=307.0..350.0, 2 lines; <g id="key-results"> x=850.0, y=455.0..584.0, 4 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy="0". Keep semantically independent text frames separate.
+  [WARN] 09_scalability.svg - Passed (with warnings)
+     viewBox: 0 0 1280 720
+     [WARN] Detected 1 paragraph-like line run(s) split across sibling <text> elements (<g id="across-grid-comparison"> x=100.0, y=214.0..261.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy="0". Keep semantically independent text frames separate.
+  [ERROR] 12_full_scaling.svg - Failed
+     viewBox: 0 0 1280 720
+     [ERROR] <text> (x=925, y=469; text='16 个逻辑 CPU分布于 14 可见 …') exceeds <g id="complete-results-reading"> data-pptx-bounds on the horizontal axis: content (925.0, 443.5)-(1260.2, 569.5), container (910.0, 145.0)-(1240.0, 645.0), overflow horizontal 6.1%, vertical 0.0% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text; ≈27.9 px per mixed char at 30px incl. headroom; ≈11 chars fit in 330 px
+  [OK] 13_grid.svg - Passed
+     viewBox: 0 0 1280 720
+  [OK] 14_interpretation.svg - Passed
+     viewBox: 0 0 1280 720
+  [SUMMARY] Check Summary
+  Total files: 14
+    [OK] Fully passed: 8 (57%)
+    [WARN] With warnings: 4 (28%)
+    [ERROR] With errors: 2 (14%)
+  Provenance categories:
+    blocking: 2          hard findings; gate also requires exit 0
+    introduced: 5        advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 14 | text: 283 | images: 2 | icons: 0
+    Geometry: SVG elements 237 | native presets 0 | page-frame elements 14 | marker uses 9
+  [REPORT] JSON quality report exported: report/heat-defense_ppt169_20261112/validation/svg_quality_report.json
+=== 2026-11-15T18:49:26.085Z END run=939a5f262a6d elapsed_ms=882 output_lines=66 retained=33 omitted=33 ===
+
+=== 2026-11-15T18:49:51.201Z PYTHON run=35c12a06eaf8 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/svg_quality_checker.py", "report/heat-defense_ppt169_20261112", "--canonical-authoring", "--stage", "final", "--json"]
+stdout:
+  [WARN] 01_model.svg - Passed (with warnings)
+     [WARN] Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id="model"> x=580.0, y=248.0..299.0, 2 lines; <g id="conditions"> x=580.0, y=376.0..432.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy="0". Keep semantically independent text frames separate.
+  [WARN] 02_grid.svg - Passed (with warnings)
+     [WARN] Detected 1 paragraph-like line run(s) split across sibling <text> elements (<g id="space-definition"> x=595.0, y=251.0..308.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy="0". Keep semantically independent text frames separate.
+  [OK] 03_stencil.svg - Passed
+  [SUMMARY] Check Summary
+  Total files: 14
+    [OK] Fully passed: 9 (64%)
+    [WARN] With warnings: 5 (35%)
+    [ERROR] With errors: 0 (0%)
+  Provenance categories:
+    blocking: 0          hard findings; gate also requires exit 0
+    introduced: 5        advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 14 | text: 283 | images: 2 | icons: 0
+    Geometry: SVG elements 237 | native presets 0 | page-frame elements 14 | marker uses 9
+  [REPORT] JSON quality report exported: report/heat-defense_ppt169_20261112/validation/svg_quality_report.json
+=== 2026-11-15T18:49:52.097Z END run=35c12a06eaf8 elapsed_ms=896 output_lines=62 retained=19 omitted=43 ===
+
+=== 2026-11-15T18:53:56.974Z PYTHON run=8bda8203a479 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/total_md_split.py", "report/heat-defense_ppt169_20261112"]
+stdout:
+  [OK] SVG files and notes have one-to-one correspondence
+  [Done] Successfully generated 14/14 file(s)
+  [Done] Notes splitting complete
+=== 2026-11-15T18:53:56.984Z END run=8bda8203a479 elapsed_ms=9 output_lines=23 retained=3 omitted=20 ===
+
+=== 2026-11-15T18:54:01.516Z PYTHON run=b58f067126a8 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/finalize_svg.py", "report/heat-defense_ppt169_20261112"]
+stdout:
+  [OK] Done!
+=== 2026-11-15T18:54:02.612Z END run=b58f067126a8 elapsed_ms=1096 output_lines=12 retained=1 omitted=11 ===
+
+=== 2026-11-15T18:54:08.296Z PYTHON run=c0c0a5883ab2 ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/home/nuo/courses/projects/parallel-heat-solver/build/tools/python/bin/python", "/home/nuo/.codex/skills/ppt-master/scripts/svg_to_pptx.py", "report/heat-defense_ppt169_20261112", "--no-animations"]
+stdout:
+  [Done] Saved: report/heat-defense_ppt169_20261112/exports/heat-defense_20261116_025409.pptx
+    [POSTFLIGHT] status=passed-with-warnings quality_gate=passed slides=14 warning_categories=1
+    [POSTFLIGHT][WARNING] quality_introduced_warnings=5
+    [PPTX] report/heat-defense_ppt169_20261112/exports/heat-defense_20261116_025409.pptx
+    [REPORT] report/heat-defense_ppt169_20261112/validation/heat-defense_20261116_025409.report.json
+=== 2026-11-15T18:54:09.874Z END run=c0c0a5883ab2 elapsed_ms=1577 output_lines=55 retained=5 omitted=50 ===
+
+=== 2026-11-16T01:33:08.205Z PYTHON run=1eb9e0ae342d ===
+cwd: /home/nuo/courses/projects/parallel-heat-solver
+argv: ["/usr/bin/python3", "/home/nuo/.codex/skills/ppt-master/scripts/project_manager.py", "validate", "report/heat-defense_ppt169_20261112"]
+stdout:
+  [OK] Project structure is complete.
+=== 2026-11-16T01:33:08.785Z END run=1eb9e0ae342d elapsed_ms=581 output_lines=3 retained=1 omitted=2 ===

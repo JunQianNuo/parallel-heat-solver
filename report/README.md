@@ -1,6 +1,8 @@
-# 书面报告
+# 书面报告与答辩材料
 
-当前工作（2026-11-16）：按用户完整目录统一报告总标题及各级标题：35个指定节点，27处替换、8处保持；正文、公式、表格与数据保持最新保存稿原文。封面与PDF属性标题已同步为“二维热传导方程的串行与并行数值求解”；16页PDF全部实际渲染，35个标题逐项核对。保留此前未提交修改，本轮未提交推送，PPT暂停。
+当前工作（2026-11-16）：用户已确认PPT新规范及“面向非实现者、只接触PPT和最终报告”的要求。已完成[新版v5 PPTX](presentation/current/presentation-v5.pptx)、[14页PDF](presentation/current/presentation-v5.pdf)及[渲染总览](presentation/current/presentation-v5-contact.png)：10页正文＋4备份、280秒预算。讲稿、问答和核查入口已同步；实际LibreOffice打开并检查全部页，用户验收和人工实讲待完成。
+
+书面报告以最新保存的FINAL_REPORT.md为准；本轮保持报告源稿及现有PDF原字节，PDF尚未同步最近人工修改。以下报告/PPT暂停及旧页数记录均保留此前语境。
 
 本轮报告修订（2026-11-15）：将报告6.4拆为6.4.1“Amdahl定律：固定规模下的加速表现”和6.4.2“Gustafson定律：扩大工作量后的可扩展性”，保留原分析、公式、数据及其他正文。已同步13页PDF，两个子节完整位于第11页，四级标题及正文衔接已实际渲染检查。工作区既有的图表重绘和报告修改保留，本轮未自动提交推送。
 
@@ -13,7 +15,7 @@
 | 文件 | 用途 |
 | --- | --- |
 | [FINAL_REPORT.md](FINAL_REPORT.md) | 书面报告的唯一编辑源稿，后续内容修改从这里开始 |
-| [FINAL_REPORT.pdf](FINAL_REPORT.pdf) | 本轮从当前Markdown生成的16页A4预览，已逐页渲染检查 |
+| [FINAL_REPORT.pdf](FINAL_REPORT.pdf) | 此前生成的16页A4预览，尚未同步最近人工修改 |
 
 第6节按“固定规模的实际加速效果—扩大工作量的吞吐变化—两个定律分析—诊断因素—实验限制”展开。使用两张重新设计的结果图，增加便于比较的原实验、工作量、吞吐和诊断表格；结论直接对应实测结果，资源/轮次/时钟限制集中说明。
 
@@ -28,8 +30,8 @@ report/
 ├── check_report.py                     独立核查报告，不依赖PPT
 ├── README.md / SHA256SUMS              本入口与当前文件校验清单
 ├── records/                            M5准备、历史核查、目录迁移和本轮报告检查
-├── presentation/                       既有PPT成品、讲稿、问答和相关工具
-│   ├── current/                        最近既有v4-r1；仍待用户验收
+├── presentation/                       PPT成品、逐页讲稿、问答和相关工具
+│   ├── current/                        最新v5（10正文＋4备份），保留v4-r1
 │   └── history/v1…v4/                  历版成品保留
 ├── heat-defense_ppt169_20261112/        既有PPT制作工作区，位置保留
 └── paperbanana/                        制图工具调研、输入样稿和独立机理图
@@ -40,7 +42,7 @@ report/
 | 其他入口 | 内容 |
 | --- | --- |
 | [records/README.md](records/README.md) | 准备说明、历史审核记录、旧校验清单及本轮迁移检查的区别 |
-| [presentation/README.md](presentation/README.md) | PPT各版本、讲稿、问答和后续恢复制作所需命令；当前不推进 |
+| [presentation/README.md](presentation/README.md) | PPT各版本、讲稿、问答、当前v5核查与生成命令 |
 | [PPT工作区说明](heat-defense_ppt169_20261112/README.md) | 规范、源SVG、素材副本、备注与工具审计 |
 | [制图调研与素材](paperbanana/README.md) | PaperBanana安装调研及本地绘制的SVG/PNG/PDF；属于辅助素材 |
 
@@ -68,7 +70,7 @@ build/tools/python/bin/python report/render_report.py --font /mnt/c/Windows/Font
 
 生成需要reportlab、Pillow及Matplotlib；默认只读使用本机Microsoft YaHei字体，可用`--font`指定其他已有中文TrueType字体。字体、工具环境和临时数学图片不入Git。该生成命令本轮已运行。生成器同步正文日期到页脚，逐项排版编号步骤，保留伪代码缩进并避免整段跨页，行内数学字号/基线随正文或表格字号，并将图与图注保持同页。
 
-后续先按教师要求审阅报告内容与排版，再由用户安排PPT任务。个人信息、实际人工复核与最终验收由用户确认，不以历史M4验收替代。
+后续由用户审阅当前PPT与报告，完成个人信息和实际计时演练。个人信息、实际人工复核与最终验收由用户确认，不以历史M4验收替代。
 
 
 2026-11-16图表更新：已按最新选择恢复按网格分组子图的N、M，重新生成9组图替换原文件，同步当前用户稿的13页PDF；两张结果图位于第10页。统计核查通过，PPT保持。前文去掉M为历史选择。

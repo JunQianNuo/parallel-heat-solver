@@ -1,119 +1,140 @@
 #!/usr/bin/env python3
-"""Check authored report provenance and links without running any solver."""
-import csv, hashlib, json, re, xml.etree.ElementTree as ET
-from zipfile import ZipFile
+"""Check the current defense deck against saved inputs; never run a solver."""
+import argparse
+import csv
+import hashlib
+import json
+import re
+import xml.etree.ElementTree as ET
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]
-REPO=ROOT.parent
+from zipfile import ZipFile
 
-def require(condition,message):
-    if not condition: raise ValueError(message)
+ROOT = Path(__file__).resolve().parents[1]
+REPO = ROOT.parent
+PROJECT = ROOT / 'heat-defense_ppt169_20261112'
+NS = {'s': 'http://www.w3.org/2000/svg'}
+
+
+def require(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
 
 def main():
-    files=[p for p in ROOT.rglob('*.md') if not any(x in p.parts for x in ['backup','live_preview','svg_final'])]
-    links=0
-    for p in files:
-        txt=p.read_text()
-        require(txt.count('```')%2==0,f'unclosed fence: {p}')
-        for target in re.findall(r'\]\(([^)]+)\)',txt):
-            if re.match(r'https?://|#',target):continue
-            require((p.parent/target.split('#')[0]).exists(),f'missing link {p}: {target}');links+=1
-    report=(ROOT/'FINAL_REPORT.md').read_text()
-    rows=list(csv.DictReader((REPO/'results/performance/large-02-r1/m4-diagnostic-02-r1.csv').open(newline='')))
-    for N in [384,512,768,1024]:
-        selected={(r['kind'],int(r['actual'])):r for r in rows if int(r['N'])==N}
-        for kind,p in [('mpi',16),('openmp',8),('openmp',16)]:
-            r=selected[kind,p]
-            require(f"{float(r['speedup_serial']):.4f}" in report,f'missing rounded speedup {N}/{kind}/{p}')
-        require(f"{float(selected['mpi',16]['efficiency'])*100:.2f}%" in report,f'missing efficiency {N}')
-    m3=list(csv.DictReader((REPO/'results/validation/m3-errors.csv').open()))
-    for r in m3:
-        if r['build']=='debug' and r['suite']=='default' and r['solver']=='serial' and r['ratio']:
-            require(f"{float(r['ratio']):.6f}" in report,'M3 ratio mismatch')
-            require(f"{float(r['order']):.6f}" in report,'M3 order mismatch')
-    notes=(ROOT/'presentation/SPEAKER_NOTES.md').read_text()
-    pages=re.findall(r'## P(\d+) .*?· (\d+)秒[^\n]*\n\n(.*?)(?=\n## |\Z)',notes,re.S)
-    require(len(pages)==8,'expected eight main-script pages')
-    require(sum(int(t) for _,t,_ in pages)==280,'expected 280 seconds')
-    speech=[]
-    for n,t,txt in pages:
-        count=len(re.findall('[\u4e00-\u9fffA-Za-z0-9]',txt))
-        speech.append({'page':n,'budget_seconds':int(t),'CJK_and_alphanumeric_characters':count,'characters_per_budget_minute':round(count/int(t)*60,1)})
-    total=sum(p['CJK_and_alphanumeric_characters'] for p in speech)
-    # Explicit scenario, not an observed human speech rate or timed rehearsal.
-    scenario={'assumed_characters_per_minute':280,'assumed_pause_seconds':20,'estimated_total_seconds':round(total/280*60+20,1),'human_rehearsal':'未运行/待用户验证'}
-    for kind,k in [('mpi',16),('openmp',8),('openmp',16)]:
-        row=next(r for r in rows if r['N']=='1024' and r['kind']==kind and int(r['actual'])==k)
-        slide_text=''.join(ET.parse(ROOT/'heat-defense_ppt169_20261112/svg_output/07_performance.svg').getroot().itertext())
-        require(f"S={float(row['speedup_serial']):.4f}" in slide_text,'P07 speedup mismatch')
-        require(f"E={float(row['efficiency'])*100:.2f}%" in slide_text,'P07 efficiency mismatch')
-    pdf=ROOT/'FINAL_REPORT.pdf'
-    require(pdf.read_bytes().startswith(b'%PDF'),'invalid PDF signature')
-    project=ROOT/'heat-defense_ppt169_20261112'
-    ns={'s':'http://www.w3.org/2000/svg'}
-    svg=ET.parse(project/'svg_output/07_performance.svg').getroot()
-    area=svg.find(".//s:g[@id='n1024-speedup-chartArea']",ns)
-    expected=[r for r in rows if r['N']=='1024' and r['kind']!='serial']
-    points=list(area.findall('.//s:circle',ns))+list(area.findall('.//s:rect',ns))
-    require(len(points)==10,'expected ten chart points')
-    for el,r in zip(points,expected):
-        x=float(el.get('cx')) if el.tag.endswith('circle') else float(el.get('x'))+5
-        y=float(el.get('cy')) if el.tag.endswith('circle') else float(el.get('y'))+5
-        require(abs(x-(120+40*(int(r['actual'])-1)))<.001,'chart x mismatch')
-        require(abs(y-(540-80*float(r['speedup_serial'])))<.001,'chart y mismatch')
-    intervals=[e for e in area.findall('.//s:line',ns) if e.get('x1')==e.get('x2')]
-    require(len(intervals)==10,'expected ten asymmetric intervals')
-    for el,r in zip(intervals,expected):
-        require(abs(float(el.get('y1'))-(540-80*float(r['speedup_high'])))<.001,'CI high mismatch')
-        require(abs(float(el.get('y2'))-(540-80*float(r['speedup_low'])))<.001,'CI low mismatch')
-    sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
-    figures=REPO/'results/figures/large-02-r1-viz-01'
-    for n in ['02-speedup.png','05-grid-speedup.png']:
-        require(sha(project/'images'/n)==sha(figures/n),'figure copy changed')
-    require(sha(project/'sources/m4-diagnostic-02-r1.csv')==sha(REPO/'results/performance/large-02-r1/m4-diagnostic-02-r1.csv'),'CSV copy changed')
-    pptx=ROOT/'presentation/current/presentation-v4-r1.pptx'
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--output', type=Path, default=ROOT / 'records/presentation_checks.json')
+    args = ap.parse_args()
+    spec = (PROJECT / 'design_spec.md').read_text()
+    outline = spec.split('## IX. Content Outline', 1)[1].split('## X.', 1)[0]
+    names = re.findall(r'\*\*File\*\*: (\S+\.svg)', outline)
+    files = sorted((PROJECT / 'svg_output').glob('*.svg'))
+    require(len(names) == 14 and [p.name for p in files] == names, 'page roster mismatch')
+    budgets = [int(v) for v in re.findall(r'\*\*Timing\*\*: (\d+)秒', outline)]
+    require(len(budgets) == 10 and sum(budgets) == 280, 'main timing budget mismatch')
+    trees = {p.name: ET.parse(p).getroot() for p in files}
+    visible = '\n'.join(''.join(t.itertext()) for root in trees.values()
+                        for t in root.findall('.//s:text', NS))
+    notes = (PROJECT / 'notes/total.md').read_text()
+    bad = ['02-r1', 'diagnostic-01', 'large-02', 'results/', 'src/',
+           '参见实验报告', '详见实验报告', 'F-LARGE']
+    require(not any(x in visible or x in notes for x in bad), 'internal reference in audience material')
+    sections = re.split(r'^# ', notes, flags=re.M)[1:]
+    require([s.splitlines()[0] + '.svg' for s in sections] == names, 'notes order mismatch')
+    require(all((PROJECT / 'notes' / (p.stem + '.md')).exists() for p in files), 'missing slide notes')
+    counts = [len(re.findall(r'[\u4e00-\u9fffA-Za-z0-9]', s.split('\n', 1)[1].replace('---', '')))
+              for s in sections[:10]]
+
+    large = list(csv.DictReader((REPO / 'results/performance/large-02-r1/m4-diagnostic-02-r1.csv').open()))
+    plot = trees['08_performance.svg']
+    coordinate_errors = []
+    point_count = 0
+    for kind in ['mpi', 'openmp']:
+        group = plot.find(".//s:g[@id='" + kind + "-series']", NS)
+        rows = [r for r in large if r['N'] == '1024' and r['kind'] == kind]
+        marks = group.findall('s:circle' if kind == 'mpi' else 's:rect', NS)
+        intervals = group.findall('s:line', NS)
+        require(len(rows) == len(marks) == len(intervals) == 5, 'chart point/interval coverage mismatch')
+        for k, (r, mark, interval) in enumerate(zip(rows, marks, intervals)):
+            x = float(mark.get('cx') if kind == 'mpi' else mark.get('x')) + (0 if kind == 'mpi' else 5)
+            y = float(mark.get('cy') if kind == 'mpi' else mark.get('y')) + (0 if kind == 'mpi' else 5)
+            coordinate_errors += [abs(x - (110 + 650 * k / 4)),
+                                  abs(y - (535 - 75 * float(r['speedup_serial']))),
+                                  abs(float(interval.get('y1')) - (535 - 75 * float(r['speedup_low']))),
+                                  abs(float(interval.get('y2')) - (535 - 75 * float(r['speedup_high'])))]
+            point_count += 1
+    require(max(coordinate_errors) < .003, 'chart geometry differs from archived statistics')
+    for kind, p in [('mpi', 16), ('openmp', 8), ('openmp', 16)]:
+        r = next(r for r in large if r['N'] == '1024' and r['kind'] == kind and int(r['actual']) == p)
+        require(f"{float(r['median_seconds']):.4f}" in visible, 'key time mismatch')
+        require(f"{float(r['speedup_serial']):.4f}" in visible, 'key speedup mismatch')
+        require(f"{float(r['efficiency']) * 100:.2f}%" in visible, 'key efficiency mismatch')
+    base = list(csv.DictReader((REPO / 'results/performance/baseline/derived/summary.csv').open()))
+    for kind in ['mpi', 'openmp']:
+        r = next(r for r in base if r['suite'] == 'scaled' and r['kind'] == kind and r['p'] == '4')
+        require(f"{float(r['throughput_ratio_own_p1']):.4f}" in visible, 'throughput mismatch')
+    m3 = list(csv.DictReader((REPO / 'results/validation/m3-errors.csv').open()))
+    table = trees['07_validation.svg'].find("s:g[@id='refinement-errors']/s:metadata", NS)
+    error_rows = json.loads(table.text)['rows']
+    for n, row in zip([20, 40, 80], error_rows):
+        r = next(r for r in m3 if r['build'] == 'debug' and r['suite'] == 'default'
+                 and r['solver'] == 'serial' and int(r['N']) == n)
+        cells = [c['text'] if isinstance(c, dict) else c for c in row]
+        require(cells[:2] == [r['N'], r['M']], 'refinement grid mismatch')
+        mantissa, exponent = cells[2].split(' × 10')
+        power = {'⁻⁴': -4, '⁻⁵': -5, '⁻⁶': -6}[exponent]
+        require(abs(float(mantissa) * 10 ** power / float(r['E_inf']) - 1) < 5e-5,
+                'refinement error rounding mismatch')
+
+    pptx = ROOT / 'presentation/current/presentation-v5.pptx'
+    pdf = pptx.with_suffix('.pdf')
+    math_in_svg = sum(len(root.findall(".//s:g[@data-pptx-replace-with='formula']", NS)) +
+                      len(root.findall('.//s:tspan[@data-pptx-inline-formula]', NS)) for root in trees.values())
     with ZipFile(pptx) as z:
-        slides=[n for n in z.namelist() if re.fullmatch(r'ppt/slides/slide\d+\.xml',n)]
-        notes_files=[n for n in z.namelist() if re.fullmatch(r'ppt/notesSlides/notesSlide\d+\.xml',n)]
-        require(len(slides)==len(notes_files)==12,'PPT slide/notes count')
-        formula_count=0; shape_count=0
-        namespaces={'p':'http://schemas.openxmlformats.org/presentationml/2006/main','a':'http://schemas.openxmlformats.org/drawingml/2006/main','m':'http://schemas.openxmlformats.org/officeDocument/2006/math'}
-        for n in slides:
-            tree=ET.fromstring(z.read(n));formula_count+=len(tree.findall('.//m:oMath',namespaces));shape_count+=len(tree.findall('.//p:sp',namespaces))
-            require(tree.find('p:timing',namespaces) is None,'unexpected animations')
-            require(tree.find('p:transition',namespaces) is None,'unexpected transitions')
-        require(formula_count==5 and shape_count>100,'expected five native formulas and editable text/shapes')
-        for i,count in [(3,1),(7,1),(12,3)]:
-            tree=ET.fromstring(z.read(f'ppt/slides/slide{i}.xml'))
-            require(len(tree.findall('.//m:oMath',namespaces))==count,f'native formula count P{i}')
-            require(not any('&' in (e.text or '') for e in tree.findall('.//m:t',namespaces)),f'leaked math alignment token P{i}')
-        for i,expected_math in [(7,['Sk=medianTsmedianTk,\u2003Ek=Skk']),(12,['SAk=1f+1−f/k','SGk=k−σk−1','feff=k/S−1k−1\u2003k>1'])]:
-            tree=ET.fromstring(z.read(f'ppt/slides/slide{i}.xml'))
-            actual_math=[''.join(e.itertext()) for e in tree.findall('.//m:oMath',namespaces)]
-            require(actual_math==expected_math,f'native math content mismatch P{i}')
-        math_tree=ET.fromstring(z.read('ppt/slides/slide3.xml'))
-        math_parts=math_tree.findall('.//m:eqArr/m:e',namespaces)
-        require(len(math_parts)==0,'P03 expected a single unbroken native formula')
-        require(''.join(math_tree.find('.//m:oMath',namespaces).itertext())=='Ui,jn+1=1−4rUi,jn+rUi−1,jn+Ui+1,jn+Ui,j−1n+Ui,j+1n','P03 full update equation mismatch')
-        require(not any('&' in (e.text or '') for e in math_tree.findall('.//m:t',namespaces)),'P03 leaked alignment token')
-        scripts=math_tree.findall('.//m:sSubSup',namespaces)
-        pairs=[(''.join(e.find('m:sub',namespaces).itertext()),''.join(e.find('m:sup',namespaces).itertext())) for e in scripts]
-        require(pairs==[('i,j','n+1'),('i,j','n'),('i−1,j','n'),('i+1,j','n'),('i,j−1','n'),('i,j+1','n')],'P03 native formula subscripts/time layers mismatch')
-        media={hashlib.sha256(z.read(n)).hexdigest() for n in z.namelist() if n.startswith('ppt/media/')}
-        require(all(sha(figures/n) in media for n in ['02-speedup.png','05-grid-speedup.png']),'embedded figure mismatch')
-        for i,(_,_,txt) in enumerate(pages,1):
-            tree=ET.fromstring(z.read(f'ppt/notesSlides/notesSlide{i}.xml'))
-            text=''.join(tree.itertext())
-            require(txt.strip() in text,f'notes/script mismatch P{i:02}')
-    course_before=REPO/'build/archive/work/m5-v4-annotations/course-before.json'
-    course_check='未运行：当前机器缺少本轮前置快照'
-    if course_before.exists():
-        before=json.loads(course_before.read_text())
-        after={str(p.relative_to(REPO/'docs/sources')):sha(p) for p in sorted((REPO/'docs/sources').rglob('*')) if p.is_file()}
-        require(before==after,'course files changed since M5 snapshot')
-        course_check=f'{len(after)} files: paths/content unchanged since this M5 snapshot'
-    summary={'local_file_links_checked':links,'performance_table':'checked against archived CSV','M3_ratios_orders':'checked against archived CSV','main_script':speech,'total_count':total,'timing_scenario':scenario,'solver_build_tests_sampling':'未运行：M5只整理既有证据','report_pdf_sha256':hashlib.sha256(pdf.read_bytes()).hexdigest()}
-    summary.update({'P03_native_formula':'single line; six space/time scripts checked; no visible alignment token','chart_points_and_intervals':'10 points and 10 asymmetric intervals verified from CSV','pptx':{'slides':len(slides),'notes':len(notes_files),'native_math':formula_count,'editable_shapes':shape_count,'animations_transitions':0,'file':pptx.name,'sha256':sha(pptx)},'course_protection':course_check,'presentation_pdf_sha256':sha(ROOT/'presentation/current/presentation-v4-r1.pdf')})
-    out=ROOT/'records/presentation_checks.json';out.write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')
-    print(json.dumps(summary,ensure_ascii=False,indent=2))
-if __name__=='__main__':main()
+        slides = [n for n in z.namelist() if re.fullmatch(r'ppt/slides/slide\d+\.xml', n)]
+        slide_notes = [n for n in z.namelist() if re.fullmatch(r'ppt/notesSlides/notesSlide\d+\.xml', n)]
+        roots = [ET.fromstring(z.read(n)) for n in slides]
+        maths = sum(sum(e.tag == '{http://schemas.openxmlformats.org/officeDocument/2006/math}oMath'
+                        for e in root.iter()) for root in roots)
+        animation = any(e.tag.rsplit('}', 1)[-1] in ['timing', 'transition'] for root in roots for e in root.iter())
+        media = {hashlib.sha256(z.read(n)).hexdigest() for n in z.namelist() if n.startswith('ppt/media/')}
+        for name in ['02-speedup.png', '05-grid-speedup.png']:
+            source = REPO / 'results/figures/large-02-r1-viz-01' / name
+            require(digest(source) == digest(PROJECT / 'images' / name), 'image copy mismatch')
+            require(digest(source) in media, 'original figure missing in PPTX')
+        editable = sum(sum(e.tag == '{http://schemas.openxmlformats.org/drawingml/2006/main}t'
+                           for e in root.iter()) for root in roots)
+    require(len(slides) == len(slide_notes) == 14, 'package page/notes mismatch')
+    require(maths == math_in_svg and not animation, 'native math or disabled-motion contract mismatch')
+    import pymupdf
+    document = pymupdf.open(pdf)
+    require(len(document) == 14, 'rendered PDF page count mismatch')
+    for i, page in enumerate(document, 1):
+        for block in page.get_text('dict')['blocks']:
+            for line in block.get('lines', []):
+                for span in line['spans']:
+                    x0, y0, x1, y1 = span['bbox']
+                    require(x0 >= -.5 and y0 >= -.5 and x1 <= page.rect.width + .5
+                            and y1 <= page.rect.height + .5, f'PDF text outside page {i}: {span["text"]}')
+        require(not any(x in page.get_text() for x in bad), 'internal reference in rendered PDF')
+    receipt = {'scope': 'current v5 presentation only; no numerical solver runs', 'passed': True,
+               'slide_count': 14, 'main_pages': 10, 'backup_pages': 4, 'notes': len(slide_notes),
+               'native_math_objects': maths, 'editable_text_runs': editable,
+               'source_image_bytes_preserved': True, 'chart_points': point_count, 'chart_intervals': point_count,
+               'max_coordinate_error_px': max(coordinate_errors), 'budget_seconds': budgets,
+               'main_script_characters': sum(counts), 'speech_estimate_seconds': round(sum(counts) / 280 * 60 + 20, 1),
+               'speech_assumption': '280 characters/min + 20s pauses; not a timed human rehearsal',
+               'pptx_sha256': digest(pptx), 'pdf_sha256': digest(pdf),
+               'report_md_sha256': digest(ROOT / 'FINAL_REPORT.md'),
+               'manual_PowerPoint_and_rehearsal': '未运行/待本人验证'}
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + '\n')
+    print(f'PASS: {len(slides)} slides/notes, {maths} native formulas, {point_count} points/intervals; source figures, statistics and PDF bounds agree.')
+    print(args.output)
+
+
+if __name__ == '__main__':
+    main()

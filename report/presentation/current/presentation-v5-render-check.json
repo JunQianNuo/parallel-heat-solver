@@ -1,0 +1,117 @@
+{
+  "renderer": "LibreOffice 24.2.7.2 → PDF, PyMuPDF 1.5x all14pages",
+  "pptx_sha256": "09be612096e18a53b5f5350bc66ccfa7fa30d62a0363e2fbe39ea35cadd7eee1",
+  "pdf_sha256": "19799f9cf61bd42bc18945c46f3ae28a20f9dff223dd5843a914a55a150d6d49",
+  "slide_count": 14,
+  "notes_count": 14,
+  "native_math_objects": 4,
+  "editable_text_runs": 298,
+  "animations_or_transitions": 0,
+  "source_images_preserved": {
+    "02-speedup.png": true,
+    "05-grid-speedup.png": true
+  },
+  "pages": [
+    {
+      "page": 1,
+      "outside_text": [],
+      "internal_references": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 2,
+      "outside_text": [],
+      "internal_references": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 3,
+      "outside_text": [],
+      "internal_references": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 4,
+      "outside_text": [],
+      "internal_references": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 5,
+      "outside_text": [],
+      "internal_references": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 6,
+      "outside_text": [],
+      "internal_references": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 7,
+      "outside_text": [],
+      "internal_references": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 8,
+      "outside_text": [],
+      "internal_references": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 9,
+      "outside_text": [],
+      "internal_references": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 10,
+      "outside_text": [],
+      "internal_references": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 11,
+      "outside_text": [],
+      "internal_references": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 12,
+      "outside_text": [],
+      "internal_references": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 13,
+      "outside_text": [],
+      "internal_references": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    },
+    {
+      "page": 14,
+      "outside_text": [],
+      "internal_references": [],
+      "min_font_pt": 14.99,
+      "max_font_pt": 32.99
+    }
+  ],
+  "manual_PowerPoint_and_rehearsal": "未运行/待本人验证",
+  "visual_inspection": "AI已查看全部14页总览及P03/P08/P11/P14放大渲染；无文字越界，公式和标注可读。",
+  "counting_method": "按Office Math命名空间遍历，包含一个行内公式；不能仅统计不带属性的XML起始标签。"
+}

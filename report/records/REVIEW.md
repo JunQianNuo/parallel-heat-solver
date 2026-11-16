@@ -77,3 +77,12 @@ LibreOffice24.2.7.2实际打开PPTX→12页PDF，PyMuPDF逐页渲染，AI查看�
 实际检查：首轮早期门发现P08区域重叠10px、P03坐标/色值提示，合并修正后早期及最终门12/12、0错误0警告；导出postflight通过。包12页/12备注、5原生公式、440可编辑文本图元，无动画配音；P03原生单行式与六组上下标、P07/P12数学内容、图上10点10区间、两幅原PNG/CSV副本、备注/讲稿一致。公式helper重跑几何与嵌入预览一致。实际LibreOffice打开最终PPTX→12页PDF，再逐页渲染，AI查看总览和P03/P08细图，[文字页界检查](../presentation/current/presentation-v4-r1-render-check.json)通过。普通客户端显示字形路径预览，原生Math另从包核对，不声称PowerPoint人工编辑通过。
 
 正文1065字符，280字符/分钟＋20秒停顿估算248.2秒，8页仍280秒预算、另留20秒；真实口头演练未运行/待本人验证。2570课程文件前后路径/哈希一致；原报告、求解器、tests/scripts/results及全部旧版成品与起点字节一致。没有重跑构建/数值回归/采样，也不重复冒称旧证据统一复算为本轮新实验。v4-r1另存，原v4保留；预览可刷新查看，M5仍待用户验收。
+
+
+## v5：最新报告驱动的14页答辩（2026-11-16）
+
+用户批准规范并补充非实现者阅读条件后，交付[可编辑PPTX](../presentation/current/presentation-v5.pptx)、[14页PDF](../presentation/current/presentation-v5.pdf)及[总览](../presentation/current/presentation-v5-contact.png)。10正文＋4备份，280秒预算；报告原文、原始实验工件及课程资料保持。
+
+实际命令：ppt-master的project_manager validate、text_measure calibrate、svg_quality_checker early/final、svg_position_calculator calc line（MPI/OpenMP各一次）、total_md_split、finalize_svg、svg_to_pptx --no-animations；python3 scripts/check_results.py；build/tools/python/bin/python report/presentation/check_materials.py；LibreOffice通过render_presentation.py实际打开PPTX转PDF，PyMuPDF渲染全部14页。初次工具启动因迁移旧路径失败，修复忽略目录内配置后重试成功。
+
+源门0错误/5项独立字段文本框组织建议，包passed-with-warnings；14备注/4原生公式/298可编辑文本run/0动画。10点10区间与归档一致，两幅原PNG在包内字节保持，102个本地链接检查通过。AI看过全页总览和P03/08/11/14放大图，PDF页界通过。材料细项见[本轮检查](presentation_checks.json)、[实际渲染记录](../presentation/current/presentation-v5-render-check.json)。讲稿956字符、显式语速假设估算224.9秒，不代替实际口头演练。未运行构建/数值回归/性能采样；姓名学号、PowerPoint人工显示编辑和实讲待验证，不宣称用户验收。

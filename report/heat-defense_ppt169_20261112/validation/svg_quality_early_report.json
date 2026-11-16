@@ -4,63 +4,35 @@
   "target": "/home/nuo/courses/projects/parallel-heat-solver/report/heat-defense_ppt169_20261112",
   "source_fingerprint": {
     "algorithm": "sha256",
-    "digest": "3788f82dacfd26b326222d6f94f2d4873ab5c58893b9e6656d3150c6181dcfdc",
-    "file_count": 12,
+    "digest": "5bda2fd72a0584e69e9a006f3d1c37c8f8971a23ccb9c7c967a01e075c68096c",
+    "file_count": 5,
     "files": [
       {
-        "file": "01_cover.svg",
-        "sha256": "195347ee165e3d95dfbbf152fb48694b0a4912fbd2a3a6548ef4b335c3e486d1"
+        "file": "01_model.svg",
+        "sha256": "eeb2d5e86abda7e018cfb48c3710a3e8c48d07c82b53625302c0b3a2e5236007"
       },
       {
-        "file": "02_route.svg",
-        "sha256": "c11811059e5ec7383a2f13b64ad4c096654ede67c060feb3720445b9b3410839"
+        "file": "02_grid.svg",
+        "sha256": "35891cef6e7d1170ae95c8f5912ac2ff845abadf2f78c3c0c9a75fa8ca1f73c3"
       },
       {
         "file": "03_stencil.svg",
-        "sha256": "6982c2f9a0d5444fff6ad5891da28f74750ddc7ad2a8e2e73b89d76e2ac51626"
+        "sha256": "9fa5d27b20dfb42c3a402742033fbd4db6c7490ee743709a2895358e95352cdf"
       },
       {
-        "file": "04_mpi.svg",
-        "sha256": "d2d9714aee385de5b5f4873e7ace4f03ddd1b5835724949206a8ef4c728f768e"
+        "file": "04_serial.svg",
+        "sha256": "7fe34ae8402a0bbb1deade77671757e3fa6dbadea2b3ca578b7f27b5fe616871"
       },
       {
-        "file": "05_openmp.svg",
-        "sha256": "8a636675132b786e5867d729e74ed344d538828c6d73525d32c6a0fcaa3fc5e6"
-      },
-      {
-        "file": "06_validation.svg",
-        "sha256": "4581eb5c47705a2cc6c747f4b320507b390d946fa30bee7a4ccadf06c17618e6"
-      },
-      {
-        "file": "07_performance.svg",
-        "sha256": "c1a1cce844aa5febaad442a882c8ad7bd06bf3819fe94d37164c38ced442a63d"
-      },
-      {
-        "file": "08_conclusion.svg",
-        "sha256": "538277c8ff6ebd017c70b035fdd82c988e7ca139ddedd139f168b02b7f65013d"
-      },
-      {
-        "file": "09_timing.svg",
-        "sha256": "83cadd83e1227b7dcbdc28ca9ad98da64de423053832ad5cb5a5bff5e2b5216d"
-      },
-      {
-        "file": "10_full_scaling.svg",
-        "sha256": "9101915184e5bb673b438696c9aaf05d773f658fbef444a1a1bc760ab55d3a33"
-      },
-      {
-        "file": "11_grid.svg",
-        "sha256": "cbd6f83975d6119f0b7ace01f3c42f47b860b72e53ba50e32a7d293bf62f0b63"
-      },
-      {
-        "file": "12_interpretation.svg",
-        "sha256": "4e7c062e6f270d4ea18e8c68ab88c58946a2450b3dafa73e4cd87eda73c136a7"
+        "file": "05_mpi.svg",
+        "sha256": "afe427e46637d21305235915db12ccf5e3212d6323ed11489828053d1e7e4693"
       }
     ]
   },
   "summary": {
-    "total": 12,
-    "passed": 12,
-    "warnings": 0,
+    "total": 5,
+    "passed": 2,
+    "warnings": 3,
     "errors": 0
   },
   "issue_types": {},
@@ -70,8 +42,29 @@
       "issues": []
     },
     "introduced": {
-      "count": 0,
-      "issues": []
+      "count": 5,
+      "issues": [
+        {
+          "file": "01_model.svg",
+          "message": "Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (3 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): conditions:font-size None -> '36'; text[25]:font-size '36' -> None; text[26]:font-size '36' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)"
+        },
+        {
+          "file": "01_model.svg",
+          "message": "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"model\"> x=580.0, y=248.0..299.0, 2 lines; <g id=\"conditions\"> x=580.0, y=376.0..432.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+        },
+        {
+          "file": "02_grid.svg",
+          "message": "Detected 1 paragraph-like line run(s) split across sibling <text> elements (<g id=\"space-definition\"> x=595.0, y=251.0..308.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+        },
+        {
+          "file": "05_mpi.svg",
+          "message": "Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (3 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): mpi-step:text-anchor None -> 'middle'; text[51]:text-anchor 'middle' -> None; text[52]:text-anchor 'middle' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)"
+        },
+        {
+          "file": "05_mpi.svg",
+          "message": "<text> (x=270, y=545; text='N = 8，P = 3；每进程 3 / …') exceeds <g id=\"partition-and-halo\"> data-pptx-bounds on the horizontal axis: content (21.3, 519.5)-(518.7, 555.5), container (40.0, 140.0)-(1240.0, 560.0), overflow horizontal 1.6%, vertical 0.0% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text; ≈29.3 px per mixed char at 30px incl. headroom; ≈41 chars fit in 1200 px"
+        }
+      ]
     },
     "inherited": {
       "count": 0,
@@ -87,63 +80,56 @@
   },
   "drift": {
     "colors": {},
-    "fonts": {
-      "Cambria Math": [
-        "12_interpretation.svg"
-      ]
-    },
+    "fonts": {},
     "sizes": {}
   },
   "carrier_receipt": {
     "scope": "informational-not-a-quota",
-    "pages": 12,
+    "pages": 5,
     "totals": {
-      "text_elements": 226,
-      "image_placements": 2,
+      "text_elements": 105,
+      "image_placements": 0,
       "icons": 0,
-      "svg_geometry_elements": 221,
+      "svg_geometry_elements": 140,
       "preset_shapes": 0,
-      "page_frame_elements": 12,
-      "marker_uses": 0,
+      "page_frame_elements": 5,
+      "marker_uses": 8,
       "inline_emphasis_runs": 0,
       "gradient_uses": 0,
       "filter_uses": 0,
       "text_effects": 0
     },
     "pages_with": {
-      "images": 2,
+      "images": 0,
       "icons": 0,
       "presets": 0,
       "charts": 0,
       "tables": 0,
-      "formulas": 3,
+      "formulas": 1,
       "inline_emphasis_runs": 0,
       "gradient_uses": 0,
       "filter_uses": 0,
       "text_effects": 0
     },
-    "relationship_pages": 9,
+    "relationship_pages": 10,
     "geometry_elements": {
-      "circle": 60,
+      "circle": 4,
       "ellipse": 0,
-      "line": 36,
+      "line": 39,
       "path": 55,
       "polygon": 0,
-      "polyline": 2,
-      "rect": 68
+      "polyline": 0,
+      "rect": 42
     },
     "preset_names": {},
     "native_objects": {
       "chart": 0,
-      "formula_block": 5,
+      "formula_block": 1,
       "formula_inline": 0,
       "other": 0,
       "table": 0
     },
-    "image_page_max_frame_share_range": [
-      0.452,
-      0.4694
-    ]
+    "image_page_max_frame_share_range": []
   },
   "project_issues": {
     "template": [],
@@ -154,74 +140,18 @@
   },
   "files": [
     {
-      "file": "01_cover.svg",
-      "path": "report/heat-defense_ppt169_20261112/svg_output/01_cover.svg",
+      "file": "01_model.svg",
+      "path": "report/heat-defense_ppt169_20261112/svg_output/01_model.svg",
       "exists": true,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        "Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (3 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): conditions:font-size None -> '36'; text[25]:font-size '36' -> None; text[26]:font-size '36' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)",
+        "Detected 2 paragraph-like line run(s) split across sibling <text> elements (<g id=\"model\"> x=580.0, y=248.0..299.0, 2 lines; <g id=\"conditions\"> x=580.0, y=376.0..432.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+      ],
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 6,
-          "images": {
-            "placements": 0,
-            "files": [],
-            "max_frame_share": 0.0
-          },
-          "icons": 0,
-          "effects": {
-            "inline_emphasis_runs": 0,
-            "gradient_uses": 0,
-            "filter_uses": 0,
-            "text_effects": 0
-          },
-          "geometry": {
-            "svg_elements": {
-              "rect": 2,
-              "circle": 0,
-              "ellipse": 0,
-              "line": 0,
-              "polyline": 0,
-              "polygon": 0,
-              "path": 0
-            },
-            "preset_shapes": 0,
-            "preset_names": {},
-            "page_frame_elements": 1,
-            "marker_uses": {
-              "start": 0,
-              "mid": 0,
-              "end": 0
-            }
-          },
-          "native_objects": {
-            "chart": 0,
-            "table": 0,
-            "formula_block": 0,
-            "formula_inline": 0,
-            "other": 0
-          }
-        },
-        "fonts": [
-          "KaiTi, Arial",
-          "SimHei, Arial"
-        ],
-        "text_elements": 6,
-        "tspan_elements": 1
-      },
-      "passed": true,
-      "source_sha256": "195347ee165e3d95dfbbf152fb48694b0a4912fbd2a3a6548ef4b335c3e486d1"
-    },
-    {
-      "file": "02_route.svg",
-      "path": "report/heat-defense_ppt169_20261112/svg_output/02_route.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "carrier_receipt": {
-          "text_elements": 18,
+          "text_elements": 17,
           "images": {
             "placements": 0,
             "files": [],
@@ -237,9 +167,9 @@
           "geometry": {
             "svg_elements": {
               "rect": 6,
-              "circle": 7,
+              "circle": 3,
               "ellipse": 0,
-              "line": 6,
+              "line": 0,
               "polyline": 0,
               "polygon": 0,
               "path": 0
@@ -265,554 +195,20 @@
           "KaiTi, Arial",
           "SimHei, Arial"
         ],
-        "text_elements": 18,
-        "tspan_elements": 3
-      },
-      "passed": true,
-      "source_sha256": "c11811059e5ec7383a2f13b64ad4c096654ede67c060feb3720445b9b3410839"
-    },
-    {
-      "file": "03_stencil.svg",
-      "path": "report/heat-defense_ppt169_20261112/svg_output/03_stencil.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "carrier_receipt": {
-          "text_elements": 32,
-          "images": {
-            "placements": 0,
-            "files": [],
-            "max_frame_share": 0.0
-          },
-          "icons": 0,
-          "effects": {
-            "inline_emphasis_runs": 0,
-            "gradient_uses": 0,
-            "filter_uses": 0,
-            "text_effects": 0
-          },
-          "geometry": {
-            "svg_elements": {
-              "rect": 7,
-              "circle": 13,
-              "ellipse": 0,
-              "line": 10,
-              "polyline": 0,
-              "polygon": 0,
-              "path": 55
-            },
-            "preset_shapes": 0,
-            "preset_names": {},
-            "page_frame_elements": 1,
-            "marker_uses": {
-              "start": 0,
-              "mid": 0,
-              "end": 0
-            }
-          },
-          "native_objects": {
-            "chart": 0,
-            "table": 0,
-            "formula_block": 1,
-            "formula_inline": 0,
-            "other": 0
-          }
-        },
-        "fonts": [
-          "KaiTi, Arial",
-          "SimHei, Arial"
-        ],
-        "text_elements": 32,
+        "text_elements": 17,
         "tspan_elements": 0
       },
       "passed": true,
-      "source_sha256": "6982c2f9a0d5444fff6ad5891da28f74750ddc7ad2a8e2e73b89d76e2ac51626"
+      "source_sha256": "eeb2d5e86abda7e018cfb48c3710a3e8c48d07c82b53625302c0b3a2e5236007"
     },
     {
-      "file": "04_mpi.svg",
-      "path": "report/heat-defense_ppt169_20261112/svg_output/04_mpi.svg",
+      "file": "02_grid.svg",
+      "path": "report/heat-defense_ppt169_20261112/svg_output/02_grid.svg",
       "exists": true,
       "errors": [],
-      "warnings": [],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "carrier_receipt": {
-          "text_elements": 20,
-          "images": {
-            "placements": 0,
-            "files": [],
-            "max_frame_share": 0.0
-          },
-          "icons": 0,
-          "effects": {
-            "inline_emphasis_runs": 0,
-            "gradient_uses": 0,
-            "filter_uses": 0,
-            "text_effects": 0
-          },
-          "geometry": {
-            "svg_elements": {
-              "rect": 8,
-              "circle": 7,
-              "ellipse": 0,
-              "line": 2,
-              "polyline": 0,
-              "polygon": 0,
-              "path": 0
-            },
-            "preset_shapes": 0,
-            "preset_names": {},
-            "page_frame_elements": 1,
-            "marker_uses": {
-              "start": 0,
-              "mid": 0,
-              "end": 0
-            }
-          },
-          "native_objects": {
-            "chart": 0,
-            "table": 0,
-            "formula_block": 0,
-            "formula_inline": 0,
-            "other": 0
-          }
-        },
-        "fonts": [
-          "KaiTi, Arial",
-          "SimHei, Arial"
-        ],
-        "text_elements": 20,
-        "tspan_elements": 2
-      },
-      "passed": true,
-      "source_sha256": "d2d9714aee385de5b5f4873e7ace4f03ddd1b5835724949206a8ef4c728f768e"
-    },
-    {
-      "file": "05_openmp.svg",
-      "path": "report/heat-defense_ppt169_20261112/svg_output/05_openmp.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "carrier_receipt": {
-          "text_elements": 28,
-          "images": {
-            "placements": 0,
-            "files": [],
-            "max_frame_share": 0.0
-          },
-          "icons": 0,
-          "effects": {
-            "inline_emphasis_runs": 0,
-            "gradient_uses": 0,
-            "filter_uses": 0,
-            "text_effects": 0
-          },
-          "geometry": {
-            "svg_elements": {
-              "rect": 5,
-              "circle": 7,
-              "ellipse": 0,
-              "line": 3,
-              "polyline": 0,
-              "polygon": 0,
-              "path": 0
-            },
-            "preset_shapes": 0,
-            "preset_names": {},
-            "page_frame_elements": 1,
-            "marker_uses": {
-              "start": 0,
-              "mid": 0,
-              "end": 0
-            }
-          },
-          "native_objects": {
-            "chart": 0,
-            "table": 0,
-            "formula_block": 0,
-            "formula_inline": 0,
-            "other": 0
-          }
-        },
-        "fonts": [
-          "KaiTi, Arial",
-          "SimHei, Arial"
-        ],
-        "text_elements": 28,
-        "tspan_elements": 0
-      },
-      "passed": true,
-      "source_sha256": "8a636675132b786e5867d729e74ed344d538828c6d73525d32c6a0fcaa3fc5e6"
-    },
-    {
-      "file": "06_validation.svg",
-      "path": "report/heat-defense_ppt169_20261112/svg_output/06_validation.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "carrier_receipt": {
-          "text_elements": 12,
-          "images": {
-            "placements": 0,
-            "files": [],
-            "max_frame_share": 0.0
-          },
-          "icons": 0,
-          "effects": {
-            "inline_emphasis_runs": 0,
-            "gradient_uses": 0,
-            "filter_uses": 0,
-            "text_effects": 0
-          },
-          "geometry": {
-            "svg_elements": {
-              "rect": 5,
-              "circle": 7,
-              "ellipse": 0,
-              "line": 0,
-              "polyline": 0,
-              "polygon": 0,
-              "path": 0
-            },
-            "preset_shapes": 0,
-            "preset_names": {},
-            "page_frame_elements": 1,
-            "marker_uses": {
-              "start": 0,
-              "mid": 0,
-              "end": 0
-            }
-          },
-          "native_objects": {
-            "chart": 0,
-            "table": 0,
-            "formula_block": 0,
-            "formula_inline": 0,
-            "other": 0
-          }
-        },
-        "fonts": [
-          "KaiTi, Arial",
-          "SimHei, Arial"
-        ],
-        "text_elements": 12,
-        "tspan_elements": 3
-      },
-      "passed": true,
-      "source_sha256": "4581eb5c47705a2cc6c747f4b320507b390d946fa30bee7a4ccadf06c17618e6"
-    },
-    {
-      "file": "07_performance.svg",
-      "path": "report/heat-defense_ppt169_20261112/svg_output/07_performance.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "carrier_receipt": {
-          "text_elements": 32,
-          "images": {
-            "placements": 0,
-            "files": [],
-            "max_frame_share": 0.0
-          },
-          "icons": 0,
-          "effects": {
-            "inline_emphasis_runs": 0,
-            "gradient_uses": 0,
-            "filter_uses": 0,
-            "text_effects": 0
-          },
-          "geometry": {
-            "svg_elements": {
-              "rect": 10,
-              "circle": 12,
-              "ellipse": 0,
-              "line": 15,
-              "polyline": 2,
-              "polygon": 0,
-              "path": 0
-            },
-            "preset_shapes": 0,
-            "preset_names": {},
-            "page_frame_elements": 1,
-            "marker_uses": {
-              "start": 0,
-              "mid": 0,
-              "end": 0
-            }
-          },
-          "native_objects": {
-            "chart": 0,
-            "table": 0,
-            "formula_block": 1,
-            "formula_inline": 0,
-            "other": 0
-          }
-        },
-        "fonts": [
-          "Arial",
-          "KaiTi, Arial",
-          "SimHei, Arial"
-        ],
-        "text_elements": 32,
-        "tspan_elements": 1
-      },
-      "passed": true,
-      "source_sha256": "c1a1cce844aa5febaad442a882c8ad7bd06bf3819fe94d37164c38ced442a63d"
-    },
-    {
-      "file": "08_conclusion.svg",
-      "path": "report/heat-defense_ppt169_20261112/svg_output/08_conclusion.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "carrier_receipt": {
-          "text_elements": 20,
-          "images": {
-            "placements": 0,
-            "files": [],
-            "max_frame_share": 0.0
-          },
-          "icons": 0,
-          "effects": {
-            "inline_emphasis_runs": 0,
-            "gradient_uses": 0,
-            "filter_uses": 0,
-            "text_effects": 0
-          },
-          "geometry": {
-            "svg_elements": {
-              "rect": 5,
-              "circle": 7,
-              "ellipse": 0,
-              "line": 0,
-              "polyline": 0,
-              "polygon": 0,
-              "path": 0
-            },
-            "preset_shapes": 0,
-            "preset_names": {},
-            "page_frame_elements": 1,
-            "marker_uses": {
-              "start": 0,
-              "mid": 0,
-              "end": 0
-            }
-          },
-          "native_objects": {
-            "chart": 0,
-            "table": 0,
-            "formula_block": 0,
-            "formula_inline": 0,
-            "other": 0
-          }
-        },
-        "fonts": [
-          "KaiTi, Arial",
-          "SimHei, Arial"
-        ],
-        "text_elements": 20,
-        "tspan_elements": 0
-      },
-      "passed": true,
-      "source_sha256": "538277c8ff6ebd017c70b035fdd82c988e7ca139ddedd139f168b02b7f65013d"
-    },
-    {
-      "file": "09_timing.svg",
-      "path": "report/heat-defense_ppt169_20261112/svg_output/09_timing.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "carrier_receipt": {
-          "text_elements": 12,
-          "images": {
-            "placements": 0,
-            "files": [],
-            "max_frame_share": 0.0
-          },
-          "icons": 0,
-          "effects": {
-            "inline_emphasis_runs": 0,
-            "gradient_uses": 0,
-            "filter_uses": 0,
-            "text_effects": 0
-          },
-          "geometry": {
-            "svg_elements": {
-              "rect": 5,
-              "circle": 0,
-              "ellipse": 0,
-              "line": 0,
-              "polyline": 0,
-              "polygon": 0,
-              "path": 0
-            },
-            "preset_shapes": 0,
-            "preset_names": {},
-            "page_frame_elements": 1,
-            "marker_uses": {
-              "start": 0,
-              "mid": 0,
-              "end": 0
-            }
-          },
-          "native_objects": {
-            "chart": 0,
-            "table": 0,
-            "formula_block": 0,
-            "formula_inline": 0,
-            "other": 0
-          }
-        },
-        "fonts": [
-          "KaiTi, Arial",
-          "SimHei, Arial"
-        ],
-        "text_elements": 12,
-        "tspan_elements": 4
-      },
-      "passed": true,
-      "source_sha256": "83cadd83e1227b7dcbdc28ca9ad98da64de423053832ad5cb5a5bff5e2b5216d"
-    },
-    {
-      "file": "10_full_scaling.svg",
-      "path": "report/heat-defense_ppt169_20261112/svg_output/10_full_scaling.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "carrier_receipt": {
-          "text_elements": 12,
-          "images": {
-            "placements": 1,
-            "files": [
-              "02-speedup.png"
-            ],
-            "max_frame_share": 0.452
-          },
-          "icons": 0,
-          "effects": {
-            "inline_emphasis_runs": 0,
-            "gradient_uses": 0,
-            "filter_uses": 0,
-            "text_effects": 0
-          },
-          "geometry": {
-            "svg_elements": {
-              "rect": 5,
-              "circle": 0,
-              "ellipse": 0,
-              "line": 0,
-              "polyline": 0,
-              "polygon": 0,
-              "path": 0
-            },
-            "preset_shapes": 0,
-            "preset_names": {},
-            "page_frame_elements": 1,
-            "marker_uses": {
-              "start": 0,
-              "mid": 0,
-              "end": 0
-            }
-          },
-          "native_objects": {
-            "chart": 0,
-            "table": 0,
-            "formula_block": 0,
-            "formula_inline": 0,
-            "other": 0
-          }
-        },
-        "fonts": [
-          "KaiTi, Arial",
-          "SimHei, Arial"
-        ],
-        "text_elements": 12,
-        "tspan_elements": 3
-      },
-      "passed": true,
-      "source_sha256": "9101915184e5bb673b438696c9aaf05d773f658fbef444a1a1bc760ab55d3a33"
-    },
-    {
-      "file": "11_grid.svg",
-      "path": "report/heat-defense_ppt169_20261112/svg_output/11_grid.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [],
-      "info": {
-        "viewbox": "0 0 1280 720",
-        "carrier_receipt": {
-          "text_elements": 12,
-          "images": {
-            "placements": 1,
-            "files": [
-              "05-grid-speedup.png"
-            ],
-            "max_frame_share": 0.4694
-          },
-          "icons": 0,
-          "effects": {
-            "inline_emphasis_runs": 0,
-            "gradient_uses": 0,
-            "filter_uses": 0,
-            "text_effects": 0
-          },
-          "geometry": {
-            "svg_elements": {
-              "rect": 5,
-              "circle": 0,
-              "ellipse": 0,
-              "line": 0,
-              "polyline": 0,
-              "polygon": 0,
-              "path": 0
-            },
-            "preset_shapes": 0,
-            "preset_names": {},
-            "page_frame_elements": 1,
-            "marker_uses": {
-              "start": 0,
-              "mid": 0,
-              "end": 0
-            }
-          },
-          "native_objects": {
-            "chart": 0,
-            "table": 0,
-            "formula_block": 0,
-            "formula_inline": 0,
-            "other": 0
-          }
-        },
-        "fonts": [
-          "KaiTi, Arial",
-          "SimHei, Arial"
-        ],
-        "text_elements": 12,
-        "tspan_elements": 4
-      },
-      "passed": true,
-      "source_sha256": "cbd6f83975d6119f0b7ace01f3c42f47b860b72e53ba50e32a7d293bf62f0b63"
-    },
-    {
-      "file": "12_interpretation.svg",
-      "path": "report/heat-defense_ppt169_20261112/svg_output/12_interpretation.svg",
-      "exists": true,
-      "errors": [],
-      "warnings": [],
+      "warnings": [
+        "Detected 1 paragraph-like line run(s) split across sibling <text> elements (<g id=\"space-definition\"> x=595.0, y=251.0..308.0, 2 lines). If each run is one prose paragraph, combine it into one <text>: keep its first line as direct text and use direct <tspan> children with the parent x and positive relative dy values for later lines. An all-<tspan> form may start with dy=\"0\". Keep semantically independent text frames separate."
+      ],
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
@@ -831,10 +227,10 @@
           },
           "geometry": {
             "svg_elements": {
-              "rect": 5,
-              "circle": 0,
+              "rect": 6,
+              "circle": 1,
               "ellipse": 0,
-              "line": 0,
+              "line": 23,
               "polyline": 0,
               "polygon": 0,
               "path": 0
@@ -845,32 +241,206 @@
             "marker_uses": {
               "start": 0,
               "mid": 0,
-              "end": 0
+              "end": 1
             }
           },
           "native_objects": {
             "chart": 0,
             "table": 0,
-            "formula_block": 3,
+            "formula_block": 0,
             "formula_inline": 0,
             "other": 0
           }
         },
         "fonts": [
-          "Cambria Math",
           "KaiTi, Arial",
           "SimHei, Arial"
         ],
         "text_elements": 22,
-        "tspan_elements": 4,
-        "contextual_values": {
-          "font_families": [
-            "Cambria Math"
-          ]
-        }
+        "tspan_elements": 0
       },
       "passed": true,
-      "source_sha256": "4e7c062e6f270d4ea18e8c68ab88c58946a2450b3dafa73e4cd87eda73c136a7"
+      "source_sha256": "35891cef6e7d1170ae95c8f5912ac2ff845abadf2f78c3c0c9a75fa8ca1f73c3"
+    },
+    {
+      "file": "03_stencil.svg",
+      "path": "report/heat-defense_ppt169_20261112/svg_output/03_stencil.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 23,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 0,
+            "text_effects": 0
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 11,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 5,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 55
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 1
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 1,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "KaiTi, Arial",
+          "SimHei, Arial"
+        ],
+        "text_elements": 23,
+        "tspan_elements": 0
+      },
+      "passed": true,
+      "source_sha256": "9fa5d27b20dfb42c3a402742033fbd4db6c7490ee743709a2895358e95352cdf"
+    },
+    {
+      "file": "04_serial.svg",
+      "path": "report/heat-defense_ppt169_20261112/svg_output/04_serial.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 16,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 0,
+            "text_effects": 0
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 8,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 4,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 4
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "KaiTi, Arial",
+          "SimHei, Arial"
+        ],
+        "text_elements": 16,
+        "tspan_elements": 0
+      },
+      "passed": true,
+      "source_sha256": "7fe34ae8402a0bbb1deade77671757e3fa6dbadea2b3ca578b7f27b5fe616871"
+    },
+    {
+      "file": "05_mpi.svg",
+      "path": "report/heat-defense_ppt169_20261112/svg_output/05_mpi.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (3 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): mpi-step:text-anchor None -> 'middle'; text[51]:text-anchor 'middle' -> None; text[52]:text-anchor 'middle' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)",
+        "<text> (x=270, y=545; text='N = 8，P = 3；每进程 3 / …') exceeds <g id=\"partition-and-halo\"> data-pptx-bounds on the horizontal axis: content (21.3, 519.5)-(518.7, 555.5), container (40.0, 140.0)-(1240.0, 560.0), overflow horizontal 1.6%, vertical 0.0% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text; ≈29.3 px per mixed char at 30px incl. headroom; ≈41 chars fit in 1200 px"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 27,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 0,
+            "text_effects": 0
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 11,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 7,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 2
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "KaiTi, Arial",
+          "SimHei, Arial"
+        ],
+        "text_elements": 27,
+        "tspan_elements": 0
+      },
+      "passed": true,
+      "source_sha256": "afe427e46637d21305235915db12ccf5e3212d6323ed11489828053d1e7e4693"
     }
   ]
 }

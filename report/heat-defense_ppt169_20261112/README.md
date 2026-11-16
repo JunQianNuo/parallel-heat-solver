@@ -20,4 +20,4 @@
 
 ## 当前状态
 
-2026-11-15起优先完成书面报告，本工作区暂停制作。源文件保留原位置，浏览器运行目录不迁移。最近既有成品为[可编辑v4-r1](../presentation/current/presentation-v4-r1.pptx)及[PDF](../presentation/current/presentation-v4-r1.pdf)，版本与工具入口见[归档说明](../presentation/README.md)。本轮只修复移动文件的链接，没有改页面、公式、图表、备注或重新导出。模板与字体仅本地只读，不纳入Git。
+2026-11-16，用户批准新规范并要求面向只接触PPT和最终报告的非实现者，已完成14页v5：10正文＋4备份、280秒预算。当前成品为[可编辑PPTX](../presentation/current/presentation-v5.pptx)、[PDF](../presentation/current/presentation-v5.pdf)及[总览](../presentation/current/presentation-v5-contact.png)，逐页源与备注已同步，版本及核查入口见[材料说明](../presentation/README.md)。2026-11-15暂停制作的状态属于历史；旧成品保留，不能混用页码和检查。模板与字体仅本地只读，不纳入Git；用户材料验收、个人信息和真实计时演练仍待完成。
